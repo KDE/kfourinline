@@ -1,5 +1,5 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
-  <!ENTITY kappname "&kwin4;" -- this only *seems* redundant -->
+  <!ENTITY kappname "&kwin4;">
   <!ENTITY English "INCLUDE"> 
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
@@ -9,6 +9,7 @@
 <book lang="&language;">
 <bookinfo>
 <title>Four Wins</title>
+
 <authorgroup>
 <author>
 <firstname>Martin</firstname>
@@ -17,15 +18,17 @@
 <address><email>martin@heni-online.de</email></address>
 </affiliation>
 </author>
+
 <othercredit role="reviewer">
-<firstname></firstname><surname></surname>
+<firstname></firstname>
+<surname></surname>
 <contrib>Reviewer</contrib>
 <affiliation><address><email></email></address></affiliation>
 </othercredit>
 </authorgroup>
 
 <date>12/12/2000</date>
-<releaseinfo>0.09.1</releaseinfo>
+<releaseinfo>0.09.01</releaseinfo>
 
 <abstract>
 <para>This documentation describes &kwin4; version 0.9.1</para>
@@ -51,7 +54,7 @@
 <title>Overview</title>
 
 <para>
-Four wins is a game for two player.
+Four wins is a game for two players.
 Each player is represented by a colour (yellow and red).
 The goal of the game is to get four connected pieces of your
 colour into a row, column or any diagonal.
@@ -69,6 +72,7 @@ because the board is filled.
 
 <chapter id="Installation">
 <title>Installation</title>
+
 <sect1 id="getting-kwin4">
 <title>How to obtain kwin4</title>
 
@@ -80,6 +84,7 @@ the main ftp site of the KDE project.</para>
 
 <sect1 id="Requirements">
 <title>Requirements</title>
+
 <para>
 In order to successfully compile &kwin4;, you need KDE 2.0 </para>
 <para>
@@ -94,7 +99,7 @@ url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 
 <para>In order to compile and install &kwin4; on your system, extract the package
 and type the following commands in the base directory of the &kwin4;
-distribution: </para>
+distribution:</para>
 
 <screen width="40">
 <prompt>%</prompt> <userinput>cd kdegames</userinput>
@@ -173,7 +178,10 @@ to, but can.
 
 <chapter id="menus">
 <title>Menus</title>
-<sect1 id="file-menu"><title>File Menu</title>
+
+<sect1 id="file-menu">
+<title>File Menu</title>
+
 <variablelist>
 <varlistentry>
 <term><menuchoice>
@@ -359,8 +367,8 @@ report to the KDE team.</para>
 </variablelist>
 </sect1>
 
-
 </chapter>
+
 <chapter id="credits">
 <title>Credits and License</title>
 
@@ -388,5 +396,3 @@ sgml-minimize-attributes: nil
 sgml-general-insert-case: lower
 End:
 -->
-
-
