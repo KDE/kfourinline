@@ -205,8 +205,8 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
     unsigned int number=config->readNumEntry(name+"number",1);
     //kdDebug(11002) << " Reading " << number << " frames " << endl;
 
-    QString pixfile=config->readEntry(name+"file");
-    QString maskfile=config->readEntry(name+"mask");
+    QString pixfile=config->readPathEntry(name+"file");
+    QString maskfile=config->readPathEntry(name+"mask");
 
     // Load a given set of images or replace a %d by a sequence if there are
     // less image names than number given

@@ -156,7 +156,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
    // Allow overriding of the grafix directory
    // This is a cheap and dirty way for theming
    config->setGroup("Themes");
-   mGrafix = config->readEntry("grafixdir", mGrafix);
+   mGrafix = config->readPathEntry("grafixdir", mGrafix);
    kdDebug() << "Localised mGrafix " << mGrafix << endl;
 
 
@@ -593,7 +593,7 @@ void Kwin4App::saveOptions()
   config->writeEntry("ToolBarPos", (int) toolBar()->barPos());
 #endif
   config->writeEntry("Show Statusbar",statusBar()->isVisible());
-//  config->writeEntry("Recent Files", recentFiles);
+//  config->writePathEntry("Recent Files", recentFiles);
 
   doc->WriteConfig(config);
 
@@ -652,7 +652,7 @@ void Kwin4App::saveProperties(KConfig *_cfg)
   else
   {
     QString filename=doc->getAbsFilePath();
-    _cfg->writeEntry("filename", filename);
+    _cfg->writePathEntry("filename", filename);
 
     QString tempname = kapp->tempSaveName(filename);
     doc->saveDocument(tempname);
@@ -664,7 +664,7 @@ void Kwin4App::saveProperties(KConfig *_cfg)
  **/
 void Kwin4App::readProperties(KConfig* _cfg)
 {
-  QString filename = _cfg->readEntry("filename", "");
+  QString filename = _cfg->readPathEntry("filename");
   bool modified = _cfg->readBoolEntry("modified", false);
   if(modified)
   {
