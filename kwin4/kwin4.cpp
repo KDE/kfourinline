@@ -241,7 +241,7 @@ void Kwin4App::initMenuBar()
       popLevel->insertItem(i18n("&9"),ID_LEVEL_9);
       popLevel->insertItem(i18n("&10"),ID_LEVEL_10);
 
-      optionsMenu->insertItem(i18n("&Starting colour"),popStartcolor);
+      optionsMenu->insertItem(i18n("&Starting color"),popStartcolor);
       optionsMenu->insertItem(i18n("&Yellow played by"),popYellow);
       optionsMenu->insertItem(i18n("&Red played by"),popRed);
       optionsMenu->insertItem(i18n("&Level"),popLevel);
@@ -1011,7 +1011,7 @@ void Kwin4App::slotStatusHelpMsg(const QString &text)
 /** change startcolour */
 void Kwin4App::slotStartcolourRed()
 {
-  slotStatusMsg(i18n("Changing startcolour to red..."));
+  slotStatusMsg(i18n("Changing start color to red..."));
 
   if (doc->QueryPlayerColour(0)==Gelb)
   {
@@ -1025,7 +1025,7 @@ void Kwin4App::slotStartcolourRed()
 /** change startcolour */
 void Kwin4App::slotStartcolourYellow()
 {
-  slotStatusMsg(i18n("Changing startcolour to yellow..."));
+  slotStatusMsg(i18n("Changing start color to yellow..."));
 
   if (doc->QueryPlayerColour(0)==Rot)
   {
