@@ -411,7 +411,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 
   pView->setArrow(x,mLastColour);
   // animation onyl if no redo
-  pView->setPiece(x,y,mLastColour,mCurrentMove,mode==1?false:true);
+  pView->setPiece(x,y,mLastColour,mCurrentMove-1,mode==1?false:true);
   pView->setHint(0,0,false);
  
   return GNormal;
