@@ -244,5 +244,9 @@
         <slot>accept()</slot>
     </connection>
 </connections>
+<tabstops>
+    <tabstop>pushButton2</tabstop>
+    <tabstop>pushButton1</tabstop>
+</tabstops>
 <layoutdefaults spacing="6" margin="11"/>
 </UI>
