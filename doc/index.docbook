@@ -98,7 +98,7 @@ url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 
 
 <sect1 id="Compilation">
-<title>Compilation and installation</title>
+<title>Compilation and Installation</title>
 
 <para>In order to compile and install &kwin4; on your system, extract the package
 and type the following commands in the base directory of the &kwin4;
