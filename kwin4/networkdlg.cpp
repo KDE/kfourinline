@@ -29,7 +29,7 @@
  *  TRUE to construct a modal dialog.
  */
 NetworkDlg::NetworkDlg( QWidget* parent,  const char* name, bool /*modal*/, WFlags /*fl*/ )
-    : KDialogBase( Plain, i18n("Configure network options..."), Ok|Cancel, Ok,
+    : KDialogBase( Plain, i18n("Configure Network Options..."), Ok|Cancel, Ok,
                    parent, name, true,true )
 {
     if ( !name ) setName( "NetworkDlg" );
