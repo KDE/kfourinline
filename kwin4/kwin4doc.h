@@ -66,9 +66,9 @@ public:
   void ResetStat();
   int CheckGameOver(int x, FARBE col);
   FARBE QueryPlayerColour(int player);
-  int QueryStat(FARBE i,TABLE mode);
+  int QueryStat(FARBE i, TABLE mode);
   QString QueryName(FARBE i);
-  void SetName(FARBE i,QString n);
+  void SetName(FARBE i, const QString &n);
 
   /**
   * Set and query the IO mode of player Gelb/Rot
@@ -114,8 +114,8 @@ public:
   int QueryHistoryCnt();  // 0..42
   QString QueryProcessName();
 
-  KPlayer *createPlayer(int rtti,int io,bool isvirtual);
-  KPlayer * nextPlayer(KPlayer *last,bool exclusive=true);
+  KPlayer *createPlayer(int rtti, int io, bool isvirtual);
+  KPlayer * nextPlayer(KPlayer *last, bool exclusive=true);
 
   void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QValueList<int> &);
 

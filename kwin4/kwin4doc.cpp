@@ -398,7 +398,7 @@ bool Kwin4Doc::RedoMove(){
 /**
  * Set the name of col
  */
-void Kwin4Doc::SetName(FARBE i,QString n){
+void Kwin4Doc::SetName(FARBE i, const QString &n){
   getPlayer(i)->setName(n);
 }
 
