@@ -626,7 +626,9 @@ bool Kwin4App::MakeInputDevice(int i)
           msg->AddData("RequestClient",(long)doc->QueryID());
         }
         prepareGame(msg);
+        if (global_debug>6) kdDebug() << "Game prepared." << endl;
         mInput->SendMsg(msg,i);
+        if (global_debug>6) kdDebug() << "Message send." << endl;
 
         delete msg;
       }
@@ -635,6 +637,13 @@ bool Kwin4App::MakeInputDevice(int i)
     else if (doc->IsComputer(farbe)&& mInput->QueryType(i)!=KG_INPUTTYPE_PROCESS)
     {
       QString path=kapp->dirs()->findExe(doc->QueryProcessName());
+      if (path.isNull())
+      {
+        QFile f(doc->QueryProcessName());
+        if (f.exists()) 
+        path=doc->QueryProcessName();
+        kdDebug() << "Using direct path:" << path << endl;
+      }
       if (global_debug>5)
       { 
         kdDebug() << "Make Process G" << i << endl;
@@ -1569,13 +1578,13 @@ void Kwin4App::slotPrepareProcessMove(KEMessage *msg)
   prepareGame(msg);
 
 }
-void Kwin4App::slotPrepareRemoteMove(KEMessage *msg)
+void Kwin4App::slotPrepareRemoteMove(KEMessage * /*msg*/)
 {
   if (global_debug>3)
     kdDebug() << "+++ main should prepare remote move" << endl;
   slotStatusMsg(i18n("Waiting for remote player..."));
 }
-void Kwin4App::slotPrepareInteractiveMove(KEMessage *msg)
+void Kwin4App::slotPrepareInteractiveMove(KEMessage * /*msg*/)
 {
   if (global_debug>3)
     kdDebug() << "+++ main should prepare interactive move" << endl;

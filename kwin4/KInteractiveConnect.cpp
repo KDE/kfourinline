@@ -29,7 +29,7 @@ bool KInteractiveConnect::Next()
   delete msg;
   return true;
 }
-bool KInteractiveConnect::Init(int id,KEMessage *msg)
+bool KInteractiveConnect::Init(int id,KEMessage * /*msg*/)
 {
   // emit signalReceiveMsg(msg);
   SetID(id);

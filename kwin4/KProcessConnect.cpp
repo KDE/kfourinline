@@ -43,10 +43,10 @@ bool KProcessConnect::Init(int id,KEMessage *msg)
   {
     if (!msg->GetData(QCString("ProcessName"),p,size)) return false; // no process name
     processname=p;
-    /*
+    
     printf("Found processname '%s' size %d size=%u\n",
        p,size,msg->QueryNumberOfKeys());
-    */
+   
     msg->Remove(QCString("ProcessName"));
   }
   if (processname.length()<1) return false;
@@ -70,6 +70,7 @@ bool KProcessConnect::Init(int id,KEMessage *msg)
 
   // TRUE if ok
   running=process->start(KProcess::NotifyOnExit,KProcess::All);
+  printf("Running =%d\n",running);
 
   if (running && msg && msg->QueryNumberOfKeys()>0)
   {
@@ -79,7 +80,7 @@ bool KProcessConnect::Init(int id,KEMessage *msg)
   return running;
 }
 
-void KProcessConnect::slotReceivedStdout(KProcess *proc, char *buffer, int buflen)
+void KProcessConnect::slotReceivedStdout(KProcess * /*proc*/, char *buffer, int buflen)
 {
   QString s;
   char c;
@@ -116,14 +117,14 @@ void KProcessConnect::slotReceivedStdout(KProcess *proc, char *buffer, int bufle
     Receive(s);
   }
 }
-void KProcessConnect::slotProcessExited(KProcess *p)
+void KProcessConnect::slotProcessExited(KProcess * /*p*/)
 {
   running=false;
   delete process;
   process=0;
   Init(QueryID());
 }
-void KProcessConnect::slotWroteStdin(KProcess *p)
+void KProcessConnect::slotWroteStdin(KProcess * /*p*/)
 {
   kdDebug() << "slotWroteStdin:: IS NEVER CALLED" << endl;
 }
@@ -158,16 +159,17 @@ bool KProcessConnect::Next()
 bool KProcessConnect::Send(QString str)
 {
   bool result;
-  // printf("****** PROCESS:SEND\n");
+  if (!result) kdDebug() << "ProcessConnect: SEND to begin" << endl;
   if (!running || !process) return false;
   if (!str || str.length()<1) return true; // no need to send crap
   // TODO ..why?
   QString s;
-  s=KEMESSAGE_CR+KEMESSAGE_CR;
+  s=KEMESSAGE_CR+KEMESSAGE_CR+KEMESSAGE_CR+KEMESSAGE_CR+KEMESSAGE_CR+KEMESSAGE_CR;
   str=s+str;
   // printf("+++ Sending to child '%s'!!!\n",(const char *)str);
   result=process->writeStdin(str.latin1(),str.length()+1);
   if (!result) kdDebug() << "ERROR in PROCESS SEND" << endl;
+  else  kdDebug() << "PROCESS SEND Done" << endl;
   return result;
 }
 

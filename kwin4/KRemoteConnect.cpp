@@ -250,7 +250,7 @@ void KRemoteConnect::socketRead(KSocket *sock)
 }
 
 
-void KRemoteConnect::socketWrite(KSocket *sock)
+void KRemoteConnect::socketWrite(KSocket * /*sock*/)
 {
  // printf("wrtie input on socket %p\n",sock);
 }

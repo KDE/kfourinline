@@ -37,14 +37,12 @@
 
 
 // Create the dialog 
-NetworkDlg::NetworkDlg( QWidget *parent, const char *name,const char *sufi )
+NetworkDlg::NetworkDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
     : QDialog( parent, name,TRUE )
 {
   QGroupBox* grp;
   KApplication *app=KApplication::kApplication();
   config=app->sessionConfig();
-  int port;
-  //int sport;
   QString s;
   QLabel *Label;
   QPushButton *PushButton;

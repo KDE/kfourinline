@@ -38,7 +38,7 @@
 
 
 // Create the dialog for changing the player names
-MsgDlg::MsgDlg( QWidget *parent, const char *name,const char *sufi )
+MsgDlg::MsgDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
     : QDialog( parent, name,TRUE )
 {
   setCaption(i18n("Send message to remote player..."));

@@ -113,7 +113,7 @@ const QString &Kwin4Doc::getAbsFilePath() const
   return absFilePath;
 }
 
-void Kwin4Doc::setTitle(const QString &_t)
+void Kwin4Doc::setTitle(const QString & /*_t*/)
 {
 
 //  title=_t;
@@ -149,7 +149,7 @@ void Kwin4Doc::closeDocument()
   deleteContents();
 }
 
-bool Kwin4Doc::newDocument(KConfig *config,QString path)
+bool Kwin4Doc::newDocument(KConfig * /*config*/,QString path)
 {
   int res;
   modified=false;
@@ -160,7 +160,7 @@ bool Kwin4Doc::newDocument(KConfig *config,QString path)
   return true;
 }
 
-bool Kwin4Doc::openDocument(const QString &filename, const char *format /*=0*/)
+bool Kwin4Doc::openDocument(const QString &filename, const char * /*format*/ /*=0*/)
 {
   QFileInfo fileInfo(filename);
   title=fileInfo.fileName();
@@ -169,7 +169,7 @@ bool Kwin4Doc::openDocument(const QString &filename, const char *format /*=0*/)
   return true;
 }
 
-bool Kwin4Doc::saveDocument(const QString &filename, const char *format /*=0*/)
+bool Kwin4Doc::saveDocument(const QString & /*filename*/, const char * /*format*/ /*=0*/)
 {
   modified=false;
   return true;
@@ -742,6 +742,8 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   mHost=config->readEntry("host","localhost");
   mPort=(unsigned short)config->readNumEntry("port",7442);
   procfile=config->readEntry("process","kproc4");
+  procfile="/local/heni/cvs/kdegames/kwin4/kproc4/kproc4";
+  printf("Procfile=%s\n",procfile.latin1());
   Names[Gelb]=config->readEntry("Name1","Player 1");
   Names[Rot]=config->readEntry("Name2","Player 2");
 

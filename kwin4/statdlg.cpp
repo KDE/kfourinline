@@ -58,7 +58,7 @@
 
 
 // Show the all time statistics dialog
-StatDlg::StatDlg( QWidget *parent, const char *name,const char *sufi )
+StatDlg::StatDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
     : QDialog( parent, name,TRUE )
 {
 
