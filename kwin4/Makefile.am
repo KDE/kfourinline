@@ -1,5 +1,5 @@
 
-CPPFLAGS = -DSRCDIR="\"$(shell (cd $(srcdir) && pwd))\""
+AM_CPPFLAGS = -DSRCDIR="\"$(shell (cd $(srcdir) && pwd))\""
 
 bin_PROGRAMS = kwin4 kwin4proc
 kwin4_SOURCES = msgdlg.cpp kwin4aboutdlg.cpp statdlg.cpp \
