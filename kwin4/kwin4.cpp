@@ -529,12 +529,12 @@ void Kwin4App::readProperties(KConfig* _cfg)
 
 bool Kwin4App::queryClose()
 {
-  kEndDlg *dlg=new kEndDlg(&doc->m_PixWin4About,this);
+  kEndDlg *dlg=new kEndDlg(this);
+  dlg->SetPixmap(doc->m_PixWin4About);
   int res=dlg->exec();
   delete dlg;
   if (res) return true;
   return false;;
-//  return doc->saveModified();
 }
 
 bool Kwin4App::queryExit()

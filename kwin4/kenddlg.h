@@ -18,40 +18,39 @@
 #ifndef KENDDLG_H
 #define KENDDLG_H
 
-//Generated area. DO NOT EDIT!!!(begin)
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-//Generated area. DO NOT EDIT!!!(end)
-
+#include <qvariant.h>
 #include <qdialog.h>
-#include <klocale.h>
-/**
-  *@author Martin Heni
-  */
+class QVBoxLayout; 
+class QHBoxLayout; 
+class QGridLayout; 
+class QFrame;
+class QLabel;
+class QPushButton;
 
-class kEndDlg : public QDialog  {
-   Q_OBJECT
-public: 
-	kEndDlg(QPixmap *pix,QWidget *parent=0, const char *name=0);
-	~kEndDlg();
+class kEndDlg : public QDialog
+{ 
+    Q_OBJECT
 
-protected: 
-	void initDialog();
-	//Generated area. DO NOT EDIT!!!(begin)
-	QLabel *QLabel_1;
-	QLabel *QLabel_2;
-	QPushButton *QPushButton_1;
-	QPushButton *QPushButton_2;
-	QGroupBox *QGroupBox_1;
-	QLabel *QLabel_4;
-	QLabel *QLabel_5;
-	QLabel *QLabel_6;
-	//Generated area. DO NOT EDIT!!!(end)
+public:
+    kEndDlg( QWidget* parent = 0, const char* name = 0, bool modal = TRUE, WFlags fl = 0 );
+    ~kEndDlg();
+    void SetPixmap(QPixmap &pixmap);
 
-private: 
-  QPixmap *mPixmap;
+    QFrame* Frame3;
+    QLabel* PixmapLabel1;
+    QPushButton* PushButton1;
+    QFrame* Frame5;
+    QLabel* TextLabel1;
+    QLabel* PixmapLabel2;
+    QPushButton* PushButton1_2;
+
+protected:
+    QHBoxLayout* hbox;
+    QHBoxLayout* hbox_2;
+    QVBoxLayout* vbox;
+    QVBoxLayout* vbox_2;
+    QVBoxLayout* vbox_3;
+    QVBoxLayout* vbox_4;
 };
 
-#endif
+#endif // KENDDLG_H
