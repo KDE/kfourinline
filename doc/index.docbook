@@ -108,7 +108,9 @@ distribution:</para>
 <prompt>%</prompt> <userinput>make install</userinput>
 </screen>
       
-<para>Since &kwin4; uses <application>autoconf</application> and <application>automake</application> you should have no trouble compiling it.</para>
+<para>Since &kwin4; uses <application>autoconf</application> and
+<application>automake</application> you should have no trouble compiling
+it.</para>
 
 </sect1>
 </chapter>
@@ -118,7 +120,7 @@ distribution:</para>
 
 <para>The board is separated into three regions.</para>
 
-<para><emphasis>The game board </emphasis>
+<para>The <firstterm>game board</firstterm>
 is constructed out of 7x6 fields which will be filled from bottom
 to top. The fields are marked in the colour of the player who made the
 current move.
@@ -126,7 +128,7 @@ On top of each column a coloured arrow shows were the last piece had been
 put.
 </para>
 
-<para><emphasis> The status display</emphasis> 
+<para>The <firstterm>status display</firstterm> 
 shows which player colour starts and which colour is
 played by whom (player,computer,remote connection). It further shows the
 level of the computer opponent, the number of moves done as well as the
@@ -136,7 +138,7 @@ has an advantage, a negative number means that the computer thinks
 he is better.
 </para>
 
-<para><emphasis> The table display shows</emphasis> 
+<para>The <firstterm>table display</firstterm> shows
 the number of won, lost and drawn games is noted for both player.
 Also the number of aborted games (Brk) and the sum of games is shown.
 </para>
