@@ -235,7 +235,7 @@ void Kwin4Doc::SetColour(int x,int y,FARBE c){
     kdDebug() << "ERROR: SetColour auf falsche Poition " << x << " " << y << endl;
     return ;
   }
-  //kdDebug() << "mField["<<x+y*geom.field_mx<<"="<<c<<endl;
+  //kdDebug() << "SetColor::mField["<<x+y*geom.field_mx<<"="<<c<<endl;
   mField.setAt(x+y*geom.field_mx,c);
 }
 
@@ -421,8 +421,8 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 /** Undo a move */
 bool Kwin4Doc::UndoMove(){
   int x,y;
-  kdDebug() <<" undo: current player="<<QueryCurrentPlayer() << endl;
-  kdDebug() <<" undo: history="<<QueryHistoryCnt() << endl;
+  //kdDebug() <<" undo: current player="<<QueryCurrentPlayer() << endl;
+  //kdDebug() <<" undo: history="<<QueryHistoryCnt() << endl;
   if (QueryHistoryCnt()<1) return false;
   if (mLastHint>=0)
   {
@@ -432,15 +432,16 @@ bool Kwin4Doc::UndoMove(){
     SetColour(mLastHint,hy,Niemand);
     mLastHint=-1;
   }
-  //kdDebug() << "Undo no="<<mHistoryCnt.value() << endl;
+  // kdDebug() << "Undo no="<<mHistoryCnt.value() << endl;
   mHistoryCnt=mHistoryCnt.value()-1;
   x=mHistory.at(QueryHistoryCnt());
   mFieldFilled.setAt(x,mFieldFilled.at(x)-1);
-  //field_filled[x]--;
-  //y=field_filled[x];
   y=mFieldFilled.at(x);
-  //kdDebug() << "Undo x="<<x << " y=" <<y << endl;
+  // kdDebug() << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
+  // We have to remove the piece as well...
+  pView->setPiece(x,y,Niemand,mCurrentMove-1,false);
+
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
   else SetCurrentPlayer(Gelb);
@@ -739,7 +740,7 @@ long Kwin4Doc::QueryScore(){
 int Kwin4Doc::QueryHeight(int x){
   if (x<0 || x>=geom.field_mx)
   {
-    kdDebug() << "ERROR: Query Height for wrong x " << x << endl;
+    kdError() << "ERROR: Query Height for wrong x " << x << endl;
     return 0;
   }
   //return field_filled[x];

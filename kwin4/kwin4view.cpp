@@ -478,6 +478,13 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
 
   //kdDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
 
+  // Check for removal of sprite
+  if (color==Niemand)
+  {
+    sprite->hide();
+    return ;
+  }
+
   // Make sure the frames are ok
   int c;
   if (color==Gelb) c=0;
