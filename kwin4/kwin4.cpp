@@ -53,7 +53,7 @@
 #include "kwin4aboutdlg.h"
 
 
-Kwin4App::Kwin4App()
+Kwin4App::Kwin4App() : KMainWindow(0)
 {
   config=kapp->config();
 
@@ -363,12 +363,12 @@ void Kwin4App::initDocument()
 void Kwin4App::initView()
 { 
   ////////////////////////////////////////////////////////////////////
-  // create the main widget here that is managed by KTMainWindow's view-region and
+  // create the main widget here that is managed by KMainWindow's view-region and
   // connect the widget to your document to display document contents.
 
   view = new Kwin4View(this);
   doc->addView(view);
-  setView(view);	
+  setCentralWidget(view);	
   // setCaption(doc->getTitle());
   setCaption(TITLE);
 
@@ -432,18 +432,18 @@ void Kwin4App::readOptions()
 #ifdef USE_TOOLBAR
   bool bViewToolbar = config->readBoolEntry(QCString("Show Toolbar"), true);
   viewMenu->setItemChecked(ID_VIEW_TOOLBAR, bViewToolbar);
-  if(!bViewToolbar)
-  {
-     enableToolBar(KToolBar::Hide);
-  }
+  if(bViewToolbar)
+     toolBar()->show();
+  else
+     toolBar()->hide();
 #endif
 	
   bool bViewStatusbar = config->readBoolEntry(QCString("Show Statusbar"), true);
   viewMenu->setItemChecked(ID_VIEW_STATUSBAR, bViewStatusbar);
-  if(!bViewStatusbar)
-  {
-    enableStatusBar(KStatusBar::Hide);
-  }
+  if(bViewStatusbar)
+    statusBar()->show();
+  else
+    statusBar()->hide();
 
   #ifdef USE_TOOLBAR
   // bar position settings
@@ -937,12 +937,12 @@ void Kwin4App::slotViewToolBar()
   if( viewMenu->isItemChecked(ID_VIEW_TOOLBAR))
   {
     viewMenu->setItemChecked(ID_VIEW_TOOLBAR, false);
-    enableToolBar(KToolBar::Hide);
+    toolBar()->hide();
   }
   else
   {
     viewMenu->setItemChecked(ID_VIEW_TOOLBAR, true);
-    enableToolBar(KToolBar::Show);
+    toolBar()->show();
   }		
 
   slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
@@ -957,12 +957,12 @@ void Kwin4App::slotViewStatusBar()
   if( viewMenu->isItemChecked(ID_VIEW_STATUSBAR))
   {
     viewMenu->setItemChecked(ID_VIEW_STATUSBAR, false);
-    enableStatusBar(KStatusBar::Hide);
+    statusBar()->hide();
   }
   else
   {
     viewMenu->setItemChecked(ID_VIEW_STATUSBAR, true);
-    enableStatusBar(KStatusBar::Show);
+    statusBar()->show();
   }
 
   slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
