@@ -56,7 +56,6 @@
 
 #include "statdlg.h"
 #include "geom.h"
-#include "msgdlg.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG                1003
