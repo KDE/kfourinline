@@ -50,10 +50,8 @@ int main(int argc, char *argv[])
     global_debug=QString(args->getOption("debug")).toInt();
     kdDebug(12010) << "Debug level set to " << global_debug << endl;
   }
-  args->clear();
-
-  //  KApplication app(argc, argv, "kwin4");
-  KApplication app;
+  
+  KApplication app(argc, argv);
   KGlobal::locale()->insertCatalogue("libkdegames");
 
   if (app.isRestored())
