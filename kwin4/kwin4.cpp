@@ -1787,6 +1787,9 @@ bool Kwin4App::Move(int x,int id){
    }
 
 
+  // The whole block can be removed. As it does not hurt
+  // I keep it in until the next big change or release
+  // Martin 211100
   if (doc->IsLocked() )
   {
      if (mInput->IsInteractive())
@@ -1802,7 +1805,8 @@ bool Kwin4App::Move(int x,int id){
      }
     return false;
   }
-//  slotStatusMsg(i18n("Ready"));
+  //  slotStatusMsg(i18n("Ready"));
+  //  End of block to be removed
 
   hintx=doc->QueryLastHint();
   lastx=doc->QueryLastcolumn();
