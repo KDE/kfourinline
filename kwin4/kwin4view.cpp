@@ -26,9 +26,10 @@
 #include "kwin4view.h"
 #include "kwin4doc.h"
 #include "kwin4.h"
-#include "KEInput.h"
-#include "KEMessage.h"
 #include "geom.h"
+#include "scorewidget.h"
+#include "statuswidget.h"
+
 
 
 // lightGray
@@ -43,23 +44,81 @@
 
 
 
-Kwin4View::Kwin4View(QWidget *parent, const char *name) : QWidget(parent, name)
+Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
+        : QCanvasView(0,parent, name)
+
 {
-  setBackgroundMode(PaletteBase);
+  mLastArrow=-1;
+
+
+  mGrafix=grafixdir;
+  kdDebug() << "Kwin4View:: grafixdir=" << grafixdir << endl;
+  setVScrollBarMode(AlwaysOff);
+  setHScrollBarMode(AlwaysOff);
+
+  //setBackgroundMode(PaletteBase);
   setBackgroundColor(QColor(0,0,128));
 
+  mCanvas=new QCanvas(parent);
+  mCanvas->resize(parent->width(),parent->height()); 
+  mCanvas->setDoubleBuffering(true);
+  setCanvas(mCanvas);
 
-  setBackgroundPixmap( getDocument()->m_PixBackground );
+  mCache=new KSpriteCache(mGrafix,this);
+  mCache->setCanvas(mCanvas);
+  KConfig *config=mCache->config();
 
-  /*
-  QFontInfo font=fontInfo();
-  printf("Fontinfo: pnt=%d family=%s exact=%d\n",
-      font.pointSize(),font.family().latin1(),font.exactMatch());
-  */
+  // Write a few i18n Strings as text sprites
+  config->setGroup("text1");
+  config->writeEntry("text",i18n("Hold on..the other was not yet gone...")); 
+  config->setGroup("text2");
+  config->writeEntry("text",i18n("Hold your horses...")); 
+  config->setGroup("text3");
+  config->writeEntry("text",i18n("Ah ah ah...only one go at a time...")); 
+  config->setGroup("text4");
+  config->writeEntry("text",i18n("Please wait... it is not your turn.")); 
+  config->sync();
+
+
+  QPoint pnt;
+  config->setGroup("game");
+
+  pnt=config->readPointEntry("scorewidget");
+  mScoreWidget=new ScoreWidget(viewport());
+  addChild(mScoreWidget);
+  mScoreWidget->move(pnt);
+  mScoreWidget->show();
+
+  pnt=config->readPointEntry("statuswidget");
+  mStatusWidget=new StatusWidget(this);
+  mStatusWidget->move(pnt);
+  mStatusWidget->show();
+
+  move(0,0);
+  adjustSize();
+
+  initView(false);  
+
+  // setBackgroundPixmap( getDocument()->m_PixBackground );
+  //setBackground( getDocument()->m_PixBackground );
+  
+  //QTimer::singleShot(10000,this,SLOT(slotTest()));
+  kdDebug() << "****************** UPDATE="<<isUpdatesEnabled() << endl;
+
 }
+
+void Kwin4View::slotTest()
+{
+  kdDebug() << "slotTest" << endl;
+  kdDebug() << "slotTest DONE" << endl;
+}
+
 
 Kwin4View::~Kwin4View()
 {
+  if (mCanvas) delete mCanvas;
+  if (mCache) delete mCache;
+
 }
 
 Kwin4Doc *Kwin4View::getDocument() const
@@ -69,369 +128,296 @@ Kwin4Doc *Kwin4View::getDocument() const
   return theApp->getDocument();
 }
 
-/** Interface to the Paint Event */
-void Kwin4View::Paint(QPainter *p){
+void Kwin4View::initView(bool deleteall)
+{
+   // mCanvas->setAdvancePeriod(period);
+   mCanvas->setAdvancePeriod(15);
 
-  if (getDocument()->IsIntro())
+  KConfig *config=mCache->config();
+  config->setGroup("game");
+  mSpreadX=config->readNumEntry("spread_x",0);
+  mSpreadY=config->readNumEntry("spread_y",0);
+  kdDebug() << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
+
+  QPixmap *pixmap=loadPixmap("background.png");
+  if (pixmap) mCanvas->setBackgroundPixmap(*pixmap);
+  else mCanvas->setBackgroundColor(QColor(0,0,128));
+  delete pixmap;
+
+  // TODO in start functions to distinguish from intro
+  drawBoard(deleteall);
+
+  // Hide stars in any case
+  KSprite *sprite=0;
+  for (int i=0;i<4;i++)
   {
-    drawIntro(p);
+    sprite=(KSprite *)(mCache->getItem("star",i));
+    if (sprite) sprite->hide();
+  }
+  // Hide GameOver in any case
+  sprite=(KSprite *)(mCache->getItem("gameover",1));
+  if (sprite) sprite->hide();
+
+  // Hide pieces in any case
+  for (int i=0;i<42;i++)
+  {
+    sprite=(KSprite *)(mCache->getItem("piece",i));
+    if (sprite) sprite->hide();
+  }
+
+  // Clear error text
+  clearError();
+}
+
+QPixmap *Kwin4View::loadPixmap(QString name)
+{
+  if (!mCache) return 0;
+  return mCache->loadPixmap(name);
+}
+
+void Kwin4View::EndGame()
+{
+  KSprite *sprite;
+  sprite=(KSprite *)(mCache->getItem("gameover",1));
+  KConfig *config=mCache->config();
+  int dest=config->readNumEntry("destY",150);
+  kdDebug() << "MOVING gameover to " << dest << endl;
+
+  if (sprite)
+  {
+    sprite->show();
+    sprite->moveTo(sprite->x(),dest);
+  }
+}
+
+// -------------- Draw Sprites ----------------------
+void Kwin4View::drawStar(int x,int y,int no)
+{
+  int x_pos,y_pos;
+  int dx,dy;
+  y=5-y;
+  KSprite *board=(KSprite *)(mCache->getItem("board",1));
+  if (board)
+  {
+    x_pos=board->x();
+    y_pos=board->y();
   }
   else
   {
-    drawField(p);
-    drawStatus(p);
-    drawTable(p);
+    x_pos=0;
+    y_pos=0;
+  }
+  KSprite *piece=(KSprite *)(mCache->getItem("piece",0));
+  if (piece)
+  {
+    dx=piece->width();
+    dy=piece->height();
+  }
+  else
+  {
+    dx=0;
+    dy=0;
   }
 
-
-}
-/** QT Paint Event */
-void Kwin4View::paintEvent( QPaintEvent * p){
-    QPainter paint( this );
-    paint.setClipRect(p->rect());
-    Paint( &paint );			
-
-}
-
-/** Updates the table area */
-void Kwin4View::updateTable(){
-  update(geom.table_rect);
-}
-
-/** Updates the status area */
-void Kwin4View::updateStatus(){
-  update(geom.status_rect);
-}
-
-/** Update XY area */
-void Kwin4View::updateXY(int x,int y){
-  QPoint point1,point2;
-  y=geom.field_my-y;
-  point1=geom.field_origin+geom.field_offset;
-  point1+=QPoint(geom.field_dx*x,geom.field_dy*y);
-  point2=point1+QPoint(geom.field_dx,geom.field_dy);
-
-  QRect rect(point1,point2);
-
-  update(rect);
-}
-
-/** Updates on of the column arrows */
-void Kwin4View::updateArrow(int x){
-  QPoint point1,point2;
-
-  if (x<0 || x>=geom.field_mx) return; // got -1 or so
-
-  point1=geom.field_origin+geom.field_offset;
-  point1+=QPoint(x*geom.field_dx,geom.field_arrow_dy);
-
-  point2=point1+QPoint(geom.field_dx,geom.field_dy);
-  QRect rect(point1,point2);
-
-  update(rect);
-}
-
-/** Draw the game intro */
-void Kwin4View::drawIntro(QPainter *p)
-{
-  QString ld;
-  p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
-  // QFont font(p->font());
-  QFont font("Helvetica");
-  font.setPixelSize(36);
-  font.setBold(true);
-  font.setItalic(true);
-  p->setFont(font);
-  p->setPen(COL_YELLOW);
-  ld=i18n("Four wins for KDE","Four wins\n\n\nfor\n\nK D E");
-  QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
   
-	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
-
-}
-/** Draw the game board */
-void Kwin4View::drawField(QPainter *p){
-  int x,y;
-  QPoint point;
-
-  p->drawPixmap(geom.field_origin,getDocument()->m_PixBoard);
-
-  for (x=0;x<geom.field_mx;x++)
+  KSprite *sprite=(KSprite *)(mCache->getItem("star",no));
+  kdDebug() << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
+  if (sprite)
   {
-    point=geom.field_origin+geom.field_offset;
-    point+=QPoint(x*geom.field_dx,geom.field_arrow_dy);
-
-    if (getDocument()->QueryLastcolumn()==x &&
-        getDocument()->QueryLastcolour()==Rot)
-    {
-       p->drawPixmap(point,getDocument()->m_PixArrowRed);
-    }
-    else if (getDocument()->QueryLastcolumn()==x &&
-        getDocument()->QueryLastcolour()==Gelb)
-    {
-       p->drawPixmap(point,getDocument()->m_PixArrowYellow);
-    }
-    else
-    {
-       p->drawPixmap(point,getDocument()->m_PixArrow);
-    }
-  }/* end arrows */
-
-  FARBE colour;
-  for (y=geom.field_my-1;y>=0;y--)
-  {
-    for (x=0;x<geom.field_mx;x++)
-    {
-      point=geom.field_origin+geom.field_offset;
-      point+=QPoint(geom.field_dx*x,geom.field_dy*y);
-
-      colour=getDocument()->QueryColour(x,geom.field_my-1-y);
-      switch(colour)
-      {
-        case Gelb:
-           p->drawPixmap(point,getDocument()->m_PixFieldYellow);
-        break;
-        case Rot:
-           p->drawPixmap(point,getDocument()->m_PixFieldRed);
-        break;
-        case Tip:
-           p->drawPixmap(point,getDocument()->m_PixFieldHint);
-        break;
-        // Could be improved by another piece for the blinking
-        // e.g. a flashing stone
-        case GelbWin:
-        case RotWin:
-           p->drawPixmap(point,getDocument()->m_PixFieldEmpty);
-        break;
-        default:
-           p->drawPixmap(point,getDocument()->m_PixFieldEmpty);
-        break;
-      }
-    }
-  }
-
-}
-/** Draw the status window */
-void Kwin4View::drawStatus(QPainter *p){
-  QPoint p1,p2;
-  FARBE beginner,second;
-  QFont font11(p->font());
-  font11.setPixelSize(12);
-  p->setFont(font11);
-
-	beginner=getDocument()->QueryPlayerColour(0);
-	second=getDocument()->QueryPlayerColour(1);
-
-  // Draw border and field
-  p->setPen(COL_STATUSBORDER);
-  p->setBrush(COL_STATUSFIELD);
-  p->drawRect(geom.status_rect);
-  drawBorder(p,geom.status_rect,0,4,0);
-	drawBorder(p,geom.status_rect,10,1,1);
-
-  // draw text
-  QString ld;
-
-	p->setPen(black);
-	p1=geom.status_rect.topLeft();
-	p2=geom.status_rect.bottomRight();
-	int width=6*(p2.x()-p1.x())/10;
-
-  ld=i18n("versus","vs");
-	p->drawText(p1.x()+geom.table_cols[0],p1.y()+geom.table_rows[0],ld);
-
-  ld=i18n("Level:");
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[1],
-	            width,32,QPainter::AlignLeft|QPainter::AlignTop ,ld);
-  ld.sprintf("%d",getDocument()->QueryLevel());
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[1],
-	            width,32,QPainter::AlignRight|QPainter::AlignTop ,ld);
-
-  ld=i18n("Move:");
-//     getDocument()->QueryCurrentMove());
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[2],
-	            width,32,QPainter::AlignLeft|QPainter::AlignTop ,ld);
-
-  ld.sprintf("%2d",getDocument()->QueryCurrentMove());
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[2],
-	            width,32,QPainter::AlignRight|QPainter::AlignTop ,ld);
-
-/*
-     (const char *)(getDocument()->QueryName(getDocument()->QueryCurrentPlayer())));
-*/
-
-  ld=i18n("Chance:");
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[3],
-	            width,32,QPainter::AlignLeft|QPainter::AlignTop ,ld);
-	
-  if (getDocument()->QueryScore()>=WIN_VALUE) ld=i18n("Loser");
-  else if (getDocument()->QueryScore()<=-WIN_VALUE) ld=i18n("Winner");
-  else ld.sprintf("%ld",-getDocument()->QueryScore()/10000);
-	p->drawText(p1.x()+geom.table_cols[1],p1.y()+geom.table_rows[3],
-	            width,32,QPainter::AlignRight|QPainter::AlignTop ,ld);
-
-	
-  if (getDocument()->QueryCurrentPlayer()==beginner)
-  {
-    if (beginner==Rot) p->setPen(COL_RED);
-    else p->setPen(COL_YELLOW);
-  }
-  else
-  {
-    p->setPen(black);
-  }
-
-  if (getDocument()->IsComputer(getDocument()->QueryPlayerColour(0)))
-  {
-    ld=i18n("Computer");
-	  p->drawText(p1.x()+geom.table_cols[2],p1.y()+geom.table_rows[4],ld);
-  }
-  else if (getDocument()->IsUser(getDocument()->QueryPlayerColour(0)))
-  {
-    ld=i18n(" Human");
-	  p->drawText(p1.x()+geom.table_cols[3],p1.y()+geom.table_rows[4],ld);
-  }
-  else
-  {
-    ld=i18n("Remote");
-	  p->drawText(p1.x()+geom.table_cols[3],p1.y()+geom.table_rows[4],ld);
-  }
-
-  if (getDocument()->QueryCurrentPlayer()==second)
-  {
-    if (second==Rot) p->setPen(COL_RED);
-    else p->setPen(COL_YELLOW);
-  }
-  else
-  {
-    p->setPen(black);
-  }
-
-  if (getDocument()->IsComputer(getDocument()->QueryPlayerColour(1)))
-  {
-    ld=i18n("Computer");
-	  p->drawText(p1.x()+geom.table_cols[2],p1.y()+geom.table_rows[5],ld);
-  }
-  else if (getDocument()->IsUser(getDocument()->QueryPlayerColour(1)))
-  {
-    ld=i18n(" Human");
-	  p->drawText(p1.x()+geom.table_cols[3],p1.y()+geom.table_rows[5],ld);
-  }
-  else
-  {
-    ld=i18n("Remote");
-	  p->drawText(p1.x()+geom.table_cols[3],p1.y()+geom.table_rows[5],ld);
+    sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+x_pos,
+                 dy/2-sprite->height()/2+y*(dy+mSpreadY)+y_pos);
+    sprite->show();
+    sprite->setAnimation(0);
   }
 }
 
-/** Draw the table */
-void Kwin4View::drawTable(QPainter *p){
-  QPoint p1,p2;
-  FARBE beginner,second;
-  QFont font11(p->font());
-  font11.setPixelSize(12);
-  p->setFont(font11);
-	beginner=getDocument()->QueryPlayerColour(0);
-	second=getDocument()->QueryPlayerColour(1);
-
-  // Draw border and field
-  p->setPen(COL_STATUSBORDER);
-  p->setBrush(COL_STATUSFIELD);
-	p->drawRect(geom.table_rect);
-  drawBorder(p,geom.table_rect,0,2,0);
-	drawBorder(p,geom.table_rect,6,1,1);
-
-  // draw lines
-	p1=geom.table_rect.topLeft();
-	p2=geom.table_rect.bottomRight();
-	p->setPen(black);
-	p->moveTo(p1.x()+12,p1.y()+30);
-	p->lineTo(p2.x()-12,p1.y()+30);
-
-	p->moveTo(p1.x()+87,p1.y()+15);p->lineTo(p1.x()+87,p2.y()-12);
-	p->moveTo(p1.x()+107,p1.y()+15);p->lineTo(p1.x()+107,p2.y()-12);
-	p->moveTo(p1.x()+127,p1.y()+15);p->lineTo(p1.x()+127,p2.y()-12);
-
-	p->moveTo(p1.x()+187,p1.y()+15);p->lineTo(p1.x()+187,p2.y()-12);
-	p->moveTo(p1.x()+207,p1.y()+15);p->lineTo(p1.x()+207,p2.y()-12);
-
-  // draw Headertext
-  QString ld;
-  ld=i18n("1_letter_abbr_won","W"); // abbr for "Won"
-	p->drawText(p1.x()+geom.status_cols[1]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("1_letter_abbr_drawn","D"); // abbr for "drawn"
-	p->drawText(p1.x()+geom.status_cols[2]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("1_letter_abbr_lost","L"); // abbr for "lost"
-	p->drawText(p1.x()+geom.status_cols[3]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("1-2_letter_abbr_number","No"); // abbr for "number"
-	p->drawText(p1.x()+geom.status_cols[4]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("1-2_letter_abbr_breaks/aborted","Bk"); // abbr for "breaks"
-	p->drawText(p1.x()+geom.status_cols[5]-4,p1.y()+geom.status_rows[0],ld);
-
-
-  // draw status lines
-  int sum,j;
-  FARBE col;
-
-  for (j=0;j<2;j++)
-  {
-    col=getDocument()->QueryPlayerColour(j);
-    if (col==Rot) p->setPen(COL_RED);
-    else p->setPen(COL_YELLOW);
-
-    sum=getDocument()->QueryTable(col,TSum);
-
-    ld=getDocument()->QueryName(col);
-    p->drawText(p1.x()+geom.status_cols[0] ,p1.y()+geom.status_rows[1+j],ld);
-    ld.sprintf("%2d",getDocument()->QueryTable(col,TWin));
-    p->drawText(p1.x()+geom.status_cols[1],p1.y()+geom.status_rows[1+j],ld);
-    ld.sprintf("%2d",getDocument()->QueryTable(col,TRemis));
-    p->drawText(p1.x()+geom.status_cols[2],p1.y()+geom.status_rows[1+j],ld);
-    ld.sprintf("%2d",getDocument()->QueryTable(col,TLost));
-    p->drawText(p1.x()+geom.status_cols[3],p1.y()+geom.status_rows[1+j],ld);
-    ld.sprintf("%2d",sum);
-    p->drawText(p1.x()+geom.status_cols[4],p1.y()+geom.status_rows[1+j],ld);
-    ld.sprintf("%2d",getDocument()->QueryTable(col,TBrk));
-    p->drawText(p1.x()+geom.status_cols[5],p1.y()+geom.status_rows[1+j],ld);
-  }
-}
-
-/** Draw a Borderframe */
-void Kwin4View::drawBorder(QPainter *p,QRect rect,int offset,int width,int mode){
-QPen graypen;
-int i;
-QPoint p1,p2;
-
-	if (mode!=0 && mode!=1) return;
-
-	p1=rect.topLeft();
-	p2=rect.bottomRight();
-
-	if (mode==0) p->setPen(COL_STATUSLIGHT);
-	else if (mode==1) p->setPen(COL_STATUSDARK);
-	
-	for (i=0;i<width;i++)
-	{
-		p->moveTo(p1.x()+offset+i,p2.y()-offset-i);
-		p->lineTo(p1.x()+offset+i,p1.y()+offset+i);
-		p->lineTo(p2.x()-offset-i,p1.y()+offset+i);
-	}
-	if (mode==1) p->setPen(COL_STATUSLIGHT);
-	else if (mode==0) p->setPen(COL_STATUSDARK);
-	for (i=0;i<width;i++)
-	{
-		p->moveTo(p1.x()+offset+i,p2.y()-offset-i);
-		p->lineTo(p2.x()-offset-i,p2.y()-offset-i);
-		p->lineTo(p2.x()-offset-i,p1.y()+offset+i);
-	}
-}
-
-// mouse click event
-void Kwin4View::mousePressEvent( QMouseEvent *mouse )
+void Kwin4View::drawBoard(bool remove)
 {
-  if (mouse->button()!=LeftButton) return ;
-  if (!getDocument()->IsRunning()) return ;
+  KSprite *sprite=0;
+  KSprite *board=0;
+  int x,y;
 
+  {
+    int x_pos=0;
+    int y_pos=0;
+    // Board
+    // TODO: Without number as it is unique item
+    board=(KSprite *)(mCache->getItem("board",1));
+    if (board)
+    {
+      if (remove) board->hide();
+      else if (!board->isVisible()) board->show();
+      x_pos=board->x();
+      y_pos=board->y();
+    }
+
+    // Arrows
+    for (x=0;x<7;x++)
+    {
+      sprite=(KSprite *)(mCache->getItem("arrow",x));
+      if (sprite)
+      {
+        sprite->setFrame(0);
+        sprite->setX(x*(sprite->width()+mSpreadX)+x_pos);
+        if (remove) sprite->hide();
+        else if (!sprite->isVisible()) sprite->show();
+      }
+    }/* end arrows */
+
+    // Field
+    for (y=5;y>=0;y--)
+    {
+      for (x=0;x<7;x++)
+      {
+        // Lower layer
+        sprite=(KSprite *)(mCache->getItem("empty2",x+7*y));
+        if (sprite)
+        {
+          sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
+                       y*(sprite->height())+y_pos);
+          if (remove) sprite->hide();
+          else if (!sprite->isVisible()) sprite->show();
+        }
+        // upper layer
+        sprite=(KSprite *)(mCache->getItem("empty",x+7*y));
+        if (sprite)
+        {
+          sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
+                       y*(sprite->height())+y_pos);
+          if (remove) sprite->hide();
+          else if (!sprite->isVisible()) sprite->show();
+        }
+      }
+    }/* end field */
+  }
+}
+
+void Kwin4View::setPiece(int x,int y,int color,int no)
+{
+  KSprite *sprite=0;
+  KSprite *board=0;
+
+  y=5-y;
+
+  int x_pos,y_pos;
+  board=(KSprite *)(mCache->getItem("board",1));
+  if (board)
+  {
+    x_pos=board->x();
+    y_pos=board->y();
+  }
+  else
+  {
+    x_pos=0;
+    y_pos=0;
+  }
+
+  sprite=(KSprite *)(mCache->getItem("piece",no));
+
+  kdDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
+
+  // Make sure the frames are ok
+  int c;
+  if (color==Gelb) c=0;
+  else c=1;
+
+  if (sprite)
+  {
+    sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
+                 y_pos-sprite->height()-mSpreadY);
+    sprite->moveTo(sprite->x(),
+                   sprite->y()+y*(sprite->height()+mSpreadY)+y_pos);
+    sprite->setFrame(c);
+    sprite->show();
+    connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
+        getDocument(),SLOT(moveDone(QCanvasItem *,int)));
+
+  }
+}
+
+void Kwin4View::setArrow(int x,int color)
+{
+  KSprite *sprite=0;
+
+  if (mLastArrow>=0)
+    sprite=(KSprite *)(mCache->getItem("arrow",mLastArrow));
+  else 
+    sprite=0;
+  if (sprite) 
+    sprite->setFrame(0);
+  
+  sprite=(KSprite *)(mCache->getItem("arrow",x));
+
+  kdDebug() << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
+
+  // Make sure the frames are ok
+  int c;
+  if (color==Gelb) c=1;
+  else if (color==Rot) c=2;
+  else c=0;
+
+  if (sprite)
+  {
+    sprite->setFrame(c);
+  }
+  mLastArrow=x;
+}
+
+
+
+
+
+
+
+
+// This slot is called when a mouse key is pressed. As the mouse is used as input for all players
+// this slot is called to generate a player move out of a mouse input, i.e.
+// it converts a QMouseEvent into a move for the game. We do here some simple nonsense
+// and use the position of the mouse to generate
+// moves containing the keycodes
+void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent)
+{
+  // Only react to key pressed not released
+  if (mouse->type() != QEvent::MouseButtonPress ) return ;
+  if (!getDocument()->isRunning()) return;
+  kdDebug() << "Kwin4View::slotMouseInput" << endl;
+
+  // Our player
+  KPlayer *player=input->player();
+  if (!player->myTurn())
+  {
+    // Hack to find out whether there is a IO Device whose turn it is
+    KGame::KGamePlayerList *playerList=getDocument()->playerList();
+    KPlayer *p;
+
+    bool flag=false;
+    for ( p=playerList->first(); p!= 0; p=playerList->next() )
+    {
+      if (p==player) continue;
+      if (p->hasRtti(KGameIO::MouseIO) && p->myTurn()) flag=true;
+    }
+
+    kdDebug() << "$$$$$$$$$$$$$$$$$$$GameWindow:: not my turn. $$$$$$$$$$$ FLAG=" << flag << endl;
+    // If there is another MouseIO we whose turn it is we assume 
+    // that the mouse event goes to them. Otherwise we issue an error
+    if (flag) return;
+    
+    clearError();
+    QString m;
+    m=QString("text%1").arg(getDocument()->Random(4)+1);
+    kdDebug() << "Loading sprite "<< m << endl;
+    // TODO MH can be unique
+    QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
+    if (text) text->show();
+
+
+    // We eat the event as we are sure it is nonsense
+    *eatevent=true;
+    return ;
+  }
+
+  if (mouse->button()!=LeftButton) return ;
+  //if (!getDocument()->IsRunning()) return ;
 
   QPoint point;
   int x,y;
@@ -445,32 +431,100 @@ void Kwin4View::mousePressEvent( QMouseEvent *mouse )
   if (y>=geom.field_my) return ;
   if (x<0 || x>=geom.field_mx) return;
 
-  if (getDocument()->QueryInputHandler()->IsInteractive())
+  // Create a move
+  Q_INT32 move,pl;
+  move=x;
+  pl=player->userId();
+  stream << pl << x;
+  *eatevent=true;
+  kdDebug() << "Mouse input done..eatevent=true" << endl;
+}
+
+void Kwin4View::clearError()
+{
+  QCanvasText *text;
+
+  text=(QCanvasText *)(mCache->getItem("text1",1));
+  if (text) text->hide();
+  text=(QCanvasText *)(mCache->getItem("text2",1));
+  if (text) text->hide();
+  text=(QCanvasText *)(mCache->getItem("text3",1));
+  if (text) text->hide();
+  text=(QCanvasText *)(mCache->getItem("text4",1));
+  if (text) text->hide();
+}
+
+// ------------------ OLD --------------------------
+
+
+/** Interface to the Paint Event */
+void Kwin4View::Paint(QPainter *p){
+
+  /*
+  if (getDocument()->IsIntro())
   {
-    KEMessage *msg=new KEMessage;
-    msg->AddData(QCString("Move"),(short)x);
-    getDocument()->QueryInputHandler()->SetInput(msg);
-    delete msg;
+    drawIntro(p);
   }
   else
   {
-    QString m;
-    switch(getDocument()->Random(4))
-    {
-      case 0:
-        m=i18n("Hold on..the other was not yet gone...");
-      break;
-      case 1:
-        m=i18n("Hold your horses...");
-      break;
-      case 2:
-        m=i18n("Ah ah ah...only one go at a time...");
-      break;
-      default:
-        m=i18n("Please wait... it is not your turn.");
-    }
-    Kwin4App *theApp=(Kwin4App *) parentWidget();
-    KMessageBox::information(this,m, theApp->appTitle());
+    drawField(p);
+    drawStatus(p);
+    drawTable(p);
   }
+  */
+
+
 }
+/** QT Paint Event */
+void Kwin4View::paintEvent( QPaintEvent * p)
+{
+  //kdDebug() <<" **** PAINT ******" << endl;
+  /* TODO MH
+  mScoreWidget->update();
+  mStatusWidget->update();
+  */
+
+
+    /*
+    QPainter paint( this );
+    paint.setClipRect(p->rect());
+    Paint( &paint );			
+    */
+
+}
+
+
+/** Draw the game intro */
+void Kwin4View::drawIntro(QPainter *p)
+{
+  /*
+  QString ld;
+  p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
+  // QFont font(p->font());
+  QFont font("Helvetica");
+  font.setPixelSize(36);
+  font.setBold(true);
+  font.setItalic(true);
+  p->setFont(font);
+  p->setPen(COL_YELLOW);
+  ld=i18n("Four wins for KDE","Four wins\n\nfor\n\nK D E");
+  QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
+  
+	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
+  */
+
+}
+
+/** Draw the table */
+void Kwin4View::drawTable(QPainter *p){
+  // draw Headertext
+  QString ld;
+  ld=i18n("1_letter_abbr_won","W"); // abbr for "Won"
+  ld=i18n("1_letter_abbr_drawn","D"); // abbr for "drawn"
+  ld=i18n("1_letter_abbr_lost","L"); // abbr for "lost"
+  ld=i18n("1-2_letter_abbr_number","No"); // abbr for "number"
+  ld=i18n("1-2_letter_abbr_breaks/aborted","Bk"); // abbr for "breaks"
+}
+
+
 #include "kwin4view.moc"

@@ -77,11 +77,6 @@ int main(int argc, char *argv[])
   {
     Kwin4App *kwin4 = new Kwin4App();
     kwin4->show();
-
-    if(argc>1)
-    {
-      kwin4->openDocumentFile(argv[1]);
-    }
   }
 
   int result=app.exec();

@@ -1,8 +1,8 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          kwlabel - QLabel with extensions
                              -------------------
-    begin                : Sun Mar 26 2000
-    copyright            : (C) |1995-2000 by Martin Heni
+    begin                : 2001 
+    copyright            : (C) 2001 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
 
@@ -15,9 +15,28 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "tabelle.h"
+#ifndef KWLABEL_H
+#define KWLABEL_H
 
-tabelle::tabelle(){
-}
-tabelle::~tabelle(){
-}
+#include <qlabel.h>
+#include <qpainter.h>
+#include <qcolor.h>
+
+class KWLabel : public QLabel
+{ 
+    Q_OBJECT
+
+public:
+  KWLabel ( QWidget * parent, const char * name=0, WFlags f=0 );
+  void setForegroundColor(QColor c) {mForeColor=c;}
+  QColor foregroundColor() {return mForeColor;}
+
+protected:
+  void drawContents ( QPainter * p );
+
+private:
+  QColor mForeColor;
+
+};
+
+#endif 

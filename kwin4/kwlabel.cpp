@@ -1,8 +1,8 @@
 /***************************************************************************
-                          KConnectTypes.h  -  description
+                          kwlabel - QLabel with extensions
                              -------------------
-    begin                : Tue May 2 2000
-    copyright            : (C) 2000 by Martin Heni
+    begin                : 2001 
+    copyright            : (C) 2001 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
 
@@ -14,25 +14,33 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#ifndef _KCONNECTTYPES_H_
-#define _KCONNECTTYPES_H_
 
-enum KGM_TYPE {KGM_TYPE_INVALID=0,KGM_TYPE_SHORT=1,KGM_TYPE_LONG=2,
-              KGM_TYPE_FLOAT=3,KGM_TYPE_DATA=4};
+#include "kwlabel.h"
+#include <kdebug.h>
+#include <qpalette.h>
+#include <qstyle.h>
 
-enum KG_INPUTTYPE {
-              KG_INPUTTYPE_INVALID=0,
-              KG_INPUTTYPE_INTERACTIVE=1,
-              KG_INPUTTYPE_PROCESS=2,
-              KG_INPUTTYPE_REMOTE=3};
+KWLabel::KWLabel( QWidget * parent, const char * name, WFlags f ) :
+          QLabel(parent,name,f)
+{
+  mForeColor=black;
+}
 
-enum KR_STATUS {
-              KR_NO_SOCKET=-2,
-              KR_WAIT_FOR_CLIENT=-1,
-              KR_INVALID=0,
-              // >0 OK
-              KR_OK=1,
-              KR_CLIENT=2,
-              KR_SERVER=3
-              };
-#endif
+
+void KWLabel::drawContents ( QPainter * p )
+{
+  if (mForeColor==black) 
+  {
+    QLabel::drawContents(p);
+  }
+  else
+  {
+    QRect cr = contentsRect();
+    QColorGroup cg=colorGroup();
+    cg.setColor(QColorGroup::Foreground,mForeColor);
+    style().drawItem( p, cr, alignment(), cg, isEnabled(), 0, text() );
+  }
+}
+         
+
+#include "kwlabel.moc"

@@ -30,13 +30,17 @@
 #include <kapp.h>
 #include <kmainwindow.h>
 #include <kaccel.h>
+#include <kgame.h>
+#include <kgameio.h>
+#include <kplayer.h>
+#include <kdialogbase.h>
 
-#include "KEMessage.h"
-#include "KEInput.h"
 
-#define KWIN4_VERSION "v0.91"
+#define KWIN4_VERSION "v0.92"
 
 // forward declaration of the Kwin4 classes
+class KGameChat;
+class KChatDialog;
 class Kwin4Doc;
 class Kwin4View;
 class Geom;
@@ -45,7 +49,7 @@ extern int global_debug;
 
 #define  DLGBACK QColor(128,128,255)
 
-typedef enum  {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4,GelbWin=9,RotWin=10} FARBE;
+typedef enum  {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
 typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
@@ -54,6 +58,14 @@ typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemi
 #define UPDATE_TABLE   2
 #define UPDATE_ARROW   4
 #define UPDATE_XY      8
+
+class ChatDlg : public KDialogBase
+{
+	Q_OBJECT
+public:
+	ChatDlg(KGame *game,QWidget* parent=0);
+  KGameChat *mChat;
+};
 
 
 /**
@@ -92,9 +104,6 @@ class Kwin4App : public KMainWindow
     /** add a opened file to the recent file list and update recent_file_menu
      */
     // void addRecentFile(const QString &file);
-    /** opens a file specified by commandline option
-     */
-    void openDocumentFile(const char *_cmdl);
     /** returns a pointer to the current document connected to the KMainWindow instance and is used by
      * the View class to access the document object's methods
      */	
@@ -104,10 +113,6 @@ class Kwin4App : public KMainWindow
     void NewGame(int mode);
   /** Ends the current game */
   void EndGame(TABLE mode);
-  /** PErforms a game move */
-  bool Move(int x,int id);
-  /** Set the names in the mover field */
-  void slotStatusNames();
   void SetGrafix(QString grafix);
   QString appTitle() {return mAppTitle;}
 
@@ -120,11 +125,9 @@ class Kwin4App : public KMainWindow
     void initGUI();
     /** Checks all menus..usually done on init programm */
     void checkMenus(int menu=0);
-    /** Create input device */
-    bool MakeInputDevice(int i);
 
      /** Prepare the next move */
-     bool NextMove(MOVESTATUS res );
+     //bool NextMove(MOVESTATUS res );
 
     /** save general Options like all bar positions and status as well as the geometry and the recent file list to the configuration
      * file
@@ -143,6 +146,9 @@ class Kwin4App : public KMainWindow
     /** creates the centerwidget of the KMainWindow instance and sets it as the view
      */
     void initView();
+    /** creates the Players
+     */
+    void initPlayers();
     /** queryClose is called by KMainWindow on each closeEvent of a window. Against the
      * default implementation (only returns true), this calles saveModified() on the document object to ask if the document shall
      * be saved if Modified; on cancel the closeEvent is rejected.
@@ -168,18 +174,19 @@ class Kwin4App : public KMainWindow
      */
     virtual void readProperties(KConfig *_cfg);
 
-  /** Put game into message */
-  void prepareGame(KEMessage *msg);
-  /** Extract game from message */
-  int extractGame(KEMessage *msg);
-
   public slots:
-    void slotPrepareProcessMove(KEMessage *msg);
-    void slotPrepareRemoteMove(KEMessage *msg);
-    void slotPrepareInteractiveMove(KEMessage *msg);
-    void slotReceiveInput(KEMessage *msg,int id);
+    void slotGameOver(int status, KPlayer * p, KGame * me);
+    void slotMoveDone(int x, int y);
+    void slotNetworkBroken(int id, int oldstatus ,KGame *game);
+  /** Set the names in the mover field */
+  void slotStatusNames();
 
 
+
+    void slotDisconnect();
+    void slotInitNetwork();
+    void slotChat();
+    void slotDebugKGame();
 
     void slotHelpAbout();
 
@@ -187,6 +194,8 @@ class Kwin4App : public KMainWindow
     // void slotFileNewWindow();
     /** clears the document in the actual view to reuse it as the new document */
     void slotFileNew();
+    void slotOpenFile();
+    void slotSaveFile();
     /** asks for saving if the file is modified, then closes the actual file and window*/
     void slotFileClose();
     /** closes all open windows by calling close() on each memberList item until the list is empty, then quits the application.
@@ -195,8 +204,6 @@ class Kwin4App : public KMainWindow
     void slotFileQuit();
      /** give a play hint */
      void slotFileHint();
-     /** send mesasge */
-     void slotFileMessage();
      /** show statistics */
      void slotFileStatistics();
 
@@ -224,9 +231,6 @@ class Kwin4App : public KMainWindow
     void slotRedRemote();
     void slotLevel();
     void slotOptionsNames();
-    void slotOptionsAnimations();
-    int slotOptionsNetwork();
-    void slotOptionsNetworkserver();
 
     void slotStatusMover(const QString &text);
     void slotStatusTime();
@@ -238,15 +242,14 @@ class Kwin4App : public KMainWindow
     void slotStatusHelpMsg(const QString &text);
 
   private:
-    // Input handling
-    KEInput *mInput;
+  KGameChat *mChat;
+  KChatDialog *mChatDlg;
+  ChatDlg *mMyChatDlg;
     // Grafix
     QString mGrafix;
 
     /** the configuration object of the application */
     KConfig *config;
-    /** the key accelerator container */
-    KAccel *keyAccel;
 
     /** view is the main widget which represents your working area. The View
      * class should handle all events of the view widget.  It is kept empty so
@@ -263,7 +266,6 @@ class Kwin4App : public KMainWindow
 protected slots: // Protected slots
   /** Triggers the status timer */
   void slotStatusTimer(void);
-  void slotBlinkTimer(void);
   /**
    *  Writes ready into the statusbar
    */
@@ -272,7 +274,6 @@ protected: // Protected attributes
   /**  */
   /** Counts the time in the status bar */
   QTimer * statusTimer;
-  QTimer * blinkTimer;
 };
  
 #endif // KWIN4_H
