@@ -56,6 +56,8 @@
 Kwin4App::Kwin4App() : KMainWindow(0)
 {
   config=kapp->config();
+  mAppTitle=i18n("Four wins");
+
 
    // localise data file
    QString file="kwin4/grafix/aboute.png";
@@ -237,10 +239,13 @@ void Kwin4App::initMenuBar()
       popLevel->insertItem(i18n("&5"),ID_LEVEL_5);
       popLevel->insertItem(i18n("&6"),ID_LEVEL_6);
       popLevel->insertSeparator();
-      popLevel->insertItem(i18n("&7"),ID_LEVEL_7);
-      popLevel->insertItem(i18n("&8"),ID_LEVEL_8);
-      popLevel->insertItem(i18n("&9"),ID_LEVEL_9);
-      popLevel->insertItem(i18n("&10"),ID_LEVEL_10);
+      // On purpose no accelerators for high levels
+      // cause all levels from here on are experimental
+      // and might take a long time to play on slow machines
+      popLevel->insertItem(i18n("7"),ID_LEVEL_7);
+      popLevel->insertItem(i18n("8"),ID_LEVEL_8);
+      popLevel->insertItem(i18n("9"),ID_LEVEL_9);
+      popLevel->insertItem(i18n("10"),ID_LEVEL_10);
 
       optionsMenu->insertItem(i18n("&Starting color"),popStartcolor);
       optionsMenu->insertItem(i18n("&Yellow played by"),popYellow);
@@ -347,7 +352,7 @@ void Kwin4App::initStatusBar()
 
   slotStatusTime();
   slotStatusMover(i18n("(c) Martin Heni   "));
-  slotStatusMsg(i18n("Welcome to %1").arg(TITLE));
+  slotStatusMsg(i18n("Welcome to %1").arg(appTitle()));
 
   statusTimer=new QTimer(this);
   connect(statusTimer,SIGNAL(timeout()),this,SLOT(slotStatusTimer()));
@@ -376,7 +381,7 @@ void Kwin4App::initView()
   doc->addView(view);
   setCentralWidget(view);	
   // setCaption(doc->getTitle());
-  setCaption(TITLE);
+  setCaption(appTitle());
 
 }
 
@@ -525,12 +530,13 @@ void Kwin4App::readProperties(KConfig* _cfg)
 
   QString caption=kapp->caption();	
   //setCaption(caption+": "+doc->getTitle());
-  setCaption(TITLE);
+  setCaption(appTitle());
 }		
 
 bool Kwin4App::queryClose()
 {
   kEndDlg *dlg=new kEndDlg(this);
+  dlg->setCaption(appTitle());
   dlg->SetPixmap(doc->m_PixWin4About);
   int res=dlg->exec();
   delete dlg;
@@ -599,7 +605,7 @@ bool Kwin4App::MakeInputDevice(int i)
           s=i18n("Offering remote connection on port %1 ...").arg(port);
         }
         progress=new QProgressDialog(s, i18n("Abort"), tim, this,0,true );
-        progress->setCaption(TITLE);
+        progress->setCaption(appTitle());
         for (j=0; j<tim; j++)
         {
           progress->setProgress( j );
@@ -641,13 +647,22 @@ bool Kwin4App::MakeInputDevice(int i)
       if (path.isNull())
       {
         QFile f(doc->QueryProcessName());
-        if (f.exists()) 
-        path=doc->QueryProcessName();
-        kdDebug() << "Using direct path:" << path << endl;
+        QFile f1(QString("kproc4/")+doc->QueryProcessName());
+        if (f1.exists())
+        {
+          path=QString("kproc4/")+doc->QueryProcessName();
+          kdDebug() << "Using kproc4 path for computer player:" << path << endl;
+        }
+        else if (f.exists())
+        {
+          path=doc->QueryProcessName();
+          kdDebug() << "Using direct path for computer player:" << path << endl;
+        }
+        else kdDebug() << "Cannot find computer player file!!!!!" << endl;
       }
       if (global_debug>5)
       { 
-        kdDebug() << "Make Process G" << i << endl;
+        kdDebug() << "Make Process " << i << endl;
         kdDebug() << "Exe file found: " << path << endl;
       }
       if (path.isNull())  return false;
@@ -695,16 +710,14 @@ void Kwin4App::NewGame(int mode)
   if (!res1 || !res2)
   {
     QString e1;
-    if (!res1 && !res2) e1=i18n("yellow and red");
-    else if (!res1) e1=i18n("yellow");
-    else e1=i18n("red");
+    if (!res1 && !res2) e1=i18n("It is not possbile to start the yellow and red player.\n");
+    else if (!res1) e1=i18n("It is not possbile to start the yellow player.\n");
+    else e1=i18n("It is not possbile to start the red player.\n");
     KMessageBox::error(this,
-      i18n("It is not possbile to start the %1 player.\n"
-           "This is a serious error. If one player is played by\n"
-           "the computer check for the existance of the file '%2'.\n")
-           .arg(e1)
+      e1+i18n("This is a serious error. If one player is played by\n"
+           "the computer check for the existance of the file '%1'.\n")
            .arg(doc->QueryProcessName()),
-      TITLE);
+      appTitle());
     mInput->RemoveInput(1);
     mInput->RemoveInput(0);
     return ;
@@ -827,7 +840,7 @@ void Kwin4App::slotFileHint()
         i18n("It is not possbile to start the hint process.\n"
           "This is a serious error. Check for the existance of\n"
           "the file '%1'.\n").arg(doc->QueryProcessName()),
-      TITLE);
+      appTitle());
       return ;
     }
 
@@ -906,7 +919,7 @@ void Kwin4App::slotEditUndo()
   {
     KMessageBox::sorry(this,
       i18n("It is not your turn. You cannot undo now.\n"),
-      TITLE);
+      appTitle());
     return ;
   }
 
@@ -930,7 +943,7 @@ void Kwin4App::slotEditRedo()
   {
     KMessageBox::sorry(this,
       i18n("It is not your turn. You cannot redo now.\n"),
-      TITLE);
+      appTitle());
     return ;
   }
   slotStatusMsg(i18n("Redo move..."));
@@ -1363,7 +1376,7 @@ void Kwin4App::statusCallback(int id_)
          break;
 
     case ID_FILE_QUIT:
-         slotStatusHelpMsg(i18n("Quits %1").arg(TITLE));
+         slotStatusHelpMsg(i18n("Quits %1").arg(appTitle()));
          break;
 
     case ID_FILE_STATISTICS:
@@ -1629,7 +1642,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
   {
     msg->GetData("EndGame",move);
     message=QString(i18n("Remote player ended game..."));
-    KMessageBox::information(this,message,TITLE);
+    KMessageBox::information(this,message,appTitle());
     message=i18n("Remote player ended game.");
     slotStatusMsg(message);
 
@@ -1715,14 +1728,14 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       if (move==0)
       {
         message=QString(i18n("Remote connection lost for yellow..."));
-        KMessageBox::information(this,message,TITLE);
+        KMessageBox::information(this,message,appTitle());
         slotStatusMsg(i18n(message.latin1()));
         slotYellowPlayer();
       }
       else
       {
         message=QString(i18n("Remote connection lost for red..."));
-        KMessageBox::information(this,message,TITLE);
+        KMessageBox::information(this,message,appTitle());
         slotStatusMsg(i18n(message.latin1()));
         slotRedPlayer();
       }
@@ -1733,7 +1746,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     if (msg->GetData("Message",p,size))
     {
       message=QString("Message from remote player:\n")+p;
-      KMessageBox::information(this,message,TITLE);
+      KMessageBox::information(this,message,appTitle());
       if (global_debug>3)
         kdDebug() << "MESSAGE **** " << message << " ****" << endl;
     }
@@ -1819,7 +1832,7 @@ bool Kwin4App::Move(int x,int id){
      {
       KMessageBox::sorry(this,
           i18n("Please wait... Computer is thinking.\n"),
-          TITLE
+          appTitle()
           );
      }
      else
@@ -1877,7 +1890,7 @@ bool Kwin4App::NextMove( MOVESTATUS res)
   {
      KMessageBox::sorry(this,
         i18n("This move is not possible.\n"),
-        TITLE);
+        appTitle());
     return true;
   }
   else if (res==GYellowWin)
@@ -1887,7 +1900,7 @@ bool Kwin4App::NextMove( MOVESTATUS res)
     slotStatusMsg(msg);
 
     msg=i18n("%1 (Yellow) has won the game!").arg(doc->QueryName(Gelb));
-    KMessageBox::information(this, msg, TITLE);
+    KMessageBox::information(this, msg, appTitle());
     return true;
   }
   else if (res==GRedWin)
@@ -1897,14 +1910,14 @@ bool Kwin4App::NextMove( MOVESTATUS res)
     slotStatusMsg(msg);
 
     msg=i18n("%1 (Red) has won the game!").arg(doc->QueryName(Rot));
-    KMessageBox::information(this,msg, TITLE);
+    KMessageBox::information(this,msg, appTitle());
     return true;
   }
   else if (res==GRemis)
   {
     EndGame(TRemis);
     slotStatusMsg(i18n("The game is drawn. Please restart next round."));
-    KMessageBox::information(this,i18n("The game ended remis!\n"),TITLE);
+    KMessageBox::information(this,i18n("The game ended remis!\n"),appTitle());
     return true;
   }
   slotStatusNames();

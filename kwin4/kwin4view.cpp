@@ -466,7 +466,8 @@ void Kwin4View::mousePressEvent( QMouseEvent *mouse )
       default:
         m=i18n("Please wait... it is not your turn.");
     }
-     KMessageBox::information(this,m, TITLE);
+    Kwin4App *theApp=(Kwin4App *) parentWidget();
+    KMessageBox::information(this,m, theApp->appTitle());
   }
 }
 #include "kwin4view.moc"

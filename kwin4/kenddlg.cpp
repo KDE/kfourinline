@@ -43,7 +43,6 @@ kEndDlg::kEndDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     if ( !name ) setName( "kEndDlg" );
     //resize( 486, 238 ); 
     resize( 486, 180 ); 
-    setCaption( TITLE );
     vbox = new QVBoxLayout( this ); 
     vbox->setSpacing( 6 );
     vbox->setMargin( 11 );

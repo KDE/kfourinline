@@ -44,7 +44,6 @@ class Geom;
 extern int global_debug;
 
 #define  DLGBACK QColor(128,128,255)
-#define TITLE (i18n("Four wins"))
 
 typedef enum  {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4,GelbWin=9,RotWin=10} FARBE;
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
@@ -114,6 +113,7 @@ class Kwin4App : public KMainWindow
   /** Is the menuitem enabled? */
   bool isEnabled(int id);
   void SetGrafix(QString grafix);
+  QString appTitle() {return mAppTitle;}
 
 
   protected:
@@ -298,6 +298,7 @@ class Kwin4App : public KMainWindow
      * information such as filename and does the serialization of your files.
      */
     Kwin4Doc *doc;
+    QString mAppTitle;
 
 protected slots: // Protected slots
   /** Triggers the status timer */
