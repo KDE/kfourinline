@@ -16,7 +16,7 @@
  ***************************************************************************/
 
 // include files for Qt
-#include <qprinter.h>
+#include <kprinter.h>
 #include <qpainter.h>
 #include <stdio.h>
 
@@ -71,7 +71,7 @@ Kwin4Doc *Kwin4View::getDocument() const
   return theApp->getDocument();
 }
 
-void Kwin4View::print(QPrinter *pPrinter)
+void Kwin4View::print(KPrinter *pPrinter)
 {
   QPainter printpainter;
   printpainter.begin(pPrinter);

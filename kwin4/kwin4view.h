@@ -26,6 +26,7 @@
 #include <qwidget.h>
 #include <qpixmap.h>
 #include <qpainter.h>
+#include <kprinter.h>
 
 class Kwin4Doc;
 
@@ -54,7 +55,7 @@ class Kwin4View : public QWidget
     Kwin4Doc *getDocument() const;
 
     /** contains the implementation for printing functionality */
-    void print(QPrinter *pPrinter);
+    void print(KPrinter *pPrinter);
   /** Updates on of the column arrows */
   void updateArrow(int x);
   /** Updates the status area */
