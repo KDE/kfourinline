@@ -246,6 +246,7 @@ class Kwin4App : public KMainWindow
     void slotRedRemote();
     void slotLevel(int i);
     void slotOptionsNames();
+    void slotOptionsAnimations();
     int slotOptionsNetwork();
     void slotOptionsNetworkserver();
 

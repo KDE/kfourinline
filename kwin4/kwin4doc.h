@@ -201,6 +201,8 @@ amzug */
   int QueryWinX(int i) {return winx[i];}
   int QueryWinY(int i) {return winy[i];}
   FARBE QueryWinC() {return winc;}
+  int QueryBlink() {return doBlink;}
+  void SetBlink(int i) {doBlink=i;}
 
 	
   public slots:

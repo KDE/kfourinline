@@ -248,6 +248,7 @@ void Kwin4App::initMenuBar()
       optionsMenu->insertItem(i18n("&Level"),popLevel);
       optionsMenu->insertItem(i18n("Change &Names..."),ID_OPTIONS_NAMES);
       optionsMenu->insertItem(i18n("&Network server..."), ID_OPTIONS_NETWORK);
+      optionsMenu->insertItem(i18n("&Animations"), ID_OPTIONS_ANIMATIONS);
 
   ///////////////////////////////////////////////////////////////////
   // menuBar entry helpMenu
@@ -1013,7 +1014,7 @@ void Kwin4App::slotBlinkTimer()
       x=doc->QueryWinX(i);
       y=doc->QueryWinY(i);
       if (x<0 || y<0) continue; // bug catch
-      if (doc->QueryColour(x,y)==doc->QueryWinC())
+      if (doc->QueryColour(x,y)==doc->QueryWinC() && doc->QueryBlink())
       {
         if (doc->QueryWinC()==Rot) c=RotWin;
         else c=GelbWin;
@@ -1184,6 +1185,10 @@ void Kwin4App::slotLevel(int i)
   slotStatusMsg(i18n("Ready"));
 }
 
+void Kwin4App::slotOptionsAnimations()
+{
+  doc->SetBlink(1-doc->QueryBlink());
+}
 void Kwin4App::slotOptionsNames()
 {
   slotStatusMsg(i18n("Configure player names..."));
@@ -1335,6 +1340,10 @@ void Kwin4App::commandCallback(int id_)
          slotOptionsNetworkserver();
          break;
 
+    case ID_OPTIONS_ANIMATIONS:
+         slotOptionsAnimations();
+         break;
+
     default:
          break;
   }
@@ -1446,6 +1455,10 @@ void Kwin4App::statusCallback(int id_)
 
     case ID_OPTIONS_NETWORK:
          slotStatusHelpMsg(i18n("Try to become network server, if possible..."));
+         break;
+
+    case ID_OPTIONS_ANIMATIONS:
+         slotStatusHelpMsg(i18n("Switch animations on/off..."));
          break;
 
     default:
@@ -2071,6 +2084,14 @@ void Kwin4App::slotOptionsToShow()
   else
   {
      uncheckCommand(ID_OPTIONS_NETWORK);
+  }
+  if (doc->QueryBlink())
+  {
+     checkCommand(ID_OPTIONS_ANIMATIONS);
+  }
+  else
+  {
+     uncheckCommand(ID_OPTIONS_ANIMATIONS);
   }
 
 }

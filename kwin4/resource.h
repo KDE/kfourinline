@@ -91,6 +91,7 @@
 #define ID_OPTIONS_NAMES            13510
 
 #define ID_OPTIONS_NETWORK          13520
+#define ID_OPTIONS_ANIMATIONS       13530
 
 
 ///////////////////////////////////////////////////////////////////
