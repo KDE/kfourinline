@@ -536,6 +536,7 @@ void Kwin4App::slotInitNetwork()
   KGameDialog dlg(doc, 0, i18n("Network Configuration"), this,
       KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
+  dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
 
   QVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
   QVBoxLayout *l=(QVBoxLayout *)(box->layout());

@@ -9,6 +9,9 @@
       <label>Network connection port</label>
       <default>7442</default>
     </entry>
+    <entry name="gamename" type="String">
+      <label>Game name</label>
+    </entry>
     <entry name="host" type="String">
       <label>Network connection host</label>
       <default>localhost</default>
