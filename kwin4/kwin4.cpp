@@ -2164,7 +2164,9 @@ void Kwin4App::slotHelpAbout()
 {
   slotStatusMsg(i18n("About Kwin4..."));
 
-  kwin4AboutDlg *dlg=new kwin4AboutDlg(&doc->m_PixWin4About,this);
+  // kwin4AboutDlg *dlg=new kwin4AboutDlg(&doc->m_PixWin4About,this);
+  aboutDlg *dlg=new aboutDlg(this);
+  dlg->SetPixmap(doc->m_PixWin4About);
   dlg->exec();
   slotStatusMsg(i18n("Ready"));
 }

@@ -1,59 +1,44 @@
-/***************************************************************************
-                          Kwin4  -  Four in a Row for KDE
-                             -------------------
-    begin                : March 2000 
-    copyright            : (C) 1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
+/****************************************************************************
+** Form interface generated from reading ui file 'aboutDlg.ui'
+**
+** Created: Thu Nov 23 11:42:06 2000
+**      by:  The User Interface Compiler (uic)
+**
+****************************************************************************/
+#ifndef ABOUTDLG_H
+#define ABOUTDLG_H
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+#include <qvariant.h>
+#include <kdialogbase.h>
+class QVBoxLayout; 
+class QHBoxLayout; 
+class QGridLayout; 
+class QFrame;
+class QLabel;
+class QPushButton;
 
-#ifndef KWIN4ABOUTDLG_H
-#define KWIN4ABOUTDLG_H
+class aboutDlg : public KDialogBase
+{ 
+    Q_OBJECT
 
-//Generated area. DO NOT EDIT!!!(begin)
-#include <qwidget.h>
-#include <qgroupbox.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-//Generated area. DO NOT EDIT!!!(end)
-#include <klocale.h>
-#include <qdialog.h>
+public:
+    aboutDlg( QWidget* parent = 0, const char* name = 0, bool modal = TRUE, WFlags fl = 0 );
+    ~aboutDlg();
+    void SetPixmap(QPixmap &pixmap);
 
-/**
-  *@author Martin Heni
-  */
+    QFrame* Frame5;
+	  QLabel *Label1;
+    QLabel* TextLabel3;
+    QLabel* TextLabel4;
+    QPushButton* PushButton15;
 
-class kwin4AboutDlg : public QDialog  {
-   Q_OBJECT
-public: 
-	kwin4AboutDlg(QPixmap *pix,QWidget *parent=0, const char *name=0);
-	~kwin4AboutDlg();
-
-protected: 
-	void initDialog();
-	//Generated area. DO NOT EDIT!!!(begin)
-	QGroupBox *QGroupBox_1;
-	QLabel *QLabel_1;
-	QLabel *QLabel_7;
-	QLabel *QLabel_2;
-	QLabel *QLabel_8;
-	QLabel *QLabel_5;
-	QLabel *QLabel_9;
-	QLabel *QLabel_11;
-	QLabel *QLabel_10;
-	QPushButton *QPushButton_1;
-	//Generated area. DO NOT EDIT!!!(end)
+protected:
+    QHBoxLayout* hbox;
+    QHBoxLayout* hbox_2;
+    QVBoxLayout* vbox;
+    QVBoxLayout* vbox_2;
 
 private: 
-  QPixmap *mPixmap;
 };
 
-#endif
+#endif // ABOUTDLG_H
