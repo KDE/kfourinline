@@ -21,7 +21,6 @@
 //#include <qfiledialog.h>
 #include <qstring.h>
 //#include <qprogressdialog.h>
-#include <qdir.h>
 #include <qlayout.h>
 //#include <qbuffer.h>
 //#include <qlayout.h>
@@ -35,7 +34,7 @@
 //#include <unistd.h>
 
 // include files for KDE
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
@@ -103,7 +102,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  h->addSpacing(10);
  mGridLayout->addLayout(h,0,0);
 
- 
+
  QPushButton *mButton=new QPushButton(i18n("Configure..."),plainPage());
  kdDebug() << "button=" << mButton<< endl;
  mGridLayout->addWidget(mButton,1,1);
@@ -149,7 +148,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
     kdDebug() << "NO SRCDIR"  << endl;
 #endif
    QString file="kwin4/grafix/default/grafix.rc";
-   mGrafix=kapp->dirs()->findResourceDir("data",file); 
+   mGrafix=kapp->dirs()->findResourceDir("data",file);
    if (mGrafix.isNull()) mGrafix="grafix/default/";
    else mGrafix+="kwin4/grafix/default/";
    if (global_debug>3) kdDebug() << "Localised datafile " << mGrafix << endl;
@@ -163,7 +162,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   createGUI(QString::null, false);
   if (toolBar()) toolBar()->hide();
 
-  
+
   initDocument();
   initView();
   initPlayers();
@@ -195,7 +194,7 @@ void Kwin4App::checkMenus(int menu)
   if (!menu || (menu&CheckFileMenu))
   {
     // Show Hint ?
-    if (!doc->IsRunning() && localgame) 
+    if (!doc->IsRunning() && localgame)
     {
       disableAction("hint");
     }
@@ -203,17 +202,17 @@ void Kwin4App::checkMenus(int menu)
     {
       enableAction("hint");
     }
-  
+
     // Show new game?
     if (doc->IsRunning() )
     {
       disableAction("new_game");
     }
-    else 
+    else
     {
       enableAction("new_game");
     }
- 
+
     // Show message
     if ( doc->isNetwork())
     {
@@ -296,7 +295,7 @@ void Kwin4App::checkMenus(int menu)
       enableAction("startplayer");
     }
 
-    if (doc->playedBy(Gelb)==KGameIO::MouseIO) 
+    if (doc->playedBy(Gelb)==KGameIO::MouseIO)
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(0);
     else if (doc->playedBy(Gelb)==KGameIO::ProcessIO)
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(1);
@@ -312,7 +311,7 @@ void Kwin4App::checkMenus(int menu)
       enableAction("player1");
     }
 
-    if (doc->playedBy(Rot)==KGameIO::MouseIO) 
+    if (doc->playedBy(Rot)==KGameIO::MouseIO)
         ((KSelectAction *)ACTION("player2"))->setCurrentItem(0);
     else if (doc->playedBy(Rot)==KGameIO::ProcessIO)
         ((KSelectAction *)ACTION("player2"))->setCurrentItem(1);
@@ -329,7 +328,7 @@ void Kwin4App::checkMenus(int menu)
     }
 
     ((KSelectAction *)ACTION("choose_level"))->setCurrentItem(doc->QueryLevel()-1);
- 
+
     /*
     // Network
     if (doc->QueryServer()) ((KToggleAction*)ACTION("network_server"))->setChecked(true);
@@ -346,7 +345,7 @@ void Kwin4App::checkMenus(int menu)
 void Kwin4App::initGUI()
 {
   QStringList list;
-  
+
   (void)KStdAction::openNew(this, SLOT(slotFileNew()), actionCollection(), "new_game");
   ACTION("new_game")->setStatusText(i18n("Starting a new game..."));
   ACTION("new_game")->setWhatsThis(i18n("Starting a new game..."));
@@ -372,8 +371,8 @@ void Kwin4App::initGUI()
                        actionCollection(), "file_debug");
   (void)new KAction(i18n("Debug Disconnect"), 0, this, SLOT(slotDisconnect()),
                        actionCollection(), "file_disconnect");
- 
-  
+
+
 
   (void)new KAction(i18n("&Show Statistics..."),"flag", 0, this, SLOT(slotFileStatistics()),
                       actionCollection(), "statistics");
@@ -441,7 +440,7 @@ void Kwin4App::initGUI()
   list.append(i18n("&8"));
   list.append(i18n("&9"));
   ((KSelectAction *)ACTION("choose_level"))->setItems(list);
- 
+
 
   (void)new KAction(i18n("Change &Names..."), 0, this, SLOT(slotOptionsNames()),
                       actionCollection(), "change_names");
@@ -455,7 +454,7 @@ void Kwin4App::initGUI()
 
   KHelpMenu *helpMenu = new KHelpMenu(this, 0, true, actionCollection());
   connect( helpMenu, SIGNAL(showAboutApplication()), this, SLOT(slotHelpAbout()));
-  
+
 }
 
 void Kwin4App::slotClearStatusMsg()
@@ -503,10 +502,10 @@ void Kwin4App::initPlayers()
   doc->initPlayers();
 }
 void Kwin4App::initView()
-{ 
+{
   view = new Kwin4View(mGrafix,this);
   doc->setView(view);
-  setCentralWidget(view);	
+  setCentralWidget(view);
   // setCaption(doc->getTitle());
   setCaption(appTitle());
 }
@@ -536,7 +535,7 @@ Kwin4Doc *Kwin4App::getDocument() const
 }
 
 void Kwin4App::saveOptions()
-{	
+{
   config->setGroup("General Options");
   config->writeEntry("Geometry", size());
 #ifdef USE_TOOLBAR
@@ -564,7 +563,7 @@ void Kwin4App::readOptions()
   else
      toolBar()->hide();
 #endif
-	
+
 #ifdef NOGUI
   bool bViewStatusbar = config->readBoolEntry("Show Statusbar", true);
   viewMenu->setItemChecked(ID_VIEW_STATUSBAR, bViewStatusbar);
@@ -579,7 +578,7 @@ void Kwin4App::readOptions()
   KToolBar::BarPosition toolBarPos;
   toolBarPos=(KToolBar::BarPosition) config->readNumEntry("ToolBarPos", KToolBar::Top);
   toolBar()->setBarPos(toolBarPos);
-#endif	
+#endif
   QSize size=config->readSizeEntry("Geometry");
   if(!size.isEmpty())
   {
@@ -596,9 +595,9 @@ void Kwin4App::saveProperties(KConfig *_cfg)
   }
   else
   {
-    QString filename=doc->getAbsFilePath();	
+    QString filename=doc->getAbsFilePath();
     _cfg->writeEntry("filename", filename);
-		
+
     QString tempname = kapp->tempSaveName(filename);
     doc->saveDocument(tempname);
   }
@@ -612,7 +611,7 @@ void Kwin4App::readProperties(KConfig* _cfg)
   {
     bool canRecover;
     QString tempname = kapp->checkRecoverFile(filename, canRecover);
-  	
+
     if(canRecover)
     {
       doc->openDocument(tempname);
@@ -629,10 +628,10 @@ void Kwin4App::readProperties(KConfig* _cfg)
     }
   }
 
-  QString caption=kapp->caption();	
+  QString caption=kapp->caption();
   //setCaption(caption+": "+doc->getTitle());
   setCaption(appTitle());
-}		
+}
 
 bool Kwin4App::queryClose()
 {
@@ -719,7 +718,7 @@ void Kwin4App::slotFileQuit()
       if(w && !w->close())
 	break;
     }
-  }	
+  }
   kdDebug() << "slotFileQuit DONE" << endl;
 }
 
@@ -740,10 +739,10 @@ void Kwin4App::slotFileStatistics()
                 doc->QueryStat(Rot,TLost),
                 doc->QueryStat(Rot,TBrk),
                 doc->QueryStat(Rot,TSum) );
-  
+
   QPixmap *pixmap=view->loadPixmap("win4about.png");
   if (pixmap) dlg->SetPixmap(*pixmap);
- 
+
   res=dlg->exec();
   if (res==-100)
   {
@@ -795,7 +794,7 @@ void Kwin4App::slotEditRedo()
 
 void Kwin4App::slotViewStatusBar()
 {
-  if (statusBar()->isVisible()) 
+  if (statusBar()->isVisible())
   {
     statusBar()->hide();
   }
@@ -877,7 +876,7 @@ void Kwin4App::slotPlayer1By()
 {
   switch(((KSelectAction *)ACTION("player1"))->currentItem())
   {
-    case 0: 
+    case 0:
         slotYellowPlayer();
     break;
     case 1:
@@ -892,7 +891,7 @@ void Kwin4App::slotPlayer2By()
 {
   switch(((KSelectAction *)ACTION("player2"))->currentItem())
   {
-    case 0: 
+    case 0:
         slotRedPlayer();
     break;
     case 1:
@@ -909,20 +908,20 @@ void Kwin4App::slotYellowPlayer()
 {
     doc->setPlayedBy(Gelb,KGameIO::MouseIO);
     checkMenus(CheckOptionsMenu);
-	
+
 }
 void Kwin4App::slotYellowComputer()
 {
     doc->setPlayedBy(Gelb,KGameIO::ProcessIO);
     checkMenus(CheckOptionsMenu);
-	
+
 }
 void Kwin4App::slotYellowKeyboard()
 {
   kdWarning() << "Keyboard not yet supported" << endl;
   // doc->setPlayedBy(Gelb,(KGameIO::IOMode)0);
   checkMenus(CheckOptionsMenu);
-	
+
 }
 /** change red mode */
 void Kwin4App::slotRedPlayer()
@@ -951,7 +950,7 @@ void Kwin4App::slotLevel()
 
   doc->SetLevel(i);
   checkMenus(CheckOptionsMenu);
-  	
+
 }
 
 void Kwin4App::slotOptionsNames()
@@ -967,7 +966,7 @@ void Kwin4App::slotOptionsNames()
     slotStatusNames();
   }
 
-  	
+
 }
 
   /*
@@ -1065,7 +1064,7 @@ void Kwin4App::prepareGame(KEMessage *msg)
   msg->AddData("Beginner",(short)doc->QueryPlayerColour(0));
   msg->AddData("Second",(short)doc->QueryPlayerColour(1));
 
-    
+
   msg->AddData("Level",(short)doc->QueryLevel());
   msg->AddData("RemoteBeginner",(short)(doc->IsRemote(doc->QueryPlayerColour(0))));
   msg->AddData("RemoteSecond",(short)(doc->IsRemote(doc->QueryPlayerColour(1))));
@@ -1224,8 +1223,8 @@ void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
   kdDebug() << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
   kdDebug() << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
   doc->getPlayer(doc->QueryCurrentPlayer())->setTurn(true,true);
-  
-  
+
+
   KMessageBox::information(this,i18n("The network game ended!\n"));
   doc->setGameStatus(oldstatus);
 }
@@ -1260,7 +1259,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
       //msg=i18n("%1 (Yellow) has won the game!").arg(doc->QueryName(Gelb));
       //KMessageBox::information(this, msg, appTitle());
     }
-    else 
+    else
     {
       EndGame(TLost);
       checkMenus(CheckEditMenu);
@@ -1310,7 +1309,7 @@ void Kwin4App::slotInitNetwork()
   kdDebug() << "group="<<group<<endl;
   connect(group, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
 
-  
+
   (void)new QRadioButton(i18n("Yellow should be played by remote"), group);
   (void)new QRadioButton(i18n("Red should be played by remote"), group);
   l->addWidget(group);
@@ -1319,11 +1318,11 @@ void Kwin4App::slotInitNetwork()
 
 
   dlg.exec();// note: we don't have to check for the result - maybe a bug
-  
-/*  
+
+/*
   // start KGame configuration
   mDialog = new KGameDialog(mGame, i18n("Configure KGame"), this);
-  connect(mDialog, SIGNAL(finished()), this, SLOT(slotDialogFinished())); 
+  connect(mDialog, SIGNAL(finished()), this, SLOT(slotDialogFinished()));
   mDialog->show();*/
 }
 
