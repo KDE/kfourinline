@@ -57,7 +57,7 @@ aboutDlg::aboutDlg( QWidget* parent,  const char* name, bool /* modal */, WFlags
     vbox_2->addLayout( hbox );
 
     TextLabel4 = new QLabel( Frame5, "TextLabel4" );
-    TextLabel4->setText( i18n( "(c) 2000 Martin Heni\nEmail: martin@heni-online.de\n\nGame features:\n  - Multiplayer network game\n  - Up to two Computer player\n\n\n Many thanks to Laura for beta testing!"  ) );
+    TextLabel4->setText( i18n( "(c) 2000 Martin Heni\nEmail: martin@heni-online.de\n\nGame features:\n  - Multiplayer network game\n  - Up to two computer players\n\n\n Many thanks to Laura for beta testing!"  ) );
     TextLabel4->setBackgroundColor(Qt::white);
     vbox_2->addWidget( TextLabel4 );
     vbox->addWidget( Frame5 );
