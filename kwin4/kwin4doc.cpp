@@ -1,5 +1,5 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          kwin4doc.cpp |  -  description
                              -------------------
     begin                : Sun Mar 26 12:50:12 CEST 2000
     copyright            : (C) |1995-2000 by Martin Heni
@@ -113,13 +113,6 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   setGameStatus(Intro);
   //kdDebug() << "GameStatus set to Intro->"<<gameStatus() << endl;
 
-
-  // Create a new player
-  //connect(this,SIGNAL(signalCreatePlayer(KPlayer *&,int,int,bool,KGame *)),
-  //       this,SLOT(slotCreatePlayer(Kwin4Player *&,int,int,bool,Kwin4Doc *)));
-  //connect(this,SIGNAL(signalCreatePlayer(KPlayer& *,int,int,bool,KGame *)),
-  //       this,SLOT(slotCreatePlayer(KPlayer& *,int,int,bool,KGame *)));
-
   // Listen to network
   connect(this,SIGNAL(signalMessageUpdate(int,Q_UINT32,Q_UINT32)),
          this,SLOT(slotMessageUpdate(int, Q_UINT32,Q_UINT32)));
@@ -198,7 +191,6 @@ const QString &Kwin4Doc::getAbsFilePath() const
 void Kwin4Doc::setTitle(const QString & /*_t*/)
 {
 
-//  title=_t;
   title="";
 }
 
@@ -1005,13 +997,9 @@ bool Kwin4Doc::Move(int x,int id)
   if (hintx>=0)
   {
     y=QueryHeight(hintx)+1;
-    //UpdateViews(UPDATE_XY,hintx,y);
   }
 
   y=QueryHeight(x);
-  //UpdateViews(UPDATE_XY|UPDATE_ARROW|UPDATE_STATUS,x,y);
-  //UpdateViews(UPDATE_ARROW,lastx,0);
-  //return NextMove(res);
   return true;
 }
 
@@ -1032,7 +1020,7 @@ void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
 
   Kwin4Player *player=getPlayer((FARBE)col);
 
-  if (mPlayedBy[col]!=io)
+  if (mPlayedBy[col]!=io && !player->isVirtual())
   {
     mPlayedBy[col]=io;
     player->removeGameIO(0); // remove all IO's
