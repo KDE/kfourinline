@@ -20,7 +20,7 @@
 
 
 
-int main(int /*argc*/, char * /* argv[] */)
+int main(int /*argc*/, char ** /* argv */)
 {
   KProc4 mComm;
   mComm.exec();
