@@ -27,3 +27,4 @@ kwin4AboutDlg::kwin4AboutDlg(QPixmap *pix,QWidget *parent, const char *name) : Q
 
 kwin4AboutDlg::~kwin4AboutDlg(){
 }
+#include "kwin4aboutdlg.moc"

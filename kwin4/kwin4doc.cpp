@@ -853,3 +853,4 @@ void Kwin4Doc::SetHost(QString host)
 {
   mHost=host;
 }
+#include "kwin4doc.moc"

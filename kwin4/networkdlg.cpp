@@ -133,3 +133,4 @@ QString NetworkDlg::QueryHost()
   return IPEdit->text();
 }
 
+#include "networkdlg.moc"

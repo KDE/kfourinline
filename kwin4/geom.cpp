@@ -18,11 +18,11 @@
     The geom class as utilised by the GUI
 
     $Id$
-    
-    
+
+
     (c) Martin Heni, martin@heni-online.de
 	      June 1999
-    
+
     License: GPL
 
 */
@@ -37,7 +37,7 @@ Geom::~Geom()
 }
 
 // Simply set the geometry of the layout
-Geom::Geom(QObject * parent=0, const char * name=0 )
+Geom::Geom(QObject * parent, const char * name )
   : QObject(parent,name)
 {
   // geometry
@@ -77,3 +77,4 @@ Geom::Geom(QObject * parent=0, const char * name=0 )
   field_my=6;
 }
 
+#include "geom.moc"

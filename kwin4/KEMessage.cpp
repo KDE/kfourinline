@@ -198,7 +198,7 @@ QString KEMessage::StringToEntry(QString str,KMessageEntry *entry)
 
   data=str.right(str.length()-pos-len);
 
-  
+
   cnt=size.toInt();
   entry->SetType((KGM_TYPE)type.toInt());
 
@@ -209,13 +209,13 @@ QString KEMessage::StringToEntry(QString str,KMessageEntry *entry)
   for(pos=0;pos<cnt;pos++)
   {
     if (pos*2+1>(int)data.length()) return QString(); // SEVERE ERROR
-    c=*(p+2*pos)-'a' | ((*(p+2*pos+1)-'a')<<4); 
+    c=*(p+2*pos)-'a' | ((*(p+2*pos+1)-'a')<<4);
     q[pos]=c;
   }
   entry->CopyData(cnt,q);
 
   free(q);
-  return key; 
+  return key;
 }
 
 QString KEMessage::ToString()
@@ -245,7 +245,7 @@ bool KEMessage::AddString(QString s)
 }
 bool KEMessage::AddStringMsg(QString str)
 {
-  bool result;
+  bool result = false;
   QString data;
   int pos,oldpos,len;
 
@@ -267,7 +267,7 @@ bool KEMessage::AddStringMsg(QString str)
       if (!result) return false;   // wrong format
     }
   }while(data!=(KEMESSAGE_TAIL));
-  
+
   return result;
 }
 

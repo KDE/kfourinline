@@ -80,3 +80,4 @@ QString MsgDlg::GetMsg()
 
 
 
+#include "msgdlg.moc"

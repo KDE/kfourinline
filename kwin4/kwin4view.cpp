@@ -449,3 +449,4 @@ void Kwin4View::mousePressEvent( QMouseEvent *mouse )
      KMessageBox::information(this,m, TITLE);
   }
 }
+#include "kwin4view.moc"

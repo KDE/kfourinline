@@ -113,3 +113,4 @@ void NameDlg::GetNames(QString &n1, QString &n2)
 
 
 
+#include "namedlg.moc"

@@ -28,3 +28,4 @@ kEndDlg::kEndDlg(QPixmap *pix,QWidget *parent, const char *name) : QDialog(paren
 
 kEndDlg::~kEndDlg(){
 }
+#include "kenddlg.moc"

@@ -234,3 +234,4 @@ void StatDlg::SetStat2(int x1,int x2,int x3,int x4,int x5)
   brk2=x4;
   sum2=x5;
 }
+#include "statdlg.moc"

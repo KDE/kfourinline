@@ -2128,3 +2128,4 @@ void Kwin4App::SetGrafix(QString s)
 {
   mGrafix=s;
 }
+#include "kwin4.moc"
