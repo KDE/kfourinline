@@ -169,10 +169,10 @@ can enter nearly any number there.
 <para>
 When a network connection is build you are asked to enter a remote
 host and a port. The port can usually just been left untouched. But
-if you now what you do replace it by another number, which has to
+if you know what you do replace it by another number, which has to
 be the same in both player games of course. The hostname should be
 the name of the remote host to which you are connecting. Only one
-of the two players has to supply a hostname, the other one need not
+of the two players has to supply a hostname, the other one needs not
 to, but can.
 </para>
 
