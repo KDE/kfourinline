@@ -64,7 +64,11 @@ class ChatDlg : public KDialogBase
 	Q_OBJECT
 public:
 	ChatDlg(KGame *game,QWidget* parent=0);
+  void setPlayer(KPlayer *p);
+  
+private:  
   KGameChat *mChat;
+  KChatDialog *mChatDlg;
 };
 
 
@@ -243,7 +247,6 @@ class Kwin4App : public KMainWindow
 
   private:
   KGameChat *mChat;
-  KChatDialog *mChatDlg;
   ChatDlg *mMyChatDlg;
     // Grafix
     QString mGrafix;

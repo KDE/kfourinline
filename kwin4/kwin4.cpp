@@ -74,12 +74,54 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
     : KDialogBase(Plain,i18n("Chat Dlg"),Ok,Ok,parent,0,false,true)
 {
  setMinimumSize(QSize(200,200));
+ mChat=0;
+ mChatDlg=0;
+
+ #ifdef OLDWIDGET
  QVBoxLayout* mTopLayout=new QVBoxLayout(plainPage(), spacingHint());;
  QHBoxLayout* h = new QHBoxLayout(mTopLayout);
  QHGroupBox* b = new QHGroupBox(i18n("Chat"), plainPage());
  mChat = new KGameChat(game, 10000, b);
  h->addWidget(b, 1);
  h->addSpacing(10);
+ #endif
+
+ kdDebug() << "page=" << plainPage()<< endl;
+ QGridLayout* mGridLayout=new QGridLayout(plainPage());
+ kdDebug() << "grid=" << mGridLayout<< endl;
+
+ QHBoxLayout* h = new QHBoxLayout(plainPage());
+ QHGroupBox* b = new QHGroupBox(i18n("Chat"), plainPage());
+ kdDebug() << "b=" << b<< endl;
+ mChat = new KGameChat(game, 10000, b);
+ h->addWidget(b, 1);
+ h->addSpacing(10);
+ mGridLayout->addLayout(h,0,0);
+
+ 
+ QPushButton *mButton=new QPushButton(i18n("Configure..."),plainPage());
+ kdDebug() << "button=" << mButton<< endl;
+ mGridLayout->addWidget(mButton,1,1);
+
+ adjustSize();
+
+
+ mChatDlg=new KChatDialog(mChat,plainPage(),true);
+ connect(mButton,SIGNAL(clicked()),mChatDlg,SLOT(show()));
+}
+void ChatDlg::setPlayer(KPlayer *p)
+{
+  if (!mChat)
+  {
+    kdError() << "ChatDlg::setPlayer::Chat not defined .. cannot set player" << endl;
+    return ;
+  }
+  if (!p)
+  {
+    kdError() << "ChatDlg::setPlayer::Player not defined .. cannot set player" << endl;
+    return ;
+  }
+  mChat->setFromPlayer(p);
 }
 
 
@@ -87,7 +129,6 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
 Kwin4App::Kwin4App() : KMainWindow(0)
 {
   mMyChatDlg=0;
-  mChatDlg=0;
   mChat=0;
   view=0;
   doc=0;
@@ -1269,30 +1310,11 @@ void Kwin4App::slotChat()
     kdDebug() << "new KMyChatDialog" << endl;
     mMyChatDlg=new ChatDlg(doc,this);
     kdDebug() << "new KMyChatDialog DONE" << endl;
-    mMyChatDlg->mChat->setFromPlayer(doc->getPlayer(Gelb));
+    mMyChatDlg->setPlayer(doc->getPlayer(Gelb));
   }
   if (mMyChatDlg->isHidden()) mMyChatDlg->show();
   else mMyChatDlg->hide();
 
-  if (!mChatDlg)
-  {
-    kdDebug() << "new KChatDialog" << endl;
-    mChatDlg=new KChatDialog(mMyChatDlg->mChat,this,false);
-    kdDebug() << "new KChatDialog DONE" << endl;
-    /*
-    connect(mChatDlg->mChat, SIGNAL(rightButtonClicked(QListBoxItem*, const QPoint&)),
-      this, SLOT(slotTest(QListBoxItem*, const QPoint&)));
-    */
-    /*
-    if (mMyPlayer) 
-    {
-      mChatDlg->mChat->setFromPlayer(mMyPlayer);
-    }
-    */
-  }
-    kdDebug() << "new KChatDialog show" << endl;
-  if (mChatDlg->isHidden()) mChatDlg->show();
-  else mChatDlg->hide();
 }
 
 void Kwin4App::slotFileHint()
