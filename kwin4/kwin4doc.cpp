@@ -202,7 +202,6 @@ const QString &Kwin4Doc::getTitle() const
 
 bool Kwin4Doc::newDocument(KConfig * /*config*/,QString path)
 {
-  int res;
   absFilePath=QDir::homeDirPath();
   if (global_debug>1) kdDebug() << "path=" << path << endl;
   return true;
@@ -342,7 +341,7 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 //  kdDebug() << "kwin4doc::moveDone::signalNextPlayer emitted" << endl;
 }
 
-KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive)
+KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool /*exclusive*/)
 {
   kdDebug() << k_funcinfo << "nextPlayer last="<<last->id() << " admin="<<isAdmin()<<endl;
   // Should be enough if the admin sets the turn
@@ -354,7 +353,7 @@ KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive)
     getPlayer(QueryCurrentPlayer())->setTurn(true,true);
   }
   emit signalMoveDone(0,0);
-
+  return getPlayer(QueryCurrentPlayer());
 }
 
 /** Make a game move */
@@ -918,7 +917,7 @@ void Kwin4Doc::SetHost(QString host)
   mHost=host;
 }
 
-void Kwin4Doc::slotMessageUpdate(int id,Q_UINT32 sender,Q_UINT32 recv)
+void Kwin4Doc::slotMessageUpdate(int /*id*/,Q_UINT32 /*sender*/,Q_UINT32 /*recv*/)
 {
 //  kdDebug() << "MSG: id=" << id << " sender=" << sender << " receiver="<<recv<< endl;
 }
@@ -946,7 +945,7 @@ KPlayer *Kwin4Doc::createPlayer(int rtti,int io,bool isvirtual)
  */
 bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
 {
-  Kwin4Player *p=(Kwin4Player *)player;
+  // Kwin4Player *p=(Kwin4Player *)player;
   Q_INT32 move,pl;
   msg >> pl >> move;
   kdDebug()  << "!!!!! Player " << pl << " id="<<player->id() 
@@ -1117,7 +1116,7 @@ void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
   stream << (Q_INT32)421256;
 }
 
-void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO *me)
+void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
 {
   Q_INT8 cid;
   in >> cid;
@@ -1238,7 +1237,7 @@ void Kwin4Doc::calcHint()
  * The compute rprocess sent a hint which we show in the
  * game board
  **/
-void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO *me)
+void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
 {
   Q_INT8 cid;
   in >> cid;
@@ -1393,7 +1392,7 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
  * what is local
  * This function is only called in the Admin.
  */
-void Kwin4Doc::newPlayersJoin(KGamePlayerList *oldList,KGamePlayerList *newList,QValueList<int> &inactivate)
+void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *newList,QValueList<int> &inactivate)
 {
   kdDebug() << "newPlayersJoin: ================================= START =="<<endl;
   Kwin4Player *yellow=getPlayer(Gelb);
