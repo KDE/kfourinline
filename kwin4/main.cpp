@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
                         "(c) 1995-2000, Martin Heni");
   aboutData.addAuthor("Martin Heni",0, "martin@heni-online.de");
   aboutData.addCredit("Laura", I18N_NOOP("Beta testing"), 0);
+  aboutData.addAuthor("Benjamin Meyer", I18N_NOOP("Code Improvements"), 0);
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 
