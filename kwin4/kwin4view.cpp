@@ -500,7 +500,6 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
     }
     else
     {
-      kdDebug()<<"SETTING SPEED 0000000000"<<endl;
       sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
                   mBoardY-sprite->height()-mSpreadY+
                   y*(sprite->height()+mSpreadY)+mBoardY);
