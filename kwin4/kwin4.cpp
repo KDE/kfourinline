@@ -1176,7 +1176,7 @@ void Kwin4App::slotInitNetwork()
 
 
  // just for testing - should be non-modal
-  KGameDialog dlg(doc, 0, i18n("Configuration"), this,
+  KGameDialog dlg(doc, 0, i18n("Network Configuration"), this,
       KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
 
