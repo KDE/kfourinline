@@ -539,7 +539,7 @@ void KSprite::moveTo(double tx,double ty,double speed)
 void KSprite::advance(int stage)
 {
   if (stage!=1) return ;
-  if (!visible()) return ;
+  if (!isVisible()) return ;
 
   int emitsignal=0;
   bool isMoving=false;
