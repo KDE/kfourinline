@@ -263,7 +263,7 @@ void Kwin4App::initMenuBar()
   // MENUBAR CONFIGURATION
   // insert your popup menus with the according menubar entries in the order
   // they will appear later from left to right
-  menuBar()->insertItem(i18n("&File"), fileMenu);
+  menuBar()->insertItem(i18n("&Game"), fileMenu);
   menuBar()->insertItem(i18n("&Edit"), editMenu);
   menuBar()->insertItem(i18n("&View"), viewMenu);
   menuBar()->insertItem(i18n("&Options"), optionsMenu);
