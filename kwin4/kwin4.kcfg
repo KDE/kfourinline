@@ -23,7 +23,7 @@
       <default>Player 1</default>
     </entry>
     <entry name="Name2" type="String">
-      <label>Player 1 name</label>
+      <label>Player 2 name</label>
       <default>Player 2</default>
     </entry>
     <entry name="Input1" type="Int">
