@@ -83,6 +83,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *name) : QObject(parent, name)
   picpath="/tmp";
   procfile="kproc4";
 
+   is_lock=false;
 }
 
 Kwin4Doc::~Kwin4Doc()
