@@ -149,7 +149,7 @@ class Kwin4Doc : public KGame
   /** Start a new game */
   void StartGame();
   /** Reset the whole game */
-  void ResetGame();
+  void ResetGame(bool initview);
   /** Set the colour */
   void SetColour(int x,int y,FARBE c);
   /** Returns colour */

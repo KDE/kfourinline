@@ -665,7 +665,7 @@ void Kwin4App::slotOpenFile()
   kdDebug() << "slotOpenFile File="<<file<<endl;
   doc->load(file,true);
   kdDebug() << "slot open file done" << endl;
-  checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
+  checkMenus();
 }
 void Kwin4App::slotSaveFile()
 {
@@ -683,7 +683,10 @@ void Kwin4App::slotSaveFile()
 }
 void Kwin4App::slotFileNew()
 {
+  // Run it
   doc->setGameStatus(Kwin4Doc::Run);
+  // Clear board in doc and view (After status change to cancel intro)
+  doc->ResetGame(true);
 // NewGame(1);
 // checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
 }

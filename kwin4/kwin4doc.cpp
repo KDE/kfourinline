@@ -107,7 +107,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   SetLevel(3);
 
   // last in init
-  ResetGame();
+  ResetGame(false);
   
   setGameStatus(Intro);
   //kdDebug() << "GameStatus set to Intro->"<<gameStatus() << endl;
@@ -254,7 +254,7 @@ void Kwin4Doc::SetColour(int x,int y,FARBE c){
 }
 
 /** Reset the whole game */
-void Kwin4Doc::ResetGame(){
+void Kwin4Doc::ResetGame(bool initview){
   int x,y;
 
   kdDebug() << "ResetGame" << endl;
@@ -276,6 +276,7 @@ void Kwin4Doc::ResetGame(){
   SetScore(0);
   //setGameStatus(Pause);
   mLastHint=-1;
+  if (initview) pView->initView(false);
 }
 
 /** Start a new game */
@@ -288,7 +289,6 @@ void Kwin4Doc::StartGame(){
   kdDebug() << "StartGame::startplayer="<<mStartPlayer.value()<<endl;
   kdDebug() << "StartGame::currentplayer="<<QueryCurrentPlayer()<<endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
-  pView->initView(false);
 
 }
 
@@ -1300,7 +1300,7 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
      else if (gameStatus()==Run)
      {
        kdDebug() << "PropertyChanged::signal game run" << endl;
-       ResetGame();
+       //ResetGame();
        StartGame();
        emit signalGameRun();
       }
@@ -1326,7 +1326,7 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
   pView->initView(false);
   bool res=KGame::loadgame(stream,network,reset);
 
-  kdDebug() << "REDRAW GAME" << endl;
+  kdDebug() << "REDRAW GAME using undo/redo" << endl;
   int cnt=0;
   while(UndoMove())
   {
