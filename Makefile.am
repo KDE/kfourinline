@@ -1,8 +1,5 @@
-SUBDIRS = kwin4 grafix kproc4
+SUBDIRS = kwin4 grafix 
 
-####### kdevelop will overwrite this part!!! (end)############
-# not a GNU package. You can remove this line, if 
-# have all needed files, that a GNU package needs
 AUTOMAKE_OPTIONS = foreign 
 
 KDE_ICON = kwin4
@@ -10,6 +7,9 @@ KDE_ICON = kwin4
 appsdir = $(kde_appsdir)/Games/Board
 apps_DATA = kwin4.desktop
 EXTRA_DIST = $(apps_DATA)
+
+rcdir = $(kde_datadir)/kwin4
+rc_DATA = kwin4ui.rc
 
 install-data-local:
 	rm -rf $(kde_appsdir)/Games/kwin4.desktop
