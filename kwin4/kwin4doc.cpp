@@ -954,8 +954,16 @@ bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
   if (global_debug>1)  kdDebug()  << "!!!!! Player " << pl << " id="<<player->id() 
              << " uid="<<player->userId() << " moves to " << move << "***************" << endl;
   // Perform the move (sprite and logic)
-  Move(move,pl);
+  bool res = Move(move,pl);
+  if (!res) QTimer::singleShot(0,this,SLOT(slotRepeatMove()));
   return false; // Stop game sequence
+}
+
+/** Reactivate player in case of a move which could not pe performed */
+void Kwin4Doc::slotRepeatMove()
+{
+  if (global_debug>1) kdDebug() << "Reactivate Player " << getPlayer(QueryCurrentPlayer())->id() << endl;
+  getPlayer(QueryCurrentPlayer())->setTurn(true);
 }
 
 
@@ -970,6 +978,7 @@ bool Kwin4Doc::Move(int x,int id)
   hintx=QueryLastHint();
   lastx=QueryLastcolumn();
   res=MakeMove(x,0);
+  if (res != GNormal) return false; // No move
 
   int y;
   // Clear hint as well

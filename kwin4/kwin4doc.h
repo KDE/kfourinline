@@ -217,6 +217,7 @@ class Kwin4Doc : public KGame
     void slotProcessQuery(QDataStream &,KGameProcessIO *);
     void slotProcessHint(QDataStream &,KGameProcessIO *);
     void slotGameOver(int status, KPlayer * p, KGame * me);
+    void slotRepeatMove();
 
     signals:
     /**
