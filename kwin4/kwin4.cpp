@@ -710,9 +710,9 @@ void Kwin4App::NewGame(int mode)
   if (!res1 || !res2)
   {
     QString e1;
-    if (!res1 && !res2) e1=i18n("It is not possbile to start the yellow and red player.\n");
-    else if (!res1) e1=i18n("It is not possbile to start the yellow player.\n");
-    else e1=i18n("It is not possbile to start the red player.\n");
+    if (!res1 && !res2) e1=i18n("It is not possible to start the yellow and red player.\n");
+    else if (!res1) e1=i18n("It is not possible to start the yellow player.\n");
+    else e1=i18n("It is not possible to start the red player.\n");
     KMessageBox::error(this,
       e1+i18n("This is a serious error. If one player is played by\n"
            "the computer check for the existance of the file '%1'.\n")
