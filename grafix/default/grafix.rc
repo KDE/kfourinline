@@ -43,6 +43,13 @@ x=25.0
 y=20.0
 z=150.0
 
+[hint]
+file=hint.png
+mask=piece_mask.png
+offset=19,20
+rtti=32
+z=100.0
+
 [piece]
 file=piece%d.png
 mask=piece_mask.png

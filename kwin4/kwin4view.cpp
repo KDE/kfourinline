@@ -102,16 +102,10 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   // setBackgroundPixmap( getDocument()->m_PixBackground );
   //setBackground( getDocument()->m_PixBackground );
   
-  //QTimer::singleShot(10000,this,SLOT(slotTest()));
   kdDebug() << "****************** UPDATE="<<isUpdatesEnabled() << endl;
 
 }
 
-void Kwin4View::slotTest()
-{
-  kdDebug() << "slotTest" << endl;
-  kdDebug() << "slotTest DONE" << endl;
-}
 
 
 Kwin4View::~Kwin4View()
@@ -130,8 +124,8 @@ Kwin4Doc *Kwin4View::getDocument() const
 
 void Kwin4View::initView(bool deleteall)
 {
-   // mCanvas->setAdvancePeriod(period);
-   mCanvas->setAdvancePeriod(15);
+  // mCanvas->setAdvancePeriod(period);
+  mCanvas->setAdvancePeriod(15);
 
   KConfig *config=mCache->config();
   config->setGroup("game");
@@ -165,6 +159,9 @@ void Kwin4View::initView(bool deleteall)
     if (sprite) sprite->hide();
   }
 
+  // Hide hint in any case
+  setHint(0,0,false);
+
   // Clear error text
   clearError();
 }
@@ -193,20 +190,8 @@ void Kwin4View::EndGame()
 // -------------- Draw Sprites ----------------------
 void Kwin4View::drawStar(int x,int y,int no)
 {
-  int x_pos,y_pos;
   int dx,dy;
   y=5-y;
-  KSprite *board=(KSprite *)(mCache->getItem("board",1));
-  if (board)
-  {
-    x_pos=board->x();
-    y_pos=board->y();
-  }
-  else
-  {
-    x_pos=0;
-    y_pos=0;
-  }
   KSprite *piece=(KSprite *)(mCache->getItem("piece",0));
   if (piece)
   {
@@ -219,13 +204,12 @@ void Kwin4View::drawStar(int x,int y,int no)
     dy=0;
   }
 
-  
   KSprite *sprite=(KSprite *)(mCache->getItem("star",no));
   kdDebug() << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
   if (sprite)
   {
-    sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+x_pos,
-                 dy/2-sprite->height()/2+y*(dy+mSpreadY)+y_pos);
+    sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+mBoardX,
+                 dy/2-sprite->height()/2+y*(dy+mSpreadY)+mBoardY);
     sprite->show();
     sprite->setAnimation(0);
   }
@@ -237,80 +221,92 @@ void Kwin4View::drawBoard(bool remove)
   KSprite *board=0;
   int x,y;
 
-  {
-    int x_pos=0;
-    int y_pos=0;
-    // Board
-    // TODO: Without number as it is unique item
-    board=(KSprite *)(mCache->getItem("board",1));
-    if (board)
-    {
-      if (remove) board->hide();
-      else if (!board->isVisible()) board->show();
-      x_pos=board->x();
-      y_pos=board->y();
-    }
-
-    // Arrows
-    for (x=0;x<7;x++)
-    {
-      sprite=(KSprite *)(mCache->getItem("arrow",x));
-      if (sprite)
-      {
-        sprite->setFrame(0);
-        sprite->setX(x*(sprite->width()+mSpreadX)+x_pos);
-        if (remove) sprite->hide();
-        else if (!sprite->isVisible()) sprite->show();
-      }
-    }/* end arrows */
-
-    // Field
-    for (y=5;y>=0;y--)
-    {
-      for (x=0;x<7;x++)
-      {
-        // Lower layer
-        sprite=(KSprite *)(mCache->getItem("empty2",x+7*y));
-        if (sprite)
-        {
-          sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
-                       y*(sprite->height())+y_pos);
-          if (remove) sprite->hide();
-          else if (!sprite->isVisible()) sprite->show();
-        }
-        // upper layer
-        sprite=(KSprite *)(mCache->getItem("empty",x+7*y));
-        if (sprite)
-        {
-          sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
-                       y*(sprite->height())+y_pos);
-          if (remove) sprite->hide();
-          else if (!sprite->isVisible()) sprite->show();
-        }
-      }
-    }/* end field */
-  }
-}
-
-void Kwin4View::setPiece(int x,int y,int color,int no)
-{
-  KSprite *sprite=0;
-  KSprite *board=0;
-
-  y=5-y;
-
-  int x_pos,y_pos;
+  // Board
+  // TODO: Without number as it is unique item
   board=(KSprite *)(mCache->getItem("board",1));
   if (board)
   {
-    x_pos=board->x();
-    y_pos=board->y();
+    if (remove) board->hide();
+    else if (!board->isVisible()) board->show();
+    mBoardX=(int)(board->x());
+    mBoardY=(int)(board->y());
   }
   else
   {
-    x_pos=0;
-    y_pos=0;
+    mBoardX=0;
+    mBoardY=0;
   }
+      kdDebug() << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
+
+  // Arrows
+  for (x=0;x<7;x++)
+  {
+    sprite=(KSprite *)(mCache->getItem("arrow",x));
+    if (sprite)
+    {
+      sprite->setFrame(0);
+      sprite->setX(x*(sprite->width()+mSpreadX)+mBoardX);
+      if (remove) sprite->hide();
+      else if (!sprite->isVisible()) sprite->show();
+    }
+  }/* end arrows */
+
+  // Field
+  for (y=5;y>=0;y--)
+  {
+    for (x=0;x<7;x++)
+    {
+      // Lower layer
+      sprite=(KSprite *)(mCache->getItem("empty2",x+7*y));
+      if (sprite)
+      {
+        sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
+                      y*(sprite->height())+mBoardY);
+        if (remove) sprite->hide();
+        else if (!sprite->isVisible()) sprite->show();
+      }
+      // upper layer
+      sprite=(KSprite *)(mCache->getItem("empty",x+7*y));
+      if (sprite)
+      {
+        sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
+                      y*(sprite->height())+mBoardY);
+        if (remove) sprite->hide();
+        else if (!sprite->isVisible()) sprite->show();
+      }
+    }
+  }/* end field */
+}
+
+void Kwin4View::setSprite(int no, int x, int col, bool enable)
+{
+  KSprite *sprite;
+  sprite=(KSprite *)(mCache->getItem("piece",no));
+  if (sprite) sprite->setVisible(enable);
+  setArrow(x,col);
+}
+
+void Kwin4View::setHint(int x,int y,bool enabled)
+{
+  KSprite *sprite;
+  sprite=(KSprite *)(mCache->getItem("hint",1));
+  y=5-y;
+  if (sprite)
+  {
+    if (enabled)
+    {
+      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
+                   y*(sprite->height()+mSpreadY)+mBoardY);
+    }
+    sprite->setVisible(enabled);
+  }
+}
+
+void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
+{
+  KSprite *sprite=0;
+
+  y=5-y;
 
   sprite=(KSprite *)(mCache->getItem("piece",no));
 
@@ -323,14 +319,27 @@ void Kwin4View::setPiece(int x,int y,int color,int no)
 
   if (sprite)
   {
-    sprite->move(x*(sprite->width()+mSpreadX)+x_pos,
-                 y_pos-sprite->height()-mSpreadY);
-    sprite->moveTo(sprite->x(),
-                   sprite->y()+y*(sprite->height()+mSpreadY)+y_pos);
+    if (animation)
+    {
+      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
+                  mBoardY-sprite->height()-mSpreadY);
+      sprite->moveTo(sprite->x(),
+                    sprite->y()+y*(sprite->height()+mSpreadY)+mBoardY);
+      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
+          getDocument(),SLOT(moveDone(QCanvasItem *,int)));
+    }
+    else
+    {
+      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
+                  mBoardY-sprite->height()-mSpreadY+
+                  y*(sprite->height()+mSpreadY)+mBoardY);
+      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
+          getDocument(),SLOT(moveDone(QCanvasItem *,int)));
+      sprite->emitNotify(3);
+    }
+    
     sprite->setFrame(c);
     sprite->show();
-    connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-        getDocument(),SLOT(moveDone(QCanvasItem *,int)));
 
   }
 }
@@ -457,47 +466,10 @@ void Kwin4View::clearError()
 // ------------------ OLD --------------------------
 
 
-/** Interface to the Paint Event */
-void Kwin4View::Paint(QPainter *p){
-
-  /*
-  if (getDocument()->IsIntro())
-  {
-    drawIntro(p);
-  }
-  else
-  {
-    drawField(p);
-    drawStatus(p);
-    drawTable(p);
-  }
-  */
-
-
-}
-/** QT Paint Event */
-void Kwin4View::paintEvent( QPaintEvent * p)
-{
-  //kdDebug() <<" **** PAINT ******" << endl;
-  /* TODO MH
-  mScoreWidget->update();
-  mStatusWidget->update();
-  */
-
-
-    /*
-    QPainter paint( this );
-    paint.setClipRect(p->rect());
-    Paint( &paint );			
-    */
-
-}
-
-
 /** Draw the game intro */
+/*
 void Kwin4View::drawIntro(QPainter *p)
 {
-  /*
   QString ld;
   p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
   // QFont font(p->font());
@@ -511,20 +483,7 @@ void Kwin4View::drawIntro(QPainter *p)
   QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
   
 	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
-  */
-
 }
-
-/** Draw the table */
-void Kwin4View::drawTable(QPainter *p){
-  // draw Headertext
-  QString ld;
-  ld=i18n("1_letter_abbr_won","W"); // abbr for "Won"
-  ld=i18n("1_letter_abbr_drawn","D"); // abbr for "drawn"
-  ld=i18n("1_letter_abbr_lost","L"); // abbr for "lost"
-  ld=i18n("1-2_letter_abbr_number","No"); // abbr for "number"
-  ld=i18n("1-2_letter_abbr_breaks/aborted","Bk"); // abbr for "breaks"
-}
-
+*/
 
 #include "kwin4view.moc"

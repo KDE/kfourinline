@@ -119,6 +119,13 @@ class KSprite : public QCanvasSprite
     QObject *notify() {return (QObject *)mNotify;}
 
     /**
+    * Directly emits the notification signal with the given parameter
+    *
+    * @param the notification parameter
+    **/
+    void emitNotify(int mode);
+
+    /**
     * Creates a notification object. You can connect to it and it will emit
     * the signal signalNotify(QCanvasItem *parent, intmode) when a move or
     * animation is finished.

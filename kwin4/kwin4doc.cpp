@@ -344,7 +344,7 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 {
   kdDebug() << "########################## MOVE DONE ################# " << endl;
 
-  playerInputFinished();
+  playerInputFinished(getPlayer(QueryCurrentPlayer()));
 
   pView->clearError();
 
@@ -352,6 +352,7 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
   sprite->deleteNotify();
 
   emit signalNextPlayer();
+  kdDebug() << "signalNextPlayer" << endl;
 }
 
 
@@ -409,7 +410,9 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
   mLastColumn=x;
 
   pView->setArrow(x,mLastColour);
-  pView->setPiece(x,y,mLastColour,mCurrentMove);
+  // animation onyl if no redo
+  pView->setPiece(x,y,mLastColour,mCurrentMove,mode==1?false:true);
+  pView->setHint(0,0,false);
  
 
   /*
@@ -426,9 +429,9 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 
 
 /** Undo a move */
-int Kwin4Doc::UndoMove(){
+bool Kwin4Doc::UndoMove(){
   int x,y;
-  if (QueryHistoryCnt()<1) return 0;
+  if (QueryHistoryCnt()<1) return false;
   if (mLastHint>=0)
   {
     int hy;
@@ -437,7 +440,7 @@ int Kwin4Doc::UndoMove(){
     SetColour(mLastHint,hy,Niemand);
     mLastHint=-1;
   }
-  kdDebug() << "Undo 1" << endl;
+  kdDebug() << "Undo no="<<mHistoryCnt.value() << endl;
   mHistoryCnt=mHistoryCnt.value()-1;
   x=mHistory.at(QueryHistoryCnt());
   mFieldFilled.setAt(x,mFieldFilled.at(x)-1);
@@ -451,24 +454,32 @@ int Kwin4Doc::UndoMove(){
   else SetCurrentPlayer(Gelb);
   mCurrentMove=mCurrentMove.value()-1;
 
+
+  // sprite no, arrow pos, arrow color, enable
+  int oldx=-1;
+  if (QueryHistoryCnt()>0) oldx=mHistory.at(QueryHistoryCnt()-1);
+  pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
+  pView->setHint(0,0,false);
+
   if (QueryHistoryCnt()>0) mLastColumn=mHistory.at(QueryHistoryCnt()-1);
   else mLastColumn=-1;
 
   SetScore(0);
 
-  return 1;
+  return true;
 }
 
 /** Redo a move */
-int Kwin4Doc::RedoMove(){
+bool Kwin4Doc::RedoMove(){
   int x;
   kdDebug() << "mMaxMove=" << mMaxMove.value() << " historycnt=" << QueryHistoryCnt() << endl;
-  if (QueryHistoryCnt()>=mMaxMove) return 0;
+  if (QueryHistoryCnt()>=mMaxMove) return false;
   x=mHistory.at(QueryHistoryCnt());
   kdDebug() << "Redo x=" << x << endl;
   MakeMove(x,1);
   SetScore(0);
-  return 1;
+  pView->setHint(0,0,false);
+  return true;
 }
 
 /** Set the name of col */
@@ -954,7 +965,7 @@ bool Kwin4Doc::Move(int x,int id)
   hintx=QueryLastHint();
   lastx=QueryLastcolumn();
   //int isremote=IsRemote(QueryCurrentPlayer());
-  res=MakeMove(x);
+  res=MakeMove(x,0);
   /*
   if (res!=GIllMove && res!=GTip && !isremote)
   {
@@ -1212,12 +1223,17 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO *me)
   switch(cid)
   {
     case 2:  // Hint
+    {
       Q_INT32 pl;
       Q_INT32 move;
       long value;
       in >>  pl >> move  >> value;
       kdDebug() << "#### Computer thinks pl=" << pl << " move =" << move << endl;
       kdDebug() << "#### Computer thinks hint is " << move << " and value is " << value << endl;
+      int x=move;
+      int y=mFieldFilled.at(x);
+      pView->setHint(x,y,true);
+    }
     break;
     default:
       kdError() << "Kwin4Doc::slotProcessHint: Unknown id " << cid << endl;
@@ -1230,6 +1246,7 @@ void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player
   if (!pView) return ;
    if (prop->id()==KGamePropertyBase::IdName)
    {
+     kdDebug() << "Player name id=" << player->userId() << " changed to " << player->name()<<endl;
      pView->scoreWidget()->setPlayer(player->name(),player->userId());
    }
 }
@@ -1266,5 +1283,31 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   mLastPlayer=p;
   mGameOverStatus=status;
   
+}
+
+
+// Redraw game after load/network
+bool Kwin4Doc::load(QDataStream &stream,bool reset)
+{
+  pView->initView(false);
+  bool res=KGame::load(stream,reset);
+
+  kdDebug() << "REDRAW GAME" << endl;
+  int cnt=0;
+  while(UndoMove())
+  {
+    cnt++;
+  }
+  while(cnt>0)
+  {
+    RedoMove();
+    cnt--;
+  }
+
+  return res;
+}
+bool Kwin4Doc::load(QString filename,bool reset)
+{
+  return KGame::load(filename,reset);
 }
 #include "kwin4doc.moc"

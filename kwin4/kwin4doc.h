@@ -85,6 +85,11 @@ class Kwin4Doc : public KGame
     /** returns the title of the document */
     const QString &getTitle() const;
 
+    bool load(QDataStream &stream,bool reset=true);
+    bool load(QString filename,bool reset=true);
+
+
+
   /**
   * Ask the computer to calculate a hint
   */
@@ -131,11 +136,11 @@ class Kwin4Doc : public KGame
   Kwin4Player *getPlayer(FARBE col);
   
   /** Redo a move */
-  int RedoMove();
+  bool RedoMove();
   /** Undo a move */
-  int UndoMove();
+  bool UndoMove();
   /** Make a game move */
-  MOVESTATUS MakeMove(int x,int mode=0);
+  MOVESTATUS MakeMove(int x,int mode);
   /** Is the introduction on */
   bool IsIntro();
   /** Is a game running */

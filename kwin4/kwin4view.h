@@ -68,9 +68,11 @@ class Kwin4View : public QCanvasView
   void drawBoard(bool remove=false);
   void drawStar(int x,int y,int no);
   void setArrow(int x,int color);
-  void setPiece(int x,int y,int color,int no);
+  void setPiece(int x,int y,int color,int no,bool animation=true);
+  void setHint(int x,int y,bool enabled);
   ScoreWidget *scoreWidget() {return mScoreWidget;}
   StatusWidget *statusWidget() {return mStatusWidget;}
+  void setSprite(int no,int x, int col, bool enable);
   /**
   * hide all error text sprites
   **/
@@ -80,45 +82,14 @@ class Kwin4View : public QCanvasView
   */
   void EndGame();
 
-
-
-
-    // ------ OLD -----
-
-  /** Updates on of the column arrows */
-  void updateArrow(int x);
-  /** Updates the status area */
-  void updateStatus();
-  /** Updates the table area */
-  void updateTable();
-  /** QT Paint Event */
-  /** Update XY area */
-  void updateXY(int x,int y);
-
-
-
   public slots:
-    void slotTest();
   /**
    * This slot is called when a mouse event is received. It then prduces a
    * valid move for the game.
    **/
     void slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *e,bool *eatevent);
  	
-  //void mousePressEvent ( QMouseEvent *m );
 
-protected: // Protected methods
-  /** Draw a Borderframe */
-  void drawBorder(QPainter *p,QRect rect,int offset,int width,int mode);
-  /** Draw the table */
-  void drawTable(QPainter *p);
-  /** Draw the status window */
-  void drawStatus(QPainter *p);
-  /** Draw the game board */
-  void drawField(QPainter *p);
-  /** Draw the game intro */
-  void drawIntro(QPainter *p);
-  void paintEvent( QPaintEvent * );
 	
 private:
   QCanvas *mCanvas;    // our drawing canvas
@@ -132,13 +103,8 @@ private:
   int mLastY;
   int mSpreadX;         // spread x,y board pieces
   int mSpreadY;
-
-
-
-	
-protected: // Protected methods
-  /** Interface to the Paint Event */
-  void Paint(QPainter *p);
+  int mBoardX;          // board offset
+  int mBoardY;
 };
 
 #endif // KWIN4VIEW_H

@@ -43,19 +43,19 @@ StatusWidget::StatusWidget( QWidget* parent,  const char* name, WFlags fl )
     col++;
 
     Label[0][1] = new KWLabel( this, "01" );
-    Label[0][1]->setText( i18n( "W" ) );
+    Label[0][1]->setText( i18n( "1-2_letter_abbr_won","W" ) );
     Label[0][1]->setBackgroundColor( COL_STATUSFIELD );
     Label[0][1]->setAlignment(Qt::AlignHCenter);
     LayoutB->addWidget( Label[0][1], row, col );
     col++;
     Label[0][2] = new KWLabel( this, "02" );
-    Label[0][2]->setText( i18n( "D" ) );
+    Label[0][2]->setText( i18n( "1-2_letter_abbr_drawn","D" ) );
     Label[0][2]->setBackgroundColor( COL_STATUSFIELD );
     Label[0][2]->setAlignment(Qt::AlignHCenter);
     LayoutB->addWidget( Label[0][2], row, col );
     col++;
     Label[0][3] = new KWLabel( this, "03" );
-    Label[0][3]->setText( i18n( "L" ) );
+    Label[0][3]->setText( i18n("1-2_letter_abbr_lost","L" ) );
     Label[0][3]->setBackgroundColor( COL_STATUSFIELD );
     Label[0][3]->setAlignment(Qt::AlignHCenter);
     LayoutB->addWidget( Label[0][3], row, col );
@@ -64,13 +64,13 @@ StatusWidget::StatusWidget( QWidget* parent,  const char* name, WFlags fl )
     LayoutB->addMultiCell( Spacer1, row, row+3,col,col );
     col++;
     Label[0][4] = new KWLabel( this, "04" );
-    Label[0][4]->setText( i18n( "No" ) );
+    Label[0][4]->setText( i18n("1-2_letter_abbr_number","No" ) );
     Label[0][4]->setBackgroundColor( COL_STATUSFIELD );
     Label[0][4]->setAlignment(Qt::AlignHCenter);
     LayoutB->addWidget( Label[0][4], row, col );
     col++;
     Label[0][5] = new KWLabel( this, "05" );
-    Label[0][5]->setText( i18n( "Brk" ) );
+    Label[0][5]->setText( i18n( "1-2_letter_abbr_breaks/aborted","Bk" ) );
     Label[0][5]->setBackgroundColor( COL_STATUSFIELD );
     Label[0][5]->setAlignment(Qt::AlignHCenter);
     LayoutB->addWidget( Label[0][5], row, col );

@@ -606,7 +606,9 @@ bool Kwin4App::queryExit()
 void Kwin4App::slotOpenFile()
 {
   QString dir,filter,file;
-  file=KFileDialog::getOpenFileName(dir,filter,this);
+  // Avoid file dialog
+  if (global_debug>10) file="/tmp/kwin.save";
+  else file=KFileDialog::getOpenFileName(dir,filter,this);
   kdDebug() << "slotOpenFile File="<<file<<endl;
   doc->load(file,true);
   kdDebug() << "slot open file done" << endl;
@@ -617,7 +619,9 @@ void Kwin4App::slotSaveFile()
   kdDebug() << "slotSaveFile" << endl;
   kdDebug() << "4000="<<((KGamePropertyInt *)(doc->findProperty(4000)))->value() << endl;
   QString dir,filter,file;
-  file=KFileDialog::getSaveFileName(dir,filter,this);
+  // Avoid file dialog
+  if (global_debug>10) file="/tmp/kwin.save";
+  else file=KFileDialog::getSaveFileName(dir,filter,this);
   kdDebug() << "File="<<file<<endl;
   doc->save(file);
 

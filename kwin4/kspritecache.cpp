@@ -108,11 +108,11 @@ QCanvasItem *KSpriteCache::getItem(QString name,int no)
 
   QString dictname=name+QString("_%1").arg(no);
   QCanvasItem *item=mItemDict[dictname];
-  kdDebug(11002) << " -> getItem("<<name<<","<<no<<") =>"<<dictname<<endl;
+  //kdDebug(11002) << " -> getItem("<<name<<","<<no<<") =>"<<dictname<<endl;
   // Directly found item
   if (item)
   {
-    kdDebug(11002) << "found item "<<dictname<<" as directly existing "<<item << endl;
+    //kdDebug(11002) << "found item "<<dictname<<" as directly existing "<<item << endl;
     return item;
   }
 
@@ -692,6 +692,12 @@ void KSprite::advance(int stage)
   }
 }
 
+void KSprite::emitNotify(int mode)
+{
+  if (!mNotify) return ;
+  kdDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
+  mNotify->emitSignal((QCanvasItem *)this,mode);
+}
 QObject *KSprite::createNotify()
 {
   if (!mNotify) mNotify=new KSpriteNotify;
