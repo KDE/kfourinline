@@ -57,9 +57,9 @@
 
 <para>
 Four wins is a game for two players.
-Each player is represented by a colour (yellow and red).
+Each player is represented by a color (yellow and red).
 The goal of the game is to get four connected pieces of your
-colour into a row, column or any diagonal.
+color into a row, column or any diagonal.
 This is done by placing one of your pieces into any of the
 seven columns. 
 A piece will begin to fill a column from the bottom, i.e. it
@@ -124,14 +124,14 @@ it.</para>
 
 <para>The <firstterm>game board</firstterm>
 is constructed out of 7x6 fields which will be filled from bottom
-to top. The fields are marked in the colour of the player who made the
+to top. The fields are marked in the color of the player who made the
 current move.
-On top of each column a coloured arrow shows were the last piece had been
+On top of each column a colored arrow shows were the last piece had been
 put.
 </para>
 
 <para>The <firstterm>status display</firstterm> 
-shows which player colour starts and which colour is
+shows which player color starts and which color is
 played by whom (player, computer, remote connection). It further shows the
 level of the computer opponent, the number of moves done as well as the
 computer calculated chance of winning. This chance is calculated only if
@@ -152,7 +152,7 @@ Also the number of aborted games (Brk) and the sum of games is shown.
 
 <para>
 It is possible to play the game over a network connection with another
-computer. To do so both player on both computers have to select one colour
+computer. To do so both player on both computers have to select one color
 played by a human player and the other by the remote player. Who chooses
 which side does not matter. It even does not matter if both choose to play
 the same player as this will automatically be interchanged by the game.
@@ -284,7 +284,7 @@ to, but can.
 <varlistentry>
   <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Startplayer</guimenuitem></menuchoice></term>
   <listitem><para>
-      Determines which colour resp. player  has the first move in the next game.
+      Determines which color resp. player  has the first move in the next game.
   </para></listitem>
 </varlistentry>
 <varlistentry>
