@@ -628,7 +628,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       {
         //y=field_filled[x]-1-i;
         y=mFieldFilled.at(x)-1-i;
-        if (y>=geom.field_my) break;
+        if (y<0) break;
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
         cnt++;
@@ -642,7 +642,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       {
         //y=field_filled[x]-1-i;
         y=mFieldFilled.at(x)-1-i;
-        if (y<0) break;
+        if (y>=geom.field_my) break;
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
         cnt++;
