@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-<!ENTITY kappname "&kwin4;">
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY kappname "&k4wins;">
 <!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
 <!ENTITY % addindex "IGNORE">
@@ -35,7 +35,7 @@
 
 <abstract>
 <para>
-This documentation describes &kwin4; version 1.0.0</para>
+This documentation describes &k4wins; version 1.0.0</para>
 </abstract>
 
 <keywordset>
@@ -411,7 +411,7 @@ Toggle on and off the display of the status bar.
 <title>Credits and License</title>
 
 <para>
-&kwin4;
+&k4wins;
 </para>
 <para>
 Program copyright 1995-2002 Martin Heni <email>martin@heni-online.de</email>
@@ -431,7 +431,7 @@ Documentation copyright 2002 Martin Heni <email>martin@heni-online.de</email>
 <title>Installation</title>
 
 <sect1 id="getting-kwin4">
-<title>How to obtain &kwin4;</title>
+<title>How to obtain &k4wins;</title>
 
 &install.intro.documentation;
 
@@ -441,11 +441,11 @@ Documentation copyright 2002 Martin Heni <email>martin@heni-online.de</email>
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &kwin4;, you need &kde; 2.0
+In order to successfully compile &k4wins;, you need &kde; 2.0
 </para>
 
 <para>
-All required libraries as well as &kwin4; itself can be found on <ulink
+All required libraries as well as &k4wins; itself can be found on <ulink
 url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 </sect1>
 
