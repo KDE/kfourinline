@@ -80,6 +80,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
 
 
   mAmzug.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mAmzug"));
+  mAmzug.setPolicy(KGamePropertyBase::PolicyLocal);  
   mCurrentMove.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mCurrentMove"));
   mMaxMove.registerData(4000,dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mMaxMove"));
   mFieldFilled.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mFieldFilled"));
@@ -362,12 +363,12 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
 {
   kdDebug() << k_funcinfo << "nextPlayer last="<<last->id() << " admin="<<isAdmin()<<endl;
-  // Should be enough if the admin sets the move
+  // Should be enough if the admin sets the turn
+  if (last->userId()==Gelb) SetCurrentPlayer(Rot);
+  else SetCurrentPlayer(Gelb);
+  kdDebug() <<" Current set to "<<QueryCurrentPlayer()<<endl;
   if (isAdmin())
   {
-    if (last->userId()==Gelb) SetCurrentPlayer(Rot);
-    else SetCurrentPlayer(Gelb);
-    kdDebug() <<" Current set to "<<QueryCurrentPlayer()<<endl;
     getPlayer(QueryCurrentPlayer())->setTurn(true,true);
   }
   emit signalMoveDone(0,0);
