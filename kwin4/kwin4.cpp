@@ -299,6 +299,8 @@ void Kwin4App::checkMenus(int menu)
       enableAction("startplayer");
     }
 
+    kdDebug() << "CHECK MENU ************ Gelb" << doc->playedBy(Gelb) << "  rot = "<< doc->playedBy(Rot)<< endl;
+
     if (doc->playedBy(Gelb)==KGameIO::MouseIO)
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(0);
     else if (doc->playedBy(Gelb)==KGameIO::ProcessIO)
@@ -1088,6 +1090,7 @@ void Kwin4App::slotDisconnect()
 void Kwin4App::slotInitNetwork()
 {
   kdDebug() << "Kwin4App::slotInitNetwork" << endl;
+  if (doc->gameStatus()==Kwin4Doc::Intro) doc->setGameStatus(Kwin4Doc::Pause);
 
   QString host = "localhost";
   int port=4242;

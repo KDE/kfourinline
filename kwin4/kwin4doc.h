@@ -200,6 +200,7 @@ class Kwin4Doc : public KGame
   int checkGameOver(KPlayer *);
   void prepareGameMessage(QDataStream &stream, Q_INT32 pl);
   bool playerInput(QDataStream &msg,KPlayer *player);
+  void recalcIO();
 
 	
   public slots:

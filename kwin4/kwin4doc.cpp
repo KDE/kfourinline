@@ -935,11 +935,12 @@ KPlayer *Kwin4Doc::createPlayer(int rtti,int io,bool isvirtual)
 {
   KPlayer *player=new Kwin4Player;
   //player=(KPlayer *)new Kwin4Player;
+  kdDebug() << "Kwin4Doc::slotCreatePlayer should create player " << player 
+            << " with rtti=" <<rtti << " virtual="<<isvirtual << " io="<<io<< endl;
   if (!isvirtual)
   {
     createIO(player,(KGameIO::IOMode)io);
   }
-  kdDebug() << "Kwin4Doc::slotCreatePlayer should create player " << player << " with rtti=" <<rtti << " virtual="<<isvirtual << endl;
   connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
   ((Kwin4Player *)player)->setWidget(pView->statusWidget());
@@ -1028,9 +1029,18 @@ void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
   }
 }
 
+/* Get the io values right after a load game as the io the playedby
+ * is not set there
+ */
+void Kwin4Doc::recalcIO()
+{
+  mPlayedBy[Gelb]=(KGameIO::IOMode)getPlayer(Gelb)->calcIOValue();
+  mPlayedBy[Rot]=(KGameIO::IOMode)getPlayer(Rot)->calcIOValue();
+}
 void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
 {
-  kdDebug() << " Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io) " << endl;
+  if (!player) return;
+  kdDebug() << " Kwin4Doc::createIO(KPlayer *player("<<player->userId()<<"),KGameIO::IOMode "<<io<<") " << endl;
 
 
   if (io&KGameIO::MouseIO)
@@ -1338,6 +1348,7 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
     cnt--;
   }
   Debug();
+  recalcIO();
   kdDebug()  << "loadgame done" << endl;
   return res;
 }
