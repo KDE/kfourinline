@@ -198,6 +198,9 @@ amzug */
   void SetPort(unsigned short port);
   unsigned short QueryPort();
   QString QueryHost();
+  int QueryWinX(int i) {return winx[i];}
+  int QueryWinY(int i) {return winy[i];}
+  FARBE QueryWinC() {return winc;}
 
 	
   public slots:
@@ -271,6 +274,11 @@ amzug */
 
   int *history;
   PLAYER player[NOOFPLAYER+1];
+
+  // Mark the fields of the four winning stones
+  int winx[4],winy[4];
+  FARBE winc;
+  int doBlink;  // shall we blink the winning pieces
 
 
 };

@@ -101,6 +101,7 @@ Kwin4App::~Kwin4App()
 {
    delete mInput;
    delete statusTimer;
+   delete blinkTimer;
 }
 
 /** It is unclear why we need setAccel..changeMenuAccel should do
@@ -341,7 +342,7 @@ void Kwin4App::initStatusBar()
  // statusBar()->setInsertOrder(KStatusBar::RightToLeft);
   statusBar()->insertItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0,true);
   statusBar()->insertItem(i18n("23:45"),ID_STATUS_TIME,0,true);
-  statusBar()->insertItem(i18n(IDS_STATUS_DEFAULT), ID_STATUS_MSG);
+  statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
 
   slotStatusTime();
   slotStatusMover(i18n("(c) Martin Heni   "));
@@ -350,6 +351,10 @@ void Kwin4App::initStatusBar()
   statusTimer=new QTimer(this);
   connect(statusTimer,SIGNAL(timeout()),this,SLOT(slotStatusTimer()));
   statusTimer->start(10000,FALSE);
+
+  blinkTimer=new QTimer(this);
+  connect(blinkTimer,SIGNAL(timeout()),this,SLOT(slotBlinkTimer()));
+
 
 
 }
@@ -399,7 +404,7 @@ void Kwin4App::openDocumentFile(const char* _cmdl)
   slotStatusMsg(i18n("Opening file..."));
 
   doc->openDocument(QCString(_cmdl));
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 
@@ -548,7 +553,7 @@ void Kwin4App::slotFileNew()
 
   NewGame(1);
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 bool Kwin4App::MakeInputDevice(int i)
@@ -654,6 +659,8 @@ void Kwin4App::NewGame(int mode)
 {
   bool res1,res2;
   // FARBE farbe;
+  //
+  blinkTimer->stop();
 
   /** Fix two remotes */
   if (doc->IsRemote(Gelb) && doc->IsRemote(Rot))
@@ -771,7 +778,7 @@ void Kwin4App::slotFileClose()
   delete msg;
 
 
-//  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+//  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotFileQuit()
@@ -791,7 +798,7 @@ void Kwin4App::slotFileQuit()
 	break;
     }
   }	
-//  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+//  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotFileHint()
@@ -824,7 +831,7 @@ void Kwin4App::slotFileHint()
     mInput->SetInputDevice(2,KG_INPUTTYPE_PROCESS,msg);
     delete msg;
 	
-//  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+//  slotStatusMsg(i18n("Ready"));
 }
 /** show statistics */
 void Kwin4App::slotFileStatistics()
@@ -852,7 +859,7 @@ void Kwin4App::slotFileStatistics()
     doc->slotUpdateAllViews(0);
   }
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 /** send message */
@@ -878,7 +885,7 @@ void Kwin4App::slotFileMessage()
     delete msg;
   }
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotEditUndo()
@@ -902,7 +909,7 @@ void Kwin4App::slotEditUndo()
   doc->slotUpdateAllViews(0);
   slotStatusNames();
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotEditRedo()
@@ -922,7 +929,7 @@ void Kwin4App::slotEditRedo()
   doc->slotUpdateAllViews(0);
   slotStatusNames();
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 
@@ -945,7 +952,7 @@ void Kwin4App::slotViewToolBar()
     toolBar()->show();
   }		
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 #endif
 }
 
@@ -965,7 +972,7 @@ void Kwin4App::slotViewStatusBar()
     statusBar()->show();
   }
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 
@@ -983,6 +990,32 @@ void Kwin4App::slotStatusMover(const QString &text)
   // change status mover permanently
   statusBar()->clear();
   statusBar()->changeItem(text, ID_STATUS_MOVER);
+}
+
+void Kwin4App::slotBlinkTimer()
+{
+  int x,y;
+  FARBE c;
+  if (doc->QueryWinC()==Rot || doc->QueryWinC()==Gelb)
+  {
+    for (int i=0;i<4;i++)
+    {
+      x=doc->QueryWinX(i);
+      y=doc->QueryWinY(i);
+      if (x<0 || y<0) continue; // bug catch
+      if (doc->QueryColour(x,y)==doc->QueryWinC())
+      {
+        if (doc->QueryWinC()==Rot) c=RotWin;
+        else c=GelbWin;
+        doc->SetColour(x,y,c);
+      }
+      else
+      {
+        doc->SetColour(x,y,doc->QueryWinC());
+      }
+      doc->UpdateViews(UPDATE_XY,doc->QueryWinX(i),doc->QueryWinY(i)+1);
+    }
+  }
 }
 
 void Kwin4App::slotStatusTime()
@@ -1019,7 +1052,7 @@ void Kwin4App::slotStartcolourRed()
     slotStartcolorToShow();
     doc->UpdateViews(UPDATE_STATUS|UPDATE_TABLE,0,0);
   }
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 /** change startcolour */
@@ -1033,7 +1066,7 @@ void Kwin4App::slotStartcolourYellow()
     slotStartcolorToShow();
     doc->UpdateViews(UPDATE_STATUS|UPDATE_TABLE,0,0);
   }
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 /** change yellow mode */
@@ -1049,7 +1082,7 @@ void Kwin4App::slotYellowPlayer()
     slotYellowToShow();
     doc->UpdateViews(UPDATE_STATUS,0,0);
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 void Kwin4App::slotYellowComputer()
 {
@@ -1062,7 +1095,7 @@ void Kwin4App::slotYellowComputer()
     slotYellowToShow();
     doc->UpdateViews(UPDATE_STATUS,0,0);
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 void Kwin4App::slotYellowRemote()
 {
@@ -1079,7 +1112,7 @@ void Kwin4App::slotYellowRemote()
   slotYellowToShow();
   doc->UpdateViews(UPDATE_STATUS,0,0);
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 /** change red mode */
 void Kwin4App::slotRedPlayer()
@@ -1094,7 +1127,7 @@ void Kwin4App::slotRedPlayer()
     slotRedToShow();
     doc->UpdateViews(UPDATE_STATUS,0,0);
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotRedComputer()
@@ -1111,7 +1144,7 @@ void Kwin4App::slotRedComputer()
     doc->UpdateViews(UPDATE_STATUS,0,0);
   }
 	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 void Kwin4App::slotRedRemote()
 {
@@ -1127,7 +1160,7 @@ void Kwin4App::slotRedRemote()
   slotRedToShow();
   doc->UpdateViews(UPDATE_STATUS,0,0);
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotLevel(int i)
@@ -1138,7 +1171,7 @@ void Kwin4App::slotLevel(int i)
   slotLevelToShow();
   doc->UpdateViews(UPDATE_STATUS,0,0);
   	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotOptionsNames()
@@ -1157,7 +1190,7 @@ void Kwin4App::slotOptionsNames()
   }
 
   	
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::slotOptionsNetworkserver()
@@ -1174,7 +1207,7 @@ void Kwin4App::slotOptionsNetworkserver()
   slotOptionsToShow();
 
 
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 int Kwin4App::slotOptionsNetwork()
@@ -1190,7 +1223,7 @@ int Kwin4App::slotOptionsNetwork()
   doc->SetPort(dlg->QueryPort());
   doc->SetHost(dlg->QueryHost());
   delete dlg;
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
   return 1;
 }
 
@@ -1689,7 +1722,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
   }
   if (msg->HasKey("Move"))
   {
-     slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+     slotStatusMsg(i18n("Ready"));
      if (msg->GetData("Move",move))
      {
        Move(move,id);
@@ -1701,7 +1734,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
   }
   if (msg->HasKey("Hint"))
   {
-     slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+     slotStatusMsg(i18n("Ready"));
      if (msg->GetData("Hint",move))
      {
        short oldm;
@@ -1731,6 +1764,8 @@ void Kwin4App::EndGame(TABLE mode){
 //  mInput->RemoveInput(1);
 //  mInput->RemoveInput(0);
   doc->EndGame(mode);
+
+  blinkTimer->start(500,FALSE);
 
   doc->SwitchStartPlayer();
   slotStatusNames();
@@ -1767,7 +1802,7 @@ bool Kwin4App::Move(int x,int id){
      }
     return false;
   }
-//  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+//  slotStatusMsg(i18n("Ready"));
 
   hintx=doc->QueryLastHint();
   lastx=doc->QueryLastcolumn();
@@ -1821,22 +1856,20 @@ bool Kwin4App::NextMove( MOVESTATUS res)
   else if (res==GYellowWin)
   {
     EndGame(TWin);
-    msg=doc->QueryName(Gelb)+i18n(" won the game. Please restart next round.");
+    msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Gelb));
     slotStatusMsg(msg);
 
-    msg=doc->QueryName(Gelb)+i18n(" (Yellow) has won the game!");
-    KMessageBox::information(this,
-        msg,
-        TITLE);
+    msg=i18n("%1 (Yellow) has won the game!").arg(doc->QueryName(Gelb));
+    KMessageBox::information(this, msg, TITLE);
     return true;
   }
   else if (res==GRedWin)
   {
     EndGame(TLost);
-    msg=doc->QueryName(Rot)+i18n(" won the game. Please restart next round.");
+    msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Rot));
     slotStatusMsg(msg);
 
-    msg=doc->QueryName(Rot)+i18n(" (Red) has won the game!");
+    msg=i18n("%1 (Red) has won the game!").arg(doc->QueryName(Rot));
     KMessageBox::information(this,msg, TITLE);
     return true;
   }
@@ -2120,7 +2153,7 @@ void Kwin4App::slotHelpAbout()
 
   kwin4AboutDlg *dlg=new kwin4AboutDlg(&doc->m_PixWin4About,this);
   dlg->exec();
-  slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
+  slotStatusMsg(i18n("Ready"));
 }
 
 void Kwin4App::SetGrafix(QString s)

@@ -17,13 +17,11 @@ void  kEndDlg::initDialog(){
   QLabel_1= new QLabel(this,"NoName");
   QLabel_1->setGeometry(340,10,114,64);
   QLabel_1->setMinimumSize(0,0);
-  //QLabel_1->setBackgroundPixmap(*mPixmap);
   QLabel_1->setPixmap(*mPixmap);
 
   QLabel_2= new QLabel(this,"NoName");
   QLabel_2->setGeometry(10,10,114,64);
   QLabel_2->setMinimumSize(0,0);
-  // QLabel_2->setBackgroundPixmap(*mPixmap);
   QLabel_2->setPixmap(*mPixmap);
 
   QPushButton_1= new QPushButton(this,"NoName");

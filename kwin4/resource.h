@@ -103,6 +103,5 @@
 #define ID_STATUS_MOVER              1002
 #define ID_STATUS_TIME               1001
 
-#define IDS_STATUS_DEFAULT          "Ready."
 
 #endif // RESOURCE_H

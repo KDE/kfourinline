@@ -187,6 +187,12 @@ void Kwin4View::drawField(QPainter *p){
         case Tip:
            p->drawPixmap(point,getDocument()->m_PixFieldHint);
         break;
+        // Could be improved by another piece for the blinking
+        // e.g. a flashing stone
+        case GelbWin:
+        case RotWin:
+           p->drawPixmap(point,getDocument()->m_PixFieldEmpty);
+        break;
         default:
            p->drawPixmap(point,getDocument()->m_PixFieldEmpty);
         break;
@@ -334,11 +340,11 @@ void Kwin4View::drawTable(QPainter *p){
 
   // draw Headertext
   QString ld;
-  ld=i18n("W"); // abbrd for "Won"
+  ld=i18n("W"); // abbr for "Won"
 	p->drawText(p1.x()+geom.status_cols[1]-4,p1.y()+geom.status_rows[0],ld);
   ld=i18n("D"); // abbr dor "drawn"
 	p->drawText(p1.x()+geom.status_cols[2]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("L"); // abbrd for "lost"
+  ld=i18n("L"); // abbr for "lost"
 	p->drawText(p1.x()+geom.status_cols[3]-4,p1.y()+geom.status_rows[0],ld);
   ld=i18n("No"); // abbr for "number"
 	p->drawText(p1.x()+geom.status_cols[4]-4,p1.y()+geom.status_rows[0],ld);

@@ -140,17 +140,6 @@ void Kwin4Doc::slotUpdateAllViews(Kwin4View *sender)
 
 bool Kwin4Doc::saveModified()
 {
-/*
-  if(!intro)
-  {
-    Kwin4App *win=(Kwin4App *) parent();
-    int want_save = KMessageBox::warningYesNo(win,
-                                i18n("Do you really want to quit?"),
-                                TITLE);
-
-    if (want_save==KMessageBox::No) return false;
-  }
-  */
   return true;
 }
 
@@ -164,7 +153,6 @@ bool Kwin4Doc::newDocument(KConfig *config,QString path)
   int res;
   modified=false;
   absFilePath=QDir::homeDirPath();
-//  title=i18n("Untitled");
   if (global_debug>1) kdDebug() << "path=" << path << endl;
   res=LoadBitmaps(path);
   if (res==0) return false;
@@ -176,30 +164,18 @@ bool Kwin4Doc::openDocument(const QString &filename, const char *format /*=0*/)
   QFileInfo fileInfo(filename);
   title=fileInfo.fileName();
   absFilePath=fileInfo.absFilePath();	
-  /////////////////////////////////////////////////
-  // TODO: Add your document opening code here
-  /////////////////////////////////////////////////
-	
   modified=false;
   return true;
 }
 
 bool Kwin4Doc::saveDocument(const QString &filename, const char *format /*=0*/)
 {
-  /////////////////////////////////////////////////
-  // TODO: Add your document saving code here
-  /////////////////////////////////////////////////
-
   modified=false;
   return true;
 }
 
 void Kwin4Doc::deleteContents()
 {
-  /////////////////////////////////////////////////
-  // TODO: Add implementation to delete the document contents
-  /////////////////////////////////////////////////
-
 }
 
 
@@ -245,6 +221,12 @@ void Kwin4Doc::ResetGame(){
 void Kwin4Doc::StartGame(){
   running=1;
   intro=0;
+  for (int i=0;i<4;i++)
+  {
+    winx[i]=-1;
+    winy[i]=-1;
+    winc=Niemand;
+  }
 }
 
 /** End a game */
@@ -516,7 +498,19 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
        if (c==col) flag++;
     }
   }
-  if (flag>=4) return 1;
+  if (flag>=4 && doBlink)
+  {
+    // Store win fields
+    for (i=0;i<4;i++)
+    {
+      y=field_filled[x]-1-i;
+      winx[i]=x;
+      winy[i]=y;
+      winc=QueryColour(x,y);
+    }
+    return 1;
+  }
+  else if (flag>=4) return 1;
 
   // Check dx
   y=field_filled[x]-1;
@@ -531,7 +525,39 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
        else flag=0;
      }
   }
-  if (flag>=4) return 1;
+  if (flag>=4 && doBlink)
+  {
+    // Store win fields
+    y=field_filled[x]-1;
+    winc=QueryColour(x,y);
+    int cnt=0;
+    for (i=0;i<4;i++)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    for (i=-1;i>-4 && cnt<4;i--)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    return 1;
+  }
+  else if (flag>=4) return 1;
 
 
   // Check dy+
@@ -550,7 +576,41 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       }
     }
   }
-  if (flag>=4) return 1;
+  if (flag>=4 && doBlink) 
+  {
+    // Store win fields
+    y=field_filled[x]-1;
+    winc=QueryColour(x,y);
+    int cnt=0;
+    for (i=0;i<4;i++)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        y=field_filled[x]-1-i;
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    for (i=-1;i>-4 && cnt<4;i--)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        y=field_filled[x]-1-i;
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    return 1;
+  }
+  else if (flag>=4) return 1;
 
 
   // Check dy-
@@ -569,7 +629,44 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       }
     }
   }
-  if (flag>=4) return 1;
+  if (flag>=4 && doBlink) 
+  {
+    printf("DX +\n");
+    // Store win fields
+    y=field_filled[x]-1;
+    winc=QueryColour(x,y);
+    int cnt=0;
+    for (i=0;i<4;i++)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        y=field_filled[x]-1+i;
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    printf("Found + cnt=%d\n",cnt);
+    for (i=-1;i>-4 && cnt<4;i--)
+    {
+      xx=x+i;
+      if (xx>=0 && xx<geom.field_mx)
+      {
+        y=field_filled[x]-1+i;
+        if (QueryColour(xx,y)!=winc) break;
+        winx[cnt]=xx;
+        winy[cnt]=y;
+        cnt++;
+      }
+      else break;
+    }
+    printf("all cnt=%d\n",cnt);
+    return 1;
+  }
+  else if (flag>=4) return 1;
 
   if (currentmove>=42) return -1;
 
@@ -666,6 +763,7 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   SetStat(Rot,config->readNumEntry("Stat2L",0),TLost);
   SetStat(Rot,config->readNumEntry("Stat2B",0),TBrk);
   SetServer(config->readNumEntry("IsServer",1));
+  doBlink=config->readNumEntry("Blink",1);
 }
 
 /** write config file */
@@ -700,13 +798,16 @@ void Kwin4Doc::WriteConfig(KConfig *config)
   config->writeEntry("Stat2L",QueryStat(Rot,TLost));
   config->writeEntry("Stat2B",QueryStat(Rot,TBrk));
   config->writeEntry("IsServer",QueryServer());
+  config->writeEntry("Blink",doBlink);
 
   config->sync();
 }
 
 /** Sends and update to all views.
 Depending on which only party of
-the view, like the table are updated */
+the view, like the table are updated
+ Use 0,1 for stone in first row first coloumn 
+ */
 void Kwin4Doc::UpdateViews(int which,int x,int y){
   Kwin4View *w;
   if(pViewList)

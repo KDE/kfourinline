@@ -14,22 +14,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-/***************************************************************************
-                          FILENAME|  -  description
-                             -------------------
-    begin                : Tue Apr 4 2000
-    copyright            : (C) |1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -57,7 +41,6 @@ KRemoteConnect::~KRemoteConnect()
 {
   Exit();
   delete buffer;
-//  printf("DESTGRUCTING KRemoteConenct\n");
 }
 
 KR_STATUS KRemoteConnect::QueryStatus()
@@ -86,10 +69,6 @@ bool tryserver;
       msg->Remove(QCString("IP"));
     }
   }
-  /*
-  printf("Connecting to %s %u (remain=%d)\n",
-      (const char *)IP,port,msg->QueryNumberOfKeys());
-  */
   
   // First try to connect to given host:socket
   // if no IP given only offer server
@@ -109,10 +88,6 @@ bool tryserver;
       /*
       connect(kSocket,SIGNAL(writeEvent(KSocket *)),
             this,SLOT(socketWrite(KSocket *)));
-      */
-      /*
-      printf("Socket(%d) %p connection built to a server\n",
-              kSocket->socket(),kSocket);
       */
       socketStatus=KR_CLIENT;
 

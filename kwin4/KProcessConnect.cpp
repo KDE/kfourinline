@@ -14,22 +14,6 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-/***************************************************************************
-                          FILENAME|  -  description
-                             -------------------
-    begin                : Tue Apr 4 2000
-    copyright            : (C) |1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
 #include <stdio.h>
 #include <kdebug.h>
 #include "KProcessConnect.h"
@@ -47,7 +31,6 @@ KProcessConnect::~KProcessConnect()
 {
   Exit();
   if (process) delete process;
-//  printf("DESTRUCTRING KPROCESSCONNECT\n");
 }
 
 bool KProcessConnect::Init(int id,KEMessage *msg)
@@ -117,7 +100,6 @@ void KProcessConnect::slotReceivedStdout(KProcess *proc, char *buffer, int bufle
   // Append old unresolved input
   s=inputbuffer+s;
   pos=s.findRev(KEMESSAGE_CR);
-  // printf("String '%s' pos=%d len=%d\n",(const char *)s,pos,s.length());
   if (pos<0)
   {
     inputbuffer=s;
@@ -131,7 +113,6 @@ void KProcessConnect::slotReceivedStdout(KProcess *proc, char *buffer, int bufle
   {
     inputbuffer=s.right(s.length()-pos-KEMESSAGE_CR.length());
     s=s.left(pos+KEMESSAGE_CR.length());
-    // printf("s='%s' in='%s'\n",(const char *)s,(const char *)inputbuffer);
     Receive(s);
   }
 }
@@ -165,7 +146,6 @@ bool KProcessConnect::Next()
   bool result;
   if (!running) return false;
   // create and send message
-  // printf("+- KProcessConnect::ProcessNext\n");
   KEMessage *msg=new KEMessage;
   // User fills message
   emit signalPrepareMove(msg,KG_INPUTTYPE_PROCESS); 

@@ -21,7 +21,6 @@
 
 void KEMessage::AddEntry(QString key,KMessageEntry *entry)
 {
-  // printf("  AddingEntry: %s with data field %p\n",(char *)key,entry->QueryData());
   if (!entry) return ;
   dict.insert(key,entry);
   keys.append(key.latin1());
@@ -29,7 +28,6 @@ void KEMessage::AddEntry(QString key,KMessageEntry *entry)
 
 void KEMessage::AddDataType(QString key,int size,char *data,KGM_TYPE type)
 {
-//   printf("AddDataType for %s size=%d\n",(const char *)key,size);
   if (size<=0) return ;
   KMessageEntry *entry=new KMessageEntry;
   entry->SetType(type);
@@ -81,7 +79,6 @@ bool KEMessage::GetData(QString key,short &s)
   entry=dict.find(key);
   if (!entry) return false;
   if (entry->QueryType()!=KGM_TYPE_SHORT) return false;
-  // printf("GetShortData: %p for %s\n",entry->QueryData(),(char *)key);
   result=(short *)entry->QueryData();
   s=*result;
   return true;
@@ -106,7 +103,6 @@ bool KEMessage::GetData(QString key,float &f)
   entry=dict.find(key);
   if (!entry) return false;
   if (entry->QueryType()!=KGM_TYPE_FLOAT) return false;
-  // printf("GetFloatData: %p for %s\n",entry->QueryData(),(char *)key);
   result=(float *)entry->QueryData();
   f=*result;
   return true;
@@ -294,16 +290,13 @@ QStrList *KEMessage::QueryKeys()
 
 KEMessage::~KEMessage()
 {
-  // printf("Deleteing KEMessage %p\n",this);
 }
 KEMessage::KEMessage()
 {
-  // printf("KEMessage construct %p\n",this);
   dict.setAutoDelete(true);
 }
 KEMessage::KEMessage(KEMessage &msg)
 {
-  // printf("KEMessage copy constructor from %p to %p\n",&msg,this);
   *this=msg;
 }
 KEMessage &KEMessage::operator=(KEMessage &msg)
@@ -312,7 +305,6 @@ KEMessage &KEMessage::operator=(KEMessage &msg)
   KMessageEntry *entry;
   KMessageEntry *newentry;
   char *it;
-  // printf("Assigning = KEMessage from %p to %p\n",&msg,this);
   for (it=msg.keys.first();it!=0;it=msg.keys.next())
   {
     entry=msg.dict.find(QCString(it));

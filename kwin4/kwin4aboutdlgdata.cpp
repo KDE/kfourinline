@@ -37,7 +37,6 @@ void  kwin4AboutDlg::initDialog(){
   QLabel_2= new QLabel(QGroupBox_1,"NoName");
   QLabel_2->setGeometry(10,10,114,64);
   QLabel_2->setMinimumSize(0,0);
-  // QLabel_2->setBackgroundPixmap(*mPixmap);
   QLabel_2->setPixmap(*mPixmap);
   QLabel_2->setBackgroundColor(Qt::white);
 

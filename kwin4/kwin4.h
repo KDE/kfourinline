@@ -46,7 +46,7 @@ extern int global_debug;
 #define  DLGBACK QColor(128,128,255)
 #define TITLE (i18n("Four wins"))
 
-typedef enum  {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4} FARBE;
+typedef enum  {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4,GelbWin=9,RotWin=10} FARBE;
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
 typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
@@ -301,10 +301,12 @@ class Kwin4App : public KMainWindow
 protected slots: // Protected slots
   /** Triggers the status timer */
   void slotStatusTimer(void);
+  void slotBlinkTimer(void);
 protected: // Protected attributes
   /**  */
   /** Counts the time in the status bar */
   QTimer * statusTimer;
+  QTimer * blinkTimer;
 };
  
 #endif // KWIN4_H
