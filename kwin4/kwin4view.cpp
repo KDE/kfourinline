@@ -241,11 +241,13 @@ void Kwin4View::EndGame()
   sprite=(KSprite *)(mCache->getItem("gameover",1));
   KConfig *config=mCache->config();
   int dest=config->readNumEntry("destY",150);
+  int src=config->readNumEntry("y",0);
   //kdDebug() << "MOVING gameover to " << dest << endl;
 
   if (sprite)
   {
     sprite->show();
+    sprite->setY(src);
     sprite->moveTo(sprite->x(),dest);
   }
 }
