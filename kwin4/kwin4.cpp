@@ -583,7 +583,7 @@ bool Kwin4App::MakeInputDevice(int i)
           (mInput->QueryType(i)!=KG_INPUTTYPE_REMOTE || mInput->QueryStatus(i)<=0 ) )
     {
       if (global_debug>5) kdDebug() << "Make Remote " << i << endl;
-      slotOptionsNetwork();
+      if (!slotOptionsNetwork()) return false;
       port=doc->QueryPort();
       host=doc->QueryHost();
       msg=new KEMessage;
@@ -1250,9 +1250,12 @@ int Kwin4App::slotOptionsNetwork()
   res=dlg->exec();
   doc->SetPort(dlg->QueryPort());
   doc->SetHost(dlg->QueryHost());
+  if (global_debug>3)
+    kdDebug() << "Network Dlg " << dlg->QueryHost() << ":" << dlg->QueryPort() << endl;
   delete dlg;
   slotStatusMsg(i18n("Ready"));
-  return 1;
+  if (res==QDialog::Accepted) return 1;
+  else return 0;
 }
 
 void Kwin4App::commandCallback(int id_)
