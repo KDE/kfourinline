@@ -30,6 +30,11 @@ class QCanvasItem;
 
 #define NOOFPLAYER 2
 
+#define FIELD_SIZE_X 7
+#define FIELD_SIZE_Y 6
+#define FIELD_SPACING 40
+
+
 /**
  * The board "engine"
  */

@@ -1,9 +1,9 @@
 
 bin_PROGRAMS = kwin4 kwin4proc
-kwin4_SOURCES = main.cpp kwin4.cpp geom.cpp kwin4view.cpp kwin4doc.cpp \
+kwin4_SOURCES = main.cpp kwin4.cpp kwin4view.cpp kwin4doc.cpp \
                 kwin4player.cpp kspritecache.cpp \
-	            	scorewidget.cpp statuswidget.cpp \
-	             	prefs.kcfgc settings.ui statistics.ui
+	            	scorewidget.cpp prefs.kcfgc settings.ui statistics.ui statuswidget.ui
+
 kwin4_LDADD   = $(LIB_KFILE) $(LIB_KDEGAMES)
 
 kwin4proc_SOURCES = kwin4proc.cpp

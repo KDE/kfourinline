@@ -55,7 +55,6 @@
 #include "prefs.h"
 #include "settings.h"
 #include "statistics.h"
-#include "geom.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG                1003
@@ -122,7 +121,7 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
   setCentralWidget(view);
   doc->initPlayers();
 
-  setMinimumSize(580,400);      // TODO
+  setMinimumSize(640,400);      // TODO
   setMaximumSize(800,600);
   resize( 640, 480 );
 

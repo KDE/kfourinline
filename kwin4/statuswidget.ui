@@ -1,0 +1,236 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>StatusWidget</class>
+<widget class="QFrame">
+    <property name="name">
+        <cstring>StatusWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>299</width>
+            <height>120</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>StatusWidget</string>
+    </property>
+    <property name="frameShape">
+        <enum>Box</enum>
+    </property>
+    <property name="frameShadow">
+        <enum>Raised</enum>
+    </property>
+    <property name="margin">
+        <number>2</number>
+    </property>
+    <property name="midLineWidth">
+        <number>4</number>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <spacer row="4" column="5">
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>41</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="0" column="0">
+            <property name="name">
+                <cstring>spacer2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>90</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLabel" row="0" column="1">
+            <property name="name">
+                <cstring>wins</cstring>
+            </property>
+            <property name="text">
+                <string>W</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="2">
+            <property name="name">
+                <cstring>draws</cstring>
+            </property>
+            <property name="text">
+                <string>D</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="3">
+            <property name="name">
+                <cstring>loses</cstring>
+            </property>
+            <property name="text">
+                <string>L</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="4">
+            <property name="name">
+                <cstring>num</cstring>
+            </property>
+            <property name="text">
+                <string>No</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="5">
+            <property name="name">
+                <cstring>bk</cstring>
+            </property>
+            <property name="text">
+                <string>Bk</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="2" column="0">
+            <property name="name">
+                <cstring>p1_name</cstring>
+            </property>
+            <property name="text">
+                <string>foo</string>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="2" column="1">
+            <property name="name">
+                <cstring>p1_w</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="2" column="2">
+            <property name="name">
+                <cstring>p1_d</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="2" column="3">
+            <property name="name">
+                <cstring>p1_l</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="2" column="4">
+            <property name="name">
+                <cstring>p1_n</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="2" column="5">
+            <property name="name">
+                <cstring>p1_b</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="2">
+            <property name="name">
+                <cstring>p2_d</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="5">
+            <property name="name">
+                <cstring>p2_b</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="3">
+            <property name="name">
+                <cstring>p2_l</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="4">
+            <property name="name">
+                <cstring>p2_n</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="1">
+            <property name="name">
+                <cstring>p2_w</cstring>
+            </property>
+            <property name="numDigits">
+                <number>2</number>
+            </property>
+        </widget>
+        <widget class="QLabel" row="3" column="0">
+            <property name="name">
+                <cstring>p2_name</cstring>
+            </property>
+            <property name="text">
+                <string>bar</string>
+            </property>
+        </widget>
+        <widget class="Line" row="1" column="0" rowspan="1" colspan="6">
+            <property name="name">
+                <cstring>line1</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

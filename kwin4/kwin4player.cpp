@@ -43,32 +43,59 @@ Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
 }
 
+#include <qlabel.h>
+#include <qlcdnumber.h>
+
 void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
 {
   if (!sWidget) return ;
   if (!isActive()) return ;
   if (prop->id()==KGamePropertyBase::IdName)
   {
-    sWidget->setPlayer(name(),userId());
+    if(userId())
+      sWidget->p1_name->setText(name());
+    else
+      sWidget->p2_name->setText(name());
   }
   else if (prop->id()==mWin.id())
   {
-    sWidget->setWin(mWin,userId());
-    sWidget->setSum(mWin+mRemis+mLost,userId());
+    if(userId()){
+      sWidget->p1_w->display(mWin);
+      sWidget->p1_n->display(mWin+mRemis+mLost);
+    }
+    else{
+      sWidget->p2_w->display(mWin);
+      sWidget->p2_n->display(mWin+mRemis+mLost);
+    }  
   }
   else if (prop->id()==mRemis.id())
   {
-    sWidget->setRemis(mRemis,userId());
-    sWidget->setSum(mWin+mRemis+mLost,userId());
+    if(userId()){
+      sWidget->p1_d->display(mRemis);
+      sWidget->p1_n->display(mWin+mRemis+mLost);
+    }
+    else{
+      sWidget->p2_d->display(mRemis);
+      sWidget->p2_n->display(mWin+mRemis+mLost);
+    }  
   }
   else if (prop->id()==mLost.id())
   {
-    sWidget->setLost(mLost,userId());
-    sWidget->setSum(mWin+mRemis+mLost,userId());
+    if(userId()){
+      sWidget->p1_l->display(mLost);
+      sWidget->p1_n->display(mWin+mRemis+mLost);
+    }
+    else{
+      sWidget->p2_l->display(mLost);
+      sWidget->p2_n->display(mWin+mRemis+mLost);
+    }
   }
   else if (prop->id()==mBrk.id())
   {
-    sWidget->setBrk(mBrk,userId());
+    if(userId())
+      sWidget->p1_b->display(mBrk);
+    else
+      sWidget->p2_b->display(mBrk);
   }
 }
 

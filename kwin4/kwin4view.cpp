@@ -26,7 +26,6 @@
 #include <kstandarddirs.h>
 
 #include "kwin4doc.h"
-#include "geom.h"
 #include "scorewidget.h"
 #include "statuswidget.h"
 #include "kspritecache.h"
@@ -100,6 +99,13 @@ private:
 
 };
 
+
+#include <qlabel.h>
+#include <qlcdnumber.h>
+#define COL_STATUSLIGHT  QColor(210,210,255)
+#define COL_STATUSFIELD  QColor(130,130,255)
+#define COL_STATUSDARK   QColor(0,0,65)
+
 Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
         : QCanvasView(0,parent, name), doc(theDoc)
 {
@@ -149,6 +155,32 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   pnt=config->readPointEntry("statuswidget");
   mStatusWidget=new StatusWidget(this);
   mStatusWidget->move(pnt);
+  QPalette pal;
+  pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);
+  pal.setColor(QColorGroup::Mid, COL_STATUSFIELD);
+  pal.setColor(QColorGroup::Dark, COL_STATUSDARK);
+  mStatusWidget->setPalette(pal); 
+  mStatusWidget->setBackgroundColor(COL_STATUSFIELD);
+
+  mStatusWidget->wins->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->draws->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->loses->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->num->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->bk->setBackgroundColor(COL_STATUSFIELD);
+
+  mStatusWidget->p1_name->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_w->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_d->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_l->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_n->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_b->setBackgroundColor(COL_STATUSFIELD);
+
+  mStatusWidget->p2_name->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_w->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_d->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_l->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_n->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_b->setBackgroundColor(COL_STATUSFIELD);
 
   mScoreWidget->hide();
   mStatusWidget->hide();
@@ -659,14 +691,14 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   QPoint point;
   int x,y;
 
-  point=mouse->pos()-geom.field_origin-geom.field_offset;
+  point=mouse->pos() - QPoint(15,40) - QPoint(20,20);
   if (point.x()<0) return ;
 
-  x=point.x()/geom.field_dx;
-  y=point.y()/geom.field_dx;
+  x=point.x()/FIELD_SPACING;
+  y=point.y()/FIELD_SPACING;
 
-  if (y>=geom.field_my) return ;
-  if (x<0 || x>=geom.field_mx) return;
+  if (y>=FIELD_SIZE_Y) return ;
+  if (x<0 || x>=FIELD_SIZE_X) return;
 
   // Create a move
   Q_INT32 move,pl;

@@ -32,7 +32,6 @@
 // application specific includes
 #include "kspritecache.h"
 #include "kwin4view.h"
-#include "geom.h"
 #include "scorewidget.h"
 #include "prefs.h"
 #include "statuswidget.h"
@@ -144,20 +143,20 @@ void Kwin4Doc::setView(Kwin4View *view)
  * Returns colour
  */
 FARBE Kwin4Doc::QueryColour(int x,int y){
-  return (FARBE)mField.at(x+y*geom.field_mx);
+  return (FARBE)mField.at(x+y*FIELD_SIZE_X);
 }
 
 /**
  * Set the colour
  */
 void Kwin4Doc::SetColour(int x,int y,FARBE c){
-  if (x<0 || x>=geom.field_mx || y<0 || y>=geom.field_my)
+  if (x<0 || x>=FIELD_SIZE_X || y<0 || y>=FIELD_SIZE_Y)
   {
     kdDebug(12010) << "ERROR: SetColour auf falsche Poition " << x << " " << y << endl;
     return ;
   }
-  //kdDebug(12010) << "SetColor::mField["<<x+y*geom.field_mx<<"="<<c<<endl;
-  mField.setAt(x+y*geom.field_mx,c);
+  //kdDebug(12010) << "SetColor::mField["<<x+y*FIELD_SIZE_X<<"="<<c<<endl;
+  mField.setAt(x+y*FIELD_SIZE_X,c);
 }
 
 /**
@@ -165,9 +164,9 @@ void Kwin4Doc::SetColour(int x,int y,FARBE c){
  */
 void Kwin4Doc::ResetGame(bool initview){
   // Reset field
-  for (int x=0;x<geom.field_mx;x++)
+  for (int x=0;x<FIELD_SIZE_X;x++)
   {
-    for (int y=geom.field_my-1;y>=0;y--)
+    for (int y=FIELD_SIZE_Y-1;y>=0;y--)
       SetColour(x,y,Niemand);
   }
   mFieldFilled.fill(0);
@@ -277,7 +276,7 @@ KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool /*exclusive*/)
  * mode=0 normal move, =1: redo move
  */
 MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
-  if (x<0 || x>=geom.field_mx)
+  if (x<0 || x>=FIELD_SIZE_X)
   {
     kdDebug(12010) << "ERROR: MakeMove auf falsche Position " << x << endl;
     return GNotAllowed;
@@ -285,7 +284,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 
   int y=mFieldFilled.at(x);
 
-  if (y>=geom.field_my)
+  if (y>=FIELD_SIZE_Y)
   {
     return GIllMove;  // no space left in column
   }
@@ -483,7 +482,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
   for (i=-3;i<=3 && flag<4;i++)
   {
      xx=x+i;
-     if (xx>=0 && xx<geom.field_mx)
+     if (xx>=0 && xx<FIELD_SIZE_X)
      {
        c=QueryColour(xx,y);
        if (c==col) flag++;
@@ -499,7 +498,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
@@ -510,7 +509,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=-1;i>-4 && cnt<4;i--)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
@@ -528,10 +527,10 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
   for (i=-3;i<=3 && flag<4;i++)
   {
     xx=x+i;
-    if (xx>=0 && xx<geom.field_mx)
+    if (xx>=0 && xx<FIELD_SIZE_X)
     {
       y=mFieldFilled.at(x)-1-i;
-      if (y>=0 && y<geom.field_my)
+      if (y>=0 && y<FIELD_SIZE_Y)
       {
         c=QueryColour(xx,y);
         if (c==col) flag++;
@@ -548,7 +547,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         y=mFieldFilled.at(x)-1-i;
         if (y<0) break;
@@ -561,10 +560,10 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=-1;i>-4 && cnt<4;i--)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         y=mFieldFilled.at(x)-1-i;
-        if (y>=geom.field_my) break;
+        if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
         cnt++;
@@ -581,10 +580,10 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
   for (i=-3;i<=3 && flag<4;i++)
   {
     xx=x+i;
-    if (xx>=0 && xx<geom.field_mx)
+    if (xx>=0 && xx<FIELD_SIZE_X)
     {
       y=mFieldFilled.at(x)-1+i;
-      if (y>=0 && y<geom.field_my)
+      if (y>=0 && y<FIELD_SIZE_Y)
       {
         c=QueryColour(xx,y);
         if (c==col) flag++;
@@ -601,10 +600,10 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         y=mFieldFilled.at(x)-1+i;
-        if (y>=geom.field_my) break;
+        if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
         pView->drawStar(xx,y,star++);
         cnt++;
@@ -615,7 +614,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=-1;i>-4 && cnt<4;i--)
     {
       xx=x+i;
-      if (xx>=0 && xx<geom.field_mx)
+      if (xx>=0 && xx<FIELD_SIZE_X)
       {
         y=mFieldFilled.at(x)-1+i;
         if (y<0) break;
@@ -654,7 +653,7 @@ void Kwin4Doc::SetScore(long i){
  * Height of a column
  */
 int Kwin4Doc::QueryHeight(int x){
-  if (x<0 || x>=geom.field_mx)
+  if (x<0 || x>=FIELD_SIZE_X)
   {
     kdError() << "ERROR: Query Height for wrong x " << x << endl;
     return 0;
@@ -981,9 +980,9 @@ void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
   stream << (Q_INT32)Prefs::level();
 
   int i,j;
-  for (i=0;i<geom.field_my;i++)
+  for (i=0;i<FIELD_SIZE_Y;i++)
   {
-    for (j=0;j<geom.field_mx;j++)
+    for (j=0;j<FIELD_SIZE_X;j++)
     {
        Q_INT8 col;
        col=QueryColour(j,i);
