@@ -1,116 +1,133 @@
-/***************************************************************************
-                          Namedlg  -  Change player names
-                             -------------------
-    begin                : Thu Mar 30 2000
-    copyright            : (C) |1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-/*
-    Namedlg.cpp
-
-    $Id$
-    
-    Name dialog for player names
-    
-    (c) Martin Heni, martin@heni-online.de
-	      June 1999
-    
-    License: GPL
-
-*/
-
-#include <qgroupbox.h>
-#include <qpushbutton.h>
-#include <qlabel.h>
-#include <klocale.h>
+/****************************************************************************
+** Form implementation generated from reading ui file 'namedlg.ui'
+**
+** Created: Thu Nov 23 11:10:17 2000
+**      by:  The User Interface Compiler (uic)
+**
+** WARNING! All changes made in this file will be lost!
+****************************************************************************/
 #include "namedlg.h"
 
+#include <qgroupbox.h>
+#include <qlabel.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
+#include <qlayout.h>
+#include <qvariant.h>
+#include <qtooltip.h>
+#include <qwhatsthis.h>
 
-#define NAME_MAX_LEN 9
+#include <klocale.h>
 
+#define NAME_MAX_LEN 12
 
+/* 
+ *  Constructs a NameDlg which is a child of 'parent', with the 
+ *  name 'name' and widget flags set to 'f' 
+ *
+ *  The dialog will by default be modeless, unless you set 'modal' to
+ *  TRUE to construct a modal dialog.
+ */
+NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* fl */ )
+    : KDialogBase( Plain, i18n("Configure names..."), Ok|Cancel, Ok,
+                   parent, name, true,true )
 
-// Create the dialog for changing the player names
-NameDlg::NameDlg( QWidget *parent, const char *name,const char *sufi )
-    : QDialog( parent, name,TRUE )
 {
-  KApplication *app=KApplication::kApplication();
-  config=app->sessionConfig();
- 
-  setCaption(i18n("Configure names..."));
-  setMinimumSize(200,160);
-  setMaximumSize(200,160);                                                        
-  resize( 200, 160 );
+  QWidget *page = plainPage();
+    if ( !name ) setName( "NameDlg" );
+    resize( 252, 186 ); 
+//    setCaption( i18n( "Configure names..."  ) );
+    vbox = new QVBoxLayout( page,spacingHint() ); 
+    vbox->setSpacing( 6 );
+    vbox->setMargin( 11 );
 
-  QGroupBox* grp;
-  grp = new QGroupBox(i18n("Player names"), this);
-  grp->resize(180,100);
-  grp->move(10,10);
+    hbox = new QHBoxLayout; 
+    hbox->setSpacing( 6 );
+    hbox->setMargin( 0 );
 
-  QLabel *Label;
-  Label=new QLabel(grp,"Name_1");
-  Label->setGeometry(10,20,60,30);
-  Label->setText(i18n("Yellow" ));  
+    player_names = new QGroupBox( page, "player_names" );
+    player_names->setTitle(i18n("Player names") );
+    player_names->setColumnLayout(0, Qt::Vertical );
+    player_names->layout()->setSpacing( 0 );
+    player_names->layout()->setMargin( 0 );
+    vbox_2 = new QVBoxLayout( player_names->layout() );
+    vbox_2->setAlignment( Qt::AlignTop );
+    vbox_2->setSpacing( 6 );
+    vbox_2->setMargin( 11 );
 
-  NameEdit1 = new QLineEdit( grp, "LineEdit_1" );
-  NameEdit1->setGeometry( 70, 20, 100, 30 );
-  NameEdit1->setText( QCString("") );
-  NameEdit1->setMaxLength(NAME_MAX_LEN);
+    vbox_3 = new QVBoxLayout; 
+    vbox_3->setSpacing( 6 );
+    vbox_3->setMargin( 0 );
 
+    hbox_2 = new QHBoxLayout; 
+    hbox_2->setSpacing( 6 );
+    hbox_2->setMargin( 0 );
 
-  Label=new QLabel(grp,"Name_2");
-  Label->setGeometry(10,60,60,30);
-  Label->setText(i18n("Red" ));  
+    text_player1 = new QLabel( player_names, "text_player1" );
+    text_player1->setText( i18n("Player 1" ) );
+    hbox_2->addWidget( text_player1 );
 
-  NameEdit2 = new QLineEdit( grp, "LineEdit_2" );
-  NameEdit2->setGeometry( 70, 60, 100, 30 );
-  NameEdit2->setText( QCString("" ));
-  NameEdit2->setMaxLength(NAME_MAX_LEN);
+    edit_player1 = new QLineEdit( player_names, "edit_player1" );
+    edit_player1->setMaxLength( NAME_MAX_LEN );
+    QWhatsThis::add(  edit_player1, i18n( "Enter a player's name" ) );
 
+    hbox_2->addWidget( edit_player1 );
+    vbox_3->addLayout( hbox_2 );
 
-  QPushButton *PushButton;
-  PushButton = new QPushButton( this, "PushButton_1" );
-  PushButton->setGeometry( 20, 120, 65, 30 );
-  connect( PushButton, SIGNAL(clicked()), SLOT(accept()) );
-  PushButton->setText( i18n("OK" ));
-  PushButton->setAutoRepeat( FALSE );
-  PushButton->setAutoResize( FALSE );
+    hbox_3 = new QHBoxLayout; 
+    hbox_3->setSpacing( 6 );
+    hbox_3->setMargin( 0 );
 
-  PushButton = new QPushButton( this, "PushButton_2" );
-  PushButton->setGeometry( 105, 120, 65, 30 );
-  connect( PushButton, SIGNAL(clicked()), SLOT(reject()) );
-  PushButton->setText( i18n("Cancel" ));
-  PushButton->setAutoRepeat( FALSE );
-  PushButton->setAutoResize( FALSE );
+    text_player2 = new QLabel( player_names, "text_player2" );
+    text_player2->setText( i18n("Player 1" ) );
+    hbox_3->addWidget( text_player2 );
 
-  // setBackgroundColor(DLGBACK);
+    edit_player2 = new QLineEdit( player_names, "edit_player2" );
+    edit_player2->setText( i18n( "Player 2"  ) );
+    edit_player2->setMaxLength( NAME_MAX_LEN );
+    QWhatsThis::add(  edit_player2, i18n( "Enter a player's name" ) );
+    hbox_3->addWidget( edit_player2 );
+    vbox_3->addLayout( hbox_3 );
+    vbox_2->addLayout( vbox_3 );
+
+    // left
+    QSpacerItem* spacer_3 = new QSpacerItem( 0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_3 );
+
+    hbox->addWidget( player_names );
+    QSpacerItem* spacer = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer );
+
+    // top
+    QSpacerItem* spacer_4 = new QSpacerItem( 0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox->addItem( spacer_4 );
+
+    vbox->addLayout( hbox );
+    QSpacerItem* spacer_2 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox->addItem( spacer_2 );
+
+}
+
+/*  
+ *  Destroys the object and frees any allocated resources
+ */
+NameDlg::~NameDlg()
+{
+    // no need to delete child widgets, Qt does it all for us
 }
 
 // In and output the name strings
 void NameDlg::SetNames(QString n1, QString n2)
 {
-  NameEdit1->setText( n1 );
-  NameEdit2->setText( n2 );
+  edit_player1->setText( n1 );
+  edit_player2->setText( n2 );
 }
 void NameDlg::GetNames(QString &n1, QString &n2)
 {
-  n1=NameEdit1->text(  );
+  n1=edit_player1->text(  );
   n1.truncate(NAME_MAX_LEN);
-  n2=NameEdit2->text(  );
+  n2=edit_player2->text(  );
   n2.truncate(NAME_MAX_LEN);
 }
-
-
-
-
 
 #include "namedlg.moc"

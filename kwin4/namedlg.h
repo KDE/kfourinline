@@ -1,53 +1,50 @@
-/***************************************************************************
-                          Kwin4  -  Four in a Row for KDE
-                             -------------------
-    begin                : March 2000 
-    copyright            : (C) 1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
+/****************************************************************************
+** Form interface generated from reading ui file 'namedlg.ui'
+**
+** Created: Thu Nov 23 11:10:15 2000
+**      by:  The User Interface Compiler (uic)
+**
+** WARNING! All changes made in this file will be lost!
+****************************************************************************/
+#ifndef NAMEDLG_H
+#define NAMEDLG_H
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-#ifndef __NAMEDLG_H_
-#define __NAMEDLG_H_
-#include <qlined.h>
-//#include <ktabctl.h>
-//#include <qkeycode.h>
-//#include <qmlined.h>
-//#include <unistd.h>
-#include <kapp.h>
-//#include <qlabel.h>
-//#include <qtooltip.h>
-//#include <kmsgbox.h>
-//#include <ktopwidget.h>
-//nclude <kprocess.h>
-//#include <kstdaccel.h>
-#include <qstring.h>
-#include <qdialog.h>
+#include <qvariant.h>
+#include <kdialogbase.h>
+class QVBoxLayout; 
+class QHBoxLayout; 
+class QGridLayout; 
+class QGroupBox;
+class QLabel;
+class QLineEdit;
+class QPushButton;
 
-class NameDlg : public QDialog
-{
-  Q_OBJECT
+class NameDlg : public KDialogBase
+{ 
+    Q_OBJECT
 
-  public:
-   NameDlg (QWidget* parent = NULL,const char* name = NULL,const char *sufi=NULL);
+public:
+    NameDlg( QWidget* parent = 0, const char* name = 0, bool modal = TRUE, WFlags fl = 0 );
+    ~NameDlg();
    void SetNames(QString n1,QString n2);
    void GetNames(QString &n1,QString &n2);
 
-protected slots:
+    QGroupBox* player_names;
+    QLabel* text_player1;
+    QLineEdit* edit_player1;
+    QLabel* text_player2;
+    QLineEdit* edit_player2;
+    QPushButton* PushButton1;
+    QPushButton* PushButton2;
 
 protected:
-    KConfig *config;
-    KApplication *app;
-
-    QLineEdit* NameEdit1;
-    QLineEdit* NameEdit2;
-
+    QHBoxLayout* hbox;
+    QHBoxLayout* hbox_2;
+    QHBoxLayout* hbox_3;
+    QHBoxLayout* hbox_4;
+    QVBoxLayout* vbox;
+    QVBoxLayout* vbox_2;
+    QVBoxLayout* vbox_3;
 };
-#endif
+
+#endif // NAMEDLG_H
