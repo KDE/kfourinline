@@ -260,12 +260,9 @@ StatDlg::~StatDlg()
 void StatDlg::clearStat()
 {
   int ret = KMessageBox::questionYesNo(this,
-            i18n("Do you really want to delete the all time \n"
+            i18n("Do you really want to delete the all time "
                  "statistics?\n"),
-            i18n("Statistics warning"),
-//            KMessageBox::QUESTION,
-            i18n("Yes"),
-            i18n("No"));
+            i18n("Statistics warning"));
 
    if(ret == KMessageBox::Yes)
    {
