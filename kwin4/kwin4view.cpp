@@ -359,6 +359,12 @@ void Kwin4View::drawIntro(bool remove)
         move->setDir(false);
         sprite->setFrame(((no-1)/2)%2);
       }
+      // Increase the nz coord for consecutive peices
+      // to allow proper intro
+      // Carefule: The number must be more then the
+      // z coord of [empty] and less than [empty2]
+      sprite->setZ(sprite->z()+no/2);
+      // kdDebug() << "Z("<<no<<")="<<sprite->z()<<endl;
       sprite->show();
     }
   }
