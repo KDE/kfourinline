@@ -50,6 +50,7 @@ class QCanvasItem;
 class Kwin4Doc : public KGame
 {
   Q_OBJECT
+
   public:
     /** Constructor for the fileclass of the application */
     Kwin4Doc(QWidget *parent, const char *name=0);
@@ -79,11 +80,6 @@ class Kwin4Doc : public KGame
 
 
 
-  /**
-  * Ask the computer to calculate a hint
-  */
-  void calcHint();
-    
   /**  */
   int QueryLastHint();
   /**  */
@@ -152,11 +148,6 @@ class Kwin4Doc : public KGame
   FARBE QueryCurrentPlayer();
   void SetCurrentPlayer(FARBE i);
 
-  /** Set Computer level */
-  void SetLevel(int i);
-  /** Query Computer Level */
-  int QueryLevel();
-
   /** Swtich the starting player and return the new started */
   FARBE SwitchStartPlayer();
 
@@ -170,10 +161,6 @@ class Kwin4Doc : public KGame
   /** Random number between 0..max-1 */
   int Random(int max);
   QString QueryProcessName();
-  void SetHost(QString host);
-  void SetPort(unsigned short port);
-  unsigned short QueryPort();
-  QString QueryHost();
 
   /** Create a kwin4player */
   KPlayer *createPlayer(int rtti,int io,bool isvirtual);
@@ -200,6 +187,11 @@ class Kwin4Doc : public KGame
 
 	
   public slots:
+    /**
+    * Ask the computer to calculate a hint
+    */
+    void calcHint();
+  
     void slotPropertyChanged(KGamePropertyBase *,KGame *);
     void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
     void moveDone(QCanvasItem *,int);
@@ -210,6 +202,7 @@ class Kwin4Doc : public KGame
     void slotProcessHint(QDataStream &,KGameProcessIO *);
     void slotGameOver(int status, KPlayer * p, KGame * me);
     void slotRepeatMove();
+    void loadSettings();
 
     signals:
     /**
@@ -234,15 +227,6 @@ class Kwin4Doc : public KGame
     /** the list of the views currently connected to the document */
     Kwin4View *pView;	
 
-  public: // Protected attributes
-
-  protected:
-
-
-
-  unsigned short mPort;
-  QString mHost;
-
   private:
 
   QString title;
@@ -261,11 +245,10 @@ class Kwin4Doc : public KGame
   KGamePropertyInt mCurrentMove;  // current move in the game
   KGamePropertyArray<int> mFieldFilled; // to what height is the column filled
   KGamePropertyInt mLastHint;
-  KGamePropertyInt mLevel;          // Computer level
   KGamePropertyInt mScore;          // Computer score
   KGamePropertyArray<int> mHistory; // to what height is the column filled
 
-    // TODO Save manually in slotSave
+  // TODO Save manually in slotSave
   KGameIO::IOMode mPlayedBy[NOOFPLAYER];
   KGameProcessIO *mHintProcess;
 };

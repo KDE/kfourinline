@@ -31,6 +31,8 @@ class Kwin4Player : public KPlayer
 {
   Q_OBJECT
 
+  signals:
+	  
   public:
     Kwin4Player();
     ~Kwin4Player();
@@ -48,11 +50,8 @@ class Kwin4Player : public KPlayer
     int remis() {return mAllRemis.value();}
     void resetStats(bool all=true);
 
-
    protected slots:
     void slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player);
-
-
 
    private:
     // One session
@@ -68,8 +67,6 @@ class Kwin4Player : public KPlayer
     KGamePropertyInt mAllBrk;
 
     StatusWidget *sWidget;
-
-    
 };
 
 #endif // KWIN4PLAYER_H

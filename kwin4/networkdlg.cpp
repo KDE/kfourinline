@@ -20,9 +20,9 @@
  *  The dialog will by default be modeless, unless you set 'modal' to
  *  TRUE to construct a modal dialog.
  */
-NetworkDlg::NetworkDlg( QWidget* parent,  const char* name, bool /*modal*/, WFlags /*fl*/ )
+NetworkDlg::NetworkDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     : KDialogBase( Plain, i18n("Configure Network Options..."), Ok|Cancel, Ok,
-                   parent, name, true,true )
+                   parent, name, modal,fl )
 {
     if ( !name ) setName( "NetworkDlg" );
     QWidget *page = plainPage();

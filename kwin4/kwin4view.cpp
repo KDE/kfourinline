@@ -95,14 +95,11 @@ class KIntroMove : public KSpriteMove
   double cx,cy;
 };
 
-
-
-Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
-        : QCanvasView(0,parent, name)
+Kwin4View::Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent, const char *name)
+        : QCanvasView(0,parent, name), doc(theDoc)
 
 {
   mLastArrow=-1;
-
 
   mGrafix=grafixdir;
   kdDebug(12010) << "Kwin4View:: grafixdir=" << grafixdir << endl;
@@ -121,7 +118,6 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   mCache=new KSpriteCache(mGrafix,this);
   mCache->setCanvas(mCanvas);
   KConfig *config=mCache->config();
-
 
   QPoint pnt;
   config->setGroup("game");
@@ -143,24 +139,14 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
 
   initView(false);  
 
-  // setBackgroundPixmap( getDocument()->m_PixBackground );
-  //setBackground( getDocument()->m_PixBackground );
+  // setBackgroundPixmap( doc->m_PixBackground );
+  //setBackground( doc->m_PixBackground );
 }
-
-
 
 Kwin4View::~Kwin4View()
 {
   if (mCanvas) delete mCanvas;
   if (mCache) delete mCache;
-
-}
-
-Kwin4Doc *Kwin4View::getDocument() const
-{
-  Kwin4App *theApp=(Kwin4App *) parentWidget();
-
-  return theApp->getDocument();
 }
 
 void Kwin4View::initView(bool deleteall)
@@ -176,11 +162,13 @@ void Kwin4View::initView(bool deleteall)
   //kdDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
 
   QPixmap *pixmap=loadPixmap("background.png");
-  if (pixmap) mCanvas->setBackgroundPixmap(*pixmap);
-  else mCanvas->setBackgroundColor(QColor(0,0,128));
+  if (pixmap)
+    mCanvas->setBackgroundPixmap(*pixmap);
+  else
+    mCanvas->setBackgroundColor(QColor(0,0,128));
   delete pixmap;
 
-  if (getDocument()->IsIntro())
+  if (doc->IsIntro())
   {
     mScoreWidget->hide();
     mStatusWidget->hide();
@@ -226,7 +214,8 @@ void Kwin4View::initView(bool deleteall)
 
 QPixmap *Kwin4View::loadPixmap(QString name)
 {
-  if (!mCache) return 0;
+  if (!mCache)
+    return 0;
   return mCache->loadPixmap(name);
 }
 
@@ -293,6 +282,7 @@ void Kwin4View::hideIntro()
   text=(QCanvasText *)(mCache->getItem("intro3",1));
   if (text) text->hide();
 }
+
 void Kwin4View::drawIntro(bool /*remove*/)
 {
   KSprite *sprite=0;
@@ -498,7 +488,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
       sprite->moveTo(sprite->x(),
                     sprite->y()+y*(sprite->height()+mSpreadY)+mBoardY);
       connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-          getDocument(),SLOT(moveDone(QCanvasItem *,int)));
+          doc,SLOT(moveDone(QCanvasItem *,int)));
     }
     else
     {
@@ -508,7 +498,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
       // Prevent moving (== speed =0)
       sprite->moveTo(sprite->x(),sprite->y());
       connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-          getDocument(),SLOT(moveDone(QCanvasItem *,int)));
+          doc,SLOT(moveDone(QCanvasItem *,int)));
       sprite->emitNotify(3);
     }
     
@@ -546,12 +536,11 @@ void Kwin4View::setArrow(int x,int color)
   mLastArrow=x;
 }
 
-
 /** Error message if the wrong player moved */
 bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
 {
     // Hack to find out whether there is a IO Device whose turn it is
-    KGame::KGamePlayerList *playerList=getDocument()->playerList();
+    KGame::KGamePlayerList *playerList=doc->playerList();
     KPlayer *p;
 
     bool flag=false;
@@ -564,7 +553,7 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
     if (flag) return false;
     
     clearError();
-    int rnd=getDocument()->Random(4)+1;
+    int rnd=doc->Random(4)+1;
     QString m;
     m=QString("text%1").arg(rnd);
     QString ms;
@@ -588,7 +577,7 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
 void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
 {
   // Ignore non running
-  if (!getDocument()->isRunning()) return;
+  if (!doc->isRunning()) return;
   // kdDebug(12010) << "KEY EVENT" << e->ascii() << endl;
 
   // Ignore non key press
@@ -617,8 +606,6 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   *eatevent=true;
 }
 
-
-
 // This slot is called when a mouse key is pressed. As the mouse is used as input for all players
 // this slot is called to generate a player move out of a mouse input, i.e.
 // it converts a QMouseEvent into a move for the game. We do here some simple nonsense
@@ -628,7 +615,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
 {
   // Only react to key pressed not released
   if (mouse->type() != QEvent::MouseButtonPress ) return ;
-  if (!getDocument()->isRunning())
+  if (!doc->isRunning())
   {
     return;
   }
@@ -642,7 +629,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   }
 
   if (mouse->button()!=LeftButton) return ;
-  //if (!getDocument()->IsRunning()) return ;
+  //if (!doc->IsRunning()) return ;
 
   QPoint point;
   int x,y;

@@ -53,9 +53,9 @@ typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemi
 **/
 class ChatDlg : public KDialogBase
 {
-	Q_OBJECT
+  Q_OBJECT
 public:
-	ChatDlg(KGame *game,QWidget* parent=0);
+  ChatDlg(KGame *game,QWidget* parent=0);
 
 public slots:  
   void setPlayer(Kwin4Player *p);
@@ -92,34 +92,17 @@ class Kwin4App : public KMainWindow
      * @see initMenuBar initToolBar
      */
     Kwin4App();
-    ~Kwin4App();
-    /** enables menuentries/toolbar items
-     */
-    void enableAction(const char *);
-    /** disables menuentries/toolbar items
-     */
-    void disableAction(const char *);
-    /** add a opened file to the recent file list and update recent_file_menu
-     */
-    // void addRecentFile(const QString &file);
-    /** returns a pointer to the current document connected to the KMainWindow instance and is used by
-     * the View class to access the document object's methods
-     */	
-    Kwin4Doc *getDocument() const; 	
-
-  /** Ends the current game
-  *   called only by the KGame framework via GameStatus
-  */
+    
+    // Enabled/Disabled menu/toolbar items
+    void changeAction(const char *,bool);
+    void enableAction(const char *action) {changeAction(action, true); } ;
+    void disableAction(const char *action) {changeAction(action, false); } ;
+    
+  /**
+   * Ends the current game
+   * called only by the KGame framework via GameStatus
+   */
   void EndGame(TABLE mode);
-  /**
-  * Sets the grafix directory
-  */
-  void SetGrafix(QString grafix);
-  /**
-  * Returns the title of the application
-  **/
-  QString appTitle() {return mAppTitle;}
-
 
   protected:
   /**
@@ -133,13 +116,6 @@ class Kwin4App : public KMainWindow
     */
   void initGUI();
 
-  /** save general Options like all bar positions and status as well as the geometry and the recent file list to the configuration
-    * file
-    */ 	
-  void saveOptions();
-  /** read general Options again and initialize all variables like the recent file list
-    */
-  void readOptions();
   /** sets up the statusbar for the main window by initialzing a statuslabel.
     */
   void initStatusBar();
@@ -150,23 +126,6 @@ class Kwin4App : public KMainWindow
   /** creates the centerwidget of the KMainWindow instance and sets it as the view
     */
   void initView();
-  /** creates the Players
-    */
-  void initPlayers();
-  /** queryClose is called by KMainWindow on each closeEvent of a window. Against the
-    * default implementation (only returns true), this calles saveModified() on the document object to ask if the document shall
-    * be saved if Modified; on cancel the closeEvent is rejected.
-    * @see KMainWindow#queryClose
-    * @see KMainWindow#closeEvent
-    */
-  virtual bool queryClose();
-  /** queryExit is called by KMainWindow when the last window of the application is going to be closed during the closeEvent().
-    * Against the default implementation that just returns true, this calls saveOptions() to save the settings of the last window's	
-    * properties.
-    * @see KMainWindow#queryExit
-    * @see KMainWindow#closeEvent
-    */
-  virtual bool queryExit();
   /** saves the window properties for each open window during session end to the session config file, including saving the currently
     * opened file by a temporary filename provided by KApplication.
     * @see KMainWindow#saveProperties
@@ -204,12 +163,9 @@ class Kwin4App : public KMainWindow
     /** Set the names in the mover field */
     void slotStatusNames();
 
-    void slotDisconnect();
     void slotInitNetwork();
     void slotChat();
     void slotDebugKGame();
-
-    void slotHelpAbout();
 
     /** open a new application window by creating a new instance of Kwin4App */
     // void slotFileNewWindow();
@@ -219,68 +175,43 @@ class Kwin4App : public KMainWindow
     void slotSaveFile();
     /** asks for saving if the file is modified, then closes the actual file and window*/
     void slotFileClose();
-    /** closes all open windows by calling close() on each memberList item until the list is empty, then quits the application.
-     * If queryClose() returns false because the user canceled the saveModified() dialog, the closing breaks.
-     */
-    void slotFileQuit();
-     /** give a play hint */
-     void slotFileHint();
-     /** show statistics */
-     void slotFileStatistics();
+    /** show statistics */
+    void slotFileStatistics();
 
-    /** Undo move */
     void slotEditUndo();
-    /** Redo move */
     void slotEditRedo();
-    /** toggles the statusbar
-     */
-    void slotViewStatusBar();
-    /** changes the statusbar contents for the standard label permanently, used to indicate current actions.
-     * @param text the text that is displayed in the statusbar
-     */
-    /** changes the start coulour */
-    void slotStartplayer();
-    void slotStartcolourRed();
-    void slotStartcolourYellow();
-    void slotPlayer1By();
-    void slotPlayer2By();
-    void slotYellowPlayer();
-    void slotYellowComputer();
-    void slotYellowKeyboard();
-    void slotRedPlayer();
-    void slotRedComputer();
-    void slotRedKeyboard();
-    void slotLevel();
-    void slotOptionsNames();
 
     void slotStatusMover(const QString &text);
     void slotStatusMsg(const QString &text);
-    /** changes the status message of the whole statusbar for two seconds, then restores the last status. This is used to display
-     * statusbar messages that give information about actions for toolbar icons and menuentries.
+    void slotYellowPlayer();
+    void slotRedPlayer();
+    /**
+     * changes the status message of the whole statusbar for two seconds,
+     * then restores the last status. This is used to display statusbar
+     * messages that give information about actions for toolbar
+     * icons and menuentries.
      * @param text the text that is displayed in the statusbar
      */
     void slotStatusHelpMsg(const QString &text);
 
   private:
-  KGameChat *mChat;
-  ChatDlg *mMyChatDlg;
+    KGameChat *mChat;
+    ChatDlg *mMyChatDlg;
     // Grafix
     QString mGrafix;
 
-    /** the configuration object of the application */
-    KConfig *config;
-
-    /** view is the main widget which represents your working area. The View
+    /**
+     * view is the main widget which represents your working area. The View
      * class should handle all events of the view widget.  It is kept empty so
      * you can create your view according to your application's needs by
      * changing the view class.
      */
     Kwin4View *view;
-    /** doc represents your actual document and is created only once. It keeps
+    /** 
+     * doc represents your actual document and is created only once. It keeps
      * information such as filename and does the serialization of your files.
      */
     Kwin4Doc *doc;
-    QString mAppTitle;
     QVButtonGroup *mColorGroup;
 
 protected slots: // Protected slots
@@ -290,8 +221,9 @@ protected slots: // Protected slots
   void slotClearStatusMsg();
 
   void slotKeyBindings();
-protected: // Protected attributes
+  void showSettings();
+  void loadSettings();
 };
  
 #endif // KWIN4_H
-/** Pass on the about data */
+

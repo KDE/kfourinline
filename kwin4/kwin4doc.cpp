@@ -1,5 +1,5 @@
 /***************************************************************************
-                          kwin4doc.cpp |  -  description
+                          kwin4doc.cpp  -  Boardgame for KDE
                              -------------------
     begin                : Sun Mar 26 12:50:12 CEST 2000
     copyright            : (C) |1995-2000 by Martin Heni
@@ -33,13 +33,11 @@
 #include "kwin4view.h"
 #include "geom.h"
 #include "scorewidget.h"
+#include "prefs.h"
+#include "statuswidget.h"
 
-
-Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
+Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent), pView(0), mHintProcess(0)
 {
-  mHintProcess=0;
-  pView=0;
-
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KGame *)),
           this,SLOT(slotPropertyChanged(KGamePropertyBase *,KGame *)));
 
@@ -83,10 +81,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   mLastColumn.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastColumn"));
   mLastHint.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastHint"));
   mLastColour.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastColour"));
-  mLevel.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLevel"));
   mScore.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mScore"));
-
-
 
   // game startup parameter
   mStartPlayer=Gelb;
@@ -96,9 +91,6 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
 
   mPlayedBy[Gelb]=KGameIO::MouseIO;
   mPlayedBy[Rot]=KGameIO::MouseIO;
-
-  // calculation
-  SetLevel(3);
 
   // last in init
   ResetGame(false);
@@ -121,14 +113,12 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   // Change global KGame policy
   //dataHandler()->setPolicy(KGamePropertyBase::PolicyDirty,false);
   dataHandler()->Debug();
+  
 }
-
 
 void Kwin4Doc::initPlayers()
 {
-
   //kdDebug(12010) << " Connecting properties to widgets" << endl;
-
 
   // Player initialization
   // First create the two players 
@@ -161,6 +151,7 @@ void Kwin4Doc::initPlayers()
 
 Kwin4Doc::~Kwin4Doc()
 {
+  WriteConfig(kapp->config());
   if (mHintProcess) delete mHintProcess;
   // delete fields;
   //delete field_filled;
@@ -184,7 +175,6 @@ const QString &Kwin4Doc::getAbsFilePath() const
 
 void Kwin4Doc::setTitle(const QString & /*_t*/)
 {
-
   title="";
 }
 
@@ -212,9 +202,6 @@ bool Kwin4Doc::saveDocument(const QString & /*filename*/, const char * /*format*
 {
   return true;
 }
-
-
-
 
 /** Returns colour */
 FARBE Kwin4Doc::QueryColour(int x,int y){
@@ -265,7 +252,6 @@ void Kwin4Doc::preparePlayerTurn()
 {
   if (global_debug>1) kdDebug(12010) << "Setting the current player to turn"<<endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
-
 }
 
 /** End a game */
@@ -276,7 +262,6 @@ void Kwin4Doc::EndGame(TABLE mode)
   pView->EndGame();
   Kwin4Player *yellow=getPlayer(Gelb);
   Kwin4Player *red=getPlayer(Rot);
-  
 
   switch(mode)
   {
@@ -298,7 +283,6 @@ void Kwin4Doc::EndGame(TABLE mode)
        }
     break;
   }
-
   // switch start player
 }
 
@@ -306,11 +290,11 @@ void Kwin4Doc::EndGame(TABLE mode)
 bool Kwin4Doc::IsRunning(){
   return gameStatus()==Run;
 }
+
 /** Is the introduction on */
 bool Kwin4Doc::IsIntro(){
   return gameStatus()==Intro;
 }
-
 
 void Kwin4Doc::moveDone(QCanvasItem *item,int )
 {
@@ -473,6 +457,7 @@ bool Kwin4Doc::RedoMove(){
 void Kwin4Doc::SetName(FARBE i,QString n){
   getPlayer(i)->setName(n);
 }
+
 /** Query the name of i */
 QString Kwin4Doc::QueryName(FARBE i){
   return getPlayer(i)->name();
@@ -507,7 +492,6 @@ FARBE Kwin4Doc::QueryPlayerColour(int player){
   if (mStartPlayer.value()==Gelb) return Rot;
   else return Gelb;
 }
-
 
 /**  */
 int Kwin4Doc::CheckGameOver(int x, FARBE col){
@@ -709,6 +693,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
 
   return 0;
 }
+
 /** Reset the stats */
 void Kwin4Doc::ResetStat(){
   //kdDebug(12010) << "reset stats"<<endl;
@@ -730,7 +715,6 @@ long Kwin4Doc::QueryScore(){
   return mScore.value();
 }
 
-
 /** Height of a column */
 int Kwin4Doc::QueryHeight(int x){
   if (x<0 || x>=geom.field_mx)
@@ -747,34 +731,37 @@ int Kwin4Doc::QueryLastHint(){
   return mLastHint;
 }
 
+void Kwin4Doc::loadSettings(){
+  // TODO find out what to do with this...
+  // mLevel.setValue(Prefs::level());
+
+  SetName(Gelb, Prefs::name1());
+  SetName(Rot, Prefs::name2());
+
+  KGameIO::IOMode mode = KGameIO::MouseIO;
+  
+  int m = Prefs::input1();
+  if(m == 0) mode = KGameIO::MouseIO;
+  if(m == 1) mode = KGameIO::ProcessIO;
+  if(m == 2) mode = KGameIO::KeyIO;
+  setPlayedBy(Gelb, mode);
+  
+  m = Prefs::input2();
+  if(m == 0) mode = KGameIO::MouseIO;
+  if(m == 1) mode = KGameIO::ProcessIO;
+  if(m == 2) mode = KGameIO::KeyIO;
+  setPlayedBy(Rot, mode);
+
+  FARBE col = (FARBE)Prefs::colour1();
+  if (QueryPlayerColour(0)!=col)
+    SwitchStartPlayer();
+}
+
 /** read config file */
 void Kwin4Doc::ReadConfig(KConfig *config)
 {
-  config->setGroup("Parameter");
-  mHost=config->readEntry("host","localhost");
-  mPort=(unsigned short)config->readNumEntry("port",7442);
-  QString name;
-  name=config->readEntry("Name1",QueryName(Gelb));
-  SetName(Gelb,name);
-  name=config->readEntry("Name2",QueryName(Rot));
-  SetName(Rot,name);
-
-  SetLevel(config->readNumEntry("Level",3));
-  KGameIO::IOMode mode;
-  mode=(KGameIO::IOMode)config->readNumEntry("Input1",mPlayedBy[Gelb]);
-  if (mode==0) mode=KGameIO::MouseIO; // No saved network
-  setPlayedBy(Gelb,mode);
-  mode=(KGameIO::IOMode)config->readNumEntry("Input2",mPlayedBy[Rot]);
-  if (mode==0) mode=KGameIO::MouseIO; // No saved network
-  setPlayedBy(Rot,mode);
+  loadSettings();
   
-  FARBE col;
-  col=(FARBE)config->readNumEntry("Colour1",(int)Gelb);
-  // Check against old or strange config files
-  if (col!=Rot && col!=Gelb) col=Gelb;
-  mStartPlayer.setValue(col);
-  //kdDebug(12010) << "StartPlayer=" << mStartPlayer.value() << endl;
-
   Kwin4Player *player;
   player=getPlayer(Gelb);
   config->setGroup("YellowPlayer");
@@ -783,25 +770,11 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   player=getPlayer(Rot);
   config->setGroup("RedPlayer");
   player->readConfig(config);
-
-  //kdDebug(12010) << "ReadConfig done"<<endl;
 }
 
 /** write config file */
 void Kwin4Doc::WriteConfig(KConfig *config)
 {
-  config->setGroup("Parameter");
-  config->writeEntry("host",mHost);
-  config->writeEntry("port",(int)mPort);
-  config->writeEntry("Name1",QueryName(Gelb));
-  config->writeEntry("Name2",QueryName(Rot));
-  config->writeEntry("Level",QueryLevel());
-  // Do not save remote !
-  config->writeEntry("Input1",(int)mPlayedBy[Gelb]);
-  config->writeEntry("Input2",(int)mPlayedBy[Rot]);
-  config->writeEntry("Colour1",mStartPlayer.value());
-
-
   Kwin4Player *player;
   player=getPlayer(Gelb);
   config->setGroup("YellowPlayer");
@@ -822,27 +795,23 @@ void Kwin4Doc::SetCurrentPlayer(FARBE i)
 {
   mAmzug.setValue(i);
 }
-/** Query Computer Level */
-int Kwin4Doc::QueryLevel(){
-  return mLevel.value();
-}
-/** Set Computer level */
-void Kwin4Doc::SetLevel(int i){
-  mLevel.setValue(i);
-}
 
-  /** Swtich the starting player and return the new started */
+/** Swtich the starting player and return the new started */
 FARBE Kwin4Doc::SwitchStartPlayer()
 {
   int col=mStartPlayer.value();
-  if (col==Gelb) mStartPlayer.setValue(Rot);
-  else mStartPlayer.setValue(Gelb);
+  if (col==Gelb)
+    mStartPlayer.setValue(Rot);
+  else
+    mStartPlayer.setValue(Gelb);
   return (FARBE)mStartPlayer.value();
 }
+
 int Kwin4Doc::QueryLastcolumn()
 {
   return mLastColumn;
 }
+
 FARBE Kwin4Doc::QueryLastcolour()
 {
   return (FARBE)(mLastColour.value());
@@ -852,6 +821,7 @@ int Kwin4Doc::QueryCurrentMove()
 {
   return mCurrentMove;
 }
+
 void Kwin4Doc::SetCurrentMove(int i)
 {
   mCurrentMove=i;
@@ -866,6 +836,7 @@ int Kwin4Doc::QueryHistoryCnt()
 {
   return mHistoryCnt;
 }
+
 /** Random number between 0..max-1 */
 int Kwin4Doc::Random(int max)
 {
@@ -893,24 +864,6 @@ QString Kwin4Doc::QueryProcessName()
   QString empty;
   kdError() <<  "Could not locate the computer player" << endl;
   return empty;
-}
-
-unsigned short Kwin4Doc::QueryPort()
-{
-  return mPort;
-}
-QString Kwin4Doc::QueryHost()
-{
-  return mHost;
-}
-void Kwin4Doc::SetPort(unsigned short port)
-{
-  mPort=port;
-}
-
-void Kwin4Doc::SetHost(QString host)
-{
-  mHost=host;
 }
 
 void Kwin4Doc::slotMessageUpdate(int /*id*/,Q_UINT32 /*sender*/,Q_UINT32 /*recv*/)
@@ -959,8 +912,7 @@ void Kwin4Doc::slotRepeatMove()
   getPlayer(QueryCurrentPlayer())->setTurn(true);
 }
 
-
-/** PErforms a game move */
+/** Performs a game move */
 bool Kwin4Doc::Move(int x,int id)
 {
   MOVESTATUS res;
@@ -995,6 +947,7 @@ KGameIO::IOMode Kwin4Doc::playedBy(int col)
 {
   return mPlayedBy[col];
 }
+
 void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
 {
   if (global_debug>1) kdDebug(12010) << "  Kwin4Doc::setPlayedBy(int "<<col<<",KGameIO::IOMode "<<io<<")" << endl;
@@ -1017,6 +970,7 @@ void Kwin4Doc::recalcIO()
   mPlayedBy[Gelb]=(KGameIO::IOMode)getPlayer(Gelb)->calcIOValue();
   mPlayedBy[Rot]=(KGameIO::IOMode)getPlayer(Rot)->calcIOValue();
 }
+
 void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
 {
   if (!player) return;
@@ -1097,8 +1051,7 @@ void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
   stream << (Q_INT32)QueryCurrentPlayer();
   stream << (Q_INT32)QueryPlayerColour(0);
   stream << (Q_INT32)QueryPlayerColour(1);
-  stream << (Q_INT32)QueryLevel();
-  if (global_debug>1) kdDebug(12010) << "Level=" << QueryLevel() << endl;
+  stream << (Q_INT32)Prefs::level();
 
   int i,j;
   for (i=0;i<geom.field_my;i++)
@@ -1209,7 +1162,6 @@ Kwin4Player *Kwin4Doc::getPlayer(FARBE col)
  }
  kdError() << "SERIOUS ERROR: Cannot find player with colour " << col << ".  CRASH imminent" << endl;
  return 0;
-
 }
 
 /**
@@ -1282,17 +1234,15 @@ void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player
      pView->scoreWidget()->setPlayer(player->name(),player->userId());
    }
 }
+
 void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
 {
-
-   if (!pView) return ;
+   if (!pView)
+     return ;
+  
    if (prop->id()==mCurrentMove.id())
    {
      pView->scoreWidget()->setMove(mCurrentMove);
-   }
-   else if (prop->id()==mLevel.id())
-   {
-     pView->scoreWidget()->setLevel(mLevel);
    }
    else if (prop->id()==mScore.id())
    {
@@ -1332,7 +1282,6 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    }
 }
 
-
 /** 
  * Called by KGame if the game has ended. 
  * DEBUG only as we do not need any extension to
@@ -1343,7 +1292,6 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   if (global_debug>1) kdDebug(12010) << "SlotGameOver: status="<<status<<" lastplayer uid="<<p->userId()<<endl;
   
 }
-
 
 /** This is an overwritten function of KGame which is called
  * when a game is loaded. This can either be via a networ

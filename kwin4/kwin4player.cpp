@@ -27,11 +27,12 @@
 
 Kwin4Player::~Kwin4Player()
 {
-  kdDebug(12010) << "<<<<<<<<<<<<<<<<<<<DESTRUCT kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
+  kdDebug(12010) << "DESTRUCT kwin4player" << endl;
 }
+
 Kwin4Player::Kwin4Player() : KPlayer()
 {
-  kdDebug(12010) << "<<<<<<<<<<<<<<<<<<<Construct kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
+  kdDebug(12010) << "Construct kwin4player" << endl;
   sWidget=0;
 
   int id;
@@ -49,8 +50,6 @@ Kwin4Player::Kwin4Player() : KPlayer()
   resetStats();
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
-
-
 }
 
 void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player)
@@ -80,7 +79,6 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *pla
   {
     sWidget->setBrk(mBrk,userId());
   }
-
 }
 
 void Kwin4Player::readConfig(KConfig *config)
@@ -90,6 +88,7 @@ void Kwin4Player::readConfig(KConfig *config)
   mAllLost.setValue(config->readNumEntry("lost",0));
   mAllBrk.setValue(config->readNumEntry("brk",0));
 }
+
 void Kwin4Player::writeConfig(KConfig *config)
 {
   config->writeEntry("win",mAllWin.value());
@@ -103,16 +102,19 @@ void Kwin4Player::incWin()
   mWin.setValue(mWin.value()+1);
   mAllWin.setValue(mAllWin.value()+1);
 }
+
 void Kwin4Player::incLost()
 {
   mLost.setValue(mLost.value()+1);
   mAllLost.setValue(mAllLost.value()+1);
 }
+
 void Kwin4Player::incRemis()
 {
   mRemis.setValue(mRemis.value()+1);
   mAllRemis.setValue(mAllRemis.value()+1);
 }
+
 void Kwin4Player::incBrk()
 {
   mBrk.setValue(mBrk.value()+1);
@@ -132,9 +134,7 @@ void Kwin4Player::resetStats(bool all)
     mAllBrk=0;
     mAllRemis=0;
   }
-
 }
-
 
 #include "kwin4player.moc"
 

@@ -1,20 +1,19 @@
 #ifndef _SCOREWIDGET_H
 #define _SCOREWIDGET_H
 
-#include <qwidget.h>
+#include <qframe.h>
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 
 class QGroupBox;
-class KWLabel;
+class QLabel;
 
-class ScoreWidget : public QWidget
+class ScoreWidget : public QFrame
 { 
     Q_OBJECT
 
 public:
     ScoreWidget( QWidget* parent = 0, const char* name = 0, WFlags fl = 0 );
-    ~ScoreWidget();
     void setMove(int i);
     void setLevel(int i);
     void setChance(int i);
@@ -23,15 +22,15 @@ public:
 
 protected:
     QGroupBox* GroupBox1;
-    KWLabel* TextLabel4;
-    KWLabel* TextLabel5;
-    KWLabel* TextLabel6;
-    KWLabel* TextLabel1;
-    KWLabel* TextLabel2;
-    KWLabel* TextLabel3;
-    KWLabel* TextLabel7;
-    KWLabel* TextLabel8;
-    KWLabel* TextLabel9;
+    QLabel* TextLabel4;
+    QLabel* TextLabel5;
+    QLabel* TextLabel6;
+    QLabel* TextLabel1;
+    QLabel* TextLabel2;
+    QLabel* TextLabel3;
+    QLabel* TextLabel7;
+    QLabel* TextLabel8;
+    QLabel* TextLabel9;
 
 protected:
     void paintEvent( QPaintEvent * );

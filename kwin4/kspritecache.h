@@ -212,11 +212,8 @@ class KSprite : public QCanvasSprite
     void setMoveObject(KSpriteMove *m) {mMoveObj=m;}
     KSpriteMove *moveObject() {return mMoveObj;}
     
-
-
   protected:
     KSpriteMove *mMoveObj;
-
 
   private:
     KSpriteNotify *mNotify;
@@ -232,8 +229,6 @@ class KSprite : public QCanvasSprite
     int mAnimSpeedCnt;
     int mCurrentAnimDir;
 };
-
- 
 
 
 /**
@@ -289,7 +284,6 @@ class KSprite : public QCanvasSprite
 class KSpriteCache : public QObject
 {
   Q_OBJECT
-
 
   public:
   /**
@@ -498,7 +492,6 @@ class KSpriteCache : public QObject
   */
   void reset();
 
-
   protected:
     QDict<QCanvasItem> mItemDict;                // Spritename lookup
     QDict<QCanvasItem> mCloneDict;               // clone Items lookup
@@ -509,6 +502,5 @@ class KSpriteCache : public QObject
     QCanvas *mCanvas;
  
 };
-
 
 #endif 

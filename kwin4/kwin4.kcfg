@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="kwin4rc"/>
+  <group name="Parameter">
+    <entry name="port" type="Int">
+      <label>Network connection port</label>
+      <default>7442</default>
+    </entry>
+    <entry name="host" type="String">
+      <label>Network connection host</label>
+      <default>localhost</default>
+    </entry>
+    <entry name="level" type="Int">
+      <label>Change the strength of the computer player.</label>
+      <min>0</min>
+      <max>5</max>
+      <default>3</default>
+    </entry>
+
+    <entry name="Name1" type="String">
+      <label>Player 1 name</label>
+      <default>Player 1</default>
+    </entry>
+    <entry name="Name2" type="String">
+      <label>Player 1 name</label>
+      <default>Player 2</default>
+    </entry>
+    <entry name="Input1" type="Int">
+      <default>0</default>
+    </entry>
+    <entry name="Input2" type="Int">
+      <default>0</default>
+    </entry>
+    
+    <entry name="Colour1" type="Int">
+      <default>0</default>
+    </entry>
+
+  </group>
+</kcfg>

@@ -1,0 +1,7 @@
+# Code generation options for kconfig_compiler
+File=kwin4.kcfg
+#IncludeFiles=defines.h
+ClassName=Prefs
+Singleton=true
+#CustomAdditions=true
+#Mutators=Zoom

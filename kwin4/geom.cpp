@@ -1,7 +1,7 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          The geom class as utilised by the GUI
                              -------------------
-    begin                : Sun Mar 26 2000
+    begin                : Sun Mar 26 1999
     copyright            : (C) |1995-2000 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
@@ -14,32 +14,12 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-/*
-    The geom class as utilised by the GUI
-
-    $Id$
-
-
-    (c) Martin Heni, martin@heni-online.de
-	      June 1999
-
-    License: GPL
-
-*/
 
 #define _GEOM_C_
 #include "geom.h"
 
-// #include "geom.moc"
-
-Geom::~Geom()
-{
-}
-
 // Simply set the geometry of the layout
-Geom::Geom(QObject * parent, const char * name )
-  : QObject(parent,name)
-{
+Geom::Geom(){
   // geometry
   intro_origin=QPoint(150,40);
   field_origin=QPoint(15,40);
@@ -77,4 +57,3 @@ Geom::Geom(QObject * parent, const char * name )
   field_my=6;
 }
 
-#include "geom.moc"

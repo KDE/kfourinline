@@ -19,17 +19,13 @@
 #ifndef __GEOM_H_
 #define __GEOM_H_
 
-#include <qobject.h>
+#include <qpoint.h>
+#include <qrect.h>
 
-class Geom : public QObject
-{
-   Q_OBJECT
-
-  public:
-   Geom (QObject * parent=0, const char * name=0 ); 
-   virtual ~Geom (); 
+class Geom {
 
   public:
+   Geom (); 
 
   // geometry
   QPoint intro_origin;
@@ -58,5 +54,5 @@ class Geom geom;
 extern class Geom geom;
 #endif // _GEOM_C_
 
-#endif
+#endif // __GEOM_H_
 

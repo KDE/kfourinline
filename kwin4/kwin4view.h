@@ -43,16 +43,9 @@ class Kwin4View : public QCanvasView
   Q_OBJECT
   public:
     /** Constructor for the main view */
-    Kwin4View(QString grafixdir,QWidget *parent = 0, const char *name=0);
+    Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent = 0, const char *name=0);
     /** Destructor for the main view */
     ~Kwin4View();
-
-    /** returns a pointer to the document connected to the view instance. Mind that this method requires a Kwin4App instance as a parent
-     * widget to get to the window document pointer by calling the Kwin4App::getDocument() method.
-     *
-     * @see Kwin4App#getDocument
-     */
-    Kwin4Doc *getDocument() const;
 
   //  ------ NEW  ------------
   QPixmap *loadPixmap(QString name);
@@ -97,10 +90,9 @@ class Kwin4View : public QCanvasView
   protected:
   void resizeEvent(QResizeEvent *e);
   bool wrongPlayer(KPlayer *player,KGameIO::IOMode io);
-
-
 	
 private:
+  Kwin4Doc *doc;
   QCanvas *mCanvas;    // our drawing canvas
   KSpriteCache *mCache; // The sprite cache
   QString mGrafix;      // grafix dir

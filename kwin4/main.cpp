@@ -28,6 +28,7 @@ static KCmdLineOptions options[] =
   { "debug <level>", I18N_NOOP("Enter debug level"), 0 },
   KCmdLineLastOption
 };
+
 int global_debug;
 
 int main(int argc, char *argv[])
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
                         KAboutData::License_GPL,
                         "(c) 1995-2000, Martin Heni");
   aboutData.addAuthor("Martin Heni",0, "martin@heni-online.de");
+  aboutData.addCredit("Laura", I18N_NOOP("Beta testing"), 0);
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 
