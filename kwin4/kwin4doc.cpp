@@ -1287,10 +1287,10 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 
 
 // Redraw game after load/network
-bool Kwin4Doc::load(QDataStream &stream,bool reset)
+bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
   pView->initView(false);
-  bool res=KGame::load(stream,reset);
+  bool res=KGame::loadgame(stream,network,reset);
 
   kdDebug() << "REDRAW GAME" << endl;
   int cnt=0;
@@ -1306,8 +1306,5 @@ bool Kwin4Doc::load(QDataStream &stream,bool reset)
 
   return res;
 }
-bool Kwin4Doc::load(QString filename,bool reset)
-{
-  return KGame::load(filename,reset);
-}
+
 #include "kwin4doc.moc"

@@ -23,6 +23,8 @@
 #include <kconfig.h>
 #include <qtimer.h>
 
+class KSprite;
+
     /**
     * this is an internal class to provide a @ref QObject to emit
     * a signal from a sprite if a notify object is created
@@ -43,6 +45,14 @@
         void signalNotify(QCanvasItem *,int);
       private:
         int mRefCnt;
+    };
+
+    class KSpriteMove 
+    {
+      public:
+        KSpriteMove() {};
+        virtual bool calcMove(double &,double &,KSprite *) {return false;}
+      private:
     };
 
 /**
@@ -189,10 +199,14 @@ class KSprite : public QCanvasSprite
     * Returns how many different animations are stored
     **/
     unsigned int animationCount() {return mAnimFrom.count();}
+
+    void setMoveObject(KSpriteMove *m) {mMoveObj=m;}
+    KSpriteMove *moveObject() {return mMoveObj;}
     
 
 
   protected:
+    KSpriteMove *mMoveObj;
 
 
   private:

@@ -511,6 +511,7 @@ KSprite::KSprite(QCanvasPixmapArray* array, QCanvas* canvas)
   mNotify=0;
   mAnimationNumber=-1;
   mAnimSpeedCnt=0;
+  mMoveObj=0;
   
 }
 
@@ -626,7 +627,7 @@ void KSprite::advance(int stage)
 
 
   // Movement to target
-  if ((fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0 && mSpeed>0.0)
+  if (!moveObject() && (fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0 && mSpeed>0.0)
   {
     double dx,dy;
     double vx,vy;
@@ -674,6 +675,16 @@ void KSprite::advance(int stage)
     {
       moveBy(vx,vy);
       isMoving=true;
+    }
+  }
+  else if (moveObject())
+  {
+    double sx=x();
+    double sy=y();
+    if (moveObject()->calcMove(sx,sy,this))
+    {
+      setX(sx);
+      setY(sx);
     }
   }
 

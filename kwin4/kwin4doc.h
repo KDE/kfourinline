@@ -85,8 +85,7 @@ class Kwin4Doc : public KGame
     /** returns the title of the document */
     const QString &getTitle() const;
 
-    bool load(QDataStream &stream,bool reset=true);
-    bool load(QString filename,bool reset=true);
+    bool loadgame(QDataStream &stream,bool network,bool reset);
 
 
 
