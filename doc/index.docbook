@@ -1,12 +1,12 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
-  <!ENTITY kapp "<application>kwin4</application>">
-  <!ENTITY kappname "&kapp;" -- this only *seems* redundant -->
+  <!ENTITY kappname "&kwin4;" -- this only *seems* redundant -->
+  <!ENTITY English "INCLUDE"> 
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Application-Variable Entities V1.0//EN">
-  %ents;
+  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
+ %ents;
 ]>
 
-<book lang="en">
+<book lang="&language;">
 <bookinfo>
 <title>Four Wins</title>
 <authorgroup>
@@ -17,7 +17,7 @@
 <address><email>martin@heni-online.de</email></address>
 </affiliation>
 </author>
-<othercredit>
+<othercredit role="reviewer">
 <firstname></firstname><surname></surname>
 <contrib>Reviewer</contrib>
 <affiliation><address><email></email></address></affiliation>
@@ -28,7 +28,7 @@
 <releaseinfo>0.09.1</releaseinfo>
 
 <abstract>
-<para>This documentation describes &kapp; version 0.9.1</para>
+<para>This documentation describes &kwin4; version 0.9.1</para>
 </abstract>
 
 <keywordset>
@@ -73,7 +73,7 @@ because the board is filled.
 <title>How to obtain kwin4</title>
 
 <para>
-&kapp; can be found in the package kdegames on
+&kwin4; can be found in the package kdegames on
 <ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
 the main ftp site of the KDE project.</para>
 </sect1>
@@ -81,9 +81,9 @@ the main ftp site of the KDE project.</para>
 <sect1 id="Requirements">
 <title>Requirements</title>
 <para>
-In order to successfully compile &kapp;, you need KDE 2.0 </para>
+In order to successfully compile &kwin4;, you need KDE 2.0 </para>
 <para>
-All required libraries as well as &kapp; itself can be found on
+All required libraries as well as &kwin4; itself can be found on
 <ulink 
 url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 </sect1>
@@ -92,8 +92,8 @@ url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 <sect1 id="Compilation">
 <title>Compilation and installation</title>
 
-<para>In order to compile and install &kapp; on your system, extract the package
-and type the following commands in the base directory of the &kapp;
+<para>In order to compile and install &kwin4; on your system, extract the package
+and type the following commands in the base directory of the &kwin4;
 distribution: </para>
 
 <screen width="40">
@@ -103,7 +103,7 @@ distribution: </para>
 <prompt>%</prompt> <userinput>make install</userinput>
 </screen>
       
-<para>Since &kapp; uses <application>autoconf</application> and <application>automake</application> you should have no trouble compiling it.</para>
+<para>Since &kwin4; uses <application>autoconf</application> and <application>automake</application> you should have no trouble compiling it.</para>
 
 </sect1>
 </chapter>
@@ -306,20 +306,15 @@ to, but can.
 <varlistentry>
   <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Network server</guimenuitem></menuchoice></term>
   <listitem><para>
-  </para></listitem>
-    If this menu item is selected your computer tries to behave as 
-    game network server. This is of course only of any importance if
-    you are doing a network game. 
-    Only the computer acting as server will be able to start a new game
+If this menu item is selected your computer tries to behave as game network server. This is of course only of any importance if you are doing a network game.    Only the computer acting as server will be able to start a new game
     or transfer a started game to the client's side.
     If both computers want to be server or none of them it is randomly
-    selected.
+    selected.  </para></listitem>
 </varlistentry>
 <varlistentry>
   <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Animations</guimenuitem></menuchoice></term>
   <listitem><para>
-  </para></listitem>
-    Switches the animations on or off.
+    Switches the animations on or off.  </para></listitem>
 </varlistentry>
 </variablelist>
 </sect1>
@@ -370,7 +365,7 @@ report to the KDE team.</para>
 <title>Credits and License</title>
 
 <para>
-&kapp;
+&kwin4;
 </para>
 <para>
 Program copyright 1995-2000 Martin Heni <email>martin@heni-online.de</email>
@@ -379,7 +374,9 @@ Program copyright 1995-2000 Martin Heni <email>martin@heni-online.de</email>
 Documentation copyright 2000 Martin Heni <email>martin@heni-online.de</email>
 </para>
 
-&license-links;
+&underFDL;
+&underGPL;
+
 </chapter>
 
 <![ %addindex; [ &kdedocindex; ]]>
