@@ -1,0 +1,395 @@
+<!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+  <!ENTITY kapp "<application>kwin4</application>">
+  <!ENTITY kappname "&kapp;" -- this only *seems* redundant -->
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Application-Variable Entities V1.0//EN">
+  %ents;
+]>
+
+<book lang="en">
+<bookinfo>
+<title>Four Wins</title>
+<authorgroup>
+<author>
+<firstname>Martin</firstname>
+<surname>Heni</surname>
+<affiliation>
+<address><email>martin@heni-online.de</email></address>
+</affiliation>
+</author>
+<othercredit>
+<firstname></firstname><surname></surname>
+<contrib>Reviewer</contrib>
+<affiliation><address><email></email></address></affiliation>
+</othercredit>
+</authorgroup>
+
+<date>12/12/2000</date>
+<releaseinfo>0.09.1</releaseinfo>
+
+<abstract>
+<para>This documentation describes &kapp; version 0.9.1</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>game</keyword>
+<keyword>board</keyword>
+<keyword>board game</keyword>
+<keyword>four wins</keyword>
+<keyword>four</keyword>
+<keyword>four in a row</keyword>
+<keyword>win4</keyword>
+<keyword>kwin4</keyword>
+<keyword>connect four</keyword>
+<keyword>connect 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title>Overview</title>
+
+<para>
+Four wins is a game for two player.
+Each player is represented by a colour (yellow and red).
+The goal of the game is to get four connected pieces of your
+colour into a row, column or any diagonal.
+This is done by placing one of your pieces into any of the
+seven columns. 
+A piece will begin to fill a column from the bottom, i.e. it
+will fall down until it reaches the ground level or another stone.
+After a move is done it is the turn of the other player. This is
+repeated until the game is over, i.e. one of the players has
+four pieces in a row, column or diagonal or no more moves are possbile
+because the board is filled.
+</para>
+
+</chapter>
+
+<chapter id="Installation">
+<title>Installation</title>
+<sect1 id="getting-kwin4">
+<title>How to obtain kwin4</title>
+
+<para>
+&kapp; can be found in the package kdegames on
+<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
+the main ftp site of the KDE project.</para>
+</sect1>
+
+<sect1 id="Requirements">
+<title>Requirements</title>
+<para>
+In order to successfully compile &kapp;, you need KDE 2.0 </para>
+<para>
+All required libraries as well as &kapp; itself can be found on
+<ulink 
+url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
+</sect1>
+
+
+<sect1 id="Compilation">
+<title>Compilation and installation</title>
+
+<para>In order to compile and install &kapp; on your system, extract the package
+and type the following commands in the base directory of the &kapp;
+distribution: </para>
+
+<screen width="40">
+<prompt>%</prompt> <userinput>cd kdegames</userinput>
+<prompt>%</prompt> <userinput>./configure</userinput>
+<prompt>%</prompt> <userinput>make</userinput>
+<prompt>%</prompt> <userinput>make install</userinput>
+</screen>
+      
+<para>Since &kapp; uses <application>autoconf</application> and <application>automake</application> you should have no trouble compiling it.</para>
+
+</sect1>
+</chapter>
+
+<chapter id="rules">
+<title>Rules</title>
+
+<para>The board is separated into three regions.</para>
+
+<para><emphasis>The game board </emphasis>
+is constructed out of 7x6 fields which will be filled from bottom
+to top. The fields are marked in the colour of the player who made the
+current move.
+On top of each column a coloured arrow shows were the last piece had been
+put.
+</para>
+
+<para><emphasis> The status display</emphasis> 
+shows which player colour starts and which colour is
+played by whom (player,computer,remote connection). It further shows the
+level of the computer opponent, the number of moves done as well as the
+computer calculated chance of winning. This chance is calculated only if
+the computer opponent makes a move. A positive number means that the player
+has an advantage, a negative number means that the computer thinks
+he is better.
+</para>
+
+<para><emphasis> The table display shows</emphasis> 
+the number of won, lost and drawn games is noted for both player.
+Also the number of aborted games (Brk) and the sum of games is shown.
+</para>
+
+</chapter>
+
+<chapter id="remote-connections">
+<title>Remote connections</title>
+
+<para>
+It is possible to play the game over a network connection with another
+computer. To do so both player on both computers have to select one colour
+played by a human player and the other by the remote player. Who chooses
+which side does not matter. It even does not matter if both choose to play
+the same player as this will automatically be interchanged by the game.
+</para>
+
+<para>
+One of the computers will act as game server. Only this one can start
+a new network game. Also all its game data will be transfered to the
+client computer. You can force your computer to be server if you do not
+supply a hostname in the network dialog. This dialog pops up if you start
+a new network game. As a client you enter the hostname of the machine
+the server is running. The port needs usually not be changed. But you
+can enter nearly any number there.
+</para>
+
+<para>
+When a network connection is build you are ask to enter a remote
+host and a port. The port can usually just been left untouched. But
+if you now what you do replace it by another number, which has to
+be the same in both player games of course. The hostname should be
+the name of the remote host to which you are connecting. Only one
+of the two players has to supply a hostname, the other one need not
+to, but can.
+</para>
+
+</chapter>
+
+<chapter id="menus">
+<title>Menus</title>
+<sect1 id="file-menu"><title>File Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycombo><keycap>F2</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu><guimenuitem>New Game</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Starts a new game. In a network game this option is
+     only available for the network server. The network client
+     will be automatically started by the server.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice>
+  <shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>W</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu><guimenuitem>End Game</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Aborts a running game.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>File</guimenu><guimenuitem>statistics...</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Shows the all time game statistics and allows to reset it.
+     This statistic is
+     usually saved when the game ended and shows the amount of
+     played and won games per player. 
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice>
+  <shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu><guimenuitem>Send Message</guimenuitem></menuchoice></term>
+  <listitem><para>
+     If connected to another game in a remote session this
+     option allows you to send a message to the remote player.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice>
+  <shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>H</keycap></keycombo>
+</shortcut>
+  <guimenu>File</guimenu><guimenuitem>Hint</guimenuitem></menuchoice></term>
+  <listitem><para>
+      The computer will calculate the best possible move and mark it with a small
+      circle on the board.
+      How good the move is depends on the level of the computer.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice>
+  <shortcut>
+<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>
+</shortcut>
+  <guimenu>File</guimenu><guimenuitem>Exit</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Quits the program.
+  </para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+<sect1 id="edit-menu"><title>Edit Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice><guimenu>Edit</guimenu><guimenuitem>Undo move</guimenuitem></menuchoice></term>
+  <listitem><para>
+      Undo the last move. If the previous player is played by the computer
+      two moves are taken back so that it is the player's turn again.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+<term><menuchoice><guimenu>Edit</guimenu><guimenuitem>Redo move</guimenuitem></menuchoice></term>
+  <listitem><para>
+      Replay a move which had been undone.
+  </para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+<sect1 id="view-menu"><title>View Menu</title>
+<variablelist>
+<varlistentry>
+<term><menuchoice><guimenu>View</guimenu><guimenuitem>View statusbar</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Shows or hides the statusbar.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+<sect1 id="option-menu"><title>Options Menu</title>
+<variablelist>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Startplayer</guimenuitem></menuchoice></term>
+  <listitem><para>
+      Determines which colour resp. player  has the first move in the next game.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Yellow played by</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Chooses who should play for player 1 (yellow). It can be either
+     <guilabel>player</guilabel>, <abbrev>i.e.</abbrev> a local player using the mouse
+     as input device, <guilabel>computer</guilabel>, <abbrev>i.e.</abbrev> the computer
+     plays this player or <guilabel>remote</guilabel>, <abbrev>i.e.</abbrev> a remote
+     connection to another computer will be build.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Red played by</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Same as <guimenuitem>Player 1 played by</guimenuitem> but for player 2 (red).
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Level</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Selects the level of the computer player.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Change names...</guimenuitem></menuchoice></term>
+  <listitem><para>
+     Change the names of the players.
+  </para></listitem>
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Network server</guimenuitem></menuchoice></term>
+  <listitem><para>
+  </para></listitem>
+    If this menu item is selected your computer tries to behave as 
+    game network server. This is of course only of any importance if
+    you are doing a network game. 
+    Only the computer acting as server will be able to start a new game
+    or transfer a started game to the client's side.
+    If both computers want to be server or none of them it is randomly
+    selected.
+</varlistentry>
+<varlistentry>
+  <term><menuchoice><guimenu>Options</guimenu><guimenuitem>Animations</guimenuitem></menuchoice></term>
+  <listitem><para>
+  </para></listitem>
+    Switches the animations on or off.
+</varlistentry>
+</variablelist>
+</sect1>
+<sect1 id="help">
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><anchor id="contents"><menuchoice>
+<shortcut><keycombo><keycap>F1</keycap></keycombo></shortcut>
+<guimenu>Help</guimenu><guimenuitem>Contents</guimenuitem></menuchoice></term>
+<listitem>
+<para>This invokes the KDE help system starting at the the top of this help file.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><anchor id="bug-report"><menuchoice>
+<guimenu>Help</guimenu><guimenuitem>Report Bug.</guimenuitem></menuchoice></term>
+<listitem><para>If you find an error in the program, or you have an idea on how
+to improve the game, clicking this option will let you send an official bug
+report to the KDE team.</para>
+
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><anchor id="about-kwin4"><menuchoice>
+<guimenu>Help</guimenu><guimenuitem>About kwin4</guimenuitem></menuchoice></term>
+<listitem>
+<para>This will display version and author information.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><anchor id="about-kde"><menuchoice>
+<guimenu>Help</guimenu><guimenuitem>About KDE</guimenuitem></menuchoice></term>
+<listitem>
+<para>This displays the KDE version and other basic information.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+
+</chapter>
+<chapter id="credits">
+<title>Credits and License</title>
+
+<para>
+&kapp;
+</para>
+<para>
+Program copyright 1995-2000 Martin Heni <email>martin@heni-online.de</email>
+</para>
+<para>
+Documentation copyright 2000 Martin Heni <email>martin@heni-online.de</email>
+</para>
+
+&license-links;
+</chapter>
+
+<![ %addindex; [ &kdedocindex; ]]>
+</book>
+<!--
+Local Variables:
+mode: sgml-mode
+sgml-minimize-attributes: nil
+sgml-general-insert-case: lower
+End:
+-->
+
+
