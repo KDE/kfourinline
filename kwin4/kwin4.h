@@ -21,7 +21,7 @@
 #include <kmainwindow.h>
 #include <kdialogbase.h>
 #include "kwin4doc.h"
-
+#include <kdemacros.h>
 class Kwin4Player;
 class KGameChat;
 class KChatDialog;
@@ -35,7 +35,7 @@ class KPlayer;
  * It supports a user defined chat and the setting of the
  * owner player
  **/
-class ChatDlg : public KDialogBase
+class KDE_EXPORT ChatDlg : public KDialogBase
 {
   Q_OBJECT
 public:
