@@ -8,7 +8,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>299</width>
+            <width>304</width>
             <height>120</height>
         </rect>
     </property>
@@ -125,12 +125,15 @@
                 <cstring>p1_name</cstring>
             </property>
             <property name="text">
-                <string>foo</string>
+                <string>Player 1</string>
             </property>
         </widget>
         <widget class="QLCDNumber" row="2" column="1">
             <property name="name">
                 <cstring>p1_w</cstring>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
             </property>
             <property name="numDigits">
                 <number>2</number>
@@ -140,6 +143,9 @@
             <property name="name">
                 <cstring>p1_d</cstring>
             </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
             <property name="numDigits">
                 <number>2</number>
             </property>
@@ -147,6 +153,9 @@
         <widget class="QLCDNumber" row="2" column="3">
             <property name="name">
                 <cstring>p1_l</cstring>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
             </property>
             <property name="numDigits">
                 <number>2</number>
@@ -156,6 +165,9 @@
             <property name="name">
                 <cstring>p1_n</cstring>
             </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
             <property name="numDigits">
                 <number>2</number>
             </property>
@@ -163,6 +175,9 @@
         <widget class="QLCDNumber" row="2" column="5">
             <property name="name">
                 <cstring>p1_b</cstring>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
             </property>
             <property name="numDigits">
                 <number>2</number>
@@ -172,6 +187,9 @@
             <property name="name">
                 <cstring>p2_d</cstring>
             </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
             <property name="numDigits">
                 <number>2</number>
             </property>
@@ -179,6 +197,9 @@
         <widget class="QLCDNumber" row="3" column="5">
             <property name="name">
                 <cstring>p2_b</cstring>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
             </property>
             <property name="numDigits">
                 <number>2</number>
@@ -188,6 +209,9 @@
             <property name="name">
                 <cstring>p2_l</cstring>
             </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
             <property name="numDigits">
                 <number>2</number>
             </property>
@@ -196,6 +220,9 @@
             <property name="name">
                 <cstring>p2_n</cstring>
             </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
             <property name="numDigits">
                 <number>2</number>
             </property>
@@ -203,6 +230,9 @@
         <widget class="QLCDNumber" row="3" column="1">
             <property name="name">
                 <cstring>p2_w</cstring>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
             </property>
             <property name="numDigits">
                 <number>2</number>
@@ -213,7 +243,7 @@
                 <cstring>p2_name</cstring>
             </property>
             <property name="text">
-                <string>bar</string>
+                <string>Player 2</string>
             </property>
         </widget>
         <widget class="Line" row="1" column="0" rowspan="1" colspan="6">
