@@ -18,7 +18,7 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, WFlags fl )
   //resize( 236, 201 ); 
   setBackgroundColor( COL_STATUSFIELD );
 
-  kdDebug() << "ScoreWidget:" << this->layout() << endl;
+  kdDebug(12010) << "ScoreWidget:" << this->layout() << endl;
 
    resize( 255, 187 ); 
    int row=0;

@@ -106,7 +106,7 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
 
 
   mGrafix=grafixdir;
-  kdDebug() << "Kwin4View:: grafixdir=" << grafixdir << endl;
+  kdDebug(12010) << "Kwin4View:: grafixdir=" << grafixdir << endl;
   setVScrollBarMode(AlwaysOff);
   setHScrollBarMode(AlwaysOff);
 
@@ -174,7 +174,7 @@ void Kwin4View::initView(bool deleteall)
   config->setGroup("game");
   mSpreadX=config->readNumEntry("spread_x",0);
   mSpreadY=config->readNumEntry("spread_y",0);
-  //kdDebug() << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
+  //kdDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
 
   QPixmap *pixmap=loadPixmap("background.png");
   if (pixmap) mCanvas->setBackgroundPixmap(*pixmap);
@@ -190,7 +190,7 @@ void Kwin4View::initView(bool deleteall)
   else
   {
     // TODO in start functions to distinguish from intro
-    kdDebug() << "Clearing board !!!!!!!!!!"<<endl;
+    kdDebug(12010) << "Clearing board !!!!!!!!!!"<<endl;
     drawBoard(deleteall);
     mScoreWidget->show();
     mStatusWidget->show();
@@ -238,7 +238,7 @@ void Kwin4View::EndGame()
   KConfig *config=mCache->config();
   int dest=config->readNumEntry("destY",150);
   int src=config->readNumEntry("y",0);
-  //kdDebug() << "MOVING gameover to " << dest << endl;
+  //kdDebug(12010) << "MOVING gameover to " << dest << endl;
 
   if (sprite)
   {
@@ -266,7 +266,7 @@ void Kwin4View::drawStar(int x,int y,int no)
   }
 
   KSprite *sprite=(KSprite *)(mCache->getItem("star",no));
-  //kdDebug() << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
+  //kdDebug(12010) << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
   if (sprite)
   {
     sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+mBoardX,
@@ -362,14 +362,14 @@ void Kwin4View::drawIntro(bool /*remove*/)
       // Carefule: The number must be more then the
       // z coord of [empty] and less than [empty2]
       sprite->setZ(sprite->z()+no/2);
-      // kdDebug() << "Z("<<no<<")="<<sprite->z()<<endl;
+      // kdDebug(12010) << "Z("<<no<<")="<<sprite->z()<<endl;
       sprite->show();
     }
   }
 }
 void Kwin4View::introMoveDone(QCanvasItem *item,int )
 {
-  //kdDebug() << "########################## INTRO MOVE DONE ################# " << endl;
+  //kdDebug(12010) << "########################## INTRO MOVE DONE ################# " << endl;
 
   KSprite *sprite=(KSprite *)item;
   sprite->deleteNotify();
@@ -402,7 +402,7 @@ void Kwin4View::drawBoard(bool remove)
     mBoardX=0;
     mBoardY=0;
   }
-      //kdDebug() << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
+      //kdDebug(12010) << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
 
   // Arrows
   for (x=0;x<7;x++)
@@ -476,7 +476,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
 
   sprite=(KSprite *)(mCache->getItem("piece",no));
 
-  //kdDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
+  //kdDebug(12010) << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
 
   // Check for removal of sprite
   if (color==Niemand)
@@ -532,7 +532,7 @@ void Kwin4View::setArrow(int x,int color)
   
   sprite=(KSprite *)(mCache->getItem("arrow",x));
 
-  //kdDebug() << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
+  //kdDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
 
   // Make sure the frames are ok
   int c;
@@ -590,7 +590,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
 {
   // Ignore non running
   if (!getDocument()->isRunning()) return;
-  // kdDebug() << "KEY EVENT" << e->ascii() << endl;
+  // kdDebug(12010) << "KEY EVENT" << e->ascii() << endl;
 
   // Ignore non key press
   if (e->type() != QEvent::KeyPress) return ;
@@ -606,7 +606,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   int code=e->ascii();
   if (code<'1' || code>'7')
   {
-    //kdDebug() << "Key not supported\n";
+    //kdDebug(12010) << "Key not supported\n";
     return ;
   }
 
@@ -663,7 +663,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   pl=player->userId();
   stream << pl << move;
   *eatevent=true;
-  // kdDebug() << "Mouse input done..eatevent=true" << endl;
+  // kdDebug(12010) << "Mouse input done..eatevent=true" << endl;
 }
 
 void Kwin4View::clearError()

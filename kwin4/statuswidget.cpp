@@ -20,7 +20,7 @@ StatusWidget::StatusWidget( QWidget* parent,  const char* name, WFlags fl )
   //resize( 236, 201 ); 
   setBackgroundColor( COL_STATUSFIELD );
 
-  kdDebug() << "StatusWidget:" << this->layout() << endl;
+  kdDebug(12010) << "StatusWidget:" << this->layout() << endl;
 
    //resize( 255, 187 ); 
    int row=0;

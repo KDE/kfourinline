@@ -112,7 +112,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  */
 void ChatDlg::setPlayer(Kwin4Player *p)
 {
-  kdDebug() << "CHATDLG: !!!!!!!!!! player " << p->userId() << endl;
+  kdDebug(12010) << "CHATDLG: !!!!!!!!!! player " << p->userId() << endl;
   if (!mChat)
   {
     kdError() << "ChatDlg::setPlayer::Chat not defined .. cannot set player" << endl;
@@ -139,20 +139,20 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   config=kapp->config();
   mAppTitle=i18n("Four wins");
 
-  kdDebug() <<" VERSION " << VERSION << endl;
+  kdDebug(12010) <<" VERSION " << VERSION << endl;
 
    // localise data file
    QString file="kwin4/grafix/default/grafix.rc";
    mGrafix=kapp->dirs()->findResourceDir("data",file);
    if (mGrafix.isNull()) mGrafix="grafix/default/";
    else mGrafix+="kwin4/grafix/default/";
-   if (global_debug>3) kdDebug() << "Localised grafix dir " << mGrafix << endl;
+   if (global_debug>3) kdDebug(12010) << "Localised grafix dir " << mGrafix << endl;
 
    // Allow overriding of the grafix directory
    // This is a cheap and dirty way for theming
    config->setGroup("Themes");
    mGrafix = config->readPathEntry("grafixdir", mGrafix);
-   kdDebug() << "Localised mGrafix " << mGrafix << endl;
+   kdDebug(12010) << "Localised mGrafix " << mGrafix << endl;
 
 
   ///////////////////////////////////////////////////////////////////
@@ -729,7 +729,7 @@ void Kwin4App::slotSaveFile()
   filter=QString("*");
   if (global_debug>10) file="/tmp/kwin.save";
   else file=KFileDialog::getSaveFileName(dir,filter,this);
-  kdDebug() << "Saving to " << file << endl;
+  kdDebug(12010) << "Saving to " << file << endl;
   doc->save(file);
 }
 
@@ -1118,7 +1118,7 @@ void Kwin4App::SetGrafix(QString s)
 }
 void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
 {
-  kdDebug() <<  "Kwin4App::slotNetworkBroken" << endl;
+  kdDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
   if (doc->playedBy(Gelb)==0)
   {
     slotYellowPlayer();
@@ -1128,8 +1128,8 @@ void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
     slotRedPlayer();
   }
 
-  kdDebug() << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
-  kdDebug() << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
+  kdDebug(12010) << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
+  kdDebug(12010) << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
   doc->getPlayer(doc->QueryCurrentPlayer())->setTurn(true,true);
 
 
@@ -1148,7 +1148,7 @@ void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 {
   QString msg;
-  kdDebug() << "Kwin4App::GAME OVER  STATUS="<< status << endl;
+  kdDebug(12010) << "Kwin4App::GAME OVER  STATUS="<< status << endl;
   if (status==-1) // remis
   {
     EndGame(TRemis);
@@ -1158,7 +1158,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   }
   else if (status==1)
   {
-    kdDebug() <<"in kwin4 userid after win="<<p->userId()<<endl;
+    kdDebug(12010) <<"in kwin4 userid after win="<<p->userId()<<endl;
     if (p->userId()==Gelb)
     {
       EndGame(TWin);
@@ -1196,12 +1196,12 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 // File Menu slot
 void Kwin4App::slotDisconnect()
 {
-  kdDebug() << "Kwin4App::slotDisconnect" << endl;
+  kdDebug(12010) << "Kwin4App::slotDisconnect" << endl;
   doc->disconnect();
 }
 void Kwin4App::slotInitNetwork()
 {
-  kdDebug() << "Kwin4App::slotInitNetwork" << endl;
+  kdDebug(12010) << "Kwin4App::slotInitNetwork" << endl;
   if (doc->gameStatus()==Kwin4Doc::Intro) doc->setGameStatus(Kwin4Doc::Pause);
 
   QString host = "localhost";
@@ -1238,7 +1238,7 @@ void Kwin4App::slotInitNetwork()
 
 void Kwin4App::slotServerTypeChanged(int t)
 {
-  kdDebug() << "slotServerTypeChanged="<<t<<endl;
+  kdDebug(12010) << "slotServerTypeChanged="<<t<<endl;
   if (t==0)
   {
     mColorGroup->setEnabled(true);
@@ -1264,7 +1264,7 @@ void Kwin4App::slotRemoteChanged(int button)
 
 void Kwin4App::slotChat()
 {
-  kdDebug() << "Kwin4App::Chat" << endl;
+  kdDebug(12010) << "Kwin4App::Chat" << endl;
 
   if (!mMyChatDlg)
   {

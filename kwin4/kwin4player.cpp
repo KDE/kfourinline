@@ -28,11 +28,11 @@
 
 Kwin4Player::~Kwin4Player()
 {
-  kdDebug() << "<<<<<<<<<<<<<<<<<<<DESTRUCT kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
+  kdDebug(12010) << "<<<<<<<<<<<<<<<<<<<DESTRUCT kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
 }
 Kwin4Player::Kwin4Player() : KPlayer()
 {
-  kdDebug() << "<<<<<<<<<<<<<<<<<<<Construct kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
+  kdDebug(12010) << "<<<<<<<<<<<<<<<<<<<Construct kwin4player>>>>>>>>>>>>>>>>>>>>>" << endl;
   sWidget=0;
 
   int id;

@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   if (args->isSet("debug"))
   {
     global_debug=atoi(QString(args->getOption("debug")).latin1() );
-    kdDebug() << "Debug level set to " << global_debug << endl;
+    kdDebug(12010) << "Debug level set to " << global_debug << endl;
   }
   args->clear();
 
