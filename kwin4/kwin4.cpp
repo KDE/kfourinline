@@ -229,7 +229,7 @@ void Kwin4App::initGUI()
   KStdGameAction::save(this, SLOT(slotSaveFile()), actionCollection(), "save");
   ACTION("save")->setStatusText(i18n("Save a game..."));
 
-  KStdGameAction::end(this, SLOT(slotFileClose()), actionCollection(), "end_game");
+  KStdGameAction::end(this, SLOT(endGame()), actionCollection(), "end_game");
   ACTION("end_game")->setStatusText(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
@@ -400,12 +400,11 @@ void Kwin4App::slotOpenFile()
  **/
 void Kwin4App::slotSaveFile()
 {
-  QString dir,filter,file;
-  dir=QString(":<kwin4>");
-  filter=QString("*");
-  if (global_debug>10) file="/tmp/kwin.save";
-  else file=KFileDialog::getSaveFileName(dir,filter,this);
-  kdDebug(12010) << "Saving to " << file << endl;
+  QString dir(":<kwin4>");
+  QString filter("*");
+  QString file("/tmp/kwin.save");
+  if (global_debug<10)
+    file=KFileDialog::getSaveFileName(dir,filter,this);
   doc->save(file);
 }
 
@@ -434,7 +433,7 @@ void Kwin4App::slotNewGame()
 /**
  * Abort a running game
  **/
-void Kwin4App::slotFileClose()
+void Kwin4App::endGame()
 {
   doc->setGameStatus(Kwin4Doc::Abort);
 }
@@ -471,7 +470,8 @@ void Kwin4App::slotUndo()
 {
   doc->UndoMove();
   // Undo twice if computer is moving then
-  if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO) doc->UndoMove();
+  if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO)
+    doc->UndoMove();
 
   // Prepare menus
   slotStatusNames();
@@ -503,41 +503,12 @@ void Kwin4App::slotStatusMsg(const QString &text)
 /**
  * Set the string in the statusbar window for
  * the player currently moving
+ * change status mover permanently
  **/
 void Kwin4App::slotStatusMover(const QString &text)
 {
-  // change status mover permanently
   statusBar()->clear();
   statusBar()->changeItem(text, ID_STATUS_MOVER);
-}
-
-/**
- * Display a help text in the statusbar for 2 seconds
- **/
-void Kwin4App::slotStatusHelpMsg(const QString &text)
-{
-  // change status message of whole statusbar temporary (text, msec)
-  statusBar()->message(text, 2000);
-}
-
-void Kwin4App::loadSettings(){
-
-}
-
-/**
- * Change yellow to mouse
- */
-void Kwin4App::slotYellowPlayer()
-{
-  doc->setPlayedBy(Gelb,KGameIO::MouseIO);
-}
-
-/**
- * Change red to mouse 
- */
-void Kwin4App::slotRedPlayer()
-{
-  doc->setPlayedBy(Rot,KGameIO::MouseIO);
 }
 
 /**
@@ -570,9 +541,9 @@ void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
   kdDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
   if (doc->playedBy(Gelb)==0)
-    slotYellowPlayer();
+    doc->setPlayedBy(Gelb,KGameIO::MouseIO);
   if (doc->playedBy(Rot)==0)
-    slotRedPlayer();
+    doc->setPlayedBy(Rot,KGameIO::MouseIO);
 
   kdDebug(12010) << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
   kdDebug(12010) << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
@@ -704,12 +675,18 @@ void Kwin4App::slotChat()
     mMyChatDlg->hide();
 }
 
+/**
+ * Show the KGame debug window
+ */ 
 void Kwin4App::slotDebugKGame()
 {
-  KGameDebugDialog* d = new KGameDebugDialog(doc, this);
-  d->show();
+  KGameDebugDialog* debugWindow = new KGameDebugDialog(doc, this);
+  debugWindow->show();
 }
 
+/**
+ * Configure the keybindings for this application.
+ */ 
 void Kwin4App::slotKeyBindings()
 {
   KKeyDialog::configure(actionCollection(), this);

@@ -172,7 +172,7 @@ class Kwin4App : public KMainWindow
     void slotOpenFile();
     void slotSaveFile();
     /** asks for saving if the file is modified, then closes the actual file and window*/
-    void slotFileClose();
+    void endGame();
     /** show statistics */
     void showStatistics();
 
@@ -181,16 +181,6 @@ class Kwin4App : public KMainWindow
 
     void slotStatusMover(const QString &text);
     void slotStatusMsg(const QString &text);
-    void slotYellowPlayer();
-    void slotRedPlayer();
-    /**
-     * changes the status message of the whole statusbar for two seconds,
-     * then restores the last status. This is used to display statusbar
-     * messages that give information about actions for toolbar
-     * icons and menuentries.
-     * @param text the text that is displayed in the statusbar
-     */
-    void slotStatusHelpMsg(const QString &text);
 
   private:
     KGameChat *mChat;
@@ -220,7 +210,6 @@ protected slots: // Protected slots
 
   void slotKeyBindings();
   void showSettings();
-  void loadSettings();
 };
  
 #endif // KWIN4_H
