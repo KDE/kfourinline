@@ -34,7 +34,7 @@ class Kwin4View : public QCanvasView
 Q_OBJECT
 
 public:
-  Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent = 0, const char *name=0);
+  Kwin4View(Kwin4Doc *theDoc, QWidget *parent = 0, const char *name=0);
 
   void initView(bool deleteall=true);
   void drawBoard(bool remove=false);

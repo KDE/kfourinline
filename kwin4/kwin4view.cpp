@@ -23,6 +23,7 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kapplication.h>
+#include <kstandarddirs.h>
 
 #include "kwin4doc.h"
 #include "geom.h"
@@ -99,13 +100,28 @@ private:
 
 };
 
-Kwin4View::Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent, const char *name)
+Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
         : QCanvasView(0,parent, name), doc(theDoc)
 {
   mLastArrow=-1;
 
-  mGrafix=grafixdir;
-  kdDebug(12010) << "Kwin4View:: grafixdir=" << grafixdir << endl;
+
+  // localise data file
+  QString file="kwin4/grafix/default/grafix.rc";
+  QString mGrafix=kapp->dirs()->findResourceDir("data",file);
+  if (mGrafix.isNull())
+    mGrafix="grafix/default/";
+  else
+    mGrafix+="kwin4/grafix/default/";
+  if (global_debug>3)
+    kdDebug(12010) << "Localised grafix dir " << mGrafix << endl;
+
+  // Allow overriding of the grafix directory
+  // This is a cheap and dirty way for theming
+  kapp->config()->setGroup("Themes");
+  mGrafix = kapp->config()->readPathEntry("grafixdir", mGrafix);
+
+  
   setVScrollBarMode(AlwaysOff);
   setHScrollBarMode(AlwaysOff);
 

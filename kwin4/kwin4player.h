@@ -35,7 +35,6 @@ class Kwin4Player : public KPlayer
 	  
   public:
     Kwin4Player();
-    ~Kwin4Player();
     int rtti() const {return 1;}
     void setWidget(StatusWidget *w) {sWidget=w;}
     void readConfig(KConfig *config);

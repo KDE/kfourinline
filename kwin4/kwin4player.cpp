@@ -24,17 +24,8 @@
 #include "kwin4player.h"
 #include "statuswidget.h"
 
-
-Kwin4Player::~Kwin4Player()
+Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
 {
-  kdDebug(12010) << "DESTRUCT kwin4player" << endl;
-}
-
-Kwin4Player::Kwin4Player() : KPlayer()
-{
-  kdDebug(12010) << "Construct kwin4player" << endl;
-  sWidget=0;
-
   int id;
   id=mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mWin"));
   id=mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mRemis"));

@@ -709,14 +709,11 @@ void Kwin4Doc::ReadConfig(KConfig *config)
 {
   loadSettings();
   
-  Kwin4Player *player;
-  player=getPlayer(Gelb);
   config->setGroup("YellowPlayer");
-  player->readConfig(config);
+  getPlayer(Gelb)->readConfig(config);
 
-  player=getPlayer(Rot);
   config->setGroup("RedPlayer");
-  player->readConfig(config);
+  getPlayer(Rot)->readConfig(config);
 }
 
 /**
@@ -724,14 +721,11 @@ void Kwin4Doc::ReadConfig(KConfig *config)
  */
 void Kwin4Doc::WriteConfig(KConfig *config)
 {
-  Kwin4Player *player;
-  player=getPlayer(Gelb);
   config->setGroup("YellowPlayer");
-  player->writeConfig(config);
+  getPlayer(Gelb)->writeConfig(config);
 
-  player=getPlayer(Rot);
   config->setGroup("RedPlayer");
-  player->writeConfig(config);
+  getPlayer(Rot)->writeConfig(config);
 
   config->sync();
 }
@@ -753,11 +747,11 @@ void Kwin4Doc::SetCurrentPlayer(FARBE i)
  */
 FARBE Kwin4Doc::SwitchStartPlayer()
 {
-  int col=mStartPlayer.value();
-  if (col==Gelb)
+  if (mStartPlayer.value()==Gelb)
     mStartPlayer.setValue(Rot);
   else
     mStartPlayer.setValue(Gelb);
+  
   return (FARBE)mStartPlayer.value();
 }
 
