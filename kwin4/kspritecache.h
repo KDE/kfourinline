@@ -20,7 +20,6 @@
 #include <qdict.h>
 #include <qstring.h>
 #include <kconfig.h>
-#include <qtimer.h>
 
 class KSprite;
 

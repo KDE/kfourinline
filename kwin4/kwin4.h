@@ -27,7 +27,6 @@
 #include <qvbuttongroup.h>
 
 // include files for KDE 
-#include <kapplication.h>
 #include <kmainwindow.h>
 #include <kgame.h>
 #include <kgameio.h>
@@ -261,7 +260,6 @@ class Kwin4App : public KMainWindow
     void slotOptionsNames();
 
     void slotStatusMover(const QString &text);
-    void slotStatusTime();
     void slotStatusMsg(const QString &text);
     /** changes the status message of the whole statusbar for two seconds, then restores the last status. This is used to display
      * statusbar messages that give information about actions for toolbar icons and menuentries.
@@ -292,8 +290,6 @@ class Kwin4App : public KMainWindow
     QVButtonGroup *mColorGroup;
 
 protected slots: // Protected slots
-  /** Triggers the status timer */
-  void slotStatusTimer(void);
   /**
    *  Writes ready into the statusbar
    */
@@ -301,9 +297,6 @@ protected slots: // Protected slots
 
   void slotKeyBindings();
 protected: // Protected attributes
-  /**  */
-  /** Counts the time in the status bar */
-  QTimer * statusTimer;
 };
  
 #endif // KWIN4_H

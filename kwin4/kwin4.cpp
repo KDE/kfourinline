@@ -23,11 +23,8 @@
 #include <qvbox.h>
 #include <qradiobutton.h>
 
-
-#include <stdio.h>
-//#include <unistd.h>
-
 // include files for KDE
+#include <kapplication.h>
 #include <kstandarddirs.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
@@ -47,8 +44,6 @@
 #include <dialogs/kgameerrordialog.h>
 #include <dialogs/kgamedebugdialog.h>
 
-
-
 // application specific includes
 #include "kwin4.h"
 #include "kwin4view.h"
@@ -65,7 +60,6 @@
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG               1003
 #define ID_STATUS_MOVER              1002
-#define ID_STATUS_TIME               1001
 
 
 /**
@@ -182,7 +176,6 @@ Kwin4App::Kwin4App() : KMainWindow(0)
  **/
 Kwin4App::~Kwin4App()
 {
-   delete statusTimer;
 }
 
 /**
@@ -479,22 +472,16 @@ void Kwin4App::slotClearStatusMsg()
 
 /** 
  * Create the status bar with the message part, the
- * player part and the clock
+ * player part
  **/
 void Kwin4App::initStatusBar()
 {
  // statusBar()->setInsertOrder(KStatusBar::RightToLeft);
   statusBar()->insertItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0,true);
-  statusBar()->insertItem(i18n("23:45"),ID_STATUS_TIME,0,true);
   statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
 
-  slotStatusTime();
   slotStatusMover(i18n("(c) Martin Heni   "));
   slotStatusMsg(i18n("Welcome to %1").arg(appTitle()));
-
-  statusTimer=new QTimer(this);
-  connect(statusTimer,SIGNAL(timeout()),this,SLOT(slotStatusTimer()));
-  statusTimer->start(10000,FALSE);
 }
 
 /**
@@ -869,23 +856,6 @@ void Kwin4App::slotStatusMover(const QString &text)
 }
 
 /**
- * Set the clock in the statusbar
- **/
-void Kwin4App::slotStatusTime()
-{
-  // change status time permanently
-  QString s;
-  QTime now;
-
-  now=QTime::currentTime();
-  s=now.toString();
-  s.truncate(5);
-
-  statusBar()->clear();
-  statusBar()->changeItem(s, ID_STATUS_TIME);
-}
-
-/**
  * Display a help text in the statusbar for 2 seconds
  **/
 void Kwin4App::slotStatusHelpMsg(const QString &text)
@@ -1073,10 +1043,6 @@ void Kwin4App::EndGame(TABLE mode)
 }
 
 
-/** Triggers the status timer */
-void Kwin4App::slotStatusTimer(void){
-  slotStatusTime();
-}
 /** Set the names in the mover field */
 void Kwin4App::slotStatusNames(){
 
