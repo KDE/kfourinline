@@ -332,7 +332,7 @@ void Kwin4View::drawIntro(bool remove)
   text=(QCanvasText *)(mCache->getItem("intro3",1));
   if (text)
   {
-    text->setText(i18n("3. intro line, welcome to win4","kWin4")); 
+    text->setText(i18n("3. intro line, welcome to win4","KWin4")); 
     text->show();
   }
   // text
