@@ -3,10 +3,10 @@ GRAFIXDIRS = default
 grafixdir = $(kde_datadir)/kwin4/grafix
 
 uninstall-local:
-	rm -rf $(grafixdir)
+	rm -rf $(DESTDIR)$(grafixdir)
 
 install-data-local:
-	$(mkinstalldirs) $(grafixdir)
+	$(mkinstalldirs) $(DESTDIR)$(grafixdir)
 	for i in $(GRAFIXDIRS); do \
        if test -d $(DESTDIR)$(grafixdir)/$$i; then \
                 echo "refreshing and removing $$i" ;\

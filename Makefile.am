@@ -12,4 +12,4 @@ rcdir = $(kde_datadir)/kwin4
 rc_DATA = kwin4ui.rc
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/kwin4.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/kwin4.desktop
