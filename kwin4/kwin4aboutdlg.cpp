@@ -18,6 +18,8 @@
 #include <qpixmap.h>
 #include <klocale.h>
 
+#define VERSION 0.91
+
 
 /* 
  *  Constructs a aboutDlg which is a child of 'parent', with the 
@@ -60,7 +62,7 @@ aboutDlg::aboutDlg( QWidget* parent,  const char* name, bool /* modal */, WFlags
     hbox->addItem( spacer );
 
     TextLabel3 = new QLabel( Frame5, "TextLabel3" );
-    TextLabel3->setText( i18n( "Four Wins\n\nVersion 0.91"  ) );
+    TextLabel3->setText( i18n( "Four Wins\n\nVersion %1"  ).arg(VERSION) );
     TextLabel3->setAlignment( int( QLabel::AlignCenter ) );
     TextLabel3->setBackgroundColor(Qt::white);
     hbox->addWidget( TextLabel3 );
