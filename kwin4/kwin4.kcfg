@@ -13,9 +13,9 @@
     </entry>
     <entry name="level" type="Int">
       <label>Change the strength of the computer player.</label>
+      <default>3</default>
       <min>0</min>
       <max>5</max>
-      <default>3</default>
     </entry>
 
     <entry name="Name1" type="String">
