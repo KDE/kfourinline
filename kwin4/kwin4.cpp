@@ -209,10 +209,10 @@ void Kwin4App::initGUI()
                        actionCollection(), "network_chat");
 
   if (global_debug>0)                     
-    (void)new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
+    new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
                         actionCollection(), "file_debug");
 
-  (void)new KAction(i18n("&Show Statistics"),"flag", 0, this,
+  new KAction(i18n("&Show Statistics"),"flag", 0, this,
            SLOT(showStatistics()), actionCollection(), "statistics");
   ACTION("statistics")->setStatusText(i18n("Show statistics."));
 
@@ -545,8 +545,8 @@ void Kwin4App::slotInitNetwork()
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(slotServerTypeChanged(int)));
 
-  (void)new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
-  (void)new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
+  new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
+  new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
   l->addWidget(mColorGroup);
   mColorGroup->setButton(0);
   slotRemoteChanged(0);
