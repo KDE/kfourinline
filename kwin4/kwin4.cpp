@@ -1625,6 +1625,7 @@ void Kwin4App::EndGame(TABLE mode){
 
   doc->SwitchStartPlayer();
   slotStatusNames();
+  checkMenus();
   doc->slotUpdateAllViews(0);
 
 }
