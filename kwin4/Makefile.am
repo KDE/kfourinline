@@ -5,9 +5,11 @@ kwin4_SOURCES = main.cpp kwin4.cpp kwin4view.cpp kwin4doc.cpp \
 	            	scorewidget.cpp prefs.kcfgc settings.ui statistics.ui statuswidget.ui
 
 kwin4_LDADD   = $(LIB_KFILE) $(LIB_KDEGAMES)
+kwin4_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
 kwin4proc_SOURCES = kwin4proc.cpp
 kwin4proc_LDADD   = $(LIB_KFILE) $(LIB_KDEGAMES)
+kwin4proc_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
 INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/kgame $(all_includes)
 
