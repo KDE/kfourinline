@@ -123,7 +123,7 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 /**
  * Construct the main application window 
  **/
-Kwin4App::Kwin4App() : KMainWindow(0), mChat(0), mMyChatDlg(0), view(0), doc(0)
+Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name), mChat(0), mMyChatDlg(0), view(0), doc(0)
 {
   // localise data file
   QString file="kwin4/grafix/default/grafix.rc";
@@ -170,18 +170,18 @@ Kwin4App::Kwin4App() : KMainWindow(0), mChat(0), mMyChatDlg(0), view(0), doc(0)
 void Kwin4App::checkMenus(int menu)
 {
   bool localgame=(!doc->isNetwork());
-  
+  bool isRunning = (doc->gameStatus()==KGame::Run);
   if (!menu || (menu&CheckFileMenu))
   {
-    changeAction("hint", !(!doc->IsRunning() && localgame));
-    changeAction("new_game", !doc->IsRunning());
-    changeAction("save", doc->IsRunning());
-    changeAction("end_game", doc->IsRunning());
+    changeAction("hint", !(!isRunning && localgame));
+    changeAction("new_game", !isRunning);
+    changeAction("save", isRunning);
+    changeAction("end_game", isRunning);
   }
 
   if (!menu || (menu&CheckEditMenu))
   {
-    if (!doc->IsRunning() || !localgame)
+    if (!isRunning || !localgame)
     {
       disableAction("edit_undo");
     }
@@ -199,7 +199,7 @@ void Kwin4App::checkMenus(int menu)
     }
 
     // Show redo
-    if (!doc->IsRunning() || !localgame)
+    if (!isRunning || !localgame)
     {
       disableAction("edit_redo");
     }
@@ -526,7 +526,7 @@ void Kwin4App::EndGame(TABLE mode)
 /** Set the names in the mover field */
 void Kwin4App::slotStatusNames(){
   QString msg;
-  if (!doc->IsRunning())
+  if (!(doc->gameStatus()==KGame::Run))
     msg=i18n("No game  ");
   else if (doc->QueryCurrentPlayer()==Gelb)
     msg=QString(" ")+doc->QueryName(Gelb)+ i18n(" - Yellow ");

@@ -91,7 +91,7 @@ class Kwin4App : public KMainWindow
     /** construtor of Kwin4App, calls all init functions to create the application.
      * @see initMenuBar initToolBar
      */
-    Kwin4App();
+    Kwin4App(QWidget *parent=0, const char *name=0);
     
     // Enabled/Disabled menu/toolbar items
     void changeAction(const char *,bool);

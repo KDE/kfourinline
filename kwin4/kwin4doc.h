@@ -126,10 +126,6 @@ class Kwin4Doc : public KGame
   bool UndoMove();
   /** Make a game move */
   MOVESTATUS MakeMove(int x,int mode);
-  /** Is the introduction on */
-  bool IsIntro();
-  /** Is a game running */
-  bool IsRunning();
   /** End a game */
   void EndGame(TABLE mode);
   /** Reset the whole game */

@@ -167,7 +167,7 @@ void Kwin4View::initView(bool deleteall)
     mCanvas->setBackgroundColor(QColor(0,0,128));
   delete pixmap;
 
-  if (doc->IsIntro())
+  if (doc->gameStatus()==KGame::Intro)
   {
     mScoreWidget->hide();
     mStatusWidget->hide();
