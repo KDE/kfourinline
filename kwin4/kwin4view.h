@@ -66,6 +66,8 @@ class Kwin4View : public QCanvasView
   QPixmap *loadPixmap(QString name);
   void initView(bool deleteall=true);
   void drawBoard(bool remove=false);
+  void drawIntro(bool remove=false);
+  void hideIntro();
   void drawStar(int x,int y,int no);
   void setArrow(int x,int color);
   void setPiece(int x,int y,int color,int no,bool animation=true);
@@ -88,6 +90,11 @@ class Kwin4View : public QCanvasView
    * valid move for the game.
    **/
     void slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *e,bool *eatevent);
+
+    /** 
+    * received after the movment of an intro sprite is finished
+    **/
+    void introMoveDone(QCanvasItem *item,int mode);
  	
 
 	

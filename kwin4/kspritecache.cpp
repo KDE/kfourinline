@@ -522,12 +522,17 @@ void KSprite::moveTo(double tx,double ty,double speed)
     mSpeed=speed;
   }
 
-  kdDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << speed<<endl;
+  kdDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << mSpeed<<endl;
   mTargetX=tx;
   mTargetY=ty;
   if ((fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0)
   {
+    kdDebug(11002) << "     animation on" << endl;
     setAnimated(true);
+  }
+  else
+  {
+    kdDebug(11002) << "     animation NOT on ihn moveTO" << endl;
   }
 }
 
@@ -629,63 +634,13 @@ void KSprite::advance(int stage)
   // Movement to target
   if (!moveObject() && (fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0 && mSpeed>0.0)
   {
-    double dx,dy;
-    double vx,vy;
-    dx=mTargetX-x();
-    dy=mTargetY-y();
-    vx=0.0;
-    vy=0.0;
-
-    // first pure x,y movements
-    if (fabs(dy)<=0.0001)
-    {
-      if (dx>0.0) vx=mSpeed;
-      else if (dx<0.0) vx=-mSpeed;
-      else vx=0.0;
-    }
-    else if (fabs(dx)<=0.0001)
-    {
-      if (dy>0.0) vy=mSpeed;
-      else if (dy<0.0) vy=-mSpeed;
-      else vy=0.0;
-    }
-    else // diagonal
-    {
-      double alpha=atan2(dy,dx);
-      vx=cos(alpha)*mSpeed;
-      vy=sin(alpha)*mSpeed;
-    }
-
-    if (fabs(dx)<=fabs(vx) && fabs(dy)<=fabs(vy))
-    {
-      move(mTargetX,mTargetY);
-      emitsignal=1;
-    }
-    else if (fabs(dx)<=fabs(vx))
-    {
-      moveBy(dx,vy);
-      isMoving=true;
-    }
-    else if (fabs(dy)<=fabs(vy))
-    {
-      moveBy(vx,dy);
-      isMoving=true;
-    }
-    else
-    {
-      moveBy(vx,vy);
-      isMoving=true;
-    }
+    isMoving=spriteMove(mTargetX,mTargetY);
+    if (!isMoving) emitsignal=1;
   }
   else if (moveObject())
   {
-    double sx=x();
-    double sy=y();
-    if (moveObject()->calcMove(sx,sy,this))
-    {
-      setX(sx);
-      setY(sx);
-    }
+    isMoving=moveObject()->spriteMove(mTargetX,mTargetY,this);
+    if (!isMoving) emitsignal=1;
   }
 
 
@@ -701,6 +656,60 @@ void KSprite::advance(int stage)
     kdDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
     mNotify->emitSignal((QCanvasItem *)this,emitsignal);
   }
+}
+
+// Generates linear movement to tx,ty
+bool KSprite::spriteMove(double tx,double ty)
+{
+  bool isMoving=false;
+  double dx,dy;
+  double vx,vy;
+  dx=tx-x();
+  dy=ty-y();
+  vx=0.0;
+  vy=0.0;
+
+  // first pure x,y movements
+  if (fabs(dy)<=0.0001)
+  {
+    if (dx>0.0) vx=mSpeed;
+    else if (dx<0.0) vx=-mSpeed;
+    else vx=0.0;
+  }
+  else if (fabs(dx)<=0.0001)
+  {
+    if (dy>0.0) vy=mSpeed;
+    else if (dy<0.0) vy=-mSpeed;
+    else vy=0.0;
+  }
+  else // diagonal
+  {
+    double alpha=atan2(dy,dx);
+    vx=cos(alpha)*mSpeed;
+    vy=sin(alpha)*mSpeed;
+  }
+
+  if (fabs(dx)<=fabs(vx) && fabs(dy)<=fabs(vy))
+  {
+    move(tx,ty);
+    isMoving=false;
+  }
+  else if (fabs(dx)<=fabs(vx))
+  {
+    moveBy(dx,vy);
+    isMoving=true;
+  }
+  else if (fabs(dy)<=fabs(vy))
+  {
+    moveBy(vx,dy);
+    isMoving=true;
+  }
+  else
+  {
+    moveBy(vx,vy);
+    isMoving=true;
+  }
+  return isMoving;
 }
 
 void KSprite::emitNotify(int mode)

@@ -21,6 +21,7 @@
 
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <math.h>
 
 // application specific includes
 #include "kwin4view.h"
@@ -41,6 +42,61 @@
 #define COL_PLAYER       QColor(255,255,0)
 #define COL_RED          red
 #define COL_YELLOW       yellow
+
+class KIntroMove : public KSpriteMove
+{
+  public:
+  KIntroMove() : KSpriteMove() {mode=0;cnt=0;}
+  virtual bool spriteMove(double tx,double ty,KSprite *sp) 
+  {
+    double sign=1.0;
+    if (!dir) sign=-1.0;
+    if (mode==0)
+    {
+      cnt++;
+      if (sp->x()<120.0)
+      {
+        sp->spriteMove(tx,ty);
+        return true;
+      }
+      else 
+      {
+        cnt=0;
+        mode=1;
+        cx=sp->x();
+        cy=sp->y()-sign*50;
+      }
+    }
+    if (mode==1)
+    {
+      if (cnt<360)
+      {
+        double x,y;
+        x=cx+50*cos((sign*90.0-sign*(double)cnt)/180.0*M_PI);
+        y=cy+50*sin((sign*90.0-sign*(double)cnt)/180.0*M_PI);
+        sp->move(x,y);
+        cnt+=5;
+      }
+      else 
+      {
+        cnt=0;
+        mode=2;
+      }
+    }
+    if (mode==2)
+    {
+      return sp->spriteMove(tx,ty);
+    }
+
+    return true;
+  }
+  void setDir(bool d) {dir=d;}
+  private:
+  bool dir;
+  int mode;
+  int cnt;
+  double cx,cy;
+};
 
 
 
@@ -77,6 +133,12 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   config->writeEntry("text",i18n("Ah ah ah...only one go at a time...")); 
   config->setGroup("text4");
   config->writeEntry("text",i18n("Please wait... it is not your turn.")); 
+  config->setGroup("intro1");
+  config->writeEntry("text",i18n("1. intro line, welcome to win4","Welcome")); 
+  config->setGroup("intro2");
+  config->writeEntry("text",i18n("2. intro line, welcome to win4","to")); 
+  config->setGroup("intro3");
+  config->writeEntry("text",i18n("3. intro line, welcome to win4","Win4")); 
   config->sync();
 
 
@@ -87,12 +149,13 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   mScoreWidget=new ScoreWidget(viewport());
   addChild(mScoreWidget);
   mScoreWidget->move(pnt);
-  mScoreWidget->show();
 
   pnt=config->readPointEntry("statuswidget");
   mStatusWidget=new StatusWidget(this);
   mStatusWidget->move(pnt);
-  mStatusWidget->show();
+
+  mScoreWidget->hide();
+  mStatusWidget->hide();
 
   move(0,0);
   adjustSize();
@@ -124,6 +187,7 @@ Kwin4Doc *Kwin4View::getDocument() const
 
 void Kwin4View::initView(bool deleteall)
 {
+  KSprite *sprite=0;
   // mCanvas->setAdvancePeriod(period);
   mCanvas->setAdvancePeriod(15);
 
@@ -138,11 +202,28 @@ void Kwin4View::initView(bool deleteall)
   else mCanvas->setBackgroundColor(QColor(0,0,128));
   delete pixmap;
 
-  // TODO in start functions to distinguish from intro
-  drawBoard(deleteall);
+  if (getDocument()->IsIntro())
+  {
+    mScoreWidget->hide();
+    mStatusWidget->hide();
+    drawIntro(deleteall);
+  }
+  else
+  {
+    // TODO in start functions to distinguish from intro
+    drawBoard(deleteall);
+    mScoreWidget->show();
+    mStatusWidget->show();
+    // Hide pieces in any case
+    for (int i=0;i<42;i++)
+    {
+      sprite=(KSprite *)(mCache->getItem("piece",i));
+      if (sprite) sprite->hide();
+    }
+    hideIntro();
+  }
 
   // Hide stars in any case
-  KSprite *sprite=0;
   for (int i=0;i<4;i++)
   {
     sprite=(KSprite *)(mCache->getItem("star",i));
@@ -152,12 +233,6 @@ void Kwin4View::initView(bool deleteall)
   sprite=(KSprite *)(mCache->getItem("gameover",1));
   if (sprite) sprite->hide();
 
-  // Hide pieces in any case
-  for (int i=0;i<42;i++)
-  {
-    sprite=(KSprite *)(mCache->getItem("piece",i));
-    if (sprite) sprite->hide();
-  }
 
   // Hide hint in any case
   setHint(0,0,false);
@@ -212,6 +287,94 @@ void Kwin4View::drawStar(int x,int y,int no)
                  dy/2-sprite->height()/2+y*(dy+mSpreadY)+mBoardY);
     sprite->show();
     sprite->setAnimation(0);
+  }
+}
+
+void Kwin4View::hideIntro()
+{
+  KSprite *sprite=0;
+  sprite=(KSprite *)(mCache->getItem("about",1));
+  if (sprite) sprite->hide();
+  sprite=(KSprite *)(mCache->getItem("win4about",1));
+  if (sprite) sprite->hide();
+  sprite=(KSprite *)(mCache->getItem("win4about",2));
+  if (sprite) sprite->hide();
+
+  QCanvasText *text;
+  text=(QCanvasText *)(mCache->getItem("intro1",1));
+  if (text) text->hide();
+  text=(QCanvasText *)(mCache->getItem("intro2",1));
+  if (text) text->hide();
+  text=(QCanvasText *)(mCache->getItem("intro3",1));
+  if (text) text->hide();
+}
+void Kwin4View::drawIntro(bool remove)
+{
+  KSprite *sprite=0;
+  // background
+  sprite=(KSprite *)(mCache->getItem("about",1));
+  if (sprite) sprite->show();
+
+  sprite=(KSprite *)(mCache->getItem("win4about",1));
+  if (sprite) sprite->show();
+  sprite=(KSprite *)(mCache->getItem("win4about",2));
+  if (sprite)
+  {
+    KConfig *config=mCache->config();
+    double dest=config->readDoubleNumEntry("x2",250.0);
+    sprite->setX(dest);
+    sprite->show();
+  }
+
+  QCanvasText *text;
+  text=(QCanvasText *)(mCache->getItem("intro1",1));
+  if (text) text->show();
+  text=(QCanvasText *)(mCache->getItem("intro2",1));
+  if (text) text->show();
+  text=(QCanvasText *)(mCache->getItem("intro3",1));
+  if (text) text->show();
+
+  // text
+  
+  // animation
+  for (int no=0;no<42;no++)
+  {
+    sprite=(KSprite *)(mCache->getItem("piece",no));
+    if (sprite)
+    {
+      KIntroMove *move=new KIntroMove;
+      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
+              this,SLOT(introMoveDone(QCanvasItem *,int)));
+      sprite->setMoveObject(move);
+      if (no%2==0)
+      {
+        sprite->move(0-20*no,0);
+        sprite->moveTo(150+2*no,105+4*no);
+        move->setDir(true);
+        sprite->setFrame((no/2)%2);
+      }
+      else
+      {
+        sprite->move(0-20*no,height());
+        sprite->moveTo(340-2*(no-1),105+4*(no-1));
+        move->setDir(false);
+        sprite->setFrame(((no-1)/2)%2);
+      }
+      sprite->show();
+    }
+  }
+}
+void Kwin4View::introMoveDone(QCanvasItem *item,int )
+{
+  kdDebug() << "########################## INTRO MOVE DONE ################# " << endl;
+
+  KSprite *sprite=(KSprite *)item;
+  sprite->deleteNotify();
+  KIntroMove *move=(KIntroMove *)sprite->moveObject();
+  if (move)
+  {
+    delete move;
+    sprite->setMoveObject(0);
   }
 }
 

@@ -51,7 +51,8 @@ class KSprite;
     {
       public:
         KSpriteMove() {};
-        virtual bool calcMove(double &,double &,KSprite *) {return false;}
+        virtual ~KSpriteMove() {};
+        virtual bool spriteMove(double ,double ,KSprite *) {return false;}
       private:
     };
 
@@ -104,6 +105,15 @@ class KSprite : public QCanvasSprite
     * @param speed - the speed to move . If zero the last set speed is taken
     **/
     void moveTo(double x,double y,double speed=0.0);
+
+    /**
+    * Generates a linear move to the target tx,ty from the current
+    * position of the sprite with its set speed @ref setSpeed
+    * Upon arrival the function returns false to indicate an end of the
+    * movment. Otherwise true is returned. 
+    * The sprite is moved in this function.
+    **/
+    bool spriteMove(double tx,double ty);
 
     /**
     * The sprites advance function. See the qt @ref QcanvasSprite advance
