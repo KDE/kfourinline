@@ -832,40 +832,30 @@ void Kwin4Doc::slotMessageUpdate(int /*id*/,Q_UINT32 /*sender*/,Q_UINT32 /*recv*
 /**
  * Create a KPlayer
  */ 
-KPlayer *Kwin4Doc::createPlayer(int rtti,int io,bool isvirtual)
-//void Kwin4Doc::slotCreatePlayer(Kwin4Player *&player,int rtti,int io,bool isvirtual,Kwin4Doc * /*game*/)
+KPlayer *Kwin4Doc::createPlayer(int /*rtti*/,int io,bool isvirtual)
 {
-  KPlayer *player=new Kwin4Player;
-  //player=(KPlayer *)new Kwin4Player;
-  if (global_debug>1) kdDebug(12010) << "Kwin4Doc::slotCreatePlayer should create player " << player 
-            << " with rtti=" <<rtti << " virtual="<<isvirtual << " io="<<io<< endl;
+  KPlayer *player = new Kwin4Player;
   if (!isvirtual)
-  {
     createIO(player,(KGameIO::IOMode)io);
-  }
-  connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
-          this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
+  
+  connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *, KPlayer *)),
+          this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *, KPlayer *)));
   ((Kwin4Player *)player)->setWidget(pView->statusWidget());
   return player;
 }
 
 /** 
  * Called when a player input is received from the KGame object 
- * this is e-.g. a mous event
+ * this is e-.g. a mouse event
  */
-bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
+bool Kwin4Doc::playerInput(QDataStream &msg, KPlayer * /*player*/)
 {
-  // Kwin4Player *p=(Kwin4Player *)player;
-  Q_INT32 move,pl;
+  int move, pl;
   msg >> pl >> move;
-  if (global_debug>1)  kdDebug(12010)  << "playerInput() Player " << pl << " id="<<player->id() 
-             << " uid="<<player->userId() << " moves to " << move << endl;
-  // Perform the move (sprite and logic)
-  bool res = Move(move,pl);
-  if (!res)
-    QTimer::singleShot(0,this,SLOT(slotRepeatMove()));
-  return
-    false; // Stop game sequence
+  if (!Move(move,pl))
+    QTimer::singleShot(0, this,SLOT(slotRepeatMove()));
+
+  return false;
 }
 
 /**
@@ -873,8 +863,6 @@ bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
  */
 void Kwin4Doc::slotRepeatMove()
 {
-  if (global_debug>1)
-     kdDebug(12010) << "Reactivate Player " << getPlayer(QueryCurrentPlayer())->id() << endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true);
 }
 
@@ -904,7 +892,7 @@ KGameIO::IOMode Kwin4Doc::playedBy(int col)
   return mPlayedBy[col];
 }
 
-void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
+void Kwin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
 {
   if (global_debug>1)
     kdDebug(12010) << "  Kwin4Doc::setPlayedBy(int "<<col<<",KGameIO::IOMode "<<io<<")" << endl;
@@ -983,7 +971,7 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
 void Kwin4Doc::slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *sendit)
 {
   if (global_debug>1)
-    kdDebug(12010) << " @@@@@@@@@@@@@q Kwin4Doc::slotPrepareTurn b="<<b << endl;
+    kdDebug(12010) << " Kwin4Doc::slotPrepareTurn b="<<b << endl;
  
   *sendit=false;
   // Our player
@@ -1067,9 +1055,6 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
   if (global_debug>1) kdDebug(12010) << " void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
   gameId() << " we admin=" << isAdmin() << "master)" << isMaster() << endl;
 
-  // if (!isAdmin()) return ;
-
- 
   if (playerList()->count()!=2)
   {
     kdError() << "SERIOUS ERROR: We do not have two players...Trying to disconnect!"<<endl;
@@ -1355,7 +1340,8 @@ void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *new
       }
     }
   }
-  if (global_debug>1) kdDebug(12010) << "newPlayersJoin: DONE"<<endl;
+  if (global_debug>1)
+    kdDebug(12010) << "newPlayersJoin: DONE"<<endl;
 }
 
 #include "kwin4doc.moc"
