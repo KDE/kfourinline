@@ -19,6 +19,7 @@
 #include <qpixmap.h>
 #include <klocale.h>
 #include <kmessagebox.h>
+#include <kseparator.h>
 
 /* 
  *  Constructs a StatDlg which is a child of 'parent', with the 
@@ -224,8 +225,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     QSpacerItem* spacer_24 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
     vbox->addItem( spacer_24 );
 
-    Line1 = new QFrame( Layout17, "Line1" );
-    Line1->setFrameStyle( QFrame::HLine | QFrame::Sunken );
+    Line1 = new KSeparator( KSeparator::HLine, Layout17);
     vbox->addWidget( Line1 );
     QSpacerItem* spacer_25 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
     vbox->addItem( spacer_25 );
