@@ -67,7 +67,7 @@ A piece will begin to fill a column from the bottom, i.e. it
 will fall down until it reaches the ground level or another stone.
 After a move is done it is the turn of the other player. This is
 repeated until the game is over, i.e. one of the players has
-four pieces in a row, column or diagonal or no more moves are possbile
+four pieces in a row, column or diagonal or no more moves are possible
 because the board is filled.
 </para>
 
