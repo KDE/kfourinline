@@ -342,7 +342,7 @@ bool Kwin4Doc::IsIntro(){
 
 void Kwin4Doc::moveDone(QCanvasItem *item,int )
 {
-  kdDebug() << "########################## MOVE DONE ################# " << endl;
+  kdDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
 
   playerInputFinished(getPlayer(QueryCurrentPlayer()));
 
@@ -355,7 +355,12 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
   kdDebug() << "signalNextPlayer" << endl;
 }
 
+KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
+{
+  kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
+  getPlayer(QueryCurrentPlayer())->setTurn(true,true);
 
+}
 
 /** Make a game move */
 // Play a move
@@ -944,12 +949,16 @@ KPlayer *Kwin4Doc::createPlayer(int rtti,int io,bool isvirtual)
   return player;
 }
 
+/** Called when a player input is received from the KGame object 
+ *  this is e-.g. a mous event
+ */
 bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
 {
   Kwin4Player *p=(Kwin4Player *)player;
   Q_INT32 move,pl;
   msg >> pl >> move;
-  kdDebug()  << " Player " << pl << " moves to " << move << "***************" << endl;
+  kdDebug()  << "!!!!! Player " << pl << " id="<<player->id() << " moves to " << move << "***************" << endl;
+  // Perform the move (sprite and logic)
   Move(move,pl);
   return false; // Stop game sequence
 }
@@ -1292,6 +1301,7 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 // Redraw game after load/network
 bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
+  setGameStatus(End);
   pView->initView(false);
   bool res=KGame::loadgame(stream,network,reset);
 

@@ -1232,7 +1232,7 @@ void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
 
 void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 {
-  checkMenus(CheckEditMenu);
+  checkMenus(CheckEditMenu|CheckOptionsMenu);
   slotStatusMsg(i18n("Game running..."));
 }
 

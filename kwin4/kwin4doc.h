@@ -189,6 +189,8 @@ class Kwin4Doc : public KGame
   FARBE QueryWinC() {return winc;}
 
   KPlayer *createPlayer(int rtti,int io,bool isvirtual);
+  KPlayer * nextPlayer(KPlayer *last,bool exclusive=true);
+
 
 
 

@@ -63,7 +63,7 @@ void KSpriteCache::reset()
 void KSpriteCache::deleteAllItems()
 {
   QDictIterator<QCanvasItem> it( mItemDict ); 
-  kdDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
+  //kdDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
   while ( it.current() )
   {
     QCanvasItem *item=it.current();
@@ -75,7 +75,7 @@ void KSpriteCache::deleteItem(QString s,int no)
 {
   QCanvasItem *item;
   QString name=s+QString("_%1").arg(no);
-  kdDebug(11002) << "KSpriteCache::deleteItem name=" << name << endl;
+  //kdDebug(11002) << "KSpriteCache::deleteItem name=" << name << endl;
   item=mItemDict[name];
   if (item)
   {
@@ -163,7 +163,7 @@ QPixmap * KSpriteCache::loadPixmap(QString file,QString mask,QString dir)
       if (result2) newP->setMask(bitmask);
     }
   }
-  kdDebug(11002) << "KSpriteCache::loadPixmap: file="<<file<<"   mask="<<mask<<"   result1="<<result1<<"   result2="<<result2<<endl;
+  //kdDebug(11002) << "KSpriteCache::loadPixmap: file="<<file<<"   mask="<<mask<<"   result1="<<result1<<"   result2="<<result2<<endl;
   return newP;
 }
 
@@ -199,10 +199,10 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
     // Try to find out what we want to do, e.g. load, scale, ...
     QString type=config->readEntry(name+"method");
     if (type.isNull()) type=QString("load"); // default load
-    kdDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
+    //kdDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
 
     unsigned int number=config->readNumEntry(name+"number",1);
-    kdDebug(11002) << " Reading " << number << " frames " << endl;
+    //kdDebug(11002) << " Reading " << number << " frames " << endl;
 
     QString pixfile=config->readEntry(name+"file");
     QString maskfile=config->readEntry(name+"mask");
@@ -239,7 +239,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
       double step;
       if (number>1) step=(100.0-finalscale)/100.0/(double)(number-1);
       else step=1.0;
-      kdDebug(11002) << " Scaling " << number << " pics axis="<<axis<<" final="<<finalscale<<" file="<<pixfile<< " mask="<<maskfile<<endl;
+      //kdDebug(11002) << " Scaling " << number << " pics axis="<<axis<<" final="<<finalscale<<" file="<<pixfile<< " mask="<<maskfile<<endl;
 
       pixmap=loadPixmap(pixfile,maskfile);
       for (unsigned int j=0;j<(unsigned int)number;j++)
@@ -269,7 +269,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
     }
   }// end create images
   
- kdDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
+ //kdDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
  if (pixlist.count()<1) return 0;
 
  QCanvasPixmapArray *pixmaparray=new QCanvasPixmapArray(pixlist,hotlist);
@@ -306,7 +306,7 @@ void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
     if (filterList[0]==1 && filterList.count()==4) changeHSV(pixmap,filterList[1],filterList[2],filterList[3]);
     else if (filterList[0]==2 && filterList.count()==2) changeGrey(pixmap,filterList[1]);
     else if (filterList[0]==2 && filterList.count()==1) changeGrey(pixmap);
-    else kdDebug(11002) << "WARNING: Colorfilter parameter incorrect "<< endl;
+    else kdWarning(11002) << "WARNING: Colorfilter parameter incorrect "<< endl;
   }
 }
 
@@ -370,7 +370,7 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     case QCanvasItem::Rtti_Text:
     {
       QCanvasText *sprite=new QCanvasText(canvas());
-      kdDebug(11002) << "new CanvasText =" << sprite << endl;
+      //kdDebug(11002) << "new CanvasText =" << sprite << endl;
       QString text=config->readEntry("text");
       sprite->setText(text);
       QColor color=config->readColorEntry("color");
@@ -385,10 +385,10 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     {
       QCanvasPixmapArray  *pixmaps=createPixmapArray(config,name);
       KSprite *sprite=new KSprite(pixmaps,canvas());
-      kdDebug(11002) << "new sprite =" << sprite << endl;
+      //kdDebug(11002) << "new sprite =" << sprite << endl;
       double speed=config->readDoubleNumEntry("speed",0.0);
       sprite->setSpeed(speed);
-      kdDebug(11002) << "speed=" << sprite->speed() << endl; 
+      //kdDebug(11002) << "speed=" << sprite->speed() << endl; 
       createAnimations(config,sprite);
 
       item=(QCanvasItem *)sprite;
@@ -451,9 +451,9 @@ void KSpriteCache::configureCanvasItem(KConfig *config, QCanvasItem *sprite)
   sprite->setX(x);
   sprite->setY(y);
   sprite->setZ(z);
-  kdDebug(11002) << "x=" << sprite->x() << endl; 
-  kdDebug(11002) << "y=" << sprite->y() << endl; 
-  kdDebug(11002) << "z=" << sprite->z() << endl; 
+  //kdDebug(11002) << "x=" << sprite->x() << endl; 
+  //kdDebug(11002) << "y=" << sprite->y() << endl; 
+  //kdDebug(11002) << "z=" << sprite->z() << endl; 
 }
 
 void KSpriteCache::configureCanvasItem(QCanvasItem *original, QCanvasItem *copy)
@@ -483,7 +483,7 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     QString anim=QString("anim%1").arg(i);
     if (config->hasKey(anim))
     {
-      kdDebug(11002) << "Found animation key " << anim << endl;
+      //kdDebug(11002) << "Found animation key " << anim << endl;
       QValueList<int> animList=config->readIntListEntry(anim);
       if (animList.count()!=4) 
       {
@@ -522,17 +522,17 @@ void KSprite::moveTo(double tx,double ty,double speed)
     mSpeed=speed;
   }
 
-  kdDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << mSpeed<<endl;
+  //kdDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << mSpeed<<endl;
   mTargetX=tx;
   mTargetY=ty;
   if ((fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0)
   {
-    kdDebug(11002) << "     animation on" << endl;
+    //kdDebug(11002) << "     animation on" << endl;
     setAnimated(true);
   }
   else
   {
-    kdDebug(11002) << "     animation NOT on ihn moveTO" << endl;
+    //kdDebug(11002) << "     animation NOT on ihn moveTO" << endl;
   }
 }
 
@@ -647,13 +647,13 @@ void KSprite::advance(int stage)
   // Final checks
   if (!isAnimated && !isMoving)
   {
-    kdDebug(11002) << "Animation over" << endl;
+    //kdDebug(11002) << "Animation over" << endl;
     setAnimated(false);
   }
 
   if (mNotify && emitsignal)
   {
-    kdDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
+    //kdDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
     mNotify->emitSignal((QCanvasItem *)this,emitsignal);
   }
 }
@@ -715,7 +715,7 @@ bool KSprite::spriteMove(double tx,double ty)
 void KSprite::emitNotify(int mode)
 {
   if (!mNotify) return ;
-  kdDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
+  //kdDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
   mNotify->emitSignal((QCanvasItem *)this,mode);
 }
 QObject *KSprite::createNotify()
@@ -731,7 +731,7 @@ void KSprite::deleteNotify()
   mNotify->decRefCnt();
   if (mNotify->refCnt()<=0)
   {
-    kdDebug(11002) << "REALLY deleting notify" << endl;
+    //kdDebug(11002) << "REALLY deleting notify" << endl;
     delete mNotify;
     mNotify=0;
   }
@@ -763,7 +763,7 @@ void KSprite::setAnimation(int no)
   if (mCurrentAnimDir!=0 && mAnimTo[no]>=mAnimFrom[no]) setAnimated(true);
   else setAnimated(false);
   
-  kdDebug(11002) << this << " setAnimation("<<no<<") delay="<<mAnimDelay[no]<<" frames="<<mAnimFrom[no]<<"->"<<mAnimTo[no]<<" mode="<<mAnimDirection[no]<<" animated="<<animated()<<endl;
+  //kdDebug(11002) << this << " setAnimation("<<no<<") delay="<<mAnimDelay[no]<<" frames="<<mAnimFrom[no]<<"->"<<mAnimTo[no]<<" mode="<<mAnimDirection[no]<<" animated="<<animated()<<endl;
 }
 
 void KSprite::getAnimation(int no,int &startframe,int &endframe,int &mode,int &delay)
@@ -777,7 +777,7 @@ void KSprite::getAnimation(int no,int &startframe,int &endframe,int &mode,int &d
 
 void KSprite::createAnimation(int no,int startframe,int endframe,int mode,int delay)
 {
-  kdDebug(11002) << this << " createAnimation " << no << endl;
+  //kdDebug(11002) << this << " createAnimation " << no << endl;
   // resize?
   if ((int)mAnimFrom.count()<=no)
   {
@@ -790,7 +790,7 @@ void KSprite::createAnimation(int no,int startframe,int endframe,int mode,int de
   mAnimTo[no]=endframe;
   mAnimDirection[no]=mode;
   mAnimDelay[no]=delay;
-  kdDebug(11002) << "from=" << startframe << " to="<<endframe<<" mode="<<mode<<" delay="<<delay<<endl;
+  //kdDebug(11002) << "from=" << startframe << " to="<<endframe<<" mode="<<mode<<" delay="<<delay<<endl;
 }
 
 #include "kspritecache.moc"
