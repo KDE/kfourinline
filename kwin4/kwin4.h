@@ -37,7 +37,7 @@
 #include <kdialogbase.h>
 
 
-#define KWIN4_VERSION "v0.92"
+#define KWIN4_VERSION "v1.00"
 
 // forward declaration of the Kwin4 classes
 class KGameChat;
