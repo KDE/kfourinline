@@ -111,8 +111,6 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
 {
   initGUI();
   initStatusBar();
-  setupGUI();
-  
   initDocument();
 
   view = new Kwin4View(doc,this);
@@ -122,7 +120,8 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
 
   setMinimumSize(640,400);      // TODO
   setMaximumSize(800,600);
-  resize( 640, 480 );
+  
+  setupGUI();
 
   doc->ReadConfig(kapp->config());
 
