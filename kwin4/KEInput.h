@@ -21,7 +21,7 @@
 #include <qlist.h>
 #include <qobject.h>
 #include <qtimer.h>
-#include <qarray.h>
+#include <qmemarray.h>
 #include "KConnectEntry.h"
 #include "KRemoteConnect.h"
 #include "KProcessConnect.h"
@@ -41,10 +41,10 @@ class KEInput : public QObject
 //   KEMessage *mMsg;
    QTimer *cTimer;
 
-   QList<KRemoteConnect> remoteList;
-   QList<KProcessConnect> computerList;
-   QList<KInteractiveConnect> interactiveList;
-   QArray<KConnectEntry> playerArray;
+   QPtrList<KRemoteConnect> remoteList;
+   QPtrList<KProcessConnect> computerList;
+   QPtrList<KInteractiveConnect> interactiveList;
+   QMemArray<KConnectEntry> playerArray;
 
   public:
    KEInput(QObject * parent=0);

@@ -36,13 +36,13 @@
 #include "kwin4view.h"
 #include "geom.h"
 
-QList<Kwin4View> *Kwin4Doc::pViewList = 0L;
+QPtrList<Kwin4View> *Kwin4Doc::pViewList = 0L;
 
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *name) : QObject(parent, name)
 {
   if(!pViewList)
   {
-    pViewList = new QList<Kwin4View>();
+    pViewList = new QPtrList<Kwin4View>();
   }
 
   pViewList->setAutoDelete(true);

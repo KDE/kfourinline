@@ -213,7 +213,7 @@ amzug */
  	
   public:	
     /** the list of the views currently connected to the document */
-    static QList<Kwin4View> *pViewList;	
+    static QPtrList<Kwin4View> *pViewList;	
 
   public: // Protected attributes
   /**  */
