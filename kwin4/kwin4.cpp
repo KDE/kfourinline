@@ -247,7 +247,7 @@ void Kwin4App::initMenuBar()
       optionsMenu->insertItem(i18n("&Red played by"),popRed);
       optionsMenu->insertItem(i18n("&Level"),popLevel);
       optionsMenu->insertItem(i18n("Change &Names..."),ID_OPTIONS_NAMES);
-      optionsMenu->insertItem(i18n("&Network server..."), ID_OPTIONS_NETWORK);
+      optionsMenu->insertItem(i18n("Network server..."), ID_OPTIONS_NETWORK);
       optionsMenu->insertItem(i18n("&Animations"), ID_OPTIONS_ANIMATIONS);
 
   ///////////////////////////////////////////////////////////////////
