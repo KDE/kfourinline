@@ -278,14 +278,14 @@ void Kwin4Doc::ResetGame(){
   mLastColumn=-1;
   mLastColour=Niemand;
   SetScore(0);
-  setGameStatus(Pause);
+  //setGameStatus(Pause);
   mLastHint=-1;
 }
 
 /** Start a new game */
 void Kwin4Doc::StartGame(){
   mGameOverStatus=0;
-  setGameStatus(Run);
+  //setGameStatus(Run);
   winc=Niemand;
   // Who starts?
   SetCurrentPlayer((FARBE)mStartPlayer.value()); 
@@ -342,12 +342,12 @@ bool Kwin4Doc::IsIntro(){
 
 void Kwin4Doc::moveDone(QCanvasItem *item,int )
 {
-  kdDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
-  Debug();
-  for (KPlayer* p=playerList()->first(); p!= 0; p=playerList()->next() )
-  {
-    p->Debug();
-  }
+  //kdDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
+  //Debug();
+  //for (KPlayer* p=playerList()->first(); p!= 0; p=playerList()->next() )
+  //{
+  //  p->Debug();
+  //}
 
   if (playerCount()>1)
     playerInputFinished(getPlayer(QueryCurrentPlayer()));
@@ -365,6 +365,8 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
 {
   //kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
+  if (last->userId()==Gelb) SetCurrentPlayer(Rot);
+  else SetCurrentPlayer(Gelb);
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
 
 }
@@ -412,8 +414,8 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
   mHistoryCnt=mHistoryCnt.value()+1;
 
   mLastColour=QueryCurrentPlayer();
-  if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
-  else SetCurrentPlayer(Gelb);
+  //if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
+  //else SetCurrentPlayer(Gelb);
 
   mCurrentMove=mCurrentMove.value()+1;
 
@@ -426,16 +428,6 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
   pView->setPiece(x,y,mLastColour,mCurrentMove,mode==1?false:true);
   pView->setHint(0,0,false);
  
-
-  /*
-  res=CheckGameOver(x,mLastColour);
-  if (res==1)
-  {
-    if (mLastColour==Gelb) return GYellowWin;
-    else return GRedWin;
-  }
-  else if (res==-1) return GRemis;
-  */
   return GNormal;
 }
 
@@ -489,6 +481,8 @@ bool Kwin4Doc::RedoMove(){
   x=mHistory.at(QueryHistoryCnt());
   //kdDebug() << "Redo x=" << x << endl;
   MakeMove(x,1);
+  if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
+  else SetCurrentPlayer(Gelb);
   SetScore(0);
   pView->setHint(0,0,false);
   return true;
@@ -964,7 +958,8 @@ bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
   Kwin4Player *p=(Kwin4Player *)player;
   Q_INT32 move,pl;
   msg >> pl >> move;
-  kdDebug()  << "!!!!! Player " << pl << " id="<<player->id() << " moves to " << move << "***************" << endl;
+  kdDebug()  << "!!!!! Player " << pl << " id="<<player->id() 
+             << " uid="<<player->userId() << " moves to " << move << "***************" << endl;
   // Perform the move (sprite and logic)
   Move(move,pl);
   return false; // Stop game sequence
@@ -1012,8 +1007,9 @@ bool Kwin4Doc::Move(int x,int id)
   return true;
 }
 
-int Kwin4Doc::checkGameOver(KPlayer *)
+int Kwin4Doc::checkGameOver(KPlayer *p)
 {
+  kdDebug() <<"kwin4doc::checkGameOver::"<<p->userId()<<endl;
   // -1: remis, 1:won, 0: continue
   return CheckGameOver(QueryLastcolumn(),QueryLastcolour());
 }
@@ -1307,6 +1303,19 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    }
    else if (prop->id()==KGamePropertyBase::IdGameStatus)
    {
+     if (gameStatus()==Abort)
+     {
+       kdDebug() << "signal game abort" << endl;
+       emit signalGameOver(2,getPlayer(QueryCurrentPlayer()),0); // 2 indicates Abort
+      }
+     else if (gameStatus()==Run)
+     {
+       kdDebug() << "PropertyChanged::signal game run" << endl;
+       ResetGame();
+       StartGame();
+       emit signalGameRun();
+      }
+     
    }
 }
 
@@ -1315,6 +1324,7 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   setGameStatus(End);
   mLastPlayer=p;
   mGameOverStatus=status;
+  kdDebug() << "Slotgameover lastplayer uid="<<p->userId()<<endl;
   
 }
 

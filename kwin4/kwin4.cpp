@@ -183,7 +183,8 @@ Kwin4App::~Kwin4App()
 
 void Kwin4App::checkMenus(int menu)
 {
-  bool localgame=(doc->playedBy(doc->QueryCurrentPlayer())!=KGameIO::ProcessIO) && (!doc->isNetwork());
+  //bool localgame=(doc->playedBy(doc->QueryCurrentPlayer())!=KGameIO::ProcessIO) && (!doc->isNetwork());
+  bool localgame=(!doc->isNetwork());
   // kdDebug() << "Localgame=" << localgame << endl;
   if (!menu || (menu&CheckFileMenu))
   {
@@ -239,7 +240,7 @@ void Kwin4App::checkMenus(int menu)
     {
       disableAction("edit_undo");
     }
-    else if (doc->QueryCurrentMove()<2 && ( doc->QueryCurrentPlayer()==Gelb && !localgame) )
+    else if (doc->QueryCurrentMove()<1 )
     {
       disableAction("edit_undo");
     }
@@ -487,6 +488,9 @@ void Kwin4App::initDocument()
          this,SLOT(slotNetworkBroken(int, int, KGame *)));
   connect(doc,SIGNAL(signalNextPlayer()),
          this,SLOT(slotStatusNames()));
+
+  connect(doc,SIGNAL(signalGameRun()),
+         this,SLOT(NewGame()));
 }
 
 void Kwin4App::initPlayers()
@@ -670,21 +674,20 @@ void Kwin4App::slotSaveFile()
 }
 void Kwin4App::slotFileNew()
 {
-
-  NewGame(1);
-  checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
+  doc->setGameStatus(Kwin4Doc::Run);
+// NewGame(1);
+// checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
 }
 
 /** Starts a new game */
-void Kwin4App::NewGame(int mode)
+void Kwin4App::NewGame()
 {
   bool res1,res2;
-  // FARBE farbe;
-  //
+  kdDebug() << "kwin4app::newgame"<<endl;
 
-  if (mode&1) doc->ResetGame();
+//  if (mode&1) doc->ResetGame();
 
-  doc->StartGame();
+//  doc->StartGame();
 
   slotStatusNames();
   checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
@@ -692,11 +695,7 @@ void Kwin4App::NewGame(int mode)
 
 void Kwin4App::slotFileClose()
 {
-  EndGame(TBrk);
-  QString  m=i18n(" Game aborted. Please restart next round.");
-  slotStatusMsg(m);
-
-  checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
+  doc->setGameStatus(Kwin4Doc::Abort);
 }
 
 void Kwin4App::slotFileQuit()
@@ -740,16 +739,6 @@ void Kwin4App::slotFileStatistics()
 void Kwin4App::slotEditUndo()
 {
 
-  /*
-  if (!doc->IsUser(doc->QueryCurrentPlayer()))
-  {
-    KMessageBox::sorry(this,
-      i18n("It is not your turn. You cannot undo now.\n"),
-      appTitle());
-    return ;
-  }
-  */
-
   doc->UndoMove();
   // Undo twice if computer is moving then
   if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO) doc->UndoMove();
@@ -762,16 +751,6 @@ void Kwin4App::slotEditUndo()
 
 void Kwin4App::slotEditRedo()
 {
-
-  /*
-  if (!doc->IsUser(doc->QueryCurrentPlayer()))
-  {
-    KMessageBox::sorry(this,
-      i18n("It is not your turn. You cannot redo now.\n"),
-      appTitle());
-    return ;
-  }
-  */
   doc->RedoMove();
   if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO) doc->RedoMove();
   slotStatusNames();
@@ -956,119 +935,7 @@ void Kwin4App::slotOptionsNames()
 
 }
 
-  /*
-int Kwin4App::extractGame(KEMessage *msg)
-{
-  if (!msg) return 0;
 
-    doc->ResetGame();
-
-    short sh1,sh2;
-    QString s;
-    char *fl;
-    int i,j,size;
-    bool switchcolour=false;
-
-    msg->GetData("Beginner",sh1);
-    msg->GetData("RemoteBeginner",sh2);
-
-
-    if (sh2 && doc->IsRemote((FARBE)sh1))
-    {
-      switchcolour=true;
-    }
-    msg->GetData("Second",sh1);
-    msg->GetData("RemoteSecond",sh2);
-    if (sh2 && doc->IsRemote((FARBE)sh1))
-    {
-      switchcolour=true;
-    }
-
-
-    FARBE piece;
-    for (i=0;i<geom.field_my;i++)
-    {
-      s.sprintf("Row%d",i);
-      msg->GetData(s,fl,size);
-      // if size!=7 we are fucked up...
-
-
-      for (j=0;j<geom.field_mx;j++)
-      {
-         if (fl[j]!=0)
-         {
-            piece=(FARBE)fl[j];
-            if (switchcolour && piece==Gelb) piece=Rot;
-            else if (switchcolour && piece==Rot) piece=Gelb;
-            doc->SetCurrentPlayer(piece) ;
-            doc->MakeMove(j);
-         }
-      }
-    }
-
-    // Need to switch players
-    msg->GetData("Beginner",sh1);
-    if (switchcolour)
-    {
-      if ((FARBE)sh1==Gelb) sh1=(short)Rot;
-      else sh1=(short)Gelb;
-    }
-    if ((FARBE)sh1!=doc->QueryPlayerColour(0))
-    {
-      if ((FARBE)sh1==Gelb) slotStartcolourYellow();
-      else slotStartcolourRed();
-    }
-
-    msg->GetData("Aktzug",sh1);
-    doc->SetCurrentMove((int)sh1);
-    msg->GetData("Amzug",sh1);
-    if (switchcolour)
-    {
-      if ((FARBE)sh1==Gelb) sh1=(short)Rot;
-      else sh1=(short)Gelb;
-    }
-    doc->SetCurrentPlayer((FARBE)sh1);
-
-    // msg->GetData("Second",sh1);
-    msg->GetData("Level",sh1);
-    doc->SetLevel((int)sh1);
-
-    NewGame(0);
-
-   // If we switched, player 2 has to begin game
-   if (!switchcolour) return 0;
-   else return 1;
-}
-*/
-
-
-/*
-void Kwin4App::prepareGame(KEMessage *msg)
-{
-  if (!msg) return ;
-  msg->AddData("Aktzug",(short)doc->QueryCurrentMove());
-  msg->AddData("Amzug",(short)doc->QueryCurrentPlayer());
-  msg->AddData("Beginner",(short)doc->QueryPlayerColour(0));
-  msg->AddData("Second",(short)doc->QueryPlayerColour(1));
-
-
-  msg->AddData("Level",(short)doc->QueryLevel());
-  msg->AddData("RemoteBeginner",(short)(doc->IsRemote(doc->QueryPlayerColour(0))));
-  msg->AddData("RemoteSecond",(short)(doc->IsRemote(doc->QueryPlayerColour(1))));
-  QString s;
-  char *fl=new char[8];
-  int i,j;
-  for (i=0;i<geom.field_my;i++)
-  {
-    s.sprintf("Row%d",i);
-    for (j=0;j<geom.field_mx;j++)
-    {
-      fl[j]=(char)doc->QueryColour(j,i);
-    }
-    msg->AddData(s,fl,(int)geom.field_mx);
-  }
-}
-  */
 
 /** Ends the current game */
 void Kwin4App::EndGame(TABLE mode){
@@ -1083,75 +950,6 @@ void Kwin4App::EndGame(TABLE mode){
 
 }
 
-
-//  readdy for next move
-/*
-bool Kwin4App::NextMove( MOVESTATUS res)
-{
-  QString msg;
-
-
-  if (res==GYellowWin || res==GRedWin || res==GRemis)
-  {
-    doc->UpdateViews(UPDATE_TABLE,0,0);
-  }
-
-  if (res==GIllMove || res==GNotAllowed)
-  {
-     KMessageBox::sorry(this,
-        i18n("This move is not possible.\n"),
-        appTitle());
-    return true;
-  }
-  else if (res==GYellowWin)
-  {
-    EndGame(TWin);
-    checkMenus(CheckEditMenu);
-    msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Gelb));
-    slotStatusMsg(msg);
-
-    msg=i18n("%1 (Yellow) has won the game!").arg(doc->QueryName(Gelb));
-    KMessageBox::information(this, msg, appTitle());
-    return true;
-  }
-  else if (res==GRedWin)
-  {
-    EndGame(TLost);
-    checkMenus(CheckEditMenu);
-    msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Rot));
-    slotStatusMsg(msg);
-
-    msg=i18n("%1 (Red) has won the game!").arg(doc->QueryName(Rot));
-    KMessageBox::information(this,msg, appTitle());
-    return true;
-  }
-  else if (res==GRemis)
-  {
-    EndGame(TRemis);
-    checkMenus(CheckEditMenu);
-    slotStatusMsg(i18n("The game is drawn. Please restart next round."));
-    KMessageBox::information(this,i18n("The game ended remis!\n"),appTitle());
-    return true;
-  }
-  slotStatusNames();
-
-  mInput->Unlock();
-  checkMenus(CheckEditMenu);
-
-  if (Gelb==doc->QueryCurrentPlayer())
-  {
-    mInput->Next(0);
-  }
-  else if (Rot==doc->QueryCurrentPlayer())
-  {
-    mInput->Next(1);
-  }
-  else return false;
-
-  return true;
-
-}
-*/
 
 
 
@@ -1236,6 +1034,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   }
   else if (status==1)
   {
+    kdDebug() <<"in kwin4 userid after win="<<p->userId()<<endl;
     if (p->userId()==Gelb)
     {
       EndGame(TWin);
@@ -1256,6 +1055,12 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
       //msg=i18n("%1 (Red) has won the game!").arg(doc->QueryName(Rot));
       //KMessageBox::information(this,msg, appTitle());
     }
+  }
+  else if (status==2) // Abort
+  {
+    EndGame(TBrk);
+    QString  m=i18n(" Game aborted. Please restart next round.");
+    slotStatusMsg(m);
   }
   else
   {

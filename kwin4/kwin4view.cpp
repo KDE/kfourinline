@@ -1,5 +1,5 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          kwin4view.cpp  -  View of the kwin4 program
                              -------------------
     begin                : Sun Mar 26 12:50:12 CEST 2000
     copyright            : (C) |1995-2000 by Martin Heni

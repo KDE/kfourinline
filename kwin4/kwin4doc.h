@@ -221,9 +221,22 @@ class Kwin4Doc : public KGame
     void slotGameOver(int status, KPlayer * p, KGame * me);
 
     signals:
+    /**
+    * emmitted if the game status changes to run
+    */
+    void signalGameRun();
+    /**
+    * Emmitted if the chat origin changes
+    */
     void signalChatChanged(Kwin4Player *);
+    /**
+    * emmitted after a sprite move ends
+    **/
     void signalMoveDone(int,int);
     void signalNextPlayer();
+    /**
+    * emmitted if the game ends
+    **/
     void GameOver(int,KPlayer *,KGame *);
 
   public:	

@@ -2,7 +2,7 @@
                           Kwin4  -  Four in a Row for KDE
                              -------------------
     begin                : March 2000 
-    copyright            : (C) 1995-2000 by Martin Heni
+    copyright            : (C) 1995-2001 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
 
@@ -49,18 +49,17 @@ class Kwin4Player;
 
 extern int global_debug;
 
-#define  DLGBACK QColor(128,128,255)
 
 typedef enum  {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
 typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
 
-#define UPDATE_STATUS  1
-#define UPDATE_TABLE   2
-#define UPDATE_ARROW   4
-#define UPDATE_XY      8
-
+/**
+* Subclass of the chat dialog provided by the KGame lib.
+* It supports a user defined chat and the setting of the
+* owner player
+**/
 class ChatDlg : public KDialogBase
 {
 	Q_OBJECT
@@ -117,81 +116,102 @@ class Kwin4App : public KMainWindow
      */	
     Kwin4Doc *getDocument() const; 	
 
-    /** Starts a new game */
-    void NewGame(int mode);
-  /** Ends the current game */
+  /** Ends the current game
+  *   called only by the KGame framework via GameStatus
+  */
   void EndGame(TABLE mode);
+  /**
+  * Sets the grafix directory
+  */
   void SetGrafix(QString grafix);
+  /**
+  * Returns the title of the application
+  **/
   QString appTitle() {return mAppTitle;}
 
 
   protected:
+  /**
+  * Flags whhich menus should be checked and set
+  **/
   enum CheckFlags {All=0,CheckFileMenu=1,CheckEditMenu=2,CheckOptionsMenu=4,CheckViewMenu=8};
-    /** initGUI creates the menubar and inserts the menupopups as well as creating the helpMenu.
-     * @see KApplication#getHelpMenu
-     */
-    void initGUI();
-    /** Checks all menus..usually done on init programm */
-    void checkMenus(int menu=0);
+  /** Checks all menus..usually done on init programm */
+  void checkMenus(int menu=0);
+  /** initGUI creates the menubar and inserts the menupopups as well as creating the helpMenu.
+    * @see KApplication#getHelpMenu
+    */
+  void initGUI();
 
-     /** Prepare the next move */
-     //bool NextMove(MOVESTATUS res );
-
-    /** save general Options like all bar positions and status as well as the geometry and the recent file list to the configuration
-     * file
-     */ 	
-    void saveOptions();
-    /** read general Options again and initialize all variables like the recent file list
-     */
-    void readOptions();
-    /** sets up the statusbar for the main window by initialzing a statuslabel.
-     */
-    void initStatusBar();
-    /** initializes the document object of the main window that is connected to the view in initView().
-     * @see initView();
-     */
-    void initDocument();
-    /** creates the centerwidget of the KMainWindow instance and sets it as the view
-     */
-    void initView();
-    /** creates the Players
-     */
-    void initPlayers();
-    /** queryClose is called by KMainWindow on each closeEvent of a window. Against the
-     * default implementation (only returns true), this calles saveModified() on the document object to ask if the document shall
-     * be saved if Modified; on cancel the closeEvent is rejected.
-     * @see KMainWindow#queryClose
-     * @see KMainWindow#closeEvent
-     */
-    virtual bool queryClose();
-    /** queryExit is called by KMainWindow when the last window of the application is going to be closed during the closeEvent().
-     * Against the default implementation that just returns true, this calls saveOptions() to save the settings of the last window's	
-     * properties.
-     * @see KMainWindow#queryExit
-     * @see KMainWindow#closeEvent
-     */
-    virtual bool queryExit();
-    /** saves the window properties for each open window during session end to the session config file, including saving the currently
-     * opened file by a temporary filename provided by KApplication.
-     * @see KMainWindow#saveProperties
-     */
-    virtual void saveProperties(KConfig *_cfg);
-    /** reads the session config file and restores the application's state including the last opened files and documents by reading the
-     * temporary files saved by saveProperties()
-     * @see KMainWindow#readProperties
-     */
-    virtual void readProperties(KConfig *_cfg);
+  /** save general Options like all bar positions and status as well as the geometry and the recent file list to the configuration
+    * file
+    */ 	
+  void saveOptions();
+  /** read general Options again and initialize all variables like the recent file list
+    */
+  void readOptions();
+  /** sets up the statusbar for the main window by initialzing a statuslabel.
+    */
+  void initStatusBar();
+  /** initializes the document object of the main window that is connected to the view in initView().
+    * @see initView();
+    */
+  void initDocument();
+  /** creates the centerwidget of the KMainWindow instance and sets it as the view
+    */
+  void initView();
+  /** creates the Players
+    */
+  void initPlayers();
+  /** queryClose is called by KMainWindow on each closeEvent of a window. Against the
+    * default implementation (only returns true), this calles saveModified() on the document object to ask if the document shall
+    * be saved if Modified; on cancel the closeEvent is rejected.
+    * @see KMainWindow#queryClose
+    * @see KMainWindow#closeEvent
+    */
+  virtual bool queryClose();
+  /** queryExit is called by KMainWindow when the last window of the application is going to be closed during the closeEvent().
+    * Against the default implementation that just returns true, this calls saveOptions() to save the settings of the last window's	
+    * properties.
+    * @see KMainWindow#queryExit
+    * @see KMainWindow#closeEvent
+    */
+  virtual bool queryExit();
+  /** saves the window properties for each open window during session end to the session config file, including saving the currently
+    * opened file by a temporary filename provided by KApplication.
+    * @see KMainWindow#saveProperties
+    */
+  virtual void saveProperties(KConfig *_cfg);
+  /** reads the session config file and restores the application's state including the last opened files and documents by reading the
+    * temporary files saved by saveProperties()
+    * @see KMainWindow#readProperties
+    */
+  virtual void readProperties(KConfig *_cfg);
 
   public slots:
+    /**
+    * By the network dialog. Switch server/client
+    **/
     void slotServerTypeChanged(int t);
+    /**
+    * The remove player changed
+    **/
     void slotRemoteChanged(int who);
+    /**
+    * The game is ober or aborted
+    **/
     void slotGameOver(int status, KPlayer * p, KGame * me);
+    /**
+    * A move is done. update status
+    **/
     void slotMoveDone(int x, int y);
+    /**
+    * The network connection is lost
+    **/
     void slotNetworkBroken(int id, int oldstatus ,KGame *game);
-  /** Set the names in the mover field */
-  void slotStatusNames();
-
-
+    /** Starts a new game */
+    void NewGame();
+    /** Set the names in the mover field */
+    void slotStatusNames();
 
     void slotDisconnect();
     void slotInitNetwork();
