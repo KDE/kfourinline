@@ -562,9 +562,9 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
     QString m;
     m=QString("text%1").arg(rnd);
     QString ms;
-    if (rnd==1)      ms=i18n("Hold on..the other was not yet gone..."); 
+    if (rnd==1)      ms=i18n("Hold on... the other player has not been yet..."); 
     else if (rnd==2) ms=i18n("Hold your horses..."); 
-    else if (rnd==3) ms=i18n("Ah ah ah...only one go at a time..."); 
+    else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time..."); 
     else             ms=i18n("Please wait... it is not your turn."); 
 
     // TODO MH can be unique

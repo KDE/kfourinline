@@ -417,9 +417,9 @@ void Kwin4App::initGUI()
   ACTION("show_statusbar")->setStatusText(i18n("Toggle the statusbar..."));
   ACTION("show_statusbar")->setWhatsThis(i18n("Toggle the statusbar..."));
 
-  (void)new KSelectAction(i18n("Startplayer"),0,this,SLOT(slotStartplayer()),
+  (void)new KSelectAction(i18n("Starting Player"),0,this,SLOT(slotStartplayer()),
                       actionCollection(), "startplayer");
-  ACTION("startplayer")->setStatusText(i18n("Changing startplayer..."));
+  ACTION("startplayer")->setStatusText(i18n("Changing starting player..."));
   ACTION("startplayer")->setWhatsThis(i18n("Chooses which player begins the next game."));
   list.clear();
   list.append(i18n("&Yellow"));
@@ -1162,7 +1162,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
     EndGame(TRemis);
     checkMenus(CheckEditMenu);
     slotStatusMsg(i18n("The game is drawn. Please restart next round."));
-    //KMessageBox::information(this,i18n("The game ended remis!\n"),appTitle());
+    //KMessageBox::information(this,i18n("The game ended inadvertently!\n"),appTitle());
   }
   else if (status==1)
   {

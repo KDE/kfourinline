@@ -69,7 +69,7 @@ kEndDlg::kEndDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     vbox_3->addItem( spacer );
 
     PushButton1 = new QPushButton( Frame3, "PushButton1" );
-    PushButton1->setText( i18n( "Good Bye"  ) );
+    PushButton1->setText( i18n( "Goodbye"  ) );
     vbox_3->addWidget( PushButton1 );
     hbox->addLayout( vbox_3 );
 
@@ -81,7 +81,7 @@ kEndDlg::kEndDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     hbox_2->setMargin( 11 );
 
     TextLabel1 = new QLabel( Frame5, "TextLabel1" );
-    TextLabel1->setText( i18n( "Thanks for playing !\n\nCome back soon\n\n\nSure you really wanna quit?"  ) );
+    TextLabel1->setText( i18n( "Thanks for playing!\n\nCome back soon\n\n\nSure you really wanna quit?"  ) );
     TextLabel1->setAlignment( int( QLabel::AlignCenter ) );
     hbox_2->addWidget( TextLabel1 );
     hbox->addWidget( Frame5 );
