@@ -140,52 +140,16 @@ void Kwin4Doc::setView(Kwin4View *view)
   pView=view;
 }
 
-void Kwin4Doc::setAbsFilePath(const QString &filename)
-{
-  absFilePath=filename;
-}
-
-const QString &Kwin4Doc::getAbsFilePath() const
-{
-  return absFilePath;
-}
-
-void Kwin4Doc::setTitle(const QString & /*_t*/)
-{
-  title="";
-}
-
-const QString &Kwin4Doc::getTitle() const
-{
-  return title;
-}
-
-bool Kwin4Doc::newDocument(KConfig * /*config*/,QString path)
-{
-  absFilePath=QDir::homeDirPath();
-  if (global_debug>1) kdDebug(12010) << "path=" << path << endl;
-  return true;
-}
-
-bool Kwin4Doc::openDocument(const QString &filename, const char * /*format*/ /*=0*/)
-{
-  QFileInfo fileInfo(filename);
-  title=fileInfo.fileName();
-  absFilePath=fileInfo.absFilePath();	
-  return true;
-}
-
-bool Kwin4Doc::saveDocument(const QString & /*filename*/, const char * /*format*/ /*=0*/)
-{
-  return true;
-}
-
-/** Returns colour */
+/**
+ * Returns colour
+ */
 FARBE Kwin4Doc::QueryColour(int x,int y){
   return (FARBE)mField.at(x+y*geom.field_mx);
 }
 
-/** Set the colour */
+/**
+ * Set the colour
+ */
 void Kwin4Doc::SetColour(int x,int y,FARBE c){
   if (x<0 || x>=geom.field_mx || y<0 || y>=geom.field_my)
   {
@@ -287,6 +251,9 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
   sprite->deleteNotify();
 }
 
+/**
+ * Calcualte the next players turn
+ */
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool /*exclusive*/)
 {
   if (global_debug>1)
@@ -429,17 +396,23 @@ bool Kwin4Doc::RedoMove(){
   return true;
 }
 
-/** Set the name of col */
+/**
+ * Set the name of col
+ */
 void Kwin4Doc::SetName(FARBE i,QString n){
   getPlayer(i)->setName(n);
 }
 
-/** Query the name of i */
+/**
+ * Query the name of i
+ */
 QString Kwin4Doc::QueryName(FARBE i){
   return getPlayer(i)->name();
 }
 
-/**  */
+/**
+ * Returns the all time statistics for player i
+ */
 int Kwin4Doc::QueryStat(FARBE i,TABLE mode){
   Kwin4Player *player=getPlayer(i);
   switch(mode)
@@ -459,7 +432,9 @@ int Kwin4Doc::QueryStat(FARBE i,TABLE mode){
   return 0;
 }
 
-/** Query the colour of player i */
+/**
+ * Query the colour of player i
+ */
 FARBE Kwin4Doc::QueryPlayerColour(int player){
   if (player==0)
     return (FARBE)mStartPlayer.value();
@@ -854,7 +829,9 @@ void Kwin4Doc::slotMessageUpdate(int /*id*/,Q_UINT32 /*sender*/,Q_UINT32 /*recv*
 //  kdDebug(12010) << "MSG: id=" << id << " sender=" << sender << " receiver="<<recv<< endl;
 }
 
-// KGame Player handling
+/**
+ * Create a KPlayer
+ */ 
 KPlayer *Kwin4Doc::createPlayer(int rtti,int io,bool isvirtual)
 //void Kwin4Doc::slotCreatePlayer(Kwin4Player *&player,int rtti,int io,bool isvirtual,Kwin4Doc * /*game*/)
 {
@@ -1087,7 +1064,7 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
  */
 void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
 {
-  if (global_debug>1) kdDebug(12010) << " ============ void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
+  if (global_debug>1) kdDebug(12010) << " void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
   gameId() << " we admin=" << isAdmin() << "master)" << isMaster() << endl;
 
   // if (!isAdmin()) return ;
@@ -1117,7 +1094,7 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
   // Now check whose turn it is. The Admin will rule this
   if (isAdmin())
   {
-    if (global_debug>1) kdDebug(12010) << "WE are ADMIN ========= COOL ! " << endl;
+    if (global_debug>1) kdDebug(12010) << "WE are ADMIN == COOL ! " << endl;
     // p1 is local
     if (!p1->isVirtual())
     {
@@ -1145,7 +1122,8 @@ Kwin4Player *Kwin4Doc::getPlayer(FARBE col)
  Kwin4Player *p;
  for ( p=(Kwin4Player *)playerList()->first(); p!= 0; p=(Kwin4Player *)playerList()->next() )
  {
-   if (p->userId()==col) return p;
+   if (p->userId()==col)
+     return p;
  }
  kdError() << "SERIOUS ERROR: Cannot find player with colour " << col << ".  CRASH imminent" << endl;
  return 0;
@@ -1247,23 +1225,23 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    {
      if (gameStatus()==Abort)
      {
-       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game abort +++++++++++++++++++" << endl;
+       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game abort +++" << endl;
        emit signalGameOver(2,getPlayer(QueryCurrentPlayer()),0); // 2 indicates Abort
      }
      else if (gameStatus()==Run)
      {
-       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game run ++++++++++++++++++++++" << endl;
+       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game run +++" << endl;
        preparePlayerTurn(); // Set the current player to play
        emit signalGameRun();
      }
      else if (gameStatus()==Init)
      {
-       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game INIT ++++++++++++++++++++++" << endl;
+       if (global_debug>1) kdDebug(12010) << "PropertyChanged::status signal game INIT +++" << endl;
        ResetGame(true);
      }
      else
      {
-       if (global_debug>1) kdDebug(12010) << "PropertyChanged::other status signal ++++++++++++++++++++++" << endl;
+       if (global_debug>1) kdDebug(12010) << "PropertyChanged::other status signal +++" << endl;
      }
      
    }
@@ -1299,9 +1277,8 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
   bool res=KGame::loadgame(stream,network,reset);
   if (global_debug>1) kdDebug(12010) << "amzug loaded to ="<<mAmzug.value() << endl;
 
-
   // Replay the game be undoing and redoing
-  if (global_debug>1) kdDebug(12010) << "REDRAW GAME using undo/redo=============" << endl;
+  if (global_debug>1) kdDebug(12010) << "REDRAW GAME using undo/redo" << endl;
   if (global_debug>1) kdDebug(12010) << "history cnt="<<mHistoryCnt.value() << endl;
   if (global_debug>1) kdDebug(12010) << "amzug ="<<mAmzug.value() << endl;
   int cnt=0;
@@ -1324,7 +1301,8 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
   // And set the right player to turn
   preparePlayerTurn();
 
-  if (global_debug>1) kdDebug(12010)  << "loadgame done +++++++++++++++++++++++++" << endl;
+  if (global_debug>1)
+    kdDebug(12010)  << "loadgame done +++" << endl;
   return res;
 }
 

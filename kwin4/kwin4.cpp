@@ -297,8 +297,7 @@ void Kwin4App::initStatusBar()
 void Kwin4App::initDocument()
 {
   doc = new Kwin4Doc(this);
-  doc->newDocument(kapp->config(),mGrafix);
-   // Game Over signal
+  // Game Over signal
   connect(doc,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
          this,SLOT(slotGameOver(int, KPlayer *,KGame *)));
   connect(doc,SIGNAL(signalMoveDone(int, int)),
@@ -334,22 +333,23 @@ void Kwin4App::changeAction(const char *action, bool enable){
 /**
  * Forward the save to the document/Kgame to store
  * network and menu options
+ * TODO
  **/
 void Kwin4App::saveProperties(KConfig *_cfg)
 {
   // saving to tempfile not necessary
-  if(doc->getTitle()!=i18n("Untitled") )
+  if(mTitle !=i18n("Untitled") )
      return;
   
-  QString filename=doc->getAbsFilePath();
-  _cfg->writePathEntry("filename", filename);
+  _cfg->writePathEntry("filename", mAbsFilePath);
 
-  QString tempname = kapp->tempSaveName(filename);
-  doc->saveDocument(kapp->tempSaveName(tempname));
+  QString tempname = kapp->tempSaveName(mAbsFilePath);
+  //doc->saveDocument(kapp->tempSaveName(tempname));
 }
 
 /**
  * Load game and menu options back
+ * TODO
  **/
 void Kwin4App::readProperties(KConfig* _cfg)
 {
@@ -362,9 +362,9 @@ void Kwin4App::readProperties(KConfig* _cfg)
 
     if(canRecover)
     {
-      doc->openDocument(tempname);
       QFileInfo info(filename);
-      doc->setAbsFilePath(info.absFilePath());
+      mTitle=info.fileName();
+      mAbsFilePath = info.absFilePath();
       QFile::remove(tempname);
     }
   }
@@ -372,7 +372,7 @@ void Kwin4App::readProperties(KConfig* _cfg)
   {
     if(!filename.isEmpty())
     {
-      doc->openDocument(filename);
+      //doc->openDocument(filename);
     }
   }
 }
@@ -397,6 +397,7 @@ void Kwin4App::slotOpenFile()
 
 /**
  * Save game
+ * TODO
  **/
 void Kwin4App::slotSaveFile()
 {

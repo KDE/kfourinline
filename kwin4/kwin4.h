@@ -187,6 +187,8 @@ class Kwin4App : public KMainWindow
     ChatDlg *mMyChatDlg;
     // Grafix
     QString mGrafix;
+		QString mTitle;
+		QString mAbsFilePath;
 
     /**
      * view is the main widget which represents your working area. The View
