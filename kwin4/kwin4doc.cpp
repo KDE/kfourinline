@@ -1017,9 +1017,11 @@ void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
     player->removeGameIO(0); // remove all IO's
     createIO(player,io);
   }
+  /*
   if (io==0) player->setNetworkPriority(0);
   else if (io==KGameIO::ProcessIO) player->setNetworkPriority(10);
   else  player->setNetworkPriority(50);
+  */
 }
 
 void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)

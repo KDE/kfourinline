@@ -179,6 +179,7 @@ class Kwin4App : public KMainWindow
     virtual void readProperties(KConfig *_cfg);
 
   public slots:
+    void slotRemoteChanged(int who);
     void slotGameOver(int status, KPlayer * p, KGame * me);
     void slotMoveDone(int x, int y);
     void slotNetworkBroken(int id, int oldstatus ,KGame *game);
@@ -229,10 +230,10 @@ class Kwin4App : public KMainWindow
     void slotPlayer2By();
     void slotYellowPlayer();
     void slotYellowComputer();
-    void slotYellowRemote();
+    void slotYellowKeyboard();
     void slotRedPlayer();
     void slotRedComputer();
-    void slotRedRemote();
+    void slotRedKeyboard();
     void slotLevel();
     void slotOptionsNames();
 

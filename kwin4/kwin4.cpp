@@ -17,19 +17,22 @@
 
 // include files for QT
 #include <qdir.h>
-#include <qpainter.h>
-#include <qfiledialog.h>
+//#include <qpainter.h>
+//#include <qfiledialog.h>
 #include <qstring.h>
-#include <qprogressdialog.h>
+//#include <qprogressdialog.h>
 #include <qdir.h>
 #include <qlayout.h>
-#include <qbuffer.h>
-#include <qlayout.h>
+//#include <qbuffer.h>
+//#include <qlayout.h>
 #include <qhgroupbox.h>
+#include <qvbuttongroup.h>
+#include <qvbox.h>
+#include <qradiobutton.h>
 
 
 #include <stdio.h>
-#include <unistd.h>
+//#include <unistd.h>
 
 // include files for KDE
 #include <kstddirs.h>
@@ -413,7 +416,7 @@ void Kwin4App::initGUI()
   list.clear();
   list.append(i18n("&Mouse"));
   list.append(i18n("&Computer"));
-  list.append(i18n("&Remote"));
+  list.append(i18n("&Keyboard"));
   ((KSelectAction *)ACTION("player1"))->setItems(list);
   (void)new KSelectAction(i18n("Red played by"),0,this,SLOT(slotPlayer2By()),
                       actionCollection(), "player2");
@@ -879,7 +882,7 @@ void Kwin4App::slotPlayer1By()
         slotYellowComputer();
     break;
     case 2:
-        slotYellowRemote();
+        slotYellowKeyboard();
     break;
   }
 }
@@ -894,7 +897,7 @@ void Kwin4App::slotPlayer2By()
         slotRedComputer();
     break;
     case 2:
-        slotRedRemote();
+        slotRedKeyboard();
     break;
   }
 }
@@ -912,9 +915,10 @@ void Kwin4App::slotYellowComputer()
     checkMenus(CheckOptionsMenu);
 	
 }
-void Kwin4App::slotYellowRemote()
+void Kwin4App::slotYellowKeyboard()
 {
-  doc->setPlayedBy(Gelb,(KGameIO::IOMode)0);
+  kdWarning() << "Keyboard not yet supported" << endl;
+  // doc->setPlayedBy(Gelb,(KGameIO::IOMode)0);
   checkMenus(CheckOptionsMenu);
 	
 }
@@ -930,9 +934,10 @@ void Kwin4App::slotRedComputer()
   doc->setPlayedBy(Rot,KGameIO::ProcessIO);
   checkMenus(CheckOptionsMenu);
 }
-void Kwin4App::slotRedRemote()
+void Kwin4App::slotRedKeyboard()
 {
-  doc->setPlayedBy(Rot,(KGameIO::IOMode)0);
+  //doc->setPlayedBy(Rot,(KGameIO::IOMode)0);
+  kdWarning() << "Keyboard not yet supported" << endl;
   checkMenus(CheckOptionsMenu);
 
 }
@@ -1289,6 +1294,28 @@ void Kwin4App::slotInitNetwork()
   KGameDialog dlg(doc, 0, i18n("Configuration"), this,true,
    KGameDialog::NetworkConfig, 20000);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
+
+  QVBox *box=dlg.getConfigPage(KGameDialog::NetworkConfig);
+  /*
+  QVBoxLayout *layout=(QVBoxLayout *)(dlg.networkConfig()->layout());
+  kdDebug() << "Kwin4App::layout=" <<layout<< endl;
+  */
+
+  QVBoxLayout *l=(QVBoxLayout *)(box->layout());
+  kdDebug() << "Kwin4App::layout=" <<l<< endl;
+
+  QVButtonGroup *group=new QVButtonGroup(box);
+  kdDebug() << "group="<<group<<endl;
+  connect(group, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
+
+  
+  (void)new QRadioButton(i18n("Yellow should be played by remote"), group);
+  (void)new QRadioButton(i18n("Red should be played by remote"), group);
+  l->addWidget(group);
+  group->setButton(0);
+  slotRemoteChanged(0);
+
+
   dlg.exec();// note: we don't have to check for the result - maybe a bug
   
 /*  
@@ -1296,6 +1323,21 @@ void Kwin4App::slotInitNetwork()
   mDialog = new KGameDialog(mGame, i18n("Configure KGame"), this);
   connect(mDialog, SIGNAL(finished()), this, SLOT(slotDialogFinished())); 
   mDialog->show();*/
+}
+
+void Kwin4App::slotRemoteChanged(int button)
+{
+  kdDebug() << "Remote changed to "<<button<<endl;
+  if (button==0)
+  {
+    doc->getPlayer(Gelb)->setNetworkPriority(0);
+    doc->getPlayer(Rot)->setNetworkPriority(10);
+  }
+  else
+  {
+    doc->getPlayer(Gelb)->setNetworkPriority(10);
+    doc->getPlayer(Rot)->setNetworkPriority(0);
+  }
 }
 
 // File Menu slot
