@@ -30,12 +30,14 @@
 #include "statuswidget.h"
 #include "kspritecache.h"
 
-// lightGray
-#define COL_STATUSBORDER black
-//#define COL_STATUSFIELD  lightGray
+#include <qlabel.h>
+#include <qlcdnumber.h>
+
+#define COL_STATUSLIGHT  QColor(210,210,255)
 #define COL_STATUSFIELD  QColor(130,130,255)
 #define COL_STATUSDARK   QColor(0,0,65)
-#define COL_STATUSLIGHT  QColor(210,210,255)
+
+#define COL_STATUSBORDER black
 #define COL_PLAYER       QColor(255,255,0)
 #define COL_RED          red
 #define COL_YELLOW       yellow
@@ -98,13 +100,6 @@ private:
   double cx,cy;
 
 };
-
-
-#include <qlabel.h>
-#include <qlcdnumber.h>
-#define COL_STATUSLIGHT  QColor(210,210,255)
-#define COL_STATUSFIELD  QColor(130,130,255)
-#define COL_STATUSDARK   QColor(0,0,65)
 
 Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
         : QCanvasView(0,parent, name), doc(theDoc)

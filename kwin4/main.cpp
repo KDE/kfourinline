@@ -22,6 +22,8 @@
 
 #include "kwin4.h"
 
+#define KWIN4_VERSION "v1.10"
+
 static KCmdLineOptions options[] =
 {
   { "d", 0, 0},
