@@ -11,7 +11,7 @@ kwin4_LDADD   = $(LIB_KFILE) $(top_builddir)/libkdegames/libkdegames.la
 kwin4proc_SOURCES = kwin4proc.cpp
 kwin4proc_LDADD   = $(LIB_KFILE) $(top_builddir)/libkdegames/libkdegames.la
 
-INCLUDES = $(all_includes) -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/kgame
+INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/kgame $(all_includes)
 
 METASOURCES = AUTO
 
