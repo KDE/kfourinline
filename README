@@ -1,0 +1,26 @@
+GENERAL NOTE:
+
+  This is a small KDE 2.0 game, I wrote to practise 
+  programming in KDE. 
+  It should work quite stable. But if you find any bugs
+  please contact me. 
+  It would be also nice to give me some general feedback
+  about the program, so that it can be approved or it
+  can be considered in other programs.
+  (Email: martin@heni-online.de)
+
+INSTALLATION:
+
+# unpack the archive
+tar xzf kwin4-0.9.tar.gz 
+
+# build the package
+cd kwin4-0.9
+./configure 
+# or if KDE is in /opt/kde2
+./configure --prefix=/opt/kde2
+make
+
+# become superuser for installing
+su -c 'make install'
+

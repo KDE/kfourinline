@@ -1,0 +1,138 @@
+// KDevelop Dialog Editor File (.kdevdlg)
+// 
+// Created by KDlgEdit Version 0.1alpha (C) 1999 by Pascal Krahmer
+// Get KDevelop including KDlgEdit at "www.beast.de/kdevelop"
+// 
+data Information
+{
+   Filename="/home/martin/mgames/kwin4/kwin4/AboutDlg.kdevdlg"
+   KDevelopVersion="1.1"
+   DlgEditVersion="0.1alpha"
+   LastChanged="Mon Apr 17 09:29:55 2000"
+}
+
+data SessionManagement
+{
+   OpenedRoot_1="Appearance"
+   OpenedRoot_2="C++ Code"
+   OpenedRoot_3="General"
+   OpenedRoot_4="Geometry"
+   OpenedRootCount="4"
+}
+
+item QWidget
+{
+   Name="KWin4"
+   VarName="this"
+   X="0"
+   Y="0"
+   Width="320"
+   Height="290"
+   MinWidth="0"
+   MinHeight="0"
+
+   item QGroupBox
+   {
+      Name="NoName"
+      VarName="QGroupBox_1"
+      X="20"
+      Y="10"
+      Width="280"
+      Height="230"
+      MinWidth="0"
+      MinHeight="0"
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_1"
+         X="10"
+         Y="90"
+         Width="260"
+         Height="40"
+         MinWidth="0"
+         MinHeight="0"
+         Text="Mail: martin@heni-online.de"
+      }
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_7"
+         X="160"
+         Y="10"
+         Width="90"
+         Height="30"
+         MinWidth="0"
+         MinHeight="0"
+         Text="Four wins"
+      }
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_2"
+         X="10"
+         Y="10"
+         Width="120"
+         Height="70"
+         MinWidth="0"
+         MinHeight="0"
+         BgPixmap=*mPixmap
+      }
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_8"
+         X="10"
+         Y="70"
+         Width="200"
+         Height="25"
+         MinWidth="0"
+         MinHeight="0"
+         Text="(c) 1995-2000 by Martin Heni"
+      }
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_5"
+         X="10"
+         Y="120"
+         Width="260"
+         Height="100"
+         MinWidth="0"
+         MinHeight="0"
+         Text="Gamefeatures:\n- Multiplayer network game\n- Computerplayer with ten levels\n\nThanks to Laura for betatesting!\n"
+      }
+
+      item QLabel
+      {
+         Name="NoName"
+         VarName="QLabel_11"
+         X="160"
+         Y="40"
+         Width="100"
+         Height="30"
+         MinWidth="0"
+         MinHeight="0"
+         Text="Version 0.9"
+      }
+
+   }
+
+   item QPushButton
+   {
+      Name="NoName"
+      VarName="QPushButton_1"
+      HasFocus="true"
+      X="110"
+      Y="250"
+      Width="100"
+      Height="30"
+      MinWidth="0"
+      MinHeight="0"
+      Text="Ok"
+   }
+}

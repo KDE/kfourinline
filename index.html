@@ -1,0 +1,213 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html";>
+
+<TITLE>Four wins manual</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" TEXT="#000000" BGCOLOR="#ffffff">
+
+
+<h1> Four wins</h1>
+</B> </FONT><P>&nbsp;</P>
+<B> How do you play "four wins" ?  </B>
+
+<P>
+Four wins is a game for two player.
+Each player is represented by a colour (yellow and red).
+The goal of the game is to get four connected pieces of your
+colour into a row, column or any diagonal.
+This is done by placing one of your pieces into any of the
+seven columns. 
+A piece will begin to fill a column from the bottom, i.e. it
+will fall down until it reaches the ground level or another stone.
+After a move is done it is the turn of the other player. This is
+repeated until the game is over, i.e. one of the players has
+four pieces in a row, column or diagonal or no more moves are possbile
+because the board is filled.
+</P>
+
+<p>&nbsp;<p>
+<B> The board </B>
+<P>The board is separated into three regions.</P>
+
+<UL>
+<LI>The game board:<BR>
+It is constructed out of 7x6 fields which will be filled from bottom
+to top. The fields are marked in the colour of the player who made the
+current move.<BR>
+On top of each column a coloured arrow shows were the last piece had been
+put.
+<br>
+</LI>
+<LI>The status display:<BR>
+The status display shows which player colour starts and which colour is
+played by whom (player,computer,remote connection). It further shows the
+level of the computer opponent, the number of moves done as well as the
+computer calculated chance of winning. This chance is calculated only if
+the computer opponent makes a move. A positive number means that the player
+has an advantage, a negative number means that the computer thinks
+he is better.
+<br>
+</LI>
+<LI>The table display:<BR>
+Here the number of won, lost and drawn games is noted for both player.
+Also the number of aborted games (Brk) and the sum of games is shown.
+<br>
+</LI>
+</UL>
+
+<p>&nbsp;<p>
+<B> The File menu</B>
+<P>
+
+<UL>
+<LI>New game<BR>
+Start a new game. <br>
+</LI>
+<LI>End Game<BR>
+Immediately end a game. This will raise the break counter in the statistics
+by one.<br>
+</LI>
+<LI>Statistics<BR>
+Show the all time statistic of all games. This will be saved,
+but can be cleared in this menu as well.<br>
+</LI>
+<LI>Send remote message...:<BR>
+Opens a dialog window which lets you send a message to a remote player.
+<br>
+</LI>
+<LI>Hint<BR>
+The computer will calculate the best possible move and mark it with a small
+circle on the board.
+How good the move is depends on the level of the computer.<br>
+</LI>
+<LI>Exit<BR>
+Exit the program and save all statistical data
+<br>
+</LI>
+</UL>
+
+
+
+<p>&nbsp;<p>
+<B>The Edit menu</b>
+<P>
+
+<UL>
+<LI>Undo move<BR>
+Undo the last move. If the previous player is played by the computer
+two moves are taken back so that it is the player's turn again.<br>
+</LI>
+<LI>Redo move<BR>
+Replay a move which had been undone.
+<br>
+</LI>
+</UL>
+
+<p>&nbsp;<p>
+<B>The View menu</b>
+<P>
+
+<UL>
+<LI>Show statusbar<BR>
+Displays the status bar
+<br>
+</LI>
+</UL>
+
+
+<p>&nbsp;<p>
+<B> The Options menu </b>
+<p>
+<UL>
+<LI>Startcolour<BR>
+Determines which colour has the first move.<br>
+</LI>
+<LI>Yellow played by<BR>
+Choose here who shall play for the yellow side. This can either be
+the local player, the computer or a remote player. Connecting to
+a remote host will pop up a conenction dialog which is explained
+later.<br>
+During game only the player who is not moving can be changed.
+<br>
+</LI>
+<LI>Red played by<BR>
+This is analogous to the yellow side. It is possible that there are
+two local players just as the computer can take both local players. 
+Only one remote player is possible though. If the client does
+not choose one remote player he will be asked as soon as a connection
+is built. It <b>does not matter</b> what colour the remote side 
+chooses. If both remote parties choose to play the same colour the
+computer will handle this and transform the other players colour
+appropriately!
+<br>
+</LI>
+<LI>Level<BR>
+The level determines who well the computr plays. A higher level makes
+the computer play better but think longer. For levels larger than 5 or 6
+you need a fast computer!
+<br>
+</LI>
+<LI>Change Names<BR>
+Change the names of the two players. The names will be saved and reloaded
+in the next game!
+<br>
+</LI>
+<LI>Network server<BR>
+If this menu item is selected your computer tries to behave as 
+game network server. This is of course only of any importance if
+you are doing a network game. 
+Only the computer acting as server will be able to start a new game
+or transfer a started game to the client's side.
+<br>
+If both computers want to be server or none of them it is randomly
+selected.
+<br>
+</LI>
+</UL>
+
+<p>&nbsp;<p>
+<B> The Help menu </B>
+ <P>This menu displays the help text as well as information
+about the program and the operation system.</P>
+
+
+<p>&nbsp;<p>
+<B> Remote connections </B>
+<P>
+
+It is possible to play the game over a network connection
+with another computer. To do so both player on both computers
+have to select one colour played by a human player and the
+other by the remote player. Who chooses which colour does not
+matter. It even does not matter if both choose to play the same
+colour as this will transparentely be interchanged by the game.
+<p>
+One of the computers will act as game server. Only this one can
+start a nbew network game. Also all its game data will be transfered
+to the client computer. This includes games already in play - this
+means a remote player can join a game already begun. Who will be
+server can be selected by the <i>network  server</i> menu item in
+the options menu. If both choose to be server or client the game
+randomly selects one.
+<p>
+
+When a network connection is build you are ask to enter a remote
+host and a port. The port can usually just been left untouched. But
+if you now what you do replace it by another number, which has to
+be the same in both player games of course. The hostname should be
+the name of the remote host to which you are connecting. Only one
+of the two players has to supply a hostname, the other one need not
+to, but can.
+<p>
+
+
+
+<P>
+&nbsp;
+<p>
+<hr>
+<B>Author: </B>
+<P>&copy; 1995-2000 Martin Heni (martin@heni-online.de)</P>
+<FONT SIZE=2></FONT></BODY>
+</HTML>
