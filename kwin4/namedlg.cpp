@@ -18,14 +18,14 @@
  *  TRUE to construct a modal dialog.
  */
 NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* fl */ )
-    : KDialogBase( Plain, i18n("Configure Names..."), Ok|Cancel, Ok,
+    : KDialogBase( Plain, i18n("Configure Names"), Ok|Cancel, Ok,
                    parent, name, true,true )
 
 {
   QWidget *page = plainPage();
     if ( !name ) setName( "NameDlg" );
     resize( 252, 186 ); 
-//    setCaption( i18n( "Configure Names..."  ) );
+//    setCaption( i18n( "Configure Names"  ) );
     vbox = new QVBoxLayout( page,spacingHint() ); 
     vbox->setSpacing( 6 );
     vbox->setMargin( 11 );
@@ -53,7 +53,7 @@ NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* 
     hbox_2->setMargin( 0 );
 
     text_player1 = new QLabel( player_names, "text_player1" );
-    text_player1->setText( i18n("Player 1" ) );
+    text_player1->setText( i18n("Player 1:" ) );
     hbox_2->addWidget( text_player1 );
 
     edit_player1 = new QLineEdit( player_names, "edit_player1" );
@@ -63,12 +63,12 @@ NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* 
     hbox_2->addWidget( edit_player1 );
     vbox_3->addLayout( hbox_2 );
 
-    hbox_3 = new QHBoxLayout; 
+    hbox_3 = new QHBoxLayout;
     hbox_3->setSpacing( 6 );
     hbox_3->setMargin( 0 );
 
     text_player2 = new QLabel( player_names, "text_player2" );
-    text_player2->setText( i18n("Player 2" ) );
+    text_player2->setText( i18n("Player 2:" ) );
     hbox_3->addWidget( text_player2 );
 
     edit_player2 = new QLineEdit( player_names, "edit_player2" );

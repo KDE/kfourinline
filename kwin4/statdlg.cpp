@@ -29,7 +29,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
 {
     if ( !name ) setName( "StatDlg" );
     resize( 596, 512 ); 
-    setCaption(i18n("Statistics..."));
+    setCaption(i18n("Statistics"));
 
     Frame3 = new QFrame( this, "Frame3" );
     Frame3->setGeometry( QRect( 30, 10, 511, 461 ) ); 

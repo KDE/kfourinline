@@ -390,9 +390,9 @@ void Kwin4App::initGUI()
                         actionCollection(), "file_debug");
   }
 
-  (void)new KAction(i18n("&Show Statistics..."),"flag", 0, this, SLOT(slotFileStatistics()),
+  (void)new KAction(i18n("&Show Statistics"),"flag", 0, this, SLOT(slotFileStatistics()),
                       actionCollection(), "statistics");
-  ACTION("statistics")->setStatusText(i18n("Show all time statistics..."));
+  ACTION("statistics")->setStatusText(i18n("Show all time statistics."));
   ACTION("statistics")->setWhatsThis(i18n("Shows the all time statistics which is kept in all sessions."));
 
   (void)new KAction(i18n("&Hint"),"help", CTRL+Key_H, this, SLOT(slotFileHint()),
@@ -788,7 +788,7 @@ void Kwin4App::slotFileStatistics()
 {
   int res;
 
-  StatDlg *dlg=new StatDlg(this,"Game statistics...");
+  StatDlg *dlg=new StatDlg(this,"Game statistics");
   dlg->SetNames(doc->QueryName(Gelb),doc->QueryName(Rot));
   dlg->SetStat1(doc->QueryStat(Gelb,TWin),
                 doc->QueryStat(Gelb,TRemis),
