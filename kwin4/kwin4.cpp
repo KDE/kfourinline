@@ -277,8 +277,8 @@ void Kwin4App::checkMenus(int menu)
 
   if (!menu || (menu&CheckViewMenu))
   {
-    if (statusBar()->isHidden()) ((KToggleAction*)ACTION("show_statusbar"))->setChecked(false);
-    else ((KToggleAction*)ACTION("show_statusbar"))->setChecked(true);
+    if (statusBar()->isHidden()) ((KToggleAction*)ACTION("options_show_statusbar"))->setChecked(false);
+    else ((KToggleAction*)ACTION("options_show_statusbar"))->setChecked(true);
   }
 
   if (!menu || (menu&CheckOptionsMenu))
@@ -407,10 +407,7 @@ void Kwin4App::initGUI()
   ACTION("edit_redo")->setStatusText(i18n("Redo last move."));
   ACTION("edit_redo")->setWhatsThis(i18n("Redo last move."));
 
-  (void)new KToggleAction(i18n("&View Statusbar"),0,this,SLOT(slotViewStatusBar()),
-                      actionCollection(), "show_statusbar");
-  ACTION("show_statusbar")->setStatusText(i18n("Toggle the statusbar..."));
-  ACTION("show_statusbar")->setWhatsThis(i18n("Toggle the statusbar..."));
+  (void)KStdAction::showStatusbar(this, SLOT(slotViewStatusBar()), actionCollection());
 
   (void)new KSelectAction(i18n("Starting Player"),0,this,SLOT(slotStartplayer()),
                       actionCollection(), "startplayer");
