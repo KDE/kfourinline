@@ -51,6 +51,13 @@ Kwin4View::Kwin4View(QWidget *parent, const char *name) : QWidget(parent, name)
 
 
   setBackgroundPixmap( getDocument()->m_PixBackground );
+
+
+  /*
+  QFontInfo font=fontInfo();
+  printf("Fontinfo: pnt=%d family=%s exact=%d\n",
+      font.pointSize(),font.family().latin1(),font.exactMatch());
+  */
 }
 
 Kwin4View::~Kwin4View()
@@ -205,6 +212,10 @@ void Kwin4View::drawField(QPainter *p){
 void Kwin4View::drawStatus(QPainter *p){
   QPoint p1,p2;
   FARBE beginner,second;
+  QFont font11(p->font());
+  font11.setPointSize(11);
+  p->setFont(font11);
+
 	beginner=getDocument()->QueryPlayerColour(0);
 	second=getDocument()->QueryPlayerColour(1);
 
@@ -314,6 +325,9 @@ void Kwin4View::drawStatus(QPainter *p){
 void Kwin4View::drawTable(QPainter *p){
   QPoint p1,p2;
   FARBE beginner,second;
+  QFont font11(p->font());
+  font11.setPointSize(11);
+  p->setFont(font11);
 	beginner=getDocument()->QueryPlayerColour(0);
 	second=getDocument()->QueryPlayerColour(1);
 
