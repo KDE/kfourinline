@@ -30,7 +30,7 @@
 
 </authorgroup>
 
-<date>2002-01-27</date>
+<date>2003-09-16</date>
 <releaseinfo>1.00.00</releaseinfo>
 
 <abstract>
@@ -202,7 +202,7 @@ Aborts a running game.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>Network configuration...</guimenuitem></menuchoice></term>
+<guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Pops up a dialog for the network configuration. You can choose to be
@@ -313,14 +313,26 @@ Replay a move which had been undone.
 
 
 <sect1 id="option-menu">
-<title>Options Menu</title>
+<title>Settings Menu</title>
 
 <variablelist>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
-<guisubmenu>Startplayer</guisubmenu>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggle on and off the display of the status bar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Starting Player</guisubmenu>
 </menuchoice></term>
 <listitem>
 <para>
@@ -331,8 +343,8 @@ Determines which color player  has the first move in the next game.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
-<guisubmenu>Yellow played by</guisubmenu>
+<guimenu>Settings</guimenu>
+<guisubmenu>Yellow Played By</guisubmenu>
 </menuchoice></term>
 <listitem>
 <para>
@@ -347,13 +359,13 @@ plays for this player.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
-<guisubmenu>Red played by</guisubmenu>
+<guimenu>Settings</guimenu>
+<guisubmenu>Red Played By</guisubmenu>
 </menuchoice>
 </term>
 <listitem>
 <para>
-Same as <guimenuitem>Player 1 played by</guimenuitem> but for player 2
+Same as <guimenuitem>Yellow Played By</guimenuitem> but for player 2
 (red).
 </para>
 </listitem>
@@ -361,7 +373,7 @@ Same as <guimenuitem>Player 1 played by</guimenuitem> but for player 2
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
+<guimenu>Settings</guimenu>
 <guisubmenu>Level</guisubmenu>
 </menuchoice></term>
 <listitem>
@@ -373,7 +385,7 @@ Selects the level of the computer player.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
+<guimenu>Settings</guimenu>
 <guimenuitem>Change Names...</guimenuitem></menuchoice>
 </term>
 <listitem>
@@ -385,14 +397,12 @@ Change the names of the players.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Options</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice></term>
-<listitem>
-<para>
-Toggle on and off the display of the status bar.
-</para>
-</listitem>
+<listitem><para>
+<action>Open a dialog which lets you redefine all the keyboard shortcuts.</action>
+</para></listitem>
 </varlistentry>
 
 </variablelist>
