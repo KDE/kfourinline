@@ -1,5 +1,15 @@
 [Desktop Entry]
 Name=kwin4
+Name[eo]=Kvar venkas
+Name[es]=Kwin4
+Name[hu]=Négy a nyerő
+Name[is]=Kwin4
+Name[it]=KForza4
+Name[ja]=Kwin4
+Name[ru]=Четыре побеждают
+Name[sv]=Fyra i rad
+Name[zh_CN.GB2312]=Kwin4
+Name[zh_TW.Big5]=Kwin4
 Exec=kwin4
 Icon=kwin4
 MimeType=
@@ -10,3 +20,4 @@ TerminalOptions=
 Type=Application
 X-KDE-SubstituteUID=0
 X-KDE-Username=
+DocPath=kwin4/index.html
