@@ -143,7 +143,7 @@ void KProcessConnect::slotProcessExited(KProcess *p)
 }
 void KProcessConnect::slotWroteStdin(KProcess *p)
 {
-  printf("slotWroteStdin:: IS NEVER CALLED\n");
+  kdDebug() << "slotWroteStdin:: IS NEVER CALLED" << endl;
 }
 
 bool KProcessConnect::Exit()
@@ -186,7 +186,7 @@ bool KProcessConnect::Send(QString str)
   str=s+str;
   // printf("+++ Sending to child '%s'!!!\n",(const char *)str);
   result=process->writeStdin(str.latin1(),str.length()+1);
-  if (!result) printf("ERROR in PROCESS SEND\n");
+  if (!result) kdDebug() << "ERROR in PROCESS SEND" << endl;
   return result;
 }
 

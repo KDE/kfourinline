@@ -99,6 +99,8 @@
 #include <qapplication.h>
 #include <qsocketnotifier.h>
 
+#include <kdebug.h>
+
 #ifndef UNIX_PATH_MAX
 #define UNIX_PATH_MAX 108 // this is the value, I found under Linux
 #endif
@@ -110,7 +112,7 @@ KRServerSocket::KRServerSocket( const char *_path, int optname, int value, int l
   
   if ( !init ( _path,optname,value,level ) )
   {
-    printf("Error constructing PF_UNIX domain server socket\n");
+    kdDebug() << "Error constructing PF_UNIX domain server socket" << endl;
     return;
   }
     
@@ -125,7 +127,7 @@ KRServerSocket::KRServerSocket( const char *_path ) :
   
   if ( !init ( _path ) )
   {
-    printf("Error constructing PF_UNIX domain server socket\n");
+    kdDebug() << "Error constructing PF_UNIX domain server socket" << endl;
     return;
   }
     
@@ -177,14 +179,14 @@ bool KRServerSocket::init( const char *_path,int optname,int value,int level )
   if ( l > UNIX_PATH_MAX - 1 )
   { 
     
-    printf( "Too long PF_UNIX domain name '%s'\n",_path);
+    kdDebug() << "Too long PF_UNIX domain name " << _path << endl;
     return false;
   }  
     
   sock = ::socket( PF_UNIX, SOCK_STREAM, 0 );
   if (sock < 0)
   {
-    printf( "Could not create socket\n");
+    kdDebug() << "Could not create socket" << endl;
     return false;
   }
   // Heni - 05042000
@@ -193,7 +195,7 @@ bool KRServerSocket::init( const char *_path,int optname,int value,int level )
    socklen_t len=sizeof(value);
    if (-1==setsockopt(sock,level,optname,&value,len ))
    {
-	   printf("Could not set socket options.\n");
+	   kdDebug() << "Could not set socket options." << endl;
    }
   }
   // end Heni
@@ -206,7 +208,7 @@ bool KRServerSocket::init( const char *_path,int optname,int value,int level )
     
   if ( bind( sock, (struct sockaddr*) &name,sizeof( name ) ) < 0 )
   {
-    printf("Could not bind to socket..\n");
+    kdDebug() << "Could not bind to socket.." << endl;
     ::close( sock );
     sock = -1;
     return false;
@@ -214,7 +216,7 @@ bool KRServerSocket::init( const char *_path,int optname,int value,int level )
   
   if ( chmod( _path, 0600) < 0 )
   {
-    printf("Could not setupt premissions for server socket\n");
+    kdDebug() << "Could not setupt premissions for server socket" << endl;
     ::close( sock );
     sock = -1;
     return false;
@@ -222,7 +224,7 @@ bool KRServerSocket::init( const char *_path,int optname,int value,int level )
                
   if ( listen( sock, SOMAXCONN ) < 0 )
   {
-    printf("Error listening on socket\n");
+    kdDebug() << "Error listening on socket" << endl;
     ::close( sock );
     sock = -1;
     return false;
@@ -247,7 +249,7 @@ bool KRServerSocket::init( unsigned short int _port,int optname,int value,int le
   sock = ::socket( domain, SOCK_STREAM, 0 );
   if (sock < 0)
   {
-    printf( "Could not create socket\n");
+    kdDebug() << "Could not create socket" << endl;
     return false;
   }
   // Heni - 05042000
@@ -256,7 +258,7 @@ bool KRServerSocket::init( unsigned short int _port,int optname,int value,int le
    socklen_t len=sizeof(value);
    if (-1==setsockopt(sock,level,optname,&value,len ))
    {
-	   printf("Could not set socket options.\n");
+	   kdDebug() << "Could not set socket options." << endl;
    }
   }
   // end Heni
@@ -270,7 +272,7 @@ bool KRServerSocket::init( unsigned short int _port,int optname,int value,int le
     name.sin_addr.s_addr = htonl(INADDR_ANY);
 
     if ( bind( sock, (struct sockaddr*) &name,sizeof( name ) ) < 0 ) {
-	  printf("Could not bind to socket.\n");
+	  kdDebug() << "Could not bind to socket." << endl;
 	  ::close( sock );
 	  sock = -1;
 	  return false;
@@ -286,7 +288,7 @@ bool KRServerSocket::init( unsigned short int _port,int optname,int value,int le
     memcpy(&name.sin6_addr, &in6addr_any, sizeof(in6addr_any));
 
     if ( bind( sock, (struct sockaddr*) &name,sizeof( name ) ) < 0 ) {
-	  printf("Could not bind to socket!\n");
+	  kdDebug() << "Could not bind to socket!" << endl;
 	  ::close( sock );
 	  sock = -1;
 	  return false;
@@ -296,7 +298,7 @@ bool KRServerSocket::init( unsigned short int _port,int optname,int value,int le
 
   if ( listen( sock, SOMAXCONN ) < 0 )
     {
-	  printf("Error listening on socket\n");
+	  kdDebug() << "Error listening on socket" << endl;
 	  ::close( sock );
 	  sock = -1;
 	  return false;
@@ -343,7 +345,7 @@ void KRServerSocket::slotAccept( int )
     
     if ((new_sock = accept (sock, (struct sockaddr *) &clientname, &size)) < 0)
     {
-      printf("Error accepting\n");
+      kdDebug() << "Error accepting" << endl;
       return;
     }
 
@@ -358,7 +360,7 @@ void KRServerSocket::slotAccept( int )
     
     if ((new_sock = accept (sock, (struct sockaddr *) &clientname, &size)) < 0)
     {
-      printf("Error accepting\n");
+      kdDebug() << "Error accepting" << endl;
       return;
     }
 

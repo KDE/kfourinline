@@ -35,7 +35,7 @@
 #include <klocale.h>
 #include <khelpmenu.h>
 #include <kconfig.h>
-
+#include <kdebug.h>
 
 // application specific includes
 #include "kwin4.h"
@@ -62,7 +62,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
    mGrafix=kapp->dirs()->findResourceDir("data",file); 
    if (mGrafix.isNull()) mGrafix="grafix/";
    else mGrafix+="kwin4/grafix/";
-   if (global_debug>3) printf("Localised datafile=%s\n",(const char *)mGrafix.latin1());
+   if (global_debug>3) kdDebug() << "Localised datafile" << (const char *)mGrafix.latin1() << endl;
 
 
   ///////////////////////////////////////////////////////////////////
@@ -564,13 +564,13 @@ bool Kwin4App::MakeInputDevice(int i)
 
     if (doc->IsUser(farbe) && mInput->QueryType(i)!=KG_INPUTTYPE_INTERACTIVE)
     {
-      if (global_debug>5) printf("Make Interactive %d\n",i);
+      if (global_debug>5) kdDebug() << "Make Interactive " << i << endl;
       res=mInput->SetInputDevice(i,KG_INPUTTYPE_INTERACTIVE);
     }
     else if (doc->IsRemote(farbe)&&
           (mInput->QueryType(i)!=KG_INPUTTYPE_REMOTE || mInput->QueryStatus(i)<=0 ) )
     {
-      if (global_debug>5) printf("Make Remote %d\n",i);
+      if (global_debug>5) kdDebug() << "Make Remote " << i << endl;
       slotOptionsNetwork();
       port=doc->QueryPort();
       host=doc->QueryHost();
@@ -617,7 +617,7 @@ bool Kwin4App::MakeInputDevice(int i)
         }
         else
         {
-          if (global_debug>6) printf("We want to be client.\n");
+          if (global_debug>6) kdDebug() << "We want to be client." << endl;
           msg->AddData("RequestClient",(long)doc->QueryID());
         }
         prepareGame(msg);
@@ -632,8 +632,8 @@ bool Kwin4App::MakeInputDevice(int i)
       QString path=kapp->dirs()->findExe(doc->QueryProcessName());
       if (global_debug>5)
       { 
-        printf("Make Process G%d\n",i);
-        printf("Exe file found: %s\n",path.latin1());
+        kdDebug() << "Make Process G" << i << endl;
+        kdDebug() << "Exe file found: " << path << endl;
       }
       if (path.isNull())  return false;
       msg=new KEMessage;
@@ -643,7 +643,7 @@ bool Kwin4App::MakeInputDevice(int i)
     }
     else
     {
-      if (global_debug>5) printf("No new inputdevice for %d needed\n",i);
+      if (global_debug>5) kdDebug() << "No new inputdevice for " << i << " needed" << endl;
       res=true;
     }
    return res;
@@ -801,8 +801,8 @@ void Kwin4App::slotFileHint()
     QString path=kapp->dirs()->findExe(doc->QueryProcessName());
     if (global_debug>5)
     { 
-      printf("Make Hint Process \n");
-      printf("Exe file found: %s\n",path.latin1());
+      kdDebug() << "Make Hint Process" << endl;
+      kdDebug() << "Exe file found: " << path << endl;
     }
     if (path.isNull()) 
     {
@@ -1525,41 +1525,41 @@ void Kwin4App::prepareGame(KEMessage *msg)
 void Kwin4App::slotPrepareProcessMove(KEMessage *msg)
 {
   if (global_debug>3)
-    printf("+++ main should prepare process move\n");
+    kdDebug() << "+++ main should prepare process move" << endl;
   slotStatusMsg(i18n("Waiting for the computer to move..."));
 
   msg->AddData("Hint",(short)0);
   msg->AddData("Move",(short)1);
 
   if (global_debug>3)
-    printf("PREPARE GAME in processmove\n");
+    kdDebug() << "PREPARE GAME in processmove" << endl;
   prepareGame(msg);
 
 }
 void Kwin4App::slotPrepareRemoteMove(KEMessage *msg)
 {
   if (global_debug>3)
-    printf("+++ main should prepare remote move\n");
+    kdDebug() << "+++ main should prepare remote move" << endl;
   slotStatusMsg(i18n("Waiting for remote player..."));
 }
 void Kwin4App::slotPrepareInteractiveMove(KEMessage *msg)
 {
   if (global_debug>3)
-    printf("+++ main should prepare interactive move\n");
+    kdDebug() << "+++ main should prepare interactive move" << endl;
   slotStatusMsg(i18n("Please make your move..."));
 }
 void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
 {
   if (global_debug>3)
-    printf("+++ main should process input with next=%d id=%d\n",mInput->QueryNext(),id);
+    kdDebug() << "+++ main should process input with next=" << mInput->QueryNext() << " id=" << id << endl;
   if (global_debug>10)
   {
     QStrList *keys=msg->QueryKeys();
     char *it;
-    printf("  MESSAGESIZE=%u\n",msg->QueryNumberOfKeys());
+    kdDebug() << "  MESSAGESIZE=" << msg->QueryNumberOfKeys() << endl;
     for (it=keys->first();it!=0;it=keys->next())
     {
-      printf("    Key '%s' type=%d\n",it,msg->QueryType(QCString(it)));
+      kdDebug() << "    Key '" << it << "' type=" << msg->QueryType(QCString(it)) << endl;
     }
   }
 
@@ -1593,7 +1593,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     msg->GetData("RequestServer",score);
     // We lost server challenge
     if (global_debug>3)
-      printf("CHALLENGE Server: id=%d, remoteid=%ld\n",doc->QueryID(),score);
+      kdDebug() << "CHALLENGE Server: id=" << doc->QueryID() << " , remoteid=" << score << endl;
     message=i18n("Game started as remote slave");
     if (doc->QueryServer() && (doc->QueryID()<=score || score==-1) )
     {
@@ -1613,7 +1613,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     }
     slotStatusMsg(message);
     if (global_debug>3)
-      printf("%s\n",(const char *)message.latin1());
+      kdDebug() << message << endl;
     
     mInput->Unlock();
     if (doc->QueryCurrentPlayer()==Gelb)
@@ -1626,7 +1626,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     msg->GetData("RequestClient",score);
     // We lost client challenge
     if (global_debug>3)
-      printf("CHALLENGE client: id=%d, remoteid=%ld\n",doc->QueryID(),score);
+      kdDebug() << "CHALLENGE client: id=" << doc->QueryID() << ", remoteid=" << score << endl;
     if (!doc->QueryServer() && doc->QueryID()>score)
     {
       slotOptionsNetworkserver();
@@ -1679,7 +1679,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       message=QString("Message from remote player:\n")+p;
       KMessageBox::information(this,message,TITLE);
       if (global_debug>3)
-        printf("MESSAGE **** %s ****\n",(const char *)message.latin1());
+        kdDebug() << "MESSAGE **** " << message << " ****" << endl;
     }
   }
   if (msg->HasKey("error"))
@@ -1747,8 +1747,7 @@ bool Kwin4App::Move(int x,int id){
 
   if (mInput->QueryNext()!=id || !mInput->IsLocked())
   {
-       printf("Trying to perform a move for a wrong player next=%d id=%d locked=%d.\n",
-              mInput->QueryNext(),id,mInput->IsLocked());
+       kdDebug() << "Trying to perform a move for a wrong player next=" << mInput->QueryNext() << "id=" << id << "locked=" << mInput->IsLocked() << endl;
        return false;
    }
 
@@ -1764,7 +1763,7 @@ bool Kwin4App::Move(int x,int id){
      }
      else
      {
-       printf("Trying to perform a move but document is locked.\n");
+       kdDebug() << "Trying to perform a move but document is locked." << endl;
      }
     return false;
   }

@@ -67,7 +67,7 @@ KInteractiveConnect::KInteractiveConnect()
 
 bool KInteractiveConnect::SendMsg(KEMessage *msg)
 {
-  printf("+- Interactive::SendMessage MESSAGE::Emmiting slotReceiveMsg\n");
+  kdDebug() << "+- Interactive::SendMessage MESSAGE::Emmiting slotReceiveMsg" << endl;
   emit signalReceiveMsg(msg,QueryID());
   return true;
 }

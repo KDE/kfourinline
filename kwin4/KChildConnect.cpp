@@ -61,7 +61,7 @@ bool KChildConnect::SendMsg(KEMessage *msg)
 bool KChildConnect::Send(QString str)
 {
   if (!str || str.length()<1) return true; // no need to send crap
-  printf("%s",str.latin1());
+  kdDebug() << str << endl;
   fflush(stdout);
   return true;
 }

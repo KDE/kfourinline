@@ -35,6 +35,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <kdebug.h>
 #include "KRemoteConnect.h"
 
 #include "KRemoteConnect.moc"
@@ -130,7 +131,7 @@ bool tryserver;
   }
   else
   {
-    printf("NO IP given..only server possible\n");
+    kdDebug() << "NO IP given..only server possible" << endl;
     tryserver=true;
   }
 
@@ -313,7 +314,7 @@ bool KRemoteConnect::Send(QString str)
 
   if (-1==write(kSocket->socket(),str.latin1(),str.length()+1))
   {
-     printf("Warning: Problems writing to socket.\n");
+     kdDebug() << "Warning: Problems writing to socket." << endl;
      return false;
   }
   return true;;

@@ -18,6 +18,7 @@
 #include <qstring.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
+#include <kdebug.h>
 #include <kstddirs.h>
 #include <kinstance.h>
 #include <kaboutdata.h>
@@ -52,7 +53,7 @@ int main(int argc, char *argv[])
   if (args->isSet("debug"))
   {
     global_debug=atoi(QString(args->getOption("debug")).latin1() );
-    printf("Debug level set to %d\n",global_debug);
+    kdDebug() << "Debug level set to " << global_debug << endl;
   }
   args->clear();
 

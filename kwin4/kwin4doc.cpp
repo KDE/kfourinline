@@ -164,7 +164,7 @@ bool Kwin4Doc::newDocument(KConfig *config,QString path)
   modified=false;
   absFilePath=QDir::homeDirPath();
 //  title=i18n("Untitled");
-  if (global_debug>1) printf("path=%s\n",path.latin1());
+  if (global_debug>1) kdDebug() << "path=" << path << endl;
   res=LoadBitmaps(path);
   if (res==0) return false;
   return true;
@@ -211,7 +211,7 @@ FARBE Kwin4Doc::QueryColour(int x,int y){
 void Kwin4Doc::SetColour(int x,int y,FARBE c){
   if (x<0 || x>=geom.field_mx || y<0 || y>=geom.field_my)
   {
-    printf("ERROR: SetColour auf falsche Poition %d %d\n",x,y);
+    kdDebug() << "ERROR: SetColour auf falsche Poition " << x << " " << y << endl;
     return ;
   }
   fields[x+y*geom.field_mx]=c;
@@ -290,7 +290,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 
   if (x<0 || x>=geom.field_mx)
   {
-    printf("ERROR: MakeMove auf falsche Position %d\n",x);
+    kdDebug() << "ERROR: MakeMove auf falsche Position " << x << endl;
     return GNotAllowed;
   }
 
@@ -625,7 +625,7 @@ bool Kwin4Doc::IsLocked(){
 int Kwin4Doc::QueryHeight(int x){
   if (x<0 || x>=geom.field_mx)
   {
-    printf("ERROR: Query Height for wrong x %d\n",x);
+    kdDebug() << "ERROR: Query Height for wrong x " << x << endl;
     return 0;
   }
   return field_filled[x];
