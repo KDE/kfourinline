@@ -294,7 +294,7 @@ void Kwin4View::hideIntro()
   text=(QCanvasText *)(mCache->getItem("intro3",1));
   if (text) text->hide();
 }
-void Kwin4View::drawIntro(bool remove)
+void Kwin4View::drawIntro(bool /*remove*/)
 {
   KSprite *sprite=0;
   // background
@@ -588,8 +588,12 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
 // pressed
 void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
 {
+  // Ignore non running
   if (!getDocument()->isRunning()) return;
-  //kdDebug() << "KEY EVENT" << e->ascii() << endl;
+  // kdDebug() << "KEY EVENT" << e->ascii() << endl;
+
+  // Ignore non key press
+  if (e->type() != QEvent::KeyPress) return ;
 
   // Our player
   KPlayer *player=input->player();
