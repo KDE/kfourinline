@@ -10,5 +10,5 @@ kwin4_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 
 messages:
-	$(XGETTEXT) `find . -name \*.h -o -name \*.cpp -o -name \*.cc` -o $(podir)/kwin4.pot 
+	$(XGETTEXT) *.cpp -o $(podir)/kwin4.pot 
 
