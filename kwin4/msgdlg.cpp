@@ -47,7 +47,7 @@ MsgDlg::MsgDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
   resize( 400, 160 );
 
   QGroupBox* grp;
-  grp = new QGroupBox(i18n("Enter message"), this);
+  grp = new QGroupBox(i18n("Enter Eessage"), this);
   grp->resize(380,100);
   grp->move(10,10);
 
