@@ -115,7 +115,7 @@ void Kwin4Doc::setTitle(const QString &_t)
 {
 
 //  title=_t;
-  title=QCString("");
+  title="";
 }
 
 const QString &Kwin4Doc::getTitle() const
@@ -639,66 +639,66 @@ int Kwin4Doc::QueryLastHint(){
 /** read config file */
 void Kwin4Doc::ReadConfig(KConfig *config)
 {
-  config->setGroup(QCString("Parameter"));
-  mHost=config->readEntry(QCString("host"),QCString("localhost"));
-  mPort=(unsigned short)config->readNumEntry(QCString("port"),7442);
-  procfile=config->readEntry(QCString("process"),QCString("kproc4"));
-  Names[Gelb]=config->readEntry(QCString("Name1"),QCString("Player 1"));
-  Names[Rot]=config->readEntry(QCString("Name2"),QCString("Player 2"));
+  config->setGroup("Parameter");
+  mHost=config->readEntry("host","localhost");
+  mPort=(unsigned short)config->readNumEntry("port",7442);
+  procfile=config->readEntry("process","kproc4");
+  Names[Gelb]=config->readEntry("Name1","Player 1");
+  Names[Rot]=config->readEntry("Name2","Player 2");
 
-  maxreklev=config->readNumEntry(QCString("Level"),3);
-  player[Gelb]=(PLAYER)config->readNumEntry(QCString("Player1"),(int)Men);
-  player[Rot]=(PLAYER)config->readNumEntry(QCString("Player2"),(int)Computer);
+  maxreklev=config->readNumEntry("Level",3);
+  player[Gelb]=(PLAYER)config->readNumEntry("Player1",(int)Men);
+  player[Rot]=(PLAYER)config->readNumEntry("Player2",(int)Computer);
 
   /** Force no remote games saved */
   if (player[Gelb]==Remote) player[Gelb]=Men;
   if (player[Rot]==Remote) player[Rot]=Men;
 
-  Colour[0]=(FARBE)config->readNumEntry(QCString("Colour1"),(int)Gelb);
-  Colour[1]=(FARBE)config->readNumEntry(QCString("Colour2"),(int)Rot);
-  SetStat(Gelb,config->readNumEntry(QCString("Stat1W"),0),TWin);
-  SetStat(Gelb,config->readNumEntry(QCString("Stat1R"),0),TRemis);
-  SetStat(Gelb,config->readNumEntry(QCString("Stat1L"),0),TLost);
-  SetStat(Gelb,config->readNumEntry(QCString("Stat1B"),0),TBrk);
-  SetStat(Rot,config->readNumEntry(QCString("Stat2W"),0),TWin);
-  SetStat(Rot,config->readNumEntry(QCString("Stat2R"),0),TRemis);
-  SetStat(Rot,config->readNumEntry(QCString("Stat2L"),0),TLost);
-  SetStat(Rot,config->readNumEntry(QCString("Stat2B"),0),TBrk);
-  SetServer(config->readNumEntry(QCString("IsServer"),1));
+  Colour[0]=(FARBE)config->readNumEntry("Colour1",(int)Gelb);
+  Colour[1]=(FARBE)config->readNumEntry("Colour2",(int)Rot);
+  SetStat(Gelb,config->readNumEntry("Stat1W",0),TWin);
+  SetStat(Gelb,config->readNumEntry("Stat1R",0),TRemis);
+  SetStat(Gelb,config->readNumEntry("Stat1L",0),TLost);
+  SetStat(Gelb,config->readNumEntry("Stat1B",0),TBrk);
+  SetStat(Rot,config->readNumEntry("Stat2W",0),TWin);
+  SetStat(Rot,config->readNumEntry("Stat2R",0),TRemis);
+  SetStat(Rot,config->readNumEntry("Stat2L",0),TLost);
+  SetStat(Rot,config->readNumEntry("Stat2B",0),TBrk);
+  SetServer(config->readNumEntry("IsServer",1));
 }
 
 /** write config file */
 void Kwin4Doc::WriteConfig(KConfig *config)
 {
-  config->setGroup(QCString("Parameter"));
-  config->writeEntry(QCString("host"),mHost);
-  config->writeEntry(QCString("port"),(int)mPort);
-  config->writeEntry(QCString("process"),procfile);
-  config->writeEntry(QCString("tmppath"),picpath);
-  config->writeEntry(QCString("delpath"),delpath);
-  config->writeEntry(QCString("Name1"),Names[Gelb]);
-  config->writeEntry(QCString("Name2"),Names[Rot]);
-  config->writeEntry(QCString("Level"),maxreklev);
+  config->setGroup("Parameter");
+  config->writeEntry("host",mHost);
+  config->writeEntry("port",(int)mPort);
+  config->writeEntry("process",procfile);
+  config->writeEntry("tmppath",picpath);
+  config->writeEntry("delpath",delpath);
+  config->writeEntry("Name1",Names[Gelb]);
+  config->writeEntry("Name2",Names[Rot]);
+  config->writeEntry("Level",maxreklev);
   // Do not save remote !
   if (IsRemote(Gelb))
-    config->writeEntry(QCString("Player1"),(int)Men);
+    config->writeEntry("Player1",(int)Men);
   else
-    config->writeEntry(QCString("Player1"),(int)player[Gelb]);
+    config->writeEntry("Player1",(int)player[Gelb]);
   if (IsRemote(Rot))
-    config->writeEntry(QCString("Player2"),(int)Men);
+    config->writeEntry("Player2",(int)Men);
   else
-    config->writeEntry(QCString("Player2"),(int)player[Rot]);
-  config->writeEntry(QCString("Colour1"),(int)Colour[0]);
-  config->writeEntry(QCString("Colour2"),(int)Colour[1]);
-  config->writeEntry(QCString("Stat1W"),QueryStat(Gelb,TWin));
-  config->writeEntry(QCString("Stat1R"),QueryStat(Gelb,TRemis));
-  config->writeEntry(QCString("Stat1L"),QueryStat(Gelb,TLost));
-  config->writeEntry(QCString("Stat1B"),QueryStat(Gelb,TBrk));
-  config->writeEntry(QCString("Stat2W"),QueryStat(Rot,TWin));
-  config->writeEntry(QCString("Stat2R"),QueryStat(Rot,TRemis));
-  config->writeEntry(QCString("Stat2L"),QueryStat(Rot,TLost));
-  config->writeEntry(QCString("Stat2B"),QueryStat(Rot,TBrk));
-  config->writeEntry(QCString("IsServer"),QueryServer());
+    config->writeEntry("Player2",(int)player[Rot]);
+  config->writeEntry("Colour1",(int)Colour[0]);
+  config->writeEntry("Colour2",(int)Colour[1]);
+  config->writeEntry("Stat1W",QueryStat(Gelb,TWin));
+  config->writeEntry("Stat1R",QueryStat(Gelb,TRemis));
+  config->writeEntry("Stat1L",QueryStat(Gelb,TLost));
+  config->writeEntry("Stat1B",QueryStat(Gelb,TBrk));
+  config->writeEntry("Stat2W",QueryStat(Rot,TWin));
+  config->writeEntry("Stat2R",QueryStat(Rot,TRemis));
+  config->writeEntry("Stat2L",QueryStat(Rot,TLost));
+  config->writeEntry("Stat2B",QueryStat(Rot,TBrk));
+  config->writeEntry("IsServer",QueryServer());
 
   config->sync();
 }
@@ -811,27 +811,27 @@ QString Kwin4Doc::QueryProcessName()
 int Kwin4Doc::LoadBitmaps(const QString path){
   QString file;
 
-  file=path+QString(QCString("background.png"));
+  file=path+QString("background.png");
   m_PixBackground.load(file);
-  file=(path)+QString(QCString("board.png"));
+  file=(path)+QString("board.png");
   m_PixBoard.load(file);
-  file=(path)+QString(QCString("aboute.png"));
+  file=(path)+QString("aboute.png");
   m_PixAbout.load(file);
-  file=(path)+QString(QCString("arrow.png"));
+  file=(path)+QString("arrow.png");
   m_PixArrow.load(file);
-  file=(path)+QString(QCString("arrow_red.png"));
+  file=(path)+QString("arrow_red.png");
   m_PixArrowRed.load(file);
-  file=(path)+QString(QCString("arrow_yellow.png"));
+  file=(path)+QString("arrow_yellow.png");
   m_PixArrowYellow.load(file);
-  file=(path)+QString(QCString("red.png"));
+  file=(path)+QString("red.png");
   m_PixFieldRed.load(file);
-  file=(path)+QString(QCString("yellow.png"));
+  file=(path)+QString("yellow.png");
   m_PixFieldYellow.load(file);
-  file=(path)+QString(QCString("hint.png"));
+  file=(path)+QString("hint.png");
   m_PixFieldHint.load(file);
-  file=(path)+QString(QCString("empty.png"));
+  file=(path)+QString("empty.png");
   m_PixFieldEmpty.load(file);
-  file=(path)+QString(QCString("win4about.png"));
+  file=(path)+QString("win4about.png");
   m_PixWin4About.load(file);
   return 1;
 }

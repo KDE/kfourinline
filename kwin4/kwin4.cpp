@@ -58,10 +58,10 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   config=kapp->config();
 
    // localise data file
-   QString file=QCString("kwin4/grafix/aboute.png");
-   mGrafix=kapp->dirs()->findResourceDir(QCString("data"),file); 
+   QString file="kwin4/grafix/aboute.png";
+   mGrafix=kapp->dirs()->findResourceDir("data",file); 
    if (mGrafix.isNull()) mGrafix="grafix/";
-   else mGrafix+=QCString("kwin4/grafix/");
+   else mGrafix+="kwin4/grafix/";
    if (global_debug>3) printf("Localised datafile=%s\n",(const char *)mGrafix);
 
 
@@ -115,8 +115,8 @@ void Kwin4App::initKeyAccel()
   // fileMenu accelerators
 //  keyAccel->connectItem(KStdAccel::New, this, SLOT(slotFileNew()));
   keyAccel->insertItem( i18n("Start Game"),QCString( "StartGame"), Key_F2 );
-  keyAccel->connectItem(QCString("StartGame"), this, SLOT(slotFileNew()));
-  keyAccel->changeMenuAccel(fileMenu, ID_FILE_NEW, QCString("StartGame"));
+  keyAccel->connectItem("StartGame", this, SLOT(slotFileNew()));
+  keyAccel->changeMenuAccel(fileMenu, ID_FILE_NEW, "StartGame");
 //  keyAccel->changeMenuAccel(fileMenu, ID_FILE_NEW, KStdAccel::New);
 //  fileMenu->setAccel(keyAccel->currentKey(KStdAccel::action(KStdAccel::New)), ID_FILE_NEW);
   fileMenu->setAccel( Key_F2, ID_FILE_NEW);
@@ -135,19 +135,19 @@ void Kwin4App::initKeyAccel()
   keyAccel->changeMenuAccel(fileMenu, ID_FILE_QUIT, KStdAccel::Quit);
   fileMenu->setAccel(keyAccel->currentKey(KStdAccel::action(KStdAccel::Quit)), ID_FILE_QUIT);
 
-  keyAccel->insertItem( i18n("Statistics"), QCString("Statistics"), CTRL+Key_I );
-  keyAccel->connectItem(QCString("Statistics"), this, SLOT(slotFileStatistics()));
-  keyAccel->changeMenuAccel(fileMenu, ID_FILE_STATISTICS, QCString("Statistics") );
+  keyAccel->insertItem( i18n("Statistics"), "Statistics", CTRL+Key_I );
+  keyAccel->connectItem("Statistics", this, SLOT(slotFileStatistics()));
+  keyAccel->changeMenuAccel(fileMenu, ID_FILE_STATISTICS, "Statistics" );
   fileMenu->setAccel( CTRL + Key_I, ID_FILE_STATISTICS);
 
-  keyAccel->insertItem( i18n("Hint"), QCString("Hint"), CTRL+Key_H );
-  keyAccel->connectItem(QCString("Hint"), this, SLOT(slotFileHint()));
-  keyAccel->changeMenuAccel(fileMenu, ID_FILE_HINT, QCString("Hint") );
+  keyAccel->insertItem( i18n("Hint"), "Hint", CTRL+Key_H );
+  keyAccel->connectItem("Hint", this, SLOT(slotFileHint()));
+  keyAccel->changeMenuAccel(fileMenu, ID_FILE_HINT, "Hint" );
   fileMenu->setAccel( CTRL + Key_H, ID_FILE_HINT);
 
-  keyAccel->insertItem( i18n("Send Message"), QCString("Send Message"), CTRL+Key_M );
-  keyAccel->connectItem(QCString("Send Message"), this, SLOT(slotFileMessage()));
-  keyAccel->changeMenuAccel(fileMenu, ID_FILE_MESSAGE, QCString("Send Message") );
+  keyAccel->insertItem( i18n("Send Message"), "Send Message", CTRL+Key_M );
+  keyAccel->connectItem("Send Message", this, SLOT(slotFileMessage()));
+  keyAccel->changeMenuAccel(fileMenu, ID_FILE_MESSAGE, "Send Message" );
   fileMenu->setAccel( CTRL + Key_M, ID_FILE_MESSAGE);
 
 
@@ -177,21 +177,21 @@ void Kwin4App::initMenuBar()
   // menuBar entry fileMenu
   fileMenu = new QPopupMenu();
 //  fileMenu->insertSeparator();
-  fileMenu->insertItem(BarIcon(QCString("filenew")), i18n("&New game"), ID_FILE_NEW);
-  fileMenu->insertItem(BarIcon(QCString("stop")),i18n("&End game"), ID_FILE_CLOSE);
+  fileMenu->insertItem(BarIcon("filenew"), i18n("&New game"), ID_FILE_NEW);
+  fileMenu->insertItem(BarIcon("stop"),i18n("&End game"), ID_FILE_CLOSE);
   fileMenu->insertSeparator();
-  fileMenu->insertItem(BarIcon(QCString("flag")),i18n("&Statistics"), ID_FILE_STATISTICS);
-  fileMenu->insertItem(BarIcon(QCString("help")),i18n("&Hint"), ID_FILE_HINT);
-  fileMenu->insertItem(BarIcon(QCString("openterm")),i18n("Send &Message..."), ID_FILE_MESSAGE);
+  fileMenu->insertItem(BarIcon("flag"),i18n("&Statistics"), ID_FILE_STATISTICS);
+  fileMenu->insertItem(BarIcon("help"),i18n("&Hint"), ID_FILE_HINT);
+  fileMenu->insertItem(BarIcon("openterm"),i18n("Send &Message..."), ID_FILE_MESSAGE);
   fileMenu->insertSeparator();
-  fileMenu->insertItem(BarIcon(QCString("exit")),i18n("E&xit"), ID_FILE_QUIT);
+  fileMenu->insertItem(BarIcon("exit"),i18n("E&xit"), ID_FILE_QUIT);
 
 	
   ///////////////////////////////////////////////////////////////////
   // menuBar entry editMenu
   editMenu = new QPopupMenu();
-  editMenu->insertItem(BarIcon(QCString("undo")), i18n("&Undo move"), ID_EDIT_UNDO);
-  editMenu->insertItem(BarIcon(QCString("redo")), i18n("&Redo move"), ID_EDIT_REDO);
+  editMenu->insertItem(BarIcon("undo"), i18n("&Undo move"), ID_EDIT_UNDO);
+  editMenu->insertItem(BarIcon("redo"), i18n("&Redo move"), ID_EDIT_REDO);
 
   ///////////////////////////////////////////////////////////////////
   // menuBar entry viewMenu
@@ -311,13 +311,13 @@ void Kwin4App::initToolBar()
 
   ///////////////////////////////////////////////////////////////////
   // TOOLBAR
-  toolBar()->insertButton(BarIcon(QCString("filenew")), ID_FILE_NEW, true, i18n("New File"));
+  toolBar()->insertButton(BarIcon("filenew"), ID_FILE_NEW, true, i18n("New File"));
   toolBar()->insertSeparator();
-  toolBar()->insertButton(BarIcon(QCString("editcut")), ID_EDIT_CUT, true, i18n("Cut"));
-  toolBar()->insertButton(BarIcon(QCString("editcopy")), ID_EDIT_COPY, true, i18n("Copy"));
-  toolBar()->insertButton(BarIcon(QCString("editpaste")), ID_EDIT_PASTE, true, i18n("Paste"));
+  toolBar()->insertButton(BarIcon("editcut"), ID_EDIT_CUT, true, i18n("Cut"));
+  toolBar()->insertButton(BarIcon("editcopy"), ID_EDIT_COPY, true, i18n("Copy"));
+  toolBar()->insertButton(BarIcon("editpaste"), ID_EDIT_PASTE, true, i18n("Paste"));
   toolBar()->insertSeparator();
-  toolBar()->insertButton(BarIcon(QCString("help")), ID_HELP_CONTENTS, SIGNAL(clicked()),
+  toolBar()->insertButton(BarIcon("help"), ID_HELP_CONTENTS, SIGNAL(clicked()),
   				this, SLOT(appHelpActivated()), true,i18n("Help"));
 
   ///////////////////////////////////////////////////////////////////
@@ -410,13 +410,13 @@ Kwin4Doc *Kwin4App::getDocument() const
 
 void Kwin4App::saveOptions()
 {	
-  config->setGroup(QCString("General Options"));
-  config->writeEntry(QCString("Geometry"), size());
+  config->setGroup("General Options");
+  config->writeEntry("Geometry", size());
 #ifdef USE_TOOLBAR
-  config->writeEntry(QCString("Show Toolbar"), toolBar()->isVisible());
-  config->writeEntry(QCString("ToolBarPos"), (int) toolBar()->barPos());
+  config->writeEntry("Show Toolbar", toolBar()->isVisible());
+  config->writeEntry("ToolBarPos", (int) toolBar()->barPos());
 #endif
-  config->writeEntry(QCString("Show Statusbar"),statusBar()->isVisible());
+  config->writeEntry("Show Statusbar",statusBar()->isVisible());
 //  config->writeEntry("Recent Files", recentFiles);
 
   doc->WriteConfig(config);
@@ -426,11 +426,11 @@ void Kwin4App::saveOptions()
 
 void Kwin4App::readOptions()
 {
-  config->setGroup(QCString("General Options"));
+  config->setGroup("General Options");
 
   // bar status settings
 #ifdef USE_TOOLBAR
-  bool bViewToolbar = config->readBoolEntry(QCString("Show Toolbar"), true);
+  bool bViewToolbar = config->readBoolEntry("Show Toolbar", true);
   viewMenu->setItemChecked(ID_VIEW_TOOLBAR, bViewToolbar);
   if(bViewToolbar)
      toolBar()->show();
@@ -438,7 +438,7 @@ void Kwin4App::readOptions()
      toolBar()->hide();
 #endif
 	
-  bool bViewStatusbar = config->readBoolEntry(QCString("Show Statusbar"), true);
+  bool bViewStatusbar = config->readBoolEntry("Show Statusbar", true);
   viewMenu->setItemChecked(ID_VIEW_STATUSBAR, bViewStatusbar);
   if(bViewStatusbar)
     statusBar()->show();
@@ -448,7 +448,7 @@ void Kwin4App::readOptions()
   #ifdef USE_TOOLBAR
   // bar position settings
   KToolBar::BarPosition toolBarPos;
-  toolBarPos=(KToolBar::BarPosition) config->readNumEntry(QCString("ToolBarPos"), KToolBar::Top);
+  toolBarPos=(KToolBar::BarPosition) config->readNumEntry("ToolBarPos", KToolBar::Top);
   toolBar()->setBarPos(toolBarPos);
 #endif	
   // initialize the recent file list
@@ -460,7 +460,7 @@ void Kwin4App::readOptions()
     recentFilesMenu->insertItem(recentFiles.at(i));
   }
  */
-  QSize size=config->readSizeEntry(QCString("Geometry"));
+  QSize size=config->readSizeEntry("Geometry");
   if(!size.isEmpty())
   {
     resize(size);
@@ -480,8 +480,8 @@ void Kwin4App::saveProperties(KConfig *_cfg)
   else
   {
     QString filename=doc->getAbsFilePath();	
-    _cfg->writeEntry(QCString("filename"), filename);
-    _cfg->writeEntry(QCString("modified"), doc->isModified());
+    _cfg->writeEntry("filename", filename);
+    _cfg->writeEntry("modified", doc->isModified());
 		
     QString tempname = kapp->tempSaveName(filename);
     doc->saveDocument(tempname);
@@ -492,8 +492,8 @@ void Kwin4App::saveProperties(KConfig *_cfg)
 
 void Kwin4App::readProperties(KConfig* _cfg)
 {
-  QString filename = _cfg->readEntry(QCString("filename"), QCString(""));
-  bool modified = _cfg->readBoolEntry(QCString("modified"), false);
+  QString filename = _cfg->readEntry("filename", "");
+  bool modified = _cfg->readBoolEntry("modified", false);
   if(modified)
   {
     bool canRecover;
@@ -575,8 +575,8 @@ bool Kwin4App::MakeInputDevice(int i)
       port=doc->QueryPort();
       host=doc->QueryHost();
       msg=new KEMessage;
-      msg->AddData(QCString("Port"),(short)port);
-      msg->AddData(QCString("IP"),(char *)host.latin1());
+      msg->AddData("Port",(short)port);
+      msg->AddData("IP",(char *)host.latin1());
       res=mInput->SetInputDevice(i,KG_INPUTTYPE_REMOTE,msg);
       if (!res)
       {
@@ -613,12 +613,12 @@ bool Kwin4App::MakeInputDevice(int i)
         KEMessage *msg=new KEMessage;
         if (doc->QueryServer())
         {
-          msg->AddData(QCString("RequestServer"),(long)doc->QueryID());
+          msg->AddData("RequestServer",(long)doc->QueryID());
         }
         else
         {
           if (global_debug>6) printf("We want to be client.\n");
-          msg->AddData(QCString("RequestClient"),(long)doc->QueryID());
+          msg->AddData("RequestClient",(long)doc->QueryID());
         }
         prepareGame(msg);
         mInput->SendMsg(msg,i);
@@ -637,7 +637,7 @@ bool Kwin4App::MakeInputDevice(int i)
       }
       if (path.isNull())  return false;
       msg=new KEMessage;
-      msg->AddData(QCString("ProcessName"),(char *)path.latin1());
+      msg->AddData("ProcessName",(char *)path.latin1());
       res=mInput->SetInputDevice(i,KG_INPUTTYPE_PROCESS,msg);
       delete msg;
     }
@@ -703,12 +703,12 @@ void Kwin4App::NewGame(int mode)
     KEMessage *msg=new KEMessage;
     if (doc->QueryServer())
     {
-      msg->AddData(QCString("RequestServer"),(long)-1);
+      msg->AddData("RequestServer",(long)-1);
       prepareGame(msg);
     }
     else
     {
-      msg->AddData(QCString("RequestClient"),(long)-1);
+      msg->AddData("RequestClient",(long)-1);
     }
     if (mInput->QueryType(0)==KG_INPUTTYPE_REMOTE)
     {
@@ -756,14 +756,14 @@ void Kwin4App::slotFileClose()
   slotStatusMsg(m);
 
   KEMessage *msg=new KEMessage;
-  msg->AddData(QCString("EndGame"),(short)TBrk);
+  msg->AddData("EndGame",(short)TBrk);
   if (mInput->QueryType(0)==KG_INPUTTYPE_REMOTE)
     mInput->SendMsg(msg,0);
   if (mInput->QueryType(1)==KG_INPUTTYPE_REMOTE)
     mInput->SendMsg(msg,1);
 
   msg->RemoveAll();
-  msg->AddData(QCString("Terminate"),(short)1);
+  msg->AddData("Terminate",(short)1);
   if (mInput->QueryType(0)==KG_INPUTTYPE_PROCESS)
     mInput->SendMsg(msg,0);
   if (mInput->QueryType(1)==KG_INPUTTYPE_PROCESS)
@@ -816,10 +816,10 @@ void Kwin4App::slotFileHint()
 
     KEMessage *msg=new KEMessage;
     // msg->AddData("ProcessName",(const char *)doc->QueryProcessName());
-    msg->AddData(QCString("ProcessName"),(char *)path.latin1());
-    msg->AddData(QCString("Hint"),(short)1);
-    msg->AddData(QCString("Move"),(short)0);
-    msg->AddData(QCString("Hintmove"),(short)doc->QueryCurrentMove());
+    msg->AddData("ProcessName",(char *)path.latin1());
+    msg->AddData("Hint",(short)1);
+    msg->AddData("Move",(short)0);
+    msg->AddData("Hintmove",(short)doc->QueryCurrentMove());
     prepareGame(msg);
     mInput->SetInputDevice(2,KG_INPUTTYPE_PROCESS,msg);
     delete msg;
@@ -832,7 +832,7 @@ void Kwin4App::slotFileStatistics()
   int res;
   slotStatusMsg(i18n("Showing game statistics..."));
 
-  StatDlg *dlg=new StatDlg(this,QCString("Game statistics..."));
+  StatDlg *dlg=new StatDlg(this,"Game statistics...");
   dlg->SetNames(doc->QueryName(Gelb),doc->QueryName(Rot));
   dlg->SetStat1(doc->QueryStat(Gelb,TWin),
                 doc->QueryStat(Gelb,TRemis),
@@ -861,16 +861,16 @@ void Kwin4App::slotFileMessage()
   int res;
   slotStatusMsg(i18n("Sending message to remote player..."));
 
-  MsgDlg *dlg=new MsgDlg(this,QCString("Send message..."));
+  MsgDlg *dlg=new MsgDlg(this,"Send message...");
   res=dlg->exec();
   if (res==QDialog::Accepted)
   {
     QString s;
     s=dlg->GetMsg();
-    if (!s || s.length()<1) s=QCString("...");
+    if (!s || s.length()<1) s="...";
     KEMessage *msg=new KEMessage;
 
-    msg->AddData(QCString("Message"),(char *)s.latin1());
+    msg->AddData("Message",(char *)s.latin1());
      if (mInput->QueryType(0)==KG_INPUTTYPE_REMOTE)
       mInput->SendMsg(msg,0);
      if (mInput->QueryType(1)==KG_INPUTTYPE_REMOTE)
@@ -1144,7 +1144,7 @@ void Kwin4App::slotLevel(int i)
 void Kwin4App::slotOptionsNames()
 {
   slotStatusMsg(i18n("Configure player names..."));
-  NameDlg *dlg=new NameDlg(this,QCString("Enter your name..."));
+  NameDlg *dlg=new NameDlg(this,"Enter your name...");
   dlg->SetNames(doc->QueryName(Gelb),doc->QueryName(Rot));
   if (dlg->exec()==QDialog::Accepted)
   {
@@ -1183,7 +1183,7 @@ int Kwin4App::slotOptionsNetwork()
   int res;
   QString server;
 
-  NetworkDlg *dlg=new NetworkDlg(this,QCString("Configure a network game..."));
+  NetworkDlg *dlg=new NetworkDlg(this,"Configure a network game...");
   dlg->SetPort(doc->QueryPort());
   dlg->SetHost(doc->QueryHost());
   res=dlg->exec();
@@ -1422,16 +1422,16 @@ int Kwin4App::extractGame(KEMessage *msg)
     int i,j,size;
     bool switchcolour=false;
 
-    msg->GetData(QCString("Beginner"),sh1);
-    msg->GetData(QCString("RemoteBeginner"),sh2);
+    msg->GetData("Beginner",sh1);
+    msg->GetData("RemoteBeginner",sh2);
 
 
     if (sh2 && doc->IsRemote((FARBE)sh1))
     {
       switchcolour=true;
     }
-    msg->GetData(QCString("Second"),sh1);
-    msg->GetData(QCString("RemoteSecond"),sh2);
+    msg->GetData("Second",sh1);
+    msg->GetData("RemoteSecond",sh2);
     if (sh2 && doc->IsRemote((FARBE)sh1))
     {
       switchcolour=true;
@@ -1461,7 +1461,7 @@ int Kwin4App::extractGame(KEMessage *msg)
     }
 
     // Need to switch players
-    msg->GetData(QCString("Beginner"),sh1);
+    msg->GetData("Beginner",sh1);
     if (switchcolour)
     {
       if ((FARBE)sh1==Gelb) sh1=(short)Rot;
@@ -1473,9 +1473,9 @@ int Kwin4App::extractGame(KEMessage *msg)
       else slotStartcolourRed();
     }
 
-    msg->GetData(QCString("Aktzug"),sh1);
+    msg->GetData("Aktzug",sh1);
     doc->SetCurrentMove((int)sh1);
-    msg->GetData(QCString("Amzug"),sh1);
+    msg->GetData("Amzug",sh1);
     if (switchcolour)
     {
       if ((FARBE)sh1==Gelb) sh1=(short)Rot;
@@ -1484,7 +1484,7 @@ int Kwin4App::extractGame(KEMessage *msg)
     doc->SetCurrentPlayer((FARBE)sh1);
 
     // msg->GetData("Second",sh1);
-    msg->GetData(QCString("Level"),sh1);
+    msg->GetData("Level",sh1);
     doc->SetLevel((int)sh1);
 
     NewGame(0);
@@ -1498,15 +1498,15 @@ int Kwin4App::extractGame(KEMessage *msg)
 void Kwin4App::prepareGame(KEMessage *msg)
 {
   if (!msg) return ;
-  msg->AddData(QCString("Aktzug"),(short)doc->QueryCurrentMove());
-  msg->AddData(QCString("Amzug"),(short)doc->QueryCurrentPlayer());
-  msg->AddData(QCString("Beginner"),(short)doc->QueryPlayerColour(0));
-  msg->AddData(QCString("Second"),(short)doc->QueryPlayerColour(1));
+  msg->AddData("Aktzug",(short)doc->QueryCurrentMove());
+  msg->AddData("Amzug",(short)doc->QueryCurrentPlayer());
+  msg->AddData("Beginner",(short)doc->QueryPlayerColour(0));
+  msg->AddData("Second",(short)doc->QueryPlayerColour(1));
 
     
-  msg->AddData(QCString("Level"),(short)doc->QueryLevel());
-  msg->AddData(QCString("RemoteBeginner"),(short)(doc->IsRemote(doc->QueryPlayerColour(0))));
-  msg->AddData(QCString("RemoteSecond"),(short)(doc->IsRemote(doc->QueryPlayerColour(1))));
+  msg->AddData("Level",(short)doc->QueryLevel());
+  msg->AddData("RemoteBeginner",(short)(doc->IsRemote(doc->QueryPlayerColour(0))));
+  msg->AddData("RemoteSecond",(short)(doc->IsRemote(doc->QueryPlayerColour(1))));
   QString s;
   char *fl=new char[8];
   int i,j;
@@ -1528,8 +1528,8 @@ void Kwin4App::slotPrepareProcessMove(KEMessage *msg)
     printf("+++ main should prepare process move\n");
   slotStatusMsg(i18n("Waiting for the computer to move..."));
 
-  msg->AddData(QCString("Hint"),(short)0);
-  msg->AddData(QCString("Move"),(short)1);
+  msg->AddData("Hint",(short)0);
+  msg->AddData("Move",(short)1);
 
   if (global_debug>3)
     printf("PREPARE GAME in processmove\n");
@@ -1569,9 +1569,9 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
   char *p;
   QString message;
 
-  if (msg->HasKey(QCString("EndGame")))
+  if (msg->HasKey("EndGame"))
   {
-    msg->GetData(QCString("EndGame"),move);
+    msg->GetData("EndGame",move);
     message=QString(i18n("Remote player ended game..."));
     KMessageBox::information(this,message,TITLE);
     message=i18n("Remote player ended game.");
@@ -1579,7 +1579,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
 
     KEMessage *msg2=new KEMessage;
 
-    msg2->AddData(QCString("Terminate"),(short)1);
+    msg2->AddData("Terminate",(short)1);
     if (mInput->QueryType(0)==KG_INPUTTYPE_PROCESS)
       mInput->SendMsg(msg2,0);
     if (mInput->QueryType(1)==KG_INPUTTYPE_PROCESS)
@@ -1588,9 +1588,9 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
 
     EndGame((TABLE)move);
   }
-  if (msg->HasKey(QCString("RequestServer")))
+  if (msg->HasKey("RequestServer"))
   {
-    msg->GetData(QCString("RequestServer"),score);
+    msg->GetData("RequestServer",score);
     // We lost server challenge
     if (global_debug>3)
       printf("CHALLENGE Server: id=%d, remoteid=%ld\n",doc->QueryID(),score);
@@ -1621,9 +1621,9 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     else
       mInput->Next(1,true);
   }
-  else if (msg->HasKey(QCString("RequestClient")))
+  else if (msg->HasKey("RequestClient"))
   {
-    msg->GetData(QCString("RequestClient"),score);
+    msg->GetData("RequestClient",score);
     // We lost client challenge
     if (global_debug>3)
       printf("CHALLENGE client: id=%d, remoteid=%ld\n",doc->QueryID(),score);
@@ -1652,9 +1652,9 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       mInput->Next(1);
   }
 
-  if (msg->HasKey(QCString("ConnectionLost")))
+  if (msg->HasKey("ConnectionLost"))
   {
-    if (msg->GetData(QCString("ConnectionLost"),move))
+    if (msg->GetData("ConnectionLost",move))
     {
       if (move==0)
       {
@@ -1672,40 +1672,40 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       }
     }
   }
-  if (msg->HasKey(QCString("Message")))
+  if (msg->HasKey("Message"))
   {
-    if (msg->GetData(QCString("Message"),p,size))
+    if (msg->GetData("Message",p,size))
     {
-      message=QString(QCString("Message from remote player:\n"))+p;
+      message=QString("Message from remote player:\n")+p;
       KMessageBox::information(this,message,TITLE);
       if (global_debug>3)
         printf("MESSAGE **** %s ****\n",(const char *)message);
     }
   }
-  if (msg->HasKey(QCString("error")))
+  if (msg->HasKey("error"))
   {
     message=i18n("Received an error from the remote player");
     slotStatusMsg(i18n(message));
   }
-  if (msg->HasKey(QCString("Move")))
+  if (msg->HasKey("Move"))
   {
      slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
-     if (msg->GetData(QCString("Move"),move))
+     if (msg->GetData("Move",move))
      {
        Move(move,id);
      }
-     if (msg->GetData(QCString("Score"),score))
+     if (msg->GetData("Score",score))
      {
        doc->SetScore(score);
      }
   }
-  if (msg->HasKey(QCString("Hint")))
+  if (msg->HasKey("Hint"))
   {
      slotStatusMsg(i18n(IDS_STATUS_DEFAULT));
-     if (msg->GetData(QCString("Hint"),move))
+     if (msg->GetData("Hint",move))
      {
        short oldm;
-       msg->GetData(QCString("Hintmove"),oldm);
+       msg->GetData("Hintmove",oldm);
        if (doc->QueryCurrentMove()==oldm)
        {
          int hintx=doc->QueryLastHint();
@@ -1777,7 +1777,7 @@ bool Kwin4App::Move(int x,int id){
   if (res!=GIllMove && res!=GTip && !isremote)
   {
      KEMessage *msg=new KEMessage;
-     msg->AddData(QCString("Move"),(short)x);
+     msg->AddData("Move",(short)x);
      if (mInput->QueryType(0)==KG_INPUTTYPE_REMOTE)
       mInput->SendMsg(msg,0);
      if (mInput->QueryType(1)==KG_INPUTTYPE_REMOTE)
@@ -1882,11 +1882,11 @@ void Kwin4App::slotStatusNames(){
   }
   else if (doc->QueryCurrentPlayer()==Gelb)
   {
-    msg=QString(QCString(" "))+doc->QueryName(Gelb)+ i18n(" - Yellow ");
+    msg=QString(" ")+doc->QueryName(Gelb)+ i18n(" - Yellow ");
   }
   else if (doc->QueryCurrentPlayer())
   {
-    msg=QString(QCString(" "))+doc->QueryName(Rot)+ i18n(" - Red ");
+    msg=QString(" ")+doc->QueryName(Rot)+ i18n(" - Red ");
   }
   else
   {
