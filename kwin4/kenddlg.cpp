@@ -69,7 +69,7 @@ kEndDlg::kEndDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     vbox_3->addItem( spacer );
 
     PushButton1 = new QPushButton( Frame3, "PushButton1" );
-    PushButton1->setText( i18n( "Good bye"  ) );
+    PushButton1->setText( i18n( "Good Bye"  ) );
     vbox_3->addWidget( PushButton1 );
     hbox->addLayout( vbox_3 );
 
@@ -97,7 +97,7 @@ kEndDlg::kEndDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     vbox_4->addItem( spacer_2 );
 
     PushButton1_2 = new QPushButton( Frame3, "PushButton1_2" );
-    PushButton1_2->setText( i18n( "Stay here"  ) );
+    PushButton1_2->setText( i18n( "Stay Here"  ) );
     vbox_4->addWidget( PushButton1_2 );
     hbox->addLayout( vbox_4 );
     vbox_2->addLayout( hbox );
