@@ -211,7 +211,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     hbox_2->addItem( spacer_21 );
 
     PushButton1 = new QPushButton( Layout17, "PushButton1" );
-    PushButton1->setText( i18n( "Clear all statistics"  ) );
+    PushButton1->setText( i18n( "Clear All Statistics"  ) );
     hbox_2->addWidget( PushButton1 );
     QSpacerItem* spacer_22 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
     hbox_2->addItem( spacer_22 );

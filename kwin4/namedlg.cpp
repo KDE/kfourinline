@@ -29,7 +29,7 @@
  *  TRUE to construct a modal dialog.
  */
 NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* fl */ )
-    : KDialogBase( Plain, i18n("Configure names..."), Ok|Cancel, Ok,
+    : KDialogBase( Plain, i18n("Configure Names..."), Ok|Cancel, Ok,
                    parent, name, true,true )
 
 {

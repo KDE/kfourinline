@@ -363,7 +363,7 @@ void Kwin4App::initGUI()
   ACTION("end_game")->setStatusText(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
-  (void)new KAction(i18n("&Network configuration..."),0, this, SLOT(slotInitNetwork()),
+  (void)new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
                        actionCollection(), "file_network");
   (void)new KAction(i18n("Chat Widget"),0, this, SLOT(slotChat()),
                        actionCollection(), "file_chat");
@@ -410,7 +410,7 @@ void Kwin4App::initGUI()
   list.append(i18n("&Red"));
   ((KSelectAction *)ACTION("startplayer"))->setItems(list);
 
-  (void)new KSelectAction(i18n("Yellow played by"),0,this,SLOT(slotPlayer1By()),
+  (void)new KSelectAction(i18n("Yellow Played By"),0,this,SLOT(slotPlayer1By()),
                       actionCollection(), "player1");
   ACTION("player1")->setStatusText(i18n("Change who plays the yellow player..."));
   ACTION("player1")->setWhatsThis(i18n("Change who plays the yellow player..."));
@@ -419,7 +419,7 @@ void Kwin4App::initGUI()
   list.append(i18n("&Computer"));
   list.append(i18n("&Keyboard"));
   ((KSelectAction *)ACTION("player1"))->setItems(list);
-  (void)new KSelectAction(i18n("Red played by"),0,this,SLOT(slotPlayer2By()),
+  (void)new KSelectAction(i18n("Red Played By"),0,this,SLOT(slotPlayer2By()),
                       actionCollection(), "player2");
   ACTION("player1")->setStatusText(i18n("Change who plays the red player..."));
   ACTION("player1")->setWhatsThis(i18n("Change who plays the red player..."));
