@@ -36,14 +36,14 @@ Kwin4Player::Kwin4Player() : KPlayer()
   sWidget=0;
 
   int id;
-  id=mWin.registerData(dataHandler());
-  id=mRemis.registerData(dataHandler());
-  id=mLost.registerData(dataHandler());
-  id=mBrk.registerData(dataHandler());
-  id=mAllWin.registerData(dataHandler());
-  id=mAllRemis.registerData(dataHandler());
-  id=mAllLost.registerData(dataHandler());
-  id=mAllBrk.registerData(dataHandler());
+  id=mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mWin"));
+  id=mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mRemis"));
+  id=mLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mLost"));
+  id=mBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mBrk"));
+  id=mAllWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllWin"));
+  id=mAllRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllRemis"));
+  id=mAllLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllLost"));
+  id=mAllBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllBrk"));
 
   dataHandler()->setPolicy(KGamePropertyBase::PolicyDirty,false);
 
