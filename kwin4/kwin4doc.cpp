@@ -47,7 +47,6 @@
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
 {
   mHintProcess=0;
-  mLastPlayer=0;
   pView=0;
 
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KGame *)),
@@ -124,6 +123,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   connect(this,SIGNAL(signalClientJoinedGame(Q_UINT32,KGame *)),
          this,SLOT(slotClientConnected(Q_UINT32, KGame *)));
 
+  // Debug only
   connect(this,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
          this,SLOT(slotGameOver(int, KPlayer *,KGame *)));
 
@@ -202,14 +202,6 @@ const QString &Kwin4Doc::getTitle() const
   return title;
 }
 
-void Kwin4Doc::slotUpdateAllViews(Kwin4View *sender)
-{
-  if(pView)
-  {
-      if(pView!=sender) pView->repaint();
-  }
-}
-
 bool Kwin4Doc::newDocument(KConfig * /*config*/,QString path)
 {
   int res;
@@ -273,18 +265,15 @@ void Kwin4Doc::ResetGame(bool initview){
   mLastHint=-1;
   kdDebug() << "Should view be cleared in in reset game? "<<initview<<endl;
   if (initview) pView->initView(false);
+  // Who starts?
+  SetCurrentPlayer((FARBE)mStartPlayer.value()); 
   kdDebug() << "Reset game done" << endl;
 }
 
-/** Set variables for a new game */
-void Kwin4Doc::StartGame(){
-  mGameOverStatus=0;
-  //setGameStatus(Run);
-  winc=Niemand;
-  // Who starts?
-  SetCurrentPlayer((FARBE)mStartPlayer.value()); 
-  kdDebug() << "StartGame::startplayer="<<mStartPlayer.value()<<endl;
-  kdDebug() << "StartGame::currentplayer="<<QueryCurrentPlayer()<<endl;
+/** Set current player to setTurn true*/
+void Kwin4Doc::preparePlayerTurn()
+{
+  kdDebug() << "Setting the current player to turn"<<endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
 
 }
@@ -535,6 +524,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
   int flag;
   FARBE c;
   int star=1;
+  FARBE winc=Niemand;
 
   // Check dy
   flag=0;
@@ -978,20 +968,7 @@ bool Kwin4Doc::Move(int x,int id)
 
   hintx=QueryLastHint();
   lastx=QueryLastcolumn();
-  //int isremote=IsRemote(QueryCurrentPlayer());
   res=MakeMove(x,0);
-  /*
-  if (res!=GIllMove && res!=GTip && !isremote)
-  {
-     KEMessage *msg=new KEMessage;
-     msg->AddData("Move",(short)x);
-     if (mInput->QueryType(0)==KG_INPUTTYPE_REMOTE)
-      mInput->SendMsg(msg,0);
-     if (mInput->QueryType(1)==KG_INPUTTYPE_REMOTE)
-      mInput->SendMsg(msg,1);
-     delete msg;
-  }
-  */
 
   int y;
   // Clear hint as well
@@ -1103,6 +1080,11 @@ void Kwin4Doc::slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *s
   *sendit=true;
 }
 
+/** 
+ * Sends the current game status to the computer player
+ * Careful: The data needs to be the same than the computer
+ * player reading on the other side
+ **/
 void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
 {
   kdDebug() << "          sending col=" << pl << endl;
@@ -1211,6 +1193,10 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
   }
 }
 
+/** 
+ * Get the KPlayer from the color by searching all players
+ * users id's
+ **/
 Kwin4Player *Kwin4Doc::getPlayer(FARBE col)
 {
  Kwin4Player *p;
@@ -1223,6 +1209,10 @@ Kwin4Player *Kwin4Doc::getPlayer(FARBE col)
 
 }
 
+/**
+ * We create a process which calulcates a computer move
+ * which is shown as hint
+ **/
 void Kwin4Doc::calcHint()
 {
   // We allocate the hint process only if it is needed
@@ -1245,6 +1235,10 @@ void Kwin4Doc::calcHint()
   mHintProcess->sendMessage(stream,2,0,gameId());
 }
 
+/**
+ * The compute rprocess sent a hint which we show in the
+ * game board
+ **/
 void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO *me)
 {
   Q_INT8 cid;
@@ -1270,6 +1264,12 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO *me)
   }
 }
    
+/**
+ * Called when a player property has changed. We check whether the name
+ * changed and then update the score widget
+ * We should maybe do this for the other properties too to update
+ * the status widget...I am not sure here...we'll see
+ **/
 void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player)
 {
   if (!pView) return ;
@@ -1313,14 +1313,13 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
      else if (gameStatus()==Run)
      {
        kdDebug() << "PropertyChanged::status signal game run ++++++++++++++++++++++" << endl;
-       //StartGame();
+       preparePlayerTurn(); // Set the current player to play
        emit signalGameRun();
      }
      else if (gameStatus()==Init)
      {
        kdDebug() << "PropertyChanged::status signal game INIT ++++++++++++++++++++++" << endl;
        ResetGame(true);
-       StartGame();
      }
      else
      {
@@ -1330,12 +1329,15 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    }
 }
 
+
+/** 
+ * Called by KGame if the game has ended. 
+ * DEBUG only as we do not need any extension to
+ * the KGame behavior
+ */
 void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 {
-  setGameStatus(End);
-  mLastPlayer=p;
-  mGameOverStatus=status;
-  kdDebug() << "Slotgameover lastplayer uid="<<p->userId()<<endl;
+  kdDebug() << "SlotGameOver: status="<<status<<" lastplayer uid="<<p->userId()<<endl;
   
 }
 
@@ -1346,11 +1348,12 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
  **/
 bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
+  kdDebug () << "!!!!!!!!!!!!!!!loadgame network="<<network<<" reset="<<reset<<" !!!!!!!!!!"<<endl;
   if (!network) setGameStatus(End);
-  else kdDebug() << "NETWROK GAME NOT ENDED " << endl;
 
   // Clear out the old game 
-  if (!network) setGameStatus(Init);
+  kdDebug()<<"loadgame wants to reset the game"<<endl;
+  ResetGame(true);
 
   // load the new game
   bool res=KGame::loadgame(stream,network,reset);
@@ -1378,6 +1381,9 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 
   // Set the input devices
   recalcIO();
+  // And set the right player to turn
+  preparePlayerTurn();
+
   kdDebug()  << "loadgame done +++++++++++++++++++++++++" << endl;
   return res;
 }

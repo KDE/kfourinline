@@ -146,8 +146,6 @@ class Kwin4Doc : public KGame
   bool IsRunning();
   /** End a game */
   void EndGame(TABLE mode);
-  /** Start a new game */
-  void StartGame();
   /** Reset the whole game */
   void ResetGame(bool initview);
   /** Set the colour */
@@ -186,34 +184,35 @@ class Kwin4Doc : public KGame
   void SetPort(unsigned short port);
   unsigned short QueryPort();
   QString QueryHost();
-  FARBE QueryWinC() {return winc;}
 
+  /** Create a kwin4player */
   KPlayer *createPlayer(int rtti,int io,bool isvirtual);
+  /** Calcualte the next players turn */
   KPlayer * nextPlayer(KPlayer *last,bool exclusive=true);
 
+  /** KGame function to deterimine what players are in the game */
   void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QValueList<int> &);
 
   protected:
 
   /** Performs a game move */
   bool Move(int x,int id);
+  /** Check whether the field has a game over situation */
   int checkGameOver(KPlayer *);
+  /** Send to the computer player */
   void prepareGameMessage(QDataStream &stream, Q_INT32 pl);
+  /** Main function to do player input */
   bool playerInput(QDataStream &msg,KPlayer *player);
+  /** Set the IO devices new */
   void recalcIO();
+  /** Set the turn of the current player to true */
+  void preparePlayerTurn();
 
 	
   public slots:
     void slotPropertyChanged(KGamePropertyBase *,KGame *);
     void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
     void moveDone(QCanvasItem *,int);
-    /**
-     * calls repaint() on all views connected to the document object and is called by the view by which the document has been changed.
-     * As this view normally repaints itself, it is excluded from the paintEvent.
-     */
-    void slotUpdateAllViews(Kwin4View *sender);
-    //void slotCreatePlayer(Kwin4Player *&player,int rtti,int io,bool isvirtual,Kwin4Doc * game);
-    // void slotCreatePlayer(KPlayer& *player,int rtti,int io,bool isvirtual,KGame * game);
     void slotMessageUpdate(int,Q_UINT32,Q_UINT32);
     void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
     void slotClientConnected(Q_UINT32,KGame *);
@@ -258,9 +257,6 @@ class Kwin4Doc : public KGame
   QString title;
   QString absFilePath;
 
-  KPlayer *mLastPlayer;
-  int mGameOverStatus;
-
   KGamePropertyInt mLastColumn;   // last x moved
   //FARBE lastcolour; // last colour moved
   KGamePropertyInt mLastColour; // last colour moved
@@ -279,28 +275,7 @@ class Kwin4Doc : public KGame
   KGamePropertyArray<int> mHistory; // to what height is the column filled
 
     // TODO Save manually in slotSave
-  KGameIO::IOMode mPlayedBy[2];
-    
-
-
-  // old FARBE *fields;
-  // int *field_filled;
-
-
-  // gameplay
-
-  // QString Names[NOOFPLAYER+1];
-  // FARBE Colour[NOOFPLAYER+1]; // TODO remove
-
-  //int *history;
-
-
-  // PLAYER player[NOOFPLAYER+1]; // TODO remove
-
-  // Mark the fields of the four winning stones
-  FARBE winc;
-
-
+  KGameIO::IOMode mPlayedBy[NOOFPLAYER];
   KGameProcessIO *mHintProcess;
 };
 
