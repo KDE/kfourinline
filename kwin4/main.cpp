@@ -29,7 +29,7 @@ static KCmdLineOptions options[] =
 {
   { "d", 0, 0},
   { "debug <level>", I18N_NOOP("Enter debug level"), 0 },
-  { 0, 0, 0 }
+  KCmdLineLastOption
 };
 int global_debug;
 
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
    //  KApplication app(argc, argv, "kwin4");
    KApplication app;
    KGlobal::locale()->insertCatalogue("libkdegames");
-    
+
    /*
    QStringList list=app.dirs()->allTypes();
    QStringList list=app.dirs()->findDirs("data","kwin4");
@@ -66,14 +66,14 @@ int main(int argc, char *argv[])
         for ( QStringList::Iterator it = list.begin(); it != list.end(); ++it ) {
             printf( "%s \n", (*it).latin1() );
         }
-   */ 
+   */
 
 
   if (app.isRestored())
   {
     RESTORE(Kwin4App);
   }
-  else 
+  else
   {
     Kwin4App *kwin4 = new Kwin4App();
     kwin4->show();
@@ -82,4 +82,4 @@ int main(int argc, char *argv[])
   int result=app.exec();
   delete aboutData;
   return result;
-}  
+}
