@@ -223,7 +223,7 @@ void Kwin4View::drawStatus(QPainter *p){
 	p2=geom.status_rect.bottomRight();
 	int width=6*(p2.x()-p1.x())/10;
 
-  ld=i18n("vs");
+  ld=i18n("versus","vs");
 	p->drawText(p1.x()+geom.table_cols[0],p1.y()+geom.table_rows[0],ld);
 
   ld=i18n("Level:");
@@ -340,15 +340,15 @@ void Kwin4View::drawTable(QPainter *p){
 
   // draw Headertext
   QString ld;
-  ld=i18n("W"); // abbr for "Won"
+  ld=i18n("1_letter_abbr_won","W"); // abbr for "Won"
 	p->drawText(p1.x()+geom.status_cols[1]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("D"); // abbr dor "drawn"
+  ld=i18n("1_letter_abbr_drawn","D"); // abbr for "drawn"
 	p->drawText(p1.x()+geom.status_cols[2]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("L"); // abbr for "lost"
+  ld=i18n("1_letter_abbr_lost","L"); // abbr for "lost"
 	p->drawText(p1.x()+geom.status_cols[3]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("No"); // abbr for "number"
+  ld=i18n("1-2_letter_abbr_number","No"); // abbr for "number"
 	p->drawText(p1.x()+geom.status_cols[4]-4,p1.y()+geom.status_rows[0],ld);
-  ld=i18n("Bk"); // abbr for "breaks"
+  ld=i18n("1-2_letter_abbr_breaks/aborted","Bk"); // abbr for "breaks"
 	p->drawText(p1.x()+geom.status_cols[5]-4,p1.y()+geom.status_rows[0],ld);
 
 
