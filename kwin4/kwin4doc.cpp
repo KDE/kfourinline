@@ -527,6 +527,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
   int y,xx,i;
   int flag;
   FARBE c;
+  int star=1;
 
   // Check dy
   flag=0;
@@ -546,7 +547,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       y=mFieldFilled.at(x)-1-i;
-      pView->drawStar(x,y,i);
+      pView->drawStar(x,y,star++);
       winc=QueryColour(x,y);
     }
     return 1;
@@ -580,7 +581,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<geom.field_mx)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -591,7 +592,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<geom.field_mx)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -633,7 +634,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         //y=field_filled[x]-1-i;
         y=mFieldFilled.at(x)-1-i;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -646,7 +647,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         //y=field_filled[x]-1-i;
         y=mFieldFilled.at(x)-1-i;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -689,7 +690,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1+i;
         //y=field_filled[x]-1+i;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -703,7 +704,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         //y=field_filled[x]-1+i;
         y=mFieldFilled.at(x)-1+i;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,i);
+        pView->drawStar(xx,y,star++);
         cnt++;
       }
       else break;

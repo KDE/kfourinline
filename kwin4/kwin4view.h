@@ -96,6 +96,9 @@ class Kwin4View : public QCanvasView
     **/
     void introMoveDone(QCanvasItem *item,int mode);
  	
+  protected:
+  void resizeEvent(QResizeEvent *e);
+
 
 	
 private:

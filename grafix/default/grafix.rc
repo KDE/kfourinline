@@ -59,7 +59,7 @@ z=100.0
 
 [intro1]
 color=255,255,0
-font=Helvetica,32,5,default,50,0
+font=Helvetica,24,5,default,50,0
 rtti=3
 text=Welcome
 x=210.0
@@ -68,7 +68,7 @@ z=150.0
 
 [intro2]
 color=255,255,0
-font=Helvetica,32,5,default,50,0
+font=Helvetica,24,5,default,50,0
 rtti=3
 text=to
 x=265.0
@@ -77,7 +77,7 @@ z=150.0
 
 [intro3]
 color=255,255,0
-font=Helvetica,32,5,default,50,0
+font=Helvetica,24,5,default,50,0
 rtti=3
 text=Win4
 x=240.0

@@ -118,6 +118,7 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   mCanvas=new QCanvas(parent);
   mCanvas->resize(parent->width(),parent->height()); 
   mCanvas->setDoubleBuffering(true);
+  mCanvas->setBackgroundColor(QColor(0,0,128));
   setCanvas(mCanvas);
 
   mCache=new KSpriteCache(mGrafix,this);
@@ -125,6 +126,8 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   KConfig *config=mCache->config();
 
   // Write a few i18n Strings as text sprites
+  // MH: TODO This is not so good as we have to write to the
+  // config file which we might not have access to
   config->setGroup("text1");
   config->writeEntry("text",i18n("Hold on..the other was not yet gone...")); 
   config->setGroup("text2");
@@ -224,10 +227,11 @@ void Kwin4View::initView(bool deleteall)
   }
 
   // Hide stars in any case
-  for (int i=0;i<4;i++)
+  for (int i=0;i<8;i++)
   {
     sprite=(KSprite *)(mCache->getItem("star",i));
     if (sprite) sprite->hide();
+    else kdDebug() << "#### Could not delete star" <<i << endl;
   }
   // Hide GameOver in any case
   sprite=(KSprite *)(mCache->getItem("gameover",1));
@@ -473,7 +477,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
 
   sprite=(KSprite *)(mCache->getItem("piece",no));
 
-  kdDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
+  //kdDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
 
   // Make sure the frames are ok
   int c;
@@ -520,7 +524,7 @@ void Kwin4View::setArrow(int x,int color)
   
   sprite=(KSprite *)(mCache->getItem("arrow",x));
 
-  kdDebug() << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
+  //kdDebug() << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
 
   // Make sure the frames are ok
   int c;
@@ -626,27 +630,9 @@ void Kwin4View::clearError()
   if (text) text->hide();
 }
 
-// ------------------ OLD --------------------------
-
-
-/** Draw the game intro */
-/*
-void Kwin4View::drawIntro(QPainter *p)
+void Kwin4View::resizeEvent(QResizeEvent *e)
 {
-  QString ld;
-  p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
-  // QFont font(p->font());
-  QFont font("Helvetica");
-  font.setPixelSize(36);
-  font.setBold(true);
-  font.setItalic(true);
-  p->setFont(font);
-  p->setPen(COL_YELLOW);
-  ld=i18n("Four wins for KDE","Four wins\n\nfor\n\nK D E");
-  QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
-  
-	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
+  if (mCanvas) mCanvas->resize(e->size().width(),e->size().height()); 
 }
-*/
 
 #include "kwin4view.moc"
