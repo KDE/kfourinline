@@ -245,7 +245,7 @@ type=SOURCE
 [kwin4/kwin4.desktop]
 dist=true
 install=true
-install_location=$$(kde_appsdir)/Games/kwin4.desktop
+install_location=$$(kde_appsdir)/Games/Board/kwin4.desktop
 type=DATA
 [kwin4/kwin4.h]
 dist=true
