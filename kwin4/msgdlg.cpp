@@ -41,7 +41,7 @@
 MsgDlg::MsgDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
     : QDialog( parent, name,TRUE )
 {
-  setCaption(i18n("Send message to remote player..."));
+  setCaption(i18n("Send Message to Remote Player..."));
   setMinimumSize(400,160);
   setMaximumSize(600,360);                                                        
   resize( 400, 160 );

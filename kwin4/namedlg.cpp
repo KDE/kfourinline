@@ -36,7 +36,7 @@ NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* 
   QWidget *page = plainPage();
     if ( !name ) setName( "NameDlg" );
     resize( 252, 186 ); 
-//    setCaption( i18n( "Configure names..."  ) );
+//    setCaption( i18n( "Configure Names..."  ) );
     vbox = new QVBoxLayout( page,spacingHint() ); 
     vbox->setSpacing( 6 );
     vbox->setMargin( 11 );
