@@ -187,9 +187,9 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
   
   // Prepare for the reading of the pixmaps
   QPixmap *pixmap=0;
-  QList<QPixmap> pixlist;
+  QPtrList<QPixmap> pixlist;
   pixlist.setAutoDelete(true);
-  QList<QPoint> hotlist;
+  QPtrList<QPoint> hotlist;
   hotlist.setAutoDelete(true);
 
   // work through the operations list and create pixmaps
