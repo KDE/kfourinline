@@ -35,7 +35,9 @@ class QVButtonGroup;
 
 extern int global_debug;
 
-typedef enum  {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
+// The user or color?
+typedef enum e_Farbe {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
+// The type of player
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
 typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;

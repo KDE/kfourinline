@@ -639,11 +639,8 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
  * Reset the stats
  */
 void Kwin4Doc::ResetStat(){
-  Kwin4Player *p=getPlayer(Gelb);
-  p->resetStats();
-
-  p=getPlayer(Rot);
-  p->resetStats();
+  getPlayer(Gelb)->resetStats();
+  getPlayer(Rot)->resetStats();
 }
 
 /**
@@ -651,13 +648,6 @@ void Kwin4Doc::ResetStat(){
  */
 void Kwin4Doc::SetScore(long i){
   mScore.setValue(i);
-}
-
-/**
- * Query computer score
- */
-long Kwin4Doc::QueryScore(){
-  return mScore.value();
 }
 
 /**

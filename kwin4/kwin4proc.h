@@ -1,16 +1,28 @@
+/***************************************************************************
+                          Kwin4  -  Four in a Row for KDE
+                             -------------------
+    begin                : March 2000 
+    copyright            : (C) 1995-2001 by Martin Heni
+    email                : martin@heni-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ ***************************************************************************/
+
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
 #include <kgameprocess.h>
 
-/**
-  *@author Martin Heni
-  */
-
-typedef enum e_farbe {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4} Farbe;   /* Spielerfarbe */
+// TODO match up with what is in kwin4.h
+typedef enum e_farbe {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4} Farbe;
 typedef char FARBE;
-typedef enum e_player {Men=0,Computer=1} PLAYER;
-
 
 #define SIZE_Y_ALL 36
 #define SIZE_X 6
@@ -18,19 +30,24 @@ typedef enum e_player {Men=0,Computer=1} PLAYER;
 
 class KComputer : public QObject
 {
-  Q_OBJECT
-  public:
-  KComputer();
 
-  public slots:
+Q_OBJECT
+
+public:
+  KComputer();
+  // The KGameProcess is the main program and event loop 
+  KGameProcess proc;
+
+public slots:
   void slotCommand(QDataStream &, int msgid,int receiver,int sender);
   void slotInit(QDataStream &, int id);
   void slotTurn(QDataStream &, bool turn);
 
-  protected:
+protected:
   void sendValue(long value);
   long random(long max);
   long think(QDataStream &in,QDataStream &out,bool hint);
+  
   // Old computer stuff
   Farbe SwitchPlayer(Farbe amZug=Niemand);
   Farbe GameOver(FARBE feld[][SIZE_X+1],char anzahl[]);
@@ -40,15 +57,11 @@ class KComputer : public QObject
   long Bewertung(Farbe farbe,FARBE feld[][SIZE_X+1]);
   void InitField();
 
-  public:
-  // The KGameProcess is the main program and event loop 
-  KGameProcess proc;
-
 private:
-    /* rows: 0-5  =6 : horiz(i:0-6) */
-    /*       6-12 =7 : vert(i:0-5)  */
-    /*      13-24 =12: diag-45(i:...) */
-    /*      25-36 =12: diag45(i:...) */
+  /* rows: 0-5  =6 : horiz(i:0-6) */
+  /*       6-12 =7 : vert(i:0-5)  */
+  /*      13-24 =12: diag-45(i:...) */
+  /*      25-36 =12: diag45(i:...) */
 
   char lenofrow[38];
   char startofrow[38];
