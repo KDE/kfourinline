@@ -141,12 +141,6 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   kdDebug() <<" VERSION " << VERSION << endl;
 
    // localise data file
-#ifdef SRCDIR
-    kdDebug() << "SRCDIR=" << SRCDIR << endl;
-    KGlobal::dirs()->addResourceDir("data", SRCDIR + QString::fromLatin1("../grafix/default"));
-#else
-    kdDebug() << "NO SRCDIR"  << endl;
-#endif
    QString file="kwin4/grafix/default/grafix.rc";
    mGrafix=kapp->dirs()->findResourceDir("data",file);
    if (mGrafix.isNull()) mGrafix="grafix/default/";
