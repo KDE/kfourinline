@@ -689,7 +689,6 @@ void Kwin4App::slotFileNew()
   // Run it
   doc->setGameStatus(Kwin4Doc::Run);
   // Clear board in doc and view (After status change to cancel intro)
-  doc->ResetGame(true);
 // NewGame(1);
 // checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
 }
@@ -698,7 +697,10 @@ void Kwin4App::slotFileNew()
 void Kwin4App::NewGame()
 {
   bool res1,res2;
-  kdDebug() << "kwin4app::newgame"<<endl;
+  kdDebug() << "Kwin4App::NewGame()"<<endl;
+  
+  doc->ResetGame(true);
+  kdDebug() << "Kwin4App::NewGame() after reset"<<endl;
 
 //  if (mode&1) doc->ResetGame();
 
@@ -706,6 +708,7 @@ void Kwin4App::NewGame()
 
   slotStatusNames();
   checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
+  kdDebug() << "Kwin4App::NewGame() finished"<<endl;
 }
 
 void Kwin4App::slotFileClose()

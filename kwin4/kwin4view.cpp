@@ -192,6 +192,7 @@ void Kwin4View::initView(bool deleteall)
   else
   {
     // TODO in start functions to distinguish from intro
+    kdDebug() << "Clearing board !!!!!!!!!!"<<endl;
     drawBoard(deleteall);
     mScoreWidget->show();
     mStatusWidget->show();

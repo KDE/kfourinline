@@ -257,7 +257,7 @@ void Kwin4Doc::SetColour(int x,int y,FARBE c){
 void Kwin4Doc::ResetGame(bool initview){
   int x,y;
 
-  kdDebug() << "ResetGame" << endl;
+  kdDebug() << "ResetGame ++++++++++" << endl;
 
   for (x=0;x<geom.field_mx;x++)
   {
@@ -274,9 +274,10 @@ void Kwin4Doc::ResetGame(bool initview){
   mLastColumn=-1;
   mLastColour=Niemand;
   SetScore(0);
-  //setGameStatus(Pause);
   mLastHint=-1;
+  kdDebug() << "initview in reset gamne="<<initview<<endl;
   if (initview) pView->initView(false);
+  kdDebug() << "Reset game done" << endl;
 }
 
 /** Start a new game */
@@ -360,11 +361,15 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
 {
-  kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
-  if (last->userId()==Gelb) SetCurrentPlayer(Rot);
-  else SetCurrentPlayer(Gelb);
-  kdDebug() <<" Current set to "<<QueryCurrentPlayer()<<endl;
-  getPlayer(QueryCurrentPlayer())->setTurn(true,true);
+  kdDebug() << k_funcinfo << "nextPlayer last="<<last->id() << " admin="<<isAdmin()<<endl;
+  // Should be enough if the admin sets the move
+  if (isAdmin())
+  {
+    if (last->userId()==Gelb) SetCurrentPlayer(Rot);
+    else SetCurrentPlayer(Gelb);
+    kdDebug() <<" Current set to "<<QueryCurrentPlayer()<<endl;
+    getPlayer(QueryCurrentPlayer())->setTurn(true,true);
+  }
   emit signalMoveDone(0,0);
 
 }
@@ -1309,15 +1314,19 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    {
      if (gameStatus()==Abort)
      {
-       kdDebug() << "signal game abort" << endl;
+       kdDebug() << "PropertyChanged::status signal game abort +++++++++++++++++++" << endl;
        emit signalGameOver(2,getPlayer(QueryCurrentPlayer()),0); // 2 indicates Abort
       }
      else if (gameStatus()==Run)
      {
-       kdDebug() << "PropertyChanged::signal game run" << endl;
+       kdDebug() << "PropertyChanged::status signal game run ++++++++++++++++++++++" << endl;
        //ResetGame();
        StartGame();
        emit signalGameRun();
+      }
+      else
+      {
+       kdDebug() << "PropertyChanged::other status signal ++++++++++++++++++++++" << endl;
       }
      
    }
