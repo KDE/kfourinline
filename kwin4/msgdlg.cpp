@@ -30,8 +30,6 @@
 
 #include <qgroupbox.h>
 #include <qpushbutton.h>
-#include <qwidget.h>
-#include <qlabel.h>
 #include <klocale.h>
 #include "msgdlg.h"
 

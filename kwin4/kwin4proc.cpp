@@ -21,7 +21,6 @@
 #include <math.h>
 #include <kgamemessage.h>
 #include <kplayer.h>
-#include <qfile.h>
 
 #include "kwin4proc.h"
 

@@ -19,7 +19,6 @@
 #include <qcanvas.h>
 #include <qdict.h>
 #include <qstring.h>
-#include <qwidget.h>
 #include <kconfig.h>
 #include <qtimer.h>
 

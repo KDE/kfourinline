@@ -1,13 +1,7 @@
 #include "statuswidget.h"
 
-#include <qgroupbox.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
 #include <qlayout.h>
-#include <qvariant.h>
 #include <qpainter.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
 #include <qsizepolicy.h>
 #include <kdebug.h>
 #include <klocale.h>

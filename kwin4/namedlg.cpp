@@ -3,10 +3,7 @@
 #include <qgroupbox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-#include <qpushbutton.h>
 #include <qlayout.h>
-#include <qvariant.h>
-#include <qtooltip.h>
 #include <qwhatsthis.h>
 
 #include <klocale.h>

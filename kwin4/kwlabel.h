@@ -19,7 +19,6 @@
 #define KWLABEL_H
 
 #include <qlabel.h>
-#include <qpainter.h>
 #include <qcolor.h>
 
 class KWLabel : public QLabel

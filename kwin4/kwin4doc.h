@@ -23,9 +23,7 @@
 #endif 
 
 // include files for QT
-#include <qobject.h>
 #include <qstring.h>
-#include <qptrlist.h>
 
 // KGame includes
 #include <kgame.h>

@@ -24,8 +24,6 @@
 
 // include files for Qt
 #include <qwidget.h>
-#include <qpixmap.h>
-#include <qpainter.h>
 #include <qcanvas.h>
 //#include <kprinter.h>
 //

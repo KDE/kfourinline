@@ -24,7 +24,6 @@
 #endif
 
 // include files for Qt
-#include <qstrlist.h>
 #include <qvbuttongroup.h>
 
 // include files for KDE 

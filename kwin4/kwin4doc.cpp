@@ -21,11 +21,9 @@
 // include files for Qt
 #include <qdir.h>
 #include <qfileinfo.h>
-#include <qwidget.h>
 
 // include files for KDE
 #include <klocale.h>
-#include <kmessagebox.h>
 #include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>

@@ -17,7 +17,6 @@
 #ifndef STATDLG_H
 #define STATDLG_H
 
-#include <qvariant.h>
 #include <qdialog.h>
 class QVBoxLayout; 
 class QHBoxLayout; 

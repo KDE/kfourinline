@@ -1,7 +1,6 @@
 #ifndef _STATUSWIDGET_H
 #define _STATUSWIDGET_H
 
-#include <qvariant.h>
 #include <qwidget.h>
 #include "kwlabel.h"
 class QVBoxLayout; 

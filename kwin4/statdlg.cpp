@@ -12,10 +12,6 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
-#include <qvariant.h>
-#include <qtooltip.h>
-#include <qwhatsthis.h>
-#include <qimage.h>
 #include <qpixmap.h>
 #include <klocale.h>
 #include <kmessagebox.h>

@@ -1,7 +1,6 @@
 #ifndef ABOUTDLG_H
 #define ABOUTDLG_H
 
-#include <qvariant.h>
 #include <kdialogbase.h>
 class QVBoxLayout; 
 class QHBoxLayout; 

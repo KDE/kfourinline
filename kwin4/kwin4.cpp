@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 // include files for QT
-#include <qdir.h>
 #include <qstring.h>
 #include <qlayout.h>
 #include <qhgroupbox.h>
@@ -29,10 +28,8 @@
 
 // include files for KDE
 #include <kstandarddirs.h>
-#include <kiconloader.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
-#include <kmenubar.h>
 #include <klocale.h>
 #include <khelpmenu.h>
 #include <kconfig.h>

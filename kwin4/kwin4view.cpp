@@ -16,11 +16,9 @@
  ***************************************************************************/
 
 // include files for Qt
-#include <qpainter.h>
 #include <stdio.h>
 
 #include <klocale.h>
-#include <kmessagebox.h>
 #include <math.h>
 
 // application specific includes
