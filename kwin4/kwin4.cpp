@@ -54,11 +54,9 @@
 #include "prefs.h"
 #include "settings.h"
 
-#include "namedlg.h"
 #include "statdlg.h"
 #include "geom.h"
 #include "msgdlg.h"
-#include "kwin4aboutdlg.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG                1003
@@ -602,7 +600,7 @@ void Kwin4App::slotStatusNames(){
   slotStatusMover(msg);
 }
 
-void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
+void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
   kdDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
   if (doc->playedBy(Gelb)==0)

@@ -118,7 +118,7 @@ void ScoreWidget::paintEvent( QPaintEvent * p)
     Paint( &paint, p->rect() );			
 }
 
-void ScoreWidget::Paint(QPainter *p,QRect cliprect)
+void ScoreWidget::Paint(QPainter *p,QRect /*cliprect*/)
 {
   QPalette pal;
   pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);

@@ -169,7 +169,7 @@ void StatusWidget::paintEvent( QPaintEvent * p)
     Paint( &paint, p->rect() );			
 }
 
-void StatusWidget::Paint(QPainter *p,QRect cliprect)
+void StatusWidget::Paint(QPainter *p,QRect )
 {
   QPalette pal;
   pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);
