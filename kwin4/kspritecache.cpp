@@ -26,9 +26,10 @@ KSpriteCache::KSpriteCache(QString grafixdir, QObject* parent,const char * name)
 
 KSpriteCache::~KSpriteCache()
 {
-  kdDebug(11002) << "KSpriteCache: ItemDict=" << mItemDict.count() << endl; 
-  kdDebug(11002) << "KSpriteCache: CloneDict=" << mCloneDict.count() << endl; 
+  kdDebug(11002) << "KSpriteCache: ItemDict=" << mItemDict.count() << endl;
+  kdDebug(11002) << "KSpriteCache: CloneDict=" << mCloneDict.count() << endl;
   reset();
+  delete mConfig;
 }
 
 void KSpriteCache::setRcFile(QString name)
@@ -62,7 +63,7 @@ void KSpriteCache::reset()
 
 void KSpriteCache::deleteAllItems()
 {
-  QDictIterator<QCanvasItem> it( mItemDict ); 
+  QDictIterator<QCanvasItem> it( mItemDict );
   //kdDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
   while ( it.current() )
   {
@@ -87,7 +88,7 @@ void KSpriteCache::deleteItem(QString s,int no)
 
 void KSpriteCache::deleteItem(QCanvasItem *item)
 {
-  QDictIterator<QCanvasItem> it( mItemDict ); 
+  QDictIterator<QCanvasItem> it( mItemDict );
   while ( it.current() )
   {
     if (item==it.current())
@@ -99,7 +100,7 @@ void KSpriteCache::deleteItem(QCanvasItem *item)
     }
     ++it;
   }
-} 
+}
 
 
 
@@ -136,7 +137,7 @@ QCanvasItem *KSpriteCache::getItem(QString name,int no)
   item=cloneItem(item);
   mItemDict.insert(dictname,item);
   // kdDebug(11002) << "Inserting sprite="<<item << " as " << dictname << " into ItemDict"<< endl;
-  
+
   return item;
 }
 QPixmap * KSpriteCache::loadPixmap(QString file,QString mask,QString dir)
@@ -184,7 +185,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
     operationList.append(QString::null);
   }
 
-  
+
   // Prepare for the reading of the pixmaps
   QPixmap *pixmap=0;
   QPtrList<QPixmap> pixlist;
@@ -207,7 +208,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
     QString pixfile=config->readEntry(name+"file");
     QString maskfile=config->readEntry(name+"mask");
 
-    // Load a given set of images or replace a %d by a sequence if there are 
+    // Load a given set of images or replace a %d by a sequence if there are
     // less image names than number given
     if (type==QString("load"))
     {
@@ -217,13 +218,13 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
         QString tmpfile,tmpmask;
         tmpfile.sprintf(pixfile.latin1(),i);
         tmpmask.sprintf(maskfile.latin1(),i);
-        
+
         pixmap=loadPixmap(tmpfile,tmpmask);
         if (!pixmap) kdError() << "Could not create pixmap="<<tmpfile << " with mask " << tmpmask << endl;
         else
         {
           applyFilter(pixmap,config,name);
-          
+
           pixlist.append(pixmap);
           QPoint *copyoffset=new QPoint(-offset);
           hotlist.append(copyoffset);
@@ -255,7 +256,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
         QPixmap *copypixmap=new QPixmap(pixmap->xForm(matrix));
 
         applyFilter(copypixmap,config,name);
-        
+
         pixlist.append(copypixmap);
         QPoint *copyoffset=new QPoint((-pixmap->width()+copypixmap->width())/2,(-pixmap->height()+copypixmap->height())/2);
         hotlist.append(copyoffset);
@@ -268,7 +269,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
       kdDebug(11002) << "WARNING: Unknown algorithm " << type << " for " << name << " not supported " << endl;
     }
   }// end create images
-  
+
  //kdDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
  if (pixlist.count()<1) return 0;
 
@@ -315,7 +316,7 @@ void KSpriteCache::changeHSV(QPixmap *pixmap,int dh,int ds,int dv)
   if (!pixmap || (dh==0 && ds==0 && dv==0)) return ;
   if (pixmap->isNull()) return ;
   if (pixmap->width()==0 && pixmap->height()==0) return ;
-  
+
   int h,s,v;
   QColor black=QColor(0,0,0);
   QImage img=pixmap->convertToImage();  // slow
@@ -342,7 +343,7 @@ void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
   if (!pixmap) return ;
   if (pixmap->isNull()) return ;
   if (pixmap->width()==0 && pixmap->height()==0) return ;
-  
+
   QImage img=pixmap->convertToImage();  // slow
 
   for (int y=0;y<img.height();y++)
@@ -388,7 +389,7 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
       //kdDebug(11002) << "new sprite =" << sprite << endl;
       double speed=config->readDoubleNumEntry("speed",0.0);
       sprite->setSpeed(speed);
-      //kdDebug(11002) << "speed=" << sprite->speed() << endl; 
+      //kdDebug(11002) << "speed=" << sprite->speed() << endl;
       createAnimations(config,sprite);
 
       item=(QCanvasItem *)sprite;
@@ -451,9 +452,9 @@ void KSpriteCache::configureCanvasItem(KConfig *config, QCanvasItem *sprite)
   sprite->setX(x);
   sprite->setY(y);
   sprite->setZ(z);
-  //kdDebug(11002) << "x=" << sprite->x() << endl; 
-  //kdDebug(11002) << "y=" << sprite->y() << endl; 
-  //kdDebug(11002) << "z=" << sprite->z() << endl; 
+  //kdDebug(11002) << "x=" << sprite->x() << endl;
+  //kdDebug(11002) << "y=" << sprite->y() << endl;
+  //kdDebug(11002) << "z=" << sprite->z() << endl;
 }
 
 void KSpriteCache::configureCanvasItem(QCanvasItem *original, QCanvasItem *copy)
@@ -485,12 +486,12 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     {
       //kdDebug(11002) << "Found animation key " << anim << endl;
       QValueList<int> animList=config->readIntListEntry(anim);
-      if (animList.count()!=4) 
+      if (animList.count()!=4)
       {
         kdWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;
       }
       else
-      { 
+      {
         sprite->createAnimation(i,animList[0],animList[1],animList[2],animList[3]);
       }
     }
@@ -512,7 +513,7 @@ KSprite::KSprite(QCanvasPixmapArray* array, QCanvas* canvas)
   mAnimationNumber=-1;
   mAnimSpeedCnt=0;
   mMoveObj=0;
-  
+
 }
 
 void KSprite::moveTo(double tx,double ty,double speed)
@@ -551,8 +552,8 @@ void KSprite::advance(int stage)
   //      -1: single shot b->a
   //       2: cycle  a->b->a
   //      -2: cycle  b->a->b
-  //       3: cycle  a->b 
-  //      -3: cycle  b->a 
+  //       3: cycle  a->b
+  //      -3: cycle  b->a
   mAnimSpeedCnt++;
   if (mAnimationNumber<0 || mAnimDelay[mAnimationNumber]==0)
   {
@@ -564,19 +565,19 @@ void KSprite::advance(int stage)
   {
     switch(mAnimDirection[mAnimationNumber])
     {
-      case 1: 
+      case 1:
         if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
         else emitsignal=2;
       break;
-      case -1: 
+      case -1:
         if (frame()-1 >= mAnimFrom[mAnimationNumber]) setFrame(frame()-1);
         else emitsignal=2;
       break;
-      case 2: 
-        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir) 
+      case 2:
+        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir)
         {
           if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
-          else 
+          else
           {
             mCurrentAnimDir=-mCurrentAnimDir;
             if (frame()>0) setFrame(frame()-1);
@@ -585,18 +586,18 @@ void KSprite::advance(int stage)
         else
         {
           if (frame()-1 >= mAnimFrom[mAnimationNumber]) setFrame(frame()-1);
-          else 
+          else
           {
             mCurrentAnimDir=-mCurrentAnimDir;
             if (frame()+1<frameCount()) setFrame(frame()+1);
           }
         }
       break;
-      case -2: 
-        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir) 
+      case -2:
+        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir)
         {
           if (frame()-1 >= mAnimFrom[mAnimationNumber]) setFrame(frame()-1);
-          else 
+          else
           {
             mCurrentAnimDir=-mCurrentAnimDir;
             if (frame()+1<frameCount()) setFrame(frame()+1);
@@ -605,18 +606,18 @@ void KSprite::advance(int stage)
         else
         {
           if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
-          else 
+          else
           {
             mCurrentAnimDir=-mCurrentAnimDir;
             if (frame()>0) setFrame(frame()-1);
           }
         }
       break;
-      case 3: 
+      case 3:
         if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
         else setFrame(mAnimFrom[mAnimationNumber]);
       break;
-      case -3: 
+      case -3:
         if (frame()-1 >= mAnimFrom[mAnimationNumber]) setFrame(frame()-1);
         else setFrame(mAnimTo[mAnimationNumber]);
       break;
@@ -625,7 +626,7 @@ void KSprite::advance(int stage)
         setFrame(0);
     }
     if (emitsignal) isAnimated=false;
-    
+
     mAnimSpeedCnt=0;
   }
 
@@ -758,11 +759,11 @@ void KSprite::setAnimation(int no)
   // Start frame
   if (mCurrentAnimDir>0) setFrame(mAnimFrom[no]);
   else if (mCurrentAnimDir<0) setFrame(mAnimTo[no]);
-  
+
   // animated
   if (mCurrentAnimDir!=0 && mAnimTo[no]>=mAnimFrom[no]) setAnimated(true);
   else setAnimated(false);
-  
+
   //kdDebug(11002) << this << " setAnimation("<<no<<") delay="<<mAnimDelay[no]<<" frames="<<mAnimFrom[no]<<"->"<<mAnimTo[no]<<" mode="<<mAnimDirection[no]<<" animated="<<animated()<<endl;
 }
 
