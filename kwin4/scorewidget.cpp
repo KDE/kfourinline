@@ -206,3 +206,4 @@ void ScoreWidget::setTurn(int i)
   TextLabel7->update();
   TextLabel9->update();
 }
+#include "scorewidget.moc"

@@ -273,3 +273,4 @@ void StatusWidget::setBrk(int i,int no)
   else Label[2][5]->setText( QString("%1").arg(i) );
   adjustSize();
 }
+#include "statuswidget.moc"

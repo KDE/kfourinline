@@ -784,3 +784,4 @@ void KSprite::createAnimation(int no,int startframe,int endframe,int mode,int de
   kdDebug(11002) << "from=" << startframe << " to="<<endframe<<" mode="<<mode<<" delay="<<delay<<endl;
 }
 
+#include "kspritecache.moc"
