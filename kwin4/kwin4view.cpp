@@ -51,7 +51,6 @@ Kwin4View::Kwin4View(QWidget *parent, const char *name) : QWidget(parent, name)
 
   setBackgroundPixmap( getDocument()->m_PixBackground );
 
-
   /*
   QFontInfo font=fontInfo();
   printf("Fontinfo: pnt=%d family=%s exact=%d\n",
@@ -139,12 +138,12 @@ void Kwin4View::drawIntro(QPainter *p)
   p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
   // QFont font(p->font());
   QFont font("Helvetica");
-  font.setPointSize(28);
+  font.setPixelSize(36);
   font.setBold(true);
   font.setItalic(true);
   p->setFont(font);
   p->setPen(COL_YELLOW);
-  ld=i18n("Four wins for KDE","Four wins\n\nfor\n\nK D E");
+  ld=i18n("Four wins for KDE","Four wins\n\n\nfor\n\nK D E");
   QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
   
 	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
@@ -217,7 +216,7 @@ void Kwin4View::drawStatus(QPainter *p){
   QPoint p1,p2;
   FARBE beginner,second;
   QFont font11(p->font());
-  font11.setPointSize(11);
+  font11.setPixelSize(12);
   p->setFont(font11);
 
 	beginner=getDocument()->QueryPlayerColour(0);
@@ -330,7 +329,7 @@ void Kwin4View::drawTable(QPainter *p){
   QPoint p1,p2;
   FARBE beginner,second;
   QFont font11(p->font());
-  font11.setPointSize(11);
+  font11.setPixelSize(12);
   p->setFont(font11);
 	beginner=getDocument()->QueryPlayerColour(0);
 	second=getDocument()->QueryPlayerColour(1);
