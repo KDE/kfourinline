@@ -31,7 +31,7 @@
 </authorgroup>
 
 <date>2001-06-23</date>
-<releaseinfo>0.09.01</releaseinfo>
+<releaseinfo>0.1.0</releaseinfo>
 
 <abstract>
 <para>
@@ -119,30 +119,23 @@ games (Brk) and the sum of games is shown.
 
 <para>
 It is possible to play the game over a network connection with another
-computer. To do so both player on both computers have to select one
-color played by a human player and the other by the remote player. Who
-chooses which side does not matter. It even does not matter if both
-choose to play the same player as this will automatically be
-interchanged by the game.
+computer. 
+One of the computers will act as game server. This one can determine
+who should play which color. You can configure the network options
+in the game menu, network dialog. There you also find a chat dialog
+box which allows you to speak with your friend.
 </para>
 
-<para>
-One of the computers will act as game server. Only this one can start a
-new network game. Also all its game data will be transfered to the
-client computer. You can force your computer to be server if you do not
-supply a hostname in the network dialog. This dialog pops up if you
-start a new network game. As a client you enter the hostname of the
-machine the server is running. The port rarely needs to be changed, but
-you can enter nearly any number there.
-</para>
 
 <para>
 When a network connection is build you are asked to enter a remote host
 and a port. The port can usually just be left untouched, but if you know
 what you are doing replace it by another number, which has to be the
 same in both player games of course. The hostname should be the name of
-the remote host to which you are connecting. Only one of the two players
-has to supply a hostname, the other one doesn't need to, but can.
+the remote host to which you are connecting. Only the client in
+the connection has to supply a hostname. It is often wise that the player
+behind a firewall chooses to be client as the firewall might not allow
+incoming connections.
 </para>
 
 </chapter>
@@ -160,7 +153,7 @@ has to supply a hostname, the other one doesn't need to, but can.
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>New Game</guimenuitem>
+<guimenuitem>New</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -174,10 +167,60 @@ the server.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>End Game</guimenuitem></menuchoice></term>
+<guimenuitem>Open ...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Loads a saved game.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Save As ...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Saves the current game.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Abort Game</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Aborts a running game.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Network configuration...</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Pops up a dialog for the network configuration. You can choose to be
+server or client. If you are server you can also choose what color the
+remote player should take over. If a network game is running you can 
+also disconnect it in this menu.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Chat widget...</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Pops up a chat widget which allows you to send messages to the
+other party.
 </para>
 </listitem>
 </varlistentry>
@@ -212,24 +255,6 @@ the computer.
 </para>
 </listitem>
 </varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycombo action="simul">&Ctrl;<keycap>M</keycap></keycombo>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Send Message</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-If connected to another game in a remote session this option allows you
-to send a message to the remote player.
-</para>
-</listitem>
-</varlistentry>
-
 
 <varlistentry>
 <term><menuchoice>
@@ -286,23 +311,6 @@ Replay a move which had been undone.
 
 </sect1>
 
-<sect1 id="view-menu">
-<title>View Menu</title>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<guimenu>View</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Toggle on and off the display of the status bar.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
-</sect1>
 
 <sect1 id="option-menu">
 <title>Options Menu</title>
@@ -378,32 +386,15 @@ Change the names of the players.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Options</guimenu>
-<guimenuitem>Network server</guimenuitem>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
-If this menu item is selected your computer tries to behave as game
-network server. This is of course only of any importance if you are
-doing a network game.  Only the computer acting as server will be able
-to start a new game or transfer a started game to the client's side.  If
-both computers want to be server or none of them it is randomly
-selected.  
+Toggle on and off the display of the status bar.
 </para>
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice>
-<guimenu>Options</guimenu>
-<guimenuitem>Animations</guimenuitem>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Switches the animations on or off.
-</para>
-</listitem>
-</varlistentry>
 </variablelist>
 </sect1>
 
@@ -423,10 +414,10 @@ Switches the animations on or off.
 &kwin4;
 </para>
 <para>
-Program copyright 1995-2001 Martin Heni <email>martin@heni-online.de</email>
+Program copyright 1995-2002 Martin Heni <email>martin@heni-online.de</email>
 </para>
 <para>
-Documentation copyright 2001 Martin Heni <email>martin@heni-online.de</email>
+Documentation copyright 2002 Martin Heni <email>martin@heni-online.de</email>
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
