@@ -358,7 +358,7 @@ class KSpriteCache : public QObject
   * This file defines all data of the sprite so that you just have to show it.
   * Each copy of the sprite gets its own number (1,2,...)
   * Note: The sprite is hidden upon creation and you need to show it
-  * explicitely.
+  * explicitly.
   * TODO: What definitions are possible in the rc file
   * 
   * @param name - the name of the sprite resp. the secion in the rc file
@@ -432,7 +432,7 @@ class KSpriteCache : public QObject
   *   pixmaps=(QStringList) : List of operations to create frames (TODO *   rename)
   *                           if ommited one operation without name is used
   * </pre>
-  * All following calls have to be preceeded by every given string of the
+  * All following calls have to be preceded by every given string of the
   * pixmaps section. If this section is not supplied they can be used without
   * prefix but only one frame sequence is created.
   * <pre>
@@ -447,7 +447,7 @@ class KSpriteCache : public QObject
   *   final=(double)    : final scale in percent (default 0.0, i.e. complete scaling)
   *   colorfilter=1,h,s,v: make a HSV transform of all sprite images
   *   colorfilter=2     :  make it gray (lighter=100 is default)
-  *   colorfilter=2,g   : make it gray and lighter (positiv) or darker (negativ)
+  *   colorfilter=2,g   : make it gray and lighter (positiv) or darker (negative)
   * </pre>
   **/
   virtual QCanvasPixmapArray *createPixmapArray(KConfig *config,QString name);

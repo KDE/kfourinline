@@ -1417,7 +1417,7 @@ void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *new
     // Deactivate the lower one 
     inactivate.append(red->id());
     if (global_debug>1) kdDebug() << "ADMIN keeps yellow and kicks red= " << red->id()<<" userId/col="<<red->userId()<<endl;
-    // loop all client players and deactive the one which have the color
+    // loop all client players and deactivate the one which have the color
     // yellow
     for ( player=newList->first(); player != 0; player=newList->next() ) 
     {
@@ -1433,7 +1433,7 @@ void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *new
     // Deactivate the lower one 
     inactivate.append(yellow->id());
     if (global_debug>1) kdDebug() << "ADMIN keeps red and kicks yellow= " << yellow->id()<<" userId/col="<<yellow->userId()<<endl;
-    // loop all client players and deactive the one which have the color
+    // loop all client players and deactivate the one which have the color
     // red
     for ( player=newList->first(); player != 0; player=newList->next() ) 
     {
