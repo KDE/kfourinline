@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
 <!ENTITY kappname "&kwin4;">
+<!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
 <!ENTITY % addindex "IGNORE">
 ]>
@@ -158,8 +159,8 @@ has to supply a hostname, the other one doesn't need to, but can.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>N</accel>ew Game</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>New Game</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -172,8 +173,8 @@ the server.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>E</accel>nd Game</guimenuitem></menuchoice></term>
+<guimenu>Game</guimenu>
+<guimenuitem>End Game</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Aborts a running game.
@@ -183,8 +184,8 @@ Aborts a running game.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>S</accel>how Statistics...</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Show Statistics...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -200,8 +201,8 @@ played and won games per player.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>H</accel>int</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Hint</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -217,8 +218,8 @@ the computer.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>M</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem>Send <accel>M</accel>essage</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Send Message</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -235,8 +236,8 @@ to send a message to the remote player.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>Q</accel>uit</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -256,8 +257,8 @@ Quits the program.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
 </shortcut>
-<guimenu><accel>E</accel>dit</guimenu>
-<guimenuitem>Und<accel></accel>o</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Undo</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -272,8 +273,8 @@ moves are taken back so that it is the player's turn again.
 <shortcut>
 <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
 </shortcut>
-<guimenu><accel>E</accel>dit</guimenu>
-<guimenuitem>Re<accel>d</accel>o</guimenuitem>
+<guimenu>Edit</guimenu>
+<guimenuitem>Redo</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -291,8 +292,8 @@ Replay a move which had been undone.
 <variablelist>
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>V</accel>iew</guimenu>
-<guimenuitem><accel>S</accel>how Statusbar</guimenuitem>
+<guimenu>View</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -310,7 +311,7 @@ Toggle on and off the display of the status bar.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
+<guimenu>Options</guimenu>
 <guisubmenu>Startplayer</guisubmenu>
 </menuchoice></term>
 <listitem>
@@ -322,7 +323,7 @@ Determines which color player  has the first move in the next game.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
+<guimenu>Options</guimenu>
 <guisubmenu>Yellow played by</guisubmenu>
 </menuchoice></term>
 <listitem>
@@ -338,7 +339,7 @@ connection to another computer will be build.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
+<guimenu>Options</guimenu>
 <guisubmenu>Red played by</guisubmenu>
 </menuchoice>
 </term>
@@ -352,8 +353,8 @@ Same as <guimenuitem>Player 1 played by</guimenuitem> but for player 2
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
-<guisubmenu><accel>L</accel>evel</guisubmenu>
+<guimenu>Options</guimenu>
+<guisubmenu>Level</guisubmenu>
 </menuchoice></term>
 <listitem>
 <para>
@@ -364,8 +365,8 @@ Selects the level of the computer player.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
-<guimenuitem>Change <accel>N</accel>ames...</guimenuitem></menuchoice>
+<guimenu>Options</guimenu>
+<guimenuitem>Change Names...</guimenuitem></menuchoice>
 </term>
 <listitem>
 <para>
@@ -376,7 +377,7 @@ Change the names of the players.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>O</accel>ptions</guimenu>
+<guimenu>Options</guimenu>
 <guimenuitem>Network server</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -393,8 +394,8 @@ selected.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>Options</accel></guimenu>
-<guimenuitem><accel>A</accel>nimations</guimenuitem>
+<guimenu>Options</guimenu>
+<guimenuitem>Animations</guimenuitem>
 </menuchoice>
 </term>
 <listitem>
@@ -409,60 +410,8 @@ Switches the animations on or off.
 <sect1 id="help">
 <title>The <guimenuitem>Help</guimenuitem> Menu</title>
 
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo action="simul"><keycap>F1</keycap></keycombo></shortcut>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem>Contents</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-This invokes the &kde; help system starting at the the top of this help
-file.
-</para>
-</listitem>
-</varlistentry>
+&help.menu.documentation;
 
-<varlistentry>
-<term><menuchoice>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem>Report Bug.</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-If you find an error in the program, or you have an idea on how to
-improve the game, clicking this option will let you send an official bug
-report to the &kde; team.
-</para>
-
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem><accel>A</accel>bout KWin4</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-This will display version and author information.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem>About <accel>K</accel>DE</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-This displays the &kde; version and other basic information.
-</para>
-</listitem>
-</varlistentry>
-</variablelist>
 </sect1>
 
 </chapter>
@@ -493,11 +442,8 @@ Documentation copyright 2001 Martin Heni <email>martin@heni-online.de</email>
 <sect1 id="getting-kwin4">
 <title>How to obtain &kwin4;</title>
 
-<para>
-&kwin4; can be found in the package kdegames on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the
-main &FTP; site of the &kde; project.
-</para>
+&install.intro.documentation;
+
 </sect1>
 
 <sect1 id="requirements">
@@ -515,23 +461,7 @@ url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 <sect1 id="compilation">
 <title>Compilation and Installation</title>
 
-<para>
-In order to compile and install &kwin4; on your system, extract the
-package and type the following commands in the base directory of the
-&kwin4; distribution:
-</para>
-
-<screen width="40">
-<prompt>%</prompt> <userinput>cd kdegames</userinput>
-<prompt>%</prompt> <userinput>./configure</userinput>
-<prompt>%</prompt> <userinput>make</userinput>
-<prompt>%</prompt> <userinput>make install</userinput>
-</screen>
-
-<para>
-Since &kwin4; uses <command>autoconf</command> and
-<command>automake</command> you should have no trouble compiling it.
-</para>
+&install.compile.documentation;
 
 </sect1>
 </appendix>
