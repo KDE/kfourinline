@@ -88,7 +88,7 @@ NetworkDlg::NetworkDlg( QWidget *parent, const char *name,const char *sufi )
   PushButton = new QPushButton( this, "PushButton_1" );
   PushButton->setGeometry( 130, 210, 65, 30 );
   connect( PushButton, SIGNAL(clicked()), SLOT(accept()) );
-  PushButton->setText( i18n("Ok" ));
+  PushButton->setText( i18n("OK" ));
   PushButton->setAutoRepeat( FALSE );
   PushButton->setAutoResize( FALSE );
   PushButton->setDefault( TRUE );

@@ -189,7 +189,7 @@ void StatDlg::Init()
   PushButton = new QPushButton( this, "PushButton_2" );
   PushButton->setGeometry( X0c, Y5, 65, 30 );
   connect( PushButton, SIGNAL(clicked()), SLOT(accept()) );
-  PushButton->setText( i18n("Ok" ));
+  PushButton->setText( i18n("OK" ));
   PushButton->setAutoRepeat( FALSE );
   PushButton->setAutoResize( FALSE );
   PushButton->setDefault( TRUE );
