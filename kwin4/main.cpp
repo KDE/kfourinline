@@ -21,6 +21,7 @@
 #include <kstddirs.h>
 #include <kinstance.h>
 #include <kaboutdata.h>
+#include <stdlib.h>
 
 #include "kwin4.h"
 
