@@ -175,7 +175,7 @@ void Kwin4App::checkMenus(int menu)
   {
     changeAction("hint", !(!doc->IsRunning() && localgame));
     changeAction("new_game", !doc->IsRunning());
-    changeAction("send_message", doc->isNetwork());
+    changeAction("save", doc->IsRunning());
     changeAction("end_game", doc->IsRunning());
   }
 
@@ -562,32 +562,20 @@ void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 
 void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 {
-  QString msg;
   kdDebug(12010) << "Kwin4App::GAME OVER  STATUS="<< status << endl;
   if (status==-1) // remis
   {
     EndGame(TRemis);
-    checkMenus(CheckEditMenu);
     slotStatusMsg(i18n("The game is drawn. Please restart next round."));
-    //KMessageBox::information(this,i18n("The game ended inadvertently!\n"),appTitle());
   }
   else if (status==1)
   {
-    kdDebug(12010) <<"in kwin4 userid after win="<<p->userId()<<endl;
     if (p->userId()==Gelb)
-    {
       EndGame(TWin);
-      checkMenus(CheckEditMenu);
-      msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Gelb));
-      slotStatusMsg(msg);
-    }
     else
-    {
       EndGame(TLost);
-      checkMenus(CheckEditMenu);
-      msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(Rot));
-      slotStatusMsg(msg);
-    }
+    QString msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(((FARBE)p->userId())));
+    slotStatusMsg(msg);
   }
   else if (status==2) // Abort
   {
@@ -599,6 +587,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   {
     kdError() << "Gameover with status " << status << ". This is unexpected and a serious problem" << endl;
   }
+  checkMenus(CheckEditMenu);
 }
 
 void Kwin4App::slotInitNetwork()
