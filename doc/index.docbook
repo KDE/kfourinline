@@ -1,6 +1,6 @@
 <!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
   <!ENTITY kappname "&kwin4;">
-  <!ENTITY English "INCLUDE"> 
+  <!ENTITY % English "INCLUDE"> 
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
  %ents;
