@@ -376,7 +376,7 @@ void Kwin4App::initGUI()
   (void)new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
                        actionCollection(), "file_network");
 
-  (void)new KAction(i18n("Chat Widget"),0, this, SLOT(slotChat()),
+  (void)new KAction(i18n("Chat Widget..."),0, this, SLOT(slotChat()),
                        actionCollection(), "file_chat");
 
   if (global_debug>0)                     
@@ -385,7 +385,7 @@ void Kwin4App::initGUI()
                         actionCollection(), "file_debug");
   }
 
-  (void)new KAction(i18n("&Show Statistics"),"flag", 0, this, SLOT(slotFileStatistics()),
+  (void)new KAction(i18n("&Show Statistics..."),"flag", 0, this, SLOT(slotFileStatistics()),
                       actionCollection(), "statistics");
   ACTION("statistics")->setStatusText(i18n("Show all time statistics."));
   ACTION("statistics")->setWhatsThis(i18n("Shows the all time statistics which is kept in all sessions."));
