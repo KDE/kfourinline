@@ -38,7 +38,7 @@ void KSpriteCache::setRcFile(QString name)
 }
 bool KSpriteCache::setGrafixDir(QString name)
 {
-  if (mConfig) delete mConfig;
+  delete mConfig;
 
   QDir dir(name);
   QString d;
@@ -740,7 +740,7 @@ void KSprite::deleteNotify()
 
 KSprite::~KSprite()
 {
-  if (mNotify) delete mNotify;
+  delete mNotify;
   mNotify=0;
 }
 
