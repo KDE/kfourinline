@@ -372,10 +372,15 @@ void Kwin4App::initGUI()
 
   (void)new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
                        actionCollection(), "file_network");
+
   (void)new KAction(i18n("Chat Widget"),0, this, SLOT(slotChat()),
                        actionCollection(), "file_chat");
-  (void)new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
-                       actionCollection(), "file_debug");
+
+  if (global_debug>0)                     
+  {
+    (void)new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
+                        actionCollection(), "file_debug");
+  }
 
 
 
@@ -659,31 +664,26 @@ bool Kwin4App::queryExit()
 void Kwin4App::slotOpenFile()
 {
   QString dir,filter,file;
-  // Avoid file dialog
 
-  // TODO openfiledlg gives link error
-  file="/tmp/kwin.save";
-  // if (global_debug>10) file="/tmp/kwin.save";
-  // else file=KFileDialog::getOpenFileName(dir,filter,this);
-  kdDebug() << "slotOpenFile File="<<file<<endl;
+  dir=QString(":<kwin4>");
+  filter=QString("*");
+  if (global_debug>10) file="/tmp/kwin.save";
+  else file=KFileDialog::getOpenFileName(dir,filter,this);
   doc->load(file,true);
-  kdDebug() << "slot open file done" << endl;
   checkMenus();
 }
+
 void Kwin4App::slotSaveFile()
 {
-  kdDebug() << "slotSaveFile" << endl;
-  kdDebug() << "4000="<<((KGamePropertyInt *)(doc->findProperty(4000)))->value() << endl;
   QString dir,filter,file;
-  // TODO savefiledialog gives link error
-  // Avoid file dialog
-  file="/tmp/kwin.save";
-  //if (global_debug>10) file="/tmp/kwin.save";
-  //else file=KFileDialog::getSaveFileName(dir,filter,this);
-  kdDebug() << "File="<<file<<endl;
+  dir=QString(":<kwin4>");
+  filter=QString("*");
+  if (global_debug>10) file="/tmp/kwin.save";
+  else file=KFileDialog::getSaveFileName(dir,filter,this);
+  kdDebug() << "Saving to " << file << endl;
   doc->save(file);
-
 }
+
 void Kwin4App::slotFileNew()
 {
   // Run it
