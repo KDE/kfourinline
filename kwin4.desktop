@@ -54,6 +54,4 @@ SwallowTitle=
 Terminal=0
 TerminalOptions=
 Type=Application
-X-KDE-SubstituteUID=0
-X-KDE-Username=
 DocPath=kwin4/index.html
