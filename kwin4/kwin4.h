@@ -45,6 +45,7 @@ class KChatDialog;
 class Kwin4Doc;
 class Kwin4View;
 class Geom;
+class Kwin4Player;
 
 extern int global_debug;
 
@@ -65,7 +66,9 @@ class ChatDlg : public KDialogBase
 	Q_OBJECT
 public:
 	ChatDlg(KGame *game,QWidget* parent=0);
-  void setPlayer(KPlayer *p);
+
+public slots:  
+  void setPlayer(Kwin4Player *p);
   
 private:  
   KGameChat *mChat;

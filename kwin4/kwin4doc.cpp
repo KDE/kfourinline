@@ -54,11 +54,11 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
           this,SLOT(slotPropertyChanged(KGamePropertyBase *,KGame *)));
 
   dataHandler()->Debug();
-  kdDebug() << "Property 7 policy=" << dataHandler()->find(7)->policy() << endl; 
-  kdDebug() << " KWIN4DOC: setPOLICY " << endl;
+  //kdDebug() << "Property 7 policy=" << dataHandler()->find(7)->policy() << endl; 
+  //kdDebug() << " KWIN4DOC: setPOLICY " << endl;
   setPolicy(KGame::PolicyDirty,true);
 
-  kdDebug() << "Property 7 policy=" << dataHandler()->find(7)->policy() << endl; 
+  //kdDebug() << "Property 7 policy=" << dataHandler()->find(7)->policy() << endl; 
 
   // Game design
   setMaxPlayers(2);
@@ -98,7 +98,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   mStartPlayer=Gelb;
   mStartPlayer.registerData(dataHandler());
   SetCurrentPlayer((FARBE)mStartPlayer.value()); 
-  kdDebug() << "amZug policy=" << mAmzug.policy() << endl;
+  //kdDebug() << "amZug policy=" << mAmzug.policy() << endl;
 
   mPlayedBy[Gelb]=KGameIO::MouseIO;
   mPlayedBy[Rot]=KGameIO::MouseIO;
@@ -110,7 +110,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   ResetGame();
   
   setGameStatus(Intro);
-  kdDebug() << "GameStatus set to Intro->"<<gameStatus() << endl;
+  //kdDebug() << "GameStatus set to Intro->"<<gameStatus() << endl;
 
 
   // Create a new player
@@ -139,22 +139,22 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
 void Kwin4Doc::initPlayers()
 {
 
-  kdDebug() << " Connecting properties to widgets" << endl;
+  //kdDebug() << " Connecting properties to widgets" << endl;
 
 
   // Player initialization
   // First create the two players 
-  kdDebug() << "initPlayers" <<endl;
+  //kdDebug() << "initPlayers" <<endl;
   Kwin4Player *yellow=0;
   yellow=(Kwin4Player *)createPlayer(1, mPlayedBy[Gelb], false);
   //slotCreatePlayer(yellow, 1, mPlayedBy[Gelb], false, this);
-  kdDebug() << "Gelb vor sets" << yellow<< endl;
+  //kdDebug() << "Gelb vor sets" << yellow<< endl;
   yellow->setUserId(Gelb);  // Color id's    
   yellow->setName(i18n("Player 1"));
 
   addPlayer(yellow);
   setPlayedBy(Gelb,mPlayedBy[Gelb]);
-  kdDebug() << "Gelb=" << yellow<< endl;
+  //kdDebug() << "Gelb=" << yellow<< endl;
 
   Kwin4Player *red=0;
   // slotCreatePlayer(red, 1, mPlayedBy[Rot], false, this);
@@ -164,11 +164,11 @@ void Kwin4Doc::initPlayers()
 
   addPlayer(red);
   setPlayedBy(Rot,mPlayedBy[Rot]);
-  kdDebug() << "Rot" << red << endl;
+  //kdDebug() << "Rot" << red << endl;
   
   // last in init
   ResetStat();
-  kdDebug() << "init player done"<<endl;
+  //kdDebug() << "init player done"<<endl;
 
 
 
@@ -348,27 +348,23 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
   {
     p->Debug();
   }
-  kdDebug() << "111"<<endl;
 
   if (playerCount()>1)
     playerInputFinished(getPlayer(QueryCurrentPlayer()));
-  kdDebug() << "222"<<endl;
 
   pView->clearError();
-  kdDebug() << "333"<<endl;
 
   KSprite *sprite=(KSprite *)item;
   sprite->deleteNotify();
-  kdDebug() << "444"<<endl;
 
-  if (playerCount()>1)
-    emit signalNextPlayer();
-  kdDebug() << "signalNextPlayer" << endl;
+//  if (playerCount()>1)
+//    emit signalNextPlayer();
+//  kdDebug() << "kwin4doc::moveDone::signalNextPlayer emitted" << endl;
 }
 
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
 {
-  kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
+  //kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
 
 }
@@ -456,14 +452,14 @@ bool Kwin4Doc::UndoMove(){
     SetColour(mLastHint,hy,Niemand);
     mLastHint=-1;
   }
-  kdDebug() << "Undo no="<<mHistoryCnt.value() << endl;
+  //kdDebug() << "Undo no="<<mHistoryCnt.value() << endl;
   mHistoryCnt=mHistoryCnt.value()-1;
   x=mHistory.at(QueryHistoryCnt());
   mFieldFilled.setAt(x,mFieldFilled.at(x)-1);
   //field_filled[x]--;
   //y=field_filled[x];
   y=mFieldFilled.at(x);
-  kdDebug() << "Undo x="<<x << " y=" <<y << endl;
+  //kdDebug() << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
@@ -488,10 +484,10 @@ bool Kwin4Doc::UndoMove(){
 /** Redo a move */
 bool Kwin4Doc::RedoMove(){
   int x;
-  kdDebug() << "mMaxMove=" << mMaxMove.value() << " historycnt=" << QueryHistoryCnt() << endl;
+  //kdDebug() << "mMaxMove=" << mMaxMove.value() << " historycnt=" << QueryHistoryCnt() << endl;
   if (QueryHistoryCnt()>=mMaxMove) return false;
   x=mHistory.at(QueryHistoryCnt());
-  kdDebug() << "Redo x=" << x << endl;
+  //kdDebug() << "Redo x=" << x << endl;
   MakeMove(x,1);
   SetScore(0);
   pView->setHint(0,0,false);
@@ -736,7 +732,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
 }
 /** Reset the stats */
 void Kwin4Doc::ResetStat(){
-  kdDebug() << "reset stats"<<endl;
+  //kdDebug() << "reset stats"<<endl;
   // Reset data
   Kwin4Player *p=getPlayer(Gelb);
   p->resetStats();
@@ -798,7 +794,7 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   // Check against old or strange config files
   if (col!=Rot && col!=Gelb) col=Gelb;
   mStartPlayer.setValue(col);
-  kdDebug() << "StartPlayer=" << mStartPlayer.value() << endl;
+  //kdDebug() << "StartPlayer=" << mStartPlayer.value() << endl;
 
   Kwin4Player *player;
   player=getPlayer(Gelb);
@@ -809,7 +805,7 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   config->setGroup("RedPlayer");
   player->readConfig(config);
 
-  kdDebug() << "ReadCOnfig done"<<endl;
+  //kdDebug() << "ReadConfig done"<<endl;
 }
 
 /** write config file */
@@ -1090,7 +1086,7 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
               this,SLOT(slotKeyInput(KGameIO *,QDataStream &,QKeyEvent *,bool &)));
     }
     */
-  kdDebug() << "Done b" << endl;
+  //kdDebug() << "Done b" << endl;
 }
 
 // This slot is called when a computer move should be generated
@@ -1165,7 +1161,7 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO *me)
 
 void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
 {
-  kdDebug() << "void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
+  kdDebug() << "@@@@@@@@@@@@@@@@@@void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
   gameId() << " we admin=" << isAdmin() << "master)" << isMaster() << endl;
 
   if (!isAdmin()) return ;
@@ -1180,8 +1176,19 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
 
   Kwin4Player *p1=(Kwin4Player *)playerList()->at(0);
   Kwin4Player *p2=(Kwin4Player *)playerList()->at(1);
+  if (!p1->isVirtual())
+  {
+    emit signalChatChanged(p1);  
+    kdDebug() << "CHAT to player 0 " << endl;
+  }
+  else
+  {
+    emit signalChatChanged(p2);  
+    kdDebug() << "CHAT to player 1 " << endl;
+  }
 
   // Check for colours, i.e. user ID 
+  /*
   if (p1->userId()==p2->userId())
   {
     kdDebug() << " User id is the same. Switching remote player's colour" << endl;
@@ -1193,8 +1200,10 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
     kdDebug() << "Colours: "<<p1->id()<<" =" << p1->userId() << endl;
     kdDebug() << "Colours: "<<p2->id()<<" =" << p2->userId() << endl;
   }
+  */
 
   // Check for myTurn
+  /*
   if (p1->myTurn()==p2->myTurn())
   {
     if (p1->isVirtual()) p1->setTurn(!p1->myTurn(),true);
@@ -1202,6 +1211,7 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
     kdDebug() << "Turn: "<<p1->id()<<" =" << p1->myTurn() << endl;
     kdDebug() << "Turn: "<<p2->id()<<" =" << p2->myTurn() << endl;
   }
+  */
 
 }
 
@@ -1312,7 +1322,8 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 // Redraw game after load/network
 bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
-  setGameStatus(End);
+  if (!network) setGameStatus(End);
+  else kdDebug() << "NETWROK GAME NOT ENDED " << endl;
   pView->initView(false);
   bool res=KGame::loadgame(stream,network,reset);
 
@@ -1327,6 +1338,8 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
     RedoMove();
     cnt--;
   }
+  Debug();
+  kdDebug()  << "loadgame done" << endl;
   return res;
 }
 

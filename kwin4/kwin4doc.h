@@ -221,6 +221,7 @@ class Kwin4Doc : public KGame
     void slotGameOver(int status, KPlayer * p, KGame * me);
 
     signals:
+    void signalChatChanged(Kwin4Player *);
     void signalMoveDone(int,int);
     void signalNextPlayer();
     void GameOver(int,KPlayer *,KGame *);

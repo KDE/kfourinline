@@ -148,9 +148,6 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
 
   // setBackgroundPixmap( getDocument()->m_PixBackground );
   //setBackground( getDocument()->m_PixBackground );
-  
-  kdDebug() << "****************** UPDATE="<<isUpdatesEnabled() << endl;
-
 }
 
 
@@ -554,8 +551,10 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
 {
   // Only react to key pressed not released
   if (mouse->type() != QEvent::MouseButtonPress ) return ;
-  if (!getDocument()->isRunning()) return;
-  kdDebug() << "Kwin4View::slotMouseInput" << endl;
+  if (!getDocument()->isRunning())
+  {
+    return;
+  }
 
   // Our player
   KPlayer *player=input->player();
@@ -623,7 +622,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   pl=player->userId();
   stream << pl << x;
   *eatevent=true;
-  //kdDebug() << "Mouse input done..eatevent=true" << endl;
+  // kdDebug() << "Mouse input done..eatevent=true" << endl;
 }
 
 void Kwin4View::clearError()

@@ -89,13 +89,10 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  h->addSpacing(10);
  #endif
 
- kdDebug() << "page=" << plainPage()<< endl;
  QGridLayout* mGridLayout=new QGridLayout(plainPage());
- kdDebug() << "grid=" << mGridLayout<< endl;
 
  QHBoxLayout* h = new QHBoxLayout(plainPage());
  QHGroupBox* b = new QHGroupBox(i18n("Chat"), plainPage());
- kdDebug() << "b=" << b<< endl;
  mChat = new KGameChat(game, 10000, b);
  h->addWidget(b, 1);
  h->addSpacing(10);
@@ -103,7 +100,6 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
 
 
  QPushButton *mButton=new QPushButton(i18n("Configure..."),plainPage());
- kdDebug() << "button=" << mButton<< endl;
  mGridLayout->addWidget(mButton,1,1);
 
  adjustSize();
@@ -112,8 +108,9 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  mChatDlg=new KChatDialog(mChat,plainPage(),true);
  connect(mButton,SIGNAL(clicked()),mChatDlg,SLOT(show()));
 }
-void ChatDlg::setPlayer(KPlayer *p)
+void ChatDlg::setPlayer(Kwin4Player *p)
 {
+  //kdDebug() << "CHATDLG: !!!!!!!!!! player " << p->userId() << endl;
   if (!mChat)
   {
     kdError() << "ChatDlg::setPlayer::Chat not defined .. cannot set player" << endl;
@@ -176,9 +173,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   resize( 640, 480 );
 
   // better be last in init
-  kdDebug() << "Vor cgheck menues" << endl;
   checkMenus();
-  kdDebug() << "Applicatiuon constructor done" << endl;
 }
 
 Kwin4App::~Kwin4App()
@@ -708,19 +703,9 @@ void Kwin4App::slotFileQuit()
 {
   kdDebug() << "slotFileQuit" << endl;
   saveOptions();
-  // close the first window, the list makes the next one the first again.
-  // This ensures that queryClose() is called on each window to ask for closing
-  KMainWindow* w;
-  if(memberList)
-  {
-    for(w=memberList->first(); w!=0; w=memberList->first())
-    {
-      // only close the window if the closeEvent is accepted. If the user presses Cancel on the saveModified() dialog,
-      // the window and the application stay open.
-      if(w && !w->close())
-	break;
-    }
-  }
+  view->close();
+  close();
+
   kdDebug() << "slotFileQuit DONE" << endl;
 }
 
@@ -1335,7 +1320,6 @@ void Kwin4App::slotServerTypeChanged(int t)
 }
 void Kwin4App::slotRemoteChanged(int button)
 {
-  kdDebug() << "Remote changed to "<<button<<endl;
   if (button==0)
   {
     doc->getPlayer(Gelb)->setNetworkPriority(0);
@@ -1348,19 +1332,24 @@ void Kwin4App::slotRemoteChanged(int button)
   }
 }
 
-// File Menu slot
-// A debug function to force the computer to make a turn. This is
-// necessary as the whole computer turn thingy is not working yet
 void Kwin4App::slotChat()
 {
   kdDebug() << "Kwin4App::Chat" << endl;
 
   if (!mMyChatDlg)
   {
-    kdDebug() << "new KMyChatDialog" << endl;
     mMyChatDlg=new ChatDlg(doc,this);
-    kdDebug() << "new KMyChatDialog DONE" << endl;
-    mMyChatDlg->setPlayer(doc->getPlayer(Gelb));
+    Kwin4Player *p=doc->getPlayer(Gelb);
+    if (!p->isVirtual())
+    {
+      mMyChatDlg->setPlayer(doc->getPlayer(Gelb));
+    }
+    else
+    {
+      mMyChatDlg->setPlayer(doc->getPlayer(Rot));
+    }
+    connect(doc,SIGNAL(signalChatChanged(Kwin4Player *)),
+            mMyChatDlg,SLOT(setPlayer(Kwin4Player *)));
   }
   if (mMyChatDlg->isHidden()) mMyChatDlg->show();
   else mMyChatDlg->hide();
