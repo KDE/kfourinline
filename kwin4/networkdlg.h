@@ -1,58 +1,55 @@
-/***************************************************************************
-                          Kwin4  -  Four in a Row for KDE
-                             -------------------
-    begin                : March 2000 
-    copyright            : (C) 1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
+/****************************************************************************
+** Form interface generated from reading ui file 'network.ui'
+**
+** Created: Tue Jan 23 17:27:52 2001
+**      by:  The User Interface Compiler (uic)
+**
+** WARNING! All changes made in this file will be lost!
+****************************************************************************/
+#ifndef NETWORKDLG_H
+#define NETWORKDLG_H
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-#ifndef __NETWORKDLG_H_
-#define __NETWORKDLG_H_
-#include <qlined.h>
-//#include <ktabctl.h>
-//#include <qkeycode.h>
-//#include <qmlined.h>
-//#include <unistd.h>
-#include <kapp.h>
-#include <qlabel.h>
-#include <kconfig.h>
+#include <qvariant.h>
 #include <qdialog.h>
-//#include <qtooltip.h>
-//#include <kmsgbox.h>
-//#include <ktopwidget.h>
-//#include <kprocess.h>
-//#include <kstdaccel.h>
-#include <qstring.h>
+#include <kdialogbase.h>
+class QVBoxLayout; 
+class QHBoxLayout; 
+class QGridLayout; 
+class QButtonGroup;
+class QGroupBox;
+class QLabel;
+class QLineEdit;
+class QRadioButton;
+class QCheckBox;
 
-class NetworkDlg : public QDialog
-{
-  Q_OBJECT
+class NetworkDlg : public KDialogBase
+{ 
+    Q_OBJECT
 
-  public:
-   NetworkDlg (QWidget* parent = NULL,const char* name = NULL,const char *sufi=NULL);
+public:
+    NetworkDlg( QWidget* parent = 0, const char* name = 0, bool modal = FALSE, WFlags fl = 0 );
+    ~NetworkDlg();
 
    void SetHost(QString s);
    void SetPort(unsigned short port);
    unsigned short QueryPort();
    QString QueryHost();
 
-protected slots:
-    void accept();
+    QGroupBox* GroupBoxRemote;
+    QButtonGroup* ButtonGroup2;
+    QRadioButton* radioSlave;
+    QRadioButton* radioMaster;
+    QLineEdit* remoteHost;
+    QLabel* TextLabelHost;
+    QLabel* TextLabelPort;
+    QLineEdit* port;
+    QCheckBox* CheckBox1;
 
 protected:
-    KConfig *config;
-    KApplication *app;
-    QLineEdit *PortEdit;
-//    QLineEdit *SPortEdit;
-    QLineEdit *IPEdit;
-
+    QVBoxLayout* vbox;
+    QVBoxLayout* vbox_2;
+    QGridLayout* grid;
+    QGridLayout* grid_2;
 };
-#endif
+
+#endif // NETWORKDLG_H
