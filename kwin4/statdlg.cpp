@@ -258,7 +258,7 @@ void StatDlg::clearStat()
   int ret = KMessageBox::questionYesNo(this,
             i18n("Do you really want to delete the all time "
                  "statistics?\n"),
-            i18n("Statistics warning"));
+            i18n("Statistics Warning"));
 
    if(ret == KMessageBox::Yes)
    {
