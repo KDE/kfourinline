@@ -105,7 +105,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  */
 void ChatDlg::setPlayer(Kwin4Player *p)
 {
-  kdDebug(12010) << "CHATDLG: !!!!!!!!!! player " << p->userId() << endl;
+  kdDebug(12010) << "CHATDLG: setPlayer() " << p->userId() << endl;
   if (!mChat)
   {
     kdError() << "ChatDlg::setPlayer::Chat not defined .. cannot set player" << endl;

@@ -897,7 +897,7 @@ bool Kwin4Doc::playerInput(QDataStream &msg,KPlayer *player)
   // Kwin4Player *p=(Kwin4Player *)player;
   Q_INT32 move,pl;
   msg >> pl >> move;
-  if (global_debug>1)  kdDebug(12010)  << "!!!!! Player " << pl << " id="<<player->id() 
+  if (global_debug>1)  kdDebug(12010)  << "playerInput() Player " << pl << " id="<<player->id() 
              << " uid="<<player->userId() << " moves to " << move << "***************" << endl;
   // Perform the move (sprite and logic)
   bool res = Move(move,pl);
@@ -1046,7 +1046,7 @@ void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
 {
   if (global_debug>1) kdDebug(12010) << "          sending col=" << pl << endl;
   stream << pl ;
-  // This needs to be the same than the computer player reads!!!!!
+  // This needs to be the same than the computer player reads!
   stream << (Q_INT32)QueryCurrentMove();
   stream << (Q_INT32)QueryCurrentPlayer();
   stream << (Q_INT32)QueryPlayerColour(0);
@@ -1108,7 +1108,7 @@ void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
  
   if (playerList()->count()!=2)
   {
-    kdError() << "SERIOUS ERROR: We do not have two players...Trying to disconnect!!!!!"<<endl;
+    kdError() << "SERIOUS ERROR: We do not have two players...Trying to disconnect!"<<endl;
     disconnect();
     return ;
   }
@@ -1299,7 +1299,8 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
  **/
 bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
-  if (global_debug>1) kdDebug () << "!!!!!!!!!!!!!!!loadgame network="<<network<<" reset="<<reset<<" !!!!!!!!!!"<<endl;
+  if (global_debug>1)
+    kdDebug () << "loadgame() network=" << network << " reset="<< reset << endl;
   if (!network) setGameStatus(End);
 
   // Clear out the old game 

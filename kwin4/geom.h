@@ -19,7 +19,6 @@
 #ifndef __GEOM_H_
 #define __GEOM_H_
 
-#include <qpoint.h>
 #include <qrect.h>
 
 class Geom {

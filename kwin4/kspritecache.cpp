@@ -139,7 +139,7 @@ QCanvasItem *KSpriteCache::getItem(QString name,int no)
     // Now first time load the items
     if (!mConfig->hasGroup(name))
     {
-      kdError() << "Item "<<name <<" not defined !!! " <<endl;
+      kdError() << "Item "<<name <<" not defined! " <<endl;
       return 0;
     }
     mConfig->setGroup(name);

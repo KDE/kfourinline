@@ -233,7 +233,7 @@ Farbe farbe;
 	 }
   }/*next x*/
   aktwert=cmax;
-  amZug=farbe;	// Wertung changes amZug !!!
+  amZug=farbe;	// Wertung changes amZug!
 return cmove;
 }/* end getCompMove */
 
