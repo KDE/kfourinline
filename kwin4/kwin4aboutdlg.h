@@ -1,10 +1,3 @@
-/****************************************************************************
-** Form interface generated from reading ui file 'aboutDlg.ui'
-**
-** Created: Thu Nov 23 11:42:06 2000
-**      by:  The User Interface Compiler (uic)
-**
-****************************************************************************/
 #ifndef ABOUTDLG_H
 #define ABOUTDLG_H
 

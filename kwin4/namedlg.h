@@ -1,11 +1,3 @@
-/****************************************************************************
-** Form interface generated from reading ui file 'namedlg.ui'
-**
-** Created: Thu Nov 23 11:10:15 2000
-**      by:  The User Interface Compiler (uic)
-**
-** WARNING! All changes made in this file will be lost!
-****************************************************************************/
 #ifndef NAMEDLG_H
 #define NAMEDLG_H
 

@@ -1,11 +1,3 @@
-/****************************************************************************
-** Form implementation generated from reading ui file 'namedlg.ui'
-**
-** Created: Thu Nov 23 11:10:17 2000
-**      by:  The User Interface Compiler (uic)
-**
-** WARNING! All changes made in this file will be lost!
-****************************************************************************/
 #include "namedlg.h"
 
 #include <qgroupbox.h>

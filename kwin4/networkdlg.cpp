@@ -1,11 +1,3 @@
-/****************************************************************************
-** Form implementation generated from reading ui file 'network.ui'
-**
-** Created: Tue Jan 23 17:27:55 2001
-**      by:  The User Interface Compiler (uic)
-**
-** WARNING! All changes made in this file will be lost!
-****************************************************************************/
 #include "networkdlg.h"
 
 #include <qbuttongroup.h>

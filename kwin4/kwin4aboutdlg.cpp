@@ -1,10 +1,3 @@
-/****************************************************************************
-** Form implementation generated from reading ui file 'aboutDlg.ui'
-**
-** Created: Thu Nov 23 11:42:20 2000
-**      by:  The User Interface Compiler (uic)
-**
-****************************************************************************/
 #include "kwin4aboutdlg.h"
 
 #include <qframe.h>
