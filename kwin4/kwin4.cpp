@@ -314,7 +314,7 @@ void Kwin4App::initGUI()
 
   (void)new KAction(i18n("&Hint"),"help", CTRL+Key_H, this, SLOT(slotFileHint()),
                       actionCollection(), "hint");
-  ACTION("hint")->setStatusText(i18n("Shows a hint on how to move"));
+  ACTION("hint")->setStatusText(i18n("Shows a hint on how to move."));
   ACTION("hint")->setWhatsThis(i18n("Shows a hint on how to move."));
 
 
