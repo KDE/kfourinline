@@ -208,8 +208,8 @@ class Kwin4App : public KMainWindow
     * The network connection is lost
     **/
     void slotNetworkBroken(int id, int oldstatus ,KGame *game);
-    /** Starts a new game */
-    void NewGame();
+    /** Being noticed that a new game started */
+    void slotNewGame();
     /** Set the names in the mover field */
     void slotStatusNames();
 

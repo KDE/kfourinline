@@ -83,8 +83,8 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   mAmzug.setPolicy(KGamePropertyBase::PolicyLocal);  
   mCurrentMove.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mCurrentMove"));
   mMaxMove.registerData(4000,dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mMaxMove"));
-  mFieldFilled.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mFieldFilled"));
-  mHistoryCnt.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mHistoryCnt"));
+  mFieldFilled.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mFieldFilled"));
+  mHistoryCnt.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mHistoryCnt"));
   mLastColumn.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mLastColumn"));
   mLastHint.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mLastHint"));
   mLastColour.registerData(dataHandler(),KGamePropertyBase::PolicyUndefined,QString("mLastColour"));
@@ -268,12 +268,12 @@ void Kwin4Doc::ResetGame(bool initview){
   mLastColour=Niemand;
   SetScore(0);
   mLastHint=-1;
-  kdDebug() << "initview in reset gamne="<<initview<<endl;
+  kdDebug() << "Should view be cleared in in reset game? "<<initview<<endl;
   if (initview) pView->initView(false);
   kdDebug() << "Reset game done" << endl;
 }
 
-/** Start a new game */
+/** Set variables for a new game */
 void Kwin4Doc::StartGame(){
   mGameOverStatus=0;
   //setGameStatus(Run);
@@ -431,7 +431,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 /** Undo a move */
 bool Kwin4Doc::UndoMove(){
   int x,y;
-  kdDebug() <<" undo current 2="<<QueryCurrentPlayer() << endl;
+  kdDebug() <<" undo current player="<<QueryCurrentPlayer() << endl;
   if (QueryHistoryCnt()<1) return false;
   if (mLastHint>=0)
   {
@@ -1279,6 +1279,7 @@ void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player
 }
 void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
 {
+
    if (!pView) return ;
    if (prop->id()==mCurrentMove.id())
    {
@@ -1305,18 +1306,22 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
      {
        kdDebug() << "PropertyChanged::status signal game abort +++++++++++++++++++" << endl;
        emit signalGameOver(2,getPlayer(QueryCurrentPlayer()),0); // 2 indicates Abort
-      }
+     }
      else if (gameStatus()==Run)
      {
        kdDebug() << "PropertyChanged::status signal game run ++++++++++++++++++++++" << endl;
-       //ResetGame();
        StartGame();
        emit signalGameRun();
-      }
-      else
-      {
+     }
+     else if (gameStatus()==Init)
+     {
+       kdDebug() << "PropertyChanged::status signal game INIT ++++++++++++++++++++++" << endl;
+       ResetGame(true);
+     }
+     else
+     {
        kdDebug() << "PropertyChanged::other status signal ++++++++++++++++++++++" << endl;
-      }
+     }
      
    }
 }
@@ -1331,28 +1336,38 @@ void Kwin4Doc::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 }
 
 
-// Redraw game after load/network
+// Redo game after load/network
 bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
   if (!network) setGameStatus(End);
   else kdDebug() << "NETWROK GAME NOT ENDED " << endl;
-  pView->initView(false);
+
+  // Clear out the old game 
+  if (!network) setGameStatus(Init);
+
+  // load the new game
   bool res=KGame::loadgame(stream,network,reset);
 
+  // Replay the game be undoing and redoing
   kdDebug() << "REDRAW GAME using undo/redo" << endl;
+  kdDebug() << "history cnt="<<mHistoryCnt.value() << endl;
   int cnt=0;
   while(UndoMove())
   {
     cnt++;
+    kdDebug() << "Undoing move "<<cnt<<endl;
   }
   while(cnt>0)
   {
     RedoMove();
     cnt--;
+    kdDebug() << "Redoing move "<<cnt<<endl;
   }
   Debug();
+
+  // Set the input devices
   recalcIO();
-  kdDebug()  << "loadgame done" << endl;
+  kdDebug()  << "loadgame done +++++++++++++++++++++++++" << endl;
   return res;
 }
 
