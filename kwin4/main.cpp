@@ -59,6 +59,8 @@ int main(int argc, char *argv[])
 
    //  KApplication app(argc, argv, "kwin4");
    KApplication app;
+   KGlobal::locale()->insertCatalogue("libkdegames");
+    
    /*
    QStringList list=app.dirs()->allTypes();
    QStringList list=app.dirs()->findDirs("data","kwin4");
