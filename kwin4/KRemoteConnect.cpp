@@ -93,7 +93,7 @@ bool tryserver;
   // First try to connect to given host:socket
   // if no IP given only offer server
   tryserver=false;
-  if (IP && IP.length()>0)
+  if (IP !="" && IP.length()>0)
   {
     kSocket=new KSocket(IP.latin1(),port);
     if (!kSocket) return false;

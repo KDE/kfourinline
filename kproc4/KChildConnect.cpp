@@ -49,7 +49,7 @@ bool KChildConnect::SendMsg(KEMessage *msg)
     if (p && (fp=fopen(p,"a")) )
     {
       fprintf(fp,"------------------------------------\n");
-      fprintf(fp,sendstring);
+      fprintf(fp,sendstring.latin1());
       fclose(fp);
     }
   }

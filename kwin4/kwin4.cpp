@@ -62,7 +62,7 @@ Kwin4App::Kwin4App() : KMainWindow(0)
    mGrafix=kapp->dirs()->findResourceDir("data",file); 
    if (mGrafix.isNull()) mGrafix="grafix/";
    else mGrafix+="kwin4/grafix/";
-   if (global_debug>3) printf("Localised datafile=%s\n",(const char *)mGrafix);
+   if (global_debug>3) printf("Localised datafile=%s\n",(const char *)mGrafix.latin1());
 
 
   ///////////////////////////////////////////////////////////////////
@@ -584,7 +584,7 @@ bool Kwin4App::MakeInputDevice(int i)
         QString s;
         int tim,j;
         tim=10000;
-        if (host&&host.length()>0)
+        if (host!=""&&host.length()>0)
         {
           s=i18n("Remote connection to %1:%2...").arg(host).arg(port);
         }
@@ -1394,7 +1394,7 @@ void Kwin4App::statusCallback(int id_)
     case ID_LEVEL_10:
          s.setNum((int)(id_-ID_LEVEL_1+1));
          s=i18n("Set the level of the computer player to %1").arg(s);
-         slotStatusHelpMsg(i18n(s));
+         slotStatusHelpMsg(i18n(s.latin1()));
          break;
 
     case ID_OPTIONS_NAMES:
@@ -1613,7 +1613,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     }
     slotStatusMsg(message);
     if (global_debug>3)
-      printf("%s\n",(const char *)message);
+      printf("%s\n",(const char *)message.latin1());
     
     mInput->Unlock();
     if (doc->QueryCurrentPlayer()==Gelb)
@@ -1660,14 +1660,14 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       {
         message=QString(i18n("Remote connection lost for yellow..."));
         KMessageBox::information(this,message,TITLE);
-        slotStatusMsg(i18n(message));
+        slotStatusMsg(i18n(message.latin1()));
         slotYellowPlayer();
       }
       else
       {
         message=QString(i18n("Remote connection lost for red..."));
         KMessageBox::information(this,message,TITLE);
-        slotStatusMsg(i18n(message));
+        slotStatusMsg(i18n(message.latin1()));
         slotRedPlayer();
       }
     }
@@ -1679,13 +1679,13 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
       message=QString("Message from remote player:\n")+p;
       KMessageBox::information(this,message,TITLE);
       if (global_debug>3)
-        printf("MESSAGE **** %s ****\n",(const char *)message);
+        printf("MESSAGE **** %s ****\n",(const char *)message.latin1());
     }
   }
   if (msg->HasKey("error"))
   {
     message=i18n("Received an error from the remote player");
-    slotStatusMsg(i18n(message));
+    slotStatusMsg(i18n(message.latin1()));
   }
   if (msg->HasKey("Move"))
   {

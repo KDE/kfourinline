@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   global_debug=0;
   KAboutData *aboutData=new KAboutData( "kwin4", I18N_NOOP("KWin4"),
                         KWIN4_VERSION,
-                        TITLE+i18n(": Two player network game"),
+                        (TITLE+i18n(": Two player network game")).latin1(),
                         KAboutData::License_GPL,
                         "(c) 1995-2000, Martin Heni");
   aboutData->addAuthor("Martin Heni",0, "martin@heni-online.de");
