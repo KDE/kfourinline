@@ -7,7 +7,6 @@ z=0.0
 
 [arrow]
 file=arrow%d.png
-mask=arrow_mask.png
 number=3
 offset=19,5
 rtti=32
@@ -23,14 +22,13 @@ z=0.0
 # more then max(z piece)
 [empty]
 file=empty2.png
-mask=empty2_mask.png
 offset=19,12
 rtti=32
 z=60.0
 
 # Less then z piece
 [empty2]
-file=empty2.png
+file=empty.png
 offset=19,12
 rtti=32
 z=5.0
@@ -44,7 +42,6 @@ statuswidget=350,250
 [gameover]
 desty=140
 file=game_over.png
-mask=game_over_mask.png
 offset=0,0
 rtti=32
 speed=2.0
@@ -53,8 +50,7 @@ y=20.0
 z=150.0
 
 [hint]
-file=hint.png
-mask=piece_mask.png
+file=crnt.png
 offset=19,20
 rtti=32
 z=100.0
@@ -93,7 +89,6 @@ z=150.0
 # z = z..z+21
 [piece]
 file=piece%d.png
-mask=piece_mask.png
 number=2
 offset=19,20
 rtti=32
@@ -103,7 +98,6 @@ z=10.0
 [star]
 anim0=0,4,2,8
 file=star%d.png
-mask=star%d_mask.png
 number=5
 offset=19,20
 rtti=32
@@ -147,7 +141,6 @@ z=150.0
 
 [win4about]
 file=introabout.png
-mask=introabout_mask.png
 rtti=32
 x=170.0
 x2=340.0
