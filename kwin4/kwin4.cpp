@@ -67,6 +67,8 @@
 #include "geom.h"
 #include "msgdlg.h"
 #include "kwin4aboutdlg.h"
+#include <qpushbutton.h>
+#include <kstatusbar.h>
 
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG               1003
