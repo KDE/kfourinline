@@ -19,7 +19,7 @@
 #include <kcmdlineargs.h>
 #include <klocale.h>
 #include <kdebug.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kinstance.h>
 #include <kaboutdata.h>
 #include <stdlib.h>

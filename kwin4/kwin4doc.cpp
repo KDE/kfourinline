@@ -27,7 +27,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kconfig.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kdebug.h>
 #include <krandomsequence.h>
 #include <qcanvas.h>
