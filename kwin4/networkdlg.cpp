@@ -43,7 +43,7 @@ NetworkDlg::NetworkDlg( QWidget* parent,  const char* name, bool /*modal*/, WFla
     grid->addItem( spacer_2, 2, 1 );
 
     GroupBoxRemote = new QGroupBox( page, "GroupBoxRemote" );
-    GroupBoxRemote->setTitle( i18n( "Remote settings"  ) );
+    GroupBoxRemote->setTitle( i18n( "Remote Settings"  ) );
     GroupBoxRemote->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)7, (QSizePolicy::SizeType)5, GroupBoxRemote->sizePolicy().hasHeightForWidth() ) );
     GroupBoxRemote->setColumnLayout(0, Qt::Vertical );
     GroupBoxRemote->layout()->setSpacing( 0 );

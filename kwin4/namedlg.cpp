@@ -46,7 +46,7 @@ NameDlg::NameDlg( QWidget *parent, const char *name,bool /* modal */, WFlags /* 
     hbox->setMargin( 0 );
 
     player_names = new QGroupBox( page, "player_names" );
-    player_names->setTitle(i18n("Player names") );
+    player_names->setTitle(i18n("Player Names") );
     player_names->setColumnLayout(0, Qt::Vertical );
     player_names->layout()->setSpacing( 0 );
     player_names->layout()->setMargin( 0 );

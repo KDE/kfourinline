@@ -49,7 +49,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     vbox->setMargin( 0 );
 
     GroupBox1 = new QGroupBox( Layout17, "GroupBox1" );
-    GroupBox1->setTitle( i18n( "All time game statistics"  ) );
+    GroupBox1->setTitle( i18n( "All Time Game Statistics"  ) );
 
     QWidget* Layout10 = new QWidget( GroupBox1, "Layout10" );
     Layout10->setGeometry( QRect( 10, 30, 399, 113 ) ); 
