@@ -30,12 +30,12 @@
 
 </authorgroup>
 
-<date>2001-06-23</date>
-<releaseinfo>0.1.0</releaseinfo>
+<date>2002-01-27</date>
+<releaseinfo>1.0.0</releaseinfo>
 
 <abstract>
 <para>
-This documentation describes &kwin4; version 0.9.1</para>
+This documentation describes &kwin4; version 1.0.0</para>
 </abstract>
 
 <keywordset>
@@ -337,10 +337,10 @@ Determines which color player  has the first move in the next game.
 <listitem>
 <para>
 Chooses who should play for player 1 (yellow). It can be either
-<guimenuitem>player</guimenuitem>, &ie; a local player using the mouse
-as input device, <guimenuitem>computer</guimenuitem>, &ie; the computer
-plays this player or <guimenuitem>remote</guimenuitem>, &ie; a remote
-connection to another computer will be build.
+<guimenuitem>mouse</guimenuitem> or <guimenuitem>keyboard</guimenuitem>,
+&ie; a local player using the mouse or keyboard
+as input device or <guimenuitem>computer</guimenuitem>, &ie; the computer
+plays for this player.
 </para>
 </listitem>
 </varlistentry>
