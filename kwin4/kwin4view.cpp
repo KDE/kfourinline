@@ -133,8 +133,22 @@ void Kwin4View::updateArrow(int x){
 }
 
 /** Draw the game intro */
-void Kwin4View::drawIntro(QPainter *p){
+void Kwin4View::drawIntro(QPainter *p)
+{
+  QString ld;
   p->drawPixmap(geom.intro_origin,getDocument()->m_PixAbout);
+  // QFont font(p->font());
+  QFont font("Helvetica");
+  font.setPointSize(28);
+  font.setBold(true);
+  font.setItalic(true);
+  p->setFont(font);
+  p->setPen(COL_YELLOW);
+  ld=i18n("Four wins for KDE","Four wins\n\nfor\n\nK D E");
+  QRect rect(geom.intro_origin+QPoint(0,14),getDocument()->m_PixAbout.size());
+  
+	p->drawText(rect,QPainter::AlignHCenter|QPainter::AlignTop ,ld);
+
 }
 /** Draw the game board */
 void Kwin4View::drawField(QPainter *p){

@@ -599,6 +599,7 @@ void Kwin4App::readProperties(KConfig* _cfg)
 
 bool Kwin4App::queryClose()
 {
+  return true;
   kEndDlg *dlg=new kEndDlg(this);
   dlg->setCaption(appTitle());
   dlg->SetPixmap(doc->m_PixWin4About);
