@@ -119,7 +119,6 @@ private:
 protected slots:
   void slotClearStatusText();
 
-  void slotKeyBindings();
   void showSettings();
 };
  

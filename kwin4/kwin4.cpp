@@ -35,7 +35,6 @@
 #include <kdebug.h>
 #include <kstdaction.h>
 #include <kaction.h>
-#include <kkeydialog.h>
 #include <qpushbutton.h>
 #include <kstatusbar.h>
 #include <kconfigdialog.h>
@@ -236,7 +235,8 @@ void Kwin4App::initGUI()
 
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
-  KStdAction::keyBindings(this, SLOT(slotKeyBindings()), actionCollection());
+  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
+actionCollection());
   KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
 }
 
@@ -612,14 +612,6 @@ void Kwin4App::slotDebugKGame()
 {
   KGameDebugDialog* debugWindow = new KGameDebugDialog(doc, this);
   debugWindow->show();
-}
-
-/**
- * Configure the keybindings for this application.
- */ 
-void Kwin4App::slotKeyBindings()
-{
-  KKeyDialog::configure(actionCollection(), this);
 }
 
 /**
