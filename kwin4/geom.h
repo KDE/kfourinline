@@ -26,7 +26,6 @@ class Geom {
   public:
    Geom (); 
 
-  // geometry
   QPoint intro_origin;
   QPoint field_origin;
   QPoint field_offset;

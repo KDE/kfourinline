@@ -117,7 +117,6 @@ public:
   void SetCurrentMove(int );  // 0..42
   int QueryMaxMove();      // 0..42
   int QueryHistoryCnt();  // 0..42
-  int Random(int max);
   QString QueryProcessName();
 
   KPlayer *createPlayer(int rtti,int io,bool isvirtual);

@@ -22,6 +22,7 @@
 
 #include <kconfig.h>
 #include <klocale.h>
+#include <kapplication.h>
 
 #include "kwin4doc.h"
 #include "geom.h"
@@ -86,17 +87,20 @@ class KIntroMove : public KSpriteMove
 
     return true;
   }
+
   void setDir(bool d) {dir=d;}
-  private:
+
+private:
+
   bool dir;
   int mode;
   int cnt;
   double cx,cy;
+
 };
 
 Kwin4View::Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent, const char *name)
         : QCanvasView(0,parent, name), doc(theDoc)
-
 {
   mLastArrow=-1;
 
@@ -137,15 +141,6 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QString grafixdir,QWidget *parent, const 
   adjustSize();
 
   initView(false);  
-
-  // setBackgroundPixmap( doc->m_PixBackground );
-  //setBackground( doc->m_PixBackground );
-}
-
-Kwin4View::~Kwin4View()
-{
-  if (mCanvas) delete mCanvas;
-  if (mCache) delete mCache;
 }
 
 void Kwin4View::initView(bool deleteall)
@@ -218,6 +213,9 @@ QPixmap *Kwin4View::loadPixmap(QString name)
   return mCache->loadPixmap(name);
 }
 
+/**
+ * Called by the doc/app to signal the end of the game
+ */
 void Kwin4View::EndGame()
 {
   KSprite *sprite;
@@ -235,7 +233,9 @@ void Kwin4View::EndGame()
   }
 }
 
-// -------------- Draw Sprites ----------------------
+/**
+ * Draw Sprites
+ */
 void Kwin4View::drawStar(int x,int y,int no)
 {
   int dx,dy;
@@ -355,10 +355,12 @@ void Kwin4View::drawIntro(bool /*remove*/)
     }
   }
 }
+
+/** 
+ * received after the movment of an intro sprite is finished
+ **/
 void Kwin4View::introMoveDone(QCanvasItem *item,int )
 {
-  //kdDebug(12010) << "########################## INTRO MOVE DONE ################# " << endl;
-
   KSprite *sprite=(KSprite *)item;
   sprite->deleteNotify();
   KIntroMove *move=(KIntroMove *)sprite->moveObject();
@@ -503,7 +505,6 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
     
     sprite->setFrame(c);
     sprite->show();
-
   }
 }
 
@@ -523,60 +524,68 @@ void Kwin4View::setArrow(int x,int color)
   //kdDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
 
   // Make sure the frames are ok
-  int c;
-  if (color==Gelb) c=1;
-  else if (color==Rot) c=2;
-  else c=0;
+  int c = 0;
+  if (color==Gelb)
+     c=1;
+  else if (color==Rot)
+     c=2;
 
   if (sprite)
-  {
     sprite->setFrame(c);
-  }
   mLastArrow=x;
 }
 
-/** Error message if the wrong player moved */
+
+/**
+ * Error message if the wrong player moved
+ */
 bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
 {
-    // Hack to find out whether there is a IO Device whose turn it is
-    KGame::KGamePlayerList *playerList=doc->playerList();
-    KPlayer *p;
+  // Hack to find out whether there is a IO Device whose turn it is
+  KGame::KGamePlayerList *playerList=doc->playerList();
+  KPlayer *p;
 
-    bool flag=false;
-    for ( p=playerList->first(); p!= 0; p=playerList->next() )
-    {
-      if (p==player) continue;
-      if (p->hasRtti(io) && p->myTurn()) flag=true;
-    }
+  bool flag=false;
+  for ( p=playerList->first(); p!= 0; p=playerList->next() )
+  {
+    if (p==player) continue;
+    if (p->hasRtti(io) && p->myTurn()) flag=true;
+  }
 
-    if (flag) return false;
+  if (flag)
+    return false;
     
-    clearError();
-    int rnd=doc->Random(4)+1;
-    QString m;
-    m=QString("text%1").arg(rnd);
-    QString ms;
-    if (rnd==1)      ms=i18n("Hold on... the other player has not been yet..."); 
-    else if (rnd==2) ms=i18n("Hold your horses..."); 
-    else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time..."); 
-    else             ms=i18n("Please wait... it is not your turn."); 
+  clearError();
+  int rnd=(kapp->random()%4) +1;
+  QString m;
+  m=QString("text%1").arg(rnd);
+  QString ms;
+  if (rnd==1)      ms=i18n("Hold on... the other player has not been yet..."); 
+  else if (rnd==2) ms=i18n("Hold your horses..."); 
+  else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time..."); 
+  else             ms=i18n("Please wait... it is not your turn."); 
 
-    // TODO MH can be unique
-    QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
-    if (text)
-    {
-      text->setText(ms);
-      text->show();
-    }
-    return true;
+  // TODO MH can be unique
+  QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
+  if (text)
+  {
+    text->setText(ms);
+    text->show();
+  }
+  return true;
 }
 
+/**
+ * This slot is called when a key event is received. It then prduces a
+ * valid move for the game.
+ **/
 // This is analogous to the mouse event only it is called when a key is
 // pressed
 void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
 {
   // Ignore non running
-  if (!doc->isRunning()) return;
+  if (!doc->isRunning())
+    return;
   // kdDebug(12010) << "KEY EVENT" << e->ascii() << endl;
 
   // Ignore non key press
@@ -605,19 +614,20 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   *eatevent=true;
 }
 
-// This slot is called when a mouse key is pressed. As the mouse is used as input for all players
-// this slot is called to generate a player move out of a mouse input, i.e.
-// it converts a QMouseEvent into a move for the game. We do here some simple nonsense
-// and use the position of the mouse to generate
-// moves containing the keycodes
+/**
+ * This slot is called when a mouse key is pressed. As the mouse is used as
+ * input for all players
+ * this slot is called to generate a player move out of a mouse input, i.e.
+ * it converts a QMouseEvent into a move for the game. We do here some
+ * simple nonsense and use the position of the mouse to generate
+ * moves containing the keycodes
+ */
 void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent)
 {
   // Only react to key pressed not released
   if (mouse->type() != QEvent::MouseButtonPress ) return ;
   if (!doc->isRunning())
-  {
     return;
-  }
 
   // Our player
   KPlayer *player=input->player();
@@ -651,6 +661,9 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   // kdDebug(12010) << "Mouse input done..eatevent=true" << endl;
 }
 
+/**
+ * Hide all the error sprites
+ */ 
 void Kwin4View::clearError()
 {
   QCanvasText *text;

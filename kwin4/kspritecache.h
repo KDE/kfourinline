@@ -1,5 +1,5 @@
 /***************************************************************************
-                          kspritecache.h
+                               kspritecache.h
                              -------------------
     begin                : September 2001  by Martin Heni
     email                : martin@heni-online.de

@@ -792,14 +792,6 @@ int Kwin4Doc::QueryHistoryCnt()
 }
 
 /**
- * Random number between 0..max-1
- */
-int Kwin4Doc::Random(int max)
-{
-  return (int)(random()->getLong(max));
-}
-
-/**
  * Return the name of the computer player process
  */
 QString Kwin4Doc::QueryProcessName()
