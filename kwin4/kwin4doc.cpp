@@ -98,7 +98,7 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)
   mStartPlayer=Gelb;
   mStartPlayer.registerData(dataHandler());
   SetCurrentPlayer((FARBE)mStartPlayer.value()); 
-  //kdDebug() << "amZug policy=" << mAmzug.policy() << endl;
+  kdDebug() << "amZug policy=" << mAmzug.policy() << endl;
 
   mPlayedBy[Gelb]=KGameIO::MouseIO;
   mPlayedBy[Rot]=KGameIO::MouseIO;
@@ -360,10 +360,12 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 
 KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
 {
-  //kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
+  kdDebug() << k_funcinfo << "nextPlayer last="<<last->id()<<endl;
   if (last->userId()==Gelb) SetCurrentPlayer(Rot);
   else SetCurrentPlayer(Gelb);
+  kdDebug() <<" Current set to "<<QueryCurrentPlayer()<<endl;
   getPlayer(QueryCurrentPlayer())->setTurn(true,true);
+  emit signalMoveDone(0,0);
 
 }
 
@@ -431,6 +433,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 /** Undo a move */
 bool Kwin4Doc::UndoMove(){
   int x,y;
+  kdDebug() <<" undo current 2="<<QueryCurrentPlayer() << endl;
   if (QueryHistoryCnt()<1) return false;
   if (mLastHint>=0)
   {
@@ -449,9 +452,11 @@ bool Kwin4Doc::UndoMove(){
   y=mFieldFilled.at(x);
   //kdDebug() << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
+  kdDebug() <<" undo currena 3t="<<QueryCurrentPlayer() << endl;
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
   else SetCurrentPlayer(Gelb);
+  kdDebug() <<" undo current 4="<<QueryCurrentPlayer() << endl;
   mCurrentMove=mCurrentMove.value()-1;
 
 
@@ -465,6 +470,7 @@ bool Kwin4Doc::UndoMove(){
   else mLastColumn=-1;
 
   SetScore(0);
+  kdDebug() <<" undo current 5="<<QueryCurrentPlayer() << endl;
 
   return true;
 }
@@ -999,7 +1005,6 @@ bool Kwin4Doc::Move(int x,int id)
   y=QueryHeight(x);
   //UpdateViews(UPDATE_XY|UPDATE_ARROW|UPDATE_STATUS,x,y);
   //UpdateViews(UPDATE_ARROW,lastx,0);
-  emit signalMoveDone(x,y);
   //return NextMove(res);
   return true;
 }

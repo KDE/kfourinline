@@ -300,6 +300,7 @@ void Kwin4App::checkMenus(int menu)
     }
 
     kdDebug() << "CHECK MENU ************ Gelb" << doc->playedBy(Gelb) << "  rot = "<< doc->playedBy(Rot)<< endl;
+    kdDebug() << "CHECK MENU *******CurrentPlayer " << doc->QueryCurrentPlayer() << endl;
 
     if (doc->playedBy(Gelb)==KGameIO::MouseIO)
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(0);
@@ -308,7 +309,7 @@ void Kwin4App::checkMenus(int menu)
     else
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(2);
 
-    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Rot)
+    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Gelb)
     {
       disableAction("player1");
     }
@@ -324,7 +325,7 @@ void Kwin4App::checkMenus(int menu)
     else
         ((KSelectAction *)ACTION("player2"))->setCurrentItem(2);
 
-    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Gelb)
+    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Rot)
     {
       disableAction("player2");
     }
@@ -1030,6 +1031,7 @@ void Kwin4App::slotNetworkBroken(int id, int oldstatus ,KGame * /*game */)
 void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 {
   checkMenus(CheckEditMenu|CheckOptionsMenu);
+  slotStatusNames();
   slotStatusMsg(i18n("Game running..."));
 }
 
