@@ -22,6 +22,7 @@
 #include <qvbox.h>
 #include <qradiobutton.h>
 #include <qvbuttongroup.h>
+#include <qlcdnumber.h>
 
 // include files for KDE
 #include <kapplication.h>
@@ -53,8 +54,7 @@
 #include "kwin4doc.h"
 #include "prefs.h"
 #include "settings.h"
-
-#include "statdlg.h"
+#include "statistics.h"
 #include "geom.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
@@ -472,29 +472,24 @@ void Kwin4App::slotFileClose()
  */
 void Kwin4App::slotFileStatistics()
 {
-  int res;
-
-  StatDlg *dlg=new StatDlg(this,"Game statistics");
-  dlg->SetNames(doc->QueryName(Gelb),doc->QueryName(Rot));
-  dlg->SetStat1(doc->QueryStat(Gelb,TWin),
-                doc->QueryStat(Gelb,TRemis),
-                doc->QueryStat(Gelb,TLost),
-                doc->QueryStat(Gelb,TBrk),
-                doc->QueryStat(Gelb,TSum) );
-  dlg->SetStat2(doc->QueryStat(Rot,TWin),
-                doc->QueryStat(Rot,TRemis),
-                doc->QueryStat(Rot,TLost),
-                doc->QueryStat(Rot,TBrk),
-                doc->QueryStat(Rot,TSum) );
-
-  QPixmap *pixmap=view->loadPixmap("win4about.png");
-  if (pixmap) dlg->SetPixmap(*pixmap);
-
-  res=dlg->exec();
-  if (res==-100)
-  {
+  Statistics *dlg=new Statistics(this,"Game statistics");
+  
+  dlg->p1_name->setText(doc->QueryName(Gelb));
+  dlg->p1_won->display(doc->QueryStat(Gelb, TWin));
+  dlg->p1_drawn->display(doc->QueryStat(Gelb, TRemis));
+  dlg->p1_lost->display(doc->QueryStat(Gelb, TLost));
+  dlg->p1_aborted->display(doc->QueryStat(Gelb, TBrk));
+  dlg->p1_sum->display(doc->QueryStat(Gelb, TSum));
+  
+  dlg->p2_name->setText(doc->QueryName(Rot));
+  dlg->p2_won->display(doc->QueryStat(Rot, TWin));
+  dlg->p2_drawn->display(doc->QueryStat(Rot, TRemis));
+  dlg->p2_lost->display(doc->QueryStat(Rot, TLost));
+  dlg->p2_aborted->display(doc->QueryStat(Rot, TBrk));
+  dlg->p2_sum->display(doc->QueryStat(Rot, TSum));
+  
+  if(dlg->exec() == QDialog::Rejected)
     doc->ResetStat();
-  }
 }
 
 /**

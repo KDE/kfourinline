@@ -1,0 +1,248 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>Statistics</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>Statistics</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>439</width>
+            <height>164</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Statistics</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="Line" row="1" column="0" rowspan="1" colspan="6">
+            <property name="name">
+                <cstring>line1</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>HLine</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+        <spacer row="5" column="2">
+            <property name="name">
+                <cstring>spacer1</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Vertical</enum>
+            </property>
+            <property name="sizeType">
+                <enum>Expanding</enum>
+            </property>
+            <property name="sizeHint">
+                <size>
+                    <width>20</width>
+                    <height>16</height>
+                </size>
+            </property>
+        </spacer>
+        <widget class="QLCDNumber" row="4" column="3">
+            <property name="name">
+                <cstring>p2_lost</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel" row="2" column="0" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>p1_name</cstring>
+            </property>
+            <property name="text">
+                <string>Player 1</string>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="0">
+            <property name="name">
+                <cstring>Name</cstring>
+            </property>
+            <property name="text">
+                <string>Name</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="1">
+            <property name="name">
+                <cstring>won</cstring>
+            </property>
+            <property name="text">
+                <string>Won</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="4" column="2">
+            <property name="name">
+                <cstring>p2_drawn</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="3">
+            <property name="name">
+                <cstring>lost</cstring>
+            </property>
+            <property name="text">
+                <string>Lost</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="4" column="4">
+            <property name="name">
+                <cstring>p2_aborted</cstring>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="4" column="5">
+            <property name="name">
+                <cstring>p2_sum</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="5">
+            <property name="name">
+                <cstring>sum</cstring>
+            </property>
+            <property name="text">
+                <string>Sum</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="4">
+            <property name="name">
+                <cstring>aborted</cstring>
+            </property>
+            <property name="text">
+                <string>Aborted</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget" row="6" column="0" rowspan="1" colspan="6">
+            <property name="name">
+                <cstring>layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Clear All Statistics</string>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>51</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButton2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Close</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+C</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="1">
+            <property name="name">
+                <cstring>p1_won</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel" row="4" column="0">
+            <property name="name">
+                <cstring>p2_name</cstring>
+            </property>
+            <property name="text">
+                <string>Player 2</string>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="4" column="1">
+            <property name="name">
+                <cstring>p2_won</cstring>
+            </property>
+        </widget>
+        <widget class="QLabel" row="0" column="2">
+            <property name="name">
+                <cstring>drawn</cstring>
+            </property>
+            <property name="text">
+                <string>Drawn</string>
+            </property>
+            <property name="alignment">
+                <set>AlignCenter</set>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="2">
+            <property name="name">
+                <cstring>p1_drawn</cstring>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="3">
+            <property name="name">
+                <cstring>p1_lost</cstring>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="4">
+            <property name="name">
+                <cstring>p1_aborted</cstring>
+            </property>
+        </widget>
+        <widget class="QLCDNumber" row="3" column="5">
+            <property name="name">
+                <cstring>p1_sum</cstring>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>pushButton1</sender>
+        <signal>clicked()</signal>
+        <receiver>Statistics</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton2</sender>
+        <signal>clicked()</signal>
+        <receiver>Statistics</receiver>
+        <slot>accept()</slot>
+    </connection>
+</connections>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
