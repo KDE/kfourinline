@@ -16,7 +16,6 @@
  ***************************************************************************/
 
 // include files for Qt
-#include <kprinter.h>
 #include <qpainter.h>
 #include <stdio.h>
 
@@ -71,15 +70,6 @@ Kwin4Doc *Kwin4View::getDocument() const
   return theApp->getDocument();
 }
 
-void Kwin4View::print(KPrinter *pPrinter)
-{
-  QPainter printpainter;
-  printpainter.begin(pPrinter);
-	
-  // TODO: add your printing code here
-
-  printpainter.end();
-}
 /** Interface to the Paint Event */
 void Kwin4View::Paint(QPainter *p){
 

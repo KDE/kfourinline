@@ -34,7 +34,7 @@
 #include "KEMessage.h"
 #include "KEInput.h"
 
-#define KWIN4_VERSION "v0.9"
+#define KWIN4_VERSION "v0.91"
 
 // forward declaration of the Kwin4 classes
 class Kwin4Doc;
@@ -85,10 +85,10 @@ class Kwin4App : public KMainWindow
     ~Kwin4App();
     /** enables menuentries/toolbar items
      */
-    void enableCommand(int id_);
+    void enableAction(const char *);
     /** disables menuentries/toolbar items
      */
-    void disableCommand(int id_);
+    void disableAction(const char *);
     /** add a opened file to the recent file list and update recent_file_menu
      */
     // void addRecentFile(const QString &file);
@@ -108,15 +108,18 @@ class Kwin4App : public KMainWindow
   bool Move(int x,int id);
   /** Set the names in the mover field */
   void slotStatusNames();
-  /** Uncheck Menuitem */
-  void uncheckCommand(int id);
-  /** Is the menuitem enabled? */
-  bool isEnabled(int id);
   void SetGrafix(QString grafix);
   QString appTitle() {return mAppTitle;}
 
 
   protected:
+  enum CheckFlags {All=0,CheckFileMenu=1,CheckEditMenu=2,CheckOptionsMenu=4,CheckViewMenu=8};
+    /** initGUI creates the menubar and inserts the menupopups as well as creating the helpMenu.
+     * @see KApplication#getHelpMenu
+     */
+    void initGUI();
+    /** Checks all menus..usually done on init programm */
+    void checkMenus(int menu=0);
     /** Create input device */
     bool MakeInputDevice(int i);
 
@@ -130,17 +133,6 @@ class Kwin4App : public KMainWindow
     /** read general Options again and initialize all variables like the recent file list
      */
     void readOptions();
-    /** initKeyAccel creates the keyboard accelerator items for the available slots and changes the menu accelerators.
-     * @see KAccel
-     */
-    void initKeyAccel();
-    /** initMenuBar creates the menubar and inserts the menupopups as well as creating the helpMenu.
-     * @see KApplication#getHelpMenu
-     */
-    void initMenuBar();
-    /** this creates the toolbars.
-     */
-    void initToolBar();
     /** sets up the statusbar for the main window by initialzing a statuslabel.
      */
     void initStatusBar();
@@ -175,8 +167,6 @@ class Kwin4App : public KMainWindow
      * @see KMainWindow#readProperties
      */
     virtual void readProperties(KConfig *_cfg);
-  /** Check a menuitem */
-  void checkCommand(int id);
 
   /** Put game into message */
   void prepareGame(KEMessage *msg);
@@ -190,21 +180,9 @@ class Kwin4App : public KMainWindow
     void slotReceiveInput(KEMessage *msg,int id);
 
 
-    /** Show menus? */
-    void slotFileToShow();
-    void slotEditToShow();
-    void slotOptionsToShow();
-    void slotStartcolorToShow();
-    void slotRedToShow();
-    void slotYellowToShow();
-    void slotLevelToShow();
 
     void slotHelpAbout();
 
-    /** switch argument for slot selection by menu or toolbar ID */
-    void commandCallback(int id_);
-    /** switch argument for Statusbar help entries on slot selection. Add your ID's help here for toolbars and menubar entries. */
-    void statusCallback(int id_);
     /** open a new application window by creating a new instance of Kwin4App */
     // void slotFileNewWindow();
     /** clears the document in the actual view to reuse it as the new document */
@@ -226,9 +204,6 @@ class Kwin4App : public KMainWindow
     void slotEditUndo();
     /** Redo move */
     void slotEditRedo();
-    /** toggles the toolbar
-     */
-    void slotViewToolBar();
     /** toggles the statusbar
      */
     void slotViewStatusBar();
@@ -236,15 +211,18 @@ class Kwin4App : public KMainWindow
      * @param text the text that is displayed in the statusbar
      */
     /** changes the start coulour */
+    void slotStartplayer();
     void slotStartcolourRed();
     void slotStartcolourYellow();
+    void slotPlayer1By();
+    void slotPlayer2By();
     void slotYellowPlayer();
     void slotYellowComputer();
     void slotYellowRemote();
     void slotRedPlayer();
     void slotRedComputer();
     void slotRedRemote();
-    void slotLevel(int i);
+    void slotLevel();
     void slotOptionsNames();
     void slotOptionsAnimations();
     int slotOptionsNetwork();
@@ -269,25 +247,7 @@ class Kwin4App : public KMainWindow
     KConfig *config;
     /** the key accelerator container */
     KAccel *keyAccel;
-    /** file_menu contains all items of the menubar entry "File" */
-    QPopupMenu *fileMenu;
-    /** the recent file menu containing the last five opened files */
-    // QPopupMenu *recentFilesMenu;
-    /** edit_menu contains all items of the menubar entry "Edit" */
-    QPopupMenu *editMenu;
-    /** view_menu contains all items of the menubar entry "View" */
-    QPopupMenu *viewMenu;
-    /** options_menu contains all items of the menubar entry "Options" */
-    QPopupMenu *optionsMenu;
-    /** And its submenues */
-    QPopupMenu *popStartcolor;
-    QPopupMenu *popLevel;
-    QPopupMenu *popYellow;
-    QPopupMenu *popRed;
 
-
-    /** help_menu contains all items of the menubar entry "Help" */
-    QPopupMenu *helpMenu_;
     /** view is the main widget which represents your working area. The View
      * class should handle all events of the view widget.  It is kept empty so
      * you can create your view according to your application's needs by
@@ -304,6 +264,10 @@ protected slots: // Protected slots
   /** Triggers the status timer */
   void slotStatusTimer(void);
   void slotBlinkTimer(void);
+  /**
+   *  Writes ready into the statusbar
+   */
+  void slotClearStatusMsg();
 protected: // Protected attributes
   /**  */
   /** Counts the time in the status bar */
