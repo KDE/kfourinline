@@ -343,15 +343,26 @@ bool Kwin4Doc::IsIntro(){
 void Kwin4Doc::moveDone(QCanvasItem *item,int )
 {
   kdDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
+  Debug();
+  for (KPlayer* p=playerList()->first(); p!= 0; p=playerList()->next() )
+  {
+    p->Debug();
+  }
+  kdDebug() << "111"<<endl;
 
-  playerInputFinished(getPlayer(QueryCurrentPlayer()));
+  if (playerCount()>1)
+    playerInputFinished(getPlayer(QueryCurrentPlayer()));
+  kdDebug() << "222"<<endl;
 
   pView->clearError();
+  kdDebug() << "333"<<endl;
 
   KSprite *sprite=(KSprite *)item;
   sprite->deleteNotify();
+  kdDebug() << "444"<<endl;
 
-  emit signalNextPlayer();
+  if (playerCount()>1)
+    emit signalNextPlayer();
   kdDebug() << "signalNextPlayer" << endl;
 }
 
@@ -1316,8 +1327,49 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
     RedoMove();
     cnt--;
   }
-
   return res;
+}
+
+void Kwin4Doc::newPlayersJoin(KGamePlayerList *oldList,KGamePlayerList *newList,QValueList<int> &inactivate)
+{
+  kdDebug() << "newPlayersJoin:"<<endl;
+  Kwin4Player *yellow=getPlayer(Gelb);
+  Kwin4Player *red=getPlayer(Rot);
+  KPlayer *player;
+  // Take the master player with the higher priority. Prioirty is set
+  // be the network dialog
+  if (yellow->networkPriority()>red->networkPriority())
+  {
+    // Deactivate the lower one 
+    inactivate.append(red->id());
+    kdDebug() << "Deactivate S1 " << red->id()<<" col="<<red->userId()<<endl;
+    // loop all client players and deactive the one which have the color
+    // yellow
+    for ( player=newList->first(); player != 0; player=newList->next() ) 
+    {
+      if (player->userId()==yellow->userId()) 
+      {
+        inactivate.append(player->id());
+        kdDebug() << "Deactivate C1 " << player->id()<<" col="<<player->userId()<<endl;
+      }
+    }
+  }
+  else
+  {
+    // Deactivate the lower one 
+    inactivate.append(yellow->id());
+    kdDebug() << "Deactivate S2 " << yellow->id()<<" col="<<yellow->userId()<<endl;
+    // loop all client players and deactive the one which have the color
+    // red
+    for ( player=newList->first(); player != 0; player=newList->next() ) 
+    {
+      if (player->userId()==red->userId()) 
+      {
+        inactivate.append(player->id());
+        kdDebug() << "Deactivate C2 " << player->id()<<" col="<<player->userId()<<endl;
+      }
+    }
+  }
 }
 
 #include "kwin4doc.moc"

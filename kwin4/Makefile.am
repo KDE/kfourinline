@@ -3,7 +3,7 @@ CPPFLAGS = -DSRCDIR="\"$(shell (cd $(srcdir) && pwd))\""
 
 bin_PROGRAMS = kwin4 kwin4proc
 kwin4_SOURCES = msgdlg.cpp kwin4aboutdlg.cpp statdlg.cpp \
-                networkdlg.cpp namedlg.cpp geom.cpp kwin4view.cpp kwin4doc.cpp kwin4.cpp \
+                namedlg.cpp geom.cpp kwin4view.cpp kwin4doc.cpp kwin4.cpp \
                 main.cpp kwin4player.cpp kspritecache.cpp scorewidget.cpp \
                 kwlabel.cpp statuswidget.cpp
 kwin4_LDADD   = $(LIB_KFILE) $(top_builddir)/libkdegames/libkdegames.la

@@ -25,6 +25,7 @@
 
 // include files for Qt
 #include <qstrlist.h>
+#include <qvbuttongroup.h>
 
 // include files for KDE 
 #include <kapplication.h>
@@ -179,6 +180,7 @@ class Kwin4App : public KMainWindow
     virtual void readProperties(KConfig *_cfg);
 
   public slots:
+    void slotServerTypeChanged(int t);
     void slotRemoteChanged(int who);
     void slotGameOver(int status, KPlayer * p, KGame * me);
     void slotMoveDone(int x, int y);
@@ -266,6 +268,7 @@ class Kwin4App : public KMainWindow
      */
     Kwin4Doc *doc;
     QString mAppTitle;
+    QVButtonGroup *mColorGroup;
 
 protected slots: // Protected slots
   /** Triggers the status timer */

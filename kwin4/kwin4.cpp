@@ -25,7 +25,6 @@
 //#include <qbuffer.h>
 //#include <qlayout.h>
 #include <qhgroupbox.h>
-#include <qvbuttongroup.h>
 #include <qvbox.h>
 #include <qradiobutton.h>
 
@@ -369,8 +368,6 @@ void Kwin4App::initGUI()
                        actionCollection(), "file_chat");
   (void)new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
                        actionCollection(), "file_debug");
-  (void)new KAction(i18n("Debug Disconnect"), 0, this, SLOT(slotDisconnect()),
-                       actionCollection(), "file_disconnect");
 
 
 
@@ -652,8 +649,11 @@ void Kwin4App::slotOpenFile()
 {
   QString dir,filter,file;
   // Avoid file dialog
-  if (global_debug>10) file="/tmp/kwin.save";
-  else file=KFileDialog::getOpenFileName(dir,filter,this);
+
+  // TODO openfiledlg gives link error
+  file="/tmp/kwin.save";
+  // if (global_debug>10) file="/tmp/kwin.save";
+  // else file=KFileDialog::getOpenFileName(dir,filter,this);
   kdDebug() << "slotOpenFile File="<<file<<endl;
   doc->load(file,true);
   kdDebug() << "slot open file done" << endl;
@@ -664,9 +664,11 @@ void Kwin4App::slotSaveFile()
   kdDebug() << "slotSaveFile" << endl;
   kdDebug() << "4000="<<((KGamePropertyInt *)(doc->findProperty(4000)))->value() << endl;
   QString dir,filter,file;
+  // TODO savefiledialog gives link error
   // Avoid file dialog
-  if (global_debug>10) file="/tmp/kwin.save";
-  else file=KFileDialog::getSaveFileName(dir,filter,this);
+  file="/tmp/kwin.save";
+  //if (global_debug>10) file="/tmp/kwin.save";
+  //else file=KFileDialog::getSaveFileName(dir,filter,this);
   kdDebug() << "File="<<file<<endl;
   doc->save(file);
 
@@ -1293,27 +1295,20 @@ void Kwin4App::slotInitNetwork()
 
  // just for testing - should be non-modal
   KGameDialog dlg(doc, 0, i18n("Configuration"), this,
-   KGameDialog::NetworkConfig, 20000, true);
+      KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
 
   QVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
-  /*
-  QVBoxLayout *layout=(QVBoxLayout *)(dlg.networkConfig()->layout());
-  kdDebug() << "Kwin4App::layout=" <<layout<< endl;
-  */
-
   QVBoxLayout *l=(QVBoxLayout *)(box->layout());
-  kdDebug() << "Kwin4App::layout=" <<l<< endl;
 
-  QVButtonGroup *group=new QVButtonGroup(box);
-  kdDebug() << "group="<<group<<endl;
-  connect(group, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
+  mColorGroup=new QVButtonGroup(box);
+  connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
+  connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(slotServerTypeChanged(int)));
 
-
-  (void)new QRadioButton(i18n("Yellow should be played by remote"), group);
-  (void)new QRadioButton(i18n("Red should be played by remote"), group);
-  l->addWidget(group);
-  group->setButton(0);
+  (void)new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
+  (void)new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
+  l->addWidget(mColorGroup);
+  mColorGroup->setButton(0);
   slotRemoteChanged(0);
 
 
@@ -1326,6 +1321,18 @@ void Kwin4App::slotInitNetwork()
   mDialog->show();*/
 }
 
+void Kwin4App::slotServerTypeChanged(int t)
+{
+  kdDebug() << "slotServerTypeChanged="<<t<<endl;
+  if (t==0)
+  {
+    mColorGroup->setEnabled(true);
+  }
+  else
+  {
+    mColorGroup->setEnabled(false);
+  }
+}
 void Kwin4App::slotRemoteChanged(int button)
 {
   kdDebug() << "Remote changed to "<<button<<endl;

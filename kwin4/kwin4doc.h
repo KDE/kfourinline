@@ -191,8 +191,7 @@ class Kwin4Doc : public KGame
   KPlayer *createPlayer(int rtti,int io,bool isvirtual);
   KPlayer * nextPlayer(KPlayer *last,bool exclusive=true);
 
-
-
+  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QValueList<int> &);
 
   protected:
 

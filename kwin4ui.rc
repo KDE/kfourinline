@@ -8,7 +8,6 @@
     <Action name="end_game"/>
     <Separator />
     <Action name="file_network"/>
-    <Action name="file_disconnect"/>
     <Action name="file_chat"/>
     <Action name="file_debug"/>
     <Separator />
