@@ -32,6 +32,7 @@
  ***************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <kdebug.h>
 #include "KInteractiveConnect.h"
 
 #include "KInteractiveConnect.moc"

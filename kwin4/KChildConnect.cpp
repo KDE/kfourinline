@@ -15,6 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 #include <stdio.h>
+#include <kdebug.h>
 #include "KChildConnect.h"
 
 #include "KChildConnect.moc"

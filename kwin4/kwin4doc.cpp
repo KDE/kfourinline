@@ -28,6 +28,7 @@
 #include <kmessagebox.h>
 #include <kconfig.h>
 #include <kstddirs.h>
+#include <kdebug.h>
 
 // application specific includes
 #include "kwin4doc.h"

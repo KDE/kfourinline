@@ -31,6 +31,7 @@
  *                                                                         *
  ***************************************************************************/
 #include <stdio.h>
+#include <kdebug.h>
 #include "KProcessConnect.h"
 
 #include "KProcessConnect.moc"
