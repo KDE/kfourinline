@@ -1,9 +1,9 @@
-<!DOCTYPE book PUBLIC  "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN" [
+<?xml version="1.0" ?><!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&kwin4;">
   <!ENTITY % English "INCLUDE"> 
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % ents PUBLIC "-//KDE//ENTITIES Documentation V1.0//EN">
- %ents;
+  
+ 
 ]>
 
 <book lang="&language;">
@@ -335,7 +335,7 @@ If this menu item is selected your computer tries to behave as game network serv
 
 <variablelist>
 <varlistentry>
-<term><anchor id="contents"><menuchoice>
+<term><anchor id="contents"/><menuchoice>
 <shortcut><keycombo><keycap>F1</keycap></keycombo></shortcut>
 <guimenu>Help</guimenu><guimenuitem>Contents</guimenuitem></menuchoice></term>
 <listitem>
@@ -344,7 +344,7 @@ If this menu item is selected your computer tries to behave as game network serv
 </varlistentry>
 
 <varlistentry>
-<term><anchor id="bug-report"><menuchoice>
+<term><anchor id="bug-report"/><menuchoice>
 <guimenu>Help</guimenu><guimenuitem>Report Bug.</guimenuitem></menuchoice></term>
 <listitem><para>If you find an error in the program, or you have an idea on how
 to improve the game, clicking this option will let you send an official bug
@@ -354,7 +354,7 @@ report to the KDE team.</para>
 </varlistentry>
 
 <varlistentry>
-<term><anchor id="about-kwin4"><menuchoice>
+<term><anchor id="about-kwin4"/><menuchoice>
 <guimenu>Help</guimenu><guimenuitem>About kwin4</guimenuitem></menuchoice></term>
 <listitem>
 <para>This will display version and author information.</para>
@@ -362,7 +362,7 @@ report to the KDE team.</para>
 </varlistentry>
 
 <varlistentry>
-<term><anchor id="about-kde"><menuchoice>
+<term><anchor id="about-kde"/><menuchoice>
 <guimenu>Help</guimenu><guimenuitem>About KDE</guimenuitem></menuchoice></term>
 <listitem>
 <para>This displays the KDE version and other basic information.</para>
@@ -392,7 +392,7 @@ Documentation copyright 2000 Martin Heni <email>martin@heni-online.de</email>
 
 </chapter>
 
-<![ %addindex; [ &documentation.index; ]]>
+&documentation.index; 
 </book>
 <!--
 Local Variables:
@@ -401,3 +401,4 @@ sgml-minimize-attributes: nil
 sgml-general-insert-case: lower
 End:
 -->
+
