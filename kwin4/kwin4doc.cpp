@@ -742,8 +742,7 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   mHost=config->readEntry("host","localhost");
   mPort=(unsigned short)config->readNumEntry("port",7442);
   procfile=config->readEntry("process","kproc4");
-  procfile="/local/heni/cvs/kdegames/kwin4/kproc4/kproc4";
-  printf("Procfile=%s\n",procfile.latin1());
+  if (global_debug>1) kdDebug() << "Process file=" << procfile << endl;
   Names[Gelb]=config->readEntry("Name1","Player 1");
   Names[Rot]=config->readEntry("Name2","Player 2");
 
