@@ -1,5 +1,5 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="standard_containers" version="4">
+<kpartgui name="standard_containers" version="5">
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
     <Action name="new_game"/>
@@ -17,7 +17,7 @@
     <Separator />
     <Action name="game_exit"/>
   </Menu>
-  <Menu name="options"><text>&amp;Options</text>
+  <Menu name="settings"><text>&amp;Settings</text>
     <Action name="startplayer"/>
     <Action name="player1"/>
     <Action name="player2"/>

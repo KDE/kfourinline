@@ -30,7 +30,6 @@
 // include files for KDE 
 #include <kapplication.h>
 #include <kmainwindow.h>
-#include <kaccel.h>
 #include <kgame.h>
 #include <kgameio.h>
 #include <kplayer.h>
@@ -300,6 +299,8 @@ protected slots: // Protected slots
    *  Writes ready into the statusbar
    */
   void slotClearStatusMsg();
+
+  void slotKeyBindings();
 protected: // Protected attributes
   /**  */
   /** Counts the time in the status bar */

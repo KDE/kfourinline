@@ -39,6 +39,7 @@
 #include <kdebug.h>
 #include <kstdaction.h>
 #include <kaction.h>
+#include <kkeydialog.h>
 
 #include <kchatdialog.h>
 #include <kgamechat.h>
@@ -469,6 +470,8 @@ void Kwin4App::initGUI()
   actionCollection()->setHighlightingEnabled(true);
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusMsg()));
+
+  KStdAction::keyBindings(this, SLOT(slotKeyBindings()), actionCollection());
 
   KHelpMenu *helpMenu = new KHelpMenu(this, 0, true, actionCollection());
   connect( helpMenu, SIGNAL(showAboutApplication()), this, SLOT(slotHelpAbout()));
@@ -1305,7 +1308,10 @@ void Kwin4App::slotDebugKGame()
  d->show();
 }
 
-
+void Kwin4App::slotKeyBindings()
+{
+ KKeyDialog::configure(actionCollection(), this);
+}
 
 
 #include "kwin4.moc"
