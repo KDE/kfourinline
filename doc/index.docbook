@@ -389,7 +389,7 @@ Documentation copyright 2000 Martin Heni <email>martin@heni-online.de</email>
 
 </chapter>
 
-<![ %addindex; [ &kdedocindex; ]]>
+<![ %addindex; [ &documentation.index; ]]>
 </book>
 <!--
 Local Variables:
