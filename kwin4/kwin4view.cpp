@@ -20,16 +20,15 @@
 
 #include <klocale.h>
 #include <math.h>
+#include <kconfig.h>
 
 // application specific includes
 #include "kwin4view.h"
 #include "kwin4doc.h"
-#include "kwin4.h"
 #include "geom.h"
 #include "scorewidget.h"
 #include "statuswidget.h"
-
-
+#include "kspritecache.h"
 
 // lightGray
 #define COL_STATUSBORDER black

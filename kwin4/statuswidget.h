@@ -2,7 +2,7 @@
 #define _STATUSWIDGET_H
 
 #include <qwidget.h>
-#include "kwlabel.h"
+class KWLabel;
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 
@@ -34,4 +34,5 @@ protected:
     KWLabel* Label[3][6];
 };
 
-#endif 
+#endif  // _STATUSWIDGET_H
+

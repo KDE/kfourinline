@@ -39,3 +39,4 @@ protected:
 };
 
 #endif // NAMEDLG_H
+

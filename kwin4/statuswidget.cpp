@@ -1,8 +1,8 @@
 #include "statuswidget.h"
+#include "kwlabel.h"
 
 #include <qlayout.h>
 #include <qpainter.h>
-#include <qsizepolicy.h>
 #include <kdebug.h>
 #include <klocale.h>
 

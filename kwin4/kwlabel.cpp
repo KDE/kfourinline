@@ -17,7 +17,6 @@
 
 #include "kwlabel.h"
 #include <kdebug.h>
-#include <qpalette.h>
 #include <qstyle.h>
 
 KWLabel::KWLabel( QWidget * parent, const char * name, WFlags f ) :

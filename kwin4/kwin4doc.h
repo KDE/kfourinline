@@ -22,24 +22,16 @@
 #include <config.h>
 #endif 
 
-// include files for QT
-#include <qstring.h>
-
 // KGame includes
 #include <kgame.h>
-#include <kplayer.h>
 #include <kgameio.h>
 #include <kgamepropertyarray.h>
-#include <kgameproperty.h>
-
 
 #include "kwin4.h"
 #include "kwin4player.h"
 
 #define WIN_VALUE 9999000L
 #define NOOFPLAYER  2
-
-
 
 // forward declaration of the Kwin4 classes
 class Kwin4View;
@@ -279,3 +271,4 @@ class Kwin4Doc : public KGame
 };
 
 #endif // KWIN4DOC_H
+

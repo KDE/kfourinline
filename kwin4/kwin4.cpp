@@ -22,6 +22,7 @@
 #include <qhgroupbox.h>
 #include <qvbox.h>
 #include <qradiobutton.h>
+#include <qvbuttongroup.h>
 
 // include files for KDE
 #include <kapplication.h>

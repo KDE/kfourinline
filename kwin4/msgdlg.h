@@ -16,9 +16,10 @@
  ***************************************************************************/
 #ifndef __MSGDLG_H_
 #define __MSGDLG_H_
-#include <qmultilineedit.h>
-#include <qstring.h>
+
 #include <qdialog.h>
+
+class QMultiLineEdit;
 
 class MsgDlg : public QDialog
 {
@@ -28,12 +29,12 @@ class MsgDlg : public QDialog
    MsgDlg (QWidget* parent = NULL,const char* name = NULL,const char *sufi=NULL);
    QString GetMsg();
 
-protected slots:
+  protected slots:
 
-protected:
-  QMultiLineEdit *MultiLine;
-
-
+  protected:
+    QMultiLineEdit *MultiLine;
 
 };
-#endif
+
+#endif // __MSGDLG_H_
+

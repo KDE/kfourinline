@@ -17,7 +17,6 @@
 
 
 // include files for KDE
-#include <klocale.h>
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kgamepropertyhandler.h>

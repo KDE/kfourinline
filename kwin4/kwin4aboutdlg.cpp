@@ -1,9 +1,7 @@
 #include "kwin4aboutdlg.h"
 
-#include <qframe.h>
 #include <qlabel.h>
 #include <qlayout.h>
-#include <qpixmap.h>
 #include <klocale.h>
 
 #include "kwin4.h"

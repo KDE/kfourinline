@@ -19,7 +19,6 @@
 #define KWLABEL_H
 
 #include <qlabel.h>
-#include <qcolor.h>
 
 class KWLabel : public QLabel
 { 
@@ -38,4 +37,5 @@ private:
 
 };
 
-#endif 
+#endif  // KWLABEL_H
+

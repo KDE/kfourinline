@@ -14,15 +14,15 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+
+#include "kwin4proc.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
-#include <math.h>
 #include <kgamemessage.h>
-#include <kplayer.h>
-
-#include "kwin4proc.h"
+#include <kdebug.h>
 
 #define MIN_TIME 1  // sec
 

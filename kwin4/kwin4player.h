@@ -22,12 +22,7 @@
 #include <config.h>
 #endif 
 
-// include files for QT
-#include <qstring.h>
-
-// KGame includes
 #include <kplayer.h>
-#include <kgameproperty.h>
 
 class StatusWidget;
 class KConfig;
@@ -78,3 +73,4 @@ class Kwin4Player : public KPlayer
 };
 
 #endif // KWIN4PLAYER_H
+

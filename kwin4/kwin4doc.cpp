@@ -15,12 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
-#include <stdlib.h>
-#include <time.h>
-
 // include files for Qt
 #include <qdir.h>
-#include <qfileinfo.h>
+#include <qtimer.h>
 
 // include files for KDE
 #include <klocale.h>
@@ -28,18 +25,14 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <krandomsequence.h>
-#include <qcanvas.h>
+#include <kapplication.h>
 
 // application specific includes
 #include "kspritecache.h"
 #include "kwin4doc.h"
-#include "kwin4.h"
 #include "kwin4view.h"
 #include "geom.h"
 #include "scorewidget.h"
-#include "statuswidget.h"
-
-#include <kgameio.h>
 
 
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent)

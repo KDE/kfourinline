@@ -18,8 +18,15 @@
 #ifndef KENDDLG_H
 #define KENDDLG_H
 
-#include <qvariant.h>
+
+/****
+
+WHY IS THIS CLASS HERE?  IT ISN"T BUILT....
+
+***/
+
 #include <qdialog.h>
+
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 

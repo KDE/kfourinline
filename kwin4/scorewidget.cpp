@@ -1,4 +1,5 @@
 #include "scorewidget.h"
+#include "kwlabel.h"
 
 #include <qlayout.h>
 #include <qpainter.h>

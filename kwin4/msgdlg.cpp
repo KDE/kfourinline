@@ -28,13 +28,12 @@
 
 */
 
+#include "msgdlg.h"
 #include <qgroupbox.h>
 #include <klocale.h>
 #include <kpushbutton.h>
 #include <kstdguiitem.h>
-#include "msgdlg.h"
-
-
+#include <qmultilineedit.h>
 
 // Create the dialog for changing the player names
 MsgDlg::MsgDlg( QWidget *parent, const char *name,const char * /*sufi*/ )

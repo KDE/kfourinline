@@ -1,8 +1,6 @@
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
-#include <qobject.h>
-#include <qdatastream.h>
 #include <kgameprocess.h>
 
 /**
@@ -68,4 +66,5 @@ private:
 
 };
 
-#endif
+#endif // _KWIN4PROC_H_
+

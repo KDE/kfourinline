@@ -22,19 +22,13 @@
 #include <config.h>
 #endif 
 
-// include files for Qt
-#include <qwidget.h>
 #include <qcanvas.h>
-//#include <kprinter.h>
-//
-
 #include <kgameio.h>
-#include "kspritecache.h"
-
 
 class Kwin4Doc;
 class ScoreWidget;
 class StatusWidget;
+class KSpriteCache;
 
 /** The Kwin4View class provides the view widget for the Kwin4App instance.	
  * The View instance inherits QWidget as a base class and represents the view object of a KTMainWindow. As Kwin4View is part of the
@@ -123,3 +117,4 @@ private:
 };
 
 #endif // KWIN4VIEW_H
+

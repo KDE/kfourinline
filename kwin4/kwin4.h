@@ -18,34 +18,28 @@
 #ifndef KWIN4_H
 #define KWIN4_H
  
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
 
-// include files for Qt
-#include <qvbuttongroup.h>
-
 // include files for KDE 
 #include <kmainwindow.h>
-#include <kgame.h>
-#include <kgameio.h>
-#include <kplayer.h>
 #include <kdialogbase.h>
-
 
 #define KWIN4_VERSION "v1.00"
 
 // forward declaration of the Kwin4 classes
+class KGame;
+class KPlayer;
 class KGameChat;
 class KChatDialog;
 class Kwin4Doc;
 class Kwin4View;
 class Geom;
 class Kwin4Player;
+class QVButtonGroup;
 
 extern int global_debug;
-
 
 typedef enum  {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;

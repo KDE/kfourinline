@@ -16,10 +16,11 @@
 
 #ifndef _KSPRITECACHE_H
 #define _KSPRITECACHE_H
+
 #include <qcanvas.h>
 #include <qdict.h>
-#include <qstring.h>
-#include <kconfig.h>
+
+class KConfig;
 
 class KSprite;
 

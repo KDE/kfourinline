@@ -19,9 +19,7 @@
 #ifndef __GEOM_H_
 #define __GEOM_H_
 
-#include <qpoint.h>
 #include <qobject.h>
-#include <qrect.h>
 
 class Geom : public QObject
 {
@@ -58,7 +56,7 @@ class Geom : public QObject
 class Geom geom;
 #else
 extern class Geom geom;
+#endif // _GEOM_C_
+
 #endif
 
-
-#endif

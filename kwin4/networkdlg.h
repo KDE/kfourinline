@@ -1,9 +1,6 @@
 #ifndef NETWORKDLG_H
 #define NETWORKDLG_H
 
-#include <qvariant.h>
-#include <qdialog.h>
-#include <kdialogbase.h>
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 

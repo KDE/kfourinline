@@ -1,8 +1,8 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          Kwin4  -  Four in a Row for KDE
                              -------------------
-    begin                : Sun Mar 26 12:50:12 CEST 2000
-    copyright            : (C) |1995-2000 by Martin Heni
+    begin                : March 2000 
+    copyright            : (C) 1995-2001 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
 
@@ -14,16 +14,13 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include <stdio.h>
-#include <qstring.h>
+
+#include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <klocale.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
-#include <stdlib.h>
 
 #include "kwin4.h"
-
 
 static KCmdLineOptions options[] =
 {
@@ -36,13 +33,13 @@ int global_debug;
 int main(int argc, char *argv[])
 {
   global_debug=0;
-  KAboutData *aboutData=new KAboutData( "kwin4", I18N_NOOP("KWin4"),
+  KAboutData aboutData( "kwin4", I18N_NOOP("KWin4"),
                         KWIN4_VERSION,
                         I18N_NOOP("KWin4: Two player network game"),
                         KAboutData::License_GPL,
                         "(c) 1995-2000, Martin Heni");
-  aboutData->addAuthor("Martin Heni",0, "martin@heni-online.de");
-  KCmdLineArgs::init( argc, argv, aboutData );
+  aboutData.addAuthor("Martin Heni",0, "martin@heni-online.de");
+  KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 
   /* command line handling */
@@ -50,24 +47,14 @@ int main(int argc, char *argv[])
 
   if (args->isSet("debug"))
   {
-    global_debug=atoi(QString(args->getOption("debug")).latin1() );
+    global_debug=QString(args->getOption("debug")).toInt();
     kdDebug(12010) << "Debug level set to " << global_debug << endl;
   }
   args->clear();
 
-   //  KApplication app(argc, argv, "kwin4");
-   KApplication app;
-   KGlobal::locale()->insertCatalogue("libkdegames");
-
-   /*
-   QStringList list=app.dirs()->allTypes();
-   QStringList list=app.dirs()->findDirs("data","kwin4");
-          // print it out
-        for ( QStringList::Iterator it = list.begin(); it != list.end(); ++it ) {
-            printf( "%s \n", (*it).latin1() );
-        }
-   */
-
+  //  KApplication app(argc, argv, "kwin4");
+  KApplication app;
+  KGlobal::locale()->insertCatalogue("libkdegames");
 
   if (app.isRestored())
   {
@@ -76,10 +63,10 @@ int main(int argc, char *argv[])
   else
   {
     Kwin4App *kwin4 = new Kwin4App();
+    app.setMainWidget(kwin4);
     kwin4->show();
   }
 
-  int result=app.exec();
-  delete aboutData;
-  return result;
+  return app.exec();
 }
+

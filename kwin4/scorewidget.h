@@ -2,11 +2,11 @@
 #define _SCOREWIDGET_H
 
 #include <qwidget.h>
-#include "kwlabel.h"
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 
 class QGroupBox;
+class KWLabel;
 
 class ScoreWidget : public QWidget
 { 
@@ -42,4 +42,5 @@ protected:
     QGridLayout* LayoutB;
 };
 
-#endif 
+#endif // _SCOREWIDGET_H
+
