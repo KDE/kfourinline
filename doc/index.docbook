@@ -25,6 +25,8 @@
 <contrib>Reviewer</contrib>
 <affiliation><address><email></email></address></affiliation>
 </othercredit>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
 </authorgroup>
 
 <date>12/12/2000</date>
@@ -383,6 +385,7 @@ Program copyright 1995-2000 Martin Heni <email>martin@heni-online.de</email>
 <para>
 Documentation copyright 2000 Martin Heni <email>martin@heni-online.de</email>
 </para>
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
 &underGPL;
