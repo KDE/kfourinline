@@ -140,6 +140,7 @@ z=150.0
 
 [win4about]
 file=introabout.png
+mask=introabout_mask.png
 rtti=32
 x=170.0
 x2=340.0
