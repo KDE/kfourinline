@@ -91,6 +91,12 @@ class Kwin4View : public QCanvasView
    **/
     void slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *e,bool *eatevent);
 
+  /**
+   * This slot is called when a key event is received. It then prduces a
+   * valid move for the game.
+   **/
+    void slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent);
+
     /** 
     * received after the movment of an intro sprite is finished
     **/
@@ -98,6 +104,7 @@ class Kwin4View : public QCanvasView
  	
   protected:
   void resizeEvent(QResizeEvent *e);
+  bool wrongPlayer(KPlayer *player,KGameIO::IOMode io);
 
 
 	

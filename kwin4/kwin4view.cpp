@@ -536,9 +536,71 @@ void Kwin4View::setArrow(int x,int color)
 }
 
 
+/** Error message if the wrong player moved */
+bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
+{
+    // Hack to find out whether there is a IO Device whose turn it is
+    KGame::KGamePlayerList *playerList=getDocument()->playerList();
+    KPlayer *p;
 
+    bool flag=false;
+    for ( p=playerList->first(); p!= 0; p=playerList->next() )
+    {
+      if (p==player) continue;
+      if (p->hasRtti(io) && p->myTurn()) flag=true;
+    }
 
+    if (flag) return false;
+    
+    clearError();
+    int rnd=getDocument()->Random(4)+1;
+    QString m;
+    m=QString("text%1").arg(rnd);
+    QString ms;
+    if (rnd==1)      ms=i18n("Hold on..the other was not yet gone..."); 
+    else if (rnd==2) ms=i18n("Hold your horses..."); 
+    else if (rnd==3) ms=i18n("Ah ah ah...only one go at a time..."); 
+    else             ms=i18n("Please wait... it is not your turn."); 
 
+    // TODO MH can be unique
+    QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
+    if (text)
+    {
+      text->setText(ms);
+      text->show();
+    }
+    return true;
+}
+
+// This is analogous to the mouse event only it is called when a key is
+// pressed
+void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
+{
+  if (!getDocument()->isRunning()) return;
+  //kdDebug() << "KEY EVENT" << e->ascii() << endl;
+
+  // Our player
+  KPlayer *player=input->player();
+  if (!player->myTurn())
+  {
+    *eatevent=wrongPlayer(player,KGameIO::KeyIO);
+    return;
+  }
+
+  int code=e->ascii();
+  if (code<'1' || code>'7')
+  {
+    //kdDebug() << "Key not supported\n";
+    return ;
+  }
+
+  // Create a move
+  Q_INT32 move,pl;
+  move=code-'1';
+  pl=player->userId();
+  stream << pl << move;
+  *eatevent=true;
+}
 
 
 
@@ -560,45 +622,8 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   KPlayer *player=input->player();
   if (!player->myTurn())
   {
-    // Hack to find out whether there is a IO Device whose turn it is
-    KGame::KGamePlayerList *playerList=getDocument()->playerList();
-    KPlayer *p;
-
-    bool flag=false;
-    for ( p=playerList->first(); p!= 0; p=playerList->next() )
-    {
-      if (p==player) continue;
-      if (p->hasRtti(KGameIO::MouseIO) && p->myTurn()) flag=true;
-    }
-
-    //kdDebug() << "$$$$$$$$$$$$$$$$$$$GameWindow:: not my turn. $$$$$$$$$$$ FLAG=" << flag << endl;
-    // If there is another MouseIO we whose turn it is we assume 
-    // that the mouse event goes to them. Otherwise we issue an error
-    if (flag) return;
-    
-    clearError();
-    int rnd=getDocument()->Random(4)+1;
-    QString m;
-    m=QString("text%1").arg(rnd);
-    QString ms;
-    if (rnd==1)      ms=i18n("Hold on..the other was not yet gone..."); 
-    else if (rnd==2) ms=i18n("Hold your horses..."); 
-    else if (rnd==3) ms=i18n("Ah ah ah...only one go at a time..."); 
-    else             ms=i18n("Please wait... it is not your turn."); 
-
-    //kdDebug() << "Loading sprite "<< m << endl;
-    // TODO MH can be unique
-    QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
-    if (text)
-    {
-      text->setText(ms);
-      text->show();
-    }
-
-
-    // We eat the event as we are sure it is nonsense
-    *eatevent=true;
-    return ;
+    *eatevent=wrongPlayer(player,KGameIO::MouseIO);
+    return;
   }
 
   if (mouse->button()!=LeftButton) return ;
@@ -620,7 +645,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   Q_INT32 move,pl;
   move=x;
   pl=player->userId();
-  stream << pl << x;
+  stream << pl << move;
   *eatevent=true;
   // kdDebug() << "Mouse input done..eatevent=true" << endl;
 }

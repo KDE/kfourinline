@@ -135,6 +135,9 @@ Kwin4App::Kwin4App() : KMainWindow(0)
   config=kapp->config();
   mAppTitle=i18n("Four wins");
 
+  kdDebug() <<" VERSION " << VERSION << endl;
+
+
 
    // localise data file
 #ifdef SRCDIR
@@ -147,7 +150,13 @@ Kwin4App::Kwin4App() : KMainWindow(0)
    mGrafix=kapp->dirs()->findResourceDir("data",file);
    if (mGrafix.isNull()) mGrafix="grafix/default/";
    else mGrafix+="kwin4/grafix/default/";
-   if (global_debug>3) kdDebug() << "Localised datafile " << mGrafix << endl;
+   if (global_debug>3) kdDebug() << "Localised grafix dir " << mGrafix << endl;
+
+   // Allow overriding of the grafix directory
+   // This is a cheap and dirty way for theming
+   config->setGroup("Themes");
+   mGrafix = config->readEntry("grafixdir", mGrafix);
+   kdDebug() << "Localised mGrafix " << mGrafix << endl;
 
 
   ///////////////////////////////////////////////////////////////////
@@ -297,7 +306,7 @@ void Kwin4App::checkMenus(int menu)
     else
         ((KSelectAction *)ACTION("player1"))->setCurrentItem(2);
 
-    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Gelb)
+    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Rot)
     {
       disableAction("player1");
     }
@@ -313,7 +322,7 @@ void Kwin4App::checkMenus(int menu)
     else
         ((KSelectAction *)ACTION("player2"))->setCurrentItem(2);
 
-    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Rot)
+    if (doc->IsRunning() && doc->QueryCurrentPlayer()==Gelb)
     {
       disableAction("player2");
     }
@@ -884,8 +893,7 @@ void Kwin4App::slotYellowComputer()
 }
 void Kwin4App::slotYellowKeyboard()
 {
-  kdWarning() << "Keyboard not yet supported" << endl;
-  // doc->setPlayedBy(Gelb,(KGameIO::IOMode)0);
+  doc->setPlayedBy(Gelb,KGameIO::KeyIO);
   checkMenus(CheckOptionsMenu);
 
 }
@@ -903,8 +911,7 @@ void Kwin4App::slotRedComputer()
 }
 void Kwin4App::slotRedKeyboard()
 {
-  //doc->setPlayedBy(Rot,(KGameIO::IOMode)0);
-  kdWarning() << "Keyboard not yet supported" << endl;
+  doc->setPlayedBy(Rot,KGameIO::KeyIO);
   checkMenus(CheckOptionsMenu);
 
 }

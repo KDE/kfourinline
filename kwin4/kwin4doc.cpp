@@ -169,10 +169,6 @@ void Kwin4Doc::initPlayers()
   // last in init
   ResetStat();
   //kdDebug() << "init player done"<<endl;
-
-
-
-
 }
 
 Kwin4Doc::~Kwin4Doc()
@@ -1030,11 +1026,6 @@ void Kwin4Doc::setPlayedBy(int col,KGameIO::IOMode io)
     player->removeGameIO(0); // remove all IO's
     createIO(player,io);
   }
-  /*
-  if (io==0) player->setNetworkPriority(0);
-  else if (io==KGameIO::ProcessIO) player->setNetworkPriority(10);
-  else  player->setNetworkPriority(50);
-  */
 }
 
 void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
@@ -1070,19 +1061,17 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
             this,SLOT(slotProcessQuery(QDataStream &,KGameProcessIO *)));
     player->addGameIO(input);
   }
-
-/*
-    if (io&KGameIO::KeyIO)
-    {
-      kdDebug() << "Creating KEYBOARD IO " << endl;
-      // We want the player to work over keyboard
-      input2=(KGameIO *)new KGameKeyIO(this);
-      // Connect keys input to a function to process the actual input
-      connect((KGameKeyIO *)input2,SIGNAL(signalKeyEvent(KGameIO *,QDataStream &,QKeyEvent *,bool &)),
-              this,SLOT(slotKeyInput(KGameIO *,QDataStream &,QKeyEvent *,bool &)));
-    }
-    */
-  //kdDebug() << "Done b" << endl;
+  else if (io&KGameIO::KeyIO)
+  {
+    kdDebug() << "******Creating KEYBOARD IO " << endl;
+    // We want the player to work over keyboard
+    KGameKeyIO  *input;
+    input=new KGameKeyIO(pView->parentWidget());
+    // Connect keys input to a function to process the actual input
+    connect((KGameKeyIO *)input,SIGNAL(signalKeyEvent(KGameIO *,QDataStream &,QKeyEvent *,bool *)),
+            pView,SLOT(slotKeyInput(KGameIO *,QDataStream &,QKeyEvent *,bool *)));
+    player->addGameIO(input);
+  }
 }
 
 // This slot is called when a computer move should be generated
