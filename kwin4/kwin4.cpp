@@ -27,6 +27,7 @@
 // include files for KDE
 #include <kapplication.h>
 #include <kstandarddirs.h>
+#include <kstdgameaction.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <klocale.h>
@@ -143,7 +144,7 @@ Kwin4App::Kwin4App() : KMainWindow(0), mChat(0), mMyChatDlg(0), view(0), doc(0)
   // call inits to invoke all other construction parts
   initGUI();
   initStatusBar();
-  createGUI(QString::null, false);
+  createGUI();
 
   initDocument();
   initView();
@@ -211,18 +212,6 @@ void Kwin4App::checkMenus(int menu)
       enableAction("edit_redo");
     }
   }
-
-  if (!menu || (menu&CheckOptionsMenu))
-  {
-    /*
-    // Network
-    if (doc->QueryServer()) ((KToggleAction*)ACTION("network_server"))->setChecked(true);
-    else ((KToggleAction*)ACTION("network_server"))->setChecked(false);
-
-    if (doc->QueryBlink()) ((KToggleAction*)ACTION("animations"))->setChecked(true);
-    else ((KToggleAction*)ACTION("animations"))->setChecked(false);
-    */
-  }
 }
 
 /** 
@@ -231,62 +220,48 @@ void Kwin4App::checkMenus(int menu)
  **/
 void Kwin4App::initGUI()
 {
-  QStringList list;
+  KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection(), "new_game");
+  ACTION("new_game")->setStatusText(i18n("Start a new game"));
 
-  (void)KStdAction::openNew(this, SLOT(slotFileNew()), actionCollection(), "new_game");
-  ACTION("new_game")->setStatusText(i18n("Starting a new game..."));
-  ACTION("new_game")->setWhatsThis(i18n("Starting a new game..."));
-
-  (void)KStdAction::open(this, SLOT(slotOpenFile()), actionCollection(), "open");
+  KStdGameAction::load(this, SLOT(slotOpenFile()), actionCollection(), "open");
   ACTION("open")->setStatusText(i18n("Open a saved game..."));
-  ACTION("open")->setWhatsThis(i18n("Open a saved game..."));
 
-  (void)KStdAction::saveAs(this, SLOT(slotSaveFile()), actionCollection(), "save");
-  ACTION("save")->setStatusText(i18n("Save a game."));
-  ACTION("save")->setWhatsThis(i18n("Save a game."));
+  KStdGameAction::save(this, SLOT(slotSaveFile()), actionCollection(), "save");
+  ACTION("save")->setStatusText(i18n("Save a game..."));
 
-  (void)new KAction(i18n("&Abort Game"),"stop", 0, this, SLOT(slotFileClose()),
-                      actionCollection(), "end_game");
+  KStdGameAction::end(this, SLOT(slotFileClose()), actionCollection(), "end_game");
   ACTION("end_game")->setStatusText(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
-  (void)new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
-                       actionCollection(), "file_network");
+  new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
+                       actionCollection(), "network_conf");
 
-  (void)new KAction(i18n("Network Chat..."),0, this, SLOT(slotChat()),
-                       actionCollection(), "file_chat");
+  new KAction(i18n("Network Chat..."),0, this, SLOT(slotChat()),
+                       actionCollection(), "network_chat");
 
   if (global_debug>0)                     
-  {
     (void)new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
                         actionCollection(), "file_debug");
-  }
 
-  (void)new KAction(i18n("&Show Statistics"),"flag", 0, this, SLOT(slotFileStatistics()),
-                      actionCollection(), "statistics");
-  ACTION("statistics")->setStatusText(i18n("Show all time statistics."));
-  ACTION("statistics")->setWhatsThis(i18n("Shows the all time statistics which is kept in all sessions."));
+  (void)new KAction(i18n("&Show Statistics"),"flag", 0, this,
+           SLOT(showStatistics()), actionCollection(), "statistics");
+  ACTION("statistics")->setStatusText(i18n("Show statistics."));
 
-  (void)new KAction(i18n("&Hint"),"help", CTRL+Key_H, doc, SLOT(calcHint()),
-                      actionCollection(), "hint");
+  KStdGameAction::hint(doc, SLOT(calcHint()), actionCollection(), "hint");
   ACTION("hint")->setStatusText(i18n("Shows a hint on how to move."));
-  ACTION("hint")->setWhatsThis(i18n("Shows a hint on how to move."));
 
-  (void)KStdAction::quit(this, SLOT(close()), actionCollection(), "game_exit");
-  ACTION("game_exit")->setStatusText(i18n("Exiting..."));
-  ACTION("game_exit")->setWhatsThis(i18n("Quits the program."));
+  KStdGameAction::quit(this, SLOT(close()), actionCollection(), "game_exit");
+  ACTION("game_exit")->setStatusText(i18n("Quits the program."));
 
-  (void)KStdAction::undo(this, SLOT(slotEditUndo()), actionCollection(), "edit_undo");
+  KStdGameAction::undo(this, SLOT(slotUndo()), actionCollection(), "edit_undo");
   ACTION("edit_undo")->setStatusText(i18n("Undo last move."));
-  ACTION("edit_undo")->setWhatsThis(i18n("Undo last move."));
 
-  (void)KStdAction::redo(this, SLOT(slotEditRedo()), actionCollection(), "edit_redo");
+  KStdGameAction::redo(this, SLOT(slotRedo()), actionCollection(), "edit_redo");
   ACTION("edit_redo")->setStatusText(i18n("Redo last move."));
-  ACTION("edit_redo")->setWhatsThis(i18n("Redo last move."));
   
   actionCollection()->setHighlightingEnabled(true);
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
-  connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusMsg()));
+  connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
   createStandardStatusBarAction();
   setStandardToolBarMenuEnabled(true);
@@ -297,7 +272,7 @@ void Kwin4App::initGUI()
 /**
  * Set the status message to Ready
  **/
-void Kwin4App::slotClearStatusMsg()
+void Kwin4App::slotClearStatusText()
 {
   slotStatusMsg(i18n("Ready"));
 }
@@ -411,13 +386,10 @@ void Kwin4App::readProperties(KConfig* _cfg)
  **/
 void Kwin4App::slotOpenFile()
 {
-  QString dir,filter,file;
-
-  dir=QString(":<kwin4>");
-  filter=QString("*");
-  if (global_debug>10)
-    file="/tmp/kwin.save";
-  else
+  QString dir(":<kwin4>");
+  QString filter("*");
+  QString file("/tmp/kwin.save");
+  if (global_debug<10)
     file=KFileDialog::getOpenFileName(dir,filter,this);
   doc->load(file,true);
   checkMenus();
@@ -440,7 +412,7 @@ void Kwin4App::slotSaveFile()
 /**
  * Start a new game
  **/
-void Kwin4App::slotFileNew()
+void Kwin4App::newGame()
 {
   // End the intro if it is running
   doc->setGameStatus(Kwin4Doc::End);
@@ -456,7 +428,7 @@ void Kwin4App::slotFileNew()
 void Kwin4App::slotNewGame()
 {
   slotStatusNames();
-  checkMenus(CheckFileMenu|CheckEditMenu|CheckOptionsMenu);
+  checkMenus(CheckFileMenu|CheckEditMenu);
 }
 
 /**
@@ -470,7 +442,7 @@ void Kwin4App::slotFileClose()
 /** 
  * Show statistics dialog
  */
-void Kwin4App::slotFileStatistics()
+void Kwin4App::showStatistics()
 {
   Statistics *dlg=new Statistics(this,"Game statistics");
   
@@ -495,7 +467,7 @@ void Kwin4App::slotFileStatistics()
 /**
  * Undo menu call
  **/
-void Kwin4App::slotEditUndo()
+void Kwin4App::slotUndo()
 {
   doc->UndoMove();
   // Undo twice if computer is moving then
@@ -503,19 +475,19 @@ void Kwin4App::slotEditUndo()
 
   // Prepare menus
   slotStatusNames();
-  checkMenus(CheckEditMenu|CheckOptionsMenu);
+  checkMenus(CheckEditMenu);
 }
 
 /**
  * Redo menu call
  **/
-void Kwin4App::slotEditRedo()
+void Kwin4App::slotRedo()
 {
   doc->RedoMove();
   if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO)
     doc->RedoMove();
   slotStatusNames();
-  checkMenus(CheckEditMenu|CheckOptionsMenu);
+  checkMenus(CheckEditMenu);
 }
 
 /**
@@ -612,7 +584,7 @@ void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 
 void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 {
-  checkMenus(CheckEditMenu|CheckOptionsMenu);
+  checkMenus(CheckEditMenu);
   slotStatusNames();
   slotStatusMsg(i18n("Game running..."));
 }

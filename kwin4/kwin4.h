@@ -108,7 +108,7 @@ class Kwin4App : public KMainWindow
   /**
   * Flags whhich menus should be checked and set
   **/
-  enum CheckFlags {All=0,CheckFileMenu=1,CheckEditMenu=2,CheckOptionsMenu=4,CheckViewMenu=8};
+  enum CheckFlags {All=0,CheckFileMenu=1,CheckEditMenu=2};
   /** Checks all menus..usually done on init programm */
   void checkMenus(int menu=0);
   /** initGUI creates the menubar and inserts the menupopups as well as creating the helpMenu.
@@ -167,19 +167,17 @@ class Kwin4App : public KMainWindow
     void slotChat();
     void slotDebugKGame();
 
-    /** open a new application window by creating a new instance of Kwin4App */
-    // void slotFileNewWindow();
     /** clears the document in the actual view to reuse it as the new document */
-    void slotFileNew();
+    void newGame();
     void slotOpenFile();
     void slotSaveFile();
     /** asks for saving if the file is modified, then closes the actual file and window*/
     void slotFileClose();
     /** show statistics */
-    void slotFileStatistics();
+    void showStatistics();
 
-    void slotEditUndo();
-    void slotEditRedo();
+    void slotUndo();
+    void slotRedo();
 
     void slotStatusMover(const QString &text);
     void slotStatusMsg(const QString &text);
@@ -218,7 +216,7 @@ protected slots: // Protected slots
   /**
    *  Writes ready into the statusbar
    */
-  void slotClearStatusMsg();
+  void slotClearStatusText();
 
   void slotKeyBindings();
   void showSettings();

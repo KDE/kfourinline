@@ -1,0 +1,28 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="kwin4" version="1">
+
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+    <Action name="new_game"/>
+    <Action name="open"/>
+    <Action name="save"/>
+    <Action name="end_game"/>
+    <Separator/>
+    <Action name="network_conf"/>
+    <Action name="network_chat"/>
+    <Action name="file_debug"/>
+		<Action name="flag"/>
+    <Separator/>
+    <Action name="hint"/>
+    <Separator/>
+    <Action name="game_exit"/>
+  </Menu>
+</MenuBar>
+
+<ToolBar name="mainToolBar"><text>Main Toolbar</text>
+  <Action name="new_game"/>
+  <Action name="end_game"/>
+  <Action name="hint"/>
+</ToolBar>
+
+</kpartgui>

@@ -13,6 +13,9 @@ INCLUDES = -I$(top_srcdir)/libkdegames -I$(top_srcdir)/libkdegames/kgame $(all_i
 
 METASOURCES = AUTO
 
+rcdir = $(kde_datadir)/kwin4
+rc_DATA = kwin4ui.rc
+
 kwin4_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 kwin4proc_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
