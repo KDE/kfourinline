@@ -29,8 +29,9 @@
 */
 
 #include <qgroupbox.h>
-#include <qpushbutton.h>
 #include <klocale.h>
+#include <kpushbutton.h>
+#include <kstdguiitem.h>
 #include "msgdlg.h"
 
 
@@ -51,19 +52,16 @@ MsgDlg::MsgDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
 
   MultiLine = new QMultiLineEdit( grp, "MLineEdit" );
   MultiLine->setGeometry( 10, 20, 360, 70 );
-  MultiLine->setText( QCString("") );
 
   QPushButton *PushButton;
-  PushButton = new QPushButton( this, "PushButton_1" );
+  PushButton = new QPushButton( i18n("Send" ), this, "PushButton_1" );
   PushButton->setGeometry( 20, 120, 65, 30 );
   connect( PushButton, SIGNAL(clicked()), SLOT(accept()) );
-  PushButton->setText( i18n("Send" ));
   PushButton->setAutoRepeat( FALSE );
 
-  PushButton = new QPushButton( this, "PushButton_2" );
+  PushButton = new KPushButton( KStdGuiItem::cancel(), this, "PushButton_2" );
   PushButton->setGeometry( 305, 120, 65, 30 );
   connect( PushButton, SIGNAL(clicked()), SLOT(reject()) );
-  PushButton->setText( i18n("Cancel" ));
   PushButton->setAutoRepeat( FALSE );
 }
 

@@ -10,12 +10,13 @@
 #include <qframe.h>
 #include <qgroupbox.h>
 #include <qlabel.h>
-#include <qpushbutton.h>
 #include <qlayout.h>
 #include <qpixmap.h>
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kseparator.h>
+#include <kpushbutton.h>
+#include <kstdguiitem.h>
 
 /* 
  *  Constructs a StatDlg which is a child of 'parent', with the 
@@ -232,8 +233,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     QSpacerItem* spacer_26 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
     hbox_3->addItem( spacer_26 );
 
-    PushButton2 = new QPushButton( Layout17, "PushButton2" );
-    PushButton2->setText( i18n( "OK"  ) );
+    PushButton2 = new KPushButton( KStdGuiItem::ok(), Layout17, "PushButton2" );
     hbox_3->addWidget( PushButton2 );
     QSpacerItem* spacer_27 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
     hbox_3->addItem( spacer_27 );
