@@ -130,7 +130,7 @@ put.
 
 <para>The <firstterm>status display</firstterm> 
 shows which player colour starts and which colour is
-played by whom (player,computer,remote connection). It further shows the
+played by whom (player, computer, remote connection). It further shows the
 level of the computer opponent, the number of moves done as well as the
 computer calculated chance of winning. This chance is calculated only if
 the computer opponent makes a move. A positive number means that the player
