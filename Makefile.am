@@ -11,4 +11,5 @@ appsdir = $(kde_appsdir)/Games/Board
 apps_DATA = kwin4.desktop
 EXTRA_DIST = $(apps_DATA)
 
-
+install-data-local:
+	rm -rf $(kde_appsdir)/Games/kwin4.desktop
