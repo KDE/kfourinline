@@ -12,9 +12,6 @@
             <height>120</height>
         </rect>
     </property>
-    <property name="caption">
-        <string>StatusWidget</string>
-    </property>
     <property name="frameShape">
         <enum>Box</enum>
     </property>
