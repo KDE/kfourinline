@@ -111,8 +111,8 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
 {
   initGUI();
   initStatusBar();
-  createGUI();
-
+  setupGUI();
+  
   initDocument();
 
   view = new Kwin4View(doc,this);
@@ -124,7 +124,6 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
   setMaximumSize(800,600);
   resize( 640, 480 );
 
-  setAutoSaveSettings();
   doc->ReadConfig(kapp->config());
 
   checkMenus();
@@ -233,10 +232,6 @@ void Kwin4App::initGUI()
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
-  createStandardStatusBarAction();
-  setStandardToolBarMenuEnabled(true);
-  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
-actionCollection());
   KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
 }
 
