@@ -125,25 +125,6 @@ Kwin4View::Kwin4View(QString grafixdir,QWidget *parent, const char *name)
   mCache->setCanvas(mCanvas);
   KConfig *config=mCache->config();
 
-  // Write a few i18n Strings as text sprites
-  // MH: TODO This is not so good as we have to write to the
-  // config file which we might not have access to
-  config->setGroup("text1");
-  config->writeEntry("text",i18n("Hold on..the other was not yet gone...")); 
-  config->setGroup("text2");
-  config->writeEntry("text",i18n("Hold your horses...")); 
-  config->setGroup("text3");
-  config->writeEntry("text",i18n("Ah ah ah...only one go at a time...")); 
-  config->setGroup("text4");
-  config->writeEntry("text",i18n("Please wait... it is not your turn.")); 
-  config->setGroup("intro1");
-  config->writeEntry("text",i18n("1. intro line, welcome to win4","Welcome")); 
-  config->setGroup("intro2");
-  config->writeEntry("text",i18n("2. intro line, welcome to win4","to")); 
-  config->setGroup("intro3");
-  config->writeEntry("text",i18n("3. intro line, welcome to win4","Win4")); 
-  config->sync();
-
 
   QPoint pnt;
   config->setGroup("game");
@@ -335,12 +316,23 @@ void Kwin4View::drawIntro(bool remove)
 
   QCanvasText *text;
   text=(QCanvasText *)(mCache->getItem("intro1",1));
-  if (text) text->show();
+  if (text)
+  {
+    text->setText(i18n("1. intro line, welcome to win4","Welcome")); 
+    text->show();
+  }
   text=(QCanvasText *)(mCache->getItem("intro2",1));
-  if (text) text->show();
+  if (text)
+  {
+    text->setText(i18n("2. intro line, welcome to win4","to")); 
+    text->show();
+  }
   text=(QCanvasText *)(mCache->getItem("intro3",1));
-  if (text) text->show();
-
+  if (text)
+  {
+    text->setText(i18n("3. intro line, welcome to win4","kWin4")); 
+    text->show();
+  }
   // text
   
   // animation
@@ -584,12 +576,23 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
     if (flag) return;
     
     clearError();
+    int rnd=getDocument()->Random(4)+1;
     QString m;
-    m=QString("text%1").arg(getDocument()->Random(4)+1);
+    m=QString("text%1").arg(rnd);
+    QString ms;
+    if (rnd==1)      ms=i18n("Hold on..the other was not yet gone..."); 
+    else if (rnd==2) ms=i18n("Hold your horses..."); 
+    else if (rnd==3) ms=i18n("Ah ah ah...only one go at a time..."); 
+    else             ms=i18n("Please wait... it is not your turn."); 
+
     //kdDebug() << "Loading sprite "<< m << endl;
     // TODO MH can be unique
     QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
-    if (text) text->show();
+    if (text)
+    {
+      text->setText(ms);
+      text->show();
+    }
 
 
     // We eat the event as we are sure it is nonsense
