@@ -860,7 +860,8 @@ void Kwin4App::slotFileStatistics()
                 doc->QueryStat(Rot,TLost),
                 doc->QueryStat(Rot,TBrk),
                 doc->QueryStat(Rot,TSum) );
-  dlg->Init();
+  dlg->SetPixmap(doc->m_PixWin4About);
+  //dlg->Init();
   res=dlg->exec();
   if (res==-100)
   {

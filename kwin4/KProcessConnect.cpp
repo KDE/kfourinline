@@ -20,6 +20,8 @@
 
 #include "KProcessConnect.moc"
 
+extern int global_debug;
+
 KProcessConnect::KProcessConnect()
   : KChildConnect()
 {
@@ -44,9 +46,8 @@ bool KProcessConnect::Init(int id,KEMessage *msg)
     if (!msg->GetData(QCString("ProcessName"),p,size)) return false; // no process name
     processname=p;
     
-    printf("Found processname '%s' size %d size=%u\n",
-       p,size,msg->QueryNumberOfKeys());
-   
+    if (global_debug>10)
+      kdDebug() << "Found processname:" << p << " size:" << size << " keys:" << msg->QueryNumberOfKeys() << endl;
     msg->Remove(QCString("ProcessName"));
   }
   if (processname.length()<1) return false;
@@ -70,7 +71,8 @@ bool KProcessConnect::Init(int id,KEMessage *msg)
 
   // TRUE if ok
   running=process->start(KProcess::NotifyOnExit,KProcess::All);
-  printf("Running =%d\n",running);
+  if (global_debug>5) 
+      kdDebug() << "Process running..." << endl;
 
   if (running && msg && msg->QueryNumberOfKeys()>0)
   {
@@ -159,7 +161,7 @@ bool KProcessConnect::Next()
 bool KProcessConnect::Send(QString str)
 {
   bool result;
-  if (!result) kdDebug() << "ProcessConnect: SEND to begin" << endl;
+  if (global_debug) kdDebug() << "ProcessConnect: SEND to begin" << endl;
   if (!running || !process) return false;
   if (!str || str.length()<1) return true; // no need to send crap
   // TODO ..why?
@@ -169,7 +171,7 @@ bool KProcessConnect::Send(QString str)
   // printf("+++ Sending to child '%s'!!!\n",(const char *)str);
   result=process->writeStdin(str.latin1(),str.length()+1);
   if (!result) kdDebug() << "ERROR in PROCESS SEND" << endl;
-  else  kdDebug() << "PROCESS SEND Done" << endl;
+  else if (global_debug>10)  kdDebug() << "PROCESS SEND Done" << endl;
   return result;
 }
 

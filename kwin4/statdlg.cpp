@@ -1,198 +1,259 @@
 /***************************************************************************
-                          FILENAME|  -  description
+                          statdlg .- kwin4
                              -------------------
     begin                : Thu Mar 30 2000
     copyright            : (C) |1995-2000 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
-/*
-    Statdlg.cpp
-
-    $Id$
-    
-    Name dialog for player Statistics
-    
-    (c) Martin Heni, martin@heni-online.de
-	      June 1999
-    
-    License: GPL
-
-*/
-
-#include <qgroupbox.h>
-#include <qpushbutton.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <qdialog.h>
 #include "statdlg.h"
 
-//#include "statdlg.moc"
+#include <qframe.h>
+#include <qgroupbox.h>
+#include <qlabel.h>
+#include <qpushbutton.h>
+#include <qlayout.h>
+#include <qvariant.h>
+#include <qtooltip.h>
+#include <qwhatsthis.h>
+#include <qimage.h>
+#include <qpixmap.h>
+#include <klocale.h>
+#include <kmessagebox.h>
 
-#define Y0  0
-#define Y1  20
-#define Y2  50
-#define Y3  70
-#define Y4  145
-#define Y5  190
-
-#define X0  110
-#define X0b 110
-#define X0c 130
-#define X1  10
-#define X2  70
-#define X3  120
-#define X4  170
-#define X5  220
-#define X6  280
-
-
-
-// Show the all time statistics dialog
-StatDlg::StatDlg( QWidget *parent, const char *name,const char * /*sufi*/ )
-    : QDialog( parent, name,TRUE )
+/* 
+ *  Constructs a StatDlg which is a child of 'parent', with the 
+ *  name 'name' and widget flags set to 'f' 
+ *
+ *  The dialog will by default be modeless, unless you set 'modal' to
+ *  TRUE to construct a modal dialog.
+ */
+StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
+    : QDialog( parent, name, modal, fl )
 {
+    if ( !name ) setName( "StatDlg" );
+    resize( 596, 512 ); 
+    setCaption(i18n("Statistics..."));
 
-  setMinimumSize(370,240);
-  setMaximumSize(370,240);                                                        
-  resize( 370, 240 );
-  setCaption(i18n("Statistics..."));
+    Frame3 = new QFrame( this, "Frame3" );
+    Frame3->setGeometry( QRect( 30, 10, 511, 461 ) ); 
+    Frame3->setFrameShadow( QFrame::Sunken );
+    Frame3->setFrameShape( QFrame::StyledPanel );
 
+
+
+    QWidget* Layout17 = new QWidget( Frame3, "Layout17" );
+    Layout17->setGeometry( QRect( 15, 12, 452, 406 ) ); 
+    vbox = new QVBoxLayout( Layout17 ); 
+    vbox->setSpacing( 6 );
+    vbox->setMargin( 0 );
+
+    GroupBox1 = new QGroupBox( Layout17, "GroupBox1" );
+    GroupBox1->setTitle( i18n( "All time game statistics"  ) );
+
+    QWidget* Layout10 = new QWidget( GroupBox1, "Layout10" );
+    Layout10->setGeometry( QRect( 10, 30, 399, 113 ) ); 
+    hbox = new QHBoxLayout( Layout10 ); 
+    hbox->setSpacing( 6 );
+    hbox->setMargin( 0 );
+
+    vbox_2 = new QVBoxLayout; 
+    vbox_2->setSpacing( 6 );
+    vbox_2->setMargin( 0 );
+
+    TextLabel1 = new QLabel( Layout10, "TextLabel1" );
+    TextLabel1->setText( i18n( "Name"  ) );
+    vbox_2->addWidget( TextLabel1 );
+    QSpacerItem* spacer = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_2->addItem( spacer );
+
+    TextPlayer1 = new QLabel( Layout10, "TextPlayer1" );
+    TextPlayer1->setText( i18n( "Player1"  ) );
+    vbox_2->addWidget( TextPlayer1 );
+    QSpacerItem* spacer_2 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_2->addItem( spacer_2 );
+
+    TextPlayer2 = new QLabel( Layout10, "TextPlayer2" );
+    TextPlayer2->setText( i18n( "Player 2"  ) );
+    vbox_2->addWidget( TextPlayer2 );
+    hbox->addLayout( vbox_2 );
+    QSpacerItem* spacer_3 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_3 );
+
+    vbox_3 = new QVBoxLayout; 
+    vbox_3->setSpacing( 6 );
+    vbox_3->setMargin( 0 );
+
+    TextLabel2 = new QLabel( Layout10, "TextLabel2" );
+    TextLabel2->setText( i18n( "Won"  ) );
+    vbox_3->addWidget( TextLabel2 );
+    QSpacerItem* spacer_4 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_3->addItem( spacer_4 );
+
+    TextWon1 = new QLabel( Layout10, "TextWon1" );
+    TextWon1->setText( "0"   );
+    vbox_3->addWidget( TextWon1 );
+    QSpacerItem* spacer_5 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_3->addItem( spacer_5 );
+
+    TextWon2 = new QLabel( Layout10, "TextWon2" );
+    TextWon2->setText(  "0"   );
+    vbox_3->addWidget( TextWon2 );
+    hbox->addLayout( vbox_3 );
+    QSpacerItem* spacer_6 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_6 );
+
+    vbox_4 = new QVBoxLayout; 
+    vbox_4->setSpacing( 6 );
+    vbox_4->setMargin( 0 );
+
+    TextLabel3 = new QLabel( Layout10, "TextLabel3" );
+    TextLabel3->setText( i18n( "Drawn"  ) );
+    vbox_4->addWidget( TextLabel3 );
+    QSpacerItem* spacer_7 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_4->addItem( spacer_7 );
+
+    TextDrawn1 = new QLabel( Layout10, "TextDrawn1" );
+    TextDrawn1->setText(  "0"   );
+    vbox_4->addWidget( TextDrawn1 );
+    QSpacerItem* spacer_8 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_4->addItem( spacer_8 );
+
+    TextDrawn2 = new QLabel( Layout10, "TextDrawn2" );
+    TextDrawn2->setText(  "0"   );
+    vbox_4->addWidget( TextDrawn2 );
+    hbox->addLayout( vbox_4 );
+    QSpacerItem* spacer_9 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_9 );
+
+    vbox_5 = new QVBoxLayout; 
+    vbox_5->setSpacing( 6 );
+    vbox_5->setMargin( 0 );
+
+    TextLabel4 = new QLabel( Layout10, "TextLabel4" );
+    TextLabel4->setText( i18n( "Lost"  ) );
+    vbox_5->addWidget( TextLabel4 );
+    QSpacerItem* spacer_10 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_5->addItem( spacer_10 );
+
+    TextLost1 = new QLabel( Layout10, "TextLost1" );
+    TextLost1->setText( "0"   );
+    vbox_5->addWidget( TextLost1 );
+    QSpacerItem* spacer_11 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_5->addItem( spacer_11 );
+
+    TextLost2 = new QLabel( Layout10, "TextLost2" );
+    TextLost2->setText(  "0"   );
+    vbox_5->addWidget( TextLost2 );
+    hbox->addLayout( vbox_5 );
+    QSpacerItem* spacer_12 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_12 );
+
+    vbox_6 = new QVBoxLayout; 
+    vbox_6->setSpacing( 6 );
+    vbox_6->setMargin( 0 );
+
+    TextLabel5 = new QLabel( Layout10, "TextLabel5" );
+    TextLabel5->setText( i18n( "Aborted"  ) );
+    vbox_6->addWidget( TextLabel5 );
+    QSpacerItem* spacer_13 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_6->addItem( spacer_13 );
+
+    TextAborted1 = new QLabel( Layout10, "TextAborted1" );
+    TextAborted1->setText(  "0"   );
+    vbox_6->addWidget( TextAborted1 );
+    QSpacerItem* spacer_14 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_6->addItem( spacer_14 );
+
+    TextAborted2 = new QLabel( Layout10, "TextAborted2" );
+    TextAborted2->setText(  "0"   );
+    vbox_6->addWidget( TextAborted2 );
+    hbox->addLayout( vbox_6 );
+    QSpacerItem* spacer_15 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_15 );
+
+    vbox_7 = new QVBoxLayout; 
+    vbox_7->setSpacing( 6 );
+    vbox_7->setMargin( 0 );
+
+    TextLabel6 = new QLabel( Layout10, "TextLabel6" );
+    TextLabel6->setText( i18n( "Sum"  ) );
+    vbox_7->addWidget( TextLabel6 );
+    QSpacerItem* spacer_16 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_7->addItem( spacer_16 );
+
+    TextSum1 = new QLabel( Layout10, "TextSum1" );
+    TextSum1->setText(  "0"   );
+    vbox_7->addWidget( TextSum1 );
+    QSpacerItem* spacer_17 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox_7->addItem( spacer_17 );
+
+    TextSum2 = new QLabel( Layout10, "TextSum2" );
+    TextSum2->setText(  "0"   );
+    vbox_7->addWidget( TextSum2 );
+    hbox->addLayout( vbox_7 );
+    QSpacerItem* spacer_18 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox->addItem( spacer_18 );
+    vbox->addWidget( GroupBox1 );
+    QSpacerItem* spacer_19 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox->addItem( spacer_19 );
+
+    hbox_2 = new QHBoxLayout; 
+    hbox_2->setSpacing( 6 );
+    hbox_2->setMargin( 0 );
+    QSpacerItem* spacer_20 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_2->addItem( spacer_20 );
+
+    PixmapLabel2 = new QLabel( Layout17, "PixmapLabel2" );
+    PixmapLabel2->setScaledContents( TRUE );
+    hbox_2->addWidget( PixmapLabel2 );
+    QSpacerItem* spacer_21 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_2->addItem( spacer_21 );
+
+    PushButton1 = new QPushButton( Layout17, "PushButton1" );
+    PushButton1->setText( i18n( "Clear all statistics"  ) );
+    hbox_2->addWidget( PushButton1 );
+    QSpacerItem* spacer_22 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_2->addItem( spacer_22 );
+
+    PixmapLabel1 = new QLabel( Layout17, "PixmapLabel1" );
+    PixmapLabel1->setScaledContents( TRUE );
+    hbox_2->addWidget( PixmapLabel1 );
+    QSpacerItem* spacer_23 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_2->addItem( spacer_23 );
+    vbox->addLayout( hbox_2 );
+    QSpacerItem* spacer_24 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox->addItem( spacer_24 );
+
+    Line1 = new QFrame( Layout17, "Line1" );
+    Line1->setFrameStyle( QFrame::HLine | QFrame::Sunken );
+    vbox->addWidget( Line1 );
+    QSpacerItem* spacer_25 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
+    vbox->addItem( spacer_25 );
+
+    hbox_3 = new QHBoxLayout; 
+    hbox_3->setSpacing( 6 );
+    hbox_3->setMargin( 0 );
+    QSpacerItem* spacer_26 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_3->addItem( spacer_26 );
+
+    PushButton2 = new QPushButton( Layout17, "PushButton2" );
+    PushButton2->setText( i18n( "OK"  ) );
+    hbox_3->addWidget( PushButton2 );
+    QSpacerItem* spacer_27 = new QSpacerItem( 20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum );
+    hbox_3->addItem( spacer_27 );
+    vbox->addLayout( hbox_3 );
+
+    // signals and slots connections
+    connect( PushButton2, SIGNAL( clicked() ), this, SLOT( accept() ) );
+    connect( PushButton1, SIGNAL(clicked()), SLOT(clearStat()) );
 }
 
-void StatDlg::Init()
+/*  
+ *  Destroys the object and frees any allocated resources
+ */
+StatDlg::~StatDlg()
 {
-  QString s;
-  QGroupBox* grp;
-  QLabel *Label;
-
-  grp = new QGroupBox(i18n("All time game statistics"), this);
-  grp->resize(330,120);
-  grp->move(20,10);
-
-
-  // ---------- Names ------------------
-  s=i18n("Name");
-  Label=new QLabel(grp,"Name_1");
-  Label->setGeometry(X1,Y1,60,30);
-  Label->setText(s);
-
-  s=name1;
-  Label=new QLabel(grp,"Name_2");
-  Label->setGeometry(X1,Y2,60,30);
-  Label->setText(s);
-
-  s=name2;
-  Label=new QLabel(grp,"Name_3");
-  Label->setGeometry(X1,Y3,60,30);
-  Label->setText(s);
-
-  // ---------- Wins ------------------
-  s=i18n("Won");
-  Label=new QLabel(grp,"Won_1");
-  Label->setGeometry(X2,Y1,60,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",win1);
-  Label=new QLabel(grp,"Won_2");
-  Label->setGeometry(X2,Y2,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",win2);
-  Label=new QLabel(grp,"Won_3");
-  Label->setGeometry(X2,Y3,30,30);
-  Label->setText(s);
-
-  // ---------- Drawn ------------------
-  s=i18n("Drawn");
-  Label=new QLabel(grp,"Drawn_1");
-  Label->setGeometry(X3,Y1,60,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",remis1);
-  Label=new QLabel(grp,"Drawn_2");
-  Label->setGeometry(X3,Y2,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",remis2);
-  Label=new QLabel(grp,"Drawn_3");
-  Label->setGeometry(X3,Y3,30,30);
-  Label->setText(s);
-
-  // ---------- Lost ------------------
-  s=i18n("Lost");
-  Label=new QLabel(grp,"Loss_1");
-  Label->setGeometry(X4,Y1,60,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",loose1);
-  Label=new QLabel(grp,"Loss_2");
-  Label->setGeometry(X4,Y2,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",loose2);
-  Label=new QLabel(grp,"Loss_3");
-  Label->setGeometry(X4,Y3,30,30);
-  Label->setText(s);
-
-  // ---------- Breaked ------------------
-  s=i18n("Aborted");
-  Label=new QLabel(grp,"Abort_1");
-  Label->setGeometry(X5,Y1,60,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",brk1);
-  Label=new QLabel(grp,"Abort_2");
-  Label->setGeometry(X5,Y2,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",brk2);
-  Label=new QLabel(grp,"Abort_3");
-  Label->setGeometry(X5,Y3,30,30);
-  Label->setText(s);
-
-  // ---------- Sum ------------------
-  s=i18n("Sum");
-  Label=new QLabel(grp,"Sum_1");
-  Label->setGeometry(X6,Y1,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",sum1);
-  Label=new QLabel(grp,"Sum_2");
-  Label->setGeometry(X6,Y2,30,30);
-  Label->setText(s);
-
-  s.sprintf("%3d",sum2);
-  Label=new QLabel(grp,"Sum_3");
-  Label->setGeometry(X6,Y3,30,30);
-  Label->setText(s);
-
-
-
-  QPushButton *PushButton;
-  PushButton = new QPushButton( this, "PushButton_1" );
-  PushButton->setGeometry( X0b, Y4, 105, 30 );
-  connect( PushButton, SIGNAL(clicked()), SLOT(clearStat()) );
-  PushButton->setText( i18n("Clear all statistics" ));
-  PushButton->setAutoRepeat( FALSE );
-  PushButton->setAutoResize( FALSE );
-
-  PushButton = new QPushButton( this, "PushButton_2" );
-  PushButton->setGeometry( X0c, Y5, 65, 30 );
-  connect( PushButton, SIGNAL(clicked()), SLOT(accept()) );
-  PushButton->setText( i18n("OK" ));
-  PushButton->setAutoRepeat( FALSE );
-  PushButton->setAutoResize( FALSE );
-  PushButton->setDefault( TRUE );
+    // no need to delete child widgets, Qt does it all for us
 }
 
 // The button clear statistics got pressed
@@ -212,26 +273,33 @@ void StatDlg::clearStat()
    }
 }
 
+void StatDlg::SetPixmap(QPixmap &pixmap)
+{
+   PixmapLabel1->setPixmap( pixmap );
+   PixmapLabel2->setPixmap( pixmap );
+}
 
 void StatDlg::SetNames(QString n1,QString n2)
 {
-  name1=n1;
-  name2=n2;
+  TextPlayer1->setText( n1 );
+  TextPlayer2->setText( n2 );
 }
 void StatDlg::SetStat1(int x1,int x2,int x3,int x4,int x5)
 {
-  win1=x1;
-  remis1=x2;
-  loose1=x3;
-  brk1=x4;
-  sum1=x5;
+  QString s;
+    TextWon1->setText( s.setNum(x1) );
+    TextDrawn1->setText( s.setNum(x2)  );
+    TextLost1->setText( s.setNum(x3)   );
+    TextAborted1->setText(  s.setNum(x4)   );
+    TextSum1->setText(  s.setNum(x5)   );
 }
 void StatDlg::SetStat2(int x1,int x2,int x3,int x4,int x5)
 {
-  win2=x1;
-  remis2=x2;
-  loose2=x3;
-  brk2=x4;
-  sum2=x5;
+  QString s;
+    TextWon2->setText( s.setNum(x1)   );
+    TextDrawn2->setText(  s.setNum(x2)   );
+    TextLost2->setText( s.setNum(x3)   );
+    TextAborted2->setText(  s.setNum(x4)   );
+    TextSum2->setText(  s.setNum(x5)   );
 }
 #include "statdlg.moc"

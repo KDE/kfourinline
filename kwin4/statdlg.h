@@ -14,44 +14,71 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#ifndef __STATDLG_H_
-#define __STATDLG_H_
-#include <qlined.h>
-//#include <ktabctl.h>
-//#include <qkeycode.h>
-//#include <qmlined.h>
-//#include <unistd.h>
-#include <kapp.h>
-#include <qlabel.h>
-//#include <qtooltip.h>
-//#include <kmsgbox.h>
-//#include <ktopwidget.h>
-//#include <kprocess.h>
-//#include <kstdaccel.h>
-#include <qstring.h>
+#ifndef STATDLG_H
+#define STATDLG_H
+
+#include <qvariant.h>
 #include <qdialog.h>
+class QVBoxLayout; 
+class QHBoxLayout; 
+class QGridLayout; 
+class QFrame;
+class QGroupBox;
+class QLabel;
+class QPushButton;
 
 class StatDlg : public QDialog
-{
-  Q_OBJECT
+{ 
+    Q_OBJECT
 
-  public:
-   StatDlg (QWidget* parent = NULL,const char* name = NULL,const char *sufi=NULL);
-
+public:
+    StatDlg( QWidget* parent = 0, const char* name = 0, bool modal = TRUE, WFlags fl = 0 );
+    ~StatDlg();
    void SetNames(QString n1,QString n2);
    void SetStat1(int x1,int x2,int x3,int x4,int x5);
    void SetStat2(int x1,int x2,int x3,int x4,int x5);
-   void Init();
+   void SetPixmap(QPixmap &pixmap);
 
-   private:
-   QString name1;
-   QString name2;
-   int win1,remis1,loose1,brk1,sum1;
-   int win2,remis2,loose2,brk2,sum2;
+    QGroupBox* GroupBox1;
+    QLabel* TextLabel1;
+    QLabel* TextPlayer1;
+    QLabel* TextPlayer2;
+    QLabel* TextLabel2;
+    QLabel* TextWon1;
+    QLabel* TextWon2;
+    QLabel* TextLabel3;
+    QLabel* TextDrawn1;
+    QLabel* TextDrawn2;
+    QLabel* TextLabel4;
+    QLabel* TextLost1;
+    QLabel* TextLost2;
+    QLabel* TextLabel5;
+    QLabel* TextAborted1;
+    QLabel* TextAborted2;
+    QLabel* TextLabel6;
+    QLabel* TextSum1;
+    QLabel* TextSum2;
+    QLabel* PixmapLabel2;
+    QPushButton* PushButton1;
+    QLabel* PixmapLabel1;
+    QFrame* Line1;
+    QFrame* Frame3;
+    QPushButton* PushButton2;
+
+protected:
+    QHBoxLayout* hbox;
+    QHBoxLayout* hbox_2;
+    QHBoxLayout* hbox_3;
+    QVBoxLayout* vbox;
+    QVBoxLayout* vbox_2;
+    QVBoxLayout* vbox_3;
+    QVBoxLayout* vbox_4;
+    QVBoxLayout* vbox_5;
+    QVBoxLayout* vbox_6;
+    QVBoxLayout* vbox_7;
 
 protected slots:
   void clearStat();
-
-protected:
 };
-#endif
+
+#endif // STATDLG_H
