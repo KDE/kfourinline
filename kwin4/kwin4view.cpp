@@ -15,15 +15,14 @@
  *                                                                         *
  ***************************************************************************/
 
-// include files for Qt
-#include <stdio.h>
-
-#include <klocale.h>
-#include <math.h>
-#include <kconfig.h>
-
-// application specific includes
 #include "kwin4view.h"
+
+#include <stdio.h>
+#include <math.h>
+
+#include <kconfig.h>
+#include <klocale.h>
+
 #include "kwin4doc.h"
 #include "geom.h"
 #include "scorewidget.h"

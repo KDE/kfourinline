@@ -52,7 +52,7 @@ Kwin4Player::Kwin4Player() : KPlayer()
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
 }
 
-void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player)
+void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
 {
   if (!sWidget) return ;
   if (!isActive()) return ;

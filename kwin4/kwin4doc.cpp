@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+#include "kwin4doc.h"
+
 // include files for Qt
 #include <qdir.h>
 #include <qtimer.h>
@@ -29,7 +31,6 @@
 
 // application specific includes
 #include "kspritecache.h"
-#include "kwin4doc.h"
 #include "kwin4view.h"
 #include "geom.h"
 #include "scorewidget.h"
