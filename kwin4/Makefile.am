@@ -11,6 +11,6 @@ kwin4_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 rcdir = $(kde_datadir)/kwin4
 rc_DATA = kwin4ui.rc
 
-messages:
+messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/kwin4.pot 
 
