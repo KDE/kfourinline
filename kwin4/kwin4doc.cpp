@@ -352,7 +352,7 @@ void Kwin4Doc::moveDone(QCanvasItem *item,int )
 //  kdDebug() << "kwin4doc::moveDone::signalNextPlayer emitted" << endl;
 }
 
-KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive=true)
+KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool exclusive)
 {
   kdDebug() << k_funcinfo << "nextPlayer last="<<last->id() << " admin="<<isAdmin()<<endl;
   // Should be enough if the admin sets the turn
