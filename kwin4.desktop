@@ -1,9 +1,8 @@
 [Desktop Entry]
-Comment[C]=Four wins
+Name=kwin4
 Exec=kwin4
 Icon=kwin4
 MimeType=
-Name[C]=Four wins
 SwallowExec=
 SwallowTitle=
 Terminal=0
