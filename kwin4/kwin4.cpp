@@ -347,7 +347,7 @@ void Kwin4App::initStatusBar()
 
   slotStatusTime();
   slotStatusMover(i18n("(c) Martin Heni   "));
-  slotStatusMsg(i18n("Welcome to ")+TITLE);
+  slotStatusMsg(i18n("Welcome to %1").arg(TITLE));
 
   statusTimer=new QTimer(this);
   connect(statusTimer,SIGNAL(timeout()),this,SLOT(slotStatusTimer()));
@@ -1363,7 +1363,7 @@ void Kwin4App::statusCallback(int id_)
          break;
 
     case ID_FILE_QUIT:
-         slotStatusHelpMsg(i18n("Quits ")+TITLE);
+         slotStatusHelpMsg(i18n("Quits %1").arg(TITLE));
          break;
 
     case ID_FILE_STATISTICS:

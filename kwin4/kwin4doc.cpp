@@ -743,8 +743,8 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   mPort=(unsigned short)config->readNumEntry("port",7442);
   procfile=config->readEntry("process","kproc4");
   if (global_debug>1) kdDebug() << "Process file=" << procfile << endl;
-  Names[Gelb]=config->readEntry("Name1","Player 1");
-  Names[Rot]=config->readEntry("Name2","Player 2");
+  Names[Gelb]=config->readEntry("Name1",i18n("Player 1"));
+  Names[Rot]=config->readEntry("Name2",i18n("Player 2"));
 
   maxreklev=config->readNumEntry("Level",3);
   player[Gelb]=(PLAYER)config->readNumEntry("Player1",(int)Men);

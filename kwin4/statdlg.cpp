@@ -67,7 +67,7 @@ StatDlg::StatDlg( QWidget* parent,  const char* name, bool modal, WFlags fl )
     vbox_2->addItem( spacer );
 
     TextPlayer1 = new QLabel( Layout10, "TextPlayer1" );
-    TextPlayer1->setText( i18n( "Player1"  ) );
+    TextPlayer1->setText( i18n( "Player 1"  ) );
     vbox_2->addWidget( TextPlayer1 );
     QSpacerItem* spacer_2 = new QSpacerItem( 20, 20, QSizePolicy::Minimum, QSizePolicy::Expanding );
     vbox_2->addItem( spacer_2 );
