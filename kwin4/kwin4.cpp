@@ -335,7 +335,7 @@ void Kwin4App::initGUI()
   ACTION("edit_redo")->setStatusText(i18n("Redo last move."));
   ACTION("edit_redo")->setWhatsThis(i18n("Redo last move."));
 
-  (void)new KToggleAction(i18n("&Statusbar"),0,this,SLOT(slotViewStatusBar()),
+  (void)new KToggleAction(i18n("&Show Statusbar"),0,this,SLOT(slotViewStatusBar()),
                       actionCollection(), "show_statusbar");
   ACTION("show_statusbar")->setStatusText(i18n("Toggle the statusbar..."));
   ACTION("show_statusbar")->setWhatsThis(i18n("Toggle the statusbar..."));
