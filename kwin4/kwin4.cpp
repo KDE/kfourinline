@@ -1462,7 +1462,7 @@ void Kwin4App::statusCallback(int id_)
     case ID_LEVEL_10:
          s.setNum((int)(id_-ID_LEVEL_1+1));
          s=i18n("Set the level of the computer player to %1").arg(s);
-         slotStatusHelpMsg(i18n(s.latin1()));
+         slotStatusHelpMsg(s);
          break;
 
     case ID_OPTIONS_NAMES:
@@ -1730,16 +1730,16 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
     {
       if (move==0)
       {
-        message=QString(i18n("Remote connection lost for yellow..."));
+        message=i18n("Remote connection lost for yellow...");
         KMessageBox::information(this,message,appTitle());
-        slotStatusMsg(i18n(message.latin1()));
+        slotStatusMsg(message);
         slotYellowPlayer();
       }
       else
       {
-        message=QString(i18n("Remote connection lost for red..."));
+        message=i18n("Remote connection lost for red...");
         KMessageBox::information(this,message,appTitle());
-        slotStatusMsg(i18n(message.latin1()));
+        slotStatusMsg(message);
         slotRedPlayer();
       }
     }
@@ -1757,7 +1757,7 @@ void Kwin4App::slotReceiveInput(KEMessage *msg,int id)
   if (msg->HasKey("error"))
   {
     message=i18n("Received an error from the remote player");
-    slotStatusMsg(i18n(message.latin1()));
+    slotStatusMsg(message);
   }
   if (msg->HasKey("Move"))
   {
