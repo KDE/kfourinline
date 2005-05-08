@@ -16,6 +16,7 @@ install-data-local:
 	if test ! -d $(DESTDIR)$(grafixdir)/$$i; then \
 		cp -r $(srcdir)/$$i $(DESTDIR)$(grafixdir)/$$i ;\
 		rm -rf $(DESTDIR)$(grafixdir)/$$i/CVS ;\
+                rm -rf $(DESTDIR)$(grafixdir)/$$i/.svn ;\
 	fi ;\
 	done      
 
