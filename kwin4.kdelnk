@@ -1,7 +1,7 @@
-# KDE Config File  
+# KDE Config File
 [KDE Desktop Entry]
 Type=Application
-Exec=kwin4 -caption "%c" %i %m  
+Exec=kwin4 -caption "%c" %i %m
 Icon=kwin4.xpm
 MiniIcon=kwin4.xpm
 DocPath=kwin4/index.html
