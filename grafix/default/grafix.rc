@@ -61,7 +61,7 @@ color=255,255,0
 # ...    undeline,strikeout,fixedpitch,rawmode
 # If you want pixelsize. Otherwise just OMIT the pixelsize
 # argument
-font=Helvetica,-1,25,default,50,0,0,0,0,0
+font=Sans Serif,-1,25,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=230.0
@@ -70,7 +70,7 @@ z=150.0
 
 [intro2]
 color=255,255,0
-font=Helvetica,-1,20,default,50,0,0,0,0,0
+font=Sans Serif,-1,20,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=275.0
@@ -79,7 +79,7 @@ z=150.0
 
 [intro3]
 color=255,255,0
-font=Helvetica,-1,25,default,50,0,0,0,0,0
+font=Sans Serif,-1,25,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=245.0
@@ -105,7 +105,7 @@ z=100.0
 
 [text1]
 color=255,255,255
-font=Helvetica,-1,18,default,50,0,0,0,0,0
+font=Sans Serif,-1,18,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=30.0
@@ -114,7 +114,7 @@ z=150.0
 
 [text2]
 color=255,255,255
-font=Helvetica,-1,18,default,50,0,0,0,0,0
+font=Sans Serif,-1,18,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=100.0
@@ -123,7 +123,7 @@ z=150.0
 
 [text3]
 color=255,255,255
-font=Helvetica,-1,18,default,50,0,0,0,0,0
+font=Sans Serif,-1,18,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=35.0
@@ -132,7 +132,7 @@ z=150.0
 
 [text4]
 color=255,255,255
-font=Helvetica,-1,18,default,50,0,0,0,0,0
+font=Sans Serif,-1,18,default,50,0,0,0,0,0
 rtti=3
 text=Dummy
 x=40.0
