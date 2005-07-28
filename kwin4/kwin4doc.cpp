@@ -20,6 +20,10 @@
 // include files for Qt
 #include <qdir.h>
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QKeyEvent>
+#include <Q3ValueList>
+#include <QMouseEvent>
 
 // include files for KDE
 #include <klocale.h>
@@ -232,7 +236,7 @@ void Kwin4Doc::EndGame(TABLE mode)
   // switch start player
 }
 
-void Kwin4Doc::moveDone(QCanvasItem *item,int )
+void Kwin4Doc::moveDone(Q3CanvasItem *item,int )
 {
   //kdDebug(12010) << "########################## SPRITE MOVE DONE ################# " << endl;
   //Debug();
@@ -1007,7 +1011,9 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
   switch(cid)
   {
     case 1:  // value
-      long value;
+	  Q_INT32 value;
+#warning "long -> Q_INT32 correct ?"
+	  //long value;
       in >> value;
       if (global_debug>1) kdDebug(12010) << "#### Computer thinks value is " << value << endl;
       SetScore(value);
@@ -1109,7 +1115,7 @@ void Kwin4Doc::calcHint()
   }
   Q_INT32 pl;
   QByteArray buffer;
-  QDataStream stream(buffer,IO_WriteOnly);
+  QDataStream stream(&buffer,QIODevice::WriteOnly);
   pl=QueryCurrentPlayer();
   prepareGameMessage(stream,pl);
   mHintProcess->sendMessage(stream,2,0,gameId());
@@ -1129,7 +1135,9 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
     {
       Q_INT32 pl;
       Q_INT32 move;
-      long value;
+#warning " long -> Q_INT32 correct ????"	  
+      //long value;
+	  Q_INT32 value;
       in >>  pl >> move  >> value;
       if (global_debug>1) kdDebug(12010) << "#### Computer thinks pl=" << pl << " move =" << move << endl;
       if (global_debug>1) kdDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;
@@ -1273,7 +1281,7 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
  * what is local
  * This function is only called in the Admin.
  */
-void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *newList,QValueList<int> &inactivate)
+void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *newList,Q3ValueList<int> &inactivate)
 {
   if (global_debug>1)
     kdDebug(12010) << "newPlayersJoin: START"<<endl;

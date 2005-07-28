@@ -82,7 +82,7 @@
                         <string>Hard</string>
                     </property>
                     <property name="alignment">
-                        <set>AlignVCenter|AlignRight</set>
+                        <set>Qt::AlignVCenter|Qt::AlignRight</set>
                     </property>
                 </widget>
                 <widget class="QSlider" row="0" column="0" rowspan="1" colspan="2">
@@ -102,7 +102,7 @@
                         <number>3</number>
                     </property>
                     <property name="orientation">
-                        <enum>Horizontal</enum>
+                        <enum>Qt::Horizontal</enum>
                     </property>
                     <property name="tickmarks">
                         <enum>Below</enum>
@@ -230,7 +230,7 @@
                 <cstring>spacer1</cstring>
             </property>
             <property name="orientation">
-                <enum>Vertical</enum>
+                <enum>Qt::Vertical</enum>
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>

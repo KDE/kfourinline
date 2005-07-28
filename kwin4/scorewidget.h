@@ -1,19 +1,25 @@
 #ifndef _SCOREWIDGET_H
 #define _SCOREWIDGET_H
 
-#include <qframe.h>
+#include <q3frame.h>
+//Added by qt3to4:
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
+#include <QPaintEvent>
 class QVBoxLayout; 
 class QHBoxLayout; 
 class QGridLayout; 
-class QGroupBox;
+class Q3GroupBox;
 class QLabel;
 
-class ScoreWidget : public QFrame
+class ScoreWidget : public Q3Frame
 { 
     Q_OBJECT
 
 public:
-    ScoreWidget( QWidget* parent = 0, const char* name = 0, WFlags fl = 0 );
+    ScoreWidget( QWidget* parent = 0, const char* name = 0, Qt::WFlags fl = 0 );
     void setMove(int i);
     void setLevel(int i);
     void setChance(int i);
@@ -21,7 +27,7 @@ public:
     void setTurn(int i); 
 
 protected:
-    QGroupBox* GroupBox1;
+    Q3GroupBox* GroupBox1;
     QLabel* TextLabel4;
     QLabel* TextLabel5;
     QLabel* TextLabel6;

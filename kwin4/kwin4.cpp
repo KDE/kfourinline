@@ -18,11 +18,13 @@
 // include files for QT
 #include <qstring.h>
 #include <qlayout.h>
-#include <qhgroupbox.h>
-#include <qvbox.h>
+#include <q3vbox.h>
 #include <qradiobutton.h>
-#include <qvbuttongroup.h>
 #include <qlcdnumber.h>
+//Added by qt3to4:
+#include <QGridLayout>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 // include files for KDE
 #include <kapplication.h>
@@ -70,7 +72,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
 
  QGridLayout* mGridLayout=new QGridLayout(plainPage());
  QHBoxLayout* h = new QHBoxLayout(plainPage());
- QHGroupBox* b = new QHGroupBox(i18n("Chat"), plainPage());
+ Q3GroupBox* b = new Q3GroupBox(1, Qt::Vertical,i18n("Chat"), plainPage());
  mChat = new KGameChat(game, 10000, b);
  h->addWidget(b, 1);
  h->addSpacing(10);
@@ -538,10 +540,10 @@ void Kwin4App::slotInitNetwork()
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
 
-  QVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
+  Q3VBox *box=dlg.configPage(KGameDialog::NetworkConfig);
   QVBoxLayout *l=(QVBoxLayout *)(box->layout());
 
-  mColorGroup=new QVButtonGroup(box);
+  mColorGroup=new Q3VButtonGroup(box);
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(slotServerTypeChanged(int)));
 

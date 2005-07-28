@@ -23,18 +23,22 @@
 #include <qlayout.h>
 #include <qpainter.h>
 #include <qsizepolicy.h>
+//Added by qt3to4:
+#include <Q3Frame>
+#include <QGridLayout>
+#include <QPaintEvent>
 #include <kdebug.h>
 #include <klocale.h>
 
-#define COL_STATUSBORDER black
+#define COL_STATUSBORDER Qt::black
 #define COL_STATUSFIELD  QColor(130,130,255)
 #define COL_STATUSDARK   QColor(0,0,65)
 #define COL_STATUSLIGHT  QColor(210,210,255)
 
-ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, WFlags fl )
-    : QFrame( parent, name, fl )
+ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
+    : Q3Frame( parent, name, fl )
 {
-  setFrameStyle( QFrame::Box | QFrame::Raised );
+  setFrameStyle( Q3Frame::Box | Q3Frame::Raised );
   setLineWidth( 2 );
   setMidLineWidth( 4 );
 	
@@ -178,13 +182,13 @@ void ScoreWidget::setTurn(int i)
 {
   if (i==0)
   {
-    TextLabel7->setPaletteForegroundColor ( yellow);
-    TextLabel9->setPaletteForegroundColor (black);
+    TextLabel7->setPaletteForegroundColor ( Qt::yellow);
+    TextLabel9->setPaletteForegroundColor (Qt::black);
   }
   else
   {
-    TextLabel9->setPaletteForegroundColor ( red);
-    TextLabel7->setPaletteForegroundColor (black);
+    TextLabel9->setPaletteForegroundColor ( Qt::red);
+    TextLabel7->setPaletteForegroundColor (Qt::black);
   }
   TextLabel7->update();
   TextLabel9->update();

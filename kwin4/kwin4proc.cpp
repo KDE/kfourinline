@@ -75,7 +75,7 @@ void KComputer::slotInit(QDataStream &in,int id)
 void KComputer::slotTurn(QDataStream &in,bool turn)
 {
   QByteArray buffer;
-  QDataStream out(buffer,IO_WriteOnly);
+  QDataStream out(&buffer,QIODevice::WriteOnly);
   fprintf(stderr,"----------------->\nKComputer::slotTurn\nturn:%d\n",turn);
   if (turn)
   {
@@ -92,7 +92,7 @@ void KComputer::sendValue(long value)
   Q_INT8 cid=1; // notifies our KGameIO that this is a value message
   int id=KGameMessage::IdProcessQuery;
   QByteArray buffer;
-  QDataStream out(buffer,IO_WriteOnly);
+  QDataStream out(&buffer,QIODevice::WriteOnly);
   out << cid << value;
   proc.sendSystemMessage(out,id,0);
 }
@@ -178,7 +178,7 @@ void KComputer::slotCommand(QDataStream &in,int msgid,int receiver,int sender)
 {
   fprintf(stderr,"----------------->\nKComputer::slotCommand\nMsgid:%d\n",msgid);
   QByteArray buffer;
-  QDataStream out(buffer,IO_WriteOnly);
+  QDataStream out(&buffer,QIODevice::WriteOnly);
   switch(msgid)
   {
     case 2:  // hint

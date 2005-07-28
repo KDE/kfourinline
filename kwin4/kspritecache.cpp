@@ -20,8 +20,12 @@
 #include <kconfig.h>
 #include <qbitmap.h>
 #include <qimage.h>
-#include <qwmatrix.h>
+#include <qmatrix.h>
 #include <qdir.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <Q3PtrList>
+#include <Q3ValueList>
 #include <kdebug.h>
 
 // KSprite
@@ -78,18 +82,18 @@ void KSpriteCache::reset()
 
 void KSpriteCache::deleteAllItems()
 {
-  QDictIterator<QCanvasItem> it( mItemDict );
+  Q3DictIterator<Q3CanvasItem> it( mItemDict );
   //kdDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
   while ( it.current() )
   {
-    QCanvasItem *item=it.current();
+    Q3CanvasItem *item=it.current();
     mItemDict.remove(it.currentKey());
     delete item;
   }
 }
 void KSpriteCache::deleteItem(QString s,int no)
 {
-  QCanvasItem *item;
+  Q3CanvasItem *item;
   QString name=s+QString("_%1").arg(no);
   //kdDebug(11002) << "KSpriteCache::deleteItem name=" << name << endl;
   item=mItemDict[name];
@@ -101,9 +105,9 @@ void KSpriteCache::deleteItem(QString s,int no)
   }
 }
 
-void KSpriteCache::deleteItem(QCanvasItem *item)
+void KSpriteCache::deleteItem(Q3CanvasItem *item)
 {
-  QDictIterator<QCanvasItem> it( mItemDict );
+  Q3DictIterator<Q3CanvasItem> it( mItemDict );
   while ( it.current() )
   {
     if (item==it.current())
@@ -119,11 +123,11 @@ void KSpriteCache::deleteItem(QCanvasItem *item)
 
 
 
-QCanvasItem *KSpriteCache::getItem(QString name,int no)
+Q3CanvasItem *KSpriteCache::getItem(QString name,int no)
 {
 
   QString dictname=name+QString("_%1").arg(no);
-  QCanvasItem *item=mItemDict[dictname];
+  Q3CanvasItem *item=mItemDict[dictname];
   //kdDebug(11002) << " -> getItem("<<name<<","<<no<<") =>"<<dictname<<endl;
   // Directly found item
   if (item)
@@ -185,7 +189,7 @@ QPixmap * KSpriteCache::loadPixmap(QString file,QString mask,QString dir)
 
 
 
-QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name)
+Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name)
 {
   config->setGroup(name);
   QPoint defaultoffset=QPoint(0,0);
@@ -203,9 +207,9 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
 
   // Prepare for the reading of the pixmaps
   QPixmap *pixmap=0;
-  QPtrList<QPixmap> pixlist;
+  Q3PtrList<QPixmap> pixlist;
   pixlist.setAutoDelete(true);
-  QPtrList<QPoint> hotlist;
+  Q3PtrList<QPoint> hotlist;
   hotlist.setAutoDelete(true);
 
   // work through the operations list and create pixmaps
@@ -260,7 +264,7 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
       pixmap=loadPixmap(pixfile,maskfile);
       for (unsigned int j=0;j<(unsigned int)number;j++)
       {
-        QWMatrix matrix;
+        QMatrix matrix;
         double sc=1.0-(double)(j)*step;
 
         // scale it
@@ -288,15 +292,15 @@ QCanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString name
  //kdDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
  if (pixlist.count()<1) return 0;
 
- QCanvasPixmapArray *pixmaparray=new QCanvasPixmapArray(pixlist,hotlist);
+ Q3CanvasPixmapArray *pixmaparray=new Q3CanvasPixmapArray(pixlist,hotlist);
  return pixmaparray;
 }
 
 void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
 {
-  QValueList<int> filterList;
+  Q3ValueList<int> filterList;
   filterList=config->readIntListEntry(name+"colorfilter");
-  QValueList<int> transformList;
+  Q3ValueList<int> transformList;
   transformList=config->readIntListEntry(name+"transformfilter");
 
   // apply transformation filter
@@ -304,13 +308,13 @@ void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
   {
     if (transformList[0]==1 && transformList.count()==2)  // rotate
     {
-      QWMatrix rotate;
+      QMatrix rotate;
       rotate.rotate(transformList[1]);
       *pixmap=pixmap->xForm(rotate);
     }
     else if (transformList[0]==2 && transformList.count()==3) // scale
     {
-      QWMatrix scale;
+      QMatrix scale;
       scale.scale((double)transformList[1]/100.0,(double)transformList[2]/100.0);
       *pixmap=pixmap->xForm(scale);
     }
@@ -367,7 +371,7 @@ void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
     {
       QRgb pix=img.pixel(x,y);
       int gray=qGray(qRed(pix),qGreen(pix),qBlue(pix));
-      QColor col(gray,gray,gray);
+      QColor col(Qt::gray,Qt::gray,Qt::gray);
       if (lighter>0) col=col.light(lighter);
       if (lighter<0) col=col.dark(-lighter);
       img.setPixel(x,y,qRgba(col.red(),col.green(),col.blue(),qAlpha(pix)));
@@ -376,16 +380,16 @@ void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
   pixmap->convertFromImage(img); // slow
 }
 
-QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
+Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
 {
   if (!config) return 0;
   int rtti=config->readNumEntry("rtti",0);
-  QCanvasItem *item=0;
+  Q3CanvasItem *item=0;
   switch(rtti)
   {
-    case QCanvasItem::Rtti_Text:
+    case Q3CanvasItem::Rtti_Text:
     {
-      QCanvasText *sprite=new QCanvasText(canvas());
+      Q3CanvasText *sprite=new Q3CanvasText(canvas());
       //kdDebug(11002) << "new CanvasText =" << sprite << endl;
       QString text=config->readEntry("text");
       sprite->setText(text);
@@ -393,13 +397,13 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
       sprite->setColor(color);
       QFont font=config->readFontEntry("font");
       sprite->setFont(font);
-      item=(QCanvasItem *)sprite;
+      item=(Q3CanvasItem *)sprite;
       configureCanvasItem(config,item);
     }
     break;
     case 32:
     {
-      QCanvasPixmapArray  *pixmaps=createPixmapArray(config,name);
+      Q3CanvasPixmapArray  *pixmaps=createPixmapArray(config,name);
       KSprite *sprite=new KSprite(pixmaps,canvas());
       //kdDebug(11002) << "new sprite =" << sprite << endl;
       double speed=config->readDoubleNumEntry("speed",0.0);
@@ -407,7 +411,7 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
       //kdDebug(11002) << "speed=" << sprite->speed() << endl;
       createAnimations(config,sprite);
 
-      item=(QCanvasItem *)sprite;
+      item=(Q3CanvasItem *)sprite;
       configureCanvasItem(config,item);
 
     }
@@ -421,32 +425,32 @@ QCanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
   return item;
 }
 
-QCanvasItem *KSpriteCache::cloneItem(QCanvasItem *original)
+Q3CanvasItem *KSpriteCache::cloneItem(Q3CanvasItem *original)
 {
   if (!original) return 0;
   int rtti=original->rtti();
-  QCanvasItem *item=0;
+  Q3CanvasItem *item=0;
   switch(rtti)
   {
-    case QCanvasItem::Rtti_Text:
+    case Q3CanvasItem::Rtti_Text:
     {
-      QCanvasText *sprite=(QCanvasText *)original;
-      QCanvasText *copy=new QCanvasText(canvas());
-      configureCanvasItem(original,(QCanvasItem *)copy);
+      Q3CanvasText *sprite=(Q3CanvasText *)original;
+      Q3CanvasText *copy=new Q3CanvasText(canvas());
+      configureCanvasItem(original,(Q3CanvasItem *)copy);
       copy->setText(sprite->text());
       copy->setColor(sprite->color());
       copy->setFont(sprite->font());
-      item=(QCanvasItem *)copy;
+      item=(Q3CanvasItem *)copy;
     }
     break;
     case 32:
     {
       KSprite *sprite=(KSprite *)original;
       KSprite *copy=new KSprite(sprite->images(),canvas());
-      configureCanvasItem(original,(QCanvasItem *)copy);
+      configureCanvasItem(original,(Q3CanvasItem *)copy);
       copy->setSpeed(sprite->speed());
       createAnimations(sprite,copy);
-      item=(QCanvasItem *)copy;
+      item=(Q3CanvasItem *)copy;
     }
     break;
     default:
@@ -459,7 +463,7 @@ QCanvasItem *KSpriteCache::cloneItem(QCanvasItem *original)
 }
 
 
-void KSpriteCache::configureCanvasItem(KConfig *config, QCanvasItem *sprite)
+void KSpriteCache::configureCanvasItem(KConfig *config, Q3CanvasItem *sprite)
 {
   double x=config->readDoubleNumEntry("x",0.0);
   double y=config->readDoubleNumEntry("y",0.0);
@@ -472,7 +476,7 @@ void KSpriteCache::configureCanvasItem(KConfig *config, QCanvasItem *sprite)
   //kdDebug(11002) << "z=" << sprite->z() << endl;
 }
 
-void KSpriteCache::configureCanvasItem(QCanvasItem *original, QCanvasItem *copy)
+void KSpriteCache::configureCanvasItem(Q3CanvasItem *original, Q3CanvasItem *copy)
 {
   copy->setX(original->x());
   copy->setY(original->y());
@@ -500,7 +504,7 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     if (config->hasKey(anim))
     {
       //kdDebug(11002) << "Found animation key " << anim << endl;
-      QValueList<int> animList=config->readIntListEntry(anim);
+      Q3ValueList<int> animList=config->readIntListEntry(anim);
       if (animList.count()!=4)
       {
         kdWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;
@@ -519,8 +523,8 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
 
 
 // ----------------------- KSPRITE --------------------------------
-KSprite::KSprite(QCanvasPixmapArray* array, QCanvas* canvas)
-          :QCanvasSprite(array,canvas)
+KSprite::KSprite(Q3CanvasPixmapArray* array, Q3Canvas* canvas)
+          :Q3CanvasSprite(array,canvas)
 {
   mImages=array;
   mSpeed=0.0;
@@ -570,7 +574,7 @@ void KSprite::advance(int stage)
   //       3: cycle  a->b
   //      -3: cycle  b->a
   mAnimSpeedCnt++;
-  if (mAnimationNumber<0 || mAnimDelay[mAnimationNumber]==0)
+  if (mAnimationNumber<0 || mAnimDelay.at(mAnimationNumber)==0)
   {
     // nothing to do?
     isAnimated=false;
@@ -578,7 +582,7 @@ void KSprite::advance(int stage)
   }
   if (mAnimationNumber>=0 && mAnimSpeedCnt>=mAnimDelay[mAnimationNumber])
   {
-    switch(mAnimDirection[mAnimationNumber])
+    switch(mAnimDirection.at(mAnimationNumber))
     {
       case 1:
         if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
@@ -589,7 +593,7 @@ void KSprite::advance(int stage)
         else emitsignal=2;
       break;
       case 2:
-        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir)
+        if (mAnimDirection.at(mAnimationNumber)==mCurrentAnimDir)
         {
           if (frame()+1 <= mAnimTo[mAnimationNumber]) setFrame(frame()+1);
           else
@@ -609,7 +613,7 @@ void KSprite::advance(int stage)
         }
       break;
       case -2:
-        if (mAnimDirection[mAnimationNumber]==mCurrentAnimDir)
+        if (mAnimDirection.at(mAnimationNumber)==mCurrentAnimDir)
         {
           if (frame()-1 >= mAnimFrom[mAnimationNumber]) setFrame(frame()-1);
           else
@@ -670,7 +674,7 @@ void KSprite::advance(int stage)
   if (mNotify && emitsignal)
   {
     //kdDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
-    mNotify->emitSignal((QCanvasItem *)this,emitsignal);
+    mNotify->emitSignal((Q3CanvasItem *)this,emitsignal);
   }
 }
 
@@ -732,7 +736,7 @@ void KSprite::emitNotify(int mode)
 {
   if (!mNotify) return ;
   //kdDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
-  mNotify->emitSignal((QCanvasItem *)this,mode);
+  mNotify->emitSignal((Q3CanvasItem *)this,mode);
 }
 QObject *KSprite::createNotify()
 {

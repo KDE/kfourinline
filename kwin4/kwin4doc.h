@@ -23,9 +23,11 @@
 #include <kgamepropertyarray.h>
 
 #include "kwin4player.h"
+//Added by qt3to4:
+#include <Q3ValueList>
 
 class Kwin4View;
-class QCanvasItem;
+class Q3CanvasItem;
 
 extern int global_debug;
 
@@ -117,7 +119,7 @@ public:
   KPlayer *createPlayer(int rtti, int io, bool isvirtual);
   KPlayer * nextPlayer(KPlayer *last, bool exclusive=true);
 
-  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QValueList<int> &);
+  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,Q3ValueList<int> &);
 
 protected:
   bool Move(int x,int id);
@@ -138,7 +140,7 @@ public slots:
   
   void slotPropertyChanged(KGamePropertyBase *,KGame *);
   void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
-  void moveDone(QCanvasItem *,int);
+  void moveDone(Q3CanvasItem *,int);
   void slotMessageUpdate(int,Q_UINT32,Q_UINT32);
   void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
   void slotClientConnected(Q_UINT32,KGame *);

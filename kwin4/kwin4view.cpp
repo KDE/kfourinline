@@ -32,15 +32,21 @@
 
 #include <qlabel.h>
 #include <qlcdnumber.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QMouseEvent>
+#include <QKeyEvent>
+#include <QResizeEvent>
+#include <QEvent>
 
 #define COL_STATUSLIGHT  QColor(210,210,255)
 #define COL_STATUSFIELD  QColor(130,130,255)
 #define COL_STATUSDARK   QColor(0,0,65)
 
-#define COL_STATUSBORDER black
+#define COL_STATUSBORDER Qt::black
 #define COL_PLAYER       QColor(255,255,0)
-#define COL_RED          red
-#define COL_YELLOW       yellow
+#define COL_RED          Qt::red
+#define COL_YELLOW       Qt::yellow
 
 class KIntroMove : public KSpriteMove
 {
@@ -102,7 +108,7 @@ private:
 };
 
 Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
-        : QCanvasView(0,parent, name), doc(theDoc)
+        : Q3CanvasView(0,parent, name), doc(theDoc)
 {
   mLastArrow=-1;
 
@@ -129,7 +135,7 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   //setBackgroundMode(PaletteBase);
   setBackgroundColor(QColor(0,0,128));
 
-  mCanvas=new QCanvas(parent);
+  mCanvas=new Q3Canvas(parent);
   mCanvas->resize(parent->width(),parent->height()); 
   mCanvas->setDoubleBuffering(true);
   mCanvas->setBackgroundColor(QColor(0,0,128));
@@ -316,12 +322,12 @@ void Kwin4View::hideIntro()
   sprite=(KSprite *)(mCache->getItem("win4about",2));
   if (sprite) sprite->hide();
 
-  QCanvasText *text;
-  text=(QCanvasText *)(mCache->getItem("intro1",1));
+  Q3CanvasText *text;
+  text=(Q3CanvasText *)(mCache->getItem("intro1",1));
   if (text) text->hide();
-  text=(QCanvasText *)(mCache->getItem("intro2",1));
+  text=(Q3CanvasText *)(mCache->getItem("intro2",1));
   if (text) text->hide();
-  text=(QCanvasText *)(mCache->getItem("intro3",1));
+  text=(Q3CanvasText *)(mCache->getItem("intro3",1));
   if (text) text->hide();
 }
 
@@ -343,20 +349,20 @@ void Kwin4View::drawIntro(bool /*remove*/)
     sprite->show();
   }
 
-  QCanvasText *text;
-  text=(QCanvasText *)(mCache->getItem("intro1",1));
+  Q3CanvasText *text;
+  text=(Q3CanvasText *)(mCache->getItem("intro1",1));
   if (text)
   {
     text->setText(i18n("1. intro line, welcome to win4","Welcome")); 
     text->show();
   }
-  text=(QCanvasText *)(mCache->getItem("intro2",1));
+  text=(Q3CanvasText *)(mCache->getItem("intro2",1));
   if (text)
   {
     text->setText(i18n("2. intro line, welcome to win4","to")); 
     text->show();
   }
-  text=(QCanvasText *)(mCache->getItem("intro3",1));
+  text=(Q3CanvasText *)(mCache->getItem("intro3",1));
   if (text)
   {
     text->setText(i18n("3. intro line, welcome to win4","KWin4")); 
@@ -371,8 +377,8 @@ void Kwin4View::drawIntro(bool /*remove*/)
     if (sprite)
     {
       KIntroMove *move=new KIntroMove;
-      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-              this,SLOT(introMoveDone(QCanvasItem *,int)));
+      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
+              this,SLOT(introMoveDone(Q3CanvasItem *,int)));
       sprite->setMoveObject(move);
       if (no%2==0)
       {
@@ -402,7 +408,7 @@ void Kwin4View::drawIntro(bool /*remove*/)
 /** 
  * received after the movment of an intro sprite is finished
  **/
-void Kwin4View::introMoveDone(QCanvasItem *item,int )
+void Kwin4View::introMoveDone(Q3CanvasItem *item,int )
 {
   KSprite *sprite=(KSprite *)item;
   sprite->deleteNotify();
@@ -531,8 +537,8 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
                   mBoardY-sprite->height()-mSpreadY);
       sprite->moveTo(sprite->x(),
                     sprite->y()+y*(sprite->height()+mSpreadY)+mBoardY);
-      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-          doc,SLOT(moveDone(QCanvasItem *,int)));
+      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
+          doc,SLOT(moveDone(Q3CanvasItem *,int)));
     }
     else
     {
@@ -541,8 +547,8 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
                   y*(sprite->height()+mSpreadY)+mBoardY);
       // Prevent moving (== speed =0)
       sprite->moveTo(sprite->x(),sprite->y());
-      connect(sprite->createNotify(),SIGNAL(signalNotify(QCanvasItem *,int)),
-          doc,SLOT(moveDone(QCanvasItem *,int)));
+      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
+          doc,SLOT(moveDone(Q3CanvasItem *,int)));
       sprite->emitNotify(3);
     }
     
@@ -609,7 +615,7 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
   else             ms=i18n("Please wait... it is not your turn."); 
 
   // TODO MH can be unique
-  QCanvasText *text=(QCanvasText *)(mCache->getItem(m,1));
+  Q3CanvasText *text=(Q3CanvasText *)(mCache->getItem(m,1));
   if (text)
   {
     text->setText(ms);
@@ -680,7 +686,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
     return;
   }
 
-  if (mouse->button()!=LeftButton) return ;
+  if (mouse->button()!=Qt::LeftButton) return ;
   //if (!doc->IsRunning()) return ;
 
   QPoint point;
@@ -709,15 +715,15 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
  */ 
 void Kwin4View::clearError()
 {
-  QCanvasText *text;
+  Q3CanvasText *text;
 
-  text=(QCanvasText *)(mCache->getItem("text1",1));
+  text=(Q3CanvasText *)(mCache->getItem("text1",1));
   if (text) text->hide();
-  text=(QCanvasText *)(mCache->getItem("text2",1));
+  text=(Q3CanvasText *)(mCache->getItem("text2",1));
   if (text) text->hide();
-  text=(QCanvasText *)(mCache->getItem("text3",1));
+  text=(Q3CanvasText *)(mCache->getItem("text3",1));
   if (text) text->hide();
-  text=(QCanvasText *)(mCache->getItem("text4",1));
+  text=(Q3CanvasText *)(mCache->getItem("text4",1));
   if (text) text->hide();
 }
 

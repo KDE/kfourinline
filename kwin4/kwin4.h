@@ -27,7 +27,7 @@ class KGameChat;
 class KChatDialog;
 class Kwin4Doc;
 class Kwin4View;
-class QVButtonGroup;
+class Q3VButtonGroup;
 class KPlayer;
 
 /**
@@ -112,7 +112,7 @@ private:
   Kwin4View *view;
   Kwin4Doc *doc;
 
-  QVButtonGroup *mColorGroup;
+  Q3VButtonGroup *mColorGroup;
   KGameChat *mChat;
   ChatDlg *mMyChatDlg;  
 

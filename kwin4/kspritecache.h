@@ -17,8 +17,10 @@
 #ifndef _KSPRITECACHE_H
 #define _KSPRITECACHE_H
 
-#include <qcanvas.h>
-#include <qdict.h>
+#include <q3canvas.h>
+#include <q3dict.h>
+//Added by qt3to4:
+#include <QPixmap>
 
 class KConfig;
 
@@ -36,12 +38,12 @@ class KSprite;
 
       public:
         KSpriteNotify() :QObject(0,0) {mRefCnt=0;}
-        void emitSignal(QCanvasItem *parent,int mode) {emit signalNotify(parent,mode);}
+        void emitSignal(Q3CanvasItem *parent,int mode) {emit signalNotify(parent,mode);}
         void incRefCnt() {mRefCnt++;}
         void decRefCnt() {mRefCnt--;}
         int refCnt() {return mRefCnt;}
       signals:
-        void signalNotify(QCanvasItem *,int);
+        void signalNotify(Q3CanvasItem *,int);
       private:
         int mRefCnt;
     };
@@ -66,7 +68,7 @@ class KSprite;
  * @author Martin Heni <martin@heni-online.de>
  *
  */
-class KSprite : public QCanvasSprite
+class KSprite : public Q3CanvasSprite
 {
   public:
     /**
@@ -76,7 +78,7 @@ class KSprite : public QCanvasSprite
     * @param array - the frames of the sprite
     * @param canvas - the canvas the sprites lives on
     **/
-    KSprite(QCanvasPixmapArray* array, QCanvas* canvas);
+    KSprite(Q3CanvasPixmapArray* array, Q3Canvas* canvas);
 
     /**
     * Destructs the sprite
@@ -92,7 +94,7 @@ class KSprite : public QCanvasSprite
     * returns a pointer to the pixmap array which holds the
     * frames of the sprite.
     **/
-    QCanvasPixmapArray* images() const {return mImages;}
+    Q3CanvasPixmapArray* images() const {return mImages;}
 
     /**
     * Moves the sprite to the given position with the given speed.
@@ -217,7 +219,7 @@ class KSprite : public QCanvasSprite
 
   private:
     KSpriteNotify *mNotify;
-    QCanvasPixmapArray* mImages;
+    Q3CanvasPixmapArray* mImages;
     QByteArray mAnimFrom;
     QByteArray mAnimTo;
     QByteArray mAnimDirection;
@@ -323,14 +325,14 @@ class KSpriteCache : public QObject
   /**
   * returns the canvas which belongs to the cache
   **/
-  QCanvas *canvas() const {return mCanvas;}
+  Q3Canvas *canvas() const {return mCanvas;}
 
   /**
   * sets the canvas belonging to the cache
   * 
   * @todo could be done in the constructor
   **/
-  void setCanvas(QCanvas *c) {mCanvas=c;}
+  void setCanvas(Q3Canvas *c) {mCanvas=c;}
 
   /**
   * returns the @ref KConfig configuration file where thegraphical data is
@@ -363,7 +365,7 @@ class KSpriteCache : public QObject
   * @todo support loading of frame sequence via one big pixmap
   *
   **/
-  QCanvasItem *getItem(QString name, int no);
+  Q3CanvasItem *getItem(QString name, int no);
 
   /**
   * This function loads a pixmap from the given file. Optional you can also
@@ -375,7 +377,7 @@ class KSpriteCache : public QObject
   /** 
   * Deletes a item form the sprite cache given as a pointer to it
   **/
-  void deleteItem(QCanvasItem *item);
+  void deleteItem(Q3CanvasItem *item);
 
   /**
   * Same as above but delete the item with the name and number
@@ -397,25 +399,25 @@ class KSpriteCache : public QObject
   * z=(double)
   * </pre>
   **/
-  void configureCanvasItem(KConfig *config,QCanvasItem *item);
+  void configureCanvasItem(KConfig *config,Q3CanvasItem *item);
   
   /**
   * Copies the default properties for all QCanvasItems from another sprite.
   * Same as above.
   **/
-  void configureCanvasItem(QCanvasItem *original,QCanvasItem *item);
+  void configureCanvasItem(Q3CanvasItem *original,Q3CanvasItem *item);
 
   /**
   * Loads an item with the given name form the given config file. From the
   * rtti entry it is determined what type it is and then it is loaded.
   **/
-  virtual QCanvasItem *loadItem(KConfig *config,QString name);
+  virtual Q3CanvasItem *loadItem(KConfig *config,QString name);
 
   /**
   * Clone the sprite from another sprite, mostly from the copy stored in the
   * cache.
   **/
-  virtual QCanvasItem *cloneItem(QCanvasItem *original);
+  virtual Q3CanvasItem *cloneItem(Q3CanvasItem *original);
 
   /**
   * Creates a pixmap array for a @ref KSprite from the given config file
@@ -444,7 +446,7 @@ class KSpriteCache : public QObject
   *   colorfilter=2,g   : make it gray and lighter (positiv) or darker (negative)
   * </pre>
   **/
-  virtual QCanvasPixmapArray *createPixmapArray(KConfig *config,QString name);
+  virtual Q3CanvasPixmapArray *createPixmapArray(KConfig *config,QString name);
 
   /**
   * Reads the animations from the config file and calls the corresponding
@@ -493,13 +495,13 @@ class KSpriteCache : public QObject
   void reset();
 
   protected:
-    QDict<QCanvasItem> mItemDict;                // Spritename lookup
-    QDict<QCanvasItem> mCloneDict;               // clone Items lookup
+    Q3Dict<Q3CanvasItem> mItemDict;                // Spritename lookup
+    Q3Dict<Q3CanvasItem> mCloneDict;               // clone Items lookup
 
     QString mGrafixDir;
     QString mRcFile;
     KConfig *mConfig;
-    QCanvas *mCanvas;
+    Q3Canvas *mCanvas;
  
 };
 

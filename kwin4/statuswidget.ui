@@ -33,7 +33,7 @@
                 <cstring>spacer1</cstring>
             </property>
             <property name="orientation">
-                <enum>Vertical</enum>
+                <enum>Qt::Vertical</enum>
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>
@@ -50,7 +50,7 @@
                 <cstring>spacer2</cstring>
             </property>
             <property name="orientation">
-                <enum>Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeType">
                 <enum>Expanding</enum>
@@ -70,7 +70,7 @@
                 <string>W</string>
             </property>
             <property name="alignment">
-                <set>AlignCenter</set>
+                <set>Qt::AlignCenter</set>
             </property>
         </widget>
         <widget class="QLabel" row="0" column="2">
@@ -81,7 +81,7 @@
                 <string>D</string>
             </property>
             <property name="alignment">
-                <set>AlignCenter</set>
+                <set>Qt::AlignCenter</set>
             </property>
         </widget>
         <widget class="QLabel" row="0" column="3">
@@ -92,7 +92,7 @@
                 <string>L</string>
             </property>
             <property name="alignment">
-                <set>AlignCenter</set>
+                <set>Qt::AlignCenter</set>
             </property>
         </widget>
         <widget class="QLabel" row="0" column="4">
@@ -103,7 +103,7 @@
                 <string>No</string>
             </property>
             <property name="alignment">
-                <set>AlignCenter</set>
+                <set>Qt::AlignCenter</set>
             </property>
         </widget>
         <widget class="QLabel" row="0" column="5">
@@ -114,7 +114,7 @@
                 <string>Bk</string>
             </property>
             <property name="alignment">
-                <set>AlignCenter</set>
+                <set>Qt::AlignCenter</set>
             </property>
         </widget>
         <widget class="QLabel" row="2" column="0">
@@ -254,7 +254,7 @@
                 <enum>Raised</enum>
             </property>
             <property name="orientation">
-                <enum>Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
             </property>
         </widget>
     </grid>

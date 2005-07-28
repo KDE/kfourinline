@@ -18,7 +18,12 @@
 #ifndef KWIN4VIEW_H
 #define KWIN4VIEW_H
 
-#include <qcanvas.h>
+#include <q3canvas.h>
+//Added by qt3to4:
+#include <QMouseEvent>
+#include <QPixmap>
+#include <QKeyEvent>
+#include <QResizeEvent>
 #include <kgameio.h>
 
 class Kwin4Doc;
@@ -29,7 +34,7 @@ class KSpriteCache;
 /**
  * The Kwin4View class provides the view widget for the Kwin4App instance.
  */
-class Kwin4View : public QCanvasView
+class Kwin4View : public Q3CanvasView
 {
 Q_OBJECT
 
@@ -53,7 +58,7 @@ public:
 public slots:
   void slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *e,bool *eatevent);
   void slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent);
-  void introMoveDone(QCanvasItem *item,int mode);
+  void introMoveDone(Q3CanvasItem *item,int mode);
  
 protected:
   QPixmap *loadPixmap(QString name);
@@ -62,7 +67,7 @@ protected:
 
 private:
   Kwin4Doc *doc;
-  QCanvas *mCanvas;    // our drawing canvas
+  Q3Canvas *mCanvas;    // our drawing canvas
   KSpriteCache *mCache; // The sprite cache
   QString mGrafix;      // grafix dir
 
