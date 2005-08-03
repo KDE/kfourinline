@@ -104,8 +104,8 @@
                     <property name="orientation">
                         <enum>Qt::Horizontal</enum>
                     </property>
-                    <property name="tickmarks">
-                        <enum>Below</enum>
+                    <property name="tickPosition">
+                        <enum>TicksBelow</enum>
                     </property>
                     <property name="whatsThis" stdset="0">
                         <string>Change the strength of the computer player.</string>
