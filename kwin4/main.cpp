@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
   }
   
   KApplication app(argc, argv);
-  KGlobal::locale()->insertCatalogue("libkdegames");
+  KGlobal::locale()->insertCatalog("libkdegames");
 
   if (app.isRestored())
   {
