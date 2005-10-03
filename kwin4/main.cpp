@@ -19,6 +19,7 @@
 #include <kcmdlineargs.h>
 #include <kdebug.h>
 #include <kaboutdata.h>
+#include <klocale.h>
 
 #include "kwin4.h"
 

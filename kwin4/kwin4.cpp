@@ -540,7 +540,7 @@ void Kwin4App::slotInitNetwork()
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
 
-  Q3VBox *box=dlg.configPage(KGameDialog::NetworkConfig);
+  KVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
   QVBoxLayout *l=(QVBoxLayout *)(box->layout());
 
   mColorGroup=new Q3VButtonGroup(box);
