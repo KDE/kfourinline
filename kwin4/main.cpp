@@ -57,20 +57,19 @@ int main(int argc, char *argv[])
     kdDebug(12010) << "Debug level set to " << global_debug << endl;
   }
   
-  KApplication app(argc, argv);
+  KApplication application(argc, argv);
   KGlobal::locale()->insertCatalog("libkdegames");
 
-  if (app.isRestored())
+  if (application.isSessionRestored())
   {
     RESTORE(Kwin4App);
   }
   else
   {
-    Kwin4App *kwin4 = new Kwin4App();
-    app.setMainWidget(kwin4);
-    kwin4->show();
+    Kwin4App kwin4;
+    kwin4.show();
   }
 
-  return app.exec();
+  return application.exec();
 }
 

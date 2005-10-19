@@ -23,6 +23,7 @@
 #include <kconfig.h>
 #include <klocale.h>
 #include <kapplication.h>
+#include <krandom.h>
 #include <kstandarddirs.h>
 
 #include "kwin4doc.h"
@@ -605,7 +606,7 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
     return false;
     
   clearError();
-  int rnd=(kapp->random()%4) +1;
+  int rnd=(KRandom::random()%4) +1;
   QString m;
   m=QString("text%1").arg(rnd);
   QString ms;
