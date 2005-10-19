@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
   }
   else
   {
-    Kwin4App kwin4;
-    kwin4.show();
+    Kwin4App *kwin4 = new Kwin4App();
+    kwin4->show();
   }
 
   return application.exec();
