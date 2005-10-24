@@ -93,7 +93,7 @@ void KComputer::sendValue(long value)
   int id=KGameMessage::IdProcessQuery;
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  out << cid << value;
+  out << cid << ( Q_INT32 )value;
   proc.sendSystemMessage(out,id,0);
 }
 
@@ -134,7 +134,7 @@ long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
       DoMove(j,colour,feldmatrix,anzahlmatrix);
     }
   }
-  
+
   for (i=0;i<=SIZE_Y;i++)
   {
     char tstr[1024];
@@ -188,12 +188,12 @@ void KComputer::slotCommand(QDataStream &in,int msgid,int receiver,int sender)
       Q_INT32 move=3;
       out << cid;
       long value=think(in,out,true);
-      out << value;
+      out << ( Q_INT32 )value;
       int id=KGameMessage::IdProcessQuery;
       proc.sendSystemMessage(out,id,0);
     }
     break;
-    default: 
+    default:
       fprintf(stderr,"KComputer:: unknown command Msgid:%d\n",msgid);
   }
 }
@@ -222,7 +222,7 @@ int KComputer::GetCompMove()
 
    DoMove(x,farbe,lfeld,lanzahl);
    wert=Wertung(farbe,lfeld,lanzahl,START_REK,aktzug+1);
-   
+
    if (wert>=cmax)
    {
     cmax=wert;
@@ -428,5 +428,5 @@ int main(int argc ,char * argv[])
   comp.proc.exec(argc,argv);
   fprintf(stderr,"nach exec\n");
   return 1;
-}                                                                                                                             
+}
 #include "kwin4proc.moc"
