@@ -49,6 +49,7 @@
 #include <dialogs/kgameconnectdialog.h>
 #include <dialogs/kgameerrordialog.h>
 #include <dialogs/kgamedebugdialog.h>
+#include <kglobal.h>
 
 // application specific includes
 #include "kwin4.h"
@@ -126,7 +127,7 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
   
   setupGUI();
 
-  doc->ReadConfig(kapp->config());
+  doc->ReadConfig(KGlobal::config());
 
   checkMenus();
 }

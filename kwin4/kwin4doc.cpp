@@ -32,6 +32,7 @@
 #include <kdebug.h>
 #include <krandomsequence.h>
 #include <kapplication.h>
+#include <kglobal.h>
 
 // application specific includes
 #include "kspritecache.h"
@@ -133,7 +134,7 @@ void Kwin4Doc::initPlayers()
 
 Kwin4Doc::~Kwin4Doc()
 {
-  WriteConfig(kapp->config());
+  WriteConfig(KGlobal::config());
   if (mHintProcess)
     delete mHintProcess;
 }

@@ -39,6 +39,7 @@
 #include <QKeyEvent>
 #include <QResizeEvent>
 #include <QEvent>
+#include <kglobal.h>
 
 #define COL_STATUSLIGHT  QColor(210,210,255)
 #define COL_STATUSFIELD  QColor(130,130,255)
@@ -126,8 +127,8 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
 
   // Allow overriding of the grafix directory
   // This is a cheap and dirty way for theming
-  kapp->config()->setGroup("Themes");
-  mGrafix = kapp->config()->readPathEntry("grafixdir", mGrafix);
+  KGlobal::config()->setGroup("Themes");
+  mGrafix = KGlobal::config()->readPathEntry("grafixdir", mGrafix);
 
   
   setVScrollBarMode(AlwaysOff);
