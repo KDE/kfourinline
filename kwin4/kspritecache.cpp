@@ -272,7 +272,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
         else if (axis==2) matrix.scale(1.0,sc);
         else matrix.scale(sc,sc);
 
-        QPixmap *copypixmap=new QPixmap(pixmap->xForm(matrix));
+        QPixmap *copypixmap=new QPixmap(pixmap->transformed(matrix));
 
         applyFilter(copypixmap,config,name);
 
@@ -310,13 +310,13 @@ void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
     {
       QMatrix rotate;
       rotate.rotate(transformList[1]);
-      *pixmap=pixmap->xForm(rotate);
+      *pixmap=pixmap->transformed(rotate);
     }
     else if (transformList[0]==2 && transformList.count()==3) // scale
     {
       QMatrix scale;
       scale.scale((double)transformList[1]/100.0,(double)transformList[2]/100.0);
-      *pixmap=pixmap->xForm(scale);
+      *pixmap=pixmap->transformed(scale);
     }
   }
   // apply colorfilter
