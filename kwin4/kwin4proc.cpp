@@ -65,7 +65,7 @@ void KComputer::slotInit(QDataStream &in,int id)
   fprintf(stderr,"----------------->\nKComputer::slotInit\nid:%d\n",id);
   /*
   QByteArray buffer;
-  QDataStream out(buffer,IO_WriteOnly);
+  QDataStream out(buffer,QIODevice::WriteOnly);
   int msgid=KGameMessage::IdProcessQuery;
   out << (int)1;
   proc.sendSystemMessage(out,msgid,0);

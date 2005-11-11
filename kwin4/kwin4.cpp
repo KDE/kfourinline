@@ -294,7 +294,7 @@ void Kwin4App::changeAction(const char *action, bool enable){
  */
 void Kwin4App::saveProperties(KConfig *cfg)
 {
-  QString tempfile = kapp->tempSaveName(QDir::currentDirPath()+"kwin4");
+  QString tempfile = kapp->tempSaveName(QDir::currentPath()+"kwin4");
   cfg->writePathEntry("filename", tempfile );
   doc->save(tempfile);
 }
