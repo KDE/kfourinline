@@ -623,7 +623,7 @@ void Kwin4App::showSettings(){
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
   Settings *general = new Settings(0, "General");
   dialog->addPage(general, i18n("General"), "package_settings");
-  connect(dialog, SIGNAL(settingsChanged()), doc, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged(const QString &)), doc, SLOT(loadSettings()));
   dialog->show();
 }
 
