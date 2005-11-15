@@ -24,7 +24,7 @@
 
 #include "kwin4player.h"
 //Added by qt3to4:
-#include <Q3ValueList>
+#include <QList>
 
 class Kwin4View;
 class Q3CanvasItem;
@@ -119,7 +119,7 @@ public:
   KPlayer *createPlayer(int rtti, int io, bool isvirtual);
   KPlayer * nextPlayer(KPlayer *last, bool exclusive=true);
 
-  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,Q3ValueList<int> &);
+  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QList<int> &);
 
 protected:
   bool Move(int x,int id);

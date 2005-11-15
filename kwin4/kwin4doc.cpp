@@ -22,7 +22,7 @@
 #include <qtimer.h>
 //Added by qt3to4:
 #include <QKeyEvent>
-#include <Q3ValueList>
+#include <QList>
 #include <QMouseEvent>
 
 // include files for KDE
@@ -1282,7 +1282,7 @@ bool Kwin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
  * what is local
  * This function is only called in the Admin.
  */
-void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *newList,Q3ValueList<int> &inactivate)
+void Kwin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/,KGamePlayerList *newList,QList<int> &inactivate)
 {
   if (global_debug>1)
     kdDebug(12010) << "newPlayersJoin: START"<<endl;

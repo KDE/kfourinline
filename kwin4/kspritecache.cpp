@@ -25,7 +25,7 @@
 //Added by qt3to4:
 #include <QPixmap>
 #include <Q3PtrList>
-#include <Q3ValueList>
+#include <QList>
 #include <kdebug.h>
 
 // KSprite
@@ -298,9 +298,9 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
 
 void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
 {
-  Q3ValueList<int> filterList;
+  QList<int> filterList;
   filterList=config->readIntListEntry(name+"colorfilter");
-  Q3ValueList<int> transformList;
+  QList<int> transformList;
   transformList=config->readIntListEntry(name+"transformfilter");
 
   // apply transformation filter
@@ -504,7 +504,7 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     if (config->hasKey(anim))
     {
       //kdDebug(11002) << "Found animation key " << anim << endl;
-      Q3ValueList<int> animList=config->readIntListEntry(anim);
+      QList<int> animList=config->readIntListEntry(anim);
       if (animList.count()!=4)
       {
         kdWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;
