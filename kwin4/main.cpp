@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     kdDebug(12010) << "Debug level set to " << global_debug << endl;
   }
   
-  KApplication application(argc, argv);
+  KApplication application(/*argc, argv*/true);
   KGlobal::locale()->insertCatalog("libkdegames");
 
   if (application.isSessionRestored())
