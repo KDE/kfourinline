@@ -15,23 +15,16 @@
 <firstname>Martin</firstname>
 <surname>Heni</surname>
 <affiliation>
-<address><email>martin@heni-online.de</email></address>
+<address>&Martin.Heni.mail;</address>
 </affiliation>
 </author>
-
-<othercredit role="reviewer">
-<firstname></firstname>
-<surname></surname>
-<contrib>Reviewer</contrib>
-<affiliation><address><email></email></address></affiliation>
-</othercredit>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 
 </authorgroup>
 
-<date>2003-09-16</date>
-<releaseinfo>1.00.00</releaseinfo>
+<date>2005-12-17</date>
+<releaseinfo>1.1.0</releaseinfo>
 
 <abstract>
 <para>
@@ -122,7 +115,7 @@ It is possible to play the game over a network connection with another
 computer. 
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
-in the game menu, network dialog. There you also find a chat dialog
+in the game menu, network configuration. There you also find a chat dialog
 box which allows you to speak with your friend.
 </para>
 
@@ -144,7 +137,7 @@ incoming connections.
 <title>Menus</title>
 
 <sect1 id="game-menu">
-<title>Game Menu</title>
+<title><guimenu>Game</guimenu> Menu</title>
 
 <variablelist>
 <varlistentry>
@@ -166,8 +159,11 @@ the server.
 
 <varlistentry>
 <term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
+</shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Open ...</guimenuitem>
+<guimenuitem>Load...</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -178,8 +174,11 @@ Loads a saved game.
 
 <varlistentry>
 <term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
+</shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Save As ...</guimenuitem>
+<guimenuitem>Save</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -190,8 +189,11 @@ Saves the current game.
 
 <varlistentry>
 <term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
+</shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Abort Game</guimenuitem></menuchoice></term>
+<guimenuitem>End Game</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Aborts a running game.
@@ -216,7 +218,7 @@ also disconnect it in this menu.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>Chat widget...</guimenuitem></menuchoice></term>
+<guimenuitem>Network Chat...</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Pops up a chat widget which allows you to send messages to the
@@ -227,22 +229,8 @@ other party.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Game</guimenu>
-<guimenuitem>Show Statistics...</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Shows the all time game statistics and allows to reset it.  This
-statistic is usually saved when the game ended and shows the amount of
-played and won games per player. 
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
 <shortcut>
-<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+<keycap>H</keycap>
 </shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Hint</guimenuitem>
@@ -275,7 +263,7 @@ Quits the program.
 </sect1>
 
 <sect1 id="edit-menu">
-<title>Edit Menu</title>
+<title><guimenu>Edit</guimenu> Menu</title>
 <variablelist>
 <varlistentry>
 <term><menuchoice>
@@ -313,9 +301,21 @@ Replay a move which had been undone.
 
 
 <sect1 id="option-menu">
-<title>Settings Menu</title>
+<title><guimenu>Settings</guimenu> Menu</title>
 
 <variablelist>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Toolbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggle on and off the display of the toolbar.
+</para>
+</listitem>
+</varlistentry>
 
 <varlistentry>
 <term><menuchoice>
@@ -332,72 +332,6 @@ Toggle on and off the display of the status bar.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guisubmenu>Starting Player</guisubmenu>
-</menuchoice></term>
-<listitem>
-<para>
-Determines which color player  has the first move in the next game.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Yellow Played By</guisubmenu>
-</menuchoice></term>
-<listitem>
-<para>
-Chooses who should play for player 1 (yellow). It can be either
-<guimenuitem>mouse</guimenuitem> or <guimenuitem>keyboard</guimenuitem>,
-&ie; a local player using the mouse or keyboard
-as input device or <guimenuitem>computer</guimenuitem>, &ie; the computer
-plays for this player.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Red Played By</guisubmenu>
-</menuchoice>
-</term>
-<listitem>
-<para>
-Same as <guimenuitem>Yellow Played By</guimenuitem> but for player 2
-(red).
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guisubmenu>Level</guisubmenu>
-</menuchoice></term>
-<listitem>
-<para>
-Selects the level of the computer player.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Change Names...</guimenuitem></menuchoice>
-</term>
-<listitem>
-<para>
-Change the names of the players.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
 <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice></term>
 <listitem><para>
@@ -405,11 +339,40 @@ Change the names of the players.
 </para></listitem>
 </varlistentry>
 
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem><para>Displays a &kde; standard dialog where you can configure the toolbar icons.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure &k4wins;...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays</action> the &k4wins;
+configuration dialog with these options:</para>
+<para><guilabel>Starting Player Color</guilabel>: Determine which color player has the first move in the next game.</para>
+<para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
+<para><guilabel>Yellow Plays With</guilabel>: 
+Choose who should play for player 1 (yellow). It can be either
+<guilabel>Mouse</guilabel> or <guilabel>Keyboard</guilabel>,
+&ie; a local player using the mouse or keyboard
+as input device or <guilabel>Computer</guilabel>, &ie; the computer
+plays for this player.</para>
+<para><guilabel>Red Plays With</guilabel>: Same as <guilabel>Yellow Playes With</guilabel> but for player 2
+(red).</para>
+<para><guilabel>Computer Difficulty</guilabel>: Select the level of the computer player.</para>
+</listitem>
+</varlistentry>
+
 </variablelist>
 </sect1>
 
 <sect1 id="help">
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title><guimenuitem>Help</guimenuitem> Menu</title>
 
 &help.menu.documentation;
 
@@ -424,10 +387,10 @@ Change the names of the players.
 &k4wins;
 </para>
 <para>
-Program copyright 1995-2002 Martin Heni <email>martin@heni-online.de</email>
+Program copyright 1995-2002 &Martin.Heni; &Martin.Heni.mail;
 </para>
 <para>
-Documentation copyright 2002 Martin Heni <email>martin@heni-online.de</email>
+Documentation copyright 2002 &Martin.Heni; &Martin.Heni.mail;
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
@@ -455,8 +418,7 @@ In order to successfully compile &k4wins;, you need &kde; 2.0
 </para>
 
 <para>
-All required libraries as well as &k4wins; itself can be found on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
+All required libraries as well as &k4wins; itself can be found on &kde-ftp;.</para>
 </sect1>
 
 <sect1 id="compilation">
