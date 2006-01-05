@@ -217,7 +217,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
   {
     QString name=*it;
     // Try to find out what we want to do, e.g. load, scale, ...
-    QString type=config->readEntry(name+"method");
+    QString type=config->readEntry(name+"method",QString());
     if (type.isNull()) type=QString("load"); // default load
     //kdDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
 
@@ -391,7 +391,7 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     {
       Q3CanvasText *sprite=new Q3CanvasText(canvas());
       //kdDebug(11002) << "new CanvasText =" << sprite << endl;
-      QString text=config->readEntry("text");
+      QString text=config->readEntry("text",QString());
       sprite->setText(text);
       QColor color=config->readColorEntry("color");
       sprite->setColor(color);
