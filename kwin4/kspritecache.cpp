@@ -197,7 +197,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
   QPoint offset=config->readPointEntry("offset",&defaultoffset);
 
   // operatins to perform. Can be ommited if you want only one operation
-  QStringList operationList=config->readListEntry("pixmaps");
+  QStringList operationList=config->readEntry("pixmaps",QStringList());
   // Append default entry (empty string)
   if (operationList.count()==0)
   {
