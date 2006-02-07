@@ -34,19 +34,19 @@
 KSpriteCache::KSpriteCache(QString grafixdir, QObject* parent,const char * name)
   : QObject(parent,name)
 {
-  kdDebug(11002) << "KSpriteCache:: grafixdir=" << grafixdir << endl;
+  kDebug(11002) << "KSpriteCache:: grafixdir=" << grafixdir << endl;
   mConfig=0;
   mCanvas=0;
   setRcFile(QString("grafix.rc"));
   setGrafixDir(grafixdir);
-  kdDebug(11002) << "Grafixdir=" << grafixDir() << " rcfile=" << rcFile() << endl;
+  kDebug(11002) << "Grafixdir=" << grafixDir() << " rcfile=" << rcFile() << endl;
   reset();
 }
 
 KSpriteCache::~KSpriteCache()
 {
-  kdDebug(11002) << "KSpriteCache: ItemDict=" << mItemDict.count() << endl;
-  kdDebug(11002) << "KSpriteCache: CloneDict=" << mCloneDict.count() << endl;
+  kDebug(11002) << "KSpriteCache: ItemDict=" << mItemDict.count() << endl;
+  kDebug(11002) << "KSpriteCache: CloneDict=" << mCloneDict.count() << endl;
   reset();
   delete mConfig;
 }
@@ -65,7 +65,7 @@ bool KSpriteCache::setGrafixDir(QString name)
   QString file=d+rcFile();
 
   // TODO check for filename
-  kdDebug(11002) << "Opening config " << file << endl;
+  kDebug(11002) << "Opening config " << file << endl;
   mConfig=new KConfig(file,false,false);
   mGrafixDir=d;
   return true;
@@ -83,7 +83,7 @@ void KSpriteCache::reset()
 void KSpriteCache::deleteAllItems()
 {
   Q3DictIterator<Q3CanvasItem> it( mItemDict );
-  //kdDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
+  //kDebug(11002)  << "KSpriteCache::deleteAllItems items in cache=" << mItemDict.size() << endl;
   while ( it.current() )
   {
     Q3CanvasItem *item=it.current();
@@ -95,12 +95,12 @@ void KSpriteCache::deleteItem(QString s,int no)
 {
   Q3CanvasItem *item;
   QString name=s+QString("_%1").arg(no);
-  //kdDebug(11002) << "KSpriteCache::deleteItem name=" << name << endl;
+  //kDebug(11002) << "KSpriteCache::deleteItem name=" << name << endl;
   item=mItemDict[name];
   if (item)
   {
     mItemDict.remove(name);
-//    kdDebug(11002) << "deleteitem "<<name<<" as sprite="<<item<<endl;
+//    kDebug(11002) << "deleteitem "<<name<<" as sprite="<<item<<endl;
     delete item;
   }
 }
@@ -112,7 +112,7 @@ void KSpriteCache::deleteItem(Q3CanvasItem *item)
   {
     if (item==it.current())
     {
- //     kdDebug(11002) << "KSpriteCache::deleteitem sprite="<<item<<" it="<<it.currentKey()<<endl;
+ //     kDebug(11002) << "KSpriteCache::deleteitem sprite="<<item<<" it="<<it.currentKey()<<endl;
       mItemDict.remove(it.currentKey());
       delete item;
       return ;
@@ -128,11 +128,11 @@ Q3CanvasItem *KSpriteCache::getItem(QString name,int no)
 
   QString dictname=name+QString("_%1").arg(no);
   Q3CanvasItem *item=mItemDict[dictname];
-  //kdDebug(11002) << " -> getItem("<<name<<","<<no<<") =>"<<dictname<<endl;
+  //kDebug(11002) << " -> getItem("<<name<<","<<no<<") =>"<<dictname<<endl;
   // Directly found item
   if (item)
   {
-    //kdDebug(11002) << "found item "<<dictname<<" as directly existing "<<item << endl;
+    //kDebug(11002) << "found item "<<dictname<<" as directly existing "<<item << endl;
     return item;
   }
 
@@ -143,19 +143,19 @@ Q3CanvasItem *KSpriteCache::getItem(QString name,int no)
     // Now first time load the items
     if (!mConfig->hasGroup(name))
     {
-      kdError() << "Item "<<name <<" not defined! " <<endl;
+      kError() << "Item "<<name <<" not defined! " <<endl;
       return 0;
     }
     mConfig->setGroup(name);
     item=loadItem(mConfig,name);
-    // kdDebug(11002) << "Inserting sprite="<<item << " as " << name << " into CloneDict"<< endl;
+    // kDebug(11002) << "Inserting sprite="<<item << " as " << name << " into CloneDict"<< endl;
     mCloneDict.insert(name,item);
   }
 
   // Clone new item
   item=cloneItem(item);
   mItemDict.insert(dictname,item);
-  // kdDebug(11002) << "Inserting sprite="<<item << " as " << dictname << " into ItemDict"<< endl;
+  // kDebug(11002) << "Inserting sprite="<<item << " as " << dictname << " into ItemDict"<< endl;
 
   return item;
 }
@@ -183,7 +183,7 @@ QPixmap * KSpriteCache::loadPixmap(QString file,QString mask,QString dir)
       if (result2) newP->setMask(bitmask);
     }
   }
-  //kdDebug(11002) << "KSpriteCache::loadPixmap: file="<<file<<"   mask="<<mask<<"   result1="<<result1<<"   result2="<<result2<<endl;
+  //kDebug(11002) << "KSpriteCache::loadPixmap: file="<<file<<"   mask="<<mask<<"   result1="<<result1<<"   result2="<<result2<<endl;
   return newP;
 }
 
@@ -219,10 +219,10 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
     // Try to find out what we want to do, e.g. load, scale, ...
     QString type=config->readEntry(name+"method",QString());
     if (type.isNull()) type=QString("load"); // default load
-    //kdDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
+    //kDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
 
     unsigned int number=config->readNumEntry(name+"number",1);
-    //kdDebug(11002) << " Reading " << number << " frames " << endl;
+    //kDebug(11002) << " Reading " << number << " frames " << endl;
 
     QString pixfile=config->readPathEntry(name+"file");
     QString maskfile=config->readPathEntry(name+"mask");
@@ -239,7 +239,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
         tmpmask.sprintf(maskfile.latin1(),i);
 
         pixmap=loadPixmap(tmpfile,tmpmask);
-        if (!pixmap) kdError() << "Could not create pixmap="<<tmpfile << " with mask " << tmpmask << endl;
+        if (!pixmap) kError() << "Could not create pixmap="<<tmpfile << " with mask " << tmpmask << endl;
         else
         {
           applyFilter(pixmap,config,name);
@@ -259,7 +259,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
       double step;
       if (number>1) step=(100.0-finalscale)/100.0/(double)(number-1);
       else step=1.0;
-      //kdDebug(11002) << " Scaling " << number << " pics axis="<<axis<<" final="<<finalscale<<" file="<<pixfile<< " mask="<<maskfile<<endl;
+      //kDebug(11002) << " Scaling " << number << " pics axis="<<axis<<" final="<<finalscale<<" file="<<pixfile<< " mask="<<maskfile<<endl;
 
       pixmap=loadPixmap(pixfile,maskfile);
       for (unsigned int j=0;j<(unsigned int)number;j++)
@@ -285,11 +285,11 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
     }
     else
     {
-      kdDebug(11002) << "WARNING: Unknown algorithm " << type << " for " << name << " not supported " << endl;
+      kDebug(11002) << "WARNING: Unknown algorithm " << type << " for " << name << " not supported " << endl;
     }
   }// end create images
 
- //kdDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
+ //kDebug(11002) <<"Pixarray count="<<pixlist.count()<<endl;
  if (pixlist.count()<1) return 0;
 
  Q3CanvasPixmapArray *pixmaparray=new Q3CanvasPixmapArray(pixlist,hotlist);
@@ -326,7 +326,7 @@ void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
     if (filterList[0]==1 && filterList.count()==4) changeHSV(pixmap,filterList[1],filterList[2],filterList[3]);
     else if (filterList[0]==2 && filterList.count()==2) changeGrey(pixmap,filterList[1]);
     else if (filterList[0]==2 && filterList.count()==1) changeGrey(pixmap);
-    else kdWarning(11002) << "WARNING: Colorfilter parameter incorrect "<< endl;
+    else kWarning(11002) << "WARNING: Colorfilter parameter incorrect "<< endl;
   }
 }
 
@@ -390,7 +390,7 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     case Q3CanvasItem::Rtti_Text:
     {
       Q3CanvasText *sprite=new Q3CanvasText(canvas());
-      //kdDebug(11002) << "new CanvasText =" << sprite << endl;
+      //kDebug(11002) << "new CanvasText =" << sprite << endl;
       QString text=config->readEntry("text",QString());
       sprite->setText(text);
       QColor color=config->readColorEntry("color");
@@ -405,10 +405,10 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     {
       Q3CanvasPixmapArray  *pixmaps=createPixmapArray(config,name);
       KSprite *sprite=new KSprite(pixmaps,canvas());
-      //kdDebug(11002) << "new sprite =" << sprite << endl;
+      //kDebug(11002) << "new sprite =" << sprite << endl;
       double speed=config->readDoubleNumEntry("speed",0.0);
       sprite->setSpeed(speed);
-      //kdDebug(11002) << "speed=" << sprite->speed() << endl;
+      //kDebug(11002) << "speed=" << sprite->speed() << endl;
       createAnimations(config,sprite);
 
       item=(Q3CanvasItem *)sprite;
@@ -418,7 +418,7 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
     break;
     default:
     {
-      kdError() << "KSpriteCache::loadItem: Should create unkwown rtti " << rtti << "...overwrite this function" << endl;
+      kError() << "KSpriteCache::loadItem: Should create unkwown rtti " << rtti << "...overwrite this function" << endl;
     }
     break;
   }
@@ -455,7 +455,7 @@ Q3CanvasItem *KSpriteCache::cloneItem(Q3CanvasItem *original)
     break;
     default:
     {
-      kdError() << "KSpriteCache::cloneItem: Should create unkwown rtti " << rtti << "...overwrite this function" << endl;
+      kError() << "KSpriteCache::cloneItem: Should create unkwown rtti " << rtti << "...overwrite this function" << endl;
     }
     break;
   }
@@ -471,9 +471,9 @@ void KSpriteCache::configureCanvasItem(KConfig *config, Q3CanvasItem *sprite)
   sprite->setX(x);
   sprite->setY(y);
   sprite->setZ(z);
-  //kdDebug(11002) << "x=" << sprite->x() << endl;
-  //kdDebug(11002) << "y=" << sprite->y() << endl;
-  //kdDebug(11002) << "z=" << sprite->z() << endl;
+  //kDebug(11002) << "x=" << sprite->x() << endl;
+  //kDebug(11002) << "y=" << sprite->y() << endl;
+  //kDebug(11002) << "z=" << sprite->z() << endl;
 }
 
 void KSpriteCache::configureCanvasItem(Q3CanvasItem *original, Q3CanvasItem *copy)
@@ -503,11 +503,11 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     QString anim=QString("anim%1").arg(i);
     if (config->hasKey(anim))
     {
-      //kdDebug(11002) << "Found animation key " << anim << endl;
+      //kDebug(11002) << "Found animation key " << anim << endl;
       QList<int> animList=config->readIntListEntry(anim);
       if (animList.count()!=4)
       {
-        kdWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;
+        kWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;
       }
       else
       {
@@ -542,17 +542,17 @@ void KSprite::moveTo(double tx,double ty,double speed)
     mSpeed=speed;
   }
 
-  //kdDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << mSpeed<<endl;
+  //kDebug(11002) <<"KSprite::moveTo x=" << tx << " y="<<ty<< " speed=" << mSpeed<<endl;
   mTargetX=tx;
   mTargetY=ty;
   if ((fabs(mTargetX-x())+fabs(mTargetY-y())) >0.0)
   {
-    //kdDebug(11002) << "     animation on" << endl;
+    //kDebug(11002) << "     animation on" << endl;
     setAnimated(true);
   }
   else
   {
-    //kdDebug(11002) << "     animation NOT on ihn moveTO" << endl;
+    //kDebug(11002) << "     animation NOT on ihn moveTO" << endl;
   }
 }
 
@@ -667,13 +667,13 @@ void KSprite::advance(int stage)
   // Final checks
   if (!isAnimated && !isMoving)
   {
-    //kdDebug(11002) << "Animation over" << endl;
+    //kDebug(11002) << "Animation over" << endl;
     setAnimated(false);
   }
 
   if (mNotify && emitsignal)
   {
-    //kdDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
+    //kDebug(11002) << " ADVANCE emits signal " << emitsignal << " for item "<< this << endl;
     mNotify->emitSignal((Q3CanvasItem *)this,emitsignal);
   }
 }
@@ -735,7 +735,7 @@ bool KSprite::spriteMove(double tx,double ty)
 void KSprite::emitNotify(int mode)
 {
   if (!mNotify) return ;
-  //kdDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
+  //kDebug(11002) << " ADVANCE emits DIRECT signal " << mode << " for item "<< this << endl;
   mNotify->emitSignal((Q3CanvasItem *)this,mode);
 }
 QObject *KSprite::createNotify()
@@ -751,7 +751,7 @@ void KSprite::deleteNotify()
   mNotify->decRefCnt();
   if (mNotify->refCnt()<=0)
   {
-    //kdDebug(11002) << "REALLY deleting notify" << endl;
+    //kDebug(11002) << "REALLY deleting notify" << endl;
     delete mNotify;
     mNotify=0;
   }
@@ -767,7 +767,7 @@ void KSprite::setAnimation(int no)
 {
   if ((int)mAnimFrom.count()<=no)
   {
-    kdError(11002) << "KSprite::setAnimation:: Animation " << no << " not defined " << endl;
+    kError(11002) << "KSprite::setAnimation:: Animation " << no << " not defined " << endl;
     return ;
   }
   mAnimationNumber=no;
@@ -783,7 +783,7 @@ void KSprite::setAnimation(int no)
   if (mCurrentAnimDir!=0 && mAnimTo[no]>=mAnimFrom[no]) setAnimated(true);
   else setAnimated(false);
 
-  //kdDebug(11002) << this << " setAnimation("<<no<<") delay="<<mAnimDelay[no]<<" frames="<<mAnimFrom[no]<<"->"<<mAnimTo[no]<<" mode="<<mAnimDirection[no]<<" animated="<<animated()<<endl;
+  //kDebug(11002) << this << " setAnimation("<<no<<") delay="<<mAnimDelay[no]<<" frames="<<mAnimFrom[no]<<"->"<<mAnimTo[no]<<" mode="<<mAnimDirection[no]<<" animated="<<animated()<<endl;
 }
 
 void KSprite::getAnimation(int no,int &startframe,int &endframe,int &mode,int &delay)
@@ -797,7 +797,7 @@ void KSprite::getAnimation(int no,int &startframe,int &endframe,int &mode,int &d
 
 void KSprite::createAnimation(int no,int startframe,int endframe,int mode,int delay)
 {
-  //kdDebug(11002) << this << " createAnimation " << no << endl;
+  //kDebug(11002) << this << " createAnimation " << no << endl;
   // resize?
   if ((int)mAnimFrom.count()<=no)
   {
@@ -810,7 +810,7 @@ void KSprite::createAnimation(int no,int startframe,int endframe,int mode,int de
   mAnimTo[no]=endframe;
   mAnimDirection[no]=mode;
   mAnimDelay[no]=delay;
-  //kdDebug(11002) << "from=" << startframe << " to="<<endframe<<" mode="<<mode<<" delay="<<delay<<endl;
+  //kDebug(11002) << "from=" << startframe << " to="<<endframe<<" mode="<<mode<<" delay="<<delay<<endl;
 }
 
 #include "kspritecache.moc"

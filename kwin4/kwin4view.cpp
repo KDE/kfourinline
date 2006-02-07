@@ -123,7 +123,7 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   else
     mGrafix+="kwin4/grafix/default/";
   if (global_debug>3)
-    kdDebug(12010) << "Localised grafix dir " << mGrafix << endl;
+    kDebug(12010) << "Localised grafix dir " << mGrafix << endl;
 
   // Allow overriding of the grafix directory
   // This is a cheap and dirty way for theming
@@ -204,7 +204,7 @@ void Kwin4View::initView(bool deleteall)
   config->setGroup("game");
   mSpreadX=config->readNumEntry("spread_x",0);
   mSpreadY=config->readNumEntry("spread_y",0);
-  //kdDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
+  //kDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
 
   QPixmap *pixmap=loadPixmap("background.png");
   if (pixmap)
@@ -222,7 +222,7 @@ void Kwin4View::initView(bool deleteall)
   else
   {
     // TODO in start functions to distinguish from intro
-    kdDebug(12010) << "Clearing board" <<endl;
+    kDebug(12010) << "Clearing board" <<endl;
     drawBoard(deleteall);
     mScoreWidget->show();
     mStatusWidget->show();
@@ -274,7 +274,7 @@ void Kwin4View::EndGame()
   KConfig *config=mCache->config();
   int dest=config->readNumEntry("destY",150);
   int src=config->readNumEntry("y",0);
-  //kdDebug(12010) << "MOVING gameover to " << dest << endl;
+  //kDebug(12010) << "MOVING gameover to " << dest << endl;
 
   if (sprite)
   {
@@ -304,7 +304,7 @@ void Kwin4View::drawStar(int x,int y,int no)
   }
 
   KSprite *sprite=(KSprite *)(mCache->getItem("star",no));
-  //kdDebug(12010) << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
+  //kDebug(12010) << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
   if (sprite)
   {
     sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+mBoardX,
@@ -401,7 +401,7 @@ void Kwin4View::drawIntro(bool /*remove*/)
       // Carefule: The number must be more then the
       // z coord of [empty] and less than [empty2]
       sprite->setZ(sprite->z()+no/2);
-      // kdDebug(12010) << "Z("<<no<<")="<<sprite->z()<<endl;
+      // kDebug(12010) << "Z("<<no<<")="<<sprite->z()<<endl;
       sprite->show();
     }
   }
@@ -443,7 +443,7 @@ void Kwin4View::drawBoard(bool remove)
     mBoardX=0;
     mBoardY=0;
   }
-      //kdDebug(12010) << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
+      //kDebug(12010) << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
 
   // Arrows
   for (x=0;x<7;x++)
@@ -517,7 +517,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
 
   sprite=(KSprite *)(mCache->getItem("piece",no));
 
-  //kdDebug(12010) << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
+  //kDebug(12010) << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
 
   // Check for removal of sprite
   if (color==Niemand)
@@ -572,7 +572,7 @@ void Kwin4View::setArrow(int x,int color)
   
   sprite=(KSprite *)(mCache->getItem("arrow",x));
 
-  //kdDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
+  //kDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
 
   // Make sure the frames are ok
   int c = 0;
@@ -637,7 +637,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   // Ignore non running
   if (!doc->isRunning())
     return;
-  // kdDebug(12010) << "KEY EVENT" << e->ascii() << endl;
+  // kDebug(12010) << "KEY EVENT" << e->ascii() << endl;
 
   // Ignore non key press
   if (e->type() != QEvent::KeyPress) return ;
@@ -653,7 +653,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   int code=e->ascii();
   if (code<'1' || code>'7')
   {
-    //kdDebug(12010) << "Key not supported\n";
+    //kDebug(12010) << "Key not supported\n";
     return ;
   }
 
@@ -709,7 +709,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   pl=player->userId();
   stream << pl << move;
   *eatevent=true;
-  // kdDebug(12010) << "Mouse input done..eatevent=true" << endl;
+  // kDebug(12010) << "Mouse input done..eatevent=true" << endl;
 }
 
 /**

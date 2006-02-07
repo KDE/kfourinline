@@ -97,12 +97,12 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 {
   if (!mChat)
   {
-    kdError() << "ChatDlg::setPlayer::Chat not defined can't set player" << endl;
+    kError() << "ChatDlg::setPlayer::Chat not defined can't set player" << endl;
     return ;
   }
   if (!p)
   {
-    kdError() << "ChatDlg::setPlayer::Player not defined can't set player" << endl;
+    kError() << "ChatDlg::setPlayer::Player not defined can't set player" << endl;
     return ;
   }
   mChat->setFromPlayer(p);
@@ -473,14 +473,14 @@ void Kwin4App::slotStatusNames(){
  */
 void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
-  kdDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
+  kDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
   if (doc->playedBy(Gelb)==0)
     doc->setPlayedBy(Gelb,KGameIO::MouseIO);
   if (doc->playedBy(Rot)==0)
     doc->setPlayedBy(Rot,KGameIO::MouseIO);
 
-  kdDebug(12010) << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
-  kdDebug(12010) << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
+  kDebug(12010) << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
+  kDebug(12010) << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
   doc->getPlayer(doc->QueryCurrentPlayer())->setTurn(true,true);
 
   KMessageBox::information(this,i18n("The network game ended!\n"));
@@ -524,7 +524,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   }
   else
   {
-    kdError() << "Gameover with status " << status << ". This is unexpected and a serious problem" << endl;
+    kError() << "Gameover with status " << status << ". This is unexpected and a serious problem" << endl;
   }
   checkMenus(CheckEditMenu);
 }
