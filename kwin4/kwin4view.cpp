@@ -150,12 +150,12 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   QPoint pnt;
   config->setGroup("game");
 
-  pnt=config->readPointEntry("scorewidget");
+  pnt=config->readEntry("scorewidget",QPoint());
   mScoreWidget=new ScoreWidget(viewport());
   addChild(mScoreWidget);
   mScoreWidget->move(pnt);
 
-  pnt=config->readPointEntry("statuswidget");
+  pnt=config->readEntry("statuswidget", QPoint());
   mStatusWidget=new StatusWidget(this);
   mStatusWidget->move(pnt);
   QPalette pal;
@@ -202,8 +202,8 @@ void Kwin4View::initView(bool deleteall)
 
   KConfig *config=mCache->config();
   config->setGroup("game");
-  mSpreadX=config->readNumEntry("spread_x",0);
-  mSpreadY=config->readNumEntry("spread_y",0);
+  mSpreadX=config->readEntry("spread_x",0);
+  mSpreadY=config->readEntry("spread_y",0);
   //kDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
 
   QPixmap *pixmap=loadPixmap("background.png");
@@ -272,8 +272,8 @@ void Kwin4View::EndGame()
   KSprite *sprite;
   sprite=(KSprite *)(mCache->getItem("gameover",1));
   KConfig *config=mCache->config();
-  int dest=config->readNumEntry("destY",150);
-  int src=config->readNumEntry("y",0);
+  int dest=config->readEntry("destY",150);
+  int src=config->readEntry("y",0);
   //kDebug(12010) << "MOVING gameover to " << dest << endl;
 
   if (sprite)
@@ -346,7 +346,7 @@ void Kwin4View::drawIntro(bool /*remove*/)
   if (sprite)
   {
     KConfig *config=mCache->config();
-    double dest=config->readDoubleNumEntry("x2",250.0);
+    double dest=config->readEntry("x2",250.0);
     sprite->setX(dest);
     sprite->show();
   }

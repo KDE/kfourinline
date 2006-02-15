@@ -101,10 +101,10 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /
 
 void Kwin4Player::readConfig(KConfig *config)
 {
-  mAllWin.setValue(config->readNumEntry("win",0));
-  mAllRemis.setValue(config->readNumEntry("remis",0));
-  mAllLost.setValue(config->readNumEntry("lost",0));
-  mAllBrk.setValue(config->readNumEntry("brk",0));
+  mAllWin.setValue(config->readEntry("win",0));
+  mAllRemis.setValue(config->readEntry("remis",0));
+  mAllLost.setValue(config->readEntry("lost",0));
+  mAllBrk.setValue(config->readEntry("brk",0));
 }
 
 void Kwin4Player::writeConfig(KConfig *config)

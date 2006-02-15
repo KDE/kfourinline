@@ -194,7 +194,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
   config->setGroup(name);
   QPoint defaultoffset=QPoint(0,0);
   // offset for the sprite
-  QPoint offset=config->readPointEntry("offset",&defaultoffset);
+  QPoint offset=config->readEntry("offset",defaultoffset);
 
   // operatins to perform. Can be ommited if you want only one operation
   QStringList operationList=config->readEntry("pixmaps",QStringList());
@@ -221,7 +221,7 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
     if (type.isNull()) type=QString("load"); // default load
     //kDebug(11002) << " Processing operation " << (name.isNull()?"default":name) << "type="<<type << endl;
 
-    unsigned int number=config->readNumEntry(name+"number",1);
+    unsigned int number=config->readEntry(name+"number",1);
     //kDebug(11002) << " Reading " << number << " frames " << endl;
 
     QString pixfile=config->readPathEntry(name+"file");
@@ -254,8 +254,8 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
     else if (type==QString("scale"))
     {
       // scale images
-      int axis=config->readNumEntry(name+"axis",0);
-      double finalscale=config->readDoubleNumEntry(name+"final",0.0);
+      int axis=config->readEntry(name+"axis",0);
+      double finalscale=config->readEntry(name+"final",0.0);
       double step;
       if (number>1) step=(100.0-finalscale)/100.0/(double)(number-1);
       else step=1.0;
@@ -299,9 +299,9 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
 void KSpriteCache::applyFilter(QPixmap *pixmap,KConfig *config,QString name)
 {
   QList<int> filterList;
-  filterList=config->readIntListEntry(name+"colorfilter");
+  filterList=config->readEntry(name+"colorfilter",filterList);
   QList<int> transformList;
-  transformList=config->readIntListEntry(name+"transformfilter");
+  transformList=config->readEntry(name+"transformfilter",transformList);
 
   // apply transformation filter
   if (transformList.count()>0)
@@ -383,7 +383,7 @@ void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
 Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
 {
   if (!config) return 0;
-  int rtti=config->readNumEntry("rtti",0);
+  int rtti=config->readEntry("rtti",0);
   Q3CanvasItem *item=0;
   switch(rtti)
   {
@@ -393,9 +393,9 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
       //kDebug(11002) << "new CanvasText =" << sprite << endl;
       QString text=config->readEntry("text",QString());
       sprite->setText(text);
-      QColor color=config->readColorEntry("color");
+      QColor color=config->readEntry("color",QColor());
       sprite->setColor(color);
-      QFont font=config->readFontEntry("font");
+      QFont font=config->readEntry("font",QFont());
       sprite->setFont(font);
       item=(Q3CanvasItem *)sprite;
       configureCanvasItem(config,item);
@@ -406,7 +406,7 @@ Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)
       Q3CanvasPixmapArray  *pixmaps=createPixmapArray(config,name);
       KSprite *sprite=new KSprite(pixmaps,canvas());
       //kDebug(11002) << "new sprite =" << sprite << endl;
-      double speed=config->readDoubleNumEntry("speed",0.0);
+      double speed=config->readEntry("speed",0.0);
       sprite->setSpeed(speed);
       //kDebug(11002) << "speed=" << sprite->speed() << endl;
       createAnimations(config,sprite);
@@ -465,9 +465,9 @@ Q3CanvasItem *KSpriteCache::cloneItem(Q3CanvasItem *original)
 
 void KSpriteCache::configureCanvasItem(KConfig *config, Q3CanvasItem *sprite)
 {
-  double x=config->readDoubleNumEntry("x",0.0);
-  double y=config->readDoubleNumEntry("y",0.0);
-  double z=config->readDoubleNumEntry("z",0.0);
+  double x=config->readEntry("x",0.0);
+  double y=config->readEntry("y",0.0);
+  double z=config->readEntry("z",0.0);
   sprite->setX(x);
   sprite->setY(y);
   sprite->setZ(z);
@@ -504,7 +504,7 @@ void KSpriteCache::createAnimations(KConfig *config,KSprite *sprite)
     if (config->hasKey(anim))
     {
       //kDebug(11002) << "Found animation key " << anim << endl;
-      QList<int> animList=config->readIntListEntry(anim);
+      QList<int> animList=config->readEntry(anim,QList<int>());
       if (animList.count()!=4)
       {
         kWarning(11002) << "KSpriteCache::createAnimations:: warning animation parameter " << anim << " needs four arguments" << endl;

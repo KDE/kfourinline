@@ -89,10 +89,10 @@
                     <property name="name">
                         <cstring>kcfg_level</cstring>
                     </property>
-                    <property name="minValue">
+                    <property name="minimum">
                         <number>1</number>
                     </property>
-                    <property name="maxValue">
+                    <property name="maximum">
                         <number>10</number>
                     </property>
                     <property name="pageStep">
