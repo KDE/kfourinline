@@ -6,7 +6,6 @@ Icon=kwin4.xpm
 MiniIcon=kwin4.xpm
 DocPath=kwin4/index.html
 Comment=
-Comment[x-test]=xxxx
 Terminal=0
 Name=Kwin4
 Name[x-test]=xxKwin4xx
