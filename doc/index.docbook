@@ -23,7 +23,7 @@
 
 </authorgroup>
 
-<date>2005-12-17</date>
+<date>2006-01-13</date>
 <releaseinfo>1.1.0</releaseinfo>
 
 <abstract>
@@ -115,7 +115,8 @@ It is possible to play the game over a network connection with another
 computer. 
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
-in the game menu, network configuration. There you also find a chat dialog
+in the menu <guimenu>Game</guimenu><guimenuitem>Network Configuration...</guimenuitem>
+There you also find a chat dialog
 box which allows you to speak with your friend.
 </para>
 
