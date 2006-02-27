@@ -252,7 +252,7 @@ void Kwin4App::slotClearStatusText()
  */
 void Kwin4App::initStatusBar()
 {
-  statusBar()->insertItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
+  statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
   statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
 
   slotStatusMover(i18n("(c) Martin Heni   "));
