@@ -22,7 +22,7 @@ kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
 kde4_add_executable(kwin4 ${kwin4_SRCS})
 
-target_link_libraries(kwin4  ${LIB_KDE3SUPPORT} )
+target_link_libraries(kwin4  ${LIB_KDE3SUPPORT} kdegames )
 
 install_targets(/bin kwin4 )
 
@@ -35,7 +35,7 @@ kde4_automoc(${kwin4proc_SRCS})
 
 kde4_add_executable(kwin4proc ${kwin4proc_SRCS})
 
-target_link_libraries(kwin4proc  ${QT_AND_KDECORE_LIBS} )
+target_link_libraries(kwin4proc  ${QT_AND_KDECORE_LIBS} kdegames )
 
 install_targets(/bin kwin4proc )
 
