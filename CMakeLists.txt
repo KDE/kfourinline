@@ -1,4 +1,5 @@
 kde4_header()
+project(kwin4)
 
 add_subdirectory( kwin4 ) 
 add_subdirectory( grafix ) 
