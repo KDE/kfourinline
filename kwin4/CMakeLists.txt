@@ -22,7 +22,7 @@ kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
 kde4_add_executable(kwin4 ${kwin4_SRCS})
 
-target_link_libraries(kwin4  ${KDE4_KDE3SUPPORT_LIBRARIES} kdegames )
+target_link_libraries(kwin4  ${KDE4_KDE3SUPPORT_LIBS} kdegames )
 
 install_targets(/bin kwin4 )
 
