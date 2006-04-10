@@ -513,7 +513,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
       EndGame(TWin);
     else
       EndGame(TLost);
-    QString msg=i18n("%1 won the game. Please restart next round.").arg(doc->QueryName(((FARBE)p->userId())));
+    QString msg=i18n("%1 won the game. Please restart next round.", doc->QueryName(((FARBE)p->userId())));
     slotStatusMsg(msg);
   }
   else if (status==2) // Abort

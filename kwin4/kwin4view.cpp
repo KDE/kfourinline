@@ -355,19 +355,19 @@ void Kwin4View::drawIntro(bool /*remove*/)
   text=(Q3CanvasText *)(mCache->getItem("intro1",1));
   if (text)
   {
-    text->setText(i18n("1. intro line, welcome to win4","Welcome")); 
+    text->setText(i18nc("1. intro line, welcome to win4","Welcome")); 
     text->show();
   }
   text=(Q3CanvasText *)(mCache->getItem("intro2",1));
   if (text)
   {
-    text->setText(i18n("2. intro line, welcome to win4","to")); 
+    text->setText(i18nc("2. intro line, welcome to win4","to")); 
     text->show();
   }
   text=(Q3CanvasText *)(mCache->getItem("intro3",1));
   if (text)
   {
-    text->setText(i18n("3. intro line, welcome to win4","KWin4")); 
+    text->setText(i18nc("3. intro line, welcome to win4","KWin4")); 
     text->show();
   }
   // text

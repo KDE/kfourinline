@@ -98,7 +98,7 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
 
 
     TextLabel2 = new QLabel( this, "Move" );
-    TextLabel2->setText( i18n("number of MOVE in game", "Move" ) );
+    TextLabel2->setText( i18nc("number of MOVE in game", "Move" ) );
     TextLabel2->setBackgroundColor( COL_STATUSFIELD );
     LayoutB->addWidget( TextLabel2, row, 0 );
 
