@@ -1,7 +1,7 @@
 /***************************************************************************
                           Kwin4  -  Four in a Row for KDE
                              -------------------
-    begin                : March 2000 
+    begin                : March 2000
     copyright            : (C) 1995-2001 by Martin Heni
     email                : martin@heni-online.de
  ***************************************************************************/
@@ -31,8 +31,8 @@
 // KSprite
 #include <math.h>
 
-KSpriteCache::KSpriteCache(QString grafixdir, QObject* parent,const char * name)
-  : QObject(parent,name)
+KSpriteCache::KSpriteCache(QString grafixdir, QObject* parent)
+  : QObject(parent)
 {
   kDebug(11002) << "KSpriteCache:: grafixdir=" << grafixdir << endl;
   mConfig=0;
@@ -61,7 +61,7 @@ bool KSpriteCache::setGrafixDir(QString name)
 
   QDir dir(name);
   QString d;
-  d=dir.absPath()+QString("/");
+  d=dir.absolutePath()+QString("/");
   QString file=d+rcFile();
 
   // TODO check for filename
@@ -338,7 +338,7 @@ void KSpriteCache::changeHSV(QPixmap *pixmap,int dh,int ds,int dv)
 
   int h,s,v;
   QColor black=QColor(0,0,0);
-  QImage img=pixmap->convertToImage();  // slow
+  QImage img=pixmap->toImage();  // slow
 
   for (int y=0;y<img.height();y++)
   {
@@ -346,7 +346,7 @@ void KSpriteCache::changeHSV(QPixmap *pixmap,int dh,int ds,int dv)
     {
       QRgb pix=img.pixel(x,y);
       QColor col(pix);
-      col.hsv(&h,&s,&v);
+      col.getHsv(&h,&s,&v);
       if (col==black) continue;  // speed up?
       h=((unsigned int)(h+dh))%360;
       s=((unsigned int)(s+ds)%256);
@@ -355,7 +355,7 @@ void KSpriteCache::changeHSV(QPixmap *pixmap,int dh,int ds,int dv)
       img.setPixel(x,y,qRgba(col.red(),col.green(),col.blue(),qAlpha(pix)));
     }
   }
-  pixmap->convertFromImage(img); // slow
+  *pixmap = QPixmap::fromImage(img); // slow
 }
 void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
 {
@@ -363,21 +363,21 @@ void KSpriteCache::changeGrey(QPixmap *pixmap,int lighter)
   if (pixmap->isNull()) return ;
   if (pixmap->width()==0 && pixmap->height()==0) return ;
 
-  QImage img=pixmap->convertToImage();  // slow
+  QImage img=pixmap->toImage();  // slow
 
   for (int y=0;y<img.height();y++)
   {
     for (int x=0;x<img.width();x++)
     {
       QRgb pix=img.pixel(x,y);
-      int gray=qGray(qRed(pix),qGreen(pix),qBlue(pix));
+//      int gray=qGray(qRed(pix),qGreen(pix),qBlue(pix));
       QColor col(Qt::gray,Qt::gray,Qt::gray);
       if (lighter>0) col=col.light(lighter);
       if (lighter<0) col=col.dark(-lighter);
       img.setPixel(x,y,qRgba(col.red(),col.green(),col.blue(),qAlpha(pix)));
     }
   }
-  pixmap->convertFromImage(img); // slow
+  *pixmap = QPixmap::fromImage(img); // slow
 }
 
 Q3CanvasItem *KSpriteCache::loadItem(KConfig *config,QString name)

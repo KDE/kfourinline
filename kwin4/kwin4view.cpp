@@ -54,7 +54,7 @@ class KIntroMove : public KSpriteMove
 {
   public:
   KIntroMove() : KSpriteMove() {mode=0;cnt=0;}
-  virtual bool spriteMove(double tx,double ty,KSprite *sp) 
+  virtual bool spriteMove(double tx,double ty,KSprite *sp)
   {
     double sign=1.0;
     if (!dir) sign=-1.0;
@@ -66,7 +66,7 @@ class KIntroMove : public KSpriteMove
         sp->spriteMove(tx,ty);
         return true;
       }
-      else 
+      else
       {
         cnt=0;
         mode=1;
@@ -84,7 +84,7 @@ class KIntroMove : public KSpriteMove
         sp->move(x,y);
         cnt+=5;
       }
-      else 
+      else
       {
         cnt=0;
         mode=2;
@@ -130,15 +130,17 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   KGlobal::config()->setGroup("Themes");
   mGrafix = KGlobal::config()->readPathEntry("grafixdir", mGrafix);
 
-  
+
   setVScrollBarMode(AlwaysOff);
   setHScrollBarMode(AlwaysOff);
 
   //setBackgroundMode(PaletteBase);
-  setBackgroundColor(QColor(0,0,128));
+  QPalette palette;
+  palette.setColor( backgroundRole(), QColor( 0, 0, 128 ) );
+  setPalette( palette );
 
   mCanvas=new Q3Canvas(parent);
-  mCanvas->resize(parent->width(),parent->height()); 
+  mCanvas->resize(parent->width(),parent->height());
   mCanvas->setDoubleBuffering(true);
   mCanvas->setBackgroundColor(QColor(0,0,128));
   setCanvas(mCanvas);
@@ -159,31 +161,31 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   mStatusWidget=new StatusWidget(this);
   mStatusWidget->move(pnt);
   QPalette pal;
-  pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);
-  pal.setColor(QColorGroup::Mid, COL_STATUSFIELD);
-  pal.setColor(QColorGroup::Dark, COL_STATUSDARK);
-  mStatusWidget->setPalette(pal); 
-  mStatusWidget->setBackgroundColor(COL_STATUSFIELD);
+  pal.setColor(QPalette::Light, COL_STATUSLIGHT);
+  pal.setColor(QPalette::Mid, COL_STATUSFIELD);
+  pal.setColor(QPalette::Dark, COL_STATUSDARK);
+  pal.setColor( mStatusWidget->backgroundRole(), COL_STATUSFIELD );
+  mStatusWidget->setPalette(pal);
 
-  mStatusWidget->wins->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->draws->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->loses->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->num->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->bk->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->wins->setPalette( palette );
+  mStatusWidget->draws->setPalette( palette );
+  mStatusWidget->loses->setPalette( palette );
+  mStatusWidget->num->setPalette( palette );
+  mStatusWidget->bk->setPalette( palette );
 
-  mStatusWidget->p1_name->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p1_w->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p1_d->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p1_l->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p1_n->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p1_b->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p1_name->setPalette( palette );
+  mStatusWidget->p1_w->setPalette( palette );
+  mStatusWidget->p1_d->setPalette( palette );
+  mStatusWidget->p1_l->setPalette( palette );
+  mStatusWidget->p1_n->setPalette( palette );
+  mStatusWidget->p1_b->setPalette( palette );
 
-  mStatusWidget->p2_name->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p2_w->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p2_d->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p2_l->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p2_n->setBackgroundColor(COL_STATUSFIELD);
-  mStatusWidget->p2_b->setBackgroundColor(COL_STATUSFIELD);
+  mStatusWidget->p2_name->setPalette( palette );
+  mStatusWidget->p2_w->setPalette( palette );
+  mStatusWidget->p2_d->setPalette( palette );
+  mStatusWidget->p2_l->setPalette( palette );
+  mStatusWidget->p2_n->setPalette( palette );
+  mStatusWidget->p2_b->setPalette( palette );
 
   mScoreWidget->hide();
   mStatusWidget->hide();
@@ -191,7 +193,7 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   move(0,0);
   adjustSize();
 
-  initView(false);  
+  initView(false);
 }
 
 void Kwin4View::initView(bool deleteall)
@@ -355,23 +357,23 @@ void Kwin4View::drawIntro(bool /*remove*/)
   text=(Q3CanvasText *)(mCache->getItem("intro1",1));
   if (text)
   {
-    text->setText(i18nc("1. intro line, welcome to win4","Welcome")); 
+    text->setText(i18nc("1. intro line, welcome to win4","Welcome"));
     text->show();
   }
   text=(Q3CanvasText *)(mCache->getItem("intro2",1));
   if (text)
   {
-    text->setText(i18nc("2. intro line, welcome to win4","to")); 
+    text->setText(i18nc("2. intro line, welcome to win4","to"));
     text->show();
   }
   text=(Q3CanvasText *)(mCache->getItem("intro3",1));
   if (text)
   {
-    text->setText(i18nc("3. intro line, welcome to win4","KWin4")); 
+    text->setText(i18nc("3. intro line, welcome to win4","KWin4"));
     text->show();
   }
   // text
-  
+
   // animation
   for (int no=0;no<42;no++)
   {
@@ -407,7 +409,7 @@ void Kwin4View::drawIntro(bool /*remove*/)
   }
 }
 
-/** 
+/**
  * received after the movment of an intro sprite is finished
  **/
 void Kwin4View::introMoveDone(Q3CanvasItem *item,int )
@@ -553,7 +555,7 @@ void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
           doc,SLOT(moveDone(Q3CanvasItem *,int)));
       sprite->emitNotify(3);
     }
-    
+
     sprite->setFrame(c);
     sprite->show();
   }
@@ -565,11 +567,11 @@ void Kwin4View::setArrow(int x,int color)
 
   if (mLastArrow>=0)
     sprite=(KSprite *)(mCache->getItem("arrow",mLastArrow));
-  else 
+  else
     sprite=0;
-  if (sprite) 
+  if (sprite)
     sprite->setFrame(0);
-  
+
   sprite=(KSprite *)(mCache->getItem("arrow",x));
 
   //kDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
@@ -605,16 +607,16 @@ bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
 
   if (flag)
     return false;
-    
+
   clearError();
   int rnd=(KRandom::random()%4) +1;
   QString m;
   m=QString("text%1").arg(rnd);
   QString ms;
-  if (rnd==1)      ms=i18n("Hold on... the other player has not been yet..."); 
-  else if (rnd==2) ms=i18n("Hold your horses..."); 
-  else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time..."); 
-  else             ms=i18n("Please wait... it is not your turn."); 
+  if (rnd==1)      ms=i18n("Hold on... the other player has not been yet...");
+  else if (rnd==2) ms=i18n("Hold your horses...");
+  else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time...");
+  else             ms=i18n("Please wait... it is not your turn.");
 
   // TODO MH can be unique
   Q3CanvasText *text=(Q3CanvasText *)(mCache->getItem(m,1));
@@ -714,7 +716,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
 
 /**
  * Hide all the error sprites
- */ 
+ */
 void Kwin4View::clearError()
 {
   Q3CanvasText *text;
@@ -731,7 +733,7 @@ void Kwin4View::clearError()
 
 void Kwin4View::resizeEvent(QResizeEvent *e)
 {
-  if (mCanvas) mCanvas->resize(e->size().width(),e->size().height()); 
+  if (mCanvas) mCanvas->resize(e->size().width(),e->size().height());
 }
 
 #include "kwin4view.moc"

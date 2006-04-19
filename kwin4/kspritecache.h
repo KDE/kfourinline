@@ -37,7 +37,7 @@ class KSprite;
       Q_OBJECT
 
       public:
-        KSpriteNotify() :QObject(0,0) {mRefCnt=0;}
+        KSpriteNotify() {mRefCnt=0;}
         void emitSignal(Q3CanvasItem *parent,int mode) {emit signalNotify(parent,mode);}
         void incRefCnt() {mRefCnt++;}
         void decRefCnt() {mRefCnt--;}
@@ -293,7 +293,7 @@ class KSpriteCache : public QObject
   * 
   * @param grafixdir - the directory where the configuration file and the graphics reside
   **/
-  KSpriteCache(QString grafixdir, QObject* parent=0,const char * name=0);
+  KSpriteCache(QString grafixdir, QObject* parent=0);
 
   /**
   * Delete the sprite cache

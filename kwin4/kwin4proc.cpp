@@ -38,7 +38,7 @@
 #define START_REK 1    // (0) 1:Nur Stellungsbewertung bei Level 1
                        //     0:Level 1 schon eine Rekursion
 
-KComputer::KComputer() : QObject(0,0)
+KComputer::KComputer()
 {
     InitField();
 

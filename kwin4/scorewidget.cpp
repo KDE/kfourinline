@@ -41,37 +41,39 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
   setFrameStyle( Q3Frame::Box | Q3Frame::Raised );
   setLineWidth( 2 );
   setMidLineWidth( 4 );
-	
-  setBackgroundColor( COL_STATUSFIELD );
 
-   resize( 255, 187 ); 
+  QPalette palette;
+  palette.setColor( backgroundRole(), COL_STATUSFIELD );
+  setPalette( palette );
+
+   resize( 255, 187 );
    int row=0;
 
-    setCaption( i18n( "Form1" ) );
-    //LayoutB = new QGridLayout( this,4,3,15,5 ); 
+    setWindowTitle( i18n( "Form1" ) );
+    //LayoutB = new QGridLayout( this,4,3,15,5 );
     LayoutB = new QGridLayout( this);
     LayoutB->setSpacing( 3 );
     LayoutB->setMargin( 15 );
 
-    TextLabel7 = new QLabel( this, "TextLabel7" );
+    TextLabel7 = new QLabel( this );
     setPlayer("-----",0);
-    TextLabel7->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel7->setPalette( palette );
     TextLabel7->setAlignment(Qt::AlignHCenter);
     LayoutB->addMultiCellWidget( TextLabel7, row, row,0,2 );
     row++;
-    
-    TextLabel8 = new QLabel( this, "TextLabel8" );
+
+    TextLabel8 = new QLabel( this );
     TextLabel8->setText( i18n( "vs" ) );
-    TextLabel8->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel8->setPalette( palette );
     TextLabel8->setAlignment(Qt::AlignHCenter);
     LayoutB->addMultiCellWidget( TextLabel8, row, row,0,2 );
     row++;
-    
-    TextLabel9 = new QLabel( this, "TextLabel9" );
+
+    TextLabel9 = new QLabel( this );
     setPlayer("-----",1);
   //  TextLabel9->setFrameShape(QFrame::Box );
   //  TextLabel9->setLineWidth(5);
-    TextLabel9->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel9->setPalette( palette );
     TextLabel9->setAlignment(Qt::AlignHCenter);
     LayoutB->addMultiCellWidget( TextLabel9, row, row,0,2 );
     row++;
@@ -83,43 +85,43 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
     QSpacerItem *Spacer1=new QSpacerItem(25,0,QSizePolicy::Preferred,QSizePolicy::Preferred);
     LayoutB->addMultiCell( Spacer1, row, row+2,1,1 );
 
-    TextLabel1 = new QLabel( this, "Level" );
+    TextLabel1 = new QLabel( this );
     TextLabel1->setText( i18n( "Level" ) );
-    TextLabel1->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel1->setPalette( palette );
     LayoutB->addWidget( TextLabel1, row, 0 );
 
-    TextLabel4 = new QLabel( this, "L" );
+    TextLabel4 = new QLabel( this );
     setLevel(Prefs::level());
     TextLabel4->setAlignment(Qt::AlignRight);
-    TextLabel4->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel4->setPalette( palette );
     LayoutB->addWidget( TextLabel4, row, 2 );
 
     row++;
 
 
-    TextLabel2 = new QLabel( this, "Move" );
+    TextLabel2 = new QLabel( this );
     TextLabel2->setText( i18nc("number of MOVE in game", "Move" ) );
-    TextLabel2->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel2->setPalette( palette );
     LayoutB->addWidget( TextLabel2, row, 0 );
 
-    TextLabel5 = new QLabel( this, "M" );
+    TextLabel5 = new QLabel( this );
     setMove(0);
     TextLabel5->setAlignment(Qt::AlignRight);
-    TextLabel5->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel5->setPalette( palette );
     LayoutB->addWidget( TextLabel5, row, 2 );
 
     row++;
 
 
-    TextLabel3 = new QLabel( this, "Chance" );
+    TextLabel3 = new QLabel( this );
     TextLabel3->setText( i18n( "Chance" ) );
-    TextLabel3->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel3->setPalette( palette );
     LayoutB->addWidget( TextLabel3, row, 0 );
 
-    TextLabel6 = new QLabel( this, "C" );
+    TextLabel6 = new QLabel( this );
     setChance(0);
     TextLabel6->setAlignment(Qt::AlignRight);
-    TextLabel6->setBackgroundColor( COL_STATUSFIELD );
+    TextLabel6->setPalette( palette );
     LayoutB->addWidget( TextLabel6, row, 2 );
 
     row++;
@@ -137,7 +139,7 @@ void ScoreWidget::paintEvent( QPaintEvent * p)
 {
     QPainter paint( this );
     paint.setClipRect(p->rect());
-    Paint( &paint, p->rect() );			
+    Paint( &paint, p->rect() );
 }
 
 void ScoreWidget::Paint(QPainter *p,QRect /*cliprect*/)
@@ -146,7 +148,7 @@ void ScoreWidget::Paint(QPainter *p,QRect /*cliprect*/)
   pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);
   pal.setColor(QColorGroup::Mid, COL_STATUSFIELD);
   pal.setColor(QColorGroup::Dark, COL_STATUSDARK);
-  setPalette(pal); 
+  setPalette(pal);
   drawFrame(p);
 }
 
@@ -164,9 +166,9 @@ void ScoreWidget::setChance(int i)
 {
   if (i==0)
     TextLabel6->setText("    ----");
-  else if (i>=999) 
+  else if (i>=999)
     TextLabel6->setText(i18n("Winner"));
-  else if (i<=-999) 
+  else if (i<=-999)
     TextLabel6->setText(i18n("Loser"));
   else
     TextLabel6->setText(QString("%1").arg(i));

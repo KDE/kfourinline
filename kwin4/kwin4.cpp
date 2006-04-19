@@ -91,7 +91,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
 
 /**
  * Set the player in who does the chat. This should be
- * the local player. 
+ * the local player.
  */
 void ChatDlg::setPlayer(Kwin4Player *p)
 {
@@ -109,7 +109,7 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 }
 
 /**
- * Construct the main application window 
+ * Construct the main application window
  */
 Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name), view(0), doc(0), mChat(0), mMyChatDlg(0)
 {
@@ -124,7 +124,7 @@ Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name)
 
   setMinimumSize(640,400);      // TODO
   setMaximumSize(800,600);
-  
+
   setupGUI();
 
   doc->ReadConfig(KGlobal::config());
@@ -186,7 +186,7 @@ void Kwin4App::checkMenus(CheckFlags menu)
   }
 }
 
-/** 
+/**
  * Function to create the actions for the menu. This
  * works together with the xml guirc file
  */
@@ -211,7 +211,7 @@ void Kwin4App::initGUI()
   new KAction(i18n("Network Chat..."),0, this, SLOT(slotChat()),
                        actionCollection(), "network_chat");
 
-  if (global_debug>0)                     
+  if (global_debug>0)
     new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
                         actionCollection(), "file_debug");
 
@@ -230,7 +230,7 @@ void Kwin4App::initGUI()
 
   KStdGameAction::redo(this, SLOT(slotRedo()), actionCollection(), "edit_redo");
   ACTION("edit_redo")->setToolTip(i18n("Redo last move."));
-#warning "kde4: port it or remove it" 
+#warning "kde4: port it or remove it"
 	//actionCollection()->setHighlightingEnabled(true);
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
@@ -246,7 +246,7 @@ void Kwin4App::slotClearStatusText()
   slotStatusMsg(i18n("Ready"));
 }
 
-/** 
+/**
  * Create the status bar with the message part, the
  * player part
  */
@@ -367,27 +367,27 @@ void Kwin4App::endGame()
   doc->setGameStatus(Kwin4Doc::Abort);
 }
 
-/** 
+/**
  * Show statistics dialog
  */
 void Kwin4App::showStatistics()
 {
   Statistics *dlg=new Statistics(this,"Game statistics");
-  
+
   dlg->p1_name->setText(doc->QueryName(Gelb));
   dlg->p1_won->display(doc->QueryStat(Gelb, TWin));
   dlg->p1_drawn->display(doc->QueryStat(Gelb, TRemis));
   dlg->p1_lost->display(doc->QueryStat(Gelb, TLost));
   dlg->p1_aborted->display(doc->QueryStat(Gelb, TBrk));
   dlg->p1_sum->display(doc->QueryStat(Gelb, TSum));
-  
+
   dlg->p2_name->setText(doc->QueryName(Rot));
   dlg->p2_won->display(doc->QueryStat(Rot, TWin));
   dlg->p2_drawn->display(doc->QueryStat(Rot, TRemis));
   dlg->p2_lost->display(doc->QueryStat(Rot, TLost));
   dlg->p2_aborted->display(doc->QueryStat(Rot, TBrk));
   dlg->p2_sum->display(doc->QueryStat(Rot, TSum));
-  
+
   if(dlg->exec() == QDialog::Rejected)
     doc->ResetStat();
 }
@@ -425,7 +425,7 @@ void Kwin4App::slotRedo()
  */
 void Kwin4App::slotStatusMsg(const QString &text)
 {
-  statusBar()->clear();
+  statusBar()->clearMessage();
   statusBar()->changeItem(text, ID_STATUS_MSG);
 }
 
@@ -436,12 +436,12 @@ void Kwin4App::slotStatusMsg(const QString &text)
  */
 void Kwin4App::slotStatusMover(const QString &text)
 {
-  statusBar()->clear();
+  statusBar()->clearMessage();
   statusBar()->changeItem(text, ID_STATUS_MOVER);
 }
 
 /**
- * Ends the current game 
+ * Ends the current game
  * Called by the gameover signal
  */
 void Kwin4App::EndGame(TABLE mode)
@@ -499,7 +499,7 @@ void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 
 /**
  * The game is over or aborted
- */ 
+ */
 void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 {
   if (status==-1) // remis
@@ -597,7 +597,7 @@ void Kwin4App::slotChat()
     connect(doc,SIGNAL(signalChatChanged(Kwin4Player *)),
             mMyChatDlg,SLOT(setPlayer(Kwin4Player *)));
   }
-  
+
   if (mMyChatDlg->isHidden())
     mMyChatDlg->show();
   else
@@ -606,7 +606,7 @@ void Kwin4App::slotChat()
 
 /**
  * Show the KGame debug window
- */ 
+ */
 void Kwin4App::slotDebugKGame()
 {
   KGameDebugDialog* debugWindow = new KGameDebugDialog(doc, this);
