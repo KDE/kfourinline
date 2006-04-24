@@ -50,23 +50,22 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
    int row=0;
 
     setWindowTitle( i18n( "Form1" ) );
-    //LayoutB = new QGridLayout( this,4,3,15,5 );
-    LayoutB = new QGridLayout( this);
-    LayoutB->setSpacing( 3 );
+    LayoutB = new QGridLayout(this);
     LayoutB->setMargin( 15 );
+    LayoutB->setSpacing( 5 );
 
     TextLabel7 = new QLabel( this );
     setPlayer("-----",0);
     TextLabel7->setPalette( palette );
     TextLabel7->setAlignment(Qt::AlignHCenter);
-    LayoutB->addMultiCellWidget( TextLabel7, row, row,0,2 );
+    LayoutB->addWidget( TextLabel7, row, 0, 1, 3 );
     row++;
 
     TextLabel8 = new QLabel( this );
     TextLabel8->setText( i18n( "vs" ) );
     TextLabel8->setPalette( palette );
     TextLabel8->setAlignment(Qt::AlignHCenter);
-    LayoutB->addMultiCellWidget( TextLabel8, row, row,0,2 );
+    LayoutB->addWidget( TextLabel8, row, 0, 1, 3 );
     row++;
 
     TextLabel9 = new QLabel( this );
@@ -75,15 +74,15 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
   //  TextLabel9->setLineWidth(5);
     TextLabel9->setPalette( palette );
     TextLabel9->setAlignment(Qt::AlignHCenter);
-    LayoutB->addMultiCellWidget( TextLabel9, row, row,0,2 );
+    LayoutB->addWidget( TextLabel8, row, 0, 1, 3 );
     row++;
 
     QSpacerItem *Spacer2=new QSpacerItem(0,16,QSizePolicy::Preferred,QSizePolicy::Preferred);
-    LayoutB->addMultiCell( Spacer2, row, row,0,2 );
+    LayoutB->addItem( Spacer2, row, 0 , 1, 3 );
     row++;
 
     QSpacerItem *Spacer1=new QSpacerItem(25,0,QSizePolicy::Preferred,QSizePolicy::Preferred);
-    LayoutB->addMultiCell( Spacer1, row, row+2,1,1 );
+    LayoutB->addItem( Spacer1, row, 1, 3, 1 );
 
     TextLabel1 = new QLabel( this );
     TextLabel1->setText( i18n( "Level" ) );
@@ -127,7 +126,7 @@ ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
     row++;
 
     QSpacerItem *Spacer3=new QSpacerItem(0,8,QSizePolicy::Preferred,QSizePolicy::Preferred);
-    LayoutB->addMultiCell( Spacer3, row, row,0,2 );
+    LayoutB->addItem( Spacer3, row, 0, 1, 3 );
     row++;
 
 
@@ -182,16 +181,22 @@ void ScoreWidget::setPlayer(QString s,int no)
 
 void ScoreWidget::setTurn(int i)
 {
+  QPalette palette;
   if (i==0)
   {
-    TextLabel7->setPaletteForegroundColor ( Qt::yellow);
-    TextLabel9->setPaletteForegroundColor (Qt::black);
+    palette.setColor( TextLabel7->foregroundRole(), Qt::yellow );
+    TextLabel7->setPalette( palette );
+    palette.setColor( TextLabel9->foregroundRole(), Qt::black );
+    TextLabel9->setPalette( palette );
   }
   else
   {
-    TextLabel9->setPaletteForegroundColor ( Qt::red);
-    TextLabel7->setPaletteForegroundColor (Qt::black);
+    palette.setColor( TextLabel7->foregroundRole(), Qt::black );
+    TextLabel7->setPalette( palette );
+    palette.setColor( TextLabel9->foregroundRole(), Qt::red );
+    TextLabel9->setPalette( palette );
   }
+
   TextLabel7->update();
   TextLabel9->update();
 }
