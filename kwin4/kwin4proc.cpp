@@ -89,19 +89,19 @@ void KComputer::slotTurn(QDataStream &in,bool turn)
 
 void KComputer::sendValue(long value)
 {
-  Q_INT8 cid=1; // notifies our KGameIO that this is a value message
+  qint8 cid=1; // notifies our KGameIO that this is a value message
   int id=KGameMessage::IdProcessQuery;
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  out << cid << ( Q_INT32 )value;
+  out << cid << ( qint32 )value;
   proc.sendSystemMessage(out,id,0);
 }
 
 long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
 {
-  Q_INT32 pl;
-  Q_INT32 move;
-  Q_INT32 tmp;
+  qint32 pl;
+  qint32 move;
+  qint32 tmp;
   in >> pl ;
   in >> tmp;
   aktzug=tmp;
@@ -120,13 +120,13 @@ long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
 
   InitField();
 
-  // Field as 42 Q_INT8's
+  // Field as 42 qint8's
   int i,j;
   for (i=0;i<=SIZE_Y;i++)
   {
     for (j=0;j<=SIZE_X;j++)
     {
-      Q_INT8 col;
+      qint8 col;
       in >> col;
       Farbe colour;
       if (col<2) colour=(Farbe)(col+1);
@@ -183,12 +183,12 @@ void KComputer::slotCommand(QDataStream &in,int msgid,int receiver,int sender)
   {
     case 2:  // hint
     {
-      Q_INT8 cid=2;
-      Q_INT32 pl=0;
-      Q_INT32 move=3;
+      qint8 cid=2;
+      qint32 pl=0;
+      qint32 move=3;
       out << cid;
       long value=think(in,out,true);
-      out << ( Q_INT32 )value;
+      out << ( qint32 )value;
       int id=KGameMessage::IdProcessQuery;
       proc.sendSystemMessage(out,id,0);
     }

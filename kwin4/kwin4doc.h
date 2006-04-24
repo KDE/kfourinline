@@ -126,7 +126,7 @@ protected:
   /** Check whether the field has a game over situation */
   int checkGameOver(KPlayer *);
   /** Send to the computer player */
-  void prepareGameMessage(QDataStream &stream, Q_INT32 pl);
+  void prepareGameMessage(QDataStream &stream, qint32 pl);
   /** Main function to do player input */
   bool playerInput(QDataStream &msg,KPlayer *player);
   /** Set the IO devices new */
@@ -141,9 +141,9 @@ public slots:
   void slotPropertyChanged(KGamePropertyBase *,KGame *);
   void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
   void moveDone(Q3CanvasItem *,int);
-  void slotMessageUpdate(int,Q_UINT32,Q_UINT32);
+  void slotMessageUpdate(int,quint32,quint32);
   void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
-  void slotClientConnected(Q_UINT32,KGame *);
+  void slotClientConnected(quint32,KGame *);
   void slotProcessQuery(QDataStream &,KGameProcessIO *);
   void slotProcessHint(QDataStream &,KGameProcessIO *);
   void slotGameOver(int status, KPlayer * p, KGame * me);

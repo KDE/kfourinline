@@ -660,7 +660,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
   }
 
   // Create a move
-  Q_INT32 move,pl;
+  qint32 move,pl;
   move=code-'1';
   pl=player->userId();
   stream << pl << move;
@@ -706,7 +706,7 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   if (x<0 || x>=FIELD_SIZE_X) return;
 
   // Create a move
-  Q_INT32 move,pl;
+  qint32 move,pl;
   move=x;
   pl=player->userId();
   stream << pl << move;

@@ -98,10 +98,10 @@ Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent), pView(0)
   setGameStatus(Intro);
 
   // Listen to network
-  connect(this,SIGNAL(signalMessageUpdate(int,Q_UINT32,Q_UINT32)),
-         this,SLOT(slotMessageUpdate(int, Q_UINT32,Q_UINT32)));
-  connect(this,SIGNAL(signalClientJoinedGame(Q_UINT32,KGame *)),
-         this,SLOT(slotClientConnected(Q_UINT32, KGame *)));
+  connect(this,SIGNAL(signalMessageUpdate(int,quint32,quint32)),
+         this,SLOT(slotMessageUpdate(int, quint32,quint32)));
+  connect(this,SIGNAL(signalClientJoinedGame(quint32,KGame *)),
+         this,SLOT(slotClientConnected(quint32, KGame *)));
 
   // Debug only
   connect(this,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
@@ -804,7 +804,7 @@ QString Kwin4Doc::QueryProcessName()
   return empty;
 }
 
-void Kwin4Doc::slotMessageUpdate(int /*id*/,Q_UINT32 /*sender*/,Q_UINT32 /*recv*/)
+void Kwin4Doc::slotMessageUpdate(int /*id*/,quint32 /*sender*/,quint32 /*recv*/)
 {
 //  kDebug(12010) << "MSG: id=" << id << " sender=" << sender << " receiver="<<recv<< endl;
 }
@@ -959,7 +959,7 @@ void Kwin4Doc::slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *s
   if (!player->myTurn()) return ;
   if (!b) return ; // only on setTurn(true)
 
-  Q_INT32 pl;
+  qint32 pl;
   if (global_debug>1) kDebug(12010) << "slotPrepareComputerTurn for player id= " << player->id() << endl;
   pl=player->userId();
 
@@ -973,23 +973,23 @@ void Kwin4Doc::slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *s
  * Careful: The data needs to be the same than the computer
  * player reading on the other side
  **/
-void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
+void Kwin4Doc::prepareGameMessage(QDataStream &stream, qint32 pl)
 {
   if (global_debug>1) kDebug(12010) << "          sending col=" << pl << endl;
   stream << pl ;
   // This needs to be the same than the computer player reads!
-  stream << (Q_INT32)QueryCurrentMove();
-  stream << (Q_INT32)QueryCurrentPlayer();
-  stream << (Q_INT32)QueryPlayerColour(0);
-  stream << (Q_INT32)QueryPlayerColour(1);
-  stream << (Q_INT32)Prefs::level();
+  stream << (qint32)QueryCurrentMove();
+  stream << (qint32)QueryCurrentPlayer();
+  stream << (qint32)QueryPlayerColour(0);
+  stream << (qint32)QueryPlayerColour(1);
+  stream << (qint32)Prefs::level();
 
   int i,j;
   for (i=0;i<FIELD_SIZE_Y;i++)
   {
     for (j=0;j<FIELD_SIZE_X;j++)
     {
-       Q_INT8 col;
+       qint8 col;
        col=QueryColour(j,i);
        stream << col;
     }
@@ -1002,18 +1002,18 @@ void Kwin4Doc::prepareGameMessage(QDataStream &stream, Q_INT32 pl)
       << QueryColour(5,i)  << " "
       << QueryColour(6,i)  << endl;
   }
-  stream << (Q_INT32)421256;
+  stream << (qint32)421256;
 }
 
 void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
 {
-  Q_INT8 cid;
+  qint8 cid;
   in >> cid;
   switch(cid)
   {
     case 1:  // value
-	  Q_INT32 value;
-#warning "long -> Q_INT32 correct ?"
+	  qint32 value;
+#warning "long -> qint32 correct ?"
 	  //long value;
       in >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks value is " << value << endl;
@@ -1032,7 +1032,7 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
  * cid is the id of the client connected. if this is equal
  * gameId() WE are the client
  */
-void Kwin4Doc::slotClientConnected(Q_UINT32 cid,KGame *)
+void Kwin4Doc::slotClientConnected(quint32 cid,KGame *)
 {
   if (global_debug>1) kDebug(12010) << " void Kwin4Doc::slotClientConnected id="<<cid << " we=" <<
   gameId() << " we admin=" << isAdmin() << "master)" << isMaster() << endl;
@@ -1114,7 +1114,7 @@ void Kwin4Doc::calcHint()
     connect(mHintProcess,SIGNAL(signalProcessQuery(QDataStream &,KGameProcessIO *)),
             this,SLOT(slotProcessHint(QDataStream &,KGameProcessIO *)));
   }
-  Q_INT32 pl;
+  qint32 pl;
   QByteArray buffer;
   QDataStream stream(&buffer,QIODevice::WriteOnly);
   pl=QueryCurrentPlayer();
@@ -1128,17 +1128,17 @@ void Kwin4Doc::calcHint()
  **/
 void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
 {
-  Q_INT8 cid;
+  qint8 cid;
   in >> cid;
   switch(cid)
   {
     case 2:  // Hint
     {
-      Q_INT32 pl;
-      Q_INT32 move;
-#warning " long -> Q_INT32 correct ????"	  
+      qint32 pl;
+      qint32 move;
+#warning " long -> qint32 correct ????"	  
       //long value;
-	  Q_INT32 value;
+	  qint32 value;
       in >>  pl >> move  >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks pl=" << pl << " move =" << move << endl;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;
