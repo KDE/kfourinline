@@ -235,8 +235,8 @@ Q3CanvasPixmapArray *KSpriteCache::createPixmapArray(KConfig *config,QString nam
       for (unsigned int i=0;i<number;i++)
       {
         QString tmpfile,tmpmask;
-        tmpfile.sprintf(pixfile.latin1(),i);
-        tmpmask.sprintf(maskfile.latin1(),i);
+        tmpfile.sprintf(pixfile.toLatin1(),i);
+        tmpmask.sprintf(maskfile.toLatin1(),i);
 
         pixmap=loadPixmap(tmpfile,tmpmask);
         if (!pixmap) kError() << "Could not create pixmap="<<tmpfile << " with mask " << tmpmask << endl;
