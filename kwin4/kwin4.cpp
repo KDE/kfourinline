@@ -621,7 +621,7 @@ void Kwin4App::showSettings(){
     return;
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
-  Settings *general = new Settings(0, "General");
+  Settings *general = new Settings(this);
   dialog->addPage(general, i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), doc, SLOT(loadSettings()));
   dialog->show();
