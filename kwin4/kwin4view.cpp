@@ -652,8 +652,8 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
     return;
   }
 
-  int code=e->ascii();
-  if (code<'1' || code>'7')
+  int code=e->key();
+  if (code< Qt::Key_1 || code> Qt::Key_7)
   {
     //kDebug(12010) << "Key not supported\n";
     return ;
@@ -661,7 +661,7 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
 
   // Create a move
   qint32 move,pl;
-  move=code-'1';
+  move=code-Qt::Key_1;
   pl=player->userId();
   stream << pl << move;
   *eatevent=true;
