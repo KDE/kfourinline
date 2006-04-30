@@ -144,9 +144,9 @@ void ScoreWidget::paintEvent( QPaintEvent * p)
 void ScoreWidget::Paint(QPainter *p,QRect /*cliprect*/)
 {
   QPalette pal;
-  pal.setColor(QColorGroup::Light, COL_STATUSLIGHT);
-  pal.setColor(QColorGroup::Mid, COL_STATUSFIELD);
-  pal.setColor(QColorGroup::Dark, COL_STATUSDARK);
+  pal.setColor(QPalette::Light, COL_STATUSLIGHT);
+  pal.setColor(QPalette::Mid, COL_STATUSFIELD);
+  pal.setColor(QPalette::Dark, COL_STATUSDARK);
   setPalette(pal);
   drawFrame(p);
 }
