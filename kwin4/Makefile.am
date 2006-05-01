@@ -23,6 +23,4 @@ kwin4proc_LDFLAGS = $(all_libraries) $(KDE_RPATH)
 
 kde_kcfg_DATA = kwin4.kcfg
 
-messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/kwin4.pot 
 
