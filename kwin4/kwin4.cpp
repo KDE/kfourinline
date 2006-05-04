@@ -205,15 +205,16 @@ void Kwin4App::initGUI()
   ACTION("end_game")->setToolTip(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
-  new KAction(i18n("&Network Configuration..."),0, this, SLOT(slotInitNetwork()),
-                       actionCollection(), "network_conf");
+  KAction *action = new KAction(i18n("&Network Configuration..."), actionCollection(), "network_conf");
+  connect(action, SIGNAL(triggered(bool) ), SLOT(slotInitNetwork()));
 
-  new KAction(i18n("Network Chat..."),0, this, SLOT(slotChat()),
-                       actionCollection(), "network_chat");
+  action = new KAction(i18n("Network Chat..."), actionCollection(), "network_chat");
+  connect(action, SIGNAL(triggered(bool) ), SLOT(slotChat()));
 
-  if (global_debug>0)
-    new KAction(i18n("Debug KGame"), 0, this, SLOT(slotDebugKGame()),
-                        actionCollection(), "file_debug");
+  if (global_debug>0) {
+    action = new KAction(i18n("Debug KGame"), actionCollection(), "file_debug");
+    connect(action, SIGNAL(triggered(bool) ), SLOT(slotDebugKGame()));
+  }
 
   new KAction(i18n("&Show Statistics"),"flag", 0, this,
            SLOT(showStatistics()), actionCollection(), "statistics");
