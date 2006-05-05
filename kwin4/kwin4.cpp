@@ -216,8 +216,8 @@ void Kwin4App::initGUI()
     connect(action, SIGNAL(triggered(bool) ), SLOT(slotDebugKGame()));
   }
 
-  new KAction(i18n("&Show Statistics"),"flag", 0, this,
-           SLOT(showStatistics()), actionCollection(), "statistics");
+  action = new KAction(KIcon("flag"), i18n("&Show Statistics"), actionCollection(), "statistics");
+  connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   ACTION("statistics")->setToolTip(i18n("Show statistics."));
 
   KStdGameAction::hint(doc, SLOT(calcHint()), actionCollection(), "hint");
