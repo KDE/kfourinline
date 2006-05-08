@@ -41,6 +41,7 @@
 #include <qpushbutton.h>
 #include <kstatusbar.h>
 #include <kconfigdialog.h>
+#include <kactioncollection.h>
 
 #include <kchatdialog.h>
 #include <kgamechat.h>
