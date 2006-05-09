@@ -814,13 +814,13 @@ void Kwin4Doc::slotMessageUpdate(int /*id*/,quint32 /*sender*/,quint32 /*recv*/)
  */ 
 KPlayer *Kwin4Doc::createPlayer(int /*rtti*/,int io,bool isvirtual)
 {
-  KPlayer *player = new Kwin4Player;
+  Kwin4Player *player = new Kwin4Player;
   if (!isvirtual)
     createIO(player,(KGameIO::IOMode)io);
   
   connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *, KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *, KPlayer *)));
-  ((Kwin4Player *)player)->setWidget(pView->statusWidget());
+  player->setWidget(pView->statusWidget());
   return player;
 }
 

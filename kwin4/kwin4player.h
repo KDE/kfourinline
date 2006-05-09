@@ -23,8 +23,8 @@
 #endif 
 
 #include <kplayer.h>
+#include "ui_statuswidget.h"
 
-class StatusWidget;
 class KConfig;
 
 class Kwin4Player : public KPlayer
@@ -36,7 +36,7 @@ class Kwin4Player : public KPlayer
   public:
     Kwin4Player();
     int rtti() const {return 1;}
-    void setWidget(StatusWidget *w) {sWidget=w;}
+    void setWidget(Ui::StatusWidget *w) {sWidget=w;}
     void readConfig(KConfig *config);
     void writeConfig(KConfig *config);
     void incWin();
@@ -65,7 +65,7 @@ class Kwin4Player : public KPlayer
     KGamePropertyInt mAllLost;
     KGamePropertyInt mAllBrk;
 
-    StatusWidget *sWidget;
+    Ui::StatusWidget *sWidget;
 };
 
 #endif // KWIN4PLAYER_H

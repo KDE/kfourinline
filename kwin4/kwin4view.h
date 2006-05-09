@@ -25,10 +25,11 @@
 #include <QKeyEvent>
 #include <QResizeEvent>
 #include <kgameio.h>
+#include "ui_statuswidget.h"
+#include "ui_statistics.h"
 
 class Kwin4Doc;
 class ScoreWidget;
-class StatusWidget;
 class KSpriteCache;
 
 /**
@@ -50,7 +51,7 @@ public:
   void setPiece(int x,int y,int color,int no,bool animation=true);
   void setHint(int x,int y,bool enabled);
   ScoreWidget *scoreWidget() {return mScoreWidget;}
-  StatusWidget *statusWidget() {return mStatusWidget;}
+  Ui::StatusWidget *statusWidget() {return &mStatusWidget;}
   void setSprite(int no,int x, int col, bool enable);
   void clearError();
   void EndGame();
@@ -80,7 +81,8 @@ private:
   int mBoardY;
 
   ScoreWidget *mScoreWidget; // score widget
-  StatusWidget *mStatusWidget; // score widget
+  Ui::StatusWidget mStatusWidget; // score widget
+  Q3Frame *mStatus_Widget;
 };
 
 #endif // KWIN4VIEW_H

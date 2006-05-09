@@ -28,8 +28,9 @@
 
 #include "kwin4doc.h"
 #include "scorewidget.h"
-#include "statuswidget.h"
+#include "ui_statuswidget.h"
 #include "kspritecache.h"
+
 
 #include <QLabel>
 #include <qlcdnumber.h>
@@ -158,37 +159,38 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   mScoreWidget->move(pnt);
 
   pnt=config->readEntry("statuswidget", QPoint());
-  mStatusWidget=new StatusWidget(this);
-  mStatusWidget->move(pnt);
+  mStatus_Widget=new Q3Frame(this);
+  mStatusWidget.setupUi(mStatus_Widget); 
+  mStatus_Widget->move(pnt);
   QPalette pal;
   pal.setColor(QPalette::Light, COL_STATUSLIGHT);
   pal.setColor(QPalette::Mid, COL_STATUSFIELD);
   pal.setColor(QPalette::Dark, COL_STATUSDARK);
-  pal.setColor( mStatusWidget->backgroundRole(), COL_STATUSFIELD );
-  mStatusWidget->setPalette(pal);
+  pal.setColor( mStatus_Widget->backgroundRole(), COL_STATUSFIELD );
+  mStatus_Widget->setPalette(pal);
 
-  mStatusWidget->wins->setPalette( palette );
-  mStatusWidget->draws->setPalette( palette );
-  mStatusWidget->loses->setPalette( palette );
-  mStatusWidget->num->setPalette( palette );
-  mStatusWidget->bk->setPalette( palette );
+  mStatusWidget.wins->setPalette( palette );
+  mStatusWidget.draws->setPalette( palette );
+  mStatusWidget.loses->setPalette( palette );
+  mStatusWidget.num->setPalette( palette );
+  mStatusWidget.bk->setPalette( palette );
 
-  mStatusWidget->p1_name->setPalette( palette );
-  mStatusWidget->p1_w->setPalette( palette );
-  mStatusWidget->p1_d->setPalette( palette );
-  mStatusWidget->p1_l->setPalette( palette );
-  mStatusWidget->p1_n->setPalette( palette );
-  mStatusWidget->p1_b->setPalette( palette );
+  mStatusWidget.p1_name->setPalette( palette );
+  mStatusWidget.p1_w->setPalette( palette );
+  mStatusWidget.p1_d->setPalette( palette );
+  mStatusWidget.p1_l->setPalette( palette );
+  mStatusWidget.p1_n->setPalette( palette );
+  mStatusWidget.p1_b->setPalette( palette );
 
-  mStatusWidget->p2_name->setPalette( palette );
-  mStatusWidget->p2_w->setPalette( palette );
-  mStatusWidget->p2_d->setPalette( palette );
-  mStatusWidget->p2_l->setPalette( palette );
-  mStatusWidget->p2_n->setPalette( palette );
-  mStatusWidget->p2_b->setPalette( palette );
+  mStatusWidget.p2_name->setPalette( palette );
+  mStatusWidget.p2_w->setPalette( palette );
+  mStatusWidget.p2_d->setPalette( palette );
+  mStatusWidget.p2_l->setPalette( palette );
+  mStatusWidget.p2_n->setPalette( palette );
+  mStatusWidget.p2_b->setPalette( palette );
 
   mScoreWidget->hide();
-  mStatusWidget->hide();
+  mStatus_Widget->hide();
 
   move(0,0);
   adjustSize();
@@ -218,7 +220,7 @@ void Kwin4View::initView(bool deleteall)
   if (doc->gameStatus()==KGame::Intro)
   {
     mScoreWidget->hide();
-    mStatusWidget->hide();
+    mStatus_Widget->hide();
     drawIntro(deleteall);
   }
   else
@@ -227,7 +229,7 @@ void Kwin4View::initView(bool deleteall)
     kDebug(12010) << "Clearing board" <<endl;
     drawBoard(deleteall);
     mScoreWidget->show();
-    mStatusWidget->show();
+    mStatus_Widget->show();
     // Hide pieces in any case
     for (int i=0;i<42;i++)
     {

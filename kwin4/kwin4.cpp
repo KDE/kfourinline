@@ -375,23 +375,25 @@ void Kwin4App::endGame()
  */
 void Kwin4App::showStatistics()
 {
-  Statistics *dlg=new Statistics(this,"Game statistics");
+  QDialog dlg(this);
+  Ui::Statistics ui;
+  ui.setupUi(&dlg);
 
-  dlg->p1_name->setText(doc->QueryName(Gelb));
-  dlg->p1_won->display(doc->QueryStat(Gelb, TWin));
-  dlg->p1_drawn->display(doc->QueryStat(Gelb, TRemis));
-  dlg->p1_lost->display(doc->QueryStat(Gelb, TLost));
-  dlg->p1_aborted->display(doc->QueryStat(Gelb, TBrk));
-  dlg->p1_sum->display(doc->QueryStat(Gelb, TSum));
+  ui.p1_name->setText(doc->QueryName(Gelb));
+  ui.p1_won->display(doc->QueryStat(Gelb, TWin));
+  ui.p1_drawn->display(doc->QueryStat(Gelb, TRemis));
+  ui.p1_lost->display(doc->QueryStat(Gelb, TLost));
+  ui.p1_aborted->display(doc->QueryStat(Gelb, TBrk));
+  ui.p1_sum->display(doc->QueryStat(Gelb, TSum));
 
-  dlg->p2_name->setText(doc->QueryName(Rot));
-  dlg->p2_won->display(doc->QueryStat(Rot, TWin));
-  dlg->p2_drawn->display(doc->QueryStat(Rot, TRemis));
-  dlg->p2_lost->display(doc->QueryStat(Rot, TLost));
-  dlg->p2_aborted->display(doc->QueryStat(Rot, TBrk));
-  dlg->p2_sum->display(doc->QueryStat(Rot, TSum));
+  ui.p2_name->setText(doc->QueryName(Rot));
+  ui.p2_won->display(doc->QueryStat(Rot, TWin));
+  ui.p2_drawn->display(doc->QueryStat(Rot, TRemis));
+  ui.p2_lost->display(doc->QueryStat(Rot, TLost));
+  ui.p2_aborted->display(doc->QueryStat(Rot, TBrk));
+  ui.p2_sum->display(doc->QueryStat(Rot, TSum));
 
-  if(dlg->exec() == QDialog::Rejected)
+  if(dlg.exec() == QDialog::Rejected)
     doc->ResetStat();
 }
 
