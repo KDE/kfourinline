@@ -16,7 +16,8 @@ set(kwin4_SRCS
 
 kde4_automoc(${kwin4_SRCS})
 
-kde4_add_ui3_files(kwin4_SRCS settings.ui statistics.ui statuswidget.ui )
+kde4_add_ui3_files(kwin4_SRCS statistics.ui statuswidget.ui )
+kde4_add_ui_files(kwin4_SRCS settings.ui )
 
 kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 

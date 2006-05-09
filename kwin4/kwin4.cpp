@@ -25,6 +25,7 @@
 #include <QGridLayout>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <Q3VButtonGroup>
 
 // include files for KDE
 #include <kapplication.h>
@@ -57,7 +58,7 @@
 #include "kwin4view.h"
 #include "kwin4doc.h"
 #include "prefs.h"
-#include "settings.h"
+#include "ui_settings.h"
 #include "statistics.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
@@ -623,8 +624,10 @@ void Kwin4App::showSettings(){
     return;
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
-  Settings *general = new Settings(this);
-  dialog->addPage(general, i18n("General"), "package_settings");
+  Ui::Settings ui;
+  QWidget *frame = new QWidget(dialog);
+  ui.setupUi(frame);
+  dialog->addPage(frame, i18n("General"), "package_settings");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), doc, SLOT(loadSettings()));
   dialog->show();
 }
