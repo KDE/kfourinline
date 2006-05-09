@@ -31,7 +31,7 @@
 #include "statuswidget.h"
 #include "kspritecache.h"
 
-#include <qlabel.h>
+#include <QLabel>
 #include <qlcdnumber.h>
 //Added by qt3to4:
 #include <QPixmap>

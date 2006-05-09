@@ -18,7 +18,7 @@
 #include "kwin4doc.h"
 
 // include files for Qt
-#include <qdir.h>
+#include <QDir>
 #include <qtimer.h>
 //Added by qt3to4:
 #include <QKeyEvent>

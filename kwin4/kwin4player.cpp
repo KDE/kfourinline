@@ -43,7 +43,7 @@ Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
 }
 
-#include <qlabel.h>
+#include <QLabel>
 #include <qlcdnumber.h>
 
 void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)

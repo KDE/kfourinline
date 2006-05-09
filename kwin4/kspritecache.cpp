@@ -21,7 +21,7 @@
 #include <qbitmap.h>
 #include <qimage.h>
 #include <qmatrix.h>
-#include <qdir.h>
+#include <QDir>
 //Added by qt3to4:
 #include <QPixmap>
 #include <Q3PtrList>

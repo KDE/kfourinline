@@ -16,8 +16,8 @@
  ***************************************************************************/
 
 // include files for QT
-#include <qstring.h>
-#include <qlayout.h>
+#include <QString>
+#include <QLayout>
 #include <q3vbox.h>
 #include <qradiobutton.h>
 #include <qlcdnumber.h>
@@ -38,7 +38,7 @@
 #include <kdebug.h>
 #include <kstdaction.h>
 #include <kaction.h>
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <kstatusbar.h>
 #include <kconfigdialog.h>
 #include <kactioncollection.h>
