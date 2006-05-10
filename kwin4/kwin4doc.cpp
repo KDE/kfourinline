@@ -19,7 +19,7 @@
 
 // include files for Qt
 #include <QDir>
-#include <qtimer.h>
+#include <QTimer>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QList>
