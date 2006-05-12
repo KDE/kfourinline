@@ -1,4 +1,3 @@
-kde4_header()
 project(kwin4)
 
 add_subdirectory( kwin4 ) 
@@ -13,7 +12,6 @@ install_files( ${XDG_APPS_DIR} FILES kwin4.desktop )
 
 kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
 
-kde4_footer()
 
 
 

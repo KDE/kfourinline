@@ -1,4 +1,3 @@
-kde4_header()
 
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/kgame  )
 
@@ -45,7 +44,6 @@ install_targets(/bin kwin4proc )
 install_files( ${KCFG_INSTALL_DIR} FILES kwin4.kcfg )
 install_files( ${DATA_INSTALL_DIR}/kwin4 FILES kwin4ui.rc )
 
-kde4_footer()
 
 
 

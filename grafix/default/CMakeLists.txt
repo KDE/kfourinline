@@ -1,4 +1,3 @@
-kde4_header()
 
 ########### install files ###############
 
@@ -23,4 +22,3 @@ star2.png
 star3.png
 star4.png )
 
-kde4_footer()

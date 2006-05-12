@@ -1,4 +1,3 @@
-kde4_header()
 
 add_subdirectory( default )
 
@@ -6,7 +5,6 @@ add_subdirectory( default )
 
 install_files( ${DATA_INSTALL_DIR}/kwin4/grafix FILES  )
 
-kde4_footer()
 
 
 
