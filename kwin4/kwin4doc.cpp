@@ -39,7 +39,7 @@
 #include "kwin4view.h"
 #include "scorewidget.h"
 #include "prefs.h"
-#include "statuswidget.h"
+#include "ui_statuswidget.h"
 
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent), pView(0), mHintProcess(0)
 {

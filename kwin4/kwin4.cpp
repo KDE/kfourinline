@@ -59,7 +59,7 @@
 #include "kwin4doc.h"
 #include "prefs.h"
 #include "ui_settings.h"
-#include "statistics.h"
+#include "ui_statistics.h"
 
 #define ACTION(x)   (actionCollection()->action(x))
 #define ID_STATUS_MSG                1003

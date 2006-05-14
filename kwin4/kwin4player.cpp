@@ -22,7 +22,7 @@
 #include <kgamepropertyhandler.h>
 
 #include "kwin4player.h"
-#include "statuswidget.h"
+#include "ui_statuswidget.h"
 
 Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
 {
