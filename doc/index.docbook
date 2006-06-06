@@ -20,8 +20,14 @@
 </author>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
-
 </authorgroup>
+
+<copyright>
+<year>1995</year><year>2002</year>
+<holder>&Martin.Heni;</holder>
+</copyright>
+    
+<legalnotice>&FDLNotice;</legalnotice>
 
 <date>2006-01-13</date>
 <releaseinfo>1.1.0</releaseinfo>
