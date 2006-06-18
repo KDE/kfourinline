@@ -70,24 +70,30 @@
  * is derived from the libkdegames chat widget
  */
 ChatDlg::ChatDlg(KGame *game,QWidget *parent)
-    : KDialogBase(Plain,i18n("Chat Dlg"),Ok,Ok,parent,0,false,true),mChat(0), mChatDlg(0)
+    : KDialog(parent),mChat(0), mChatDlg(0)
 {
+ setCaption(i18n("Chat Dlg"));
+ setButtons(Ok);
+ setDefaultButton(Ok);
+ enableButtonSeparator(true);
+ setModal(false);
  setMinimumSize(QSize(200,200));
-
- QGridLayout* mGridLayout=new QGridLayout(plainPage());
- QHBoxLayout* h = new QHBoxLayout(plainPage());
- Q3GroupBox* b = new Q3GroupBox(1, Qt::Vertical,i18n("Chat"), plainPage());
+ 
+ QFrame *frame=new QFrame(this);
+ QGridLayout* mGridLayout=new QGridLayout(frame);
+ QHBoxLayout* h = new QHBoxLayout(frame);
+ Q3GroupBox* b = new Q3GroupBox(1, Qt::Vertical,i18n("Chat"), frame);
  mChat = new KGameChat(game, 10000, b);
  h->addWidget(b, 1);
  h->addSpacing(10);
  mGridLayout->addLayout(h,0,0);
 
- QPushButton *mButton=new QPushButton(i18n("Configure..."),plainPage());
+ QPushButton *mButton=new QPushButton(i18n("Configure..."),frame);
  mGridLayout->addWidget(mButton,1,1);
 
  adjustSize();
 
- mChatDlg=new KChatDialog(mChat,plainPage(),true);
+ mChatDlg=new KChatDialog(mChat,frame,true);
  connect(mButton,SIGNAL(clicked()),mChatDlg,SLOT(show()));
 }
 
@@ -625,7 +631,7 @@ void Kwin4App::showSettings(){
   if(KConfigDialog::showDialog("settings"))
     return;
 
-  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KDialogBase::Swallow);
+  KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
   Ui::Settings ui;
   QWidget *frame = new QWidget(dialog);
   ui.setupUi(frame);
