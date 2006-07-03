@@ -75,7 +75,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  setCaption(i18n("Chat Dlg"));
  setButtons(Ok);
  setDefaultButton(Ok);
- enableButtonSeparator(true);
+ showButtonSeparator(true);
  setModal(false);
  setMinimumSize(QSize(200,200));
  
