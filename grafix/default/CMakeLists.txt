@@ -1,7 +1,7 @@
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/kwin4/grafix/default FILES
+install( FILES
 aboute.png
 arrow0.png
 arrow1.png
@@ -20,5 +20,5 @@ star0.png
 star1.png
 star2.png
 star3.png
-star4.png )
+star4.png DESTINATION ${DATA_INSTALL_DIR}/kwin4/grafix/default)
 
