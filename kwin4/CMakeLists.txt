@@ -41,8 +41,8 @@ install_targets(/bin kwin4proc )
 
 ########### install files ###############
 
-install_files( ${KCFG_INSTALL_DIR} FILES kwin4.kcfg )
-install_files( ${DATA_INSTALL_DIR}/kwin4 FILES kwin4ui.rc )
+install( FILES kwin4.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
+install( FILES kwin4ui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kwin4 )
 
 
 

@@ -3,7 +3,7 @@ add_subdirectory( default )
 
 ########### install files ###############
 
-install_files( ${DATA_INSTALL_DIR}/kwin4/grafix FILES  )
+install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/kwin4/grafix )
 
 
 
