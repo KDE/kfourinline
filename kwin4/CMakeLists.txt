@@ -23,7 +23,7 @@ kde4_add_executable(kwin4 ${kwin4_SRCS})
 
 target_link_libraries(kwin4  ${KDE4_KDE3SUPPORT_LIBS} kdegames )
 
-install_targets(/bin kwin4 )
+install(TARGETS kwin4  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -36,7 +36,7 @@ kde4_add_executable(kwin4proc ${kwin4proc_SRCS})
 
 target_link_libraries(kwin4proc  ${KDE4_KDECORE_LIBS} kdegames )
 
-install_targets(/bin kwin4proc )
+install(TARGETS kwin4proc  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
