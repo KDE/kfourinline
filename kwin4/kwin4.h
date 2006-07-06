@@ -27,7 +27,7 @@ class KGameChat;
 class KChatDialog;
 class Kwin4Doc;
 class Kwin4View;
-class Q3VButtonGroup;
+class KButtonGroup;
 class KPlayer;
 
 /**
@@ -58,7 +58,7 @@ class Kwin4App : public KMainWindow
 Q_OBJECT
 
 public:
-  Kwin4App(QWidget *parent=0, const char *name=0);
+  Kwin4App(QWidget *parent=0);
 
 protected:
   void EndGame(TABLE mode);
@@ -112,7 +112,7 @@ private:
   Kwin4View *view;
   Kwin4Doc *doc;
 
-  Q3VButtonGroup *mColorGroup;
+  KButtonGroup *mColorGroup;
   KGameChat *mChat;
   ChatDlg *mMyChatDlg;  
 

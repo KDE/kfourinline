@@ -16,16 +16,9 @@
  ***************************************************************************/
 
 // include files for QT
-#include <QString>
+#include <QRadioButton>
+#include <QPushButton>
 #include <QLayout>
-#include <q3vbox.h>
-#include <qradiobutton.h>
-#include <qlcdnumber.h>
-//Added by qt3to4:
-#include <QGridLayout>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <Q3VButtonGroup>
 
 // include files for KDE
 #include <kapplication.h>
@@ -39,10 +32,10 @@
 #include <kdebug.h>
 #include <kstdaction.h>
 #include <kaction.h>
-#include <QPushButton>
 #include <kstatusbar.h>
 #include <kconfigdialog.h>
 #include <kactioncollection.h>
+#include <kbuttongroup.h>
 
 #include <kchatdialog.h>
 #include <kgamechat.h>
@@ -81,15 +74,16 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  
  QFrame *frame=new QFrame(this);
  QGridLayout* mGridLayout=new QGridLayout(frame);
- QHBoxLayout* h = new QHBoxLayout(frame);
- Q3GroupBox* b = new Q3GroupBox(1, Qt::Vertical,i18n("Chat"), frame);
+ QGroupBox* b = new QGroupBox(i18n("Chat"), frame);
+ QVBoxLayout* gboxLay = new QVBoxLayout(b);
  mChat = new KGameChat(game, 10000, b);
- h->addWidget(b, 1);
- h->addSpacing(10);
- mGridLayout->addLayout(h,0,0);
+ gboxLay->addWidget(mChat);
+ mGridLayout->addWidget(b,0,0);
 
  QPushButton *mButton=new QPushButton(i18n("Configure..."),frame);
  mGridLayout->addWidget(mButton,1,1);
+
+ setMainWidget(frame);
 
  adjustSize();
 
@@ -119,7 +113,7 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 /**
  * Construct the main application window
  */
-Kwin4App::Kwin4App(QWidget *parent, const char *name) : KMainWindow(parent,name), view(0), doc(0), mChat(0), mMyChatDlg(0)
+Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), view(0), doc(0), mChat(0), mMyChatDlg(0)
 {
   initGUI();
   initStatusBar();
@@ -556,14 +550,14 @@ void Kwin4App::slotInitNetwork()
   KVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
   QVBoxLayout *l=(QVBoxLayout *)(box->layout());
 
-  mColorGroup=new Q3VButtonGroup(box);
+  mColorGroup=new KButtonGroup(box);
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(slotRemoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(slotServerTypeChanged(int)));
 
   new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
   new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
   l->addWidget(mColorGroup);
-  mColorGroup->setButton(0);
+  mColorGroup->setSelected(0);
   slotRemoteChanged(0);
 
   dlg.exec();// note: we don't have to check for the result - maybe a bug
