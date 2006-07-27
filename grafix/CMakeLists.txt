@@ -1,12 +1,6 @@
 
 add_subdirectory( default )
 
-########### install files ###############
-
-install( FILES   DESTINATION  ${DATA_INSTALL_DIR}/kwin4/grafix )
-
-
-
 
 #original Makefile.am contents follow:
 
