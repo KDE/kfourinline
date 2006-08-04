@@ -36,6 +36,7 @@
 #include <kconfigdialog.h>
 #include <kactioncollection.h>
 #include <kbuttongroup.h>
+#include <kicon.h>
 
 #include <kchatdialog.h>
 #include <kgamechat.h>
