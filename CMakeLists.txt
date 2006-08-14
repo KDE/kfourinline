@@ -10,7 +10,7 @@ add_subdirectory( grafix )
 
 install( FILES kwin4.desktop  DESTINATION  ${XDG_APPS_DIR} )
 
-kde4_install_icons( ${ICON_INSTALL_DIR}  hicolor )
+kde4_install_icons( ${ICON_INSTALL_DIR}   )
 
 
 
