@@ -106,8 +106,8 @@ long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
   in >> tmp;
   aktzug=tmp;
   in >> tmp;
-  // We need all the +1 because the main programm has different defines
-  // for the colours. And chaning it here seems not to work....
+  // We need all the +1 because the main program has different defines
+  // for the colors. And changing it here seems not to work....
   amZug=(Farbe)(tmp+1);
   in >> tmp;
   beginner=(Farbe)(tmp+1);
@@ -418,7 +418,7 @@ long KComputer::random(long max)
 // Main startup
 int main(int argc ,char * argv[])
 {
-  // This is the computer player...it should do the calulation
+  // This is the computer player...it should do the calculation
   // It doesn't do much here
   fprintf(stderr,"Vor KComputer\n");
   fflush(stderr);

@@ -237,10 +237,10 @@ class KSprite : public Q3CanvasSprite
  * The KSpriteCache class is used to load and cache sprites. Loading
  * is done via a @ref KConfig file which contains the definitions of the
  * sprite in text form. Usng this approach allows you to tun the sprites
- * without chaning the sourcecode of the program. This is especially useful if
+ * without changing the sourcecode of the program. This is especially useful if
  * the graphics team is independent of the programmer or if you want to write
  * external themes for your game.
- * Furhtermore the class keeps sprites in memory so that they are fastly
+ * Furthermore the class keeps sprites in memory so that they are fastly
  * reloaded when you use more than one sprite of a given type.
  * 
  * Example:
@@ -289,7 +289,7 @@ class KSpriteCache : public QObject
 
   public:
   /**
-  * Create a sprite cache. Usuzally you will need one per program only.
+  * Create a sprite cache. Usually you will need one per program only.
   * 
   * @param grafixdir - the directory where the configuration file and the graphics reside
   **/
@@ -426,7 +426,7 @@ class KSpriteCache : public QObject
   * <pre>
   *   offset=(QPoint)       : The sprites offset (where 0,0 is)
   *   pixmaps=(QStringList) : List of operations to create frames (TODO *   rename)
-  *                           if ommited one operation without name is used
+  *                           if omitted one operation without name is used
   * </pre>
   * All following calls have to be preceded by every given string of the
   * pixmaps section. If this section is not supplied they can be used without

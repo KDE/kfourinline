@@ -70,7 +70,7 @@ protected:
   // Enabled/Disabled menu/toolbar items
   void enableAction(const char *action) {changeAction(action, true); } ;
   void disableAction(const char *action) {changeAction(action, false); } ;
-  // Checks all menus..usually done on init programm
+  // Checks all menus..usually done on init program
   void checkMenus(CheckFlags menu=All);
   
   void initGUI();

@@ -140,7 +140,7 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), view(0), doc(0), mCha
  * and signals to check, uncheck and enable
  * or disable all menu items.
  * The menu parameter can limit this operation
- * to one or more of the main menues (File,View,...)
+ * to one or more of the main menus (File,View,...)
  */
 void Kwin4App::checkMenus(CheckFlags menu)
 {
@@ -354,7 +354,7 @@ void Kwin4App::newGame()
 }
 
 /**
- * Slot: Noticed that a new game started...update menues
+ * Slot: Noticed that a new game started...update menus
  */
 void Kwin4App::slotNewGame()
 {
