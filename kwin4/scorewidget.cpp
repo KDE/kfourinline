@@ -24,7 +24,7 @@
 #include <qpainter.h>
 #include <qsizepolicy.h>
 //Added by qt3to4:
-#include <Q3Frame>
+#include <QFrame>
 #include <QGridLayout>
 #include <QPaintEvent>
 #include <kdebug.h>
@@ -35,10 +35,10 @@
 #define COL_STATUSDARK   QColor(0,0,65)
 #define COL_STATUSLIGHT  QColor(210,210,255)
 
-ScoreWidget::ScoreWidget( QWidget* parent,  const char* name, Qt::WFlags fl )
-    : Q3Frame( parent, name, fl )
+ScoreWidget::ScoreWidget( QWidget* parent )
+    : QFrame( parent )
 {
-  setFrameStyle( Q3Frame::Box | Q3Frame::Raised );
+  setFrameStyle( QFrame::Box | QFrame::Raised );
   setLineWidth( 2 );
   setMidLineWidth( 4 );
 

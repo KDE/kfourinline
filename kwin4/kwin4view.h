@@ -82,7 +82,7 @@ private:
 
   ScoreWidget *mScoreWidget; // score widget
   Ui::StatusWidget mStatusWidget; // score widget
-  Q3Frame *mStatus_Widget;
+  QFrame *mStatus_Widget;
 };
 
 #endif // KWIN4VIEW_H

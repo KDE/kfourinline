@@ -159,7 +159,7 @@ Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
   mScoreWidget->move(pnt);
 
   pnt=config->readEntry("statuswidget", QPoint());
-  mStatus_Widget=new Q3Frame(this);
+  mStatus_Widget=new QFrame(this);
   mStatusWidget.setupUi(mStatus_Widget); 
   mStatus_Widget->move(pnt);
   QPalette pal;

@@ -1,7 +1,7 @@
 #ifndef _SCOREWIDGET_H
 #define _SCOREWIDGET_H
 
-#include <q3frame.h>
+#include <QFrame>
 //Added by qt3to4:
 #include <QLabel>
 #include <QVBoxLayout>
@@ -14,12 +14,12 @@ class QGridLayout;
 class Q3GroupBox;
 class QLabel;
 
-class ScoreWidget : public Q3Frame
+class ScoreWidget : public QFrame
 { 
     Q_OBJECT
 
 public:
-    ScoreWidget( QWidget* parent = 0, const char* name = 0, Qt::WFlags fl = 0 );
+    ScoreWidget( QWidget* parent = 0 );
     void setMove(int i);
     void setLevel(int i);
     void setChance(int i);
