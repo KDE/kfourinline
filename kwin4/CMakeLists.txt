@@ -13,7 +13,7 @@ set(kwin4_SRCS
    kspritecache.cpp 
    scorewidget.cpp )
 
-kde4_automoc(${kwin4_SRCS})
+kde4_automoc(kwin4 ${kwin4_SRCS})
 
 kde4_add_ui_files(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
@@ -30,7 +30,7 @@ install(TARGETS kwin4  DESTINATION ${BIN_INSTALL_DIR} )
 
 set(kwin4proc_SRCS kwin4proc.cpp )
 
-kde4_automoc(${kwin4proc_SRCS})
+kde4_automoc(kwin4proc ${kwin4proc_SRCS})
 
 kde4_add_executable(kwin4proc ${kwin4proc_SRCS})
 
