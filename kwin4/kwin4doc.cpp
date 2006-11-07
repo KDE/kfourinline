@@ -1013,7 +1013,9 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
   {
     case 1:  // value
 	  qint32 value;
+#ifdef __GNUC__
 #warning "long -> qint32 correct ?"
+#endif
 	  //long value;
       in >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks value is " << value << endl;
@@ -1136,7 +1138,9 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
     {
       qint32 pl;
       qint32 move;
+#ifdef __GNUC__
 #warning " long -> qint32 correct ????"	  
+#endif
       //long value;
 	  qint32 value;
       in >>  pl >> move  >> value;
