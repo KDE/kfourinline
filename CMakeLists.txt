@@ -1,6 +1,6 @@
 project(kwin4)
 
-add_subdirectory( kwin4 ) 
+add_subdirectory( src ) 
 add_subdirectory( grafix ) 
 
 
