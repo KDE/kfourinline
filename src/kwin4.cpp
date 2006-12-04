@@ -290,7 +290,7 @@ void Kwin4App::changeAction(const char *action, bool enable){
   if (!action)
     return;
 
-  KAction *act=actionCollection()->action(action);
+  QAction *act=actionCollection()->action(action);
   if (act)
     act->setEnabled(enable);
 }
