@@ -379,7 +379,7 @@ plays for this player.</para>
 </sect1>
 
 <sect1 id="help">
-<title><guimenuitem>Help</guimenuitem> Menu</title>
+<title><guimenu>Help</guimenu> Menu</title>
 
 &help.menu.documentation;
 
