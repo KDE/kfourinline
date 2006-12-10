@@ -20,7 +20,6 @@
 // include files for Qt
 #include <QDir>
 #include <QTimer>
-//Added by qt3to4:
 #include <QKeyEvent>
 #include <QList>
 #include <QMouseEvent>
@@ -35,9 +34,10 @@
 #include <kglobal.h>
 
 // application specific includes
-#include "kspritecache.h"
 #include "kwin4view.h"
 #include "scorewidget.h"
+#include "spritenotify.h"
+#include "displaygame.h"
 #include "prefs.h"
 #include "ui_statuswidget.h"
 
@@ -139,7 +139,7 @@ Kwin4Doc::~Kwin4Doc()
     delete mHintProcess;
 }
 
-void Kwin4Doc::setView(Kwin4View *view)
+void Kwin4Doc::setView(KWin4View *view)
 {
   pView=view;
 }
@@ -186,8 +186,7 @@ void Kwin4Doc::ResetGame(bool initview){
   mLastHint=-1;
 
   // Reset the view
-  if (initview)
-    pView->initView(false);
+  if (initview) pView->initGame();
   
   // Who starts this game
   SetCurrentPlayer((FARBE)mStartPlayer.value()); 
@@ -209,8 +208,8 @@ void Kwin4Doc::preparePlayerTurn()
 void Kwin4Doc::EndGame(TABLE mode)
 {
   setGameStatus(End);
-  pView->clearError();
-  pView->EndGame();
+  // TODO pView->clearError();
+  // TODO pView->EndGame();
   Kwin4Player *yellow=getPlayer(Gelb);
   Kwin4Player *red=getPlayer(Rot);
 
@@ -237,9 +236,9 @@ void Kwin4Doc::EndGame(TABLE mode)
   // switch start player
 }
 
-void Kwin4Doc::moveDone(Q3CanvasItem *item,int )
+void Kwin4Doc::moveDone(QGraphicsItem *item,int )
 {
-  //kDebug(12010) << "########################## SPRITE MOVE DONE ################# " << endl;
+  kDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
   //Debug();
   //for (KPlayer* p=playerList()->first(); p!= 0; p=playerList()->next() )
   //{
@@ -249,10 +248,10 @@ void Kwin4Doc::moveDone(Q3CanvasItem *item,int )
   if (playerCount()>1)
     playerInputFinished(getPlayer(QueryCurrentPlayer()));
 
-  pView->clearError();
+  // TODO pView->clearError();
 
-  KSprite *sprite=(KSprite *)item;
-  sprite->deleteNotify();
+  // TODO KSprite *sprite=(KSprite *)item;
+  // TODO sprite->deleteNotify();
 }
 
 /**
@@ -324,10 +323,17 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
   if (mode==0) mMaxMove=mCurrentMove.value();
   mLastColumn=x;
 
-  pView->setArrow(x,mLastColour);
+  // TODO pView->setArrow(x,mLastColour);
   // animation onyl if no redo
-  pView->setPiece(x,y,mLastColour,mCurrentMove-1,mode==1?false:true);
-  pView->setHint(0,0,false);
+  SpriteNotify* notify = pView->display()->setPiece(x,y,mLastColour,mCurrentMove-1,mode==1?false:true);
+  if (notify)
+  {
+    QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
+            this,SLOT(moveDone(QGraphicsItem*,int)));
+    connect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
+            this,SLOT(moveDone(QGraphicsItem*,int)));
+  }
+  // TODO pView->setHint(0,0,false);
  
   return GNormal;
 }
@@ -357,7 +363,7 @@ bool Kwin4Doc::UndoMove(){
   // kDebug(12010) << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
   // We have to remove the piece as well...
-  pView->setPiece(x,y,Niemand,mCurrentMove-1,false);
+  // TODO pView->setPiece(x,y,Niemand,mCurrentMove-1,false);
 
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
@@ -367,8 +373,8 @@ bool Kwin4Doc::UndoMove(){
   // sprite no, arrow pos, arrow color, enable
   int oldx=-1;
   if (QueryHistoryCnt()>0) oldx=mHistory.at(QueryHistoryCnt()-1);
-  pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
-  pView->setHint(0,0,false);
+  // TODO pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
+  // TODO pView->setHint(0,0,false);
 
   if (QueryHistoryCnt()>0)
     mLastColumn=mHistory.at(QueryHistoryCnt()-1);
@@ -396,7 +402,7 @@ bool Kwin4Doc::RedoMove(){
   else
     SetCurrentPlayer(Gelb);
   SetScore(0);
-  pView->setHint(0,0,false);
+  // TODO pView->setHint(0,0,false);
   return true;
 }
 
@@ -473,7 +479,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       y=mFieldFilled.at(x)-1-i;
-      pView->drawStar(x,y,star++);
+      pView->display()->drawStar(x,y,star++);
       winc=QueryColour(x,y);
     }
     return 1;
@@ -506,7 +512,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -517,7 +523,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -557,7 +563,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1-i;
         if (y<0) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -570,7 +576,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1-i;
         if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -610,7 +616,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1+i;
         if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -624,7 +630,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1+i;
         if (y<0) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->drawStar(xx,y,star++);
+        pView->display()->drawStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -820,7 +826,7 @@ KPlayer *Kwin4Doc::createPlayer(int /*rtti*/,int io,bool isvirtual)
   
   connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *, KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *, KPlayer *)));
-  player->setWidget(pView->statusWidget());
+// TODO   player->setWidget(pView->statusWidget());
   return player;
 }
 
@@ -832,6 +838,7 @@ bool Kwin4Doc::playerInput(QDataStream &msg, KPlayer * /*player*/)
 {
   int move, pl;
   msg >> pl >> move;
+  kDebug() << "Kwin4Doc::playerInput +++++++++++++++++++="<<pl<<" and " << move <<endl;
   if (!Move(move,pl))
     QTimer::singleShot(0, this,SLOT(slotRepeatMove()));
 
@@ -844,6 +851,7 @@ bool Kwin4Doc::playerInput(QDataStream &msg, KPlayer * /*player*/)
 void Kwin4Doc::slotRepeatMove()
 {
   getPlayer(QueryCurrentPlayer())->setTurn(true);
+  kDebug() <<" Kwin4Doc::repeat move"<<endl;
 }
 
 /**
@@ -851,7 +859,7 @@ void Kwin4Doc::slotRepeatMove()
  */
 bool Kwin4Doc::Move(int x,int id)
 {
-  if (global_debug>1)
+  //if (global_debug>1)
     kDebug(12010) <<" Kwin4Doc::Move("<<x<<","<<id<<")"<<endl;
 
   return (MakeMove(x,0) == GNormal);
@@ -909,11 +917,11 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
     KGameMouseIO *input;
     if (global_debug>1) kDebug(12010) << "Creating MOUSE IO to "<<pView<< endl;
     // We want the player to work over mouse
-    input=new KGameMouseIO(pView);
+    input=new KGameMouseIO(pView->viewport());
     if (global_debug>1) kDebug(12010) << "MOUSE IO added " << endl;
     // Connect mouse input to a function to process the actual input
     connect(input,SIGNAL(signalMouseEvent(KGameIO *,QDataStream &,QMouseEvent *,bool *)),
-            pView,SLOT(slotMouseInput(KGameIO *,QDataStream &,QMouseEvent *,bool *)));
+            pView,SLOT(mouseInput(KGameIO *,QDataStream &,QMouseEvent *,bool *)));
     player->addGameIO(input);
   }
   else if (io&KGameIO::ProcessIO)
@@ -1148,7 +1156,7 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
       if (global_debug>1) kDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;
       int x=move;
       int y=mFieldFilled.at(x);
-      pView->setHint(x,y,true);
+      // TODO pView->setHint(x,y,true);
     }
     break;
     default:
@@ -1169,7 +1177,7 @@ void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player
    if (prop->id()==KGamePropertyBase::IdName)
    {
      if (global_debug>1) kDebug(12010) << "Player name id=" << player->userId() << " changed to " << player->name()<<endl;
-     pView->scoreWidget()->setPlayer(player->name(),player->userId());
+     // TODO pView->scoreWidget()->setPlayer(player->name(),player->userId());
    }
 }
 
@@ -1180,19 +1188,19 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
   
    if (prop->id()==mCurrentMove.id())
    {
-     pView->scoreWidget()->setMove(mCurrentMove);
+     // TODO pView->scoreWidget()->setMove(mCurrentMove);
    }
    else if (prop->id()==mScore.id())
    {
      int sc=mScore/10000;
      if (sc==0 && mScore.value()>0) sc=1;
      else if (sc==0 && mScore.value()<0) sc=-1;
-     pView->scoreWidget()->setChance(sc);
+     // TODO pView->scoreWidget()->setChance(sc);
    }
    else if (prop->id()==mAmzug.id())
    {
      if (global_debug>1) kDebug(12010) << "Amzug changed to " << mAmzug.value()<<endl;
-     pView->scoreWidget()->setTurn(mAmzug);
+     // TODO pView->scoreWidget()->setTurn(mAmzug);
    }
    else if (prop->id()==KGamePropertyBase::IdGameStatus)
    {

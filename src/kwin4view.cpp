@@ -1,673 +1,154 @@
-/***************************************************************************
-                          kwin4view.cpp  -  View of the kwin4 program
-                             -------------------
-    begin                : Sun Mar 26 12:50:12 CEST 2000
-    copyright            : (C) |1995-2000 by Martin Heni
-    email                : martin@heni-online.de
- ***************************************************************************/
+/*
+   This file is part of the KDE games kwin4 program
+   Copyright (c) 2006 Martin Heni <kde@heni-online.de>
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
 
-#include "kwin4view.h"
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
 
-#include <stdio.h>
+   You should have received a copy of the GNU Library General Public License
+   along with this library; see the file COPYING.LIB.  If not, write to
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
+*/
 #include <math.h>
 
-#include <kconfig.h>
+// Qt includes
+#include <QPoint>
+#include <QFont>
+#include <QTimer>
+#include <QColor>
+
+// KDE includes
 #include <klocale.h>
-#include <kapplication.h>
-#include <krandom.h>
+#include <kmessagebox.h>
+#include <kdebug.h>
 #include <kstandarddirs.h>
+#include <kplayer.h>
 
-#include "kwin4doc.h"
-#include "scorewidget.h"
-#include "ui_statuswidget.h"
-#include "kspritecache.h"
+// Local includes
+#include "kwin4view.h"
+#include "displayintro.h"
+#include "displaygame.h"
+
+#define VIEW_ASPECT_RATIO 1.6
 
 
-#include <QLabel>
-#include <qlcdnumber.h>
-//Added by qt3to4:
-#include <QPixmap>
-#include <QMouseEvent>
-#include <QKeyEvent>
-#include <QResizeEvent>
-#include <QEvent>
-#include <kglobal.h>
 
-#define COL_STATUSLIGHT  QColor(210,210,255)
-#define COL_STATUSFIELD  QColor(130,130,255)
-#define COL_STATUSDARK   QColor(0,0,65)
-
-#define COL_STATUSBORDER Qt::black
-#define COL_PLAYER       QColor(255,255,0)
-#define COL_RED          Qt::red
-#define COL_YELLOW       Qt::yellow
-
-class KIntroMove : public KSpriteMove
+// Constructor for the view
+KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidget* parent)
+          : QGraphicsView(scene, parent)
 {
-  public:
-  KIntroMove() : KSpriteMove() {mode=0;cnt=0;}
-  virtual bool spriteMove(double tx,double ty,KSprite *sp)
-  {
-    double sign=1.0;
-    if (!dir) sign=-1.0;
-    if (mode==0)
-    {
-      cnt++;
-      if (sp->x()<120.0)
-      {
-        sp->spriteMove(tx,ty);
-        return true;
-      }
-      else
-      {
-        cnt=0;
-        mode=1;
-        cx=sp->x();
-        cy=sp->y()-sign*50;
-      }
-    }
-    if (mode==1)
-    {
-      if (cnt<360)
-      {
-        double x,y;
-        x=cx+50*cos((sign*90.0-sign*(double)cnt)/180.0*M_PI);
-        y=cy+50*sin((sign*90.0-sign*(double)cnt)/180.0*M_PI);
-        sp->move(x,y);
-        cnt+=5;
-      }
-      else
-      {
-        cnt=0;
-        mode=2;
-      }
-    }
-    if (mode==2)
-    {
-      return sp->spriteMove(tx,ty);
-    }
+  // We do not need scrolling so switch it off
+  setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  setCacheMode(QGraphicsView::CacheBackground);
 
-    return true;
-  }
-
-  void setDir(bool d) {dir=d;}
-
-private:
-
-  bool dir;
-  int mode;
-  int cnt;
-  double cx,cy;
-
-};
-
-Kwin4View::Kwin4View(Kwin4Doc *theDoc, QWidget *parent, const char *name)
-        : Q3CanvasView(0,parent, name), doc(theDoc)
-{
-  mLastArrow=-1;
+    // Choose a background color
+  scene->setBackgroundBrush(QColor(0,0,128));
+  mScene = scene;
 
 
-  // localise data file
-  QString file="kwin4/grafix/default/grafix.rc";
-  QString mGrafix=kapp->dirs()->findResourceDir("data",file);
-  if (mGrafix.isNull())
-    mGrafix="grafix/default/";
-  else
-    mGrafix+="kwin4/grafix/default/";
-  if (global_debug>3)
-    kDebug(12010) << "Localised grafix dir " << mGrafix << endl;
 
-  // Allow overriding of the grafix directory
-  // This is a cheap and dirty way for theming
-  KGlobal::config()->setGroup("Themes");
-  mGrafix = KGlobal::config()->readPathEntry("grafixdir", mGrafix);
+  // Update/advance every 25ms
+  QTimer *timer = new QTimer(this);
+  connect(timer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
+  timer->start(advancePeriod);
+  mAdvancePeriod = advancePeriod;
 
+  mIsRunning = false;
+  
+  // Set size and position of the view and the canvas:
+  // they are reseized once a level is loaded
+  //setFixedSize(size);
+  resize(size);
 
-  setVScrollBarMode(AlwaysOff);
-  setHScrollBarMode(AlwaysOff);
-
-  //setBackgroundMode(PaletteBase);
-  QPalette palette;
-  palette.setColor( backgroundRole(), QColor( 0, 0, 128 ) );
-  setPalette( palette );
-
-  mCanvas=new Q3Canvas(parent);
-  mCanvas->resize(parent->width(),parent->height());
-  mCanvas->setDoubleBuffering(true);
-  mCanvas->setBackgroundColor(QColor(0,0,128));
-  setCanvas(mCanvas);
-
-  mCache=new KSpriteCache(mGrafix,this);
-  mCache->setCanvas(mCanvas);
-  KConfig *config=mCache->config();
-
-  QPoint pnt;
-  config->setGroup("game");
-
-  pnt=config->readEntry("scorewidget",QPoint());
-  mScoreWidget=new ScoreWidget(viewport());
-  addChild(mScoreWidget);
-  mScoreWidget->move(pnt);
-
-  pnt=config->readEntry("statuswidget", QPoint());
-  mStatus_Widget=new QFrame(this);
-  mStatusWidget.setupUi(mStatus_Widget); 
-  mStatus_Widget->move(pnt);
-  QPalette pal;
-  pal.setColor(QPalette::Light, COL_STATUSLIGHT);
-  pal.setColor(QPalette::Mid, COL_STATUSFIELD);
-  pal.setColor(QPalette::Dark, COL_STATUSDARK);
-  pal.setColor( mStatus_Widget->backgroundRole(), COL_STATUSFIELD );
-  mStatus_Widget->setPalette(pal);
-
-  mStatusWidget.wins->setPalette( palette );
-  mStatusWidget.draws->setPalette( palette );
-  mStatusWidget.loses->setPalette( palette );
-  mStatusWidget.num->setPalette( palette );
-  mStatusWidget.bk->setPalette( palette );
-
-  mStatusWidget.p1_name->setPalette( palette );
-  mStatusWidget.p1_w->setPalette( palette );
-  mStatusWidget.p1_d->setPalette( palette );
-  mStatusWidget.p1_l->setPalette( palette );
-  mStatusWidget.p1_n->setPalette( palette );
-  mStatusWidget.p1_b->setPalette( palette );
-
-  mStatusWidget.p2_name->setPalette( palette );
-  mStatusWidget.p2_w->setPalette( palette );
-  mStatusWidget.p2_d->setPalette( palette );
-  mStatusWidget.p2_l->setPalette( palette );
-  mStatusWidget.p2_n->setPalette( palette );
-  mStatusWidget.p2_b->setPalette( palette );
-
-  mScoreWidget->hide();
-  mStatus_Widget->hide();
-
-  move(0,0);
+  // Set size and position of the view and the canvas:
+  // they are reseized once a level is loaded
+  scene->setSceneRect(0, 0, this->width(), this->height()); 
   adjustSize();
 
-  initView(false);
+  setInteractive(true);
+
+  // Create new theme manager
+  // TODO: Move to main program
+  mTheme = new ThemeManager(this->size().width(), this);
+
+  mGameDisplay  = 0;
+  mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
+  mIntroDisplay->start();
 }
 
-void Kwin4View::initView(bool deleteall)
+KWin4View::~KWin4View()
 {
-  KSprite *sprite=0;
-  // mCanvas->setAdvancePeriod(period);
-  mCanvas->setAdvancePeriod(15);
-
-  KConfig *config=mCache->config();
-  config->setGroup("game");
-  mSpreadX=config->readEntry("spread_x",0);
-  mSpreadY=config->readEntry("spread_y",0);
-  //kDebug(12010) << "Spread : x=" << mSpreadX << " y=" << mSpreadY << endl;
-
-  QPixmap *pixmap=loadPixmap("background.png");
-  if (pixmap)
-    mCanvas->setBackgroundPixmap(*pixmap);
-  else
-    mCanvas->setBackgroundColor(QColor(0,0,128));
-  delete pixmap;
-
-  if (doc->gameStatus()==KGame::Intro)
-  {
-    mScoreWidget->hide();
-    mStatus_Widget->hide();
-    drawIntro(deleteall);
-  }
-  else
-  {
-    // TODO in start functions to distinguish from intro
-    kDebug(12010) << "Clearing board" <<endl;
-    drawBoard(deleteall);
-    mScoreWidget->show();
-    mStatus_Widget->show();
-    // Hide pieces in any case
-    for (int i=0;i<42;i++)
-    {
-      sprite=(KSprite *)(mCache->getItem("piece",i));
-      if (sprite)
-      {
-        introMoveDone(sprite,0 );
-        sprite->hide();
-      }
-    }
-    hideIntro();
-  }
-
-  // Hide stars in any case
-  for (int i=0;i<8;i++)
-  {
-    sprite=(KSprite *)(mCache->getItem("star",i));
-    if (sprite) sprite->hide();
-  }
-  // Hide GameOver in any case
-  sprite=(KSprite *)(mCache->getItem("gameover",1));
-  if (sprite) sprite->hide();
-
-
-  // Hide hint in any case
-  setHint(0,0,false);
-
-  // Clear error text
-  clearError();
+  //kDebug() << "~KWin4View"<<endl;
+  if (mIntroDisplay) delete mIntroDisplay;
+  if (mGameDisplay) delete mGameDisplay;
+  if (mTheme) delete mTheme;
+  //kDebug() << "~KWin4View done"<<endl;
 }
 
-QPixmap *Kwin4View::loadPixmap(QString name)
+
+// Advance and update canvas
+void KWin4View::updateAndAdvance()
 {
-  if (!mCache)
-    return 0;
-  return mCache->loadPixmap(name);
+  scene()->advance();
+  scene()->update();
 }
 
-/**
- * Called by the doc/app to signal the end of the game
- */
-void Kwin4View::EndGame()
+// Stop intro and init game view
+void KWin4View::initGame()
 {
-  KSprite *sprite;
-  sprite=(KSprite *)(mCache->getItem("gameover",1));
-  KConfig *config=mCache->config();
-  int dest=config->readEntry("destY",150);
-  int src=config->readEntry("y",0);
-  //kDebug(12010) << "MOVING gameover to " << dest << endl;
+  kDebug() << "initGame" << endl;
+  if (mIntroDisplay) delete mIntroDisplay;
+  mIntroDisplay = 0;
+  if (!mGameDisplay) mGameDisplay = new DisplayGame(mAdvancePeriod, mScene, mTheme, this);
+  mGameDisplay->start();
 
-  if (sprite)
-  {
-    sprite->show();
-    sprite->setY(src);
-    sprite->moveTo(sprite->x(),dest);
-  }
+  mIsRunning = true;
 }
 
-/**
- * Draw Sprites
- */
-void Kwin4View::drawStar(int x,int y,int no)
+
+// Slot called by the framework when the window is
+// resized.
+void KWin4View::resizeEvent (QResizeEvent* e)
 {
-  int dx,dy;
-  y=5-y;
-  KSprite *piece=(KSprite *)(mCache->getItem("piece",0));
-  if (piece)
+  kDebug() << "++++ KWin4View::resizeEvent "<<e->size().width()<<" , "<< e->size().height() <<endl;
+  // Adapt the canvas size to the window size
+  if (scene())
   {
-    dx=piece->width();
-    dy=piece->height();
+    scene()->setSceneRect(0,0, e->size().width(), e->size().height());
   }
-  else
-  {
-    dx=0;
-    dy=0;
-  }
+  QSizeF size = QSizeF(e->size());
 
-  KSprite *sprite=(KSprite *)(mCache->getItem("star",no));
-  //kDebug(12010) << " setStar("<<x<<","<<y<<","<<no<<") sprite=" << sprite<<endl;
-  if (sprite)
-  {
-    sprite->move(dx/2-sprite->width()/2+x*(dx+mSpreadX)+mBoardX,
-                 dy/2-sprite->height()/2+y*(dy+mSpreadY)+mBoardY);
-    sprite->show();
-    sprite->setAnimation(0);
-  }
+  // Rescale on minimum fitting aspect ratio not width
+  double aspect = size.width() / size.height();
+  if (aspect > VIEW_ASPECT_RATIO) mTheme->rescale(e->size().height()*VIEW_ASPECT_RATIO);
+  else mTheme->rescale(e->size().width());
 }
 
-void Kwin4View::hideIntro()
+
+// mouse click event
+void KWin4View::mousePressEvent(QMouseEvent *ev)
 {
-  KSprite *sprite=0;
-  sprite=(KSprite *)(mCache->getItem("about",1));
-  if (sprite) sprite->hide();
-  sprite=(KSprite *)(mCache->getItem("win4about",1));
-  if (sprite) sprite->hide();
-  sprite=(KSprite *)(mCache->getItem("win4about",2));
-  if (sprite) sprite->hide();
+//  emit mouseEvent(ev);
+//  if (ev->button() != Qt::LeftButton) return ;
 
-  Q3CanvasText *text;
-  text=(Q3CanvasText *)(mCache->getItem("intro1",1));
-  if (text) text->hide();
-  text=(Q3CanvasText *)(mCache->getItem("intro2",1));
-  if (text) text->hide();
-  text=(Q3CanvasText *)(mCache->getItem("intro3",1));
-  if (text) text->hide();
+//  QPointF point = ev->pos();
+//  emit signalLeftMousePress(point.toPoint());
 }
 
-void Kwin4View::drawIntro(bool /*remove*/)
-{
-  KSprite *sprite=0;
-  // background
-  sprite=(KSprite *)(mCache->getItem("about",1));
-  if (sprite) sprite->show();
+// TODO
+#define FIELD_SPACING 10
+#define FIELD_SIZE_X 400
+#define FIELD_SIZE_Y 400
 
-  sprite=(KSprite *)(mCache->getItem("win4about",1));
-  if (sprite) sprite->show();
-  sprite=(KSprite *)(mCache->getItem("win4about",2));
-  if (sprite)
-  {
-    KConfig *config=mCache->config();
-    double dest=config->readEntry("x2",250.0);
-    sprite->setX(dest);
-    sprite->show();
-  }
-
-  Q3CanvasText *text;
-  text=(Q3CanvasText *)(mCache->getItem("intro1",1));
-  if (text)
-  {
-    text->setText(i18nc("1. intro line, welcome to win4","Welcome"));
-    text->show();
-  }
-  text=(Q3CanvasText *)(mCache->getItem("intro2",1));
-  if (text)
-  {
-    text->setText(i18nc("2. intro line, welcome to win4","to"));
-    text->show();
-  }
-  text=(Q3CanvasText *)(mCache->getItem("intro3",1));
-  if (text)
-  {
-    text->setText(i18nc("3. intro line, welcome to win4","KWin4"));
-    text->show();
-  }
-  // text
-
-  // animation
-  for (int no=0;no<42;no++)
-  {
-    sprite=(KSprite *)(mCache->getItem("piece",no));
-    if (sprite)
-    {
-      KIntroMove *move=new KIntroMove;
-      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
-              this,SLOT(introMoveDone(Q3CanvasItem *,int)));
-      sprite->setMoveObject(move);
-      if (no%2==0)
-      {
-        sprite->move(0-20*no,0);
-        sprite->moveTo(150+2*no,105+4*no);
-        move->setDir(true);
-        sprite->setFrame((no/2)%2);
-      }
-      else
-      {
-        sprite->move(0-20*no,height());
-        sprite->moveTo(340-2*(no-1),105+4*(no-1));
-        move->setDir(false);
-        sprite->setFrame(((no-1)/2)%2);
-      }
-      // Increase the nz coord for consecutive peices
-      // to allow proper intro
-      // Carefule: The number must be more then the
-      // z coord of [empty] and less than [empty2]
-      sprite->setZ(sprite->z()+no/2);
-      // kDebug(12010) << "Z("<<no<<")="<<sprite->z()<<endl;
-      sprite->show();
-    }
-  }
-}
-
-/**
- * received after the movment of an intro sprite is finished
- **/
-void Kwin4View::introMoveDone(Q3CanvasItem *item,int )
-{
-  KSprite *sprite=(KSprite *)item;
-  sprite->deleteNotify();
-  KIntroMove *move=(KIntroMove *)sprite->moveObject();
-  if (move)
-  {
-    delete move;
-    sprite->setMoveObject(0);
-  }
-}
-
-void Kwin4View::drawBoard(bool remove)
-{
-  KSprite *sprite=0;
-  KSprite *board=0;
-  int x,y;
-
-  // Board
-  // TODO: Without number as it is unique item
-  board=(KSprite *)(mCache->getItem("board",1));
-  if (board)
-  {
-    if (remove) board->hide();
-    else if (!board->isVisible()) board->show();
-    mBoardX=(int)(board->x());
-    mBoardY=(int)(board->y());
-  }
-  else
-  {
-    mBoardX=0;
-    mBoardY=0;
-  }
-      //kDebug(12010) << "Board X=" << mBoardX << " y="<<mBoardY<<endl;
-
-  // Arrows
-  for (x=0;x<7;x++)
-  {
-    sprite=(KSprite *)(mCache->getItem("arrow",x));
-    if (sprite)
-    {
-      sprite->setFrame(0);
-      sprite->setX(x*(sprite->width()+mSpreadX)+mBoardX);
-      if (remove) sprite->hide();
-      else if (!sprite->isVisible()) sprite->show();
-    }
-  }/* end arrows */
-
-  // Field
-  for (y=5;y>=0;y--)
-  {
-    for (x=0;x<7;x++)
-    {
-      // Lower layer
-      sprite=(KSprite *)(mCache->getItem("empty2",x+7*y));
-      if (sprite)
-      {
-        sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
-                      y*(sprite->height())+mBoardY);
-        if (remove) sprite->hide();
-        else if (!sprite->isVisible()) sprite->show();
-      }
-      // upper layer
-      sprite=(KSprite *)(mCache->getItem("empty",x+7*y));
-      if (sprite)
-      {
-        sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
-                      y*(sprite->height())+mBoardY);
-        if (remove) sprite->hide();
-        else if (!sprite->isVisible()) sprite->show();
-      }
-    }
-  }/* end field */
-}
-
-void Kwin4View::setSprite(int no, int x, int col, bool enable)
-{
-  KSprite *sprite;
-  sprite=(KSprite *)(mCache->getItem("piece",no));
-  if (sprite) sprite->setVisible(enable);
-  setArrow(x,col);
-}
-
-void Kwin4View::setHint(int x,int y,bool enabled)
-{
-  KSprite *sprite;
-  sprite=(KSprite *)(mCache->getItem("hint",1));
-  y=5-y;
-  if (sprite)
-  {
-    if (enabled)
-    {
-      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
-                   y*(sprite->height()+mSpreadY)+mBoardY);
-    }
-    sprite->setVisible(enabled);
-  }
-}
-
-void Kwin4View::setPiece(int x,int y,int color,int no,bool animation)
-{
-  KSprite *sprite=0;
-
-  y=5-y;
-
-  sprite=(KSprite *)(mCache->getItem("piece",no));
-
-  //kDebug(12010) << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
-
-  // Check for removal of sprite
-  if (color==Niemand)
-  {
-    sprite->hide();
-    return ;
-  }
-
-  // Make sure the frames are ok
-  int c;
-  if (color==Gelb) c=0;
-  else c=1;
-
-  if (sprite)
-  {
-    if (animation)
-    {
-      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
-                  mBoardY-sprite->height()-mSpreadY);
-      sprite->moveTo(sprite->x(),
-                    sprite->y()+y*(sprite->height()+mSpreadY)+mBoardY);
-      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
-          doc,SLOT(moveDone(Q3CanvasItem *,int)));
-    }
-    else
-    {
-      sprite->move(x*(sprite->width()+mSpreadX)+mBoardX,
-                  mBoardY-sprite->height()-mSpreadY+
-                  y*(sprite->height()+mSpreadY)+mBoardY);
-      // Prevent moving (== speed =0)
-      sprite->moveTo(sprite->x(),sprite->y());
-      connect(sprite->createNotify(),SIGNAL(signalNotify(Q3CanvasItem *,int)),
-          doc,SLOT(moveDone(Q3CanvasItem *,int)));
-      sprite->emitNotify(3);
-    }
-
-    sprite->setFrame(c);
-    sprite->show();
-  }
-}
-
-void Kwin4View::setArrow(int x,int color)
-{
-  KSprite *sprite=0;
-
-  if (mLastArrow>=0)
-    sprite=(KSprite *)(mCache->getItem("arrow",mLastArrow));
-  else
-    sprite=0;
-  if (sprite)
-    sprite->setFrame(0);
-
-  sprite=(KSprite *)(mCache->getItem("arrow",x));
-
-  //kDebug(12010) << " setArrow("<<x<<","<<color<<") sprite=" << sprite<<endl;
-
-  // Make sure the frames are ok
-  int c = 0;
-  if (color==Gelb)
-     c=1;
-  else if (color==Rot)
-     c=2;
-
-  if (sprite)
-    sprite->setFrame(c);
-  mLastArrow=x;
-}
-
-
-/**
- * Error message if the wrong player moved
- */
-bool Kwin4View::wrongPlayer(KPlayer *player,KGameIO::IOMode io)
-{
-  // Hack to find out whether there is a IO Device whose turn it is
-  KGame::KGamePlayerList *playerList=doc->playerList();
-  KPlayer *p;
-
-  bool flag=false;
-  for ( p=playerList->first(); p!= 0; p=playerList->next() )
-  {
-    if (p==player) continue;
-    if (p->hasRtti(io) && p->myTurn()) flag=true;
-  }
-
-  if (flag)
-    return false;
-
-  clearError();
-  int rnd=(KRandom::random()%4) +1;
-  QString m;
-  m=QString("text%1").arg(rnd);
-  QString ms;
-  if (rnd==1)      ms=i18n("Hold on... the other player has not been yet...");
-  else if (rnd==2) ms=i18n("Hold your horses...");
-  else if (rnd==3) ms=i18n("Ah ah ah... only one go at a time...");
-  else             ms=i18n("Please wait... it is not your turn.");
-
-  // TODO MH can be unique
-  Q3CanvasText *text=(Q3CanvasText *)(mCache->getItem(m,1));
-  if (text)
-  {
-    text->setText(ms);
-    text->show();
-  }
-  return true;
-}
-
-/**
- * This slot is called when a key event is received. It then prduces a
- * valid move for the game.
- **/
-// This is analogous to the mouse event only it is called when a key is
-// pressed
-void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
-{
-  // Ignore non running
-  if (!doc->isRunning())
-    return;
-  // kDebug(12010) << "KEY EVENT" << e->ascii() << endl;
-
-  // Ignore non key press
-  if (e->type() != QEvent::KeyPress) return ;
-
-  // Our player
-  KPlayer *player=input->player();
-  if (!player->myTurn())
-  {
-    *eatevent=wrongPlayer(player,KGameIO::KeyIO);
-    return;
-  }
-
-  int code=e->key();
-  if (code< Qt::Key_1 || code> Qt::Key_7)
-  {
-    //kDebug(12010) << "Key not supported\n";
-    return ;
-  }
-
-  // Create a move
-  qint32 move,pl;
-  move=code-Qt::Key_1;
-  pl=player->userId();
-  stream << pl << move;
-  *eatevent=true;
-}
 
 /**
  * This slot is called when a mouse key is pressed. As the mouse is used as
@@ -677,35 +158,26 @@ void Kwin4View::slotKeyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,boo
  * simple nonsense and use the position of the mouse to generate
  * moves containing the keycodes
  */
-void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent)
+void KWin4View::mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent)
 {
   // Only react to key pressed not released
-  if (mouse->type() != QEvent::MouseButtonPress ) return ;
-  if (!doc->isRunning())
-    return;
+  if (mouse->type() != QEvent::MouseButtonPress ) return;
+  if (!mIsRunning) return;
 
   // Our player
   KPlayer *player=input->player();
   if (!player->myTurn())
   {
-    *eatevent=wrongPlayer(player,KGameIO::MouseIO);
+    kDebug() <<" Kwin4View::TODO wrongPlayer " << endl;
+  //  *eatevent=wrongPlayer(player,KGameIO::MouseIO);
     return;
   }
 
   if (mouse->button()!=Qt::LeftButton) return ;
-  //if (!doc->IsRunning()) return ;
 
-  QPoint point;
-  int x,y;
-
-  point=mouse->pos() - QPoint(15,40) - QPoint(20,20);
-  if (point.x()<0) return ;
-
-  x=point.x()/FIELD_SPACING;
-  y=point.y()/FIELD_SPACING;
-
-  if (y>=FIELD_SIZE_Y) return ;
-  if (x<0 || x>=FIELD_SIZE_X) return;
+  int x = -1;
+  if (mGameDisplay) x = mGameDisplay->mapMouseToMove(mouse->pos());
+  if (x<0) return;
 
   // Create a move
   qint32 move,pl;
@@ -713,29 +185,9 @@ void Kwin4View::slotMouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *m
   pl=player->userId();
   stream << pl << move;
   *eatevent=true;
-  // kDebug(12010) << "Mouse input done..eatevent=true" << endl;
+  kDebug(12010) << "Mouse input "<<x<<" done..eatevent=true" << endl;
 }
 
-/**
- * Hide all the error sprites
- */
-void Kwin4View::clearError()
-{
-  Q3CanvasText *text;
 
-  text=(Q3CanvasText *)(mCache->getItem("text1",1));
-  if (text) text->hide();
-  text=(Q3CanvasText *)(mCache->getItem("text2",1));
-  if (text) text->hide();
-  text=(Q3CanvasText *)(mCache->getItem("text3",1));
-  if (text) text->hide();
-  text=(Q3CanvasText *)(mCache->getItem("text4",1));
-  if (text) text->hide();
-}
-
-void Kwin4View::resizeEvent(QResizeEvent *e)
-{
-  if (mCanvas) mCanvas->resize(e->size().width(),e->size().height());
-}
 
 #include "kwin4view.moc"

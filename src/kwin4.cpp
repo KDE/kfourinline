@@ -114,25 +114,35 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 /**
  * Construct the main application window
  */
-Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), view(0), doc(0), mChat(0), mMyChatDlg(0)
+Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mChat(0), mMyChatDlg(0)
 {
   initGUI();
   initStatusBar();
   initDocument();
 
-  view = new Kwin4View(doc,this);
-  doc->setView(view);
-  setCentralWidget(view);
+  mScene        = new QGraphicsScene(this);
+
+  mView = new KWin4View(QSize(800,600),25,mScene,this);
+  doc->setView(mView);
+  setCentralWidget(mView);
   doc->initPlayers();
 
-  setMinimumSize(640,400);      // TODO
-  setMaximumSize(800,600);
+  //setMinimumSize(640,400);      // TODO
+ // setMaximumSize(800,600);
 
   setupGUI();
 
   doc->ReadConfig(KGlobal::config());
 
   checkMenus();
+}
+
+Kwin4App::~Kwin4App()
+{
+  kDebug() << "~Kwin4App()" << endl;
+  if (doc) delete doc;
+  if (mView) delete mView;
+
 }
 
 /**

@@ -26,8 +26,8 @@
 //Added by qt3to4:
 #include <QList>
 
-class Kwin4View;
-class Q3CanvasItem;
+class KWin4View;
+class QGraphicsItem;
 
 extern int global_debug;
 
@@ -56,7 +56,7 @@ public:
   ~Kwin4Doc();
 
   /** adds a view to the document which represents the document contents. Usually this is your main view. */
-  void setView(Kwin4View *view);
+  void setView(KWin4View *view);
   /** initializes the players */
   void initPlayers();
   /** saves the document under filename and format.*/	
@@ -140,7 +140,7 @@ public slots:
   
   void slotPropertyChanged(KGamePropertyBase *,KGame *);
   void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
-  void moveDone(Q3CanvasItem *,int);
+  void moveDone(QGraphicsItem *,int);
   void slotMessageUpdate(int,quint32,quint32);
   void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
   void slotClientConnected(quint32,KGame *);
@@ -170,7 +170,7 @@ signals:
   void GameOver(int,KPlayer *,KGame *);
 
 private:
-  Kwin4View *pView;
+  KWin4View *pView;
 
   KGamePropertyInt mLastColumn;   // last x moved
   KGamePropertyInt mLastColour; // last colour moved

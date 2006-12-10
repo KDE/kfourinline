@@ -1,5 +1,5 @@
-#ifndef KWIN4_VIEW_H
-#define KWIN4_VIEW_H
+#ifndef DISPLAY_INTRO_H
+#define DISPLAY_INTRO_H
 /*
    This file is part of the KDE games kwin4 program
    Copyright (c) 2006 Martin Heni <kde@heni-online.de>
@@ -22,90 +22,59 @@
 
 // Qt includes
 #include <QWidget>
-#include <QPixmap>
-#include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
-#include <QSize>
-#include <QPoint>
 #include <QHash>
 #include <QList>
-#include <QResizeEvent>
-#include <QDataStream>
-#include <QMouseEvent>
-
-// KDE includes
-#include <kgameio.h>
+#include <QTimer>
 
 // Local includes
 #include "thememanager.h"
 
 // Forward declaration
-class DisplayIntro;
-class DisplayGame;
+class ThemeManager;
 
 /**
  * The view object which shows the graphics in a
  * canvas view.
  */
-class KWin4View : public QGraphicsView
+class DisplayIntro : public QObject, public virtual Themable
 {
   Q_OBJECT
 
   public:
-    /** Constructor for the canvas view.
-     *  @param size The canvas fixed size
+    /** Constructor for the intro.
      *  @param advancePeriod The canvas advance period
      *  @param scene The graphics scene
      *  @param parent The parent window
      */
-    KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidget* parent = 0);
+    DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QObject* parent = 0);
+    ~DisplayIntro();
 
-    /** Desstructor
-    */
-    ~KWin4View();
+    // Possible animation states of the sprite
+    enum IntroState {IntroMoveIn, IntroCollapse, IntroExplode};
 
-    /** Setup the game view.
-    */
-    void initGame();
+    void start();
 
-    DisplayGame* display() {return mGameDisplay;} 
-
+      virtual void changeTheme();
 
  protected:
-    /** React to mouse clicks
-     *  @param ev The mouse event
-     */
-    void mousePressEvent(QMouseEvent *event);
 
   public slots:  
-    /** The update and advance for the canvas. 
-     *  This is called by a timer at regular intervals.
-     */
-    void updateAndAdvance();
-
-    void mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent);
 
   protected slots:  
+    void run();
 
   signals:
-   // void signalLeftMousePress(QPoint point);
 
   protected:
-    /**
-     * Will be called by the Qt KWin4View when its contents
-     * are resized. We adapt the canvas then.
-     * @param e The resize event
-     */
-    void resizeEvent(QResizeEvent* e);
 
   private:
     ThemeManager* mTheme;
     QGraphicsScene* mScene;
     int mAdvancePeriod;
-    DisplayIntro* mIntroDisplay;
-    DisplayGame* mGameDisplay;
-    bool mIsRunning;
+    QList<QGraphicsItem*> mSprites;
+    QTimer* mTimer;
+    IntroState mIntroState;
 };
 
 #endif

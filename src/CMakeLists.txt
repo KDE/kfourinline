@@ -7,10 +7,16 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdeg
 set(kwin4_SRCS 
    main.cpp 
    kwin4.cpp 
+   spritenotify.cpp
+   thememanager.cpp
+   displayintro.cpp 
+   displaygame.cpp 
    kwin4view.cpp 
    kwin4doc.cpp 
    kwin4player.cpp 
-   kspritecache.cpp 
+   introsprite.cpp
+   piecesprite.cpp
+   pixmapsprite.cpp
    scorewidget.cpp )
 
 kde4_automoc(${kwin4_SRCS})

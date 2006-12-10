@@ -17,6 +17,8 @@
 
 #ifndef KWIN4_H
 #define KWIN4_H
+
+#include <QGraphicsScene>
  
 #include <kmainwindow.h>
 #include <kdialog.h>
@@ -26,7 +28,7 @@ class Kwin4Player;
 class KGameChat;
 class KChatDialog;
 class Kwin4Doc;
-class Kwin4View;
+class KWin4View;
 class KButtonGroup;
 class KPlayer;
 
@@ -59,6 +61,7 @@ Q_OBJECT
 
 public:
   Kwin4App(QWidget *parent=0);
+  ~Kwin4App();
 
 protected:
   void EndGame(TABLE mode);
@@ -109,8 +112,9 @@ public slots:
   void slotStatusMsg(const QString &text);
 
 private:
-  Kwin4View *view;
+  KWin4View *mView;
   Kwin4Doc *doc;
+  QGraphicsScene* mScene;
 
   KButtonGroup *mColorGroup;
   KGameChat *mChat;
