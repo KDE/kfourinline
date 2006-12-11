@@ -57,7 +57,7 @@ class ThemeManager : public QObject
   public:
     /** Constructor for the object.
      */
-    ThemeManager(int scale, QObject* parent);
+    ThemeManager(QString themefile, int scale, QObject* parent);
 
     const QPixmap getPixmap(QString svgid, QSize size);
     const QPixmap getPixmap(QString svgid, double width);

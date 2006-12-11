@@ -29,24 +29,32 @@
 
 // KDE includes
 #include <kdebug.h>
+#include <kstandarddirs.h>
 
 // Local includes
 #include "thememanager.h"
 
 // Constructor for the view
-ThemeManager::ThemeManager(int scale, QObject* parent)
+ThemeManager::ThemeManager(QString themefile, int scale, QObject* parent)
     : QObject(parent)
 {
-  kDebug() << "ThemeManager CONSTRUCT" << endl;
   mScale = scale;
-  mRenderer = new QSvgRenderer(this);
-  QString file = "/home/kde/SVN/kdegames/kwin4/grafix/kwin4.svg";
-  mConfig = new KConfig("/home/kde/SVN/kdegames/kwin4/grafix/default.rc", false, false);
+  // Process dirs
+  QString rcfile = KStandardDirs::locate("data", themefile);
+  kDebug() << "ThemeManager CONSTRUCT with theme "<<rcfile << endl;
 
-  bool result = mRenderer->load(file);
+  // Read config and SVG file for theme
+  mConfig = new KConfig(rcfile, false, false);
+  QString svgfile = config("general")->readEntry("svgfile");
+  svgfile = KStandardDirs::locate("data", svgfile);
+  kDebug() << "Reading SVG master file " << svgfile << endl;
+
+
+  mRenderer = new QSvgRenderer(this);
+  bool result = mRenderer->load(svgfile);
   if (!result) 
   {
-    kFatal() << "Cannot open file " << file << endl;
+    kFatal() << "Cannot open file " << svgfile << endl;
   }
   kDebug() << "Renderer " << mRenderer<<" = " << result << endl;
   kDebug() << "Scale " << mScale<< endl;

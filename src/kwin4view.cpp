@@ -78,7 +78,7 @@ KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidg
 
   // Create new theme manager
   // TODO: Move to main program
-  mTheme = new ThemeManager(this->size().width(), this);
+  mTheme = new ThemeManager("default.rc",this->size().width(), this);
 
   mGameDisplay  = 0;
   mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);

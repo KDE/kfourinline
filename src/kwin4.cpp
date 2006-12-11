@@ -37,6 +37,7 @@
 #include <kactioncollection.h>
 #include <kbuttongroup.h>
 #include <kicon.h>
+#include <kstandarddirs.h>
 
 #include <kchatdialog.h>
 #include <kgamechat.h>
@@ -119,6 +120,13 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mCh
   initGUI();
   initStatusBar();
   initDocument();
+
+  #ifdef SRC_DIR
+  kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
+  KGlobal::dirs()->addResourceDir("data",QString(SRC_DIR)+QString("/grafix/"));
+  QString theme = KStandardDirs::locate("data", "default.rc");
+  kDebug() << "theme =" << theme << endl;
+  #endif
 
   mScene        = new QGraphicsScene(this);
 

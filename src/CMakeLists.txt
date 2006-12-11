@@ -2,6 +2,7 @@
 include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/kgame  )
 
 
+
 ########### next target ###############
 
 set(kwin4_SRCS 
@@ -18,6 +19,8 @@ set(kwin4_SRCS
    piecesprite.cpp
    pixmapsprite.cpp
    scorewidget.cpp )
+
+ADD_DEFINITIONS(-DSRC_DIR='"${PROJECT_SOURCE_DIR}"')
 
 kde4_automoc(${kwin4_SRCS})
 
