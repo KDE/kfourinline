@@ -1,0 +1,76 @@
+[general]
+svgfile=default.svg
+
+[intro_piece_0]
+width=0.06
+svgid=piece0
+
+[intro_piece_1]
+width=0.06
+svgid=piece1
+
+[piece]
+center=true
+zValue=100.0
+width=0.045
+# Auto means to read frameX
+start-frame=0
+end-frame=1
+svgid=auto
+frame0=piece0
+frame1=piece1
+
+[star]
+zValue=200.0
+width=0.045
+center=true
+start-frame=0
+end-frame=7
+# Scale pixmaps with reference to this frame (which get size width)
+ref-frame=star4
+# Auto means to read frameX
+svgid=auto
+frame0=star0
+frame1=star1
+frame2=star2
+frame3=star3
+frame4=star4
+frame5=star5
+frame6=star6
+frame7=star7
+# Frame delay in [ms]
+animation-delay=100
+
+
+
+[movebar]
+svgid=movebar
+width=0.4
+pos=0.12,0.04
+zValue=15.0
+
+[board]
+svgid=board
+width=0.44
+pos=0.1,0.1
+zValue=10.0
+
+[boardholes]
+svgid=boardholes
+width=0.4
+pos=0.12,0.12
+zValue=15.0
+
+[gamedisplay]
+# SVG Id of background grafix
+background-svgid=background
+# Position of board for sprite movement
+board-pos=0.1431,0.1430
+# Spread of sprites for board columns
+board-spread=0.0586,0.0588
+# Velocity [relativ/second] for move animation
+move-velocity=0.5
+
+
+
+
