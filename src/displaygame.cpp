@@ -182,29 +182,29 @@ SpriteNotify* DisplayGame::setPiece(int x,int y,int color,int no,bool animation)
   if (color==Gelb) frame = 0;
   else frame = 1;
 
-  if (sprite)
+  if (!sprite)
+     return 0;
+  
+  if (animation)
   {
-    if (animation)
-    {
-      QPointF from = QPointF(board_spread.x()*x    + board_pos.x(),
-                             board_spread.y()*(-1) + board_pos.y());
-      QPointF to   = QPointF(board_spread.x()*x    + board_pos.x(),
-                             board_spread.y()*y    + board_pos.y());
-      sprite->setFrame(frame);
-      sprite->startLinear(from, to, velocity);
-    }
-    else
-    {
-      QPointF from = QPointF(board_spread.x()*x + board_pos.x(),
-                             board_spread.y()   + board_pos.y());
-      QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
-                             board_spread.y()*y + board_pos.y());
-      sprite->setFrame(frame);
-      sprite->startLinear(from, to, velocity);
-    }
-
-    sprite->show();
+    QPointF from = QPointF(board_spread.x()*x    + board_pos.x(),
+                           board_spread.y()*(-1) + board_pos.y());
+    QPointF to   = QPointF(board_spread.x()*x    + board_pos.x(),
+                           board_spread.y()*y    + board_pos.y());
+    sprite->setFrame(frame);
+    sprite->startLinear(from, to, velocity);
   }
+  else
+  {
+    QPointF from = QPointF(board_spread.x()*x + board_pos.x(),
+                           board_spread.y()   + board_pos.y());
+    QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
+                           board_spread.y()*y + board_pos.y());
+    sprite->setFrame(frame);
+    sprite->startLinear(from, to, velocity);
+  }
+
+  sprite->show();
   return sprite->notify();
 }
 
