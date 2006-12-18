@@ -30,7 +30,7 @@
 #include <khelpmenu.h>
 #include <kconfig.h>
 #include <kdebug.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 #include <kaction.h>
 #include <kstatusbar.h>
 #include <kconfigdialog.h>
@@ -259,7 +259,7 @@ void Kwin4App::initGUI()
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
-  KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
+  KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 }
 
 /**
