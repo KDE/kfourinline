@@ -23,7 +23,7 @@
 // include files for KDE
 #include <kapplication.h>
 #include <kvbox.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
 #include <klocale.h>
@@ -213,16 +213,16 @@ void Kwin4App::checkMenus(CheckFlags menu)
  */
 void Kwin4App::initGUI()
 {
-  KStdGameAction::gameNew(this, SLOT(newGame()), actionCollection(), "new_game");
+  KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection(), "new_game");
   ACTION("new_game")->setToolTip(i18n("Start a new game"));
 
-  KStdGameAction::load(this, SLOT(slotOpenGame()), actionCollection(), "open");
+  KStandardGameAction::load(this, SLOT(slotOpenGame()), actionCollection(), "open");
   ACTION("open")->setToolTip(i18n("Open a saved game..."));
 
-  KStdGameAction::save(this, SLOT(slotSaveGame()), actionCollection(), "save");
+  KStandardGameAction::save(this, SLOT(slotSaveGame()), actionCollection(), "save");
   ACTION("save")->setToolTip(i18n("Save a game..."));
 
-  KStdGameAction::end(this, SLOT(endGame()), actionCollection(), "end_game");
+  KStandardGameAction::end(this, SLOT(endGame()), actionCollection(), "end_game");
   ACTION("end_game")->setToolTip(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
@@ -241,16 +241,16 @@ void Kwin4App::initGUI()
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   ACTION("statistics")->setToolTip(i18n("Show statistics."));
 
-  KStdGameAction::hint(doc, SLOT(calcHint()), actionCollection(), "hint");
+  KStandardGameAction::hint(doc, SLOT(calcHint()), actionCollection(), "hint");
   ACTION("hint")->setToolTip(i18n("Shows a hint on how to move."));
 
-  KStdGameAction::quit(this, SLOT(close()), actionCollection(), "game_exit");
+  KStandardGameAction::quit(this, SLOT(close()), actionCollection(), "game_exit");
   ACTION("game_exit")->setToolTip(i18n("Quits the program."));
 
-  KStdGameAction::undo(this, SLOT(slotUndo()), actionCollection(), "edit_undo");
+  KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection(), "edit_undo");
   ACTION("edit_undo")->setToolTip(i18n("Undo last move."));
 
-  KStdGameAction::redo(this, SLOT(slotRedo()), actionCollection(), "edit_redo");
+  KStandardGameAction::redo(this, SLOT(slotRedo()), actionCollection(), "edit_redo");
   ACTION("edit_redo")->setToolTip(i18n("Redo last move."));
 #ifdef __GNUC__
 #warning "kde4: port it or remove it"
