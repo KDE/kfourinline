@@ -318,9 +318,8 @@ void Kwin4App::changeAction(const char *action, bool enable){
  */
 void Kwin4App::saveProperties(KConfig *cfg)
 {
-  QString tempfile = kapp->tempSaveName(QDir::currentPath()+"kwin4");
-  cfg->writePathEntry("filename", tempfile );
-  doc->save(tempfile);
+  QString filename = KStandardDirs::locateLocal("appdata", "current_game");
+  doc->save(filename);
 }
 
 /**
@@ -328,8 +327,8 @@ void Kwin4App::saveProperties(KConfig *cfg)
  */
 void Kwin4App::readProperties(KConfig* cfg)
 {
-  QString filename = cfg->readPathEntry("filename");
-  if(!filename.isEmpty())
+  QString filename = KStandardDirs::locateLocal("appdata", "current_game");
+  if(QFile::exists(filename))
     doc->load(filename);
 }
 
