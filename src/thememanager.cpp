@@ -148,7 +148,7 @@ Themable::Themable(QString id, ThemeManager* thememanager)
 }
 Themable::~Themable()
 {
-  // kdDebug() << this << "unregister " << endl;
+  // kDebug() << this << "unregister " << endl;
   if (mThemeManager) mThemeManager->unregisterTheme(this);
 }
 
