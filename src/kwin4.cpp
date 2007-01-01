@@ -112,6 +112,8 @@ void ChatDlg::setPlayer(Kwin4Player *p)
   mChat->setFromPlayer(p);
 }
 
+#include "config-src.h"
+
 /**
  * Construct the main application window
  */

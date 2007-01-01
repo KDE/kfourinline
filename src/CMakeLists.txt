@@ -20,7 +20,7 @@ set(kwin4_SRCS
    pixmapsprite.cpp
    scorewidget.cpp )
 
-ADD_DEFINITIONS(-DSRC_DIR='"${PROJECT_SOURCE_DIR}"')
+configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
 kde4_automoc(${kwin4_SRCS})
 
