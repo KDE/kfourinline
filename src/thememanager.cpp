@@ -19,6 +19,7 @@
 */
 
 // General includes
+#include <typeinfo>
 
 // Qt includes
 #include <QImage>
@@ -137,15 +138,22 @@ const QPixmap ThemeManager::getPixmap(QString svgid, QString svgref, double refw
 }
 
 
-Themable::Themable(QString id, ThemeManager* thememanager)
-     
+Themable::Themable()
 {
-  mScale = 1.0;
-  mId = id;
+  mScale        = 1.0;
+  mThemeManager = 0;
+  kDebug() << "CONSTRUCT DEFAULT THEMABLE for "<< typeid(this).name() << endl;
+}
+
+Themable::Themable(QString id, ThemeManager* thememanager)
+{
+  mScale        = 1.0;
+  mId           = id;
   mThemeManager = thememanager;
   if (!thememanager) return;
   thememanager->registerTheme(this);
 }
+
 Themable::~Themable()
 {
   // kDebug() << this << "unregister " << endl;

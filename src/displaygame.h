@@ -36,6 +36,7 @@ class ThemeManager;
 class PieceSprite;
 class SpriteNotify;
 class PixmapSprite;
+class ScoreSprite;
 
 /**
  * The view object which shows the graphics in a
@@ -84,6 +85,7 @@ class DisplayGame : public QObject, public virtual Themable
     PixmapSprite* mBoard;
     PixmapSprite* mBoardHoles;
     PixmapSprite* mBar;
+    ScoreSprite*  mScoreBoard;
     QList<PixmapSprite*> mStars;
     
 };

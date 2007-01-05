@@ -31,6 +31,7 @@ class ThemeManager;
 class Themable 
 {
    public:
+     Themable();
      Themable(QString id, ThemeManager* thememanager);
      virtual ~Themable();
      QString id() {return mId;}

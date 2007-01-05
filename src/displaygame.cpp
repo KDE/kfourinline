@@ -34,14 +34,12 @@
 #include "thememanager.h"
 #include "piecesprite.h"
 #include "pixmapsprite.h"
+#include "scoresprite.h"
 #include "spritenotify.h"
 #include "kwin4doc.h"
 
 
 
-#define PIXMAP_BOARD 1000  // Not really needed
-#define PIXMAP_BAR   1100  // Not really needed
-#define PIXMAP_STAR  1200  // Not really needed
 // Constructor for the view
 DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
           : Themable("gamedisplay",theme), QObject(parent)
@@ -70,7 +68,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   // Create stars
   for (int i=0;i<4;i++)
   {
-    PixmapSprite* sprite = new PixmapSprite("star", mTheme, mAdvancePeriod, PIXMAP_STAR+i, mScene);
+    PixmapSprite* sprite = new PixmapSprite("star", mTheme, mAdvancePeriod, i, mScene);
     if (!sprite) kFatal() << "Cannot load sprite " << "star" << endl;
     mSprites.append(sprite);
     mStars.append(sprite);
@@ -78,19 +76,25 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   }
 
   // Board
-  mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, PIXMAP_BOARD, mScene);
+  mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, 0, mScene);
   mSprites.append(mBoard);
   mBoard->hide();
 
   // Board holes
-  mBoardHoles = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, PIXMAP_BOARD, mScene);
+  mBoardHoles = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, 0, mScene);
   mSprites.append(mBoardHoles);
   mBoardHoles->hide();
 
   // Movement bar
-  mBar = new PixmapSprite("movebar", mTheme, mAdvancePeriod, PIXMAP_BAR, mScene);
+  mBar = new PixmapSprite("movebar", mTheme, mAdvancePeriod, 0, mScene);
   mSprites.append(mBar);
   mBar->hide();
+
+  // Score board
+  mScoreBoard = new ScoreSprite("scoreboard", mTheme, mAdvancePeriod, 0, mScene);
+  mSprites.append(mScoreBoard);
+  mScoreBoard->hide();
+
 
 
   // Animation timer
@@ -137,6 +141,7 @@ void DisplayGame::start()
   mBoard->show();
   mBoardHoles->show();
   mBar->show();
+  mScoreBoard->show();
 
   // Hide piece sprites 
   for (int i=0; i<42; i++)

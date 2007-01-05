@@ -37,6 +37,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
   public:
     /** Constructor for the sprite.
      */
+    PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas);
     PixmapSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
     // Possible animation states of the sprite
 

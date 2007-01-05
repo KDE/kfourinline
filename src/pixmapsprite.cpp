@@ -31,19 +31,29 @@
 // Local includes
 #include "pixmapsprite.h"
 
-// Constructor for the view
+// Constructor for the sprite
 PixmapSprite::PixmapSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), QGraphicsPixmapItem(0, canvas)
 {
   hide();
 
   mAnimationState = Idle;
-  mAdvancePeriod = advancePeriod;
-  mNo = no;
-  mCurrentFrame = 0;
+  mAdvancePeriod  = advancePeriod;
+  mNo             = no;
+  mCurrentFrame   = 0;
 
-  theme->updateTheme(this);
+  if (theme) theme->updateTheme(this);
+}
 
+PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
+    :  Themable(), QGraphicsPixmapItem(0, canvas)
+{
+  hide();
+
+  mAnimationState = Idle;
+  mAdvancePeriod  = advancePeriod;
+  mNo             = no;
+  mCurrentFrame   = 0;
 }
 
 void PixmapSprite::changeTheme()

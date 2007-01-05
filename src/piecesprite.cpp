@@ -33,9 +33,10 @@
 
 // Constructor for the view
 PieceSprite::PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(id, theme), PixmapSprite(id, theme, advancePeriod, no, canvas)
+    :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
   mNotify = new SpriteNotify(this);
+  if (theme) theme->updateTheme(this);
 }
 
 PieceSprite::~PieceSprite()

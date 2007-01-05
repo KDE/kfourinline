@@ -17,6 +17,7 @@ set(kwin4_SRCS
    kwin4player.cpp 
    introsprite.cpp
    piecesprite.cpp
+   scoresprite.cpp
    pixmapsprite.cpp
    scorewidget.cpp )
 
