@@ -36,7 +36,6 @@
 ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
-  kDebug() << "SCore consruct started" <<endl;
   for (int i=0; i<2; i++)
   {
     mWon[i]   = new QGraphicsTextItem(this, canvas);
@@ -61,7 +60,6 @@ ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int
   mAI->setPlainText("9.34");
 
   if (theme) theme->updateTheme(this);
-  kDebug() << "SCore consruct done" <<endl;
 
 }
 
@@ -71,11 +69,9 @@ ScoreSprite::~ScoreSprite()
 
 void ScoreSprite::changeTheme()
 {
-  kDebug() << "SCORE SPRITE CHANGE THEME ************************ " << endl;
   PixmapSprite::changeTheme();
   double width  = this->boundingRect().width();
   double height = this->boundingRect().height();
-  kDebug() << "Score (w,h)=" << width << ", " << height << endl;
 
   // TODO: HARDCODED
   setFrame(0);
@@ -98,7 +94,6 @@ void ScoreSprite::changeTheme()
   fontHeight *= height;
   QColor fontColor = config->readEntry("fontColor", Qt::white);
 
-  kDebug() << " Font is " << fontHeight << " pixel " << endl;
 
   // Set position
   mWon[0]->setPos(posWon0.x()*width, posWon0.y()*height);
@@ -134,7 +129,6 @@ void ScoreSprite::changeTheme()
   mAI->setFont(font);
   mAI->setDefaultTextColor(fontColor);   
 
-  kDebug() << "SCORE SPRITE CHANGE THEME ****** DONE ************ " << endl;
 }
 
 
