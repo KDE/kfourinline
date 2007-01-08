@@ -73,7 +73,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
  showButtonSeparator(true);
  setModal(false);
  setMinimumSize(QSize(200,200));
- 
+
  QFrame *frame=new QFrame(this);
  QGridLayout* mGridLayout=new QGridLayout(frame);
  QGroupBox* b = new QGroupBox(i18n("Chat"), frame);
@@ -215,44 +215,59 @@ void Kwin4App::checkMenus(CheckFlags menu)
  */
 void Kwin4App::initGUI()
 {
-  KStandardGameAction::gameNew(this, SLOT(newGame()), actionCollection(), "new_game");
+  QAction *action;
+
+  action = KStandardGameAction::gameNew(this, SLOT(newGame()), this);
+  actionCollection()->addAction("new_game", action);
   ACTION("new_game")->setToolTip(i18n("Start a new game"));
 
-  KStandardGameAction::load(this, SLOT(slotOpenGame()), actionCollection(), "open");
+  action = KStandardGameAction::load(this, SLOT(slotOpenGame()), this);
+  actionCollection()->addAction("open", action);
   ACTION("open")->setToolTip(i18n("Open a saved game..."));
 
-  KStandardGameAction::save(this, SLOT(slotSaveGame()), actionCollection(), "save");
+  action = KStandardGameAction::save(this, SLOT(slotSaveGame()), this);
+  actionCollection()->addAction("save", action);
   ACTION("save")->setToolTip(i18n("Save a game..."));
 
-  KStandardGameAction::end(this, SLOT(endGame()), actionCollection(), "end_game");
+  action = KStandardGameAction::end(this, SLOT(endGame()), this);
+  actionCollection()->addAction("end_game", action);
   ACTION("end_game")->setToolTip(i18n("Ending the current game..."));
   ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
 
-  KAction *action = new KAction(i18n("&Network Configuration..."), actionCollection(), "network_conf");
+  action = actionCollection()->addAction("network_conf");
+  action->setText(i18n("&Network Configuration..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(slotInitNetwork()));
 
-  action = new KAction(i18n("Network Chat..."), actionCollection(), "network_chat");
+  action = actionCollection()->addAction("network_chat");
+  action->setText(i18n("Network Chat..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(slotChat()));
 
   if (global_debug>0) {
-    action = new KAction(i18n("Debug KGame"), actionCollection(), "file_debug");
+    action = actionCollection()->addAction("file_debug");
+    action->setText(i18n("Debug KGame"));
     connect(action, SIGNAL(triggered(bool) ), SLOT(slotDebugKGame()));
   }
 
-  action = new KAction(KIcon("flag"), i18n("&Show Statistics"), actionCollection(), "statistics");
+  action = actionCollection()->addAction("statistics");
+  action->setIcon(KIcon("flag"));
+  action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   ACTION("statistics")->setToolTip(i18n("Show statistics."));
 
-  KStandardGameAction::hint(doc, SLOT(calcHint()), actionCollection(), "hint");
+  action = KStandardGameAction::hint(doc, SLOT(calcHint()), this);
+  actionCollection()->addAction("hint", action);
   ACTION("hint")->setToolTip(i18n("Shows a hint on how to move."));
 
-  KStandardGameAction::quit(this, SLOT(close()), actionCollection(), "game_exit");
+  action = KStandardGameAction::quit(this, SLOT(close()), this);
+  actionCollection()->addAction("game_exit", action);
   ACTION("game_exit")->setToolTip(i18n("Quits the program."));
 
-  KStandardGameAction::undo(this, SLOT(slotUndo()), actionCollection(), "edit_undo");
+  action = KStandardGameAction::undo(this, SLOT(slotUndo()), this);
+  actionCollection()->addAction("edit_undo", action);
   ACTION("edit_undo")->setToolTip(i18n("Undo last move."));
 
-  KStandardGameAction::redo(this, SLOT(slotRedo()), actionCollection(), "edit_redo");
+  action = KStandardGameAction::redo(this, SLOT(slotRedo()), this);
+  actionCollection()->addAction("edit_redo", action);
   ACTION("edit_redo")->setToolTip(i18n("Redo last move."));
 #ifdef __GNUC__
 #warning "kde4: port it or remove it"
@@ -261,7 +276,7 @@ void Kwin4App::initGUI()
   connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
-  KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+  actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(showSettings()));
 }
 
 /**
