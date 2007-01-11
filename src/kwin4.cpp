@@ -21,7 +21,6 @@
 #include <QLayout>
 
 // include files for KDE
-#include <kapplication.h>
 #include <kvbox.h>
 #include <kstandardgameaction.h>
 #include <kmessagebox.h>
