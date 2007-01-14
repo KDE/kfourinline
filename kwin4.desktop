@@ -4,6 +4,7 @@ Name=KWin4
 Name[x-test]=xxKWin4xx
 GenericName=Strategy Game
 GenericName[fr]=Jeu de stratégie
+GenericName[ja]=戦略ゲーム
 GenericName[x-test]=xxStrategy Gamexx
 Exec=kwin4
 Icon=kwin4
