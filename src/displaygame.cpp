@@ -96,6 +96,10 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   mScoreBoard->hide();
 
 
+  // Movement indication arrows
+  mArrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, 0, mScene);
+  mSprites.append(mArrow);
+  mArrow->hide();
 
   // Animation timer
   mTimer = new QTimer(this);
@@ -142,6 +146,7 @@ void DisplayGame::start()
   mBoardHoles->show();
   mBar->show();
   mScoreBoard->show();
+  mArrow->hide();
 
   // Hide piece sprites 
   for (int i=0; i<42; i++)
@@ -159,6 +164,34 @@ void DisplayGame::start()
 
 void DisplayGame::run()
 {
+}
+
+void DisplayGame::setArrow(int x,int color)
+{
+  int y=0;
+
+  // Check for removal of sprite
+  if (color==Niemand)
+  {
+    mArrow->hide();
+    return ;
+  }
+
+  // Retrieve theme data
+  KConfig* config      = thememanager()->config(id());
+  QPointF arrow_pos    = config->readEntry("arrow-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+
+  // Make sure the frames are ok
+  int frame;
+  if (color==Gelb) frame = 0;
+  else frame = 1;
+
+  QPointF to   = QPointF(board_spread.x()*x + arrow_pos.x(),
+                         board_spread.y()*y + arrow_pos.y());
+  mArrow->setFrame(frame);
+  mArrow->setPosition(to);
+  mArrow->show();
 }
 
 SpriteNotify* DisplayGame::setPiece(int x,int y,int color,int no,bool animation)

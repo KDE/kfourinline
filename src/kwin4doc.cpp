@@ -323,7 +323,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
   if (mode==0) mMaxMove=mCurrentMove.value();
   mLastColumn=x;
 
-  // TODO pView->setArrow(x,mLastColour);
+  pView->display()->setArrow(x,mLastColour);
   // animation onyl if no redo
   SpriteNotify* notify = pView->display()->setPiece(x,y,mLastColour,mCurrentMove-1,mode==1?false:true);
   if (notify)

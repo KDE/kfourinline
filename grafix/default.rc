@@ -20,6 +20,19 @@ svgid=auto
 frame0=piece0
 frame1=piece1
 
+[arrow]
+#center=true
+width=0.045
+zValue=250.0
+# Auto means to read frameX
+start-frame=0
+end-frame=1
+svgid=auto
+frame0=arrow0
+frame1=arrow1
+
+
+
 [star]
 zValue=200.0
 width=0.045
@@ -98,6 +111,8 @@ background-svgid=background
 board-pos=0.1431,0.1430
 # Spread of sprites for board columns
 board-spread=0.0586,0.0588
+# Movebar arrow position (must be same than movebar pos)
+arrow-pos=0.12,0.04
 # Velocity [relativ/second] for move animation
 move-velocity=0.5
 
