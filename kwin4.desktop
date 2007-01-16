@@ -3,6 +3,7 @@ Encoding=UTF-8
 Name=KWin4
 Name[x-test]=xxKWin4xx
 GenericName=Strategy Game
+GenericName[el]=Παιχνίδι στρατηγικής
 GenericName[fr]=Jeu de stratégie
 GenericName[ja]=戦略ゲーム
 GenericName[x-test]=xxStrategy Gamexx
