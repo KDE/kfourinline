@@ -18,8 +18,6 @@
 #ifndef KWIN4PLAYER_H
 #define KWIN4PLAYER_H
 
-#include <config.h>
-
 #include <kplayer.h>
 #include "ui_statuswidget.h"
 
