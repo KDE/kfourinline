@@ -47,16 +47,6 @@ ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int
     mAI  = new QGraphicsTextItem(this, canvas);
 
   // TODO: ALL HARDCODED
-  mWon[0]->setPlainText("0000");
-  mWon[1]->setPlainText("0001");
-  mDraw[0]->setPlainText("0002");
-  mDraw[1]->setPlainText("0003");
-  mLoss[0]->setPlainText("0004");
-  mLoss[1]->setPlainText("0005");
-  mBreak[0]->setPlainText("0006");
-  mBreak[1]->setPlainText("0007");
-  mName[0]->setPlainText("Bob");
-  mName[1]->setPlainText("Alice");
   mAI->setPlainText("9.34");
 
   if (theme) theme->updateTheme(this);
@@ -147,4 +137,71 @@ void ScoreSprite::advance(int phase)
   PixmapSprite::advance(phase);
 
 }
+
+
+
+void ScoreSprite::setLevel(int i)
+{
+}
+
+
+void ScoreSprite::setChance(int i)
+{
+}
+
+
+void ScoreSprite::setPlayerName(QString s,int no)
+{
+  kDebug() <<"ScoreSprite::setPlayerName " << s << " as " << no << endl;
+  mName[no]->setPlainText(s);
+  update();
+}
+
+void ScoreSprite::setWon(QString s,int no)
+{
+  mWon[no]->setPlainText(s);
+  update();
+}
+
+void ScoreSprite::setDraw(QString s,int no)
+{
+  mDraw[no]->setPlainText(s);
+  update();
+}
+
+void ScoreSprite::setLoss(QString s,int no)
+{
+  mLoss[no]->setPlainText(s);
+  update();
+}
+
+void ScoreSprite::setBreak(QString s,int no)
+{
+  mBreak[no]->setPlainText(s);
+  update();
+}
+
+
+void ScoreSprite::setTurn(int i)
+{
+  kDebug() <<"ScoreSprite::setTurn " << i << endl;
+  KConfig* config = thememanager()->config(id());
+  QColor fontColor  = config->readEntry("fontColor", Qt::white);
+  QColor fontColor0 = config->readEntry("fontColorPlayer0", Qt::white);
+  QColor fontColor1 = config->readEntry("fontColorPlayer1", Qt::white);
+
+  if (i==0)
+  {
+    mName[0]->setDefaultTextColor(fontColor0);
+    mName[1]->setDefaultTextColor(fontColor);
+  }
+  else
+  {
+    mName[0]->setDefaultTextColor(fontColor);
+    mName[1]->setDefaultTextColor(fontColor1);
+  }
+
+  update();
+}
+
 

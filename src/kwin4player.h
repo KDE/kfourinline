@@ -19,7 +19,7 @@
 #define KWIN4PLAYER_H
 
 #include <kplayer.h>
-#include "ui_statuswidget.h"
+#include "score.h"
 
 class KConfig;
 
@@ -32,7 +32,7 @@ class Kwin4Player : public KPlayer
   public:
     Kwin4Player();
     int rtti() const {return 1;}
-    void setWidget(Ui::StatusWidget *w) {sWidget=w;}
+    void setStatus(Score *s) {mStatus=s;}
     void readConfig(KConfig *config);
     void writeConfig(KConfig *config);
     void incWin();
@@ -61,7 +61,7 @@ class Kwin4Player : public KPlayer
     KGamePropertyInt mAllLost;
     KGamePropertyInt mAllBrk;
 
-    Ui::StatusWidget *sWidget;
+    Score *mStatus;
 };
 
 #endif // KWIN4PLAYER_H

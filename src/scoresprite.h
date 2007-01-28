@@ -54,6 +54,15 @@ class ScoreSprite : public PixmapSprite
 
     virtual void changeTheme();
 
+    void setLevel(int i);
+    void setChance(int i);
+    void setPlayerName(QString s,int no);
+    void setWon(QString s,int no);
+    void setDraw(QString s,int no);
+    void setLoss(QString s,int no);
+    void setBreak(QString s,int no);
+    void setTurn(int i);
+
   private:
     QGraphicsTextItem* mWon[2];
     QGraphicsTextItem* mDraw[2];

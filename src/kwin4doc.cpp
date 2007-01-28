@@ -35,14 +35,17 @@
 
 // application specific includes
 #include "kwin4view.h"
-#include "scorewidget.h"
+#include "scoresprite.h"
 #include "spritenotify.h"
 #include "displaygame.h"
 #include "prefs.h"
+#include "score.h"
 #include "ui_statuswidget.h"
 
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent), pView(0), mHintProcess(0)
 {
+  mStatus = new Score(parent);
+
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KGame *)),
           this,SLOT(slotPropertyChanged(KGamePropertyBase *,KGame *)));
 
@@ -137,6 +140,8 @@ Kwin4Doc::~Kwin4Doc()
   WriteConfig(KGlobal::config());
   if (mHintProcess)
     delete mHintProcess;
+  delete mStatus;
+  mStatus = 0;
 }
 
 void Kwin4Doc::setView(KWin4View *view)
@@ -186,7 +191,11 @@ void Kwin4Doc::ResetGame(bool initview){
   mLastHint=-1;
 
   // Reset the view
-  if (initview) pView->initGame();
+  if (initview)
+  {
+    pView->initGame();
+    mStatus->setDisplay(pView->display()->score());
+  }
   
   // Who starts this game
   SetCurrentPlayer((FARBE)mStartPlayer.value()); 
@@ -829,7 +838,7 @@ KPlayer *Kwin4Doc::createPlayer(int /*rtti*/,int io,bool isvirtual)
   
   connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *, KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *, KPlayer *)));
-// TODO   player->setWidget(pView->statusWidget());
+  player->setStatus(mStatus);
   return player;
 }
 
@@ -1180,7 +1189,7 @@ void Kwin4Doc::slotPlayerPropertyChanged(KGamePropertyBase *prop,KPlayer *player
    if (prop->id()==KGamePropertyBase::IdName)
    {
      if (global_debug>1) kDebug(12010) << "Player name id=" << player->userId() << " changed to " << player->name()<<endl;
-     // TODO pView->scoreWidget()->setPlayer(player->name(),player->userId());
+     mStatus->setPlayerName(player->name(),player->userId());
    }
 }
 
@@ -1203,7 +1212,7 @@ void Kwin4Doc::slotPropertyChanged(KGamePropertyBase *prop,KGame *)
    else if (prop->id()==mAmzug.id())
    {
      if (global_debug>1) kDebug(12010) << "Amzug changed to " << mAmzug.value()<<endl;
-     // TODO pView->scoreWidget()->setTurn(mAmzug);
+     mStatus->setTurn(mAmzug);
    }
    else if (prop->id()==KGamePropertyBase::IdGameStatus)
    {

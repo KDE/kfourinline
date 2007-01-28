@@ -28,6 +28,7 @@
 
 class KWin4View;
 class QGraphicsItem;
+class Score;
 
 extern int global_debug;
 
@@ -189,6 +190,7 @@ private:
 
   KGameIO::IOMode mPlayedBy[NOOFPLAYER];
   KGameProcessIO *mHintProcess;
+  Score* mStatus;    // Score and status storage
 
 };
 

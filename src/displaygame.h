@@ -64,6 +64,8 @@ class DisplayGame : public QObject, public virtual Themable
     void drawStar(int x,int y,int no);
     int mapMouseToMove(QPoint pos);
 
+    ScoreSprite* score();
+
  protected:
 
   public slots:  

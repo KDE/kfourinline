@@ -22,11 +22,11 @@
 #include <kgamepropertyhandler.h>
 
 #include "kwin4player.h"
-#include "ui_statuswidget.h"
 
-Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
+Kwin4Player::Kwin4Player() : KPlayer()
 {
   int id;
+  mStatus = 0;
   id=mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mWin"));
   id=mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mRemis"));
   id=mLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mLost"));
@@ -41,6 +41,11 @@ Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
   resetStats();
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
+
+  mWin.setValue(0);
+  mLost.setValue(0);
+  mBrk.setValue(0);
+  mRemis.setValue(0);
 }
 
 #include <QLabel>
@@ -48,54 +53,30 @@ Kwin4Player::Kwin4Player() : KPlayer(), sWidget(0)
 
 void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
 {
-  if (!sWidget) return ;
+  if (!mStatus) return ;
   if (!isActive()) return ;
   if (prop->id()==KGamePropertyBase::IdName)
   {
-    if(userId())
-      sWidget->p1_name->setText(name());
-    else
-      sWidget->p2_name->setText(name());
+    mStatus->setPlayerName(name(), userId());
   }
-  else if (prop->id()==mWin.id())
+  else if (prop->id()==mAllWin.id())
   {
-    if(userId()){
-      sWidget->p1_w->display(mWin);
-      sWidget->p1_n->display(mWin+mRemis+mLost);
-    }
-    else{
-      sWidget->p2_w->display(mWin);
-      sWidget->p2_n->display(mWin+mRemis+mLost);
-    }  
+    mStatus->setWins(mAllWin, userId());
+    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
-  else if (prop->id()==mRemis.id())
+  else if (prop->id()==mAllRemis.id())
   {
-    if(userId()){
-      sWidget->p1_d->display(mRemis);
-      sWidget->p1_n->display(mWin+mRemis+mLost);
-    }
-    else{
-      sWidget->p2_d->display(mRemis);
-      sWidget->p2_n->display(mWin+mRemis+mLost);
-    }  
+    mStatus->setRemis(mAllRemis, userId());
+    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
-  else if (prop->id()==mLost.id())
+  else if (prop->id()==mAllLost.id())
   {
-    if(userId()){
-      sWidget->p1_l->display(mLost);
-      sWidget->p1_n->display(mWin+mRemis+mLost);
-    }
-    else{
-      sWidget->p2_l->display(mLost);
-      sWidget->p2_n->display(mWin+mRemis+mLost);
-    }
+    mStatus->setLosses(mAllLost, userId());
+    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
-  else if (prop->id()==mBrk.id())
+  else if (prop->id()==mAllBrk.id())
   {
-    if(userId())
-      sWidget->p1_b->display(mBrk);
-    else
-      sWidget->p2_b->display(mBrk);
+    mStatus->setBreaks(mAllBrk, userId());
   }
 }
 

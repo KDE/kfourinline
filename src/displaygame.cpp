@@ -18,6 +18,7 @@
    Boston, MA 02110-1301, USA.
 */
 #include <math.h>
+#include <assert.h>
 
 // Qt includes
 #include <QFont>
@@ -292,6 +293,13 @@ void DisplayGame::drawStar(int x,int y,int no)
     star->setPosition(pos);
     star->show();
   }
+}
+
+ScoreSprite* DisplayGame::score()
+{
+  kDebug() << "SCOREBOARD = " << mScoreBoard << endl;
+  assert(mScoreBoard != 0);
+  return mScoreBoard;
 }
 
 #include "displaygame.moc"
