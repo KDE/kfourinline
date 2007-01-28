@@ -279,7 +279,8 @@ KPlayer * Kwin4Doc::nextPlayer(KPlayer *last,bool /*exclusive*/)
  * Make a game move
  * mode=0 normal move, =1: redo move
  */
-MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
+MOVESTATUS Kwin4Doc::MakeMove(int x,int mode)
+{
   if (x<0 || x>=FIELD_SIZE_X)
   {
     kDebug(12010) << "ERROR: MakeMove auf falsche Position " << x << endl;
@@ -325,7 +326,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode){
 
   pView->display()->setArrow(x,mLastColour);
   // animation onyl if no redo
-  SpriteNotify* notify = pView->display()->setPiece(x,y,mLastColour,mCurrentMove-1,mode==1?false:true);
+  SpriteNotify* notify = pView->display()->setPiece(x, y, mLastColour, mCurrentMove-1, mode==1?false:true);
   if (notify)
   {
     QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
@@ -363,7 +364,7 @@ bool Kwin4Doc::UndoMove(){
   // kDebug(12010) << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
   // We have to remove the piece as well...
-  // TODO pView->setPiece(x,y,Niemand,mCurrentMove-1,false);
+  pView->display()->setPiece(x,y,Niemand,mCurrentMove-1,false);
 
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
@@ -373,7 +374,8 @@ bool Kwin4Doc::UndoMove(){
   // sprite no, arrow pos, arrow color, enable
   int oldx=-1;
   if (QueryHistoryCnt()>0) oldx=mHistory.at(QueryHistoryCnt()-1);
-  // TODO pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
+  // TODO: replayed by set arrow and not needed anymore pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
+  pView->display()->setArrow(oldx,QueryHistoryCnt()>0?mLastColour.value():Niemand);
   // TODO pView->setHint(0,0,false);
 
   if (QueryHistoryCnt()>0)
@@ -389,7 +391,8 @@ bool Kwin4Doc::UndoMove(){
 /**
  * Redo a move
  */
-bool Kwin4Doc::RedoMove(){
+bool Kwin4Doc::RedoMove()
+{
   //kDebug(12010) << "mMaxMove=" << mMaxMove.value() << " historycnt=" << QueryHistoryCnt() << endl;
   if (QueryHistoryCnt()>=mMaxMove)
     return false;

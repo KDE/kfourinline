@@ -42,7 +42,7 @@
 
 // Constructor for the view
 DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
-          : Themable("gamedisplay",theme), QObject(parent)
+           : Themable("gamedisplay",theme), QObject(parent)
 {
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -120,6 +120,7 @@ DisplayGame::~DisplayGame()
   kDebug() << "~DisplayGame done"<<endl;
 }
 
+// Called by thememanager when theme or theme geometry changes
 void DisplayGame::changeTheme()
 {
   kDebug() << "DisplayGame::changeTheme +++++ "<<endl;
@@ -135,7 +136,7 @@ void DisplayGame::changeTheme()
 
 }
 
-
+// Start a new game. Initialize graphics.
 void DisplayGame::start()
 {
   mTimer->setSingleShot(true);
@@ -161,11 +162,12 @@ void DisplayGame::start()
   }
 }
 
-
 void DisplayGame::run()
 {
 }
 
+
+// Set the movement indicator arrows above the game board
 void DisplayGame::setArrow(int x,int color)
 {
   int y=0;
@@ -194,9 +196,10 @@ void DisplayGame::setArrow(int x,int color)
   mArrow->show();
 }
 
-SpriteNotify* DisplayGame::setPiece(int x,int y,int color,int no,bool animation)
-{
 
+// Set a game piece, red or white or hidden depending on 'color'
+SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animation)
+{
   y=5-y;
 
   PieceSprite *sprite = mPieces.value(no);
@@ -234,17 +237,16 @@ SpriteNotify* DisplayGame::setPiece(int x,int y,int color,int no,bool animation)
   }
   else
   {
-    QPointF from = QPointF(board_spread.x()*x + board_pos.x(),
-                           board_spread.y()   + board_pos.y());
     QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
                            board_spread.y()*y + board_pos.y());
     sprite->setFrame(frame);
-    sprite->startLinear(from, to, velocity);
+    sprite->setPosition(to);
   }
 
   sprite->show();
   return sprite->notify();
 }
+
 
 // Return the mouse mapped to the board or bar item so that a
 // move 0..6 is generated. -1 means an illegal position
@@ -267,9 +269,8 @@ int DisplayGame::mapMouseToMove(QPoint pos)
   return int(xPos);
 }
 
-/**
- * Draw Star Sprites
- */
+
+// Draw Star Sprites as winning indicator
 void DisplayGame::drawStar(int x,int y,int no)
 {
   y=5-y;
