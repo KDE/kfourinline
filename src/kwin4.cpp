@@ -141,7 +141,7 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mCh
 
   setupGUI();
 
-  doc->ReadConfig(KGlobal::config());
+  doc->ReadConfig(KGlobal::config().data());
 
   checkMenus();
 }

@@ -137,7 +137,7 @@ void Kwin4Doc::initPlayers()
 
 Kwin4Doc::~Kwin4Doc()
 {
-  WriteConfig(KGlobal::config());
+  WriteConfig(KGlobal::config().data());
   if (mHintProcess)
     delete mHintProcess;
   delete mStatus;
@@ -811,7 +811,7 @@ QString Kwin4Doc::QueryProcessName()
     if (global_debug>1) kDebug(12010) << " Found local process " << filename << endl;
     return filename;
   }
-  QString path=kapp->dirs()->findExe("kwin4proc");
+  QString path=KGlobal::mainComponent().dirs()->findExe("kwin4proc");
   if (!path.isNull())
   {
     if (global_debug>1) kDebug(12010) << " Found system process " << path << endl;
