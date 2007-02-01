@@ -152,7 +152,6 @@ void ScoreSprite::setChance(int i)
 
 void ScoreSprite::setPlayerName(QString s,int no)
 {
-  kDebug() <<"ScoreSprite::setPlayerName " << s << " as " << no << endl;
   mName[no]->setPlainText(s);
   update();
 }
@@ -184,7 +183,6 @@ void ScoreSprite::setBreak(QString s,int no)
 
 void ScoreSprite::setTurn(int i)
 {
-  kDebug() <<"ScoreSprite::setTurn " << i << endl;
   KConfig* config = thememanager()->config(id());
   QColor fontColor  = config->readEntry("fontColor", Qt::white);
   QColor fontColor0 = config->readEntry("fontColorPlayer0", Qt::white);

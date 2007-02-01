@@ -41,6 +41,7 @@
 #include "prefs.h"
 #include "score.h"
 #include "ui_statuswidget.h"
+#include "config-src.h"
 
 Kwin4Doc::Kwin4Doc(QWidget *parent, const char *) : KGame(1234,parent), pView(0), mHintProcess(0)
 {
@@ -688,9 +689,12 @@ int Kwin4Doc::QueryLastHint(){
   return mLastHint;
 }
 
-void Kwin4Doc::loadSettings(){
+void Kwin4Doc::loadSettings()
+{
+  kDebug() << "++++ Kwin4Doc::loadSettings() " << endl;
+
   // TODO find out what to do with this...
-  // mLevel.setValue(Prefs::level());
+  //mLevel.setValue(Prefs::level());
 
   SetName(Gelb, Prefs::name1());
   SetName(Rot, Prefs::name2());
@@ -698,20 +702,26 @@ void Kwin4Doc::loadSettings(){
   KGameIO::IOMode mode = KGameIO::MouseIO;
   
   int m = Prefs::input1();
+  // TODO: REMOVE THIS!!!! HARDCODED IO
+  m = 1;
+  
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;
   if(m == 2) mode = KGameIO::KeyIO;
   setPlayedBy(Gelb, mode);
+  kDebug() << "Played by gelb="<<m<<","<<mode<<endl;  
   
   m = Prefs::input2();
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;
   if(m == 2) mode = KGameIO::KeyIO;
   setPlayedBy(Rot, mode);
+  kDebug() << "Played by rot="<<m<<","<<mode<<endl;  
 
   FARBE col = (FARBE)Prefs::colour1();
   if (QueryPlayerColour(0)!=col)
     SwitchStartPlayer();
+
 }
 
 /**
@@ -719,6 +729,7 @@ void Kwin4Doc::loadSettings(){
  */
 void Kwin4Doc::ReadConfig(KConfig *config)
 {
+  kDebug() << "++++++++++++++++++++++++++++++++++++ Kwin4Doc::ReadConfig" << endl;
   loadSettings();
   
   config->setGroup("YellowPlayer");
@@ -802,19 +813,33 @@ int Kwin4Doc::QueryHistoryCnt()
  */
 QString Kwin4Doc::QueryProcessName()
 {
+  // Try whether we run from a development source dir
+  #ifdef SRC_DIR
+    QString srcname = QString(SRC_DIR)+QString("/src/kwin4proc");
+    QFile fsrc(srcname);
+    if (fsrc.exists())
+    {
+      if (global_debug>1) kDebug() << " Found SRC_DIR process " << srcname << endl;
+      return srcname;
+    }
+  #endif
+  
+
   // First try a local dir override
   QDir dir;
+  // TODO: This local filename is not found!!
   QString filename=dir.path()+QString("/kwin4/kwin4proc");
+  kDebug() << "FILENAME="<<filename<<endl;
   QFile flocal(filename);
   if (flocal.exists())
   {
-    if (global_debug>1) kDebug(12010) << " Found local process " << filename << endl;
+    if (global_debug>1) kDebug() << " Found local process " << filename << endl;
     return filename;
   }
   QString path=KGlobal::mainComponent().dirs()->findExe("kwin4proc");
   if (!path.isNull())
   {
-    if (global_debug>1) kDebug(12010) << " Found system process " << path << endl;
+    if (global_debug>1) kDebug() << " Found system process " << path << endl;
     return path;
   }
   QString empty;
@@ -848,9 +873,9 @@ KPlayer *Kwin4Doc::createPlayer(int /*rtti*/,int io,bool isvirtual)
  */
 bool Kwin4Doc::playerInput(QDataStream &msg, KPlayer * /*player*/)
 {
-  int move, pl;
+  qint32 move, pl;
   msg >> pl >> move;
-  kDebug() << "Kwin4Doc::playerInput +++++++++++++++++++="<<pl<<" and " << move <<endl;
+  kDebug() << "Kwin4Doc::playerInput +*+*+*+*+*+*+++++++="<<pl<<" and " << move <<endl;
   if (!Move(move,pl))
     QTimer::singleShot(0, this,SLOT(slotRepeatMove()));
 
@@ -922,12 +947,12 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
     return;
   
   if (global_debug>1)
-    kDebug(12010) << " Kwin4Doc::createIO(KPlayer *player("<<player->userId()<<"),KGameIO::IOMode "<<io<<") " << endl;
+    kDebug() << " Kwin4Doc::createIO(KPlayer *player("<<player->userId()<<"),KGameIO::IOMode "<<io<<") " << endl;
 
   if (io&KGameIO::MouseIO)
   {
     KGameMouseIO *input;
-    if (global_debug>1) kDebug(12010) << "Creating MOUSE IO to "<<pView<< endl;
+    if (global_debug>1) kDebug() << "Creating MOUSE IO to "<<pView<< endl;
     // We want the player to work over mouse
     input=new KGameMouseIO(pView->viewport());
     if (global_debug>1) kDebug(12010) << "MOUSE IO added " << endl;
@@ -939,7 +964,7 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
   else if (io&KGameIO::ProcessIO)
   {
     QString file=QueryProcessName();
-    if (global_debug>1) kDebug(12010) << "Creating PROCESS IO " << file  << endl;
+    if (global_debug>1) kDebug() << "Creating PROCESS IO " << file  << endl;
 
     KGameProcessIO *input;
     // We want a computer player
@@ -954,7 +979,7 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
   }
   else if (io&KGameIO::KeyIO)
   {
-    if (global_debug>1) kDebug(12010) << "Creating KEYBOARD IO " << endl;
+    if (global_debug>1) kDebug() << "Creating KEYBOARD IO " << endl;
     // We want the player to work over keyboard
     KGameKeyIO  *input;
     input=new KGameKeyIO(pView->parentWidget());
@@ -1032,11 +1057,8 @@ void Kwin4Doc::slotProcessQuery(QDataStream &in,KGameProcessIO * /*me*/)
   switch(cid)
   {
     case 1:  // value
-	  qint32 value;
-#ifdef __GNUC__
-#warning "long -> qint32 correct ?"
-#endif
-	  //long value;
+      // "long -> qint32 correct ?": yes
+      qint32 value;
       in >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks value is " << value << endl;
       SetScore(value);
@@ -1159,10 +1181,10 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
       qint32 pl;
       qint32 move;
 #ifdef __GNUC__
-#warning " long -> qint32 correct ????"	  
+#warning " long -> qint32 correct ????"   
 #endif
       //long value;
-	  qint32 value;
+          qint32 value;
       in >>  pl >> move  >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks pl=" << pl << " move =" << move << endl;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;

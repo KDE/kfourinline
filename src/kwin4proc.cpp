@@ -15,14 +15,20 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "kwin4proc.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+
+#include <QDataStream>
+#include <QByteArray>
+#include <QBuffer>
+
 #include <kgamemessage.h>
 #include <kdebug.h>
+
+#include "kwin4proc.h"
 
 #define MIN_TIME 1  // sec
 
@@ -80,11 +86,13 @@ void KComputer::slotTurn(QDataStream &in,bool turn)
   if (turn)
   {
     // Create a move
-    long value=think(in,out,false);
+    qint32 value=think(in,out,false);
     int id=KGameMessage::IdPlayerInput;
     proc.sendSystemMessage(out,id,0);
     sendValue(value);
+    fprintf(stderr,"  KComputer::sendValue in turn:%d\n",value);
   }
+  fflush(stderr);
 }
 
 void KComputer::sendValue(long value)
@@ -95,6 +103,8 @@ void KComputer::sendValue(long value)
   QDataStream out(&buffer,QIODevice::WriteOnly);
   out << cid << ( qint32 )value;
   proc.sendSystemMessage(out,id,0);
+  fprintf(stderr,"  KComputer::sendValue in sendValue:%ld\n",(long)value);
+  fflush(stderr);
 }
 
 long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
@@ -155,7 +165,7 @@ long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
   int mymove;
   mymove= GetCompMove();
 
-  fprintf(stderr,"Computermove to %d value=%ld\n",mymove,aktwert);
+  fprintf(stderr,"Computer sends move; to %d value=%ld\n",mymove,aktwert);
 
   timee=time(0);
   // Sleep a minimum amount to slow down moves
@@ -163,14 +173,7 @@ long KComputer::think(QDataStream &in,QDataStream &out,bool hint)
 
 
   move=mymove;
-  if (hint)
-  {
-    out << pl << move;
-  }
-  else
-  {
-    out << pl << move;
-  }
+  out << pl << move;
   return aktwert;
 }
 
@@ -420,13 +423,14 @@ int main(int argc ,char * argv[])
 {
   // This is the computer player...it should do the calculation
   // It doesn't do much here
-  fprintf(stderr,"Vor KComputer\n");
+  fprintf(stderr,"Vor KComputer START *****************************************************\n");
   fflush(stderr);
   KComputer comp;
-  fprintf(stderr,"Vor exec\n");
+  fprintf(stderr,"Vor exec *************************\n");
+  fflush(stderr);
   // And start the event loop
   comp.proc.exec(argc,argv);
-  fprintf(stderr,"nach exec\n");
+  fprintf(stderr,"nach KComputer exec\n");
   return 1;
 }
 #include "kwin4proc.moc"
