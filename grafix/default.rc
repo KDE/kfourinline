@@ -1,17 +1,21 @@
 [general]
 svgfile=default.svg
 
-[intro_piece_0]
+# A game piece in the introduction
+[intro_piece]
+# 'pos' set by program!
 width=0.06
-svgid=piece0
+# Auto means to read frameX
+svgid=auto
+start-frame=0
+end-frame=1
+frame0=piece0
+frame1=piece1
 
-[intro_piece_1]
-width=0.06
-svgid=piece1
-
+# A game piece
 [piece]
 center=true
-zValue=100.0
+zValue=150.0
 width=0.045
 # Auto means to read frameX
 start-frame=0
@@ -19,20 +23,24 @@ end-frame=1
 svgid=auto
 frame0=piece0
 frame1=piece1
+# 'pos' set by program!
 
+# Arrow to indicate the column to play
 [arrow]
 #center=true
 width=0.045
 zValue=250.0
 # Auto means to read frameX
 start-frame=0
-end-frame=1
+end-frame=2
 svgid=auto
-frame0=arrow0
-frame1=arrow1
+frame0=arrow
+frame1=arrow0
+frame2=arrow1
+# 'pos' set by program!
 
 
-
+# A star to indicate the winning pieces
 [star]
 zValue=200.0
 width=0.045
@@ -53,8 +61,10 @@ frame6=star6
 frame7=star7
 # Frame delay in [ms]
 animation-delay=100
+# 'pos' set by program!
 
 
+# The score board next to the game board
 [scoreboard]
 width=0.25
 pos=0.65,0.044
@@ -86,26 +96,23 @@ fontColor=255,255,255
 fontColorPlayer0=255,0,0
 fontColorPlayer1=255,0,0
 
-
-
-[movebar]
-svgid=movebar
-width=0.4
-pos=0.12,0.04
-zValue=15.0
-
+# The game board (frame)
 [board]
 svgid=board
 width=0.44
 pos=0.1,0.1
 zValue=10.0
 
+
+# One 'hole' in the game board
 [boardholes]
-svgid=boardholes
-width=0.4
-pos=0.12,0.12
+svgid=piece
+center=true
+# 'pos' set by program!
+width=0.045
 zValue=15.0
 
+# The display itself
 [gamedisplay]
 # SVG Id of background grafix
 background-svgid=background
