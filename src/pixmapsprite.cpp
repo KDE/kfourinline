@@ -72,8 +72,11 @@ void PixmapSprite::changeTheme()
   width *= scale;
   QPointF pos = config->readEntry("pos", QPointF(1.0,1.0));
   pos *= scale;
-  double zValue = config->readEntry("zValue", 0.0);
-  setZValue(zValue);
+  if (config->hasKey("zValue"))
+  {
+    double zValue = config->readEntry("zValue", 0.0);
+    setZValue(zValue);
+  }
 
   bool center = config->readEntry("center", false);
 
@@ -122,6 +125,14 @@ void PixmapSprite::changeTheme()
   // Retrieve pixmap
   setFrame(mCurrentFrame, true);
   update();
+}
+
+// Debug only: 
+double PixmapSprite::getDoubleValue(QString item)
+{
+  KConfig* config = thememanager()->config(id());
+  return config->readEntry(item, 0.0);
+  
 }
 
 // Start linear movement

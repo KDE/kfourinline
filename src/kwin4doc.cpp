@@ -703,7 +703,7 @@ void Kwin4Doc::loadSettings()
   
   int m = Prefs::input1();
   // TODO: REMOVE THIS!!!! HARDCODED IO
-  m = 1;
+  m = 0;
   
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;

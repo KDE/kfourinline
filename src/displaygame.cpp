@@ -63,9 +63,10 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
     if (!sprite) kFatal() << "Cannot load sprite " << "piece" << endl;
     mSprites.append(sprite);
     mPieces.append(sprite);
-    sprite->setZValue(sprite->zValue()+i);
+//    sprite->setZValue(sprite->getDoubleValue("zValueOffset")+i);
     sprite->hide();
   }
+
   // Create stars
   for (int i=0;i<4;i++)
   {
@@ -78,29 +79,36 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
 
   // Board
   mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, 0, mScene);
+  if (!mBoard) kFatal() << "Cannot load sprite " << "board" << endl;
   mSprites.append(mBoard);
   mBoard->hide();
 
-  // Board holes
-  mBoardHoles = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, 0, mScene);
-  mSprites.append(mBoardHoles);
-  mBoardHoles->hide();
-
-  // Movement bar
-  mBar = new PixmapSprite("movebar", mTheme, mAdvancePeriod, 0, mScene);
-  mSprites.append(mBar);
-  mBar->hide();
+  // Create board holes
+  for (int i=0; i<42; i++)
+  {
+    PixmapSprite* boardHole = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, i, mScene);
+    if (!boardHole) kFatal() << "Cannot load sprite " << "boardHoles" << endl;
+    mSprites.append(boardHole);
+    mBoardHoles.append(boardHole);
+    boardHole->hide();
+  }
 
   // Score board
   mScoreBoard = new ScoreSprite("scoreboard", mTheme, mAdvancePeriod, 0, mScene);
+  if (!mScoreBoard) kFatal() << "Cannot load sprite " << "scoreboard" << endl;
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
 
 
   // Movement indication arrows
-  mArrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, 0, mScene);
-  mSprites.append(mArrow);
-  mArrow->hide();
+  for (int i=0; i<7; i++)
+  {
+    PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, i, mScene);
+    if (!arrow) kFatal() << "Cannot load sprite " << "arrow" << endl;
+    mSprites.append(arrow);
+    mArrows.append(arrow);
+    arrow->hide();
+  }
 
   // Animation timer
   mTimer = new QTimer(this);
@@ -143,12 +151,36 @@ void DisplayGame::start()
   mTimer->setSingleShot(true);
   mTimer->start(0);
 
+  // Retrieve theme data
+  KConfig* config = thememanager()->config(id());
+  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF arrow_pos    = config->readEntry("arrow-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+
   // Show decoration
   mBoard->show();
-  mBoardHoles->show();
-  mBar->show();
   mScoreBoard->show();
-  mArrow->hide();
+
+  // Board holes
+  for (int i=0; i<42; i++)
+  {
+    int x = i/6;
+    int y = i%6;
+    QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
+                           board_spread.y()*y + board_pos.y());
+    mBoardHoles.value(i)->setPosition(to);
+    mBoardHoles.value(i)->show();
+  }
+
+  // Movement arrows
+  for (int i=0; i<7; i++)
+  {
+    QPointF to   = QPointF(board_spread.x()*i + arrow_pos.x(),
+                           board_spread.y()*0 + arrow_pos.y());
+    mArrows.value(i)->setPosition(to);
+    mArrows.value(i)->setFrame(0);
+    mArrows.value(i)->show();
+  }
 
   // Hide piece sprites 
   for (int i=0; i<42; i++)
@@ -171,30 +203,22 @@ void DisplayGame::run()
 // Set the movement indicator arrows above the game board
 void DisplayGame::setArrow(int x,int color)
 {
-  int y=0;
+  // Set all arrows back to frame 0
+  for (int i=0; i<7; i++)
+  {
+    mArrows.value(i)->setFrame(0);
+  }
 
-  // Check for removal of sprite
+  // Check for no color 
   if (color==Niemand)
   {
-    mArrow->hide();
     return ;
   }
 
-  // Retrieve theme data
-  KConfig* config      = thememanager()->config(id());
-  QPointF arrow_pos    = config->readEntry("arrow-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
-
   // Make sure the frames are ok
-  int frame;
-  if (color==Gelb) frame = 0;
-  else frame = 1;
+  if (color==Gelb) mArrows.value(x)->setFrame(1);
+  else mArrows.value(x)->setFrame(2);
 
-  QPointF to   = QPointF(board_spread.x()*x + arrow_pos.x(),
-                         board_spread.y()*y + arrow_pos.y());
-  mArrow->setFrame(frame);
-  mArrow->setPosition(to);
-  mArrow->show();
 }
 
 
@@ -253,21 +277,28 @@ SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animat
 // move 0..6 is generated. -1 means an illegal position
 int DisplayGame::mapMouseToMove(QPoint pos)
 {
+  // Error?
   if (!mBoard) return -1;
 
-  KConfig* config      = thememanager()->config(id());
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+  // Find which arrow the mouse is closest to. This way
+  // all board scaling become irrelevant. An alteratnive
+  // would be to calculate the position using board_pos and
+  // board_spread.
+  for (int i=0; i<7; i++)
+  {
+    PixmapSprite* arrow = mArrows.value(i);
+    int width           = int(arrow->boundingRect().width());
+    int relPos          = int(arrow->mapFromParent(QPointF(pos)).x());
+    // Found matching arrow
+    if (relPos > 0 && relPos<= width)
+    {
+      // kDebug() <<"Arrow maps pos " << pos << " to "<<i << endl;
+      return i;
+    }
+  }
 
-  double scale = thememanager()->getScale();
-  QPointF p1 = mBoardHoles->mapFromParent(QPointF(pos));
-  p1 = p1/scale;
-  double xPos = p1.x() / board_spread.x();
-  // kDebug() <<"Board holes map " << p1 << " is "<<xPos << endl;
-
-  int x = int(xPos);
-
-  if (x< 0 || x>=FIELD_SIZE_X) return -1;
-  return int(xPos);
+  // Nothing found
+  return -1;
 }
 
 

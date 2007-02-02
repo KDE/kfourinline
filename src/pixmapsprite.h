@@ -65,6 +65,10 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
     void setAnimation(bool status);
     void setPosition(QPointF pos);
 
+    /** Reads a configuration item.
+    */
+    double getDoubleValue(QString item);
+
   protected:
 
     // The sprite number

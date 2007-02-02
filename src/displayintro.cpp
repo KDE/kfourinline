@@ -54,10 +54,12 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   for (int i=0; i<42; i++)
   {
     QString id;
-    if ((i/2)%2==0) id = "intro_piece_0";
-    else  id = "intro_piece_1";
-    IntroSprite* sprite = new IntroSprite(id, mTheme, mAdvancePeriod, i, mScene);
+    IntroSprite* sprite = new IntroSprite("intro_piece", mTheme, mAdvancePeriod, i, mScene);
+    if (!sprite) kFatal() << "Cannot load sprite " << "intro_piece" << endl;
     mSprites.append(sprite);
+    if ((i/2)%2==0) sprite->setFrame(0);
+    else  sprite->setFrame(1);
+    sprite->setZValue(i);
     sprite->hide();
   }
 

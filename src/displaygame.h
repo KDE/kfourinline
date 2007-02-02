@@ -86,9 +86,8 @@ class DisplayGame : public QObject, public virtual Themable
     QList<PieceSprite*> mPieces;
     QTimer* mTimer;
     PixmapSprite* mBoard;
-    PixmapSprite* mBoardHoles;
-    PixmapSprite* mBar;
-    PixmapSprite* mArrow;
+    QList<PixmapSprite*> mBoardHoles;
+    QList<PixmapSprite*> mArrows;
     ScoreSprite*  mScoreBoard;
     QList<PixmapSprite*> mStars;
     

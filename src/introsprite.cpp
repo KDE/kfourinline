@@ -32,7 +32,7 @@
 
 // Constructor for the view
 IntroSprite::IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(id, theme), QGraphicsPixmapItem(0, canvas)
+    :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
   hide();
 
@@ -40,32 +40,16 @@ IntroSprite::IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int
   mNo = no;
   mAnimationState = Idle;
 
-  theme->updateTheme(this);
+  if (theme) theme->updateTheme(this);
+}
 
+IntroSprite::~IntroSprite()
+{
 }
 
 void IntroSprite::changeTheme()
 {
-  double oldscale = this->getScale();
-  double scale = thememanager()->getScale();
-  setScale(scale);
-
-  // Retrieve theme data
-  KConfig* config = thememanager()->config(id());
-  double width = config->readEntry("width", 1.0);
-  width *= scale;
-  QString svgid = config->readEntry("svgid");
-
-  // Modify position
-  setPos(x()*scale/oldscale, y()*scale/oldscale);
-
-  // Retrieve pixmap
-  QPixmap pixmap = thememanager()->getPixmap(svgid, width);
-  setPixmap(pixmap);
-  // Center pixmap
-  resetMatrix();
-  translate(-pixmap.width()/2.0, -pixmap.height()/2.0);
-  update();
+  PixmapSprite::changeTheme();
 }
 
 

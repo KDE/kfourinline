@@ -26,18 +26,23 @@
 #include <QGraphicsPixmapItem>
 
 #include "thememanager.h"
+#include "pixmapsprite.h"
 
 
 /**
  * The sprite for a pixmap on the canvas.
  */
-class IntroSprite : public QGraphicsPixmapItem, public virtual Themable
+class IntroSprite : public PixmapSprite
 {
 
   public:
     /** Constructor for the sprite.
      */
     IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
+
+    /** Destructor 
+    */
+    ~IntroSprite();
 
     /** Start an intro move. 
      *  The first half of the move is is on a straight line from start to end. The second
@@ -66,7 +71,7 @@ class IntroSprite : public QGraphicsPixmapItem, public virtual Themable
     void startLinear(QPointF end, double duration);
 
     // Possible animation states of the sprite
-    enum AnimationState {Idle, IntroDelay, IntroLinear1, IntroCircle, IntroLinear2, LinearMove};
+    enum MovementState {Idle, IntroDelay, IntroLinear1, IntroCircle, IntroLinear2, LinearMove};
 
     /** Standard QGI advance function.
      *  @param phase The advance phase
@@ -101,17 +106,9 @@ class IntroSprite : public QGraphicsPixmapItem, public virtual Themable
     // The radius of the circular movement [rel]
     double mRadius;
 
-    // The sprite number
-    int mNo;
-
-    // The advance peridod, e.g. 25 ms [ms]
-    int mAdvancePeriod;
-
     // The state of the animation
-    AnimationState mAnimationState;
+    MovementState mAnimationState;
 
-    //  The theme id
-    QString mId;
 };
 
 #endif
