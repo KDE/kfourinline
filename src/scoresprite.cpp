@@ -44,7 +44,9 @@ ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int
     mBreak[i] = new QGraphicsTextItem(this, canvas);
     mName[i]  = new QGraphicsTextItem(this, canvas);
   }
-    mAI  = new QGraphicsTextItem(this, canvas);
+  mAI  = new QGraphicsTextItem(this, canvas);
+
+  mTurn = -1;
 
   // TODO: ALL HARDCODED
   mAI->setPlainText("9.34");
@@ -119,6 +121,8 @@ void ScoreSprite::changeTheme()
   mAI->setFont(font);
   mAI->setDefaultTextColor(fontColor);   
 
+  if (mTurn>=0) setTurn(mTurn);
+
 }
 
 
@@ -187,6 +191,8 @@ void ScoreSprite::setTurn(int i)
   QColor fontColor  = config->readEntry("fontColor", Qt::white);
   QColor fontColor0 = config->readEntry("fontColorPlayer0", Qt::white);
   QColor fontColor1 = config->readEntry("fontColorPlayer1", Qt::white);
+
+  mTurn = i;
 
   if (i==0)
   {

@@ -7300,7 +7300,7 @@
        inkscape:export-ydpi="88.125504"
        inkscape:export-xdpi="88.125504"
        inkscape:export-filename="/home/johann/Developpement/kdegames/piece0.png"
-       transform="matrix(0.889521,0,0,0.889521,-432.9536,-448.9914)"
+       transform="matrix(0.898416,0,0,0.889521,-437.5375,-448.9914)"
        id="piece1"
        inkscape:label="#g6294">
       <path
@@ -8283,7 +8283,7 @@
     </g>
     <g
        id="score_ai"
-       transform="matrix(0.637549,0,0,0.416209,-180.4886,42.37621)"
+       transform="matrix(0.637549,0,0,0.416209,-175.0024,41.87746)"
        inkscape:label="#g6738">
       <rect
          ry="10.935015"

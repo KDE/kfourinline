@@ -66,8 +66,8 @@ animation-delay=100
 
 # The score board next to the game board
 [scoreboard]
-width=0.25
-pos=0.65,0.044
+width=0.28
+pos=0.63,0.044
 zValue=100.0
 svgid=auto
 start-frame=0
@@ -90,7 +90,7 @@ posBreak1=0.65,0.66
 posName1=0.65,0.78
 posAI=0.35,0.90
 # Font height relativ to score widget height
-fontHeight=0.07
+fontHeight=0.067
 # Font color
 fontColor=255,255,255
 fontColorPlayer0=255,0,0

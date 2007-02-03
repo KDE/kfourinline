@@ -70,6 +70,7 @@ class ScoreSprite : public PixmapSprite
     QGraphicsTextItem* mBreak[2];
     QGraphicsTextItem* mName[2];
     QGraphicsTextItem* mAI;
+    int mTurn;
 };
 
 #endif
