@@ -33,6 +33,7 @@ class Kwin4Player : public KPlayer
     Kwin4Player();
     int rtti() const {return 1;}
     void setStatus(Score *s) {mStatus=s;}
+    Score* status(){return mStatus;}
     void readConfig(KConfig *config);
     void writeConfig(KConfig *config);
     void incWin();

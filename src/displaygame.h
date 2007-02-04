@@ -61,6 +61,7 @@ class DisplayGame : public QObject, public virtual Themable
 
     SpriteNotify* setPiece(int x,int y,int color,int no,bool animation);
     void setArrow(int x, int color);
+    void setHint(int x, int y, bool show);
     void drawStar(int x,int y,int no);
     int mapMouseToMove(QPoint pos);
 
@@ -90,6 +91,7 @@ class DisplayGame : public QObject, public virtual Themable
     QList<PixmapSprite*> mArrows;
     ScoreSprite*  mScoreBoard;
     QList<PixmapSprite*> mStars;
+    PixmapSprite* mHint;
     
 };
 

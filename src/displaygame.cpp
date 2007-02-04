@@ -83,6 +83,12 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   mSprites.append(mBoard);
   mBoard->hide();
 
+  // Hint
+  mHint = new PixmapSprite("hint", mTheme, mAdvancePeriod, 0, mScene);
+  if (!mHint) kFatal() << "Cannot load sprite " << "hint" << endl;
+  mSprites.append(mHint);
+  mHint->hide();
+
   // Create board holes
   for (int i=0; i<42; i++)
   {
@@ -219,6 +225,30 @@ void DisplayGame::setArrow(int x,int color)
   if (color==Gelb) mArrows.value(x)->setFrame(1);
   else mArrows.value(x)->setFrame(2);
 
+}
+
+// Set a game HINT
+void DisplayGame::setHint(int x, int y, bool show)
+{
+  kDebug() << " setHint("<<x<<","<<y<<","<<show<<") sprite=" << mHint<<endl;
+  y=5-y;
+
+  // Check for removal of sprite
+  if (!show)
+  {
+    mHint->hide();
+    return;
+  }
+
+  // Retrieve theme data
+  KConfig* config      = thememanager()->config(id());
+  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+
+  QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
+                         board_spread.y()*y + board_pos.y());
+  mHint->setPosition(to);
+  mHint->show();
 }
 
 

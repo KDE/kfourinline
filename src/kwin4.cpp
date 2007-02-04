@@ -116,7 +116,7 @@ void ChatDlg::setPlayer(Kwin4Player *p)
 /**
  * Construct the main application window
  */
-Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mChat(0), mMyChatDlg(0)
+Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mChat(0), mMyChatDlg(0)
 {
   initGUI();
   initStatusBar();
@@ -132,16 +132,16 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mCh
   mScene        = new QGraphicsScene(this);
 
   mView = new KWin4View(QSize(800,600),25,mScene,this);
-  doc->setView(mView);
+  mDoc->setView(mView);
   setCentralWidget(mView);
-  doc->initPlayers();
+  mDoc->initPlayers();
 
   //setMinimumSize(640,400);      // TODO
  // setMaximumSize(800,600);
 
   setupGUI();
 
-  doc->ReadConfig(KGlobal::config().data());
+  mDoc->ReadConfig(KGlobal::config().data());
 
   checkMenus();
 }
@@ -149,7 +149,7 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), doc(0), mCh
 Kwin4App::~Kwin4App()
 {
   kDebug() << "~Kwin4App()" << endl;
-  if (doc) delete doc;
+  if (mDoc) delete mDoc;
   if (mView) delete mView;
 
 }
@@ -163,8 +163,8 @@ Kwin4App::~Kwin4App()
  */
 void Kwin4App::checkMenus(CheckFlags menu)
 {
-  bool localgame=(!doc->isNetwork());
-  bool isRunning = (doc->gameStatus()==KGame::Run);
+  bool localgame=(!mDoc->isNetwork());
+  bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (!menu || (menu&CheckFileMenu))
   {
     changeAction("hint", !(!isRunning && localgame));
@@ -179,11 +179,11 @@ void Kwin4App::checkMenus(CheckFlags menu)
     {
       disableAction("edit_undo");
     }
-    else if (doc->QueryHistoryCnt()==0)
+    else if (mDoc->QueryHistoryCnt()==0)
     {
       disableAction("edit_undo");
     }
-    else if (doc->QueryCurrentMove()<1 )
+    else if (mDoc->QueryCurrentMove()<1 )
     {
       disableAction("edit_undo");
     }
@@ -197,7 +197,7 @@ void Kwin4App::checkMenus(CheckFlags menu)
     {
       disableAction("edit_redo");
     }
-    else if (doc->QueryHistoryCnt()==doc->QueryMaxMove())
+    else if (mDoc->QueryHistoryCnt()==mDoc->QueryMaxMove())
     {
       disableAction("edit_redo");
     }
@@ -253,7 +253,7 @@ void Kwin4App::initGUI()
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   ACTION("statistics")->setToolTip(i18n("Show statistics."));
 
-  action = KStandardGameAction::hint(doc, SLOT(calcHint()), this);
+  action = KStandardGameAction::hint(this, SLOT(calcHint()), this);
   actionCollection()->addAction("hint", action);
   ACTION("hint")->setToolTip(i18n("Shows a hint on how to move."));
 
@@ -305,18 +305,18 @@ void Kwin4App::initStatusBar()
  */
 void Kwin4App::initDocument()
 {
-  doc = new Kwin4Doc(this);
+  mDoc = new Kwin4Doc(this);
   // Game Over signal
-  connect(doc,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
+  connect(mDoc,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
          this,SLOT(slotGameOver(int, KPlayer *,KGame *)));
-  connect(doc,SIGNAL(signalMoveDone(int, int)),
+  connect(mDoc,SIGNAL(signalMoveDone(int, int)),
          this,SLOT(slotMoveDone(int, int)));
-  connect(doc,SIGNAL(signalClientLeftGame(int, int,KGame *)),
+  connect(mDoc,SIGNAL(signalClientLeftGame(int, int,KGame *)),
          this,SLOT(slotNetworkBroken(int, int, KGame *)));
-  connect(doc,SIGNAL(signalNextPlayer()),
+  connect(mDoc,SIGNAL(signalNextPlayer()),
          this,SLOT(slotStatusNames()));
 
-  connect(doc,SIGNAL(signalGameRun()),
+  connect(mDoc,SIGNAL(signalGameRun()),
          this,SLOT(slotNewGame()));
 }
 
@@ -335,7 +335,7 @@ void Kwin4App::changeAction(const char *action, bool enable){
 void Kwin4App::saveProperties(KConfig *cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
-  doc->save(filename);
+  mDoc->save(filename);
 }
 
 /**
@@ -345,7 +345,7 @@ void Kwin4App::readProperties(KConfig* cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   if(QFile::exists(filename))
-    doc->load(filename);
+    mDoc->load(filename);
 }
 
 /**
@@ -358,7 +358,7 @@ void Kwin4App::slotOpenGame()
   QString file("/tmp/kwin.save");
   if (global_debug < 10)
     file=KFileDialog::getOpenFileName(dir,filter,this);
-  doc->load(file,true);
+  mDoc->load(file,true);
   checkMenus();
 }
 
@@ -372,7 +372,7 @@ void Kwin4App::slotSaveGame()
   QString file("/tmp/kwin.save");
   if (global_debug < 10)
     file=KFileDialog::getSaveFileName(dir,filter,this);
-  doc->save(file);
+  mDoc->save(file);
 }
 
 /**
@@ -381,11 +381,11 @@ void Kwin4App::slotSaveGame()
 void Kwin4App::newGame()
 {
   // End the intro if it is running
-  doc->setGameStatus(Kwin4Doc::End);
+  mDoc->setGameStatus(Kwin4Doc::End);
   // Init the board and Clear the old game out
-  doc->setGameStatus(Kwin4Doc::Init);
+  mDoc->setGameStatus(Kwin4Doc::Init);
   // Run it
-  doc->setGameStatus(Kwin4Doc::Run);
+  mDoc->setGameStatus(Kwin4Doc::Run);
 }
 
 /**
@@ -403,7 +403,13 @@ void Kwin4App::slotNewGame()
  */
 void Kwin4App::endGame()
 {
-  doc->setGameStatus(Kwin4Doc::Abort);
+  mDoc->setGameStatus(Kwin4Doc::Abort);
+}
+
+void Kwin4App::calcHint()
+{
+  kDebug() << "CALC HINT " << endl;
+  if (mDoc) mDoc->calcHint();
 }
 
 /**
@@ -415,22 +421,22 @@ void Kwin4App::showStatistics()
   Ui::Statistics ui;
   ui.setupUi(&dlg);
 
-  ui.p1_name->setText(doc->QueryName(Gelb));
-  ui.p1_won->display(doc->QueryStat(Gelb, TWin));
-  ui.p1_drawn->display(doc->QueryStat(Gelb, TRemis));
-  ui.p1_lost->display(doc->QueryStat(Gelb, TLost));
-  ui.p1_aborted->display(doc->QueryStat(Gelb, TBrk));
-  ui.p1_sum->display(doc->QueryStat(Gelb, TSum));
+  ui.p1_name->setText(mDoc->QueryName(Gelb));
+  ui.p1_won->display(mDoc->QueryStat(Gelb, TWin));
+  ui.p1_drawn->display(mDoc->QueryStat(Gelb, TRemis));
+  ui.p1_lost->display(mDoc->QueryStat(Gelb, TLost));
+  ui.p1_aborted->display(mDoc->QueryStat(Gelb, TBrk));
+  ui.p1_sum->display(mDoc->QueryStat(Gelb, TSum));
 
-  ui.p2_name->setText(doc->QueryName(Rot));
-  ui.p2_won->display(doc->QueryStat(Rot, TWin));
-  ui.p2_drawn->display(doc->QueryStat(Rot, TRemis));
-  ui.p2_lost->display(doc->QueryStat(Rot, TLost));
-  ui.p2_aborted->display(doc->QueryStat(Rot, TBrk));
-  ui.p2_sum->display(doc->QueryStat(Rot, TSum));
+  ui.p2_name->setText(mDoc->QueryName(Rot));
+  ui.p2_won->display(mDoc->QueryStat(Rot, TWin));
+  ui.p2_drawn->display(mDoc->QueryStat(Rot, TRemis));
+  ui.p2_lost->display(mDoc->QueryStat(Rot, TLost));
+  ui.p2_aborted->display(mDoc->QueryStat(Rot, TBrk));
+  ui.p2_sum->display(mDoc->QueryStat(Rot, TSum));
 
   if(dlg.exec() == QDialog::Rejected)
-    doc->ResetStat();
+    mDoc->ResetStat();
 }
 
 /**
@@ -438,10 +444,10 @@ void Kwin4App::showStatistics()
  */
 void Kwin4App::slotUndo()
 {
-  doc->UndoMove();
+  mDoc->UndoMove();
   // Undo twice if computer is moving then
-  if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO)
-    doc->UndoMove();
+  if (mDoc->playedBy(mDoc->QueryCurrentPlayer())==KGameIO::ProcessIO)
+    mDoc->UndoMove();
 
   // Prepare menus
   slotStatusNames();
@@ -453,9 +459,9 @@ void Kwin4App::slotUndo()
  */
 void Kwin4App::slotRedo()
 {
-  doc->RedoMove();
-  if (doc->playedBy(doc->QueryCurrentPlayer())==KGameIO::ProcessIO)
-    doc->RedoMove();
+  mDoc->RedoMove();
+  if (mDoc->playedBy(mDoc->QueryCurrentPlayer())==KGameIO::ProcessIO)
+    mDoc->RedoMove();
   slotStatusNames();
   checkMenus(CheckEditMenu);
 }
@@ -487,8 +493,8 @@ void Kwin4App::slotStatusMover(const QString &text)
  */
 void Kwin4App::EndGame(TABLE mode)
 {
-  doc->EndGame(mode);
-  doc->SwitchStartPlayer();
+  mDoc->EndGame(mode);
+  mDoc->SwitchStartPlayer();
   slotStatusNames();
   checkMenus();
 }
@@ -498,12 +504,12 @@ void Kwin4App::EndGame(TABLE mode)
  */
 void Kwin4App::slotStatusNames(){
   QString msg;
-  if (!(doc->gameStatus()==KGame::Run))
+  if (!(mDoc->gameStatus()==KGame::Run))
     msg=i18n("No game  ");
-  else if (doc->QueryCurrentPlayer()==Gelb)
-    msg=QString(" ")+doc->QueryName(Gelb)+ i18n(" - Yellow ");
-  else if (doc->QueryCurrentPlayer())
-    msg=QString(" ")+doc->QueryName(Rot)+ i18n(" - Red ");
+  else if (mDoc->QueryCurrentPlayer()==Gelb)
+    msg=QString(" ")+mDoc->QueryName(Gelb)+ i18n(" - Yellow ");
+  else if (mDoc->QueryCurrentPlayer())
+    msg=QString(" ")+mDoc->QueryName(Rot)+ i18n(" - Red ");
   else
     msg=i18n("Nobody  ");
   slotStatusMover(msg);
@@ -515,17 +521,17 @@ void Kwin4App::slotStatusNames(){
 void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
   kDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
-  if (doc->playedBy(Gelb)==0)
-    doc->setPlayedBy(Gelb,KGameIO::MouseIO);
-  if (doc->playedBy(Rot)==0)
-    doc->setPlayedBy(Rot,KGameIO::MouseIO);
+  if (mDoc->playedBy(Gelb)==0)
+    mDoc->setPlayedBy(Gelb,KGameIO::MouseIO);
+  if (mDoc->playedBy(Rot)==0)
+    mDoc->setPlayedBy(Rot,KGameIO::MouseIO);
 
-  kDebug(12010) << "CurrrentPlayer=" << doc->QueryCurrentPlayer() << endl;
-  kDebug(12010) << "   " <<  doc->getPlayer(doc->QueryCurrentPlayer()) << endl;
-  doc->getPlayer(doc->QueryCurrentPlayer())->setTurn(true,true);
+  kDebug(12010) << "CurrrentPlayer=" << mDoc->QueryCurrentPlayer() << endl;
+  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->QueryCurrentPlayer()) << endl;
+  mDoc->getPlayer(mDoc->QueryCurrentPlayer())->setTurn(true,true);
 
   KMessageBox::information(this,i18n("The network game ended!\n"));
-  doc->setGameStatus(oldstatus);
+  mDoc->setGameStatus(oldstatus);
 }
 
 /**
@@ -554,7 +560,7 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
       EndGame(TWin);
     else
       EndGame(TLost);
-    QString msg=i18n("%1 won the game. Please restart next round.", doc->QueryName(((FARBE)p->userId())));
+    QString msg=i18n("%1 won the game. Please restart next round.", mDoc->QueryName(((FARBE)p->userId())));
     slotStatusMsg(msg);
   }
   else if (status==2) // Abort
@@ -572,13 +578,13 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 
 void Kwin4App::slotInitNetwork()
 {
-  if (doc->gameStatus()==Kwin4Doc::Intro) doc->setGameStatus(Kwin4Doc::Pause);
+  if (mDoc->gameStatus()==Kwin4Doc::Intro) mDoc->setGameStatus(Kwin4Doc::Pause);
 
   QString host = Prefs::host();
   int port=Prefs::port();
 
   // just for testing - should be non-modal
-  KGameDialog dlg(doc, 0, i18n("Network Configuration"), this,
+  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this,
       KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
@@ -615,13 +621,13 @@ void Kwin4App::slotRemoteChanged(int button)
 {
   if (button==0)
   {
-    doc->getPlayer(Gelb)->setNetworkPriority(0);
-    doc->getPlayer(Rot)->setNetworkPriority(10);
+    mDoc->getPlayer(Gelb)->setNetworkPriority(0);
+    mDoc->getPlayer(Rot)->setNetworkPriority(10);
   }
   else
   {
-    doc->getPlayer(Gelb)->setNetworkPriority(10);
-    doc->getPlayer(Rot)->setNetworkPriority(0);
+    mDoc->getPlayer(Gelb)->setNetworkPriority(10);
+    mDoc->getPlayer(Rot)->setNetworkPriority(0);
   }
 }
 
@@ -629,13 +635,13 @@ void Kwin4App::slotChat()
 {
   if (!mMyChatDlg)
   {
-    mMyChatDlg=new ChatDlg(doc,this);
-    Kwin4Player *p=doc->getPlayer(Gelb);
+    mMyChatDlg=new ChatDlg(mDoc,this);
+    Kwin4Player *p=mDoc->getPlayer(Gelb);
     if (!p->isVirtual())
-      mMyChatDlg->setPlayer(doc->getPlayer(Gelb));
+      mMyChatDlg->setPlayer(mDoc->getPlayer(Gelb));
     else
-      mMyChatDlg->setPlayer(doc->getPlayer(Rot));
-    connect(doc,SIGNAL(signalChatChanged(Kwin4Player *)),
+      mMyChatDlg->setPlayer(mDoc->getPlayer(Rot));
+    connect(mDoc,SIGNAL(signalChatChanged(Kwin4Player *)),
             mMyChatDlg,SLOT(setPlayer(Kwin4Player *)));
   }
 
@@ -650,23 +656,26 @@ void Kwin4App::slotChat()
  */
 void Kwin4App::slotDebugKGame()
 {
-  KGameDebugDialog* debugWindow = new KGameDebugDialog(doc, this);
+  KGameDebugDialog* debugWindow = new KGameDebugDialog(mDoc, this);
   debugWindow->show();
 }
 
 /**
  * Show Configure dialog.
  */
-void Kwin4App::showSettings(){
+void Kwin4App::showSettings()
+{
   if(KConfigDialog::showDialog("settings"))
+  {
     return;
+  }
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
   Ui::Settings ui;
   QWidget *frame = new QWidget(dialog);
   ui.setupUi(frame);
   dialog->addPage(frame, i18n("General"), "package_settings");
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), doc, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged(const QString &)), mDoc, SLOT(loadSettings()));
   dialog->show();
 }
 

@@ -44,12 +44,9 @@ ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int
     mBreak[i] = new QGraphicsTextItem(this, canvas);
     mName[i]  = new QGraphicsTextItem(this, canvas);
   }
-  mAI  = new QGraphicsTextItem(this, canvas);
 
-  mTurn = -1;
-
-  // TODO: ALL HARDCODED
-  mAI->setPlainText("9.34");
+  mTurn  = -1;
+  mFrame = -1;
 
   if (theme) theme->updateTheme(this);
 
@@ -65,8 +62,6 @@ void ScoreSprite::changeTheme()
   double width  = this->boundingRect().width();
   double height = this->boundingRect().height();
 
-  // TODO: HARDCODED
-  setFrame(0);
 
   // Retrieve theme data
   KConfig* config = thememanager()->config(id());
@@ -84,7 +79,10 @@ void ScoreSprite::changeTheme()
 
   double fontHeight = config->readEntry("fontHeight", 1.0);
   fontHeight *= height;
+  double fontWidth = config->readEntry("fontWidth", 1.0);
+  fontWidth *= width;
   QColor fontColor = config->readEntry("fontColor", Qt::white);
+  kDebug() << "FONT Width="<<fontWidth<<endl;
 
 
   // Set position
@@ -98,7 +96,6 @@ void ScoreSprite::changeTheme()
   mBreak[1]->setPos(posBreak1.x()*width, posBreak1.y()*height);
   mName[0]->setPos(posName0.x()*width, posName0.y()*height);
   mName[1]->setPos(posName1.x()*width, posName1.y()*height);
-  mAI->setPos(posAI.x()*width, posAI.y()*height);
 
 
   // Create and set font
@@ -112,16 +109,23 @@ void ScoreSprite::changeTheme()
     mLoss[i]->setFont(font);
     mBreak[i]->setFont(font);
     mName[i]->setFont(font);
+    
     mWon[i]->setDefaultTextColor(fontColor);   
     mDraw[i]->setDefaultTextColor(fontColor);
     mLoss[i]->setDefaultTextColor(fontColor);
     mBreak[i]->setDefaultTextColor(fontColor);
     mName[i]->setDefaultTextColor(fontColor);
+
+    mWon[i]->setTextWidth(fontWidth);   
+    mDraw[i]->setTextWidth(fontWidth);
+    mLoss[i]->setTextWidth(fontWidth);
+    mBreak[i]->setTextWidth(fontWidth);
+    mName[i]->setTextWidth(fontWidth);
   }
-  mAI->setFont(font);
-  mAI->setDefaultTextColor(fontColor);   
 
   if (mTurn>=0) setTurn(mTurn);
+  if (mFrame>=0) setFrame(mFrame);
+  else setFrame(0);
 
 }
 
@@ -148,10 +152,6 @@ void ScoreSprite::setLevel(int i)
 {
 }
 
-
-void ScoreSprite::setChance(int i)
-{
-}
 
 
 void ScoreSprite::setPlayerName(QString s,int no)
@@ -181,6 +181,14 @@ void ScoreSprite::setLoss(QString s,int no)
 void ScoreSprite::setBreak(QString s,int no)
 {
   mBreak[no]->setPlainText(s);
+  update();
+}
+
+
+void ScoreSprite::setFrame(int i)
+{
+  mFrame = i;
+  PixmapSprite::setFrame(i);
   update();
 }
 

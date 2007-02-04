@@ -344,7 +344,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode)
     connect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
             this,SLOT(moveDone(QGraphicsItem*,int)));
   }
-  // TODO pView->setHint(0,0,false);
+  pView->display()->setHint(0,0,false);
  
   return GNormal;
 }
@@ -386,7 +386,7 @@ bool Kwin4Doc::UndoMove(){
   if (QueryHistoryCnt()>0) oldx=mHistory.at(QueryHistoryCnt()-1);
   // TODO: replayed by set arrow and not needed anymore pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
   pView->display()->setArrow(oldx,QueryHistoryCnt()>0?mLastColour.value():Niemand);
-  // TODO pView->setHint(0,0,false);
+  pView->display()->setHint(0,0,false);
 
   if (QueryHistoryCnt()>0)
     mLastColumn=mHistory.at(QueryHistoryCnt()-1);
@@ -415,7 +415,7 @@ bool Kwin4Doc::RedoMove()
   else
     SetCurrentPlayer(Gelb);
   SetScore(0);
-  // TODO pView->setHint(0,0,false);
+  pView->display()->setHint(0,0,false);
   return true;
 }
 
@@ -692,6 +692,12 @@ int Kwin4Doc::QueryLastHint(){
 void Kwin4Doc::loadSettings()
 {
   kDebug() << "++++ Kwin4Doc::loadSettings() " << endl;
+  kDebug() << "Level: " << Prefs::level() << endl;
+  kDebug() << "Name: " << Prefs::name1() << endl;
+  kDebug() << "Name2: " << Prefs::name2() << endl;
+  kDebug() << "input1: " << Prefs::input1() << endl;
+  kDebug() << "input2: " << Prefs::input2() << endl;
+  kDebug() << "colour1: " << Prefs::colour1() << endl;
 
   // TODO find out what to do with this...
   //mLevel.setValue(Prefs::level());
@@ -702,8 +708,7 @@ void Kwin4Doc::loadSettings()
   KGameIO::IOMode mode = KGameIO::MouseIO;
   
   int m = Prefs::input1();
-  // TODO: REMOVE THIS!!!! HARDCODED IO
-  m = 0;
+  //m = 0; // TODO: HARDCODED
   
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;
@@ -923,6 +928,10 @@ void Kwin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
     kDebug(12010) << "  Kwin4Doc::setPlayedBy(int "<<col<<",KGameIO::IOMode "<<io<<")" << endl;
 
   Kwin4Player *player=getPlayer((FARBE)col);
+
+  // TODO: Add more modes
+  if (io == KGameIO::ProcessIO) player->status()->setPlayedBy(1,player->userId());
+  else player->status()->setPlayedBy(0,player->userId());
 
   if (mPlayedBy[col]!=io && !player->isVirtual())
   {
@@ -1146,6 +1155,7 @@ Kwin4Player *Kwin4Doc::getPlayer(FARBE col)
  **/
 void Kwin4Doc::calcHint()
 {
+  kDebug() << "*********************************************** calcHint " << endl;
   // We allocate the hint process only if it is needed
   if (!mHintProcess)
   {
@@ -1180,17 +1190,14 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
     {
       qint32 pl;
       qint32 move;
-#ifdef __GNUC__
-#warning " long -> qint32 correct ????"   
-#endif
-      //long value;
-          qint32 value;
+       // long -> qint32 correct ????": YES   
+      qint32 value;
       in >>  pl >> move  >> value;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks pl=" << pl << " move =" << move << endl;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;
       int x=move;
       int y=mFieldFilled.at(x);
-      // TODO pView->setHint(x,y,true);
+      pView->display()->setHint(x,y,true);
     }
     break;
     default:

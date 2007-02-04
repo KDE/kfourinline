@@ -104,6 +104,7 @@ public slots:
   void slotSaveGame();
   void endGame();
   void showStatistics();
+  void calcHint();
 
   void slotUndo();
   void slotRedo();
@@ -113,7 +114,7 @@ public slots:
 
 private:
   KWin4View *mView;
-  Kwin4Doc *doc;
+  Kwin4Doc *mDoc;
   QGraphicsScene* mScene;
 
   KButtonGroup *mColorGroup;

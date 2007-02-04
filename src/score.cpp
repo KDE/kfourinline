@@ -47,6 +47,10 @@ void Score::update()
   if (!mDisplay) return;
 
   mDisplay->setTurn(mTurn);
+  // TODO: Supports only computer and human player
+  if (mAI[0] == 0 && mAI[1] == 0) mDisplay->setFrame(0);
+  else mDisplay->setFrame(1);
+
   for (int i=0; i<2; i++)
   {
     mDisplay->setPlayerName(mName[i], i);

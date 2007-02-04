@@ -46,6 +46,7 @@ public:
     void setLosses(int i, int no) {mLoss[no] = i; update();}
     void setRemis(int i, int no) {mRemis[no] = i; update();}
     void setBreaks(int i, int no) {mBrk[no] = i; update();}
+    void setPlayedBy(int i, int no) {mAI[no] = i; update();}
 
 protected:
     void update();
@@ -60,6 +61,7 @@ private:
     int mLoss[2];
     int mBrk[2];
     int mSum[2];
+    int mAI[2];
 };
 
 #endif 
