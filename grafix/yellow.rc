@@ -1,5 +1,5 @@
 [general]
-svgfile=default.svg
+svgfile=yellow.svg
 
 # A game piece in the introduction
 [intro_piece]
