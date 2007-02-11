@@ -23,6 +23,7 @@
 #include <kmainwindow.h>
 #include <kdialog.h>
 #include "kwin4doc.h"
+#include "thememanager.h"
 #include <kdemacros.h>
 class Kwin4Player;
 class KGameChat;
@@ -105,6 +106,7 @@ public slots:
   void endGame();
   void showStatistics();
   void calcHint();
+  void themeChanged(const QString& name);
 
   void slotUndo();
   void slotRedo();
@@ -113,9 +115,11 @@ public slots:
   void slotStatusMsg(const QString &text);
 
 private:
+  ThemeManager* mTheme;
   KWin4View *mView;
   Kwin4Doc *mDoc;
   QGraphicsScene* mScene;
+  QString mThemeDirName;
 
   KButtonGroup *mColorGroup;
   KGameChat *mChat;

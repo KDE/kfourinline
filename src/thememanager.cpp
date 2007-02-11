@@ -36,28 +36,11 @@
 #include "thememanager.h"
 
 // Constructor for the view
-ThemeManager::ThemeManager(QString themefile, int scale, QObject* parent)
+ThemeManager::ThemeManager(QString themefile, QObject* parent, int initialSize)
     : QObject(parent)
 {
-  mScale = scale;
-  // Process dirs
-  QString rcfile = KStandardDirs::locate("data", themefile);
-  kDebug() << "ThemeManager CONSTRUCT with theme "<<rcfile << endl;
-
-  // Read config and SVG file for theme
-  mConfig = new KConfig(rcfile, false, false);
-  QString svgfile = config("general")->readEntry("svgfile");
-  svgfile = KStandardDirs::locate("data", svgfile);
-  kDebug() << "Reading SVG master file " << svgfile << endl;
-
-
-  mRenderer = new QSvgRenderer(this);
-  bool result = mRenderer->load(svgfile);
-  if (!result) 
-  {
-    kFatal() << "Cannot open file " << svgfile << endl;
-  }
-  kDebug() << "Renderer " << mRenderer<<" = " << result << endl;
+  mScale = initialSize;
+  updateTheme(themefile);
   kDebug() << "Scale " << mScale<< endl;
 }
 
@@ -75,6 +58,40 @@ void ThemeManager::unregisterTheme(Themable* ob)
 void ThemeManager::updateTheme(Themable* ob)
 {
   ob->changeTheme();
+}
+
+void ThemeManager::updateTheme(QString themefile)
+{
+  // Empty cache
+  mPixmapCache.clear();
+
+  // Process dirs
+  QString rcfile = KStandardDirs::locate("data", themefile);
+  kDebug() << "ThemeManager LOAD with theme "<<rcfile << endl;
+
+  // Read config and SVG file for theme
+  mConfig = new KConfig(rcfile, false, false);
+  QString svgfile = config("general")->readEntry("svgfile");
+  svgfile = KStandardDirs::locate("data", svgfile);
+  kDebug() << "Reading SVG master file " << svgfile << endl;
+
+
+  mRenderer = new QSvgRenderer(this);
+  bool result = mRenderer->load(svgfile);
+  if (!result) 
+  {
+    kFatal() << "Cannot open file " << svgfile << endl;
+  }
+  kDebug() << "Renderer " << mRenderer<<" = " << result << endl;
+
+  // Notify all theme objects of a change
+  QHashIterator<Themable*, int> it(mObjects);
+  while (it.hasNext())
+  {
+      it.next();
+      Themable* ob = it.key();
+      ob->changeTheme();
+  }
 }
 
 void ThemeManager::rescale(int scale)
@@ -96,6 +113,8 @@ double ThemeManager::getScale()
 {
   return (double)mScale;
 }  
+
+
 KConfig* ThemeManager::config(QString id)
 {
    mConfig->setGroup(id);
@@ -108,13 +127,29 @@ const QPixmap ThemeManager::getPixmap(QString svgid, QSize size)
 {
   if (size.width() < 1 || size.height() < 1) 
     kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size " << size << endl;
-  // TODO: Cache pixmap
+  
+  QPixmap pixmap;
+
+  //  Cached pixmap?
+  if (mPixmapCache.contains(svgid))
+  {
+    pixmap = mPixmapCache[svgid]; 
+    if (pixmap.size() == size) 
+    {
+      return pixmap;
+    }
+  }
+
   QImage image(size, QImage::Format_ARGB32_Premultiplied);
   image.fill(0);
   QPainter p(&image);
   mRenderer->render(&p, svgid);
-  QPixmap pixmap = QPixmap::fromImage(image);
+  pixmap = QPixmap::fromImage(image);
   if (pixmap.isNull()) kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid << endl;
+
+  mPixmapCache[svgid] = pixmap;
+
+
   return pixmap;
 }
 

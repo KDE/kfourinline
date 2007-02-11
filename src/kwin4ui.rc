@@ -15,6 +15,7 @@
     <Separator/>
     <Action name="hint"/>
     <Action name="statistics"/>
+    <Action name="theme"/>
     <Separator/>
     <Action name="game_exit"/>
   </Menu>

@@ -57,9 +57,10 @@ class KWin4View : public QGraphicsView
      *  @param size The canvas fixed size
      *  @param advancePeriod The canvas advance period
      *  @param scene The graphics scene
+     *  @param theme The theme manager
      *  @param parent The parent window
      */
-    KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidget* parent = 0);
+    KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
 
     /** Desstructor
     */
@@ -85,6 +86,7 @@ class KWin4View : public QGraphicsView
     void updateAndAdvance();
 
     void mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent);
+    void keyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent);
 
   protected slots:  
 

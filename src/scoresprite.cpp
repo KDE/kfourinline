@@ -81,7 +81,9 @@ void ScoreSprite::changeTheme()
   fontHeight *= height;
   double fontWidth = config->readEntry("fontWidth", 1.0);
   fontWidth *= width;
-  QColor fontColor = config->readEntry("fontColor", Qt::white);
+  QColor fontColor[2];
+  fontColor[0] = config->readEntry("fontColorPlayer0", Qt::white);
+  fontColor[1] = config->readEntry("fontColorPlayer1", Qt::white);
   kDebug() << "FONT Width="<<fontWidth<<endl;
 
 
@@ -110,11 +112,11 @@ void ScoreSprite::changeTheme()
     mBreak[i]->setFont(font);
     mName[i]->setFont(font);
     
-    mWon[i]->setDefaultTextColor(fontColor);   
-    mDraw[i]->setDefaultTextColor(fontColor);
-    mLoss[i]->setDefaultTextColor(fontColor);
-    mBreak[i]->setDefaultTextColor(fontColor);
-    mName[i]->setDefaultTextColor(fontColor);
+    mWon[i]->setDefaultTextColor(fontColor[i]);   
+    mDraw[i]->setDefaultTextColor(fontColor[i]);
+    mLoss[i]->setDefaultTextColor(fontColor[i]);
+    mBreak[i]->setDefaultTextColor(fontColor[i]);
+    mName[i]->setDefaultTextColor(fontColor[i]);
 
     mWon[i]->setTextWidth(fontWidth);   
     mDraw[i]->setTextWidth(fontWidth);
@@ -196,21 +198,21 @@ void ScoreSprite::setFrame(int i)
 void ScoreSprite::setTurn(int i)
 {
   KConfig* config = thememanager()->config(id());
-  QColor fontColor  = config->readEntry("fontColor", Qt::white);
-  QColor fontColor0 = config->readEntry("fontColorPlayer0", Qt::white);
-  QColor fontColor1 = config->readEntry("fontColorPlayer1", Qt::white);
+  QColor fontColorActive  = config->readEntry("fontColorActive", Qt::white);
+  QColor fontColor0       = config->readEntry("fontColorPlayer0", Qt::white);
+  QColor fontColor1       = config->readEntry("fontColorPlayer1", Qt::white);
 
   mTurn = i;
 
   if (i==0)
   {
-    mName[0]->setDefaultTextColor(fontColor0);
-    mName[1]->setDefaultTextColor(fontColor);
+    mName[0]->setDefaultTextColor(fontColorActive);
+    mName[1]->setDefaultTextColor(fontColor1);
   }
   else
   {
-    mName[0]->setDefaultTextColor(fontColor);
-    mName[1]->setDefaultTextColor(fontColor1);
+    mName[0]->setDefaultTextColor(fontColor0);
+    mName[1]->setDefaultTextColor(fontColorActive);
   }
 
   update();

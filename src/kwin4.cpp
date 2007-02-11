@@ -118,10 +118,6 @@ void ChatDlg::setPlayer(Kwin4Player *p)
  */
 Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mChat(0), mMyChatDlg(0)
 {
-  initGUI();
-  initStatusBar();
-  initDocument();
-
   #ifdef SRC_DIR
   kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
   KGlobal::dirs()->addResourceDir("data",QString(SRC_DIR)+QString("/grafix/"));
@@ -129,9 +125,17 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mC
   kDebug() << "theme =" << theme << endl;
   #endif
 
+  mThemeDirName = KGlobal::dirs()->findResourceDir("data","default.rc");
+  kDebug() << "THEME DIR IS " << mThemeDirName << endl;
+
+  initGUI();
+  initStatusBar();
+  initDocument();
+
   mScene        = new QGraphicsScene(this);
 
-  mView = new KWin4View(QSize(800,600),25,mScene,this);
+  mTheme = new ThemeManager("default.rc", this);
+  mView  = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
   mDoc->setView(mView);
   setCentralWidget(mView);
   mDoc->initPlayers();
@@ -276,6 +280,27 @@ void Kwin4App::initGUI()
   connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
   actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(showSettings()));
+
+  // TODO: The actions need to work with translated theme names. How?
+  QDir dir(mThemeDirName);
+  QStringList filters;
+  filters.append("*.rc");
+  QStringList rcFiles = dir.entryList(filters);
+  kDebug() << "Theme dir = " << mThemeDirName << endl;
+  kDebug() << "Available theme files="<<rcFiles<<endl;
+ 
+  action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
+  ((KSelectAction*)action)->setItems(rcFiles);
+  connect( action, SIGNAL(triggered(const QString&)), SLOT(themeChanged(const QString&)) );
+}
+
+void Kwin4App::themeChanged(const QString& name)
+{
+  QString theme = name;
+  theme.replace("&","");
+  kDebug() << "SLOT THEME called with " << theme << endl;
+  mTheme->updateTheme(theme);
+  // TODO: Write Preferences
 }
 
 /**

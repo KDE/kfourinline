@@ -42,7 +42,7 @@
 
 
 // Constructor for the view
-KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidget* parent)
+KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : QGraphicsView(scene, parent)
 {
   // We do not need scrolling so switch it off
@@ -53,6 +53,7 @@ KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidg
     // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
   mScene = scene;
+  mTheme = theme;
 
 
 
@@ -75,10 +76,7 @@ KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, QWidg
   adjustSize();
 
   setInteractive(true);
-
-  // Create new theme manager
-  // TODO: Move to main program
-  mTheme = new ThemeManager("default.rc",this->size().width(), this);
+  mTheme->rescale(this->width());
 
   mGameDisplay  = 0;
   mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
@@ -188,6 +186,42 @@ void KWin4View::mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse
   kDebug(12010) << "Mouse input "<<x<<" done..eatevent=true" << endl;
 }
 
+/**
+ * This slot is called when a key event is received. It then prduces a
+ * valid move for the game.
+ **/
+// This is analogous to the mouse event only it is called when a key is
+// pressed
+void KWin4View::keyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
+{
+  // Ignore non running
+  if (!mIsRunning) return;
 
+  // Ignore non key press
+  if (e->type() != QEvent::KeyPress) return ;
+
+  // Our player
+  KPlayer *player=input->player();
+  if (!player->myTurn())
+  {
+    kDebug() <<" Kwin4View::TODO wrongPlayer " << endl;
+   // *eatevent=wrongPlayer(player,KGameIO::KeyIO);
+    return;
+  }
+
+  int code=e->key();
+  if (code< Qt::Key_1 || code> Qt::Key_7)
+  {
+    kDebug() << "Key not supported\n";
+    return ;
+  }
+
+  // Create a move
+  qint32 move,pl;
+  move=code-Qt::Key_1;
+  pl=player->userId();
+  stream << pl << move;
+  *eatevent=true;
+}
 
 #include "kwin4view.moc"

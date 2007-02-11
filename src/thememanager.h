@@ -58,7 +58,7 @@ class ThemeManager : public QObject
   public:
     /** Constructor for the object.
      */
-    ThemeManager(QString themefile, int scale, QObject* parent);
+    ThemeManager(QString themefile, QObject* parent, int initialSize = 1);
 
     const QPixmap getPixmap(QString svgid, QSize size);
     const QPixmap getPixmap(QString svgid, double width);
@@ -70,12 +70,14 @@ class ThemeManager : public QObject
     void unregisterTheme(Themable* ob);
     void updateTheme(Themable* ob);
     void rescale(int scale);
+    void updateTheme(QString themefile);
 
    private:
      QSvgRenderer* mRenderer;
      QHash<Themable*,int> mObjects;
      KConfig* mConfig;
      int mScale;
+     QHash<QString,QPixmap> mPixmapCache;
 };
 
 

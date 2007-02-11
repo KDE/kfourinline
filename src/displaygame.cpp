@@ -89,6 +89,12 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   mSprites.append(mHint);
   mHint->hide();
 
+  // Game Over
+  mGameOver = new PixmapSprite("gameover", mTheme, mAdvancePeriod, 0, mScene);
+  if (!mGameOver) kFatal() << "Cannot load sprite " << "gameover" << endl;
+  mSprites.append(mGameOver);
+  mGameOver->hide();
+
   // Create board holes
   for (int i=0; i<42; i++)
   {
@@ -199,10 +205,23 @@ void DisplayGame::start()
     mStars.value(i)->setAnimation(false);
     mStars.value(i)->hide();
   }
+
+  // Hide game over
+  mGameOver->hide();
 }
 
+// Run game
 void DisplayGame::run()
 {
+}
+
+
+// End game
+void DisplayGame::end()
+{
+  kDebug() << "DisplayGame::end()" << endl;
+  mGameOver->show();
+
 }
 
 

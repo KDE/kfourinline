@@ -219,7 +219,7 @@ void Kwin4Doc::EndGame(TABLE mode)
 {
   setGameStatus(End);
   // TODO pView->clearError();
-  // TODO pView->EndGame();
+  pView->display()->end();
   Kwin4Player *yellow=getPlayer(Gelb);
   Kwin4Player *red=getPlayer(Rot);
 
@@ -708,7 +708,7 @@ void Kwin4Doc::loadSettings()
   KGameIO::IOMode mode = KGameIO::MouseIO;
   
   int m = Prefs::input1();
-  //m = 0; // TODO: HARDCODED
+  //m = 2; // TODO: HARDCODED
   
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;
@@ -994,7 +994,7 @@ void Kwin4Doc::createIO(KPlayer *player,KGameIO::IOMode io)
     input=new KGameKeyIO(pView->parentWidget());
     // Connect keys input to a function to process the actual input
     connect((KGameKeyIO *)input,SIGNAL(signalKeyEvent(KGameIO *,QDataStream &,QKeyEvent *,bool *)),
-            pView,SLOT(slotKeyInput(KGameIO *,QDataStream &,QKeyEvent *,bool *)));
+            pView,SLOT(keyInput(KGameIO *,QDataStream &,QKeyEvent *,bool *)));
     player->addGameIO(input);
   }
 }

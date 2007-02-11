@@ -64,6 +64,7 @@ class DisplayGame : public QObject, public virtual Themable
     void setHint(int x, int y, bool show);
     void drawStar(int x,int y,int no);
     int mapMouseToMove(QPoint pos);
+    void end();
 
     ScoreSprite* score();
 
@@ -92,6 +93,7 @@ class DisplayGame : public QObject, public virtual Themable
     ScoreSprite*  mScoreBoard;
     QList<PixmapSprite*> mStars;
     PixmapSprite* mHint;
+    PixmapSprite* mGameOver;
     
 };
 
