@@ -272,12 +272,6 @@ void Kwin4App::initGUI()
   action = KStandardGameAction::redo(this, SLOT(slotRedo()), this);
   actionCollection()->addAction("edit_redo", action);
   ACTION("edit_redo")->setToolTip(i18n("Redo last move."));
-#ifdef __GNUC__
-#warning "kde4: port it or remove it"
-#endif
-	//actionCollection()->setHighlightingEnabled(true);
-  connect(actionCollection(), SIGNAL(actionStatusText(const QString &)), SLOT(slotStatusMsg(const QString &)));
-  connect(actionCollection(), SIGNAL(clearStatusText()), SLOT(slotClearStatusText()));
 
   actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(showSettings()));
 
