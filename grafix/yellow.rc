@@ -116,8 +116,8 @@ zValue=10.0
 # The game over message
 [gameover]
 svgid=gameover
-width=0.44
-pos=0.1,0.19
+width=0.30
+pos=0.62,0.19
 zValue=300.0
 
 
