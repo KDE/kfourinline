@@ -132,7 +132,6 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
 
 DisplayGame::~DisplayGame()
 {
-  kDebug() << "~DisplayGame"<<endl;
   delete mTimer;
   while (!mSprites.isEmpty())
   {
@@ -144,7 +143,6 @@ DisplayGame::~DisplayGame()
 // Called by thememanager when theme or theme geometry changes
 void DisplayGame::changeTheme()
 {
-  kDebug() << "DisplayGame::changeTheme +++++ "<<endl;
 
   // Retrieve theme data
   KConfig* config = thememanager()->config(id());
@@ -249,7 +247,7 @@ void DisplayGame::setArrow(int x,int color)
 // Set a game HINT
 void DisplayGame::setHint(int x, int y, bool show)
 {
-  kDebug() << " setHint("<<x<<","<<y<<","<<show<<") sprite=" << mHint<<endl;
+  //kDebug() << " setHint("<<x<<","<<y<<","<<show<<") sprite=" << mHint<<endl;
   y=5-y;
 
   // Check for removal of sprite
@@ -377,7 +375,6 @@ void DisplayGame::drawStar(int x,int y,int no)
 
 ScoreSprite* DisplayGame::score()
 {
-  kDebug() << "SCOREBOARD = " << mScoreBoard << endl;
   assert(mScoreBoard != 0);
   return mScoreBoard;
 }

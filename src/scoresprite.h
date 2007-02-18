@@ -54,14 +54,14 @@ class ScoreSprite : public PixmapSprite
 
     virtual void changeTheme();
 
-    void setLevel(int i);
+    void setLevel(int i, int no);
     void setPlayerName(QString s,int no);
     void setWon(QString s,int no);
     void setDraw(QString s,int no);
     void setLoss(QString s,int no);
     void setBreak(QString s,int no);
     void setTurn(int i);
-    void setFrame(int i);
+    void setInput(int i, int no);
 
   private:
     QGraphicsTextItem* mWon[2];
@@ -69,8 +69,9 @@ class ScoreSprite : public PixmapSprite
     QGraphicsTextItem* mLoss[2];
     QGraphicsTextItem* mBreak[2];
     QGraphicsTextItem* mName[2];
+    PixmapSprite* mInput[2];
     int mTurn;
-    int mFrame;
+    int mInputFrame[2];
 };
 
 #endif

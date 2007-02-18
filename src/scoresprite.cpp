@@ -28,6 +28,7 @@
 // KDE includes
 #include <kdebug.h>
 #include <kconfig.h>
+#include <klocale.h>
 
 // Local includes
 #include "scoresprite.h"
@@ -43,10 +44,13 @@ ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int
     mLoss[i]  = new QGraphicsTextItem(this, canvas);
     mBreak[i] = new QGraphicsTextItem(this, canvas);
     mName[i]  = new QGraphicsTextItem(this, canvas);
+    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, advancePeriod, i, canvas);
+    if (!mInput[i]) kFatal() << "Cannot load sprite " << "scoreinput"<<i << endl;
+    mInput[i]->setParentItem(this);
+    mInputFrame[i] = 0;
   }
 
   mTurn  = -1;
-  mFrame = -1;
 
   if (theme) theme->updateTheme(this);
 
@@ -84,7 +88,7 @@ void ScoreSprite::changeTheme()
   QColor fontColor[2];
   fontColor[0] = config->readEntry("fontColorPlayer0", Qt::white);
   fontColor[1] = config->readEntry("fontColorPlayer1", Qt::white);
-  kDebug() << "FONT Width="<<fontWidth<<endl;
+  kDebug() << "FONT Width="<<fontWidth<<" Height="<<fontHeight<<endl;
 
 
   // Set position
@@ -123,10 +127,11 @@ void ScoreSprite::changeTheme()
     mLoss[i]->setTextWidth(fontWidth);
     mBreak[i]->setTextWidth(fontWidth);
     mName[i]->setTextWidth(fontWidth);
+
+    if (mInputFrame[i]>=0) mInput[i]->setFrame(mInputFrame[i]);
   }
 
   if (mTurn>=0) setTurn(mTurn);
-  if (mFrame>=0) setFrame(mFrame);
   else setFrame(0);
 
 }
@@ -150,8 +155,13 @@ void ScoreSprite::advance(int phase)
 
 
 
-void ScoreSprite::setLevel(int i)
+void ScoreSprite::setLevel(int i, int no)
 {
+  if (i>=0)
+  {
+    mName[no]->setPlainText(i18nc("computer level","Level %1", i));
+    update();
+  }
 }
 
 
@@ -187,10 +197,10 @@ void ScoreSprite::setBreak(QString s,int no)
 }
 
 
-void ScoreSprite::setFrame(int i)
+void ScoreSprite::setInput(int i, int no)
 {
-  mFrame = i;
-  PixmapSprite::setFrame(i);
+  mInputFrame[no] = i;
+  mInput[no]->setFrame(i);
   update();
 }
 

@@ -36,7 +36,7 @@ class Score : public QObject
 
 public:
     Score(QObject* parent = 0);
-    void setLevel(int i);
+    void setLevel(int i, int no) {mLevel[no] = i; update();}
     void setChance(int i);
     void setPlayerName(QString s,int no) {mName[no] = s;update();}
     void setTurn(int i) {mTurn = i;update();}  
@@ -55,6 +55,7 @@ private:
     ScoreSprite* mDisplay;
 
     QString mName[2];
+    int mLevel[2];
     int mTurn;
     int mWin[2];
     int mRemis[2];

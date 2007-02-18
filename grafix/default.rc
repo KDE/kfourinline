@@ -73,18 +73,40 @@ animation-delay=100
 # 'pos' set by program!
 
 
+# The score board input icons
+[scoreinput0]
+width=0.080
+# Item positions relativ to score widget itself
+pos=0.01,0.05
+zValue=120.0
+svgid=auto
+start-frame=0
+end-frame=3
+frame0=score_player
+frame1=score_player
+frame2=score_ai
+frame3=score_network
+
+# The score board input icons
+[scoreinput1]
+width=0.080
+# Item positions relativ to score widget itself
+pos=0.19,0.05
+zValue=120.0
+svgid=auto
+start-frame=0
+end-frame=3
+frame0=score_player
+frame1=score_player
+frame2=score_ai
+frame3=score_network
+
 # The score board next to the game board
 [scoreboard]
 width=0.28
 pos=0.63,0.044
 zValue=100.0
-svgid=auto
-start-frame=0
-end-frame=1
-# Auto means to read frameX
-svgid=auto
-frame0=score_player
-frame1=score_ai
+svgid=score
 
 # Item positions relativ to score widget itself
 posWon0=0.05,0.33

@@ -63,7 +63,7 @@ void PieceSprite::startLinear(QPointF start, QPointF end, double velocity)
   mTime           = 0;
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
   show();
-  kDebug() << "PieceSprite::startLinear from " << (start*getScale()) << " to " << (end*getScale()) << " time = " << mDuration << endl;
+  //kDebug() << "PieceSprite::startLinear from " << (start*getScale()) << " to " << (end*getScale()) << " time = " << mDuration << endl;
 }
 
 

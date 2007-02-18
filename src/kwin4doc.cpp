@@ -248,7 +248,7 @@ void Kwin4Doc::EndGame(TABLE mode)
 
 void Kwin4Doc::moveDone(QGraphicsItem *item,int )
 {
-  kDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
+  // kDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
   //Debug();
   //for (KPlayer* p=playerList()->first(); p!= 0; p=playerList()->next() )
   //{
@@ -699,8 +699,10 @@ void Kwin4Doc::loadSettings()
   kDebug() << "input2: " << Prefs::input2() << endl;
   kDebug() << "colour1: " << Prefs::colour1() << endl;
 
-  // TODO find out what to do with this...
-  //mLevel.setValue(Prefs::level());
+
+  // Store level for score sprite display
+  mStatus->setLevel(Prefs::level(), 0);
+  mStatus->setLevel(Prefs::level(), 1);
 
   SetName(Gelb, Prefs::name1());
   SetName(Rot, Prefs::name2());
@@ -708,7 +710,7 @@ void Kwin4Doc::loadSettings()
   KGameIO::IOMode mode = KGameIO::MouseIO;
   
   int m = Prefs::input1();
-  //m = 2; // TODO: HARDCODED
+  m = 1; // TODO: HARDCODED
   
   if(m == 0) mode = KGameIO::MouseIO;
   if(m == 1) mode = KGameIO::ProcessIO;
@@ -929,9 +931,11 @@ void Kwin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
 
   Kwin4Player *player=getPlayer((FARBE)col);
 
-  // TODO: Add more modes
-  if (io == KGameIO::ProcessIO) player->status()->setPlayedBy(1,player->userId());
-  else player->status()->setPlayedBy(0,player->userId());
+  // Modes for the score sprite (Currently hardcoded)
+  if (io == KGameIO::ProcessIO) player->status()->setPlayedBy(2,player->userId());
+  else if (io == KGameIO::KeyIO) player->status()->setPlayedBy(1,player->userId());
+  else if (io == KGameIO::MouseIO) player->status()->setPlayedBy(0,player->userId());
+  else player->status()->setPlayedBy(3,player->userId());
 
   if (mPlayedBy[col]!=io && !player->isVirtual())
   {

@@ -47,17 +47,18 @@ void Score::update()
   if (!mDisplay) return;
 
   mDisplay->setTurn(mTurn);
-  // TODO: Supports only computer and human player
-  if (mAI[0] == 0 && mAI[1] == 0) mDisplay->setFrame(0);
-  else mDisplay->setFrame(1);
 
   for (int i=0; i<2; i++)
   {
     mDisplay->setPlayerName(mName[i], i);
+    // Call after set name
+    if (mAI[i] == 2) mDisplay->setLevel(mLevel[i], i);
+    else  mDisplay->setLevel(-1, i);
     mDisplay->setWon(QString("%1").arg(mWin[i]), i);
     mDisplay->setDraw(QString("%1").arg(mRemis[i]), i);
     mDisplay->setLoss(QString("%1").arg(mLoss[i]), i);
     mDisplay->setBreak(QString("%1").arg(mBrk[i]), i);
+    mDisplay->setInput(mAI[i], i);
   }
 }
 
