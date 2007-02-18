@@ -19,8 +19,7 @@ set(kwin4_SRCS
    piecesprite.cpp
    scoresprite.cpp
    score.cpp
-   pixmapsprite.cpp
-   scorewidget.cpp )
+   pixmapsprite.cpp)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
