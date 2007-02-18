@@ -2,8 +2,8 @@
                             KWin4Player
                             -------------------
     begin                :  August 2001
-    copyright            : (C) |1995-2001 by Martin Heni
-    email                : martin@heni-online.de
+    copyright            : (C) |1995-2007 by Martin Heni
+    email                : kde@heni-online.de
  ***************************************************************************/
 
 /***************************************************************************

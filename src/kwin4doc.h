@@ -2,8 +2,8 @@
                           Kwin4  -  Four in a Row for KDE
                              -------------------
     begin                : March 2000 
-    copyright            : (C) 1995-2000 by Martin Heni
-    email                : martin@heni-online.de
+    copyright            : (C) 1995-2007 by Martin Heni
+    email                : kde@heni-online.de
  ***************************************************************************/
 
 /***************************************************************************

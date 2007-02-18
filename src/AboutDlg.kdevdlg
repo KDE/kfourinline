@@ -52,7 +52,7 @@ item QWidget
          Height="40"
          MinWidth="0"
          MinHeight="0"
-         Text="Mail: martin@heni-online.de"
+         Text="Mail: kde@heni-online.de"
       }
 
       item QLabel

@@ -2,8 +2,8 @@
                           kwin4  -  Boardgame for KDE
                              -------------------
     begin                : Sun Mar 26 12:50:12 CEST 2000
-    copyright            : (C) |1995-2000 by Martin Heni
-    email                : martin@heni-online.de
+    copyright            : (C) |1995-2007 by Martin Heni
+    email                : kde@heni-online.de
  ***************************************************************************/
 
 /***************************************************************************
@@ -314,7 +314,7 @@ void Kwin4App::initStatusBar()
   statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
   statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
 
-  slotStatusMover(i18n("(c) Martin Heni   "));
+  slotStatusMover("");
   slotStatusMsg(i18n("Welcome to KWin4"));
 }
 

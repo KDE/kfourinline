@@ -2,8 +2,8 @@
                           Kwin4  -  Four in a Row for KDE
                              -------------------
     begin                : March 2000 
-    copyright            : (C) 1995-2001 by Martin Heni
-    email                : martin@heni-online.de
+    copyright            : (C) 1995-2007 by Martin Heni
+    email                : kde@heni-online.de
  ***************************************************************************/
 
 /***************************************************************************
@@ -40,11 +40,11 @@ int main(int argc, char *argv[])
   global_debug=0;
   KAboutData aboutData( "kwin4", I18N_NOOP("KWin4"),
                         KWIN4_VERSION,
-                        I18N_NOOP("KWin4: Two player network game"),
+                        I18N_NOOP("KWin4: Two player board game"),
                         KAboutData::License_GPL,
-                        "(c) 1995-2000, Martin Heni");
-  aboutData.addAuthor("Martin Heni",0, "martin@heni-online.de");
-  aboutData.addCredit("Laura", I18N_NOOP("Beta testing"), 0);
+                        "(c) 1995-2007, Martin Heni");
+  aboutData.addAuthor("Martin Heni",I18N_NOOP("Game design and code"), "kde@heni-online.de");
+  aboutData.addAuthor("Johann Ollivier Lapeyre",I18N_NOOP("Graphics"), "johann.ollivierlapeyre@gmail.com");
   aboutData.addAuthor("Benjamin Meyer", I18N_NOOP("Code Improvements"), 0);
   KCmdLineArgs::init( argc, argv, &aboutData );
   KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
