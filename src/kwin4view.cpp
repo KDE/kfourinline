@@ -97,7 +97,8 @@ KWin4View::~KWin4View()
 void KWin4View::updateAndAdvance()
 {
   scene()->advance();
-  scene()->update();
+  // QGV takes care of updating dirty rects, no need to call update or the whole scene is dirtied and repainted
+  // scene()->update();
 }
 
 // Stop intro and init game view
