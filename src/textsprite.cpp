@@ -28,7 +28,8 @@
 // Local includes
 #include "textsprite.h"
 
-// Constructor for the view
+
+// Constructor for the sprite
 TextSprite::TextSprite(QGraphicsScene* canvas)
     : QGraphicsTextItem(0, canvas)
 {
@@ -38,7 +39,7 @@ TextSprite::TextSprite(QGraphicsScene* canvas)
 }
 
 
-// Switch center aligned or left aligned text
+// Switch center aligned (true) or left aligned text (false)
 void TextSprite::setCenterAlign(bool b)
 {
   resetMatrix();

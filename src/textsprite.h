@@ -32,7 +32,7 @@ class TextSprite : public QGraphicsTextItem
 
   public:
     /** Constructor for the sprite.
-     *  @param parent The parent canvas
+     *  @param parent The parent scene object
      */
     TextSprite(QGraphicsScene* canvas);
 

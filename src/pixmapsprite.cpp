@@ -45,6 +45,8 @@ PixmapSprite::PixmapSprite(QString id, ThemeManager* theme, int advancePeriod, i
   if (theme) theme->updateTheme(this);
 }
 
+
+// Constructor for the sprite
 PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(), QGraphicsPixmapItem(0, canvas)
 {
@@ -56,36 +58,41 @@ PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
   mCurrentFrame   = 0;
 }
 
+
+// Main themable function. Called for any theme change. The sprites needs to
+// resiez and redraw here.
 void PixmapSprite::changeTheme()
 {
   // Clear data
   mFrames.clear();
   mHotspots.clear();
   
+  // Get scaling change
   double oldscale = this->getScale();
   double scale = thememanager()->getScale();
   setScale(scale);
 
-  // Retrieve theme data
+  // Retrieve theme data from configuration
   KConfig* config = thememanager()->config(id());
   double width = config->readEntry("width", 1.0);
   width *= scale;
   QPointF pos = config->readEntry("pos", QPointF(1.0,1.0));
   pos *= scale;
+  // Set fixed z value?
   if (config->hasKey("zValue"))
   {
     double zValue = config->readEntry("zValue", 0.0);
     setZValue(zValue);
   }
 
+  // Centering
   bool center = config->readEntry("center", false);
 
+  // Animation
   mStartFrame      = config->readEntry("start-frame", 0);
   mEndFrame        = config->readEntry("end-frame", 0);
   mDelay           = config->readEntry("animation-delay", 0);
   QString refframe = config->readEntry("ref-frame", QString());
-  //if (refframe == "") refframe = QString::Null;
-
 
   // Set fixed position or modify current position
   if (config->hasKey("pos"))
@@ -97,8 +104,9 @@ void PixmapSprite::changeTheme()
     setPos(x()*scale/oldscale, y()*scale/oldscale);
   }
 
+  // SVG graphics
   QString svgid = config->readEntry("svgid");
-  // Read sequence of frame pixmaps
+  // Read sequence of frame pixmaps when auto ID given
   if (svgid == "auto")
   {
     for (int i=mStartFrame;i<=mEndFrame;i++)
@@ -113,7 +121,7 @@ void PixmapSprite::changeTheme()
       else mHotspots.append(QPointF(0.0,0.0));
     }
   }
-  // Read a names pixmap
+  // Read only one named pixmap
   else
   {
     QPixmap pixmap = thememanager()->getPixmap(svgid, width);
@@ -122,27 +130,29 @@ void PixmapSprite::changeTheme()
     else mHotspots.append(QPointF(0.0,0.0));
   }
 
-  // Retrieve pixmap
+  // Set pixmap to sprite
   setFrame(mCurrentFrame, true);
   update();
 }
 
-// Debug only: 
+
+// Debug only: Retrieve double value from configuration file
 double PixmapSprite::getDoubleValue(QString item)
 {
   KConfig* config = thememanager()->config(id());
   return config->readEntry(item, 0.0);
-  
 }
 
-// Start linear movement
+
+// Move the sprite to the given relative position
 void PixmapSprite::setPosition(QPointF pos)
 {
   mStart          = pos;
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
-  show();
 }
 
+
+// Start or stop a frame animation
 void PixmapSprite::setAnimation(bool status)
 {
   if (status) mAnimationState = Animated;
@@ -151,6 +161,8 @@ void PixmapSprite::setAnimation(bool status)
   setFrame(mStartFrame);
 }
 
+
+// Specify and start a frame animation
 void PixmapSprite::setAnimation(int start, int end, int delay)
 {
   mDelay          = delay;
@@ -159,8 +171,9 @@ void PixmapSprite::setAnimation(int start, int end, int delay)
   setAnimation(true);
 }
 
+
 // Set a new bitmap into the sprite. If the number is the same as the
-// current one, nothing is done.
+// current one, nothing is done unless forcing is set to true.
 void PixmapSprite::setFrame(int no, bool force)
 {
   if (!force && no == mCurrentFrame) return;
@@ -173,8 +186,7 @@ void PixmapSprite::setFrame(int no, bool force)
 }
 
 
-
-// CanvasItem advance method 
+// Standard QGI advance method 
 void PixmapSprite::advance(int phase)
 {
   // Ignore phase 0 (collisions)
@@ -187,9 +199,10 @@ void PixmapSprite::advance(int phase)
   // Increase time
   mTime += mAdvancePeriod;
 
-  // Handle linear phase
+  // Handle animation
   if (mAnimationState == Animated)
   {
+  	// Frame delay passed?
     if (mTime>mDelay)
     {
       mTime = 0;
