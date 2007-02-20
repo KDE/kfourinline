@@ -70,7 +70,7 @@ void ThemeManager::updateTheme(QString themefile)
   kDebug() << "ThemeManager LOAD with theme "<<rcfile << endl;
 
   // Read config and SVG file for theme
-  mConfig = new KConfig(rcfile, false, false);
+  mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general")->readEntry("svgfile");
   svgfile = KStandardDirs::locate("data", svgfile);
   kDebug() << "Reading SVG master file " << svgfile << endl;

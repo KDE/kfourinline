@@ -81,8 +81,8 @@ protected:
   void initStatusBar();
   void initDocument();
   
-  virtual void saveProperties(KConfig *cfg);
-  virtual void readProperties(KConfig *cfg);
+  virtual void saveProperties(KConfigGroup &cfg);
+  virtual void readProperties(const KConfigGroup &cfg);
 
 public slots:
   void slotServerTypeChanged(int t);

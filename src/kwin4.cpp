@@ -351,7 +351,7 @@ void Kwin4App::changeAction(const char *action, bool enable){
 /**
  * Store the current game
  */
-void Kwin4App::saveProperties(KConfig *cfg)
+void Kwin4App::saveProperties(KConfigGroup &cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   mDoc->save(filename);
@@ -360,7 +360,7 @@ void Kwin4App::saveProperties(KConfig *cfg)
 /**
  * Load game back
  */
-void Kwin4App::readProperties(KConfig* cfg)
+void Kwin4App::readProperties(const KConfigGroup & cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   if(QFile::exists(filename))
