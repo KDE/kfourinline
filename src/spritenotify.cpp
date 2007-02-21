@@ -27,13 +27,16 @@
 // Local includes
 #include "spritenotify.h"
 
+
+// Construct the object
 SpriteNotify::SpriteNotify(QGraphicsItem* parent)
-    : QObject(0)
+            : QObject(0)
 {
   mParent = parent;
 }
 
 
+// Emit the signal igven the user defined mode parameter
 void SpriteNotify::emitSignal(int mode)
 {
   emit signalNotify(mParent,mode);

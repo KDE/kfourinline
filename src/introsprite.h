@@ -25,20 +25,24 @@
 #include <QSizeF>
 #include <QGraphicsPixmapItem>
 
+// Local includes
 #include "thememanager.h"
 #include "pixmapsprite.h"
 
 
-/**
- * The sprite for a pixmap on the canvas.
+/** The sprite to display the introduction pieces and their animation.
  */
 class IntroSprite : public PixmapSprite
 {
 
   public:
     /** Constructor for the sprite.
-     */
-    IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
+      * @param id            The theme id
+      * @param theme         The theme manager
+      * @param advancePeriod The canvas advance period
+      * @param scence        The scene
+      */
+    IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
 
     /** Destructor 
     */
@@ -76,7 +80,7 @@ class IntroSprite : public PixmapSprite
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    void advance(int phase);
+    virtual void advance(int phase);
 
     /** Retrieve the type of QGI. This item is UserType+1
      *  @return The type of item.
@@ -88,13 +92,16 @@ class IntroSprite : public PixmapSprite
      */
     int number() {return mNo;}
 
+    /** Main theme notification method. Is called for any theme changes. It must be
+      * implemented so that the item redraws correctly when the theme changed.
+      */
     virtual void changeTheme();
 
   private:
 
-    // The duration of the movement 
+    // The duration of the movement animation 
     double mDuration;
-    // The current time of the movement [0..mDuration]
+    // The current time of the movement animation [0..mDuration]
     double mTime;
     // The start delay before movement starts
     double mDelay;

@@ -22,25 +22,39 @@
 
 // Qt includes
 #include <QObject>
-#include <QGraphicsPixmapItem>
+#include <QGraphicsItem>
 
 
 /**
-    * this is an internal class to provide a @ref QObject to emit
-    * a signal from a sprite if a notify object is created
-    * You do not need this directly.
-    **/
-    class SpriteNotify : public QObject
-    {
-      Q_OBJECT
+ * SpriteNotify provides a @ref QObject to a sprite that allows to emit
+ * a signal from athis sprite if it is necessary to notify another object
+ * with an action of the sprite, like animation or movement finished.
+ **/
+class SpriteNotify : public QObject
+{
+  Q_OBJECT
 
-      public:
-        SpriteNotify(QGraphicsItem* parent);
-        void emitSignal(int mode);
-      signals:
-        void signalNotify(QGraphicsItem *,int);
-      private:
-        QGraphicsItem* mParent;
-    };
+  public:
+    /** Create the object.
+      * @param parent The parent graphics item.
+      */
+    SpriteNotify(QGraphicsItem* parent);
+    
+    /** Emit the notification signal.
+      * @param mode A user defined parameter.
+      */
+     void emitSignal(int mode);
+     
+  signals:
+     /** Signal the event for the graphics item and the mode parameter.
+       *  @param item The sprite
+       *  @param mode The user defined mode
+       */
+     void signalNotify(QGraphicsItem* item, int mode);
+     
+  private:
+     // The sprite
+     QGraphicsItem* mParent;
+};
 
 #endif

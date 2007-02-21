@@ -30,7 +30,7 @@
 // Local includes
 #include "introsprite.h"
 
-// Constructor for the view
+// Constructor for the sprite
 IntroSprite::IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
@@ -43,10 +43,14 @@ IntroSprite::IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int
   if (theme) theme->updateTheme(this);
 }
 
+
+// Destructor
 IntroSprite::~IntroSprite()
 {
 }
 
+
+// Change the theme
 void IntroSprite::changeTheme()
 {
   PixmapSprite::changeTheme();
