@@ -44,11 +44,24 @@
 class DisplayIntro;
 class DisplayGame;
 
+//Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
+//Cuts cpu usage in half for this particular case, removing hiccups
+//This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
+class KWinGraphicsView :public QGraphicsView
+{
+ 	Q_OBJECT
+public:
+	KWinGraphicsView(QGraphicsScene * scene, QWidget * parent) : QGraphicsView(scene, parent) { };
+protected:
+	void paintEvent ( QPaintEvent * event );
+};
+
+
 /**
  * The view object which shows the graphics in a
  * canvas view.
  */
-class KWin4View : public QGraphicsView
+class KWin4View : public KWinGraphicsView
 {
   Q_OBJECT
 

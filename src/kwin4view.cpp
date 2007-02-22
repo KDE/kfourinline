@@ -39,11 +39,17 @@
 
 #define VIEW_ASPECT_RATIO 1.6
 
-
+//Our subclassed QGraphicsView paintEvent, see header file
+void KWinGraphicsView::paintEvent ( QPaintEvent * event )
+{
+    QPaintEvent *newEvent=new QPaintEvent(event->region().boundingRect());
+    QGraphicsView::paintEvent(newEvent);
+    delete newEvent;
+}
 
 // Constructor for the view
 KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
-          : QGraphicsView(scene, parent)
+          : KWinGraphicsView(scene, parent)
 {
   // We do not need scrolling so switch it off
   setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
