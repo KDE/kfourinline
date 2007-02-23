@@ -140,9 +140,6 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mC
   setCentralWidget(mView);
   mDoc->initPlayers();
 
-  //setMinimumSize(640,400);      // TODO
- // setMaximumSize(800,600);
-
   setupGUI();
 
   mDoc->ReadConfig(KGlobal::config().data());

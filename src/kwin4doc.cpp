@@ -258,9 +258,6 @@ void Kwin4Doc::moveDone(QGraphicsItem *item, int )
     playerInputFinished(getPlayer(QueryCurrentPlayer()));
 
   // TODO pView->clearError();
-
-  // TODO KSprite *sprite=(KSprite *)item;
-  // TODO sprite->deleteNotify();
 }
 
 /**
