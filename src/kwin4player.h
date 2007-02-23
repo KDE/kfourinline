@@ -19,9 +19,9 @@
 #define KWIN4PLAYER_H
 
 #include <kplayer.h>
-#include "score.h"
+#include <kconfiggroup.h>
 
-class KConfig;
+#include "score.h"
 
 class Kwin4Player : public KPlayer
 {
@@ -34,8 +34,8 @@ class Kwin4Player : public KPlayer
     int rtti() const {return 1;}
     void setStatus(Score *s) {mStatus=s;}
     Score* status(){return mStatus;}
-    void readConfig(KConfig *config);
-    void writeConfig(KConfig *config);
+    void readConfig(KConfigGroup& config);
+    void writeConfig(KConfigGroup& config);
     void incWin();
     void incRemis();
     void incLost();

@@ -26,7 +26,6 @@
 
 // include files for KDE
 #include <klocale.h>
-#include <kconfig.h>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <krandomsequence.h>
@@ -246,7 +245,7 @@ void Kwin4Doc::EndGame(TABLE mode)
   // switch start player
 }
 
-void Kwin4Doc::moveDone(QGraphicsItem *item,int )
+void Kwin4Doc::moveDone(QGraphicsItem *item, int )
 {
   // kDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
   //Debug();
@@ -739,11 +738,11 @@ void Kwin4Doc::ReadConfig(KConfig *config)
   kDebug() << "++++++++++++++++++++++++++++++++++++ Kwin4Doc::ReadConfig" << endl;
   loadSettings();
   
-  config->setGroup("YellowPlayer");
-  getPlayer(Gelb)->readConfig(config);
+  KConfigGroup ygrp = config->group("YellowPlayer");
+  getPlayer(Gelb)->readConfig(ygrp);
 
-  config->setGroup("RedPlayer");
-  getPlayer(Rot)->readConfig(config);
+  KConfigGroup rgrp = config->group("RedPlayer");
+  getPlayer(Rot)->readConfig(rgrp);
 }
 
 /**
@@ -751,11 +750,11 @@ void Kwin4Doc::ReadConfig(KConfig *config)
  */
 void Kwin4Doc::WriteConfig(KConfig *config)
 {
-  config->setGroup("YellowPlayer");
-  getPlayer(Gelb)->writeConfig(config);
+  KConfigGroup ygrp = config->group("YellowPlayer");
+  getPlayer(Gelb)->writeConfig(ygrp);
 
-  config->setGroup("RedPlayer");
-  getPlayer(Rot)->writeConfig(config);
+  KConfigGroup rgrp = config->group("RedPlayer");
+  getPlayer(Rot)->writeConfig(rgrp);
 
   config->sync();
 }

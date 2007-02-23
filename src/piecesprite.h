@@ -25,13 +25,14 @@
 #include <QSizeF>
 #include <QGraphicsPixmapItem>
 
+// Local includes
 #include "thememanager.h"
 #include "pixmapsprite.h"
 #include "spritenotify.h"
 
 
-/**
- * The sprite for a pixmap piece on the canvas.
+/** The sprite for a pixmap piece on the canvas. The pixmap can be
+  * animated and moving.
  */
 class PieceSprite : public PixmapSprite
 {
@@ -40,9 +41,13 @@ class PieceSprite : public PixmapSprite
     /** Constructor for the sprite.
      */
     PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
+    
+    /** Destructor 
+     */
     ~PieceSprite();
 
-    // Possible animation states of the sprite
+    /** Possible animation states of the sprite
+    */
     enum MovementState {Idle, LinearMove};
 
     /** Standard QGI advance function.
@@ -55,12 +60,30 @@ class PieceSprite : public PixmapSprite
      */
     virtual int type() const {return QGraphicsItem::UserType+2;}
 
-
+    /** Standard Themable function. It is called when the theme item
+      * needs to completely refresh iteself.
+      */
     virtual void changeTheme();
 
+    /** Retrieve the sprite notification object. This object indicates the
+      * end of a movement.
+      * @return The notification object.
+      */
     SpriteNotify* notify() {return mNotify;}
 
+    /** Start a linear movement from the current position to the given
+      * end position with the given velocity.
+      * @param end      The end position in relative coordinates [rel 0..1, rel 0..1]
+      * @param velocity The velocity of the move in [relative units/sec.]
+      */
     void startLinear(QPointF end, double velocity);
+    
+    /** Start a linear movement from the start point to the given
+      * end position with the given velocity.
+      * @param start    The start position in relative coordinates [rel 0..1, rel 0..1]
+      * @param end      The end position in relative coordinates [rel 0..1, rel 0..1]
+      * @param velocity The velocity of the move in [relative units/sec.]
+      */
     void startLinear(QPointF start, QPointF end, double velocity);
 
   private:
@@ -74,7 +97,7 @@ class PieceSprite : public PixmapSprite
     // The end points of the movement [rel]
     QPointF mEnd;
 
-    // The notifier
+    // The movment sprite notifier
     SpriteNotify* mNotify;
 
 };

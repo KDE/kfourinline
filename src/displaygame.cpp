@@ -145,10 +145,10 @@ void DisplayGame::changeTheme()
 {
 
   // Retrieve theme data
-  KConfig* config = thememanager()->config(id());
+  KConfigGroup config = thememanager()->config(id());
 
   // Retrieve background pixmap
-  QString bgsvgid = config->readEntry("background-svgid");
+  QString bgsvgid = config.readEntry("background-svgid");
   QPixmap pixmap  = thememanager()->getPixmap(bgsvgid, mScene->sceneRect().size().toSize());
   mScene->setBackgroundBrush(pixmap);
   mView->update();
@@ -162,10 +162,10 @@ void DisplayGame::start()
   mTimer->start(0);
 
   // Retrieve theme data
-  KConfig* config = thememanager()->config(id());
-  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF arrow_pos    = config->readEntry("arrow-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+  KConfigGroup config = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF arrow_pos    = config.readEntry("arrow-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
 
   // Show decoration
   mBoard->show();
@@ -258,9 +258,9 @@ void DisplayGame::setHint(int x, int y, bool show)
   }
 
   // Retrieve theme data
-  KConfig* config      = thememanager()->config(id());
-  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
+  KConfigGroup config      = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
 
   QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
                          board_spread.y()*y + board_pos.y());
@@ -285,10 +285,10 @@ SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animat
   }
 
   // Retrieve theme data
-  KConfig* config      = thememanager()->config(id());
-  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
-  double velocity      = config->readEntry("move-velocity", 0.1);
+  KConfigGroup config      = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
+  double velocity      = config.readEntry("move-velocity", 0.1);
 
   // Make sure the frames are ok
   int frame;
@@ -357,10 +357,10 @@ void DisplayGame::drawStar(int x,int y,int no)
   // kDebug() << " setStar("<<x<<","<<y<<","<<no<<") star=" << star<<endl;
 
   // Retrieve theme data
-  KConfig* config      = thememanager()->config(id());
-  QPointF board_pos    = config->readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config->readEntry("board-spread", QPointF(1.0,1.0));
-  double velocity      = config->readEntry("move-velocity", 0.1);
+  KConfigGroup config  = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
+  //double velocity      = config.readEntry("move-velocity", 0.1);
 
 
   if (star)

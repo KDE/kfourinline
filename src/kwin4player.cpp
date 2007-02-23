@@ -18,7 +18,6 @@
 
 // include files for KDE
 #include <kdebug.h>
-#include <kconfig.h>
 #include <kgamepropertyhandler.h>
 
 #include "kwin4player.h"
@@ -80,20 +79,20 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /
   }
 }
 
-void Kwin4Player::readConfig(KConfig *config)
+void Kwin4Player::readConfig(KConfigGroup& config)
 {
-  mAllWin.setValue(config->readEntry("win",0));
-  mAllRemis.setValue(config->readEntry("remis",0));
-  mAllLost.setValue(config->readEntry("lost",0));
-  mAllBrk.setValue(config->readEntry("brk",0));
+  mAllWin.setValue(config.readEntry("win",0));
+  mAllRemis.setValue(config.readEntry("remis",0));
+  mAllLost.setValue(config.readEntry("lost",0));
+  mAllBrk.setValue(config.readEntry("brk",0));
 }
 
-void Kwin4Player::writeConfig(KConfig *config)
+void Kwin4Player::writeConfig(KConfigGroup& config)
 {
-  config->writeEntry("win",mAllWin.value());
-  config->writeEntry("remis",mAllRemis.value());
-  config->writeEntry("lost",mAllLost.value());
-  config->writeEntry("brk",mAllBrk.value());
+  config.writeEntry("win",mAllWin.value());
+  config.writeEntry("remis",mAllRemis.value());
+  config.writeEntry("lost",mAllLost.value());
+  config.writeEntry("brk",mAllBrk.value());
 }
 
 void Kwin4Player::incWin()

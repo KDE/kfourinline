@@ -19,7 +19,7 @@
 */
 
 // General includes
-#include <typeinfo>
+// #include <typeinfo>
 
 // Qt includes
 #include <QImage>
@@ -35,31 +35,38 @@
 // Local includes
 #include "thememanager.h"
 
-// Constructor for the view
+// Constructor for the theme manager
 ThemeManager::ThemeManager(QString themefile, QObject* parent, int initialSize)
     : QObject(parent)
 {
   mScale = initialSize;
   updateTheme(themefile);
-  kDebug() << "Scale " << mScale<< endl;
 }
 
 
+// Register an object with the manager
 void ThemeManager::registerTheme(Themable* ob)
 {
   mObjects[ob] = 1;
 }
 
+
+// Unregister an object from the manager
 void ThemeManager::unregisterTheme(Themable* ob)
 {
   mObjects.remove(ob);
 }
 
+
+// Force an refresh of the theme object given
 void ThemeManager::updateTheme(Themable* ob)
 {
   ob->changeTheme();
 }
 
+
+// Update the theme file and refresh all registered objects. Used 
+// to really change the theme.
 void ThemeManager::updateTheme(QString themefile)
 {
   // Empty cache
@@ -71,9 +78,9 @@ void ThemeManager::updateTheme(QString themefile)
 
   // Read config and SVG file for theme
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
-  QString svgfile = config("general")->readEntry("svgfile");
+  QString svgfile = config("general").readEntry("svgfile");
   svgfile = KStandardDirs::locate("data", svgfile);
-  kDebug() << "Reading SVG master file " << svgfile << endl;
+  kDebug() << "Reading SVG master file  = " << svgfile << endl;
 
 
   mRenderer = new QSvgRenderer(this);
@@ -94,6 +101,8 @@ void ThemeManager::updateTheme(QString themefile)
   }
 }
 
+
+// Rescale the theme. Call all registed objects so that they can refresh.
 void ThemeManager::rescale(int scale)
 {
   if (scale==mScale) return;
@@ -109,20 +118,23 @@ void ThemeManager::rescale(int scale)
   }
 }
 
+
+// Retreive the theme's scale
 double ThemeManager::getScale()
 {
   return (double)mScale;
 }  
 
 
-KConfig* ThemeManager::config(QString id)
+// Retreive the current theme configuration file.
+KConfigGroup ThemeManager::config(QString id)
 {
-   mConfig->setGroup(id);
-   return mConfig;
+   KConfigGroup grp = mConfig->group(id); 
+   return grp;
 }
 
 
-// Get pixmap when size is given (can distort image)
+// Get a pixmap when its size is given (this can distort the image)
 const QPixmap ThemeManager::getPixmap(QString svgid, QSize size)
 {
   if (size.width() < 1 || size.height() < 1) 
@@ -140,20 +152,23 @@ const QPixmap ThemeManager::getPixmap(QString svgid, QSize size)
     }
   }
 
+  // Create new image
   QImage image(size, QImage::Format_ARGB32_Premultiplied);
   image.fill(0);
   QPainter p(&image);
   mRenderer->render(&p, svgid);
   pixmap = QPixmap::fromImage(image);
-  if (pixmap.isNull()) kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid << endl;
+  if (pixmap.isNull())
+    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid << endl;
 
+  // Cache image
   mPixmapCache[svgid] = pixmap;
-
 
   return pixmap;
 }
 
-// Get pixmap when only width is given (keeps aspect ratio)
+
+// Get a pixmap when only width is given (this keeps the aspect ratio)
 const QPixmap ThemeManager::getPixmap(QString svgid, double width)
 {
   QRectF rect   = mRenderer->boundsOnElement(svgid);
@@ -162,7 +177,9 @@ const QPixmap ThemeManager::getPixmap(QString svgid, double width)
   return getPixmap(svgid, size);
 }
 
-// Get pixmap with original properties and a scale factor
+
+// Get a pixmap with original properties and a scale factor given with respect to
+// another SVG item.
 const QPixmap ThemeManager::getPixmap(QString svgid, QString svgref, double refwidth)
 {
   QRectF refrect    = mRenderer->boundsOnElement(svgref);
@@ -173,13 +190,18 @@ const QPixmap ThemeManager::getPixmap(QString svgid, QString svgref, double refw
 }
 
 
+// ========================== Themable interface ===============================
+
+// Constructs a themable interface
 Themable::Themable()
 {
   mScale        = 1.0;
   mThemeManager = 0;
-  kDebug() << "CONSTRUCT DEFAULT THEMABLE for "<< typeid(this).name() << endl;
 }
 
+
+// Constructs a themeable interface given its id and the master theme manager. 
+// This automatically registeres the object with the manager.
 Themable::Themable(QString id, ThemeManager* thememanager)
 {
   mScale        = 1.0;
@@ -189,9 +211,10 @@ Themable::Themable(QString id, ThemeManager* thememanager)
   thememanager->registerTheme(this);
 }
 
+
+// Destructs the themeable object
 Themable::~Themable()
 {
-  // kDebug() << this << "unregister " << endl;
   if (mThemeManager) mThemeManager->unregisterTheme(this);
 }
 

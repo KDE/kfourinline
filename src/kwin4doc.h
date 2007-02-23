@@ -21,6 +21,7 @@
 #include <kgame.h>
 #include <kgameio.h>
 #include <kgamepropertyarray.h>
+#include <kconfig.h>
 
 #include "kwin4player.h"
 //Added by qt3to4:

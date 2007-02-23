@@ -73,29 +73,29 @@ void PixmapSprite::changeTheme()
   setScale(scale);
 
   // Retrieve theme data from configuration
-  KConfig* config = thememanager()->config(id());
-  double width = config->readEntry("width", 1.0);
+  KConfigGroup config = thememanager()->config(id());
+  double width = config.readEntry("width", 1.0);
   width *= scale;
-  QPointF pos = config->readEntry("pos", QPointF(1.0,1.0));
+  QPointF pos = config.readEntry("pos", QPointF(1.0,1.0));
   pos *= scale;
   // Set fixed z value?
-  if (config->hasKey("zValue"))
+  if (config.hasKey("zValue"))
   {
-    double zValue = config->readEntry("zValue", 0.0);
+    double zValue = config.readEntry("zValue", 0.0);
     setZValue(zValue);
   }
 
   // Centering
-  bool center = config->readEntry("center", false);
+  bool center = config.readEntry("center", false);
 
   // Animation
-  mStartFrame      = config->readEntry("start-frame", 0);
-  mEndFrame        = config->readEntry("end-frame", 0);
-  mDelay           = config->readEntry("animation-delay", 0);
-  QString refframe = config->readEntry("ref-frame", QString());
+  mStartFrame      = config.readEntry("start-frame", 0);
+  mEndFrame        = config.readEntry("end-frame", 0);
+  mDelay           = config.readEntry("animation-delay", 0);
+  QString refframe = config.readEntry("ref-frame", QString());
 
   // Set fixed position or modify current position
-  if (config->hasKey("pos"))
+  if (config.hasKey("pos"))
   {
     setPos(pos.x(), pos.y());
   }
@@ -105,14 +105,14 @@ void PixmapSprite::changeTheme()
   }
 
   // SVG graphics
-  QString svgid = config->readEntry("svgid");
+  QString svgid = config.readEntry("svgid");
   // Read sequence of frame pixmaps when auto ID given
   if (svgid == "auto")
   {
     for (int i=mStartFrame;i<=mEndFrame;i++)
     {
       QString name = QString("frame%1").arg(i);
-      svgid = config->readEntry(name.toUtf8());
+      svgid = config.readEntry(name.toUtf8());
       QPixmap pixmap;
       if (refframe.isNull()) pixmap = thememanager()->getPixmap(svgid, width);
       else pixmap = thememanager()->getPixmap(svgid, refframe, width);
@@ -139,8 +139,8 @@ void PixmapSprite::changeTheme()
 // Debug only: Retrieve double value from configuration file
 double PixmapSprite::getDoubleValue(QString item)
 {
-  KConfig* config = thememanager()->config(id());
-  return config->readEntry(item, 0.0);
+  KConfigGroup config = thememanager()->config(id());
+  return config.readEntry(item, 0.0);
 }
 
 

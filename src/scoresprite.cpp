@@ -68,26 +68,26 @@ void ScoreSprite::changeTheme()
 
 
   // Retrieve theme data
-  KConfig* config = thememanager()->config(id());
-  QPointF posWon0 = config->readEntry("posWon0", QPointF(1.0,1.0));
-  QPointF posWon1 = config->readEntry("posWon1", QPointF(1.0,1.0));
-  QPointF posDraw0 = config->readEntry("posDraw0", QPointF(1.0,1.0));
-  QPointF posDraw1 = config->readEntry("posDraw1", QPointF(1.0,1.0));
-  QPointF posLoss0 = config->readEntry("posLoss0", QPointF(1.0,1.0));
-  QPointF posLoss1 = config->readEntry("posLoss1", QPointF(1.0,1.0));
-  QPointF posBreak0 = config->readEntry("posBreak0", QPointF(1.0,1.0));
-  QPointF posBreak1 = config->readEntry("posBreak1", QPointF(1.0,1.0));
-  QPointF posName0 = config->readEntry("posName0", QPointF(1.0,1.0));
-  QPointF posName1 = config->readEntry("posName1", QPointF(1.0,1.0));
-  QPointF posAI   = config->readEntry("posAI", QPointF(1.0,1.0));
+  KConfigGroup config = thememanager()->config(id());
+  QPointF posWon0 = config.readEntry("posWon0", QPointF(1.0,1.0));
+  QPointF posWon1 = config.readEntry("posWon1", QPointF(1.0,1.0));
+  QPointF posDraw0 = config.readEntry("posDraw0", QPointF(1.0,1.0));
+  QPointF posDraw1 = config.readEntry("posDraw1", QPointF(1.0,1.0));
+  QPointF posLoss0 = config.readEntry("posLoss0", QPointF(1.0,1.0));
+  QPointF posLoss1 = config.readEntry("posLoss1", QPointF(1.0,1.0));
+  QPointF posBreak0 = config.readEntry("posBreak0", QPointF(1.0,1.0));
+  QPointF posBreak1 = config.readEntry("posBreak1", QPointF(1.0,1.0));
+  QPointF posName0 = config.readEntry("posName0", QPointF(1.0,1.0));
+  QPointF posName1 = config.readEntry("posName1", QPointF(1.0,1.0));
+  QPointF posAI   = config.readEntry("posAI", QPointF(1.0,1.0));
 
-  double fontHeight = config->readEntry("fontHeight", 1.0);
+  double fontHeight = config.readEntry("fontHeight", 1.0);
   fontHeight *= height;
-  double fontWidth = config->readEntry("fontWidth", 1.0);
+  double fontWidth = config.readEntry("fontWidth", 1.0);
   fontWidth *= width;
   QColor fontColor[2];
-  fontColor[0] = config->readEntry("fontColorPlayer0", Qt::white);
-  fontColor[1] = config->readEntry("fontColorPlayer1", Qt::white);
+  fontColor[0] = config.readEntry("fontColorPlayer0", Qt::white);
+  fontColor[1] = config.readEntry("fontColorPlayer1", Qt::white);
   kDebug() << "FONT Width="<<fontWidth<<" Height="<<fontHeight<<endl;
 
 
@@ -106,7 +106,7 @@ void ScoreSprite::changeTheme()
 
   // Create and set font
   QFont font;
-  font.setPixelSize(fontHeight);
+  font.setPixelSize(int(fontHeight));
 
   for (int i=0; i<2; i++)
   {
@@ -207,10 +207,10 @@ void ScoreSprite::setInput(int i, int no)
 
 void ScoreSprite::setTurn(int i)
 {
-  KConfig* config = thememanager()->config(id());
-  QColor fontColorActive  = config->readEntry("fontColorActive", Qt::white);
-  QColor fontColor0       = config->readEntry("fontColorPlayer0", Qt::white);
-  QColor fontColor1       = config->readEntry("fontColorPlayer1", Qt::white);
+  KConfigGroup config = thememanager()->config(id());
+  QColor fontColorActive  = config.readEntry("fontColorActive", Qt::white);
+  QColor fontColor0       = config.readEntry("fontColorPlayer0", Qt::white);
+  QColor fontColor1       = config.readEntry("fontColorPlayer1", Qt::white);
 
   mTurn = i;
 

@@ -134,8 +134,8 @@ void KWin4View::resizeEvent (QResizeEvent* e)
 
   // Rescale on minimum fitting aspect ratio not width
   double aspect = size.width() / size.height();
-  if (aspect > VIEW_ASPECT_RATIO) mTheme->rescale(e->size().height()*VIEW_ASPECT_RATIO);
-  else mTheme->rescale(e->size().width());
+  if (aspect > VIEW_ASPECT_RATIO) mTheme->rescale(int(e->size().height()*VIEW_ASPECT_RATIO));
+  else mTheme->rescale(int(e->size().width()));
 }
 
 
@@ -148,11 +148,6 @@ void KWin4View::mousePressEvent(QMouseEvent *ev)
 //  QPointF point = ev->pos();
 //  emit signalLeftMousePress(point.toPoint());
 }
-
-// TODO
-#define FIELD_SPACING 10
-#define FIELD_SIZE_X 400
-#define FIELD_SIZE_Y 400
 
 
 /**
