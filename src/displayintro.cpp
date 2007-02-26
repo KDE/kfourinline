@@ -17,6 +17,8 @@
    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
    Boston, MA 02110-1301, USA.
 */
+
+// Standard includes
 #include <math.h>
 
 // Qt includes
@@ -31,29 +33,28 @@
 
 // Local includes
 #include "displayintro.h"
-#include "thememanager.h"
 #include "introsprite.h"
 
 
 
-// Constructor for the view
+// Constructor for the intro display
 DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QObject* parent)
           : Themable("introdisplay",theme), QObject(parent)
 {
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
-  mScene = scene;
+  
+  // Store the theme manager and other attributes
+  mTheme         = theme;
+  mScene         = scene;
   mAdvancePeriod = advancePeriod;
-  // Store the theme manager
-  mTheme = theme;
 
-  // Store all sprites
+  // Storage of all sprites
   mSprites.clear();
 
-  // Create sprites for intro
+  // Create all sprites used for intro
   for (int i=0; i<42; i++)
   {
-    QString id;
     IntroSprite* sprite = new IntroSprite("intro_piece", mTheme, mAdvancePeriod, i, mScene);
     if (!sprite) kFatal() << "Cannot load sprite " << "intro_piece" << endl;
     mSprites.append(sprite);
@@ -66,50 +67,60 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
 
   // Animation timer
   mTimer = new QTimer(this);
-  connect(mTimer, SIGNAL(timeout()), this, SLOT(run()));
+  connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));
 
-   theme->updateTheme(this);
-
+  // Draw us
+  theme->updateTheme(this);
 }
 
+
+// Desctruct the intro and all sprites
 DisplayIntro::~DisplayIntro()
 {
-  //kDebug() << "~DisplayIntro"<<endl;
   delete mTimer;
   while (!mSprites.isEmpty())
   {
     delete mSprites.takeFirst();
   }
-  // kDebug() << "~DisplayIntro done"<<endl;
 }
 
+
+// Master theme change function. Redraw the display
 void DisplayIntro::changeTheme()
 {
-  //kDebug() << "DisplayIntro::changeTheme"<<endl;
+   // Nothing to do here as the sprites handles this by themselves
 }
 
+
+// Start the animation
 void DisplayIntro::start()
 {
-
+  // Begin with the first state
   mIntroState = IntroMoveIn;
 
+  // Tun the timer
   mTimer->setSingleShot(true);
   mTimer->start(0);
 }
 
 
-void DisplayIntro::run()
+// Animation main routine to advance the aniamtion. Called
+// by a timer
+void DisplayIntro::advance()
 {
+	// Local variables
   double dura, delay, rad;
   QPointF start, end;
-  QPixmap pixmap;
 
-  // First part of intro animation. Move sprites in
+  // First part of intro animation. Move sprites into window
   if (mIntroState == IntroMoveIn)
   {
+  	// Loop all sprites
     for (int i = 0; i < mSprites.size(); ++i) 
     {
+    	// Move only intro sprites
       if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+      
       IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
       int no = sprite->number();
       {
@@ -134,34 +145,40 @@ void DisplayIntro::run()
       }
     }// end list loop
 
-    // Start next intro state
+    // Continue with next intro state
     mIntroState = IntroCollapse;
-    mTimer->start(9000);
+    mTimer->start(9000); // [ms]
     return;
   }// end IntroMoveIn
 
-  // Second part of intro animation. Move sprites in
+  // Second part of intro animation. Move sprites inwards
   if (mIntroState == IntroCollapse)
   {
+  	// Loop all sprites
     for (int i = 0; i < mSprites.size(); ++i) 
     {
+    	// Move only intro sprites
       if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+      
       IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
       sprite->startLinear(QPointF(0.5, 0.3), 200);
     }// end for
 
-    // Start next intro state
+    // Continue with next intro state
     mIntroState = IntroExplode;
-    mTimer->start(500);
+    mTimer->start(500);  // [ms]
     return;
   }// end IntroCollapse
 
-  // Second part of intro animation. Move sprites in
+  // Third part of intro animation. Move sprites outwards
   if (mIntroState == IntroExplode)
   {
+  	// Loop all sprites
     for (int i = 0; i < mSprites.size(); ++i) 
     {
+    	// Move only intro sprites
       if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+      
       IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
       int no = sprite->number();
       double x = 0.5 + 1.50*cos(no/42.0*2.0*M_PI);
@@ -169,9 +186,9 @@ void DisplayIntro::run()
       sprite->startLinear(QPointF(x,y), 800);
     }// end for
 
-    // Start next intro state
+    // Start again with first intro state
     mIntroState = IntroMoveIn;
-    mTimer->start(1900);
+    mTimer->start(1900);  // [ms]
     return;
   }// end IntroCollapse
 }

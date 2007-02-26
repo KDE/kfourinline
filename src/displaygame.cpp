@@ -17,6 +17,8 @@
    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
    Boston, MA 02110-1301, USA.
 */
+
+// Standard includes
 #include <math.h>
 #include <assert.h>
 
@@ -41,19 +43,20 @@
 
 
 
-// Constructor for the view
+// Constructor for the display
 DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
            : Themable("gamedisplay",theme), QObject(parent)
 {
-  // Choose a background color
-  scene->setBackgroundBrush(QColor(0,0,128));
-  mScene = scene;
-  mView  = parent;
+  // Store arguments as attributes
+  mScene         = scene;
+  mView          = parent;
   mAdvancePeriod = advancePeriod;
-  // Store the theme manager
-  mTheme = theme;
+  mTheme         = theme;
+  
+    // Choose a background color
+  scene->setBackgroundBrush(QColor(0,0,128));
 
-  // Store all sprites
+  // Clear storage of all sprites
   mSprites.clear();
 
   // Create piece sprites 
@@ -63,7 +66,6 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
     if (!sprite) kFatal() << "Cannot load sprite " << "piece" << endl;
     mSprites.append(sprite);
     mPieces.append(sprite);
-//    sprite->setZValue(sprite->getDoubleValue("zValueOffset")+i);
     sprite->hide();
   }
 
@@ -77,19 +79,19 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
     sprite->hide();
   }
 
-  // Board
+  // Create board
   mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, 0, mScene);
   if (!mBoard) kFatal() << "Cannot load sprite " << "board" << endl;
   mSprites.append(mBoard);
   mBoard->hide();
 
-  // Hint
+  // Create hint
   mHint = new PixmapSprite("hint", mTheme, mAdvancePeriod, 0, mScene);
   if (!mHint) kFatal() << "Cannot load sprite " << "hint" << endl;
   mSprites.append(mHint);
   mHint->hide();
 
-  // Game Over
+  // Create Game Over
   mGameOver = new PixmapSprite("gameover", mTheme, mAdvancePeriod, 0, mScene);
   if (!mGameOver) kFatal() << "Cannot load sprite " << "gameover" << endl;
   mSprites.append(mGameOver);
@@ -105,14 +107,14 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
     boardHole->hide();
   }
 
-  // Score board
+  // Create score board
   mScoreBoard = new ScoreSprite("scoreboard", mTheme, mAdvancePeriod, 0, mScene);
   if (!mScoreBoard) kFatal() << "Cannot load sprite " << "scoreboard" << endl;
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
 
 
-  // Movement indication arrows
+  // Create movement indication arrows
   for (int i=0; i<7; i++)
   {
     PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, i, mScene);
@@ -124,12 +126,15 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
 
   // Animation timer
   mTimer = new QTimer(this);
-  connect(mTimer, SIGNAL(timeout()), this, SLOT(run()));
+  connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));
 
-  theme->updateTheme(this);
+  // Redraw
+  if (theme) theme->updateTheme(this);
 
 }
 
+
+// Destructor: clean up
 DisplayGame::~DisplayGame()
 {
   delete mTimer;
@@ -137,13 +142,13 @@ DisplayGame::~DisplayGame()
   {
     delete mSprites.takeFirst();
   }
-  kDebug() << "~DisplayGame done"<<endl;
 }
 
-// Called by thememanager when theme or theme geometry changes
+
+// Called by thememanager when theme or theme geometry changes. Redraw and resize
+// this display.
 void DisplayGame::changeTheme()
 {
-
   // Retrieve theme data
   KConfigGroup config = thememanager()->config(id());
 
@@ -155,11 +160,13 @@ void DisplayGame::changeTheme()
 
 }
 
+
 // Start a new game. Initialize graphics.
 void DisplayGame::start()
 {
-  mTimer->setSingleShot(true);
-  mTimer->start(0);
+	// Run timer (unused)
+  // mTimer->setSingleShot(true);
+  // mTimer->start(0);
 
   // Retrieve theme data
   KConfigGroup config = thememanager()->config(id());
@@ -171,7 +178,7 @@ void DisplayGame::start()
   mBoard->show();
   mScoreBoard->show();
 
-  // Board holes
+  // Show board holes
   for (int i=0; i<42; i++)
   {
     int x = i/6;
@@ -182,7 +189,7 @@ void DisplayGame::start()
     mBoardHoles.value(i)->show();
   }
 
-  // Movement arrows
+  // Show movement arrows
   for (int i=0; i<7; i++)
   {
     QPointF to   = QPointF(board_spread.x()*i + arrow_pos.x(),
@@ -197,6 +204,7 @@ void DisplayGame::start()
   {
     mPieces.value(i)->hide();
   }
+  
   // Hide stars
   for (int i=0;i<4;i++)
   {
@@ -208,23 +216,24 @@ void DisplayGame::start()
   mGameOver->hide();
 }
 
-// Run game
-void DisplayGame::run()
+
+// Run game animation
+void DisplayGame::advance()
 {
+	 // Currently unused
 }
 
 
-// End game
-void DisplayGame::end()
+// Display end game sprite
+void DisplayGame::displayEnd()
 {
-  kDebug() << "DisplayGame::end()" << endl;
+	assert(mGameOver != 0);
   mGameOver->show();
-
 }
 
 
 // Set the movement indicator arrows above the game board
-void DisplayGame::setArrow(int x,int color)
+void DisplayGame::displayArrow(int x,int color)
 {
   // Set all arrows back to frame 0
   for (int i=0; i<7; i++)
@@ -238,19 +247,19 @@ void DisplayGame::setArrow(int x,int color)
     return ;
   }
 
-  // Make sure the frames are ok
+  // Make sure the frames are chosen properly
   if (color==Gelb) mArrows.value(x)->setFrame(1);
   else mArrows.value(x)->setFrame(2);
-
 }
 
-// Set a game HINT
-void DisplayGame::setHint(int x, int y, bool show)
+
+// Set a game HINT sprite
+void DisplayGame::displayHint(int x, int y, bool show)
 {
-  //kDebug() << " setHint("<<x<<","<<y<<","<<show<<") sprite=" << mHint<<endl;
+  // Invert height
   y=5-y;
 
-  // Check for removal of sprite
+  // Check for removal of the sprite
   if (!show)
   {
     mHint->hide();
@@ -258,9 +267,9 @@ void DisplayGame::setHint(int x, int y, bool show)
   }
 
   // Retrieve theme data
-  KConfigGroup config      = thememanager()->config(id());
-  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
+  KConfigGroup config   = thememanager()->config(id());
+  QPointF board_pos     = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread  = config.readEntry("board-spread", QPointF(1.0,1.0));
 
   QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
                          board_spread.y()*y + board_pos.y());
@@ -269,13 +278,15 @@ void DisplayGame::setHint(int x, int y, bool show)
 }
 
 
-// Set a game piece, red or white or hidden depending on 'color'
-SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animation)
+// Set a game piece, red or yellow or hidden depending on 'color'
+SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool animation)
 {
+  // Invert height
   y=5-y;
 
+  // Get piece
   PieceSprite *sprite = mPieces.value(no);
-  // kDebug() << " setPiece("<<x<<","<<y<<","<<color<<","<<no<<") sprite=" << sprite<<endl;
+  assert(sprite != 0);
 
   // Check for removal of sprite
   if (color==Niemand)
@@ -285,19 +296,18 @@ SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animat
   }
 
   // Retrieve theme data
-  KConfigGroup config      = thememanager()->config(id());
-  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
-  double velocity      = config.readEntry("move-velocity", 0.1);
+  KConfigGroup config   = thememanager()->config(id());
+  QPointF board_pos     = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread  = config.readEntry("board-spread", QPointF(1.0,1.0));
+  double velocity       = config.readEntry("move-velocity", 0.1);
 
   // Make sure the frames are ok
   int frame;
   if (color==Gelb) frame = 0;
   else frame = 1;
 
-  if (!sprite)
-     return 0;
-  
+
+  // Just draw the sprites or show an movement animation?
   if (animation)
   {
     QPointF from = QPointF(board_spread.x()*x    + board_pos.x(),
@@ -321,7 +331,7 @@ SpriteNotify* DisplayGame::setPiece(int x, int y, int color, int no, bool animat
 
 
 // Return the mouse mapped to the board or bar item so that a
-// move 0..6 is generated. -1 means an illegal position
+// move 0..6 is generated. -1 means an illegal position.
 int DisplayGame::mapMouseToMove(QPoint pos)
 {
   // Error?
@@ -339,7 +349,6 @@ int DisplayGame::mapMouseToMove(QPoint pos)
     // Found matching arrow
     if (relPos > 0 && relPos<= width)
     {
-      // kDebug() <<"Arrow maps pos " << pos << " to "<<i << endl;
       return i;
     }
   }
@@ -350,11 +359,12 @@ int DisplayGame::mapMouseToMove(QPoint pos)
 
 
 // Draw Star Sprites as winning indicator
-void DisplayGame::drawStar(int x,int y,int no)
+void DisplayGame::displayStar(int x,int y,int no)
 {
+	// Invert height
   y=5-y;
   PixmapSprite* star = mStars.value(no-1);
-  // kDebug() << " setStar("<<x<<","<<y<<","<<no<<") star=" << star<<endl;
+  assert(star != 0);
 
   // Retrieve theme data
   KConfigGroup config  = thememanager()->config(id());
@@ -362,21 +372,19 @@ void DisplayGame::drawStar(int x,int y,int no)
   QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
   //double velocity      = config.readEntry("move-velocity", 0.1);
 
-
-  if (star)
-  {
-    QPointF pos  = QPointF(board_spread.x()*x    + board_pos.x(),
-                           board_spread.y()*y    + board_pos.y());
-    star->setAnimation(true);
-    star->setPosition(pos);
-    star->show();
-  }
+  QPointF pos  = QPointF(board_spread.x()*x    + board_pos.x(),
+                         board_spread.y()*y    + board_pos.y());
+  star->setAnimation(true);
+  star->setPosition(pos);
+  star->show();
 }
 
+
+// Retrieve the score sprite.
 ScoreSprite* DisplayGame::score()
 {
-  assert(mScoreBoard != 0);
   return mScoreBoard;
 }
+
 
 #include "displaygame.moc"

@@ -26,20 +26,29 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>
 
+
+// Local includes
 #include "thememanager.h"
 #include "pixmapsprite.h"
 
 
-/**
- * The sprite for a score board on the canvas.
+/** The sprite for a score board on the canvas.
  */
 class ScoreSprite : public PixmapSprite
 {
 
   public:
-    /** Constructor for the sprite.
-     */
-    ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
+    /** Constructor for the score sprite.
+      * @param id              The theme id
+      * @param theme           The theme manager
+      * @param advancePeriod   The canvas advance period [ms]
+      * @param no              A used defined number (unused)
+      * @param scene           The graphics scene
+      */
+    ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
+    
+    /** Destructor 
+      */
     ~ScoreSprite();
 
     /** Standard QGI advance function.
@@ -47,31 +56,88 @@ class ScoreSprite : public PixmapSprite
      */
     virtual void advance(int phase);
 
-    /** Retrieve the type of QGI. This item is UserType+2
+    /** Retrieve the type of QGI. This item is UserType+10
      *  @return The type of item.
      */
     virtual int type() const {return QGraphicsItem::UserType+10;}
 
+    /** Main theme change function. On call of this the item needs to redraw and
+      * resize.
+      */
     virtual void changeTheme();
 
-    void setLevel(int i, int no);
+    /** Store the level of the AI.
+      * @param level  The level
+      * @param no     The player number [0,1]
+      */ 
+    void setLevel(int level, int no);
+    
+    /** Store the player name.
+      * @param s  The name
+      * @param no The player number [0,1]
+      */ 
     void setPlayerName(QString s,int no);
+    
+    /** Store the amounts of wins for a player.
+      * @param s  The amount of wins
+      * @param no The player number [0,1]
+      */ 
     void setWon(QString s,int no);
+
+    /** Store the amounts of draws for a player.
+      * @param s  The amount of draws
+      * @param no The player number [0,1]
+      */ 
     void setDraw(QString s,int no);
+    
+    /** Store the amounts of losses for a player.
+      * @param s  The amount of losses
+      * @param no The player number [0,1]
+      */ 
     void setLoss(QString s,int no);
+
+    /** Store the amounts of aborted games for a player.
+      * @param s  The amount of aborted games
+      * @param no The player number [0,1]
+      */ 
     void setBreak(QString s,int no);
-    void setTurn(int i);
-    void setInput(int i, int no);
+    
+     /** Define who's turn it is next
+      * @param no The next player number [0,1]
+      */    
+    void setTurn(int no);
+    
+    /** Store input device for a player.
+      * @param device  The device number [0-3]
+      * @param no      The player number [0,1]
+      */ 
+    void setInput(int device, int no);
 
   private:
+    // Text for won
     QGraphicsTextItem* mWon[2];
+
+    // Text for draw
     QGraphicsTextItem* mDraw[2];
+
+    // Text for loss
     QGraphicsTextItem* mLoss[2];
+
+    // Text for aborted games
     QGraphicsTextItem* mBreak[2];
+
+    // Text for name of player
     QGraphicsTextItem* mName[2];
+
+    // Sprite for the input device
     PixmapSprite* mInput[2];
-    int mTurn;
+
+    // Frame  number of the input device sprite
     int mInputFrame[2];
+
+    // Whose' turn or -1 for nobody
+    int mTurn;
+
 };
 
 #endif

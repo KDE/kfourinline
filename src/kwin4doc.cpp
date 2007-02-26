@@ -218,7 +218,7 @@ void Kwin4Doc::EndGame(TABLE mode)
 {
   setGameStatus(End);
   // TODO pView->clearError();
-  pView->display()->end();
+  pView->display()->displayEnd();
   Kwin4Player *yellow=getPlayer(Gelb);
   Kwin4Player *red=getPlayer(Rot);
 
@@ -330,9 +330,9 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode)
   if (mode==0) mMaxMove=mCurrentMove.value();
   mLastColumn=x;
 
-  pView->display()->setArrow(x,mLastColour);
+  pView->display()->displayArrow(x,mLastColour);
   // animation onyl if no redo
-  SpriteNotify* notify = pView->display()->setPiece(x, y, mLastColour, mCurrentMove-1, mode==1?false:true);
+  SpriteNotify* notify = pView->display()->displayPiece(x, y, mLastColour, mCurrentMove-1, mode==1?false:true);
   if (notify)
   {
     QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
@@ -340,7 +340,7 @@ MOVESTATUS Kwin4Doc::MakeMove(int x,int mode)
     connect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
             this,SLOT(moveDone(QGraphicsItem*,int)));
   }
-  pView->display()->setHint(0,0,false);
+  pView->display()->displayHint(0,0,false);
  
   return GNormal;
 }
@@ -370,7 +370,7 @@ bool Kwin4Doc::UndoMove(){
   // kDebug(12010) << "Undo x="<<x << " y=" <<y << endl;
   SetColour(x,y,Niemand);
   // We have to remove the piece as well...
-  pView->display()->setPiece(x,y,Niemand,mCurrentMove-1,false);
+  pView->display()->displayPiece(x,y,Niemand,mCurrentMove-1,false);
 
   mLastColour=QueryCurrentPlayer();
   if (QueryCurrentPlayer()==Gelb) SetCurrentPlayer(Rot);
@@ -381,8 +381,8 @@ bool Kwin4Doc::UndoMove(){
   int oldx=-1;
   if (QueryHistoryCnt()>0) oldx=mHistory.at(QueryHistoryCnt()-1);
   // TODO: replayed by set arrow and not needed anymore pView->setSprite(mCurrentMove+1,oldx,QueryHistoryCnt()>0?mLastColour.value():0,false);
-  pView->display()->setArrow(oldx,QueryHistoryCnt()>0?mLastColour.value():Niemand);
-  pView->display()->setHint(0,0,false);
+  pView->display()->displayArrow(oldx,QueryHistoryCnt()>0?mLastColour.value():Niemand);
+  pView->display()->displayHint(0,0,false);
 
   if (QueryHistoryCnt()>0)
     mLastColumn=mHistory.at(QueryHistoryCnt()-1);
@@ -411,7 +411,7 @@ bool Kwin4Doc::RedoMove()
   else
     SetCurrentPlayer(Gelb);
   SetScore(0);
-  pView->display()->setHint(0,0,false);
+  pView->display()->displayHint(0,0,false);
   return true;
 }
 
@@ -488,7 +488,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
     for (i=0;i<4;i++)
     {
       y=mFieldFilled.at(x)-1-i;
-      pView->display()->drawStar(x,y,star++);
+      pView->display()->displayStar(x,y,star++);
       winc=QueryColour(x,y);
     }
     return 1;
@@ -521,7 +521,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -532,7 +532,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
       if (xx>=0 && xx<FIELD_SIZE_X)
       {
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -572,7 +572,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1-i;
         if (y<0) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -585,7 +585,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1-i;
         if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -625,7 +625,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1+i;
         if (y>=FIELD_SIZE_Y) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -639,7 +639,7 @@ int Kwin4Doc::CheckGameOver(int x, FARBE col){
         y=mFieldFilled.at(x)-1+i;
         if (y<0) break;
         if (QueryColour(xx,y)!=winc) break;
-        pView->display()->drawStar(xx,y,star++);
+        pView->display()->displayStar(xx,y,star++);
         cnt++;
       }
       else break;
@@ -1197,7 +1197,7 @@ void Kwin4Doc::slotProcessHint(QDataStream &in,KGameProcessIO * /*me*/)
       if (global_debug>1) kDebug(12010) << "#### Computer thinks hint is " << move << " and value is " << value << endl;
       int x=move;
       int y=mFieldFilled.at(x);
-      pView->display()->setHint(x,y,true);
+      pView->display()->displayHint(x,y,true);
     }
     break;
     default:

@@ -31,49 +31,64 @@
 #include "thememanager.h"
 
 // Forward declaration
-class ThemeManager;
+
 
 /**
- * The view object which shows the graphics in a
- * canvas view.
+ * The view object which shows the graphics of the welcome screen
+ * animation.
  */
 class DisplayIntro : public QObject, public virtual Themable
 {
   Q_OBJECT
 
   public:
-    /** Constructor for the intro.
+    /** Constructor for the intro display.
      *  @param advancePeriod The canvas advance period
-     *  @param scene The graphics scene
-     *  @param parent The parent window
+     *  @param scene         The graphics scene
+     *  @param parent        The parent window
      */
     DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QObject* parent = 0);
+    
+    /** Destructor of the display.
+     */
     ~DisplayIntro();
 
-    // Possible animation states of the sprite
+    /** Animation states of the intro animation
+      */
     enum IntroState {IntroMoveIn, IntroCollapse, IntroExplode};
 
+    /** Start the animation.
+      */
     void start();
 
-      virtual void changeTheme();
+    /** Theme change method. The object has to completely redraw
+      */
+    virtual void changeTheme();
 
- protected:
-
-  public slots:  
 
   protected slots:  
-    void run();
+     /** Animation routine, called by a timer.
+       */
+     void advance();
 
-  signals:
-
-  protected:
 
   private:
+    // The theme manager
     ThemeManager* mTheme;
+    
+    // The graphics scene to write to
     QGraphicsScene* mScene;
+    
+    // The advance period of the scene [ms]
     int mAdvancePeriod;
+    
+    // List of all sprites used
     QList<QGraphicsItem*> mSprites;
+    
+    // The animation timer
     QTimer* mTimer;
+    
+    // The current state of the animation
     IntroState mIntroState;
 };
 

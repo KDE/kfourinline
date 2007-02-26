@@ -33,65 +33,85 @@
 // Local includes
 #include "scoresprite.h"
 
-// Constructor for the view
-ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
+// Constructor for the score sprite
+ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
+           :  Themable(id, theme), PixmapSprite(advancePeriod, no, scene)
 {
+	// Create all sub sprites
   for (int i=0; i<2; i++)
   {
-    mWon[i]   = new QGraphicsTextItem(this, canvas);
-    mDraw[i]  = new QGraphicsTextItem(this, canvas);
-    mLoss[i]  = new QGraphicsTextItem(this, canvas);
-    mBreak[i] = new QGraphicsTextItem(this, canvas);
-    mName[i]  = new QGraphicsTextItem(this, canvas);
-    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, advancePeriod, i, canvas);
+    mWon[i]   = new QGraphicsTextItem(this, scene);
+    mDraw[i]  = new QGraphicsTextItem(this, scene);
+    mLoss[i]  = new QGraphicsTextItem(this, scene);
+    mBreak[i] = new QGraphicsTextItem(this, scene);
+    mName[i]  = new QGraphicsTextItem(this, scene);
+    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, advancePeriod, i, scene);
     if (!mInput[i]) kFatal() << "Cannot load sprite " << "scoreinput"<<i << endl;
     mInput[i]->setParentItem(this);
     mInputFrame[i] = 0;
   }
 
+  // Default turn is nobody
   mTurn  = -1;
 
+  // Redraw us
   if (theme) theme->updateTheme(this);
 
 }
 
+
+// Destructor
 ScoreSprite::~ScoreSprite()
 {
+	// Clean up
+  for (int i=0; i<2; i++)
+  {
+    delete mWon[i];
+    delete mDraw[i];
+    delete mLoss[i];
+    delete mBreak[i];
+    delete mName[i];
+    delete mInput[i];
+  }
 }
 
+
+// Redraw the theme.
 void ScoreSprite::changeTheme()
 {
+	// Teh main display is handled by theparent
   PixmapSprite::changeTheme();
+  
+  // Retrieve our size
   double width  = this->boundingRect().width();
   double height = this->boundingRect().height();
 
-
   // Retrieve theme data
   KConfigGroup config = thememanager()->config(id());
-  QPointF posWon0 = config.readEntry("posWon0", QPointF(1.0,1.0));
-  QPointF posWon1 = config.readEntry("posWon1", QPointF(1.0,1.0));
-  QPointF posDraw0 = config.readEntry("posDraw0", QPointF(1.0,1.0));
-  QPointF posDraw1 = config.readEntry("posDraw1", QPointF(1.0,1.0));
-  QPointF posLoss0 = config.readEntry("posLoss0", QPointF(1.0,1.0));
-  QPointF posLoss1 = config.readEntry("posLoss1", QPointF(1.0,1.0));
-  QPointF posBreak0 = config.readEntry("posBreak0", QPointF(1.0,1.0));
-  QPointF posBreak1 = config.readEntry("posBreak1", QPointF(1.0,1.0));
-  QPointF posName0 = config.readEntry("posName0", QPointF(1.0,1.0));
-  QPointF posName1 = config.readEntry("posName1", QPointF(1.0,1.0));
-  QPointF posAI   = config.readEntry("posAI", QPointF(1.0,1.0));
+  QPointF posWon0     = config.readEntry("posWon0", QPointF(1.0,1.0));
+  QPointF posWon1     = config.readEntry("posWon1", QPointF(1.0,1.0));
+  QPointF posDraw0    = config.readEntry("posDraw0", QPointF(1.0,1.0));
+  QPointF posDraw1    = config.readEntry("posDraw1", QPointF(1.0,1.0));
+  QPointF posLoss0    = config.readEntry("posLoss0", QPointF(1.0,1.0));
+  QPointF posLoss1    = config.readEntry("posLoss1", QPointF(1.0,1.0));
+  QPointF posBreak0   = config.readEntry("posBreak0", QPointF(1.0,1.0));
+  QPointF posBreak1   = config.readEntry("posBreak1", QPointF(1.0,1.0));
+  QPointF posName0    = config.readEntry("posName0", QPointF(1.0,1.0));
+  QPointF posName1    = config.readEntry("posName1", QPointF(1.0,1.0));
+  QPointF posAI       = config.readEntry("posAI", QPointF(1.0,1.0));
 
+  // Calculate proper font size
   double fontHeight = config.readEntry("fontHeight", 1.0);
   fontHeight *= height;
   double fontWidth = config.readEntry("fontWidth", 1.0);
   fontWidth *= width;
+  
+  // Retrieve font color
   QColor fontColor[2];
   fontColor[0] = config.readEntry("fontColorPlayer0", Qt::white);
   fontColor[1] = config.readEntry("fontColorPlayer1", Qt::white);
-  kDebug() << "FONT Width="<<fontWidth<<" Height="<<fontHeight<<endl;
 
-
-  // Set position
+  // Set position of sub sprites
   mWon[0]->setPos(posWon0.x()*width, posWon0.y()*height);
   mWon[1]->setPos(posWon1.x()*width, posWon1.y()*height);
   mDraw[0]->setPos(posDraw0.x()*width, posDraw0.y()*height);
@@ -104,10 +124,11 @@ void ScoreSprite::changeTheme()
   mName[1]->setPos(posName1.x()*width, posName1.y()*height);
 
 
-  // Create and set font
+  // Create and set current font
   QFont font;
   font.setPixelSize(int(fontHeight));
 
+  // Set font and color for all text items
   for (int i=0; i<2; i++)
   {
     mWon[i]->setFont(font);   
@@ -128,68 +149,67 @@ void ScoreSprite::changeTheme()
     mBreak[i]->setTextWidth(fontWidth);
     mName[i]->setTextWidth(fontWidth);
 
+    // Restore the frame of the input device sprite
     if (mInputFrame[i]>=0) mInput[i]->setFrame(mInputFrame[i]);
   }
 
+  // Update next player
   if (mTurn>=0) setTurn(mTurn);
-  else setFrame(0);
-
 }
 
 
-// CanvasItem advance method 
+// QGI advance method 
 void ScoreSprite::advance(int phase)
 {
-  // Ignore phase 0 (collisions)
-  if (phase == 0)
-  {
-    PixmapSprite::advance(phase);
-    return ;
-  }
-
-
   // Advance time and animation etc
   PixmapSprite::advance(phase);
-
 }
 
 
-
-void ScoreSprite::setLevel(int i, int no)
+// Store and display the level of the AI
+void ScoreSprite::setLevel(int level, int no)
 {
-  if (i>=0)
+  if (level >= 0)
   {
-    mName[no]->setPlainText(i18nc("computer level","Level %1", i));
+    mName[no]->setPlainText(i18nc("computer level","Level %1", level));
     update();
   }
 }
 
 
-
+// Store and display the name of a player
 void ScoreSprite::setPlayerName(QString s,int no)
 {
   mName[no]->setPlainText(s);
   update();
 }
 
+
+// Store and display amount of wins
 void ScoreSprite::setWon(QString s,int no)
 {
   mWon[no]->setPlainText(s);
   update();
 }
 
+
+// Store and display amount of draws
 void ScoreSprite::setDraw(QString s,int no)
 {
   mDraw[no]->setPlainText(s);
   update();
 }
 
+
+// Store and display amount of losses
 void ScoreSprite::setLoss(QString s,int no)
 {
   mLoss[no]->setPlainText(s);
   update();
 }
 
+
+// Store and display amount of breaks
 void ScoreSprite::setBreak(QString s,int no)
 {
   mBreak[no]->setPlainText(s);
@@ -197,24 +217,32 @@ void ScoreSprite::setBreak(QString s,int no)
 }
 
 
-void ScoreSprite::setInput(int i, int no)
+
+// Store and display input device
+void ScoreSprite::setInput(int device, int no)
 {
-  mInputFrame[no] = i;
-  mInput[no]->setFrame(i);
+  mInputFrame[no] = device;
+  mInput[no]->setFrame(device);
   update();
 }
 
 
-void ScoreSprite::setTurn(int i)
+
+// Store and display current player. This is done by coloring the
+// name text sprite.
+void ScoreSprite::setTurn(int no)
 {
-  KConfigGroup config = thememanager()->config(id());
+	// Retrieve theme data
+  KConfigGroup config     = thememanager()->config(id());
   QColor fontColorActive  = config.readEntry("fontColorActive", Qt::white);
   QColor fontColor0       = config.readEntry("fontColorPlayer0", Qt::white);
   QColor fontColor1       = config.readEntry("fontColorPlayer1", Qt::white);
 
-  mTurn = i;
+  // Store data
+  mTurn = no;
 
-  if (i==0)
+  // Switch color
+  if (no==0)
   {
     mName[0]->setDefaultTextColor(fontColorActive);
     mName[1]->setDefaultTextColor(fontColor1);
