@@ -17,19 +17,17 @@
    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
    Boston, MA 02110-1301, USA.
 */
+
+// Standard includes
 #include <math.h>
 
 // Qt includes
-#include <QPoint>
-#include <QFont>
 #include <QTimer>
 #include <QColor>
 
 // KDE includes
 #include <klocale.h>
-#include <kmessagebox.h>
 #include <kdebug.h>
-#include <kstandarddirs.h>
 #include <kplayer.h>
 
 // Local includes
@@ -37,12 +35,14 @@
 #include "displayintro.h"
 #include "displaygame.h"
 
+
+// Aspect ratio for the Scene in the window. The game is always displayed with this ratio.
 #define VIEW_ASPECT_RATIO 1.6
 
-//Our subclassed QGraphicsView paintEvent, see header file
-void KWinGraphicsView::paintEvent ( QPaintEvent * event )
+// Our subclassed QGraphicsView paintEvent, see header file
+void KWinGraphicsView::paintEvent(QPaintEvent* event)
 {
-    QPaintEvent *newEvent=new QPaintEvent(event->region().boundingRect());
+    QPaintEvent* newEvent = new QPaintEvent(event->region().boundingRect());
     QGraphicsView::paintEvent(newEvent);
     delete newEvent;
 }
@@ -51,55 +51,56 @@ void KWinGraphicsView::paintEvent ( QPaintEvent * event )
 KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : KWinGraphicsView(scene, parent)
 {
+  // Store attributes    
+  mScene         = scene;
+  mTheme         = theme;
+  mAdvancePeriod = advancePeriod;
+
   // We do not need scrolling so switch it off
   setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setCacheMode(QGraphicsView::CacheBackground);
 
-    // Choose a background color
+  // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
-  mScene = scene;
-  mTheme = theme;
 
 
-
-  // Update/advance every 25ms
-  QTimer *timer = new QTimer(this);
+  // Update/advance view every 25ms
+  QTimer* timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
   timer->start(advancePeriod);
-  mAdvancePeriod = advancePeriod;
 
+  // Game status
   mIsRunning = false;
   
   // Set size and position of the view and the canvas:
   // they are reseized once a level is loaded
-  //setFixedSize(size);
   resize(size);
-
-  // Set size and position of the view and the canvas:
-  // they are reseized once a level is loaded
   scene->setSceneRect(0, 0, this->width(), this->height()); 
   adjustSize();
 
+  // Interact with user
   setInteractive(true);
+  
+  // Scale theme
   mTheme->rescale(this->width());
 
+  // Start with the intro display
   mGameDisplay  = 0;
   mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
   mIntroDisplay->start();
 }
 
+
+// Destruct the view object
 KWin4View::~KWin4View()
 {
-  //kDebug() << "~KWin4View"<<endl;
   if (mIntroDisplay) delete mIntroDisplay;
   if (mGameDisplay) delete mGameDisplay;
-  if (mTheme) delete mTheme;
-  //kDebug() << "~KWin4View done"<<endl;
 }
 
 
-// Advance and update canvas
+// Advance and update canvas/scene
 void KWin4View::updateAndAdvance()
 {
   scene()->advance();
@@ -107,65 +108,54 @@ void KWin4View::updateAndAdvance()
   // scene()->update();
 }
 
-// Stop intro and init game view
+
+// Stop intro display and init game display
 void KWin4View::initGame()
 {
-  kDebug() << "initGame" << endl;
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;
-  if (!mGameDisplay) mGameDisplay = new DisplayGame(mAdvancePeriod, mScene, mTheme, this);
+  if (!mGameDisplay)
+  {
+     mGameDisplay = new DisplayGame(mAdvancePeriod, mScene, mTheme, this);
+  }
   mGameDisplay->start();
 
   mIsRunning = true;
 }
 
 
-// Slot called by the framework when the window is
-// resized.
+// Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
   kDebug() << "++++ KWin4View::resizeEvent "<<e->size().width()<<" , "<< e->size().height() <<endl;
   // Adapt the canvas size to the window size
   if (scene())
   {
-    scene()->setSceneRect(0,0, e->size().width(), e->size().height());
+    scene()->setSceneRect(0, 0, e->size().width(), e->size().height());
   }
   QSizeF size = QSizeF(e->size());
 
-  // Rescale on minimum fitting aspect ratio not width
+  // Rescale on minimum fitting aspect ratio either width or height limiting
   double aspect = size.width() / size.height();
   if (aspect > VIEW_ASPECT_RATIO) mTheme->rescale(int(e->size().height()*VIEW_ASPECT_RATIO));
   else mTheme->rescale(int(e->size().width()));
 }
 
 
-// mouse click event
-void KWin4View::mousePressEvent(QMouseEvent *ev)
+
+
+// This slot is called when a mouse key is pressed. As the mouse is used as
+// input for all players. It is called to generate a player move out of a mouse input, i.e.
+// it converts a QMouseEvent into a move for the game. 
+void KWin4View::mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mouse, bool* eatevent)
 {
-//  emit mouseEvent(ev);
-//  if (ev->button() != Qt::LeftButton) return ;
-
-//  QPointF point = ev->pos();
-//  emit signalLeftMousePress(point.toPoint());
-}
-
-
-/**
- * This slot is called when a mouse key is pressed. As the mouse is used as
- * input for all players
- * this slot is called to generate a player move out of a mouse input, i.e.
- * it converts a QMouseEvent into a move for the game. We do here some
- * simple nonsense and use the position of the mouse to generate
- * moves containing the keycodes
- */
-void KWin4View::mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent)
-{
-  // Only react to key pressed not released
-  if (mouse->type() != QEvent::MouseButtonPress ) return;
+  // Only react to mouse pressed not released
+  if (mouse->type()   != QEvent::MouseButtonPress ) return;
+  if (mouse->button() != Qt::LeftButton) return ;
   if (!mIsRunning) return;
 
   // Our player
-  KPlayer *player=input->player();
+  KPlayer* player=input->player();
   if (!player->myTurn())
   {
     kDebug() <<" Kwin4View::TODO wrongPlayer " << endl;
@@ -173,34 +163,35 @@ void KWin4View::mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse
     return;
   }
 
-  if (mouse->button()!=Qt::LeftButton) return ;
-
+  // Calculate movement position from mouse position
   int x = -1;
   if (mGameDisplay) x = mGameDisplay->mapMouseToMove(mouse->pos());
   if (x<0) return;
 
-  // Create a move
-  qint32 move,pl;
-  move=x;
-  pl=player->userId();
+  // Create a game move (pl id and move coordinate)
+  qint32 move = x;
+  qint32 pl   = player->userId();
   stream << pl << move;
   *eatevent=true;
-  kDebug(12010) << "Mouse input "<<x<<" done..eatevent=true" << endl;
 }
 
-/**
- * This slot is called when a key event is received. It then prduces a
- * valid move for the game.
- **/
+
+// This slot is called when a key event is received. It then prduces a
+// valid move for the game.
 // This is analogous to the mouse event only it is called when a key is
-// pressed
-void KWin4View::keyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent)
+// pressed.
+void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bool* eatevent)
 {
   // Ignore non running
   if (!mIsRunning) return;
 
   // Ignore non key press
-  if (e->type() != QEvent::KeyPress) return ;
+  if (key->type() != QEvent::KeyPress) return ;
+
+  // Check key code
+  int code=key->key();
+  if (code< Qt::Key_1 || code> Qt::Key_7) return ;
+  
 
   // Our player
   KPlayer *player=input->player();
@@ -211,17 +202,9 @@ void KWin4View::keyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *e
     return;
   }
 
-  int code=e->key();
-  if (code< Qt::Key_1 || code> Qt::Key_7)
-  {
-    kDebug() << "Key not supported\n";
-    return ;
-  }
-
-  // Create a move
-  qint32 move,pl;
-  move=code-Qt::Key_1;
-  pl=player->userId();
+  // Create a valid game move (player id and movement position)
+  qint32 move = code-Qt::Key_1;
+  qint32 pl   = player->userId();
   stream << pl << move;
   *eatevent=true;
 }

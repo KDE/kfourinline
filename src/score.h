@@ -1,5 +1,5 @@
-#ifndef _SCORE_H
-#define _SCORE_H
+#ifndef SCORE_H
+#define SCORE_H
 /*
    This file is part of the KDE games kwin4 program
    Copyright (c) 2006 Martin Heni <kde@heni-online.de>
@@ -20,6 +20,7 @@
    Boston, MA 02110-1301, USA.
 */
 
+
 // Qt includes
 #include <QObject>
 
@@ -35,34 +36,96 @@ class Score : public QObject
     Q_OBJECT
 
 public:
+    /** Construct a score object.
+      * @param parent The parent object
+      */
     Score(QObject* parent = 0);
-    void setLevel(int i, int no) {mLevel[no] = i; update();}
-    void setChance(int i);
-    void setPlayerName(QString s,int no) {mName[no] = s;update();}
-    void setTurn(int i) {mTurn = i;update();}  
+    
+    /** Set and update the level of the AI.
+      * @param level  The new level
+      * @param no     The player number [0,1]
+      */ 
+    void setLevel(int level, int no) {mLevel[no] = level; update();}
+
+    /** Set and update the player name.
+      * @param name   The new name
+      * @param no     The player number [0,1]
+      */ 
+    void setPlayerName(QString name,int no) {mName[no] = name;update();}
+
+    /** Set and update whose turn it is (which player goes next).
+      * @param no     The player number [0,1]
+      */ 
+    void setTurn(int no) {mTurn = no;update();}  
+
+    /** Set and update the amount of wins of a player.
+      * @param amount The new amount
+      * @param no     The player number [0,1]
+      */ 
+    void setWins(int amount, int no) {mWin[no] = amount; update();}
+
+    /** Set and update the amount of losses of a player.
+      * @param amount The new amount
+      * @param no     The player number [0,1]
+      */ 
+    void setLosses(int amount, int no) {mLoss[no] = amount; update();}
+
+    /** Set and update the amount of draws of a player.
+      * @param amount The new amount
+      * @param no     The player number [0,1]
+      */ 
+    void setRemis(int amount, int no) {mRemis[no] = amount; update();}
+
+    /** Set and update the amount of aborted games of a player.
+      * @param amount The new amount
+      * @param no     The player number [0,1]
+      */ 
+    void setBreaks(int amount, int no) {mBrk[no] = amount; update();}
+
+    /** Set and update the input device of a player.
+      * @param amount The new input device [0-3], 2 is AI hardcoded
+      * @param no     The player number [0,1]
+      */ 
+    void setPlayedBy(int type, int no) {mInputDevice[no] = type; update();}
+
+    /** Connect the score to a display sprite. This sprite will 
+      * be used for the update of the data.
+      * @param s The display sprite
+      */
     void setDisplay(ScoreSprite* s);
-    void setWins(int i, int no) {mWin[no] = i; update();}
-    void setSum(int i, int no) {mSum[no] = i; update();}
-    void setLosses(int i, int no) {mLoss[no] = i; update();}
-    void setRemis(int i, int no) {mRemis[no] = i; update();}
-    void setBreaks(int i, int no) {mBrk[no] = i; update();}
-    void setPlayedBy(int i, int no) {mAI[no] = i; update();}
 
 protected:
+    /** Push all data into the display sprite.
+      */
     void update();
 
 private:
+    // The display sprite
     ScoreSprite* mDisplay;
 
+    // The name of the players
     QString mName[2];
+    
+    // The level of the AI(s)
     int mLevel[2];
+    
+    // Whose turn is it
     int mTurn;
+    
+    // The amount of wins
     int mWin[2];
+    
+    // The amount of draws
     int mRemis[2];
+    
+    // The amount of losses
     int mLoss[2];
+    
+    // The amount of aboerted games
     int mBrk[2];
-    int mSum[2];
-    int mAI[2];
+    
+    // The input device
+    int mInputDevice[2];
 };
 
 #endif 

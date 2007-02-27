@@ -245,7 +245,7 @@ void Kwin4Doc::EndGame(TABLE mode)
   // switch start player
 }
 
-void Kwin4Doc::moveDone(QGraphicsItem *item, int )
+void Kwin4Doc::moveDone(QGraphicsItem * /*item*/, int )
 {
   // kDebug() << "########################## SPRITE MOVE DONE ################# " << endl;
   //Debug();

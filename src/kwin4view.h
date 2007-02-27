@@ -22,14 +22,10 @@
 
 // Qt includes
 #include <QWidget>
-#include <QPixmap>
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QGraphicsSceneMouseEvent>
 #include <QSize>
 #include <QPoint>
-#include <QHash>
-#include <QList>
 #include <QResizeEvent>
 #include <QDataStream>
 #include <QMouseEvent>
@@ -44,22 +40,33 @@
 class DisplayIntro;
 class DisplayGame;
 
-//Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
-//Cuts cpu usage in half for this particular case, removing hiccups
-//This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
+
+/** Temporary view class for the KWin4 game.
+  * @TODO  Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
+  * @TODO  Cuts cpu usage in half for this particular case, removing hiccups
+  * @TODO  This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
+  */
 class KWinGraphicsView :public QGraphicsView
 {
  	Q_OBJECT
-public:
-	KWinGraphicsView(QGraphicsScene * scene, QWidget * parent) : QGraphicsView(scene, parent) { };
-protected:
-	void paintEvent ( QPaintEvent * event );
+ 	
+  public:
+    /** Create a view.
+      * @param scene  The graphics scene to use
+      * @param parent The parent widget
+      */
+	KWinGraphicsView(QGraphicsScene* scene, QWidget* parent) : QGraphicsView(scene, parent) { };
+	    
+  protected:
+    /** Paint function for the widget.
+      * @param event The paint event
+      */
+	void paintEvent(QPaintEvent* event);
 };
 
 
 /**
- * The view object which shows the graphics in a
- * canvas view.
+ * The view object which shows the graphics for the game.
  */
 class KWin4View : public KWinGraphicsView
 {
@@ -67,30 +74,27 @@ class KWin4View : public KWinGraphicsView
 
   public:
     /** Constructor for the canvas view.
-     *  @param size The canvas fixed size
+     *  @param size          The canvas size
      *  @param advancePeriod The canvas advance period
-     *  @param scene The graphics scene
-     *  @param theme The theme manager
-     *  @param parent The parent window
+     *  @param scene         The graphics scene
+     *  @param theme         The theme manager
+     *  @param parent        The parent window
      */
     KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
 
     /** Desstructor
-    */
+      */
     ~KWin4View();
 
-    /** Setup the game view.
+    /** Initial setup of the game view.
     */
     void initGame();
 
+    /** Retrieve the display engine for the game.
+      * @return The display.
+      */
     DisplayGame* display() {return mGameDisplay;} 
 
-
- protected:
-    /** React to mouse clicks
-     *  @param ev The mouse event
-     */
-    void mousePressEvent(QMouseEvent *event);
 
   public slots:  
     /** The update and advance for the canvas. 
@@ -98,28 +102,48 @@ class KWin4View : public KWinGraphicsView
      */
     void updateAndAdvance();
 
-    void mouseInput(KGameIO *input,QDataStream &stream,QMouseEvent *mouse,bool *eatevent);
-    void keyInput(KGameIO *input,QDataStream &stream,QKeyEvent *e,bool *eatevent);
+    /** Handle mouse inputs for the KGame framework.
+      * @param input     The IO device
+      * @param stream    The KGame message stream
+      * @param mouse     The mouse event
+      * @param eatevent  Set to true if the event was processed
+      */
+    void mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mouse, bool* eatevent);
 
-  protected slots:  
+    /** Handle key inputs for the KGame framework.
+      * @param input     The IO device
+      * @param stream    The KGame message stream
+      * @param key       The key event
+      * @param eatevent  Set to true if the event was processed
+      */
+    void keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bool* eatevent);
 
-  signals:
-   // void signalLeftMousePress(QPoint point);
 
   protected:
     /**
-     * Will be called by the Qt KWin4View when its contents
-     * are resized. We adapt the canvas then.
+     * Will be called when the widgets contents
+     * are resized. Resized and rescale game.
      * @param e The resize event
      */
     void resizeEvent(QResizeEvent* e);
 
   private:
+    // The theme manager 
     ThemeManager* mTheme;
+    
+    // The scene to plot to
     QGraphicsScene* mScene;
+    
+    // The advance period of the scene [ms]
     int mAdvancePeriod;
+    
+    // The intro display engine
     DisplayIntro* mIntroDisplay;
+    
+    // The game display engine
     DisplayGame* mGameDisplay;
+    
+    // Status of the game (running or not)
     bool mIsRunning;
 };
 

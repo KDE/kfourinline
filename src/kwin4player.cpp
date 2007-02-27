@@ -16,14 +16,18 @@
  ***************************************************************************/
 
 
-// include files for KDE
+// KDE includes
 #include <kdebug.h>
 #include <kgamepropertyhandler.h>
 
+// Local includes
 #include "kwin4player.h"
 
+
+// Construct a player object
 Kwin4Player::Kwin4Player() : KPlayer()
 {
+  // Register KGameProperties in KGame framework  
   int id;
   mStatus = 0;
   id=mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mWin"));
@@ -37,6 +41,7 @@ Kwin4Player::Kwin4Player() : KPlayer()
 
   dataHandler()->setPolicy(KGamePropertyBase::PolicyDirty,false);
 
+  // Clear all stats (they will be loaded from the config file later on)
   resetStats();
   connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
           this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
@@ -47,9 +52,9 @@ Kwin4Player::Kwin4Player() : KPlayer()
   mRemis.setValue(0);
 }
 
-#include <QLabel>
-#include <qlcdnumber.h>
 
+// A registered player property changed (KGame framework function). Store this property
+// in the score object for the GUI.
 void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
 {
   if (!mStatus) return ;
@@ -61,17 +66,14 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /
   else if (prop->id()==mAllWin.id())
   {
     mStatus->setWins(mAllWin, userId());
-    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
   else if (prop->id()==mAllRemis.id())
   {
     mStatus->setRemis(mAllRemis, userId());
-    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
   else if (prop->id()==mAllLost.id())
   {
     mStatus->setLosses(mAllLost, userId());
-    mStatus->setSum(mAllWin+mAllRemis+mAllLost, userId());
   }
   else if (prop->id()==mAllBrk.id())
   {
@@ -79,6 +81,8 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /
   }
 }
 
+
+// Read the player all time score from the config file
 void Kwin4Player::readConfig(KConfigGroup& config)
 {
   mAllWin.setValue(config.readEntry("win",0));
@@ -87,6 +91,8 @@ void Kwin4Player::readConfig(KConfigGroup& config)
   mAllBrk.setValue(config.readEntry("brk",0));
 }
 
+
+// Write the player all time score to the config file
 void Kwin4Player::writeConfig(KConfigGroup& config)
 {
   config.writeEntry("win",mAllWin.value());
@@ -95,30 +101,42 @@ void Kwin4Player::writeConfig(KConfigGroup& config)
   config.writeEntry("brk",mAllBrk.value());
 }
 
+
+// Increase the number of wins
 void Kwin4Player::incWin()
 {
   mWin.setValue(mWin.value()+1);
   mAllWin.setValue(mAllWin.value()+1);
 }
 
+
+// Increase the number of losses
 void Kwin4Player::incLost()
 {
   mLost.setValue(mLost.value()+1);
   mAllLost.setValue(mAllLost.value()+1);
 }
 
+
+// Increase the number of draws
 void Kwin4Player::incRemis()
 {
   mRemis.setValue(mRemis.value()+1);
   mAllRemis.setValue(mAllRemis.value()+1);
 }
 
+
+// Increase the number of aborted games
 void Kwin4Player::incBrk()
 {
   mBrk.setValue(mBrk.value()+1);
   mAllBrk.setValue(mAllBrk.value()+1);
 }
 
+
+// Clear player status: For the argument true the long time
+// statistics in the config file is cleared as well. For the
+// argument false only the current session is cleared.
 void Kwin4Player::resetStats(bool all)
 {
   mWin=0;

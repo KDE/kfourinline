@@ -24,7 +24,7 @@
 
 #include "kwin4.h"
 
-#define KWIN4_VERSION "v1.10"
+#define KWIN4_VERSION "v1.40"
 
 static KCmdLineOptions options[] =
 {
@@ -33,11 +33,15 @@ static KCmdLineOptions options[] =
   KCmdLineLastOption
 };
 
+
+// DEbug level for the program
 int global_debug;
 
+
+// Main function
 int main(int argc, char *argv[])
 {
-  global_debug=0;
+  global_debug = 0;
   KAboutData aboutData( "kwin4", I18N_NOOP("KWin4"),
                         KWIN4_VERSION,
                         I18N_NOOP("KWin4: Two player board game"),
@@ -52,15 +56,18 @@ int main(int argc, char *argv[])
   /* command line handling */
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
+  // Check for debug command line option
   if (args->isSet("debug"))
   {
     global_debug=QString(args->getOption("debug")).toInt();
     kDebug(12010) << "Debug level set to " << global_debug << endl;
   }
   
-  KApplication application(/*argc, argv*/true);
+  // Start application
+  KApplication application(true);
   KGlobal::locale()->insertCatalog("libkdegames");
 
+  // Start session
   if (application.isSessionRestored())
   {
     RESTORE(Kwin4App);

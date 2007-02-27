@@ -26,6 +26,7 @@
 #include "scoresprite.h"
 
 
+// Construct a score object
 Score::Score(QObject* parent)
      : QObject(parent)
 {
@@ -51,14 +52,14 @@ void Score::update()
   for (int i=0; i<2; i++)
   {
     mDisplay->setPlayerName(mName[i], i);
-    // Call after set name
-    if (mAI[i] == 2) mDisplay->setLevel(mLevel[i], i);
+    // Call this only after set name
+    if (mInputDevice[i] == 2) mDisplay->setLevel(mLevel[i], i);
     else  mDisplay->setLevel(-1, i);
     mDisplay->setWon(QString("%1").arg(mWin[i]), i);
     mDisplay->setDraw(QString("%1").arg(mRemis[i]), i);
     mDisplay->setLoss(QString("%1").arg(mLoss[i]), i);
     mDisplay->setBreak(QString("%1").arg(mBrk[i]), i);
-    mDisplay->setInput(mAI[i], i);
+    mDisplay->setInput(mInputDevice[i], i);
   }
 }
 
