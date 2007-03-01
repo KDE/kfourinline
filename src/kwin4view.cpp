@@ -23,6 +23,7 @@
 
 // Qt includes
 #include <QTimer>
+#include <QTimer>
 #include <QColor>
 
 // KDE includes
@@ -34,6 +35,7 @@
 #include "kwin4view.h"
 #include "displayintro.h"
 #include "displaygame.h"
+#include "spritenotify.h"
 
 
 // Aspect ratio for the Scene in the window. The game is always displayed with this ratio.
@@ -124,6 +126,14 @@ void KWin4View::initGame()
 }
 
 
+// End the game
+void  KWin4View::endGame()
+{
+  mIsRunning = false;
+  mGameDisplay->displayEnd();
+}
+
+
 // Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
@@ -207,6 +217,37 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
   qint32 pl   = player->userId();
   stream << pl << move;
   *eatevent=true;
+}
+
+
+
+// Displays a move on the game board. 
+void KWin4View::displayMove(int x, int y, int color, int no, bool animation)
+{
+  mGameDisplay->displayArrow(x, color);
+  // animation onyl if no redo
+  SpriteNotify* notify = mGameDisplay->displayPiece(x, y, color, no, animation);
+  if (notify && animation)
+  {
+    QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
+                        this,SLOT(moveDone(QGraphicsItem*,int)));
+    connect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
+            this,SLOT(moveDone(QGraphicsItem*,int)));
+  }
+  mGameDisplay->displayHint(0,0,false);
+}
+
+
+// Display a star of the given sprite number
+void KWin4View::displayStar(int x, int y, int no)
+{
+  mGameDisplay->displayStar(x, y, no);
+}
+
+// Slot called when a sprite animation move is done.
+void KWin4View::moveDone(QGraphicsItem* item, int mode)
+{
+  emit signalMoveDone(mode);
 }
 
 #include "kwin4view.moc"

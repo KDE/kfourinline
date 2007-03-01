@@ -87,14 +87,43 @@ class KWin4View : public KWinGraphicsView
     ~KWin4View();
 
     /** Initial setup of the game view.
-    */
+      */
     void initGame();
 
+    /** Finalize (end) game.
+      */
+    void endGame();  
+
+    /** Displays a move on the game board. This means a piece of
+      * the given number is moved to the given position, the move
+      * indicator arrow is switched on and any hints are disabed.
+      * The move can be performed animated or not.
+      * @param x          The x position on the game board [0-6]
+      * @param y          The y position on the game board [0-5]
+      * @param color      The color [Rot,Gelb,Niemand]
+      * @param no         The sprite number / move number
+      * @param animation  True to make an animated move
+      */
+    void displayMove(int x, int y, int color, int no, bool animation);
+
+    /** Displays a star on the game board to indicate victorious pieces.
+      * @param x          The x position on the game board [0-6]
+      * @param y          The y position on the game board [0-5]
+      * @param no         The sprite number / move number
+      */
+    void displayStar(int x, int y, int no);
+
     /** Retrieve the display engine for the game.
+      * @DEPRECATED
       * @return The display.
       */
     DisplayGame* display() {return mGameDisplay;} 
 
+  signals:
+    /** Emit this signal if a sprite animation move is finished.
+      * @param mode  A user defined parameter.
+      */
+    void signalMoveDone(int mode);
 
   public slots:  
     /** The update and advance for the canvas. 
@@ -118,6 +147,11 @@ class KWin4View : public KWinGraphicsView
       */
     void keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bool* eatevent);
 
+     /** Animation of a sprite is finised.
+       * @param item   The item
+       * @param mode   A user defined mode
+       */
+     void moveDone(QGraphicsItem* item, int mode);
 
   protected:
     /**

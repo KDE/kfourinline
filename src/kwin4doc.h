@@ -142,7 +142,7 @@ public slots:
   
   void slotPropertyChanged(KGamePropertyBase *,KGame *);
   void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
-  void moveDone(QGraphicsItem *,int);
+  void moveDone(int);
   void slotMessageUpdate(int,quint32,quint32);
   void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
   void slotClientConnected(quint32,KGame *);
