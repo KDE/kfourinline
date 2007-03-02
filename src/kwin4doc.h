@@ -23,6 +23,7 @@
 #include <kgamepropertyarray.h>
 #include <kconfig.h>
 
+#include "kwin4global.h"
 #include "kwin4player.h"
 //Added by qt3to4:
 #include <QList>
@@ -31,31 +32,17 @@ class KWin4View;
 class QGraphicsItem;
 class Score;
 
-extern int global_debug;
-
-// The user or color?
-typedef enum e_Farbe {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
-// The type of player
-typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
-typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
-typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
-
-#define NOOFPLAYER 2
-
-#define FIELD_SIZE_X 7
-#define FIELD_SIZE_Y 6
-#define FIELD_SPACING 40
 
 /**
  * The board "engine"
  */
-class Kwin4Doc : public KGame
+class KWin4Doc : public KGame
 {
 Q_OBJECT
 
 public:
-  Kwin4Doc(QWidget *parent, const char *name=0);
-  ~Kwin4Doc();
+  KWin4Doc(QWidget *parent, const char *name=0);
+  ~KWin4Doc();
 
   /** adds a view to the document which represents the document contents. Usually this is your main view. */
   void setView(KWin4View *view);
@@ -86,7 +73,7 @@ public:
   */
   void createIO(KPlayer *player,KGameIO::IOMode io);
 
-  Kwin4Player *getPlayer(FARBE col);
+  KWin4Player *getPlayer(FARBE col);
   
   bool RedoMove();
   bool UndoMove();
@@ -160,7 +147,7 @@ signals:
   /**
   * Emmitted if the chat origin changes
   */
-  void signalChatChanged(Kwin4Player *);
+  void signalChatChanged(KWin4Player *);
   /**
   * emmitted after a sprite move ends
   **/
@@ -179,7 +166,7 @@ private:
 
   KGamePropertyInt mHistoryCnt;
   KGamePropertyArray<int> mField; // 42 pieces
-  Kwin4Player *yellowPlayer;
+  KWin4Player *yellowPlayer;
   KGamePropertyInt mStartPlayer;  // Player started game
   KGamePropertyInt mAmzug;        // Player's to move
   KGamePropertyInt mMaxMove;      // maximal move made in a game before undo

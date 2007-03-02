@@ -36,6 +36,7 @@
 #include "displayintro.h"
 #include "displaygame.h"
 #include "spritenotify.h"
+#include "score.h"
 
 
 // Aspect ratio for the Scene in the window. The game is always displayed with this ratio.
@@ -112,7 +113,7 @@ void KWin4View::updateAndAdvance()
 
 
 // Stop intro display and init game display
-void KWin4View::initGame()
+void KWin4View::initGame(Score* scoreData)
 {
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;
@@ -121,6 +122,9 @@ void KWin4View::initGame()
      mGameDisplay = new DisplayGame(mAdvancePeriod, mScene, mTheme, this);
   }
   mGameDisplay->start();
+
+  // Connect score and score sprite
+  scoreData->setDisplay(mGameDisplay->score());
 
   mIsRunning = true;
 }
@@ -222,9 +226,9 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
 
 
 // Displays a move on the game board. 
-void KWin4View::displayMove(int x, int y, int color, int no, bool animation)
+void KWin4View::displayMove(int x, int y, int color, int xarrow, int colorarrow, int no, bool animation)
 {
-  mGameDisplay->displayArrow(x, color);
+  mGameDisplay->displayArrow(xarrow, colorarrow);
   // animation onyl if no redo
   SpriteNotify* notify = mGameDisplay->displayPiece(x, y, color, no, animation);
   if (notify && animation)
@@ -242,6 +246,12 @@ void KWin4View::displayMove(int x, int y, int color, int no, bool animation)
 void KWin4View::displayStar(int x, int y, int no)
 {
   mGameDisplay->displayStar(x, y, no);
+}
+
+// Display a hint on the board
+void KWin4View::displayHint(int x, int y)
+{
+  mGameDisplay->displayHint(x, y, true);
 }
 
 // Slot called when a sprite animation move is done.

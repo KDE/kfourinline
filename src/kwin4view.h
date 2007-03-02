@@ -39,6 +39,7 @@
 // Forward declaration
 class DisplayIntro;
 class DisplayGame;
+class Score;
 
 
 /** Temporary view class for the KWin4 game.
@@ -88,7 +89,7 @@ class KWin4View : public KWinGraphicsView
 
     /** Initial setup of the game view.
       */
-    void initGame();
+    void initGame(Score *scoreData);
 
     /** Finalize (end) game.
       */
@@ -101,10 +102,12 @@ class KWin4View : public KWinGraphicsView
       * @param x          The x position on the game board [0-6]
       * @param y          The y position on the game board [0-5]
       * @param color      The color [Rot,Gelb,Niemand]
+      * @param xarrow     The x position of the arrow [0-6]
+      * @param colorarrow The color or the arrow [Rot,Gelb,Niemand]
       * @param no         The sprite number / move number
       * @param animation  True to make an animated move
       */
-    void displayMove(int x, int y, int color, int no, bool animation);
+    void displayMove(int x, int y, int color, int xarrow, int colorarrow, int no, bool animation);
 
     /** Displays a star on the game board to indicate victorious pieces.
       * @param x          The x position on the game board [0-6]
@@ -113,11 +116,11 @@ class KWin4View : public KWinGraphicsView
       */
     void displayStar(int x, int y, int no);
 
-    /** Retrieve the display engine for the game.
-      * @DEPRECATED
-      * @return The display.
+    /** Displays a hint on the game board to indicate a good move.
+      * @param x          The x position on the game board [0-6]
+      * @param y          The y position on the game board [0-5]
       */
-    DisplayGame* display() {return mGameDisplay;} 
+    void displayHint(int x, int y);
 
   signals:
     /** Emit this signal if a sprite animation move is finished.

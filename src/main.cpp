@@ -70,11 +70,11 @@ int main(int argc, char *argv[])
   // Start session
   if (application.isSessionRestored())
   {
-    RESTORE(Kwin4App);
+    RESTORE(KWin4App);
   }
   else
   {
-    Kwin4App *kwin4 = new Kwin4App();
+    KWin4App *kwin4 = new KWin4App();
     kwin4->show();
   }
 

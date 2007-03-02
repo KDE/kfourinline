@@ -1,5 +1,5 @@
 /***************************************************************************
-                          Kwin4Player  
+                          KWin4Player  
                           -------------------
     begin                : August 2001
     copyright            : (C) 1995-2007 by Martin Heni
@@ -32,14 +32,14 @@
   * via the KGame framework it supports various methods of input like mouse,
   * keyboard, AI or even network.
   */
-class Kwin4Player : public KPlayer
+class KWin4Player : public KPlayer
 {
   Q_OBJECT
 	  
   public:
     /** Construct a player object,.
       */
-    Kwin4Player();
+    KWin4Player();
     
     /** Runtime identification for the player type (KGame). Only one player
       * _type_ for kwin4.

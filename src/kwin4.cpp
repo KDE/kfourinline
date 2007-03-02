@@ -38,7 +38,6 @@
 #include <kicon.h>
 #include <kstandarddirs.h>
 
-#include <kchatdialog.h>
 #include <kgamechat.h>
 #include <dialogs/kgamedialog.h>
 #include <dialogs/kgamedialogconfig.h>
@@ -49,8 +48,9 @@
 
 // application specific includes
 #include "kwin4.h"
-#include "kwin4view.h"
+#include "chatdlg.h"
 #include "kwin4doc.h"
+#include "kwin4view.h"
 #include "prefs.h"
 #include "ui_settings.h"
 #include "ui_statistics.h"
@@ -59,64 +59,12 @@
 #define ID_STATUS_MSG                1003
 #define ID_STATUS_MOVER              1002
 
-/**
- * Constructor for the chat widget. This widget
- * is derived from the libkdegames chat widget
- */
-ChatDlg::ChatDlg(KGame *game,QWidget *parent)
-    : KDialog(parent),mChat(0), mChatDlg(0)
-{
- setCaption(i18n("Chat Dlg"));
- setButtons(Ok);
- setDefaultButton(Ok);
- showButtonSeparator(true);
- setModal(false);
- setMinimumSize(QSize(200,200));
-
- QFrame *frame=new QFrame(this);
- QGridLayout* mGridLayout=new QGridLayout(frame);
- QGroupBox* b = new QGroupBox(i18n("Chat"), frame);
- QVBoxLayout* gboxLay = new QVBoxLayout(b);
- mChat = new KGameChat(game, 10000, b);
- gboxLay->addWidget(mChat);
- mGridLayout->addWidget(b,0,0);
-
- QPushButton *mButton=new QPushButton(i18n("Configure..."),frame);
- mGridLayout->addWidget(mButton,1,1);
-
- setMainWidget(frame);
-
- adjustSize();
-
- mChatDlg=new KChatDialog(mChat,frame,true);
- connect(mButton,SIGNAL(clicked()),mChatDlg,SLOT(show()));
-}
-
-/**
- * Set the player in who does the chat. This should be
- * the local player.
- */
-void ChatDlg::setPlayer(Kwin4Player *p)
-{
-  if (!mChat)
-  {
-    kError() << "ChatDlg::setPlayer::Chat not defined can't set player" << endl;
-    return ;
-  }
-  if (!p)
-  {
-    kError() << "ChatDlg::setPlayer::Player not defined can't set player" << endl;
-    return ;
-  }
-  mChat->setFromPlayer(p);
-}
-
 #include "config-src.h"
 
 /**
  * Construct the main application window
  */
-Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mChat(0), mMyChatDlg(0)
+KWin4App::KWin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
 {
   #ifdef SRC_DIR
   kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
@@ -147,11 +95,14 @@ Kwin4App::Kwin4App(QWidget *parent) : KMainWindow(parent), mView(0), mDoc(0), mC
   checkMenus();
 }
 
-Kwin4App::~Kwin4App()
+KWin4App::~KWin4App()
 {
-  kDebug() << "~Kwin4App()" << endl;
+  kDebug() << "~KWin4App()" << endl;
   if (mDoc) delete mDoc;
   if (mView) delete mView;
+  if (mScene) delete mScene;
+  if (mTheme) delete mTheme;
+  if (mMyChatDlg) delete mMyChatDlg;
 
 }
 
@@ -162,7 +113,7 @@ Kwin4App::~Kwin4App()
  * The menu parameter can limit this operation
  * to one or more of the main menus (File,View,...)
  */
-void Kwin4App::checkMenus(CheckFlags menu)
+void KWin4App::checkMenus(CheckFlags menu)
 {
   bool localgame=(!mDoc->isNetwork());
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
@@ -213,7 +164,7 @@ void Kwin4App::checkMenus(CheckFlags menu)
  * Function to create the actions for the menu. This
  * works together with the xml guirc file
  */
-void Kwin4App::initGUI()
+void KWin4App::initGUI()
 {
   QAction *action;
 
@@ -285,7 +236,7 @@ void Kwin4App::initGUI()
   connect( action, SIGNAL(triggered(const QString&)), SLOT(themeChanged(const QString&)) );
 }
 
-void Kwin4App::themeChanged(const QString& name)
+void KWin4App::themeChanged(const QString& name)
 {
   QString theme = name;
   theme.replace("&","");
@@ -297,7 +248,7 @@ void Kwin4App::themeChanged(const QString& name)
 /**
  * Set the status message to Ready
  */
-void Kwin4App::slotClearStatusText()
+void KWin4App::slotClearStatusText()
 {
   slotStatusMsg(i18n("Ready"));
 }
@@ -306,7 +257,7 @@ void Kwin4App::slotClearStatusText()
  * Create the status bar with the message part, the
  * player part
  */
-void Kwin4App::initStatusBar()
+void KWin4App::initStatusBar()
 {
   statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
   statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
@@ -319,9 +270,9 @@ void Kwin4App::initStatusBar()
  * Set up the document, i.e. the KGame object
  * and connect all signals emitted by it
  */
-void Kwin4App::initDocument()
+void KWin4App::initDocument()
 {
-  mDoc = new Kwin4Doc(this);
+  mDoc = new KWin4Doc(this);
   // Game Over signal
   connect(mDoc,SIGNAL(signalGameOver(int, KPlayer *,KGame *)),
          this,SLOT(slotGameOver(int, KPlayer *,KGame *)));
@@ -336,7 +287,7 @@ void Kwin4App::initDocument()
          this,SLOT(slotNewGame()));
 }
 
-void Kwin4App::changeAction(const char *action, bool enable){
+void KWin4App::changeAction(const char *action, bool enable){
   if (!action)
     return;
 
@@ -348,7 +299,7 @@ void Kwin4App::changeAction(const char *action, bool enable){
 /**
  * Store the current game
  */
-void Kwin4App::saveProperties(KConfigGroup &cfg)
+void KWin4App::saveProperties(KConfigGroup &cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   mDoc->save(filename);
@@ -357,7 +308,7 @@ void Kwin4App::saveProperties(KConfigGroup &cfg)
 /**
  * Load game back
  */
-void Kwin4App::readProperties(const KConfigGroup & cfg)
+void KWin4App::readProperties(const KConfigGroup & cfg)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   if(QFile::exists(filename))
@@ -367,7 +318,7 @@ void Kwin4App::readProperties(const KConfigGroup & cfg)
 /**
  * Load a game
  */
-void Kwin4App::slotOpenGame()
+void KWin4App::slotOpenGame()
 {
   QString dir(":<kwin4>");
   QString filter("*");
@@ -381,7 +332,7 @@ void Kwin4App::slotOpenGame()
 /**
  * Save game
  */
-void Kwin4App::slotSaveGame()
+void KWin4App::slotSaveGame()
 {
   QString dir(":<kwin4>");
   QString filter("*");
@@ -394,20 +345,20 @@ void Kwin4App::slotSaveGame()
 /**
  * Start a new game
  */
-void Kwin4App::newGame()
+void KWin4App::newGame()
 {
   // End the intro if it is running
-  mDoc->setGameStatus(Kwin4Doc::End);
+  mDoc->setGameStatus(KWin4Doc::End);
   // Init the board and Clear the old game out
-  mDoc->setGameStatus(Kwin4Doc::Init);
+  mDoc->setGameStatus(KWin4Doc::Init);
   // Run it
-  mDoc->setGameStatus(Kwin4Doc::Run);
+  mDoc->setGameStatus(KWin4Doc::Run);
 }
 
 /**
  * Slot: Noticed that a new game started...update menus
  */
-void Kwin4App::slotNewGame()
+void KWin4App::slotNewGame()
 {
   slotStatusNames();
   //checkMenus(CheckFileMenu|CheckEditMenu);
@@ -417,12 +368,12 @@ void Kwin4App::slotNewGame()
 /**
  * Abort a running game
  */
-void Kwin4App::endGame()
+void KWin4App::endGame()
 {
-  mDoc->setGameStatus(Kwin4Doc::Abort);
+  mDoc->setGameStatus(KWin4Doc::Abort);
 }
 
-void Kwin4App::calcHint()
+void KWin4App::calcHint()
 {
   kDebug() << "CALC HINT " << endl;
   if (mDoc) mDoc->calcHint();
@@ -431,7 +382,7 @@ void Kwin4App::calcHint()
 /**
  * Show statistics dialog
  */
-void Kwin4App::showStatistics()
+void KWin4App::showStatistics()
 {
   QDialog dlg(this);
   Ui::Statistics ui;
@@ -458,7 +409,7 @@ void Kwin4App::showStatistics()
 /**
  * Undo menu call
  */
-void Kwin4App::slotUndo()
+void KWin4App::slotUndo()
 {
   mDoc->UndoMove();
   // Undo twice if computer is moving then
@@ -473,7 +424,7 @@ void Kwin4App::slotUndo()
 /**
  * Redo menu call
  */
-void Kwin4App::slotRedo()
+void KWin4App::slotRedo()
 {
   mDoc->RedoMove();
   if (mDoc->playedBy(mDoc->QueryCurrentPlayer())==KGameIO::ProcessIO)
@@ -486,7 +437,7 @@ void Kwin4App::slotRedo()
  * Set the given text into the statusbar
  * change status message permanently
  */
-void Kwin4App::slotStatusMsg(const QString &text)
+void KWin4App::slotStatusMsg(const QString &text)
 {
   statusBar()->clearMessage();
   statusBar()->changeItem(text, ID_STATUS_MSG);
@@ -497,7 +448,7 @@ void Kwin4App::slotStatusMsg(const QString &text)
  * the player currently moving
  * change status mover permanently
  */
-void Kwin4App::slotStatusMover(const QString &text)
+void KWin4App::slotStatusMover(const QString &text)
 {
   statusBar()->clearMessage();
   statusBar()->changeItem(text, ID_STATUS_MOVER);
@@ -507,7 +458,7 @@ void Kwin4App::slotStatusMover(const QString &text)
  * Ends the current game
  * Called by the gameover signal
  */
-void Kwin4App::EndGame(TABLE mode)
+void KWin4App::EndGame(TABLE mode)
 {
   mDoc->EndGame(mode);
   mDoc->SwitchStartPlayer();
@@ -518,7 +469,7 @@ void Kwin4App::EndGame(TABLE mode)
 /**
  * Set the names in the mover field
  */
-void Kwin4App::slotStatusNames(){
+void KWin4App::slotStatusNames(){
   QString msg;
   if (!(mDoc->gameStatus()==KGame::Run))
     msg=i18n("No game  ");
@@ -534,9 +485,9 @@ void Kwin4App::slotStatusNames(){
 /**
  * The network connection is lost
  */
-void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
+void KWin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
-  kDebug(12010) <<  "Kwin4App::slotNetworkBroken" << endl;
+  kDebug(12010) <<  "KWin4App::slotNetworkBroken" << endl;
   if (mDoc->playedBy(Gelb)==0)
     mDoc->setPlayedBy(Gelb,KGameIO::MouseIO);
   if (mDoc->playedBy(Rot)==0)
@@ -553,7 +504,7 @@ void Kwin4App::slotNetworkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 /**
  * A move is done. update status
  */
-void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
+void KWin4App::slotMoveDone(int /* x */ ,int /* y */ )
 {
   checkMenus(CheckEditMenu);
   slotStatusNames();
@@ -563,7 +514,7 @@ void Kwin4App::slotMoveDone(int /* x */ ,int /* y */ )
 /**
  * The game is over or aborted
  */
-void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
+void KWin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
 {
   if (status==-1) // remis
   {
@@ -592,9 +543,9 @@ void Kwin4App::slotGameOver(int status, KPlayer * p, KGame * /*me*/)
   checkMenus(CheckEditMenu);
 }
 
-void Kwin4App::slotInitNetwork()
+void KWin4App::slotInitNetwork()
 {
-  if (mDoc->gameStatus()==Kwin4Doc::Intro) mDoc->setGameStatus(Kwin4Doc::Pause);
+  if (mDoc->gameStatus()==KWin4Doc::Intro) mDoc->setGameStatus(KWin4Doc::Pause);
 
   QString host = Prefs::host();
   int port=Prefs::port();
@@ -625,7 +576,7 @@ void Kwin4App::slotInitNetwork()
  * Arg can't get rid of this function in KGame's current state.
  * Can't pass a int signal to a bool slot, so this must be here
  */
-void Kwin4App::slotServerTypeChanged(int t)
+void KWin4App::slotServerTypeChanged(int t)
 {
   mColorGroup->setDisabled(t);
 }
@@ -633,7 +584,7 @@ void Kwin4App::slotServerTypeChanged(int t)
 /**
  * The remove player changed
  */
-void Kwin4App::slotRemoteChanged(int button)
+void KWin4App::slotRemoteChanged(int button)
 {
   if (button==0)
   {
@@ -647,18 +598,18 @@ void Kwin4App::slotRemoteChanged(int button)
   }
 }
 
-void Kwin4App::slotChat()
+void KWin4App::slotChat()
 {
   if (!mMyChatDlg)
   {
     mMyChatDlg=new ChatDlg(mDoc,this);
-    Kwin4Player *p=mDoc->getPlayer(Gelb);
+    KWin4Player *p=mDoc->getPlayer(Gelb);
     if (!p->isVirtual())
       mMyChatDlg->setPlayer(mDoc->getPlayer(Gelb));
     else
       mMyChatDlg->setPlayer(mDoc->getPlayer(Rot));
-    connect(mDoc,SIGNAL(signalChatChanged(Kwin4Player *)),
-            mMyChatDlg,SLOT(setPlayer(Kwin4Player *)));
+    connect(mDoc,SIGNAL(signalChatChanged(KWin4Player *)),
+            mMyChatDlg,SLOT(setPlayer(KWin4Player *)));
   }
 
   if (mMyChatDlg->isHidden())
@@ -670,7 +621,7 @@ void Kwin4App::slotChat()
 /**
  * Show the KGame debug window
  */
-void Kwin4App::slotDebugKGame()
+void KWin4App::slotDebugKGame()
 {
   KGameDebugDialog* debugWindow = new KGameDebugDialog(mDoc, this);
   debugWindow->show();
@@ -679,7 +630,7 @@ void Kwin4App::slotDebugKGame()
 /**
  * Show Configure dialog.
  */
-void Kwin4App::showSettings()
+void KWin4App::showSettings()
 {
   if(KConfigDialog::showDialog("settings"))
   {

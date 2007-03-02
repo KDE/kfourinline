@@ -21,48 +21,29 @@
 #include <QGraphicsScene>
  
 #include <kmainwindow.h>
-#include <kdialog.h>
-#include "kwin4doc.h"
+#include "kwin4global.h"
 #include "thememanager.h"
 #include <kdemacros.h>
 class Kwin4Player;
-class KGameChat;
-class KChatDialog;
-class Kwin4Doc;
+class KWin4Doc;
 class KWin4View;
 class KButtonGroup;
 class KPlayer;
-
-/**
- * Subclass of the chat dialog provided by the KGame lib.
- * It supports a user defined chat and the setting of the
- * owner player
- **/
-class KDE_EXPORT ChatDlg : public KDialog
-{
-  Q_OBJECT
-public:
-  ChatDlg(KGame *game,QWidget* parent=0);
-
-public slots:  
-  void setPlayer(Kwin4Player *p);
-  
-private:  
-  KGameChat *mChat;
-  KChatDialog *mChatDlg;
-};
+class KGameChat;
+class ChatDlg;
+class KGame;
 
 /**
  * The base class for Kwin4 application window.
  */
-class Kwin4App : public KMainWindow
+class KWin4App : public KMainWindow
 {
 
 Q_OBJECT
 
 public:
-  Kwin4App(QWidget *parent=0);
-  ~Kwin4App();
+  KWin4App(QWidget *parent=0);
+  ~KWin4App();
 
 protected:
   void EndGame(TABLE mode);
@@ -117,12 +98,11 @@ public slots:
 private:
   ThemeManager* mTheme;
   KWin4View *mView;
-  Kwin4Doc *mDoc;
+  KWin4Doc *mDoc;
   QGraphicsScene* mScene;
   QString mThemeDirName;
 
   KButtonGroup *mColorGroup;
-  KGameChat *mChat;
   ChatDlg *mMyChatDlg;  
 
 protected slots:

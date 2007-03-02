@@ -25,7 +25,7 @@
 
 
 // Construct a player object
-Kwin4Player::Kwin4Player() : KPlayer()
+KWin4Player::KWin4Player() : KPlayer()
 {
   // Register KGameProperties in KGame framework  
   int id;
@@ -55,7 +55,7 @@ Kwin4Player::Kwin4Player() : KPlayer()
 
 // A registered player property changed (KGame framework function). Store this property
 // in the score object for the GUI.
-void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
+void KWin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /*player*/)
 {
   if (!mStatus) return ;
   if (!isActive()) return ;
@@ -83,7 +83,7 @@ void Kwin4Player::slotPlayerPropertyChanged(KGamePropertyBase *prop, KPlayer * /
 
 
 // Read the player all time score from the config file
-void Kwin4Player::readConfig(KConfigGroup& config)
+void KWin4Player::readConfig(KConfigGroup& config)
 {
   mAllWin.setValue(config.readEntry("win",0));
   mAllRemis.setValue(config.readEntry("remis",0));
@@ -93,7 +93,7 @@ void Kwin4Player::readConfig(KConfigGroup& config)
 
 
 // Write the player all time score to the config file
-void Kwin4Player::writeConfig(KConfigGroup& config)
+void KWin4Player::writeConfig(KConfigGroup& config)
 {
   config.writeEntry("win",mAllWin.value());
   config.writeEntry("remis",mAllRemis.value());
@@ -103,7 +103,7 @@ void Kwin4Player::writeConfig(KConfigGroup& config)
 
 
 // Increase the number of wins
-void Kwin4Player::incWin()
+void KWin4Player::incWin()
 {
   mWin.setValue(mWin.value()+1);
   mAllWin.setValue(mAllWin.value()+1);
@@ -111,7 +111,7 @@ void Kwin4Player::incWin()
 
 
 // Increase the number of losses
-void Kwin4Player::incLost()
+void KWin4Player::incLost()
 {
   mLost.setValue(mLost.value()+1);
   mAllLost.setValue(mAllLost.value()+1);
@@ -119,7 +119,7 @@ void Kwin4Player::incLost()
 
 
 // Increase the number of draws
-void Kwin4Player::incRemis()
+void KWin4Player::incRemis()
 {
   mRemis.setValue(mRemis.value()+1);
   mAllRemis.setValue(mAllRemis.value()+1);
@@ -127,7 +127,7 @@ void Kwin4Player::incRemis()
 
 
 // Increase the number of aborted games
-void Kwin4Player::incBrk()
+void KWin4Player::incBrk()
 {
   mBrk.setValue(mBrk.value()+1);
   mAllBrk.setValue(mAllBrk.value()+1);
@@ -137,7 +137,7 @@ void Kwin4Player::incBrk()
 // Clear player status: For the argument true the long time
 // statistics in the config file is cleared as well. For the
 // argument false only the current session is cleared.
-void Kwin4Player::resetStats(bool all)
+void KWin4Player::resetStats(bool all)
 {
   mWin=0;
   mLost=0;

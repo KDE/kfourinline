@@ -7,6 +7,7 @@ include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdeg
 
 set(kwin4_SRCS 
    main.cpp 
+   chatdlg.cpp
    kwin4.cpp 
    spritenotify.cpp
    thememanager.cpp
