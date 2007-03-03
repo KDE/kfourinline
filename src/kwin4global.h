@@ -20,20 +20,17 @@
    Boston, MA 02110-1301, USA.
 */
 
+/** Global debug flag */
 extern int global_debug;
 
-// The user or color?
-typedef enum e_Farbe {Niemand=-1,Gelb=0,Rot=1,Tip=3,Rand=4,GelbWin=8,RotWin=9} FARBE;
-// The type of player
+// The user or color */
+typedef enum {Nobody=-1,Yellow=0,Red=1,Tip=3} COLOUR;
+/** The type of player */
 typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
+/** Type of statistics */
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
+/** Movement status */
 typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
-
-#define NOOFPLAYER 2
-
-#define FIELD_SIZE_X 7
-#define FIELD_SIZE_Y 6
-#define FIELD_SPACING 40
 
 #endif // KWIN4GLOBAL_H
 

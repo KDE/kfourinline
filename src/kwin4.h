@@ -131,10 +131,9 @@ class KWin4App : public KMainWindow
     void slotGameOver(int status, KPlayer* p, KGame* me);
     
     /** A move has been performed. Update the status etc.
-      * @param x Move coordinate x [0-6]
-      * @param y Move coordinate y [0-5]
+      * @param playerNumber Number of the next player to move
       */
-    void moveDone(int x, int y);
+    void moveDone(int playerNumber);
 
     /** The network connection has been lost.
       * @param id        Game id

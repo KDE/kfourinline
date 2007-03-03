@@ -32,7 +32,6 @@
 
 #define MIN_TIME 1  // sec
 
-#define NOOFPLAYER 2/* Zwei Spieler */
 #define MAXANZAHL 6 /* Maximal 6 Steine pro Reihe */
 #define WIN4 4      /* 4er Reihe hat gewonnen */
 #define MAXZUG 42   /* Soviele Zuege moeglich */

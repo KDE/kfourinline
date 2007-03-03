@@ -101,9 +101,9 @@ class KWin4View : public KWinGraphicsView
       * The move can be performed animated or not.
       * @param x          The x position on the game board [0-6]
       * @param y          The y position on the game board [0-5]
-      * @param color      The color [Rot,Gelb,Niemand]
+      * @param color      The color [Red,Yellow,Nobody]
       * @param xarrow     The x position of the arrow [0-6]
-      * @param colorarrow The color or the arrow [Rot,Gelb,Niemand]
+      * @param colorarrow The color or the arrow [Red,Yellow,Nobody]
       * @param no         The sprite number / move number
       * @param animation  True to make an animated move
       */

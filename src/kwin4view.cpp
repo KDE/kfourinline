@@ -255,7 +255,7 @@ void KWin4View::displayHint(int x, int y)
 }
 
 // Slot called when a sprite animation move is done.
-void KWin4View::moveDone(QGraphicsItem* item, int mode)
+void KWin4View::moveDone(QGraphicsItem* /*item*/, int mode)
 {
   emit signalMoveDone(mode);
 }

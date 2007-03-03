@@ -101,7 +101,7 @@ KWin4App::KWin4App(QWidget *parent)
   setupGUI();
 
   // Read global config
-  mDoc->ReadConfig(KGlobal::config().data());
+  mDoc->readConfig(KGlobal::config().data());
 
   // Check menues
   checkMenus();
@@ -146,11 +146,11 @@ void KWin4App::checkMenus(CheckFlags menu)
     {
       disableAction("edit_undo");
     }
-    else if (mDoc->QueryHistoryCnt()==0)
+    else if (mDoc->getHistoryCnt()==0)
     {
       disableAction("edit_undo");
     }
-    else if (mDoc->QueryCurrentMove()<1 )
+    else if (mDoc->getCurrentMove()<1 )
     {
       disableAction("edit_undo");
     }
@@ -164,7 +164,7 @@ void KWin4App::checkMenus(CheckFlags menu)
     {
       disableAction("edit_redo");
     }
-    else if (mDoc->QueryHistoryCnt()==mDoc->QueryMaxMove())
+    else if (mDoc->getHistoryCnt()==mDoc->getMaxMove())
     {
       disableAction("edit_redo");
     }
@@ -280,12 +280,10 @@ void KWin4App::initDocument()
   // KGame signals
   connect(mDoc,SIGNAL(signalGameOver(int, KPlayer*,KGame*)),
          this,SLOT(slotGameOver(int, KPlayer*,KGame *)));
-  connect(mDoc,SIGNAL(signalMoveDone(int, int)),
-         this,SLOT(moveDone(int, int)));
+  connect(mDoc,SIGNAL(signalNextPlayer(int)),
+         this,SLOT(moveDone(int)));
   connect(mDoc,SIGNAL(signalClientLeftGame(int, int,KGame*)),
          this,SLOT(networkBroken(int, int, KGame*)));
-  connect(mDoc,SIGNAL(signalNextPlayer()),
-         this,SLOT(updateStatusNames()));
   connect(mDoc,SIGNAL(signalGameRun()),
          this,SLOT(gameRun()));
 }
@@ -308,14 +306,14 @@ void KWin4App::changeAction(const char* action, bool enable)
 
 
 // Store the current game 
-void KWin4App::saveProperties(KConfigGroup& cfg)
+void KWin4App::saveProperties(KConfigGroup& /*cfg*/)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   mDoc->save(filename);
 }
 
 // Load current game back
-void KWin4App::readProperties(const KConfigGroup& cfg)
+void KWin4App::readProperties(const KConfigGroup& /*cfg*/)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   if(QFile::exists(filename))
@@ -358,6 +356,8 @@ void KWin4App::menuNewGame()
   mDoc->setGameStatus(KWin4Doc::Init);
   // Run it
   mDoc->setGameStatus(KWin4Doc::Run);
+  // Display game status
+  displayStatusMessage(i18n("Game running..."));
 }
 
 
@@ -379,7 +379,7 @@ void KWin4App::endGame()
 // Menu to ask for a game hint
 void KWin4App::askForHint()
 {
-  if (mDoc) mDoc->calcHint();
+  if (mDoc) mDoc->calculateHint();
 }
 
 
@@ -390,23 +390,23 @@ void KWin4App::showStatistics()
   Ui::Statistics ui;
   ui.setupUi(&dlg);
 
-  ui.p1_name->setText(mDoc->QueryName(Gelb));
-  ui.p1_won->display(mDoc->QueryStat(Gelb, TWin));
-  ui.p1_drawn->display(mDoc->QueryStat(Gelb, TRemis));
-  ui.p1_lost->display(mDoc->QueryStat(Gelb, TLost));
-  ui.p1_aborted->display(mDoc->QueryStat(Gelb, TBrk));
-  ui.p1_sum->display(mDoc->QueryStat(Gelb, TSum));
+  ui.p1_name->setText(mDoc->getName(Yellow));
+  ui.p1_won->display(mDoc->getStatistic(Yellow, TWin));
+  ui.p1_drawn->display(mDoc->getStatistic(Yellow, TRemis));
+  ui.p1_lost->display(mDoc->getStatistic(Yellow, TLost));
+  ui.p1_aborted->display(mDoc->getStatistic(Yellow, TBrk));
+  ui.p1_sum->display(mDoc->getStatistic(Yellow, TSum));
 
-  ui.p2_name->setText(mDoc->QueryName(Rot));
-  ui.p2_won->display(mDoc->QueryStat(Rot, TWin));
-  ui.p2_drawn->display(mDoc->QueryStat(Rot, TRemis));
-  ui.p2_lost->display(mDoc->QueryStat(Rot, TLost));
-  ui.p2_aborted->display(mDoc->QueryStat(Rot, TBrk));
-  ui.p2_sum->display(mDoc->QueryStat(Rot, TSum));
+  ui.p2_name->setText(mDoc->getName(Red));
+  ui.p2_won->display(mDoc->getStatistic(Red, TWin));
+  ui.p2_drawn->display(mDoc->getStatistic(Red, TRemis));
+  ui.p2_lost->display(mDoc->getStatistic(Red, TLost));
+  ui.p2_aborted->display(mDoc->getStatistic(Red, TBrk));
+  ui.p2_sum->display(mDoc->getStatistic(Red, TSum));
 
   if(dlg.exec() == QDialog::Rejected)
   {
-    mDoc->ResetStat();
+    mDoc->resetStatistic();
   }
 }
 
@@ -414,11 +414,11 @@ void KWin4App::showStatistics()
 // Undo menu call
 void KWin4App::undoMove()
 {
-  mDoc->UndoMove();
+  mDoc->undoMove();
   // Undo twice if computer is moving to keep player as input
-  if (mDoc->playedBy(mDoc->QueryCurrentPlayer())==KGameIO::ProcessIO)
+  if (mDoc->playedBy(mDoc->getCurrentPlayer())==KGameIO::ProcessIO)
   {
-    mDoc->UndoMove();
+    mDoc->undoMove();
   }
 
   // Refresh menus
@@ -429,11 +429,11 @@ void KWin4App::undoMove()
 // Redo menu call
 void KWin4App::redoMove()
 {
-  mDoc->RedoMove();
+  mDoc->redoMove();
   // Redo twice if computer is moving to keep player as input
-  if (mDoc->playedBy(mDoc->QueryCurrentPlayer())==KGameIO::ProcessIO)
+  if (mDoc->playedBy(mDoc->getCurrentPlayer())==KGameIO::ProcessIO)
   {
-    mDoc->RedoMove();
+    mDoc->redoMove();
   }
   updateStatusNames();
   checkMenus(CheckEditMenu);
@@ -447,9 +447,10 @@ void KWin4App::displayStatusMessage(const QString &text)
   statusBar()->changeItem(text, ID_STATUS_MSG);
 }
 
+
 // Set the string in the statusbar window for
 // the player currently moving change status mover permanently
-void KWin4App::displayStatusbarMover(const QString &text)
+void KWin4App::displayStatusbarMover(const QString& text)
 {
   statusBar()->clearMessage();
   statusBar()->changeItem(text, ID_STATUS_MOVER);
@@ -460,8 +461,8 @@ void KWin4App::displayStatusbarMover(const QString &text)
 // Called by the gameover signal
 void KWin4App::EndGame(TABLE mode)
 {
-  mDoc->EndGame(mode);
-  mDoc->SwitchStartPlayer();
+  mDoc->endGame(mode);
+  mDoc->switchStartPlayer();
   updateStatusNames();
   checkMenus();
 }
@@ -473,10 +474,10 @@ void KWin4App::updateStatusNames()
   QString msg;
   if (!(mDoc->gameStatus()==KGame::Run))
     msg=i18n("No game  ");
-  else if (mDoc->QueryCurrentPlayer()==Gelb)
-    msg=i18n(" %1 - Yellow ", mDoc->QueryName(Gelb));
-  else if (mDoc->QueryCurrentPlayer())
-    msg=i18n(" %1 - Red ", mDoc->QueryName(Rot));
+  else if (mDoc->getCurrentPlayer()==Yellow)
+    msg=i18n(" %1 - Yellow ", mDoc->getName(Yellow));
+  else if (mDoc->getCurrentPlayer())
+    msg=i18n(" %1 - Red ", mDoc->getName(Red));
   else
     msg=i18n("Nobody  ");
   displayStatusbarMover(msg);
@@ -488,16 +489,16 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
   kDebug(12010) <<  "KWin4App::networkBroken("<<oldstatus<<")" << endl;
   
   // Set all input devices back to default
-  if (mDoc->playedBy(Gelb)==0)
-    mDoc->setPlayedBy(Gelb,KGameIO::MouseIO);
-  if (mDoc->playedBy(Rot)==0)
-    mDoc->setPlayedBy(Rot,KGameIO::MouseIO);
+  if (mDoc->playedBy(Yellow)==0)
+    mDoc->setPlayedBy(Yellow,KGameIO::MouseIO);
+  if (mDoc->playedBy(Red)==0)
+    mDoc->setPlayedBy(Red,KGameIO::MouseIO);
 
-  kDebug(12010) << "CurrrentPlayer=" << mDoc->QueryCurrentPlayer() << endl;
-  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->QueryCurrentPlayer()) << endl;
+  kDebug(12010) << "CurrrentPlayer=" << mDoc->getCurrentPlayer() << endl;
+  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer()) << endl;
   
   // Activate input device
-  mDoc->getPlayer(mDoc->QueryCurrentPlayer())->setTurn(true,true);
+  mDoc->getPlayer(mDoc->getCurrentPlayer())->setTurn(true,true);
 
   // Issue message
   KMessageBox::information(this,i18n("The network game ended!\n"));
@@ -508,7 +509,7 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 
 
 // A move is done. Update status display.
-void KWin4App::moveDone(int /* x */ ,int /* y */ )
+void KWin4App::moveDone(int playerNumber)
 {
   checkMenus(CheckEditMenu);
   updateStatusNames();
@@ -518,6 +519,7 @@ void KWin4App::moveDone(int /* x */ ,int /* y */ )
 // The game is over or aborted. Set status and display it.
 void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
 {
+  kDebug() << "KWin4App::slotGameOver" << endl;
   if (status==-1) // remis
   {
     EndGame(TRemis);
@@ -525,11 +527,11 @@ void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
   }
   else if (status==1) // One of the players won
   {
-    if (p->userId()==Gelb)
+    if (p->userId()==Yellow)
       EndGame(TWin);
     else
       EndGame(TLost);
-    QString msg=i18n("%1 won the game. Please restart next round.", mDoc->QueryName(((FARBE)p->userId())));
+    QString msg=i18n("%1 won the game. Please restart next round.", mDoc->getName(((COLOUR)p->userId())));
     displayStatusMessage(msg);
   }
   else if (status==2) // Abort
@@ -592,13 +594,13 @@ void KWin4App::remoteChanged(int button)
 {
   if (button==0)
   {
-    mDoc->getPlayer(Gelb)->setNetworkPriority(0);
-    mDoc->getPlayer(Rot)->setNetworkPriority(10);
+    mDoc->getPlayer(Yellow)->setNetworkPriority(0);
+    mDoc->getPlayer(Red)->setNetworkPriority(10);
   }
   else
   {
-    mDoc->getPlayer(Gelb)->setNetworkPriority(10);
-    mDoc->getPlayer(Rot)->setNetworkPriority(0);
+    mDoc->getPlayer(Yellow)->setNetworkPriority(10);
+    mDoc->getPlayer(Red)->setNetworkPriority(0);
   }
 }
 
@@ -609,11 +611,11 @@ void KWin4App::configureChat()
   if (!mMyChatDlg)
   {
     mMyChatDlg=new ChatDlg(mDoc,this);
-    KWin4Player *p=mDoc->getPlayer(Gelb);
+    KWin4Player *p=mDoc->getPlayer(Yellow);
     if (!p->isVirtual())
-      mMyChatDlg->setPlayer(mDoc->getPlayer(Gelb));
+      mMyChatDlg->setPlayer(mDoc->getPlayer(Yellow));
     else
-      mMyChatDlg->setPlayer(mDoc->getPlayer(Rot));
+      mMyChatDlg->setPlayer(mDoc->getPlayer(Red));
     connect(mDoc,SIGNAL(signalChatChanged(KWin4Player *)),
             mMyChatDlg,SLOT(setPlayer(KWin4Player *)));
   }

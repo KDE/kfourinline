@@ -242,13 +242,13 @@ void DisplayGame::displayArrow(int x,int color)
   }
 
   // Check for no color 
-  if (color==Niemand)
+  if (color==Nobody)
   {
     return ;
   }
 
   // Make sure the frames are chosen properly
-  if (color==Gelb) mArrows.value(x)->setFrame(1);
+  if (color==Yellow) mArrows.value(x)->setFrame(1);
   else mArrows.value(x)->setFrame(2);
 }
 
@@ -289,7 +289,7 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
   assert(sprite != 0);
 
   // Check for removal of sprite
-  if (color==Niemand)
+  if (color==Nobody)
   {
     sprite->hide();
     return 0;
@@ -303,7 +303,7 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
 
   // Make sure the frames are ok
   int frame;
-  if (color==Gelb) frame = 0;
+  if (color==Yellow) frame = 0;
   else frame = 1;
 
 

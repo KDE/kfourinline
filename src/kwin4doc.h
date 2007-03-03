@@ -1,32 +1,37 @@
-/***************************************************************************
-                          Kwin4  -  Four in a Row for KDE
-                             -------------------
-    begin                : March 2000 
-    copyright            : (C) 1995-2007 by Martin Heni
-    email                : kde@heni-online.de
- ***************************************************************************/
-
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
-
 #ifndef KWIN4DOC_H
 #define KWIN4DOC_H
+/*
+   This file is part of the KDE games kwin4 program
+   Copyright (c) 2006 Martin Heni <kde@heni-online.de>
 
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public
+   License as published by the Free Software Foundation; either
+   version 2 of the License, or (at your option) any later version.
+
+   This library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public License
+   along with this library; see the file COPYING.LIB.  If not, write to
+   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.
+*/
+
+// Qt Includes
+#include <QList>
+
+// KDE includes
 #include <kgame.h>
 #include <kgameio.h>
 #include <kgamepropertyarray.h>
 #include <kconfig.h>
 
+// Local includes
 #include "kwin4global.h"
 #include "kwin4player.h"
-//Added by qt3to4:
-#include <QList>
 
 class KWin4View;
 class QGraphicsItem;
@@ -34,152 +39,399 @@ class Score;
 
 
 /**
- * The board "engine"
+ * The game document or game engine. It is derived from the KGame framework.
  */
 class KWin4Doc : public KGame
 {
-Q_OBJECT
+  Q_OBJECT
 
-public:
-  KWin4Doc(QWidget *parent, const char *name=0);
-  ~KWin4Doc();
+  public:
+    /** Constructor.
+      * @param parent The parent widget
+      */
+    KWin4Doc(QWidget *parent);
 
-  /** adds a view to the document which represents the document contents. Usually this is your main view. */
-  void setView(KWin4View *view);
-  /** initializes the players */
-  void initPlayers();
-  /** saves the document under filename and format.*/	
-  bool loadgame(QDataStream &stream, bool network, bool reset);
+    /** The dstructor.
+      */
+    ~KWin4Doc();
 
-  int QueryLastHint();
-  int QueryHeight(int x);
-  void SetScore(long i);
-  void ResetStat();
-  int CheckGameOver(int x, FARBE col);
-  FARBE QueryPlayerColour(int player);
-  int QueryStat(FARBE i, TABLE mode);
-  QString QueryName(FARBE i);
-  void SetName(FARBE i, const QString &n);
+    /** Adds a view to the document which displays the document contents.
+      * @param view The view to add
+      */
+    void setView(KWin4View *view);
 
-  /**
-  * Set and query the IO mode of player Gelb/Rot
-  */
-  KGameIO::IOMode playedBy(int col);
-  void setPlayedBy(int col,KGameIO::IOMode mode);
+    /** Initializes the KGame derived players.
+      */
+    void initPlayers();
 
-  /** 
-  * create and add an IO device to an given player. 
-  * The old ones have to be removed manually before
-  */
-  void createIO(KPlayer *player,KGameIO::IOMode io);
+    /** Save the document in the datastrem. This is a KGame function.
+      * @param stream  The data stream to use
+      * @param network Is the saving via the network (a network game)
+      * @param reset   Reset parameter forward to KGame
+      * @return True on success, false otherwise.
+      */	
+    bool loadgame(QDataStream &stream, bool network, bool reset);
 
-  KWin4Player *getPlayer(FARBE col);
-  
-  bool RedoMove();
-  bool UndoMove();
+    /** Read the game config from the config file.
+      * @param config The config 
+      */
+    void readConfig(KConfig* config);
 
-  /** Make a game move */
-  MOVESTATUS MakeMove(int x,int mode);
-  /** End a game */
-  void EndGame(TABLE mode);
-  /** Reset the whole game */
-  void ResetGame(bool initview);
-  /** Set the colour */
-  void SetColour(int x,int y,FARBE c);
-  /** Returns colour */
-  FARBE QueryColour(int x,int y);
-
-  void ReadConfig(KConfig *config);
-  void WriteConfig(KConfig *config);
-
-  FARBE QueryCurrentPlayer();
-  void SetCurrentPlayer(FARBE i);
-
-  FARBE SwitchStartPlayer();
-
-  int QueryLastcolumn();   // last x moved
-  FARBE QueryLastcolour(); // last colour moved
-  int QueryCurrentMove();  // 0..42
-  void SetCurrentMove(int );  // 0..42
-  int QueryMaxMove();      // 0..42
-  int QueryHistoryCnt();  // 0..42
-  QString QueryProcessName();
-
-  KPlayer *createPlayer(int rtti, int io, bool isvirtual);
-  KPlayer * nextPlayer(KPlayer *last, bool exclusive=true);
-
-  void newPlayersJoin(KGamePlayerList *,KGamePlayerList *,QList<int> &);
-
-protected:
-  bool Move(int x,int id);
-  /** Check whether the field has a game over situation */
-  int checkGameOver(KPlayer *);
-  /** Send to the computer player */
-  void prepareGameMessage(QDataStream &stream, qint32 pl);
-  /** Main function to do player input */
-  bool playerInput(QDataStream &msg,KPlayer *player);
-  /** Set the IO devices new */
-  void recalcIO();
-  /** Set the turn of the current player to true */
-  void preparePlayerTurn();
+    /** Write the game config to the config file.
+      * @param config The config 
+      */
+    void writeConfig(KConfig* config);
 
 
-public slots:
-  void calcHint();
-  
-  void slotPropertyChanged(KGamePropertyBase *,KGame *);
-  void slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *);
-  void moveDone(int);
-  void slotMessageUpdate(int,quint32,quint32);
-  void slotPrepareTurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
-  void slotClientConnected(quint32,KGame *);
-  void slotProcessQuery(QDataStream &,KGameProcessIO *);
-  void slotProcessHint(QDataStream &,KGameProcessIO *);
-  void slotGameOver(int status, KPlayer * p, KGame * me);
-  void slotRepeatMove();
-  void loadSettings();
+    /** End a game. Update statistic and forward end game to view.
+      * @param mode Indicate how the game ended for the current player [TWin, TLost, TRemis, TBrk]
+      */
+    void endGame(TABLE mode);
 
-signals:
-  /**
-  * emmitted if the game status changes to run
-  */
-  void signalGameRun();
-  /**
-  * Emmitted if the chat origin changes
-  */
-  void signalChatChanged(KWin4Player *);
-  /**
-  * emmitted after a sprite move ends
-  **/
-  void signalMoveDone(int,int);
-  void signalNextPlayer();
-  /**
-  * emmitted if the game ends
-  **/
-  void GameOver(int,KPlayer *,KGame *);
+    /** Reset all the player stats.
+      */
+    void resetStatistic();
 
-private:
-  KWin4View *pView;
+    /** Redoes a move if possible.
+      * @return True on success.
+      */
+    bool redoMove();
 
-  KGamePropertyInt mLastColumn;   // last x moved
-  KGamePropertyInt mLastColour; // last colour moved
+    /** Undoes a move if possible.
+      * @return True on success.
+      */
+    bool undoMove();
 
-  KGamePropertyInt mHistoryCnt;
-  KGamePropertyArray<int> mField; // 42 pieces
-  KWin4Player *yellowPlayer;
-  KGamePropertyInt mStartPlayer;  // Player started game
-  KGamePropertyInt mAmzug;        // Player's to move
-  KGamePropertyInt mMaxMove;      // maximal move made in a game before undo
-  KGamePropertyInt mCurrentMove;  // current move in the game
-  KGamePropertyArray<int> mFieldFilled; // to what height is the column filled
-  KGamePropertyInt mLastHint;
-  KGamePropertyInt mScore;          // Computer score
-  KGamePropertyArray<int> mHistory; // to what height is the column filled
+    /** Generate a computer AI move and show it to the player as hint.
+      */
+    void calculateHint();
 
-  KGameIO::IOMode mPlayedBy[NOOFPLAYER];
-  KGameProcessIO *mHintProcess;
-  Score* mStatus;    // Score and status storage
+    /** Returns the all time statistics for player of given color
+      * The mode determins what statistics to access.
+      * @param col  The player color 
+      * @param mode The type of data to retrieve [TWin, TRemis, TLost, TBrk, TSum]
+      * @return The amount of the queried category.
+      */
+    int getStatistic(COLOUR col, TABLE mode);
 
+    /** Retrieve the name of the player of the given color.
+      * @param col The color
+      * @return The name.
+      */
+    QString getName(COLOUR col);
+
+    /** Set the name of the player of the given color.
+      * @param col The color
+      * @param n   The new name
+      */
+    void setName(COLOUR col, const QString& n);
+
+    /** Query the IO mode of player og the given color.
+      * @param col The color
+      * @return The input device mode.
+      */
+    KGameIO::IOMode playedBy(int col);
+
+    /** Sets the input device mode for the given player color.
+      * @param col  The color
+      * @param mode The input device code (Mouse, Key, ...)
+      */
+    void setPlayedBy(int col,KGameIO::IOMode mode);
+
+    /** Retrieve the player object for the given player colour.
+      * @param col The player color
+      * @return The player object.
+      */
+    KWin4Player* getPlayer(COLOUR col);
+
+    /** Swap the start player so that the game is started alternatingly.
+      * @return The new start player color.
+      */
+    COLOUR switchStartPlayer();
+
+    /** Sets the current player.
+      * @param no The current player
+      */
+    void setCurrentPlayer(COLOUR no);
+
+    /** Retrieve the player whose turn it is next.
+      * @return The current player.
+      */
+    COLOUR getCurrentPlayer();
+
+    /** Retrieve the current move number.
+      * @return The amount [0..42]
+      */
+    int getCurrentMove();  
+
+    /** Retrieve the maximum move which has been made before undos.
+      * @return The amount [0..42]
+      */
+    int getMaxMove();     
+
+    /** Retrieve the amount of moves in the undo/redo history.
+      * @return The amount [0..42]
+      */
+    int getHistoryCnt(); 
+
+
+  protected:
+    /** Create and add an KGameIO device to an given player. 
+      * The old ones have to be removed manually before.
+      * @param player The player to modify
+      * @param io     The IO mode (Mouse, AI, Keyboard, ...)
+      */
+    void createIO(KPlayer* player, KGameIO::IOMode io);
+
+    /** Create a player of a given type (here only one type possible)
+      * and equip it with a given KGameIO device. Virtual players
+      * are remote network players.
+      * @param rtti  Unused
+      * @param io    The IO mode 
+      * @param isvirtual True for network players (without physical IO)
+      */
+    KPlayer* createPlayer(int rtti, int io, bool isvirtual);
+
+    /** KGame function to determine the next player. In KWin4 players alternate.
+      * @param last      The last player to move
+      * @param exclusive unused
+      */
+    KPlayer* nextPlayer(KPlayer* last, bool exclusive=true);
+
+    /** This is also an overwritten function of KGame. It is
+      * called in the game negotiation upon connect. Here
+      * the games have to determine what player is remote and
+      * what is local.
+      * @param list     Unused
+      * @param newList  List of new players
+      * @param inactive List of inactive players
+      */
+    void newPlayersJoin(KGamePlayerList* list, KGamePlayerList* newList, QList<int>& inactive);
+
+    /** Reset the whole game to the beginning (clear board, ...)
+      * @param initview  If true also reset the view
+      */
+    void resetGame(bool initview);
+
+    /** Make a game move to the given position and return a status. 
+      * Also displays it in the view.
+      * @param x    The position to move to
+      * @param mode The mode of the move (0: normal move: 1: redo move)
+      * @return The movement status (allowed, normal, ...) 
+      */
+    MOVESTATUS makeMove(int x,int mode);
+
+    /** Perform a game move. Calls makeMove().
+      *  @param x  The position to move to
+      *  @param id The player id
+      *  @return True if the move was successful.
+      */
+    bool doMove(int x, int id);
+
+    /** Check whether the field has a game over situation. KGame stanard
+      * function.
+      * @param player The current player
+      * @return -1: remis, 1: won, 0: continue game
+      */
+    int checkGameOver(KPlayer *player);
+
+    /** Check whether the field has a game over situation. Called by
+      * above standard KGame function but with more suitable parameters.
+      * @param x   The position of the last move
+      * @param col The color of the last move
+      */
+    int checkGameOver(int x, COLOUR col);
+
+    /** Pack the current game into a data stream so that it can be
+      * send to the computer AI.
+      * @param stream The data stream to write to
+      * @param pl     The player id
+      */
+    void prepareGameMessage(QDataStream& stream, qint32 pl);
+
+    /** Main function to handle player input. This function is 
+      * the central input for all player inputs. Mouse, Keyboard
+      * AI or network end here in the same format. A move is
+      * initiated here.
+      * @param msg    The game move messasge 
+      * @param player The sender player
+      */
+    bool playerInput(QDataStream& msg, KPlayer* player);
+
+    /** Set the IO devices new.
+      */
+    void recalcIO();
+
+    /** Set the turn of the current player to true so that
+      * he can move.
+      */
+    void activateCurrentPlayer();
+
+    /** Find the name of the AI process executable file.
+      * @return The filename
+      */
+    QString findProcessName();
+
+    /** Set the score value of the AI.
+      * @param value The score value.
+      */
+    void setScore(long value);
+
+    /** Set the colour of a position on the game board.
+      * @param x The x position [0-6]
+      * @param y The y position [0-5]
+      * @param c The color [Red, Yellow, Nobody]
+      */
+    void setColour(int x,int y,COLOUR c);
+
+    /** Retrieve the colour of a position on the game board.
+      * @param x The x position [0-6]
+      * @param y The y position [0-5]
+      * @return The color [Red, Yellow, Nobody]
+      */
+    COLOUR getColour(int x,int y);
+
+    /** Retrieve the color of the i-th player. Player 0 is the start
+      * player and player 1 the follow up player.
+      * @param player The player number [0,1]
+      * @return The color of the player.
+      */
+    COLOUR getPlayerColour(int player);
+
+  public slots:
+    /** Indication from the view that a move has been displayed. Now
+      * The next player can be switched.
+      * @param mode A user defined (unused) mode
+      */
+    void moveDone(int mode);
+
+    /** Load the game properties from the settings. Either the config file
+      * or the config dialog call this.
+      */
+    void loadSettings();
+
+  protected slots:  
+    /** Initiate a repeate of the move. This happens if somehow the player
+      * input created an invalid move. The the same player has to input
+      * again.
+      */
+    void repeatMove();
+
+    /** An AI command was received from the computer AI _hint_ process. Process it.
+      * Currently this is only the hint move.
+      * @param in The input stream from the process
+      * @param io The io device
+      */
+    void processAIHintCommand(QDataStream& in, KGameProcessIO *io);
+
+    /** An AI command was received from the computer AI _input device_ process. Process it.
+      * Currently this is only the move score value.
+      * @param in The input stream from the process
+      * @param io The io device
+      */
+    void processAICommand(QDataStream& in, KGameProcessIO* io);
+
+    /** This slot is called by the signal of KGame to indicated
+     * that the network connection is done and a new client is
+     * connected
+     * @param cid Is the id of the client connected. If this is equal gameId() WE are the client.
+     * @param me  The game
+     */
+    void clientConnected(quint32 cid, KGame* me);
+
+    /** This slot is called by the KGame input device when we should prepare a message
+      * to the AI process.
+      * @param stream   The message stream
+      * @param b        True if it is our turn
+      * @param input    The input device
+      * @param eatevent Set to true if a message has been send
+      */
+    void prepareAITurn(QDataStream &stream,bool b,KGameIO *input,bool *eatevent);
+
+    /** Debug: Listen to network messages.
+      * @param id       The message id
+      * @param sender   The sender
+      * @param receiver The receiver
+      */
+    void networkMessageUpdate(int id, quint32 sender, quint32 receiver);
+
+    /** Called by KGame when a player property has changed. 
+      * We check whether the name changed and then update the score widget.
+      * @param prop   The property
+      * @param player The affected player
+      */
+    void playerPropertyChanged(KGamePropertyBase* prop, KPlayer* player);
+
+    /** Called by KGame when a game property has changed. We update the game
+      * status etc.
+      * @param prop  The property
+      * @param me    The game
+      */
+    void gamePropertyChanged(KGamePropertyBase* prop, KGame* me);
+
+  signals:
+    /** Emmitted if the game status changes to run.
+      */
+    void signalGameRun();
+
+    /** Emmitted if the chat origin changes.
+      * @param player The affected player
+      */
+    void signalChatChanged(KWin4Player* player);
+
+    /** Emmitted when the next players move is due.
+      * @param playerNumber The number of the player
+      */
+    void signalNextPlayer(int playerNumber);
+
+  private:
+    // The view
+    KWin4View *pView;
+
+    // Last x position moved to
+    KGamePropertyInt mLastColumn;  
+
+    // Colour of last move
+    KGamePropertyInt mLastColour;  
+    
+    // Amount of info in history
+    KGamePropertyInt mHistoryCnt; 
+
+    // 42 pieces construct the game board
+    KGamePropertyArray<int> mField;
+
+    // Player who started game
+    KGamePropertyInt mStartPlayer;  
+
+    // Player's to move
+    KGamePropertyInt mAmzug; 
+
+    // Maximal move made in a game before undo
+    KGamePropertyInt mMaxMove; 
+
+    // Current move number in the game
+    KGamePropertyInt mCurrentMove; 
+
+    // To what height is a column filled
+    KGamePropertyArray<int> mFieldFilled; 
+
+    // Position of last hint given
+    KGamePropertyInt mLastHint;
+
+    // Computer score value (position estimation)
+    KGamePropertyInt mScore;  
+
+    // History of all moves (x positions)
+    KGamePropertyArray<int> mHistory; 
+
+    // Input device of players
+    KGameIO::IOMode mPlayedBy[2];
+
+    // Process AI for hints
+    KGameProcessIO *mHintProcess;
+
+    // Score and status storage to communicate with view
+    Score* mStatus; 
 };
 
 #endif // KWIN4DOC_H

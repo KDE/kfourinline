@@ -20,7 +20,7 @@
 
 #include <kgameprocess.h>
 
-// TODO match up with what is in kwin4doc.h
+// TODO match up with what is in kwin4globals.h
 typedef enum e_farbe {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4} Farbe;
 typedef char FARBE;
 
