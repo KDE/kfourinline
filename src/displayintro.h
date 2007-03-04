@@ -45,6 +45,7 @@ class DisplayIntro : public QObject, public virtual Themable
     /** Constructor for the intro display.
      *  @param advancePeriod The canvas advance period
      *  @param scene         The graphics scene
+     *  @param theme         The theme manager
      *  @param parent        The parent window
      */
     DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QObject* parent = 0);

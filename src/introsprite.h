@@ -40,6 +40,7 @@ class IntroSprite : public PixmapSprite
       * @param id            The theme id
       * @param theme         The theme manager
       * @param advancePeriod The canvas advance period
+      * @param no            The sprite number [0..41]
       * @param scence        The scene
       */
     IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);

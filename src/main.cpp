@@ -15,6 +15,24 @@
  *                                                                         *
  ***************************************************************************/
 
+/** \mainpage KWin4 API Documentation
+  *
+  * \section intro_sec Introduction
+  *
+  * This is the API documentation for the KDE game 'kwin4'.
+  *
+  * \section design_sec Design
+  *
+  * The design diagram shows the dependencies for the key classes of
+  * the KWin4 program.
+  * The coloring of the classes shows roughly their function in the 
+  * groups (program, document and engine, display, QGraphics and KGame library).
+  *
+  * \image html kwin4classes.png "Class diagram for KWin4"
+  *
+  * 
+  */
+
 #include <kaboutdata.h>
 #include <kapplication.h>
 #include <kcmdlineargs.h>

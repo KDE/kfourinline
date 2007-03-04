@@ -894,11 +894,8 @@ void KWin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
 
   KWin4Player *player=getPlayer((COLOUR)col);
 
-  // Modes for the score sprite (TODO: Currently hardcoded frame numbers)
-  if (io == KGameIO::ProcessIO) player->status()->setPlayedBy(2,player->userId());
-  else if (io == KGameIO::KeyIO) player->status()->setPlayedBy(1,player->userId());
-  else if (io == KGameIO::MouseIO) player->status()->setPlayedBy(0,player->userId());
-  else player->status()->setPlayedBy(3,player->userId());
+  // Modes for the score sprite
+  player->status()->setPlayedBy((int)io,player->userId());
 
   if (mPlayedBy[col]!=io && !player->isVirtual())
   {

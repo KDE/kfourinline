@@ -43,9 +43,9 @@ class Score;
 
 
 /** Temporary view class for the KWin4 game.
-  * @TODO  Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
-  * @TODO  Cuts cpu usage in half for this particular case, removing hiccups
-  * @TODO  This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
+  * @todo  Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
+  * @todo  Cuts cpu usage in half for this particular case, removing hiccups
+  * @todo  This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
   */
 class KWinGraphicsView :public QGraphicsView
 {

@@ -136,9 +136,9 @@ class ThemeManager : public QObject
       * "general" section of the theme file as "svgfile". The pixmap is scaled
       * with reference to another SVG item. This allows to generate a set of pixmaps
       * with related sizes. 
-      * @param svgid  The ID of the SVG item to be rendered as pixmap
-      * @param svgref The ID of the SVG item used as width reference
-      * @param width  The width of the resulting pixmap in relation to the reference item
+      * @param svgid     The ID of the SVG item to be rendered as pixmap
+      * @param svgref    The ID of the SVG item used as width reference
+      * @param refwidth  The width of the resulting pixmap in relation to the reference item
       * @return The new pixmap.
       */
     const QPixmap getPixmap(QString svgid, QString svgref, double refwidth);

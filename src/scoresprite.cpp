@@ -221,8 +221,15 @@ void ScoreSprite::setBreak(QString s,int no)
 // Store and display input device
 void ScoreSprite::setInput(int device, int no)
 {
-  mInputFrame[no] = device;
-  mInput[no]->setFrame(device);
+  // Map KGameIO device numbers to sprite frames
+  int frame;
+  if (device == 8) frame = 2; // AI
+  else if (device == 4) frame = 0; // Mouse
+  else if (device == 2) frame = 1; // Key
+  else frame = 3; //Network
+
+  mInputFrame[no] = frame;
+  mInput[no]->setFrame(frame);
   update();
 }
 

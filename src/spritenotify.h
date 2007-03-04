@@ -25,8 +25,7 @@
 #include <QGraphicsItem>
 
 
-/**
- * SpriteNotify provides a @ref QObject to a sprite that allows to emit
+/** SpriteNotify provides a QObject to a sprite that allows to emit
  * a signal from athis sprite if it is necessary to notify another object
  * with an action of the sprite, like animation or movement finished.
  **/

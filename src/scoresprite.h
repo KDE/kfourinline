@@ -45,7 +45,7 @@ class ScoreSprite : public PixmapSprite
       * @param no              A used defined number (unused)
       * @param scene           The graphics scene
       */
-    ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
+    ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
     
     /** Destructor 
       */

@@ -49,7 +49,7 @@ class KWin4Player : public KPlayer
     
     /** Assign the score object which allows to display player properties in 
       * the GUI.
-      * @param The score object
+      * @param s The score object
       */
     void setStatus(Score *s) {mStatus=s;}
     

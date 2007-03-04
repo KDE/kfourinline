@@ -82,8 +82,8 @@ zValue=120.0
 svgid=auto
 start-frame=0
 end-frame=3
-frame0=score_player
-frame1=score_player
+frame0=score_mouse
+frame1=score_key
 frame2=score_ai
 frame3=score_network
 
@@ -96,8 +96,8 @@ zValue=120.0
 svgid=auto
 start-frame=0
 end-frame=3
-frame0=score_player
-frame1=score_player
+frame0=score_mouse
+frame1=score_key
 frame2=score_ai
 frame3=score_network
 
