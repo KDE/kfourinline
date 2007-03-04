@@ -369,6 +369,11 @@ class KWin4Doc : public KGame
       */
     void gamePropertyChanged(KGamePropertyBase* prop, KGame* me);
 
+    /** Reveived a debug message from the AI (debug only)
+      * @param s The message
+      */
+    void receivedStderr(QString s);
+
   signals:
     /** Emmitted if the game status changes to run.
       */

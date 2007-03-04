@@ -83,7 +83,7 @@ public:
     void setBreaks(int amount, int no) {mBrk[no] = amount; update();}
 
     /** Set and update the input device of a player.
-      * @param type   The new input device [0-3], 2 is AI hardcoded
+      * @param type   The new input device (KGameIO) [1,2,4,8], 8 is AI 
       * @param no     The player number [0,1]
       */ 
     void setPlayedBy(int type, int no) {mInputDevice[no] = type; update();}

@@ -20,9 +20,11 @@
 
 // KDE includes
 #include <kdebug.h>
+#include <kgameio.h>
 
 // Local includes
 #include "score.h"
+#include "scoresprite.h"
 #include "scoresprite.h"
 
 
@@ -53,7 +55,7 @@ void Score::update()
   {
     mDisplay->setPlayerName(mName[i], i);
     // Call this only after set name
-    if (mInputDevice[i] == 2) mDisplay->setLevel(mLevel[i], i);
+    if (mInputDevice[i] == (int)KGameIO::ProcessIO) mDisplay->setLevel(mLevel[i], i);
     else  mDisplay->setLevel(-1, i);
     mDisplay->setWon(QString("%1").arg(mWin[i]), i);
     mDisplay->setDraw(QString("%1").arg(mRemis[i]), i);

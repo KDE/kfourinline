@@ -18,10 +18,13 @@
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
+// KDE includes
 #include <kgameprocess.h>
 
-// TODO match up with what is in kwin4globals.h
-typedef enum e_farbe {Niemand=0,Gelb=1,Rot=2,Tip=3,Rand=4} Farbe;
+// Local includes
+#include "kwin4global.h"
+
+// Save storage for color arrays
 typedef char FARBE;
 
 #define SIZE_Y_ALL 36
@@ -49,12 +52,12 @@ protected:
   long think(QDataStream &in,QDataStream &out,bool hint);
   
   // Old computer stuff
-  Farbe SwitchPlayer(Farbe amZug=Niemand);
-  Farbe GameOver(FARBE feld[][SIZE_X+1],char anzahl[]);
-  void DoMove(char move,Farbe farbe,FARBE feld[][SIZE_X+1],char anzahl[]);
-  int GetCompMove();
-  long Wertung(Farbe farbe,FARBE feld[][SIZE_X+1],char anzahl[],int reklev,int zug);
-  long Bewertung(Farbe farbe,FARBE feld[][SIZE_X+1]);
+  COLOUR SwitchPlayer(COLOUR amZug=Nobody);
+  COLOUR IsGameOver(FARBE feld[][SIZE_X+1],char anzahl[]);
+  void DoMove(char move,COLOUR farbe,FARBE feld[][SIZE_X+1],char anzahl[]);
+  int GetCompMove(int maxRecursion);
+  long MinMax(COLOUR farbe,FARBE feld[][SIZE_X+1],char anzahl[],int reklev,int zug);
+  long PositionEvaluation(COLOUR farbe,FARBE feld[][SIZE_X+1]);
   void InitField();
 
 private:
@@ -66,16 +69,18 @@ private:
   char lenofrow[38];
   char startofrow[38];
 
-	Farbe beginner,second;	// Welche Farbe faengt an und zieht nach
+  COLOUR beginner,second;  // Welche COLOUR faengt an und zieht nach
 
-	Farbe amZug;	// wer ist am Zug
-	Farbe winner;	// who won thee game
+  COLOUR amZug;    // wer ist am Zug
+  COLOUR winner;   // who won thee game
   FARBE feldmatrix[SIZE_Y_ALL+1][SIZE_X+1];
-	char anzahlmatrix[SIZE_Y_ALL+1];
+  char anzahlmatrix[SIZE_Y_ALL+1];
 
-  int aktzug;			// welcher Zug ist getade gemacht 0..42
-	int mymaxreklev;	// maximale Rekursion
-	long aktwert;		// Stellungsbewertung
+  int aktzug;           // welcher Zug ist getade gemacht 0..42
+  int mymaxreklev;      // maximale Rekursion
+  long aktwert;         // Stellungsbewertung
+  int pos_evaluations;  // Amount of positions evaluated
+  float calcPosPerMS;   // How many pos calculated per [ms]
 
 };
 

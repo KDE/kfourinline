@@ -672,7 +672,7 @@ void KWin4Doc::resetStatistic()
 void KWin4Doc::setScore(long value)
 {
   mScore.setValue(value);
-  kDebug() << " ************** SET AI SCORE " << value << " ****************" << endl;
+  kDebug() << " ************** SET AI SCORE("<<mCurrentMove<<") " << value << " ****************" << endl;
 }
 
 
@@ -950,6 +950,9 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
 
     connect(input,SIGNAL(signalProcessQuery(QDataStream&, KGameProcessIO*)),
             this,SLOT(processAICommand(QDataStream&, KGameProcessIO*)));
+
+    connect(input,SIGNAL(signalReceivedStderr(QString)),
+            this,SLOT(receivedStderr(QString)));
     player->addGameIO(input);
   }
   else if (io&KGameIO::KeyIO)
@@ -963,6 +966,12 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
             pView,SLOT(keyInput(KGameIO *,QDataStream &,QKeyEvent *,bool *)));
     player->addGameIO(input);
   }
+}
+
+void KWin4Doc::receivedStderr(QString s)
+{
+  if (global_debug>0)
+    kDebug() << "##### AI: " << s << endl;
 }
 
 
