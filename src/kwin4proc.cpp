@@ -192,7 +192,7 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
   int estimated = 0;
   for (int i=1; i<= mymaxreklev; i++)
   {
-    estimated += int(pow(7,i));
+    estimated += int(pow(7.,i));
   }
 
   // Measure time of move and positions evaluated
