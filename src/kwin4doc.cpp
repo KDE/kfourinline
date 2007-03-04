@@ -1115,11 +1115,10 @@ void KWin4Doc::clientConnected(quint32 cid, KGame* /* me */)
 // users id's
 KWin4Player* KWin4Doc::getPlayer(COLOUR col)
 {
- KWin4Player* p;
- for ( p=(KWin4Player *)playerList()->first(); p!= 0; p=(KWin4Player *)playerList()->next() )
+ for (KGamePlayerList::const_iterator it = playerList()->begin(); it!= playerList()->end(); it++ )
  {
-   if (p->userId()==col)
-     return p;
+   if ((*it)->userId()==col)
+     return (KWin4Player *)(*it);
  }
  kError() << "SERIOUS ERROR: Cannot find player with colour " << col << ".  CRASH imminent" << endl;
  return 0;
@@ -1319,7 +1318,6 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
   
   KWin4Player *yellow=getPlayer(Yellow);
   KWin4Player *red=getPlayer(Red);
-  KPlayer *player;
   // Take the master player with the higher priority. Prioirty is set
   // be the network dialog
   if (yellow->networkPriority()>red->networkPriority())
@@ -1329,8 +1327,9 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) kDebug(12010) << "ADMIN keeps yellow and kicks red= " << red->id()<<" userId/col="<<red->userId()<<endl;
     // loop all client players and deactivate the one which have the color
     // yellow
-    for ( player=newList->first(); player != 0; player=newList->next() ) 
+    for ( KGamePlayerList::const_iterator it = newList->begin(); it != newList->end(); it++ ) 
     {
+      KPlayer *player = *it;
       if (player->userId()==yellow->userId()) 
       {
         inactivate.append(player->id());
@@ -1345,8 +1344,9 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) kDebug(12010) << "ADMIN keeps red and kicks yellow= " << yellow->id()<<" userId/col="<<yellow->userId()<<endl;
     // loop all client players and deactivate the one which have the color
     // red
-    for ( player=newList->first(); player != 0; player=newList->next() ) 
+    for ( KGamePlayerList::const_iterator it = newList->begin(); it != newList->end(); it++ ) 
     {
+      KPlayer *player = *it;
       if (player->userId()==red->userId()) 
       {
         inactivate.append(player->id());
