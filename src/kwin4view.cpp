@@ -42,8 +42,8 @@
 // Aspect ratio for the Scene in the window. The game is always displayed with this ratio.
 #define VIEW_ASPECT_RATIO 1.6
 
-// Our subclassed QGraphicsView paintEvent, see header file
-void KWinGraphicsView::paintEvent(QPaintEvent* event)
+// Our subclassed (temporary) QGraphicsView paintEvent, see header file
+void KWin4View::paintEvent(QPaintEvent* event)
 {
     QPaintEvent* newEvent = new QPaintEvent(event->region().boundingRect());
     QGraphicsView::paintEvent(newEvent);
@@ -52,7 +52,7 @@ void KWinGraphicsView::paintEvent(QPaintEvent* event)
 
 // Constructor for the view
 KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
-          : KWinGraphicsView(scene, parent)
+          : QGraphicsView(scene, parent)
 {
   // Store attributes    
   mScene         = scene;

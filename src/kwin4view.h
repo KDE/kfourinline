@@ -41,35 +41,10 @@ class DisplayIntro;
 class DisplayGame;
 class Score;
 
-
-/** Temporary view class for the KWin4 game.
-  * @todo  Temporary fix suggested by Cyril Bailly, to reduce QGV cpu usage during intro animation
-  * @todo  Cuts cpu usage in half for this particular case, removing hiccups
-  * @todo  This issue needs to be re-evaluated against Qt4.3 when/if it lands in SVN
-  */
-class KWinGraphicsView :public QGraphicsView
-{
- 	Q_OBJECT
- 	
-  public:
-    /** Create a view.
-      * @param scene  The graphics scene to use
-      * @param parent The parent widget
-      */
-	KWinGraphicsView(QGraphicsScene* scene, QWidget* parent) : QGraphicsView(scene, parent) { };
-	    
-  protected:
-    /** Paint function for the widget.
-      * @param event The paint event
-      */
-	void paintEvent(QPaintEvent* event);
-};
-
-
 /**
  * The view object which shows the graphics for the game.
  */
-class KWin4View : public KWinGraphicsView
+class KWin4View : public QGraphicsView
 {
   Q_OBJECT
 
@@ -163,6 +138,10 @@ class KWin4View : public KWinGraphicsView
      * @param e The resize event
      */
     void resizeEvent(QResizeEvent* e);
+    /** Paint function for the widget, temporary fix while we wait for QGV 4.3
+      * @param event The paint event
+      */
+    void paintEvent(QPaintEvent* event);
 
   private:
     // The theme manager 
