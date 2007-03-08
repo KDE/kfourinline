@@ -719,8 +719,8 @@ void KWin4Doc::loadSettings()
   COLOUR col = Red;
   if (Prefs::startcolouryellow()) col = Yellow; 
 
-  if (Prefs::startcolourred) mStartPlayer.setValue(Red);
-  else if (Prefs::startcolouryellow) mStartPlayer.setValue(Yellow);
+  if (Prefs::startcolourred()) mStartPlayer.setValue(Red);
+  else if (Prefs::startcolouryellow()) mStartPlayer.setValue(Yellow);
   else kFatal() << "Unknown start color" << endl;
 
 
@@ -772,9 +772,17 @@ void KWin4Doc::setCurrentPlayer(COLOUR no)
 COLOUR KWin4Doc::switchStartPlayer()
 {
   if (mStartPlayer.value()==Yellow)
+  {
     mStartPlayer.setValue(Red);
+    Prefs::setStartcolouryellow(false);
+    Prefs::setStartcolourred(true);
+  }
   else
+  {
     mStartPlayer.setValue(Yellow);
+    Prefs::setStartcolouryellow(true);
+    Prefs::setStartcolourred(false);
+  }
   
   return (COLOUR)mStartPlayer.value();
 }
