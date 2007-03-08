@@ -48,12 +48,15 @@ static KCmdLineOptions options[] =
 {
   { "d", 0, 0},
   { "debug <level>", I18N_NOOP("Enter debug level"), 0 },
+  { "skipintro", I18N_NOOP("Skip intro animation"), 0 },
   KCmdLineLastOption
 };
 
 
-// DEbug level for the program
-int global_debug;
+// Debug level for the program
+int global_debug = 0;
+// Skip intro
+int global_skip_intro = false;
 
 
 // Main function
@@ -79,6 +82,12 @@ int main(int argc, char *argv[])
   {
     global_debug=QString(args->getOption("debug")).toInt();
     kDebug(12010) << "Debug level set to " << global_debug << endl;
+  }
+  // Check for debug command line option
+  if (args->isSet("skipintro"))
+  {
+    global_skip_intro = true;
+    kDebug(12010) << "Skip intro cmd line choosen " << global_skip_intro << endl;
   }
   
   // Start application

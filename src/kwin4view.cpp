@@ -33,6 +33,7 @@
 
 // Local includes
 #include "kwin4view.h"
+#include "kwin4global.h"
 #include "displayintro.h"
 #include "displaygame.h"
 #include "spritenotify.h"
@@ -90,8 +91,14 @@ KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, Theme
 
   // Start with the intro display
   mGameDisplay  = 0;
-  mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
-  mIntroDisplay->start();
+  mIntroDisplay  = 0;
+  
+  // Skip the intro?
+  if (!global_skip_intro)
+  {
+    mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
+    mIntroDisplay->start();
+  }
 }
 
 

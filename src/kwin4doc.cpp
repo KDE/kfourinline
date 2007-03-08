@@ -683,9 +683,14 @@ void KWin4Doc::loadSettings()
   kDebug() << "Level: " << Prefs::level() << endl;
   kDebug() << "Name: " << Prefs::name1() << endl;
   kDebug() << "Name2: " << Prefs::name2() << endl;
-  kDebug() << "input1: " << Prefs::input1() << endl;
-  kDebug() << "input2: " << Prefs::input2() << endl;
-  kDebug() << "colour1: " << Prefs::colour1() << endl;
+  kDebug() << "input0mouse: " << Prefs::input0mouse() << endl;
+  kDebug() << "input0key: " << Prefs::input0key() << endl;
+  kDebug() << "input0ai: " << Prefs::input0ai() << endl;
+  kDebug() << "input1mouse: " << Prefs::input1mouse() << endl;
+  kDebug() << "input1key: " << Prefs::input1key() << endl;
+  kDebug() << "input1ai: " << Prefs::input1ai() << endl;
+  kDebug() << "start red: "   << Prefs::startcolourred() << endl;
+  kDebug() << "start yellow " << Prefs::startcolouryellow() << endl;
 
 
   // Store level for score sprite display
@@ -697,25 +702,27 @@ void KWin4Doc::loadSettings()
 
   KGameIO::IOMode mode = KGameIO::MouseIO;
   
-  int m = Prefs::input1();
-  m = 1; // TODO: HARDCODED
-  
-  if(m == 0) mode = KGameIO::MouseIO;
-  if(m == 1) mode = KGameIO::ProcessIO;
-  if(m == 2) mode = KGameIO::KeyIO;
+  if(Prefs::input0mouse())      mode = KGameIO::MouseIO;
+  else if(Prefs::input0key())   mode = KGameIO::KeyIO;
+  else if(Prefs::input0ai())    mode = KGameIO::ProcessIO;
+  else kFatal() << "Unknown input device for player 0" << endl;
   setPlayedBy(Yellow, mode);
-  kDebug() << "Played by Yellow="<<m<<","<<mode<<endl;  
+  kDebug() << "Played by Yellow="<<mode<<endl;  
   
-  m = Prefs::input2();
-  if(m == 0) mode = KGameIO::MouseIO;
-  if(m == 1) mode = KGameIO::ProcessIO;
-  if(m == 2) mode = KGameIO::KeyIO;
+  if(Prefs::input1mouse())      mode = KGameIO::MouseIO;
+  else if(Prefs::input1key())   mode = KGameIO::KeyIO;
+  else if(Prefs::input1ai())    mode = KGameIO::ProcessIO;
+  else kFatal() << "Unknown input device for player 1" << endl;
   setPlayedBy(Red, mode);
-  kDebug() << "Played by Red="<<m<<","<<mode<<endl;  
+  kDebug() << "Played by Red="<<mode<<endl;  
 
-  COLOUR col = (COLOUR)Prefs::colour1();
-  if (getPlayerColour(0)!=col)
-    switchStartPlayer();
+  COLOUR col = Red;
+  if (Prefs::startcolouryellow()) col = Yellow; 
+
+  if (Prefs::startcolourred) mStartPlayer.setValue(Red);
+  else if (Prefs::startcolouryellow) mStartPlayer.setValue(Yellow);
+  else kFatal() << "Unknown start color" << endl;
+
 
 }
 
@@ -899,9 +906,11 @@ void KWin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
 
   if (mPlayedBy[col]!=io && !player->isVirtual())
   {
+    getPlayer(getCurrentPlayer())->setTurn(false); // turn of move
     mPlayedBy[col]=io;
     player->removeGameIO(0); // remove all IO's
     createIO(player,io);
+    getPlayer(getCurrentPlayer())->setTurn(true); // turn on move
   }
 }
 

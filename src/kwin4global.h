@@ -22,6 +22,8 @@
 
 /** Global debug flag */
 extern int global_debug;
+/** Global skip intro flag */
+extern int global_skip_intro;
 
 // The user or color */
 typedef enum {Nobody=-1,Yellow=0,Red=1,Tip=3} COLOUR;

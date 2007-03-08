@@ -85,7 +85,7 @@
       </widget>
      </item>
      <item row="1" column="1" >
-      <widget class="QGroupBox" name="kcfg_Input2" >
+      <widget class="QGroupBox" name="Input1" >
        <property name="title" >
         <string>Red Plays With</string>
        </property>
@@ -105,7 +105,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QRadioButton" name="radioButton6" >
+           <widget class="QRadioButton" name="kcfg_input1mouse" >
             <property name="text" >
              <string>Mouse</string>
             </property>
@@ -115,16 +115,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton7" >
+           <widget class="QRadioButton" name="kcfg_input1key" >
             <property name="text" >
-             <string>Computer</string>
+             <string>Keyboard</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton8" >
+           <widget class="QRadioButton" name="kcfg_input1ai" >
             <property name="text" >
-             <string>Keyboard</string>
+             <string>Computer</string>
             </property>
            </widget>
           </item>
@@ -134,7 +134,7 @@
       </widget>
      </item>
      <item row="1" column="0" >
-      <widget class="QGroupBox" name="kcfg_Input1" >
+      <widget class="QGroupBox" name="Input0" >
        <property name="title" >
         <string>Yellow Plays With</string>
        </property>
@@ -154,7 +154,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QRadioButton" name="radioButton3" >
+           <widget class="QRadioButton" name="kcfg_input0mouse" >
             <property name="text" >
              <string>Mouse</string>
             </property>
@@ -164,16 +164,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton4" >
+           <widget class="QRadioButton" name="kcfg_input0key" >
             <property name="text" >
-             <string>Computer</string>
+             <string>Keyboard</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton5" >
+           <widget class="QRadioButton" name="kcfg_input0ai" >
             <property name="text" >
-             <string>Keyboard</string>
+             <string>Computer</string>
             </property>
            </widget>
           </item>
@@ -199,7 +199,7 @@
       </spacer>
      </item>
      <item row="0" column="0" >
-      <widget class="QGroupBox" name="kcfg_Colour1" >
+      <widget class="QGroupBox" name="StartColour" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -227,7 +227,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QRadioButton" name="radioButton1" >
+           <widget class="QRadioButton" name="kcfg_startcolourred" >
             <property name="text" >
              <string>Red</string>
             </property>
@@ -237,7 +237,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton2" >
+           <widget class="QRadioButton" name="kcfg_startcolouryellow" >
             <property name="text" >
              <string>Yellow</string>
             </property>

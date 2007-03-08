@@ -105,6 +105,12 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Check menues
   checkMenus();
+
+  // Skip intro?
+  if (global_skip_intro)
+  {
+    menuNewGame();
+  }
 }
 
 
@@ -509,7 +515,7 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 
 
 // A move is done. Update status display.
-void KWin4App::moveDone(int playerNumber)
+void KWin4App::moveDone(int /*playerNumber*/)
 {
   checkMenus(CheckEditMenu);
   updateStatusNames();
