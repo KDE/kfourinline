@@ -722,6 +722,7 @@ void KWin4Doc::loadSettings()
   if (Prefs::startcolourred()) mStartPlayer.setValue(Red);
   else if (Prefs::startcolouryellow()) mStartPlayer.setValue(Yellow);
   else kFatal() << "Unknown start color" << endl;
+  kDebug() << "Setting start player to " << mStartPlayer << endl;
 
 
 }
@@ -776,13 +777,18 @@ COLOUR KWin4Doc::switchStartPlayer()
     mStartPlayer.setValue(Red);
     Prefs::setStartcolouryellow(false);
     Prefs::setStartcolourred(true);
+    kDebug() << "Setting startplayer to RED" << endl;
   }
   else
   {
     mStartPlayer.setValue(Yellow);
     Prefs::setStartcolouryellow(true);
     Prefs::setStartcolourred(false);
+    kDebug() << "Setting startplayer to YELLOW" << endl;
   }
+  Prefs::writeConfig();
+  kDebug() << "start red: "   << Prefs::startcolourred() << endl;
+  kDebug() << "start yellow " << Prefs::startcolouryellow() << endl;
   
   return (COLOUR)mStartPlayer.value();
 }
