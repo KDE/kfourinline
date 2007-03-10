@@ -18,6 +18,7 @@
 // Qt includes 
 #include <QRadioButton>
 #include <QLayout>
+#include <QTimer>
 
 // KDE includes
 #include <kvbox.h>
@@ -111,6 +112,11 @@ KWin4App::KWin4App(QWidget *parent)
   {
     menuNewGame();
   }
+  // Start game automatically in demo mode
+  else if (global_demo_mode)
+  {
+    QTimer::singleShot(11500, this,SLOT(menuNewGame()));
+  }
 }
 
 
@@ -178,6 +184,22 @@ void KWin4App::checkMenus(CheckFlags menu)
     {
       enableAction("edit_redo");
     }
+  }
+
+  // Disable some menus in demo mode
+  if (global_demo_mode)
+  {
+    disableAction(KStandardAction::name(KStandardAction::Preferences));
+    disableAction("edit_undo");
+    disableAction("edit_redo");
+    disableAction("new_game");
+    disableAction("end_game");
+    disableAction("save");
+    disableAction("open");
+    disableAction("network_conf");
+    disableAction("network_chat");
+    disableAction("statistics");
+    disableAction("hint");
   }
 }
 
@@ -471,6 +493,12 @@ void KWin4App::EndGame(TABLE mode)
   mDoc->switchStartPlayer();
   updateStatusNames();
   checkMenus();
+
+  // Automatically restart game in demo mode
+  if (global_demo_mode)
+  {
+    QTimer::singleShot(10000, this,SLOT(menuNewGame()));
+  }
 }
 
 

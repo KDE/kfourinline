@@ -49,6 +49,7 @@ static KCmdLineOptions options[] =
   { "d", 0, 0},
   { "debug <level>", I18N_NOOP("Enter debug level"), 0 },
   { "skipintro", I18N_NOOP("Skip intro animation"), 0 },
+  { "demo", I18N_NOOP("Run game in demo (autoplay) mode"), 0 },
   KCmdLineLastOption
 };
 
@@ -56,7 +57,9 @@ static KCmdLineOptions options[] =
 // Debug level for the program
 int global_debug = 0;
 // Skip intro
-int global_skip_intro = false;
+bool global_skip_intro = false;
+// Demo (autoplay mode)
+bool global_demo_mode  = false;
 
 
 // Main function
@@ -88,6 +91,12 @@ int main(int argc, char *argv[])
   {
     global_skip_intro = true;
     kDebug(12010) << "Skip intro cmd line choosen " << global_skip_intro << endl;
+  }
+  // Check for debug command line option
+  if (args->isSet("demo"))
+  {
+    global_demo_mode = true;
+    kDebug(12010) << "Running in demo mode " << global_demo_mode << endl;
   }
   
   // Start application

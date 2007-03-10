@@ -98,7 +98,7 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
   if (global_debug>1) kDebug(12010) << "amZug policy=" << mAmzug.policy() << endl;
 
   mPlayedBy[Yellow] = KGameIO::MouseIO;
-  mPlayedBy[Red]  = KGameIO::MouseIO;
+  mPlayedBy[Red]    = KGameIO::MouseIO;
 
   // last in init
   resetGame(false);
@@ -221,9 +221,10 @@ void KWin4Doc::endGame(TABLE mode)
   setGameStatus(End);
   // TODO pView->clearError();
   pView->endGame();
+
+  // Increase game statisics
   KWin4Player *yellow=getPlayer(Yellow);
   KWin4Player *red=getPlayer(Red);
-
   switch(mode)
   {
     case TWin:  yellow->incWin();
@@ -244,7 +245,7 @@ void KWin4Doc::endGame(TABLE mode)
        }
     break;
   }
-  // switch start player
+  
 }
 
 
@@ -706,6 +707,7 @@ void KWin4Doc::loadSettings()
   else if(Prefs::input0key())   mode = KGameIO::KeyIO;
   else if(Prefs::input0ai())    mode = KGameIO::ProcessIO;
   else kFatal() << "Unknown input device for player 0" << endl;
+  if (global_demo_mode)         mode = KGameIO::ProcessIO;
   setPlayedBy(Yellow, mode);
   kDebug() << "Played by Yellow="<<mode<<endl;  
   
@@ -713,6 +715,7 @@ void KWin4Doc::loadSettings()
   else if(Prefs::input1key())   mode = KGameIO::KeyIO;
   else if(Prefs::input1ai())    mode = KGameIO::ProcessIO;
   else kFatal() << "Unknown input device for player 1" << endl;
+  if (global_demo_mode)         mode = KGameIO::ProcessIO;
   setPlayedBy(Red, mode);
   kDebug() << "Played by Red="<<mode<<endl;  
 
