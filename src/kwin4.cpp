@@ -644,13 +644,19 @@ void KWin4App::debugKGame()
 // Show Configure dialog.
 void KWin4App::configureSettings()
 {
+  static Ui::Settings ui; // Dialog is internally static anyway
   if(KConfigDialog::showDialog("settings"))
   {
+    // The dialog need to refresh the buttons
+    ui.kcfg_startcolourred->setChecked(Prefs::startcolourred());
+    ui.kcfg_startcolouryellow->setChecked(Prefs::startcolouryellow());
     return;
   }
 
-  KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain);
-  Ui::Settings ui;
+  KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain,
+                               KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help,
+                               KDialog::Ok,
+                               true);
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
   dialog->addPage(frame, i18n("General"), "package_settings");
