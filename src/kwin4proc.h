@@ -47,7 +47,7 @@ public slots:
   void slotTurn(QDataStream &, bool turn);
 
 protected:
-  void sendValue(long value);
+  void sendValue(long value, int moveNo );
   long random(long max);
   long think(QDataStream &in,QDataStream &out,bool hint);
   

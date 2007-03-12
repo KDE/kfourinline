@@ -16,11 +16,13 @@
  ***************************************************************************/
 
 
+// Standard includes
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
+// Qt includes
 #include <QDataStream>
 #include <QByteArray>
 #include <QBuffer>
@@ -28,17 +30,19 @@
 #include <QMutex>
 #include <QWaitCondition>
 
+// KDE includes
 #include <kgamemessage.h>
-#include <kdebug.h>
 
+// Local includes
 #include "kwin4proc.h"
 
-#define MIN_TIME        1000  // min time in milli sec for move
-#define MAXANZAHL          6 /* Max 6 pieces per column */
-#define WIN4               4      /* 4er Reihe hat gewonnen */
-#define MAXZUG            42   /* Soviele Zuege moeglich */
-#define FELD_OFF          10
-#define LOWERT    -999999999L  // Init variables
+// Algorithm defines
+#define MIN_TIME        1000   // min time in milli sec for move
+#define MAXANZAHL          6   // Max 6 pieces per column 
+#define WIN4               4   // 4 in a row won
+#define MAXZUG            42   // Maximum so many moves possible
+#define FELD_OFF          10   // Offset
+#define LOWERT    -999999999L  // Init variables with this value
 #define SIEG_WERT    9999999L  // Win or loss value
 
 
@@ -49,21 +53,26 @@ KComputer::KComputer()
 
   const char *s1="7777776666666123456654321123456654321";
   const char *s2="0000000000000000000123456000000123456";
-
   unsigned int i;
+
+  // init variables
   for (i=0;i<strlen(s1);i++)
     lenofrow[i]=s1[i]-'0';
   for (i=0;i<strlen(s2);i++)
     startofrow[i]=s2[i]-'0';
 
+  calcPosPerMS = -1.0; // Unknown yet how fast AI calculates
+
+  // Connect signals of KGame framework
   connect(&proc,SIGNAL(signalCommand(QDataStream &,int ,int ,int )),
                    this,SLOT(slotCommand(QDataStream & ,int ,int ,int )));
   connect(&proc,SIGNAL(signalInit(QDataStream &,int)),
                    this,SLOT(slotInit(QDataStream & ,int )));
   connect(&proc,SIGNAL(signalTurn(QDataStream &,bool )),
                    this,SLOT(slotTurn(QDataStream & ,bool )));
-  fprintf(stderr, "----------------->\nKComputer::Computer\n");
-  calcPosPerMS = -1.0; // Unknown yet
+
+  fprintf(stderr, "KComputer::KComputer()\n");
+  fflush(stderr);
 }
 
 
@@ -86,38 +95,40 @@ void KComputer::slotTurn(QDataStream &in,bool turn)
 {
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  fprintf(stderr,"----------------->\nKComputer::slotTurn\nturn:%d\n",turn);
+  fprintf(stderr,"  KComputer::slotTurn(turn=%d)\n",turn);
+  fflush(stderr);
   if (turn)
   {
     // Create a move
     qint32 value = think(in,out,false);
     int id       = KGameMessage::IdPlayerInput;
     proc.sendSystemMessage(out,id,0);
-    sendValue(value);
-    fprintf(stderr,"  KComputer::sendValue in turn:%d\n",value);
+    sendValue(value, aktzug);
+    fprintf(stderr,"  KComputer::slotTurn sending value (value=%ld)\n",long(value));
+    fflush(stderr);
   }
-  fflush(stderr);
 }
 
 
 // Send position value back to main program
-void KComputer::sendValue(long value)
+void KComputer::sendValue(long value, int moveNo)
 {
   qint8 cid = 1; // notifies our KGameIO that this is a value message
   int id    = KGameMessage::IdProcessQuery;
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  out << cid << ( qint32 )value;
+  out << cid << (qint32 )value << (qint32)moveNo;
   proc.sendSystemMessage(out,id,0);
-  fprintf(stderr,"  KComputer::sendValue in sendValue:%ld\n",(long)value);
+  fprintf(stderr,"  KComputer::sendValue (value=%ld)\n",value);
   fflush(stderr);
 }
 
 
 // Received a command from the main program
-void KComputer::slotCommand(QDataStream &in,int msgid,int /*receiver*/,int /*sender*/)
+void KComputer::slotCommand(QDataStream &in, int msgid, int /*receiver*/, int /*sender*/)
 {
-  fprintf(stderr,"----------------->\nKComputer::slotCommand\nMsgid:%d\n",msgid);
+  fprintf(stderr,"KComputer::slotCommand(Msgid=%d)\n",msgid);
+  fflush(stderr);
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
   switch(msgid)
@@ -134,7 +145,7 @@ void KComputer::slotCommand(QDataStream &in,int msgid,int /*receiver*/,int /*sen
     }
     break;
     default:
-      fprintf(stderr,"KComputer:: unknown command Msgid:%d\n",msgid);
+      fprintf(stderr,"KComputer:: unknown command (msgid=%d)\n",msgid);
   }
 }
 
@@ -148,8 +159,6 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
   in >> tmp;
   aktzug=tmp;
   in >> tmp;
-  // We need all the +1 because the main program has different defines
-  // for the colors. And changing it here seems not to work....
   amZug=(COLOUR)(tmp);
   in >> tmp;
   beginner=(COLOUR)(tmp);
@@ -157,7 +166,7 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
   second=(COLOUR)(tmp);
   in >> tmp;
   mymaxreklev=tmp;
-  fprintf(stderr,"think: pl=%d, aktzug=%d amzug=%d begin=%d second=%d level=%d\n",
+  fprintf(stderr,"KComputer::think: pl=%d, aktzug=%d amzug=%d begin=%d second=%d level=%d\n",
                  pl,aktzug,amZug,beginner,second,mymaxreklev);
 
   InitField();
@@ -186,7 +195,7 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
   }
 
   in >> tmp;
-  fprintf(stderr,"CHECKSUM=%ld should be 421256\n",(long)tmp);
+  fprintf(stderr,"CHECKSUM=%ld [should be 421256]\n",(long)tmp);
 
   // Estimated number of positions to evaluate (MAX)
   int estimated = 0;
@@ -219,11 +228,12 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
 
   // Measure elapsed time
   int elapsed = timer.elapsed();
+  if (elapsed < 1) elapsed = 1;
   if (calcPosPerMS <= 0.0) calcPosPerMS = (float)pos_evaluations/(float)elapsed;
 
   // Debug
-  fprintf(stderr,"Computer sends move; to %d value=%ld\n",mymove,aktwert);
-  fprintf(stderr,"AI MOVE level %d took time= %d ms and evaluations=%d estimated=%d pos/ms=%f\n",
+  fprintf(stderr,"Computer sends move to %d with value=%ld\n",mymove,aktwert);
+  fprintf(stderr,"AI MOVE level %d took time=%d ms and evaluations=%d estimated=%d pos/ms=%f\n",
              mymaxreklev, elapsed, pos_evaluations,estimated,calcPosPerMS);
 
   // Sleep a minimum amount to slow down moves
@@ -236,8 +246,9 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
     cond.wait(&mutex, MIN_TIME-elapsed);
     
     elapsed = timer.elapsed();
-    fprintf(stderr,"AI move after sleep %d\n",elapsed);
+    fprintf(stderr,"AI after sleeping time elapsed=%d\n",elapsed);
   }
+  fflush(stderr);
 
 
   // Send out move
@@ -488,14 +499,13 @@ int main(int argc ,char * argv[])
 {
   // This is the computer player...it should do the calculation
   // It doesn't do much here
-  fprintf(stderr,"Vor KComputer START *****************************************************\n");
+  fprintf(stderr,"AI process starts up\n");
   fflush(stderr);
   KComputer comp;
-  fprintf(stderr,"Vor exec *************************\n");
-  fflush(stderr);
   // And start the event loop
   comp.proc.exec(argc,argv);
-  fprintf(stderr,"nach KComputer exec\n");
+  fprintf(stderr,"AI process exists.\n");
+  fflush(stderr);
   return 1;
 }
 #include "kwin4proc.moc"

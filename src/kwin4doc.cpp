@@ -673,7 +673,6 @@ void KWin4Doc::resetStatistic()
 void KWin4Doc::setScore(long value)
 {
   mScore.setValue(value);
-  kDebug() << " ************** SET AI SCORE("<<mCurrentMove<<") " << value << " ****************" << endl;
 }
 
 
@@ -1071,10 +1070,11 @@ void KWin4Doc::processAICommand(QDataStream& in, KGameProcessIO* /*io*/)
   switch(cid)
   {
     case 1:  // game value
-      qint32 value;
-      in >> value;
-      if (global_debug>1) kDebug(12010) << "#### Computer thinks value is " << value << endl;
+      qint32 value, moveNo;
+      in >> value >> moveNo;
+      if (global_debug>1) kDebug(12010) << "#### Computer thinks move " << moveNo << " value is " << value << endl;
       setScore(value);
+      kDebug() << "SET AI SCORE(game current move="<<mCurrentMove << ", AI move=" << moveNo <<") " << value << "************" << endl;
     break;
     default:
       kError() << "KWin4Doc::processAICommand: Unknown id " << cid << endl;
