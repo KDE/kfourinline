@@ -108,8 +108,8 @@ void ScoreSprite::changeTheme()
   
   // Retrieve font color
   QColor fontColor[2];
-  fontColor[0] = config.readEntry("fontColorPlayer0", Qt::white);
-  fontColor[1] = config.readEntry("fontColorPlayer1", Qt::white);
+  fontColor[0] = config.readEntry("fontColorPlayer0", QColor(Qt::white));
+  fontColor[1] = config.readEntry("fontColorPlayer1", QColor(Qt::white));
 
   // Set position of sub sprites
   mWon[0]->setPos(posWon0.x()*width, posWon0.y()*height);
@@ -241,9 +241,9 @@ void ScoreSprite::setTurn(int no)
 {
 	// Retrieve theme data
   KConfigGroup config     = thememanager()->config(id());
-  QColor fontColorActive  = config.readEntry("fontColorActive", Qt::white);
-  QColor fontColor0       = config.readEntry("fontColorPlayer0", Qt::white);
-  QColor fontColor1       = config.readEntry("fontColorPlayer1", Qt::white);
+  QColor fontColorActive  = config.readEntry("fontColorActive", QColor(Qt::white));
+  QColor fontColor0       = config.readEntry("fontColorPlayer0", QColor(Qt::white));
+  QColor fontColor1       = config.readEntry("fontColorPlayer1", QColor(Qt::white));
 
   // Store data
   mTurn = no;
