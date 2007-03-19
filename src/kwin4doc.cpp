@@ -30,8 +30,8 @@
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <krandomsequence.h>
-#include <kapplication.h>
 #include <kglobal.h>
+#include <kcomponentdata.h>
 
 // application specific includes
 #include "kwin4doc.h"
