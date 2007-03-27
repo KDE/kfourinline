@@ -77,12 +77,12 @@ class KWin4App : public KMainWindow
     /** Enable oactions that is menu/toolbar items.
       * @param action The action to affect
       */
-    void enableAction(const char *action) {changeAction(action, true); } ;
+    void enableAction(const char *action) {changeAction(action, true); } 
     
     /** Disable actions that is menu/toolbar items.
       * @param action The action to affect
       */  
-    void disableAction(const char *action) {changeAction(action, false); } ;
+    void disableAction(const char *action) {changeAction(action, false); } 
     
     /** Checks all menues and depening on the game status enables or disables them.
       * This is usually done on  program init.
