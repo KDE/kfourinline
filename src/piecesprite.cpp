@@ -35,6 +35,7 @@
 PieceSprite::PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
+  mMovementState = Idle;
   mNotify = new SpriteNotify(this);
   if (theme) theme->updateTheme(this);
 }
@@ -106,6 +107,7 @@ void PieceSprite::advance(int phase)
      if (mTime >= mDuration)
      {
        mMovementState = Idle;
+
        setPos(mEnd.x()*scale, mEnd.y()*scale);
        // Use notifier to emit signal
        mNotify->emitSignal(0);
