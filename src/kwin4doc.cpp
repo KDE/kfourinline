@@ -18,6 +18,13 @@
    Boston, MA 02110-1301, USA.
 */
 
+/** Note: The AI engine of kwin4 does on purpose not implement a perfect 
+  *       Connect-4(tm) engine but tries to play more human as playing against
+  *       a perfect engine is only frustrating. Connect four is proven to
+  *       always win for the first player with perfect play.
+  *       see e.g. the Valena AI Engine http://www.ce.unipr.it/~gbe/velena.html
+  */
+
 // include files for Qt
 #include <QDir>
 #include <QTimer>
@@ -99,6 +106,10 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
 
   mPlayedBy[Yellow] = KGameIO::MouseIO;
   mPlayedBy[Red]    = KGameIO::MouseIO;
+
+
+  // AI support
+  mAIValues.resize(42);
 
   // last in init
   resetGame(false);
@@ -691,6 +702,8 @@ void KWin4Doc::loadSettings()
   kDebug() << "input1ai: " << Prefs::input1ai() << endl;
   kDebug() << "start red: "   << Prefs::startcolourred() << endl;
   kDebug() << "start yellow " << Prefs::startcolouryellow() << endl;
+  kDebug() << "Learning     " << Prefs::learning() << endl;
+  kDebug() << "Lock         " << Prefs::ailock() << endl;
 
 
   // Store level for score sprite display
@@ -789,8 +802,6 @@ COLOUR KWin4Doc::switchStartPlayer()
     kDebug() << "Setting startplayer to YELLOW" << endl;
   }
   Prefs::writeConfig();
-  kDebug() << "start red: "   << Prefs::startcolourred() << endl;
-  kDebug() << "start yellow " << Prefs::startcolouryellow() << endl;
   
   return (COLOUR)mStartPlayer.value();
 }
@@ -836,7 +847,7 @@ QString KWin4Doc::findProcessName()
   QDir dir;
   // TODO: This local filename is not found!!
   QString filename=dir.path()+QString("/kwin4/kwin4proc");
-  kDebug() << "FILENAME="<<filename<<endl;
+  kDebug() << "PROC FILENAME="<<filename<<endl;
   QFile flocal(filename);
   if (flocal.exists())
   {
@@ -882,7 +893,7 @@ bool KWin4Doc::playerInput(QDataStream& msg, KPlayer* /*player*/)
 {
   qint32 move, pl;
   msg >> pl >> move;
-  kDebug() << "KWin4Doc::playerInput pl="<<pl<<" and move=" << move <<endl;
+  kDebug() << "KWin4Doc::playerInput: ================ pl="<<pl<<" and move=" << move << "===================="<<endl;
 
   // Perform move and check for success
   if (!doMove(move,pl))
@@ -922,11 +933,12 @@ void KWin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
 
   if (mPlayedBy[col]!=io && !player->isVirtual())
   {
-    getPlayer(getCurrentPlayer())->setTurn(false); // turn of move
+    bool myTurn = player->myTurn();
+    player->setTurn(false); // turn of move
     mPlayedBy[col]=io;
     player->removeGameIO(0); // remove all IO's
     createIO(player,io);
-    getPlayer(getCurrentPlayer())->setTurn(true); // turn on move
+    player->setTurn(myTurn); // turn on move
   }
 }
 
@@ -1039,6 +1051,17 @@ void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
   stream << (qint32)getPlayerColour(1);
   stream << (qint32)Prefs::level();
 
+  bool learning = Prefs::learning();
+  // Allow learning only for one AI
+  if ( mPlayedBy[Yellow] == KGameIO::ProcessIO &&
+       mPlayedBy[Red]    == KGameIO::ProcessIO &&
+       pl == Yellow) learning = false;
+  stream << (qint32)learning;
+
+  // Where to save the learn cache
+  QString learnPath =  KGlobal::dirs()->saveLocation("data","kwin4",true);
+  stream << learnPath;
+
   int i,j;
   for (i=0;i<FIELD_SIZE_Y;i++)
   {
@@ -1062,19 +1085,37 @@ void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
 
 
 // The AI send a command, e.g. the game value to us
-void KWin4Doc::processAICommand(QDataStream& in, KGameProcessIO* /*io*/)
+void KWin4Doc::processAICommand(QDataStream& in, KGameProcessIO* io)
 {
   qint8 cid;
+
   // Receive command
   in >> cid;
   switch(cid)
   {
     case 1:  // game value
-      qint32 value, moveNo;
-      in >> value >> moveNo;
+    {
+      AIBoard aiBoard;
+      qint32 value, moveNo, level;
+      in >> value >> moveNo >> level >> aiBoard;
       if (global_debug>1) kDebug(12010) << "#### Computer thinks move " << moveNo << " value is " << value << endl;
+      // Store AI data
+      mAIValues[moveNo] = value;
       setScore(value);
-      kDebug() << "SET AI SCORE(game current move="<<mCurrentMove << ", AI move=" << moveNo <<") " << value << "************" << endl;
+
+      // Check AI mistakes
+      if (moveNo>=2)
+      {
+        long delta = mAIValues[moveNo]-mAIValues[moveNo-2];
+
+        // Send game to process
+        QByteArray buffer;
+        QDataStream outstream(&buffer, QIODevice::WriteOnly);
+        // Send last board to learn with current value
+        outstream << aiBoard << value << (qint32)delta << level;
+        io->sendMessage(outstream, 3, 0, gameId());
+      }
+    }
     break;
     default:
       kError() << "KWin4Doc::processAICommand: Unknown id " << cid << endl;
@@ -1264,8 +1305,12 @@ void KWin4Doc::gamePropertyChanged(KGamePropertyBase* prop, KGame* /* me */)
      else if (gameStatus()==Run)
      {
        if (global_debug>1) kDebug(12010) << "PropertyChanged::status signal game run +++" << endl;
-       activateCurrentPlayer(); // Set the current player to play
-       emit signalGameRun();
+       if (playerList()->count()==2)
+       {
+         activateCurrentPlayer(); // Set the current player to play
+         emit signalGameRun();
+       }
+       if (global_debug>1) kDebug(12010) << "PropertyChanged::status signal game run done +++" << endl;
      }
      else if (gameStatus()==Init)
      {

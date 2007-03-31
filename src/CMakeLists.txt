@@ -20,6 +20,7 @@ set(kwin4_SRCS
    piecesprite.cpp
    scoresprite.cpp
    score.cpp
+   aiboard.cpp
    pixmapsprite.cpp)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
@@ -39,7 +40,9 @@ install(TARGETS kwin4  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### next target ###############
 
-set(kwin4proc_SRCS kwin4proc.cpp )
+set(kwin4proc_SRCS 
+    aiboard.cpp
+    kwin4proc.cpp )
 
 kde4_automoc(${kwin4proc_SRCS})
 

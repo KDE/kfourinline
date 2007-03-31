@@ -357,7 +357,7 @@ void KWin4App::menuOpenGame()
   QString dir(":<kwin4>");
   QString filter("*");
   QString file("/tmp/kwin.save");
-  if (global_debug < 10)
+  if (global_debug < 1)
     file=KFileDialog::getOpenFileName(dir,filter,this);
   mDoc->load(file,true);
   checkMenus();
@@ -369,7 +369,7 @@ void KWin4App::menuSaveGame()
   QString dir(":<kwin4>");
   QString filter("*");
   QString file("/tmp/kwin.save");
-  if (global_debug < 10)
+  if (global_debug < 1)
     file=KFileDialog::getSaveFileName(dir,filter,this);
   mDoc->save(file);
 }

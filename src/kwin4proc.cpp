@@ -29,6 +29,7 @@
 #include <QTime>
 #include <QMutex>
 #include <QWaitCondition>
+#include <QFile>
 
 // KDE includes
 #include <kgamemessage.h>
@@ -37,31 +38,48 @@
 #include "kwin4proc.h"
 
 // Algorithm defines
-#define MIN_TIME        1000   // min time in milli sec for move
-#define MAXANZAHL          6   // Max 6 pieces per column 
-#define WIN4               4   // 4 in a row won
-#define MAXZUG            42   // Maximum so many moves possible
-#define FELD_OFF          10   // Offset
-#define LOWERT    -999999999L  // Init variables with this value
-#define SIEG_WERT    9999999L  // Win or loss value
+//#define MIN_TIME        1000       // min time in milli sec for move
+#define MIN_TIME        10           // min time in milli sec for move
+
+// Board and game geomertry
+#define MAX_PIECES_COL     6         // Max 6 pieces per column 
+#define WIN4               4         // 4 in a row won
+#define MAX_MOVE          42         // Maximum so many moves possible
+#define FIELD_OFFSET      10         // Offset
+
+// AI rating and routines
+#define LOWERT        -999999999L    // Init variables with this value
+#define VICTORY_VALUE    9999999L    // Win or loss value
+#define MAX_EXTRA_RECURSION    15    // Maximum so many extra recursions
+#define PERCENT_FOR_INC_ITERATION 40 // If less than this amount of estimated moves are
+                                     // calculated increase recursion
+
+// AI Learning
+#define LEARN_DELTA   -15000L        // Learn if position drops by more than this
+#define MAX_LEARNED_POSITIONS 100000 // Learn not more than this positions 
+#define MIN_LEARN_LEVEL     3        // Use learning only >= this level
+#define BRAIN_VERSION       1        // Version number
 
 
-// Constructor
+// Constructor: Setup AI
 KComputer::KComputer()
 {
-  InitField();
-
   const char *s1="7777776666666123456654321123456654321";
   const char *s2="0000000000000000000123456000000123456";
   unsigned int i;
 
-  // init variables
+  // Init variables
   for (i=0;i<strlen(s1);i++)
-    lenofrow[i]=s1[i]-'0';
+    mRowLengths[i]=s1[i]-'0';
   for (i=0;i<strlen(s2);i++)
-    startofrow[i]=s2[i]-'0';
+    mStartOfRows[i]=s2[i]-'0';
 
-  calcPosPerMS = -1.0; // Unknown yet how fast AI calculates
+  // Unknown yet how fast AI calculates
+  mCalcPosPerMS = -1.0; 
+
+  // No brain loaded yet
+  mBrainLoaded = false;
+  mBrainUsed   = 0;
 
   // Connect signals of KGame framework
   connect(&proc,SIGNAL(signalCommand(QDataStream &,int ,int ,int )),
@@ -70,16 +88,12 @@ KComputer::KComputer()
                    this,SLOT(slotInit(QDataStream & ,int )));
   connect(&proc,SIGNAL(signalTurn(QDataStream &,bool )),
                    this,SLOT(slotTurn(QDataStream & ,bool )));
-
-  fprintf(stderr, "KComputer::KComputer()\n");
-  fflush(stderr);
 }
 
 
-// Recevied init command
+// Recevied init command (unused)
 void KComputer::slotInit(QDataStream & /*in */,int /*id*/)
 {
-//  fprintf(stderr,"----------------->\nKComputer::slotInit\nid:%d\n",id);
   /*
   QByteArray buffer;
   QDataStream out(buffer,QIODevice::WriteOnly);
@@ -91,35 +105,125 @@ void KComputer::slotInit(QDataStream & /*in */,int /*id*/)
 
 
 // Received turn command
-void KComputer::slotTurn(QDataStream &in,bool turn)
+void KComputer::slotTurn(QDataStream &in, bool turn)
 {
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  fprintf(stderr,"  KComputer::slotTurn(turn=%d)\n",turn);
-  fflush(stderr);
+  //fprintf(stderr,"  KComputer::slotTurn(turn=%d)\n",turn);
+  //fflush(stderr);
   if (turn)
   {
     // Create a move
-    qint32 value = think(in,out,false);
-    int id       = KGameMessage::IdPlayerInput;
+
+    MoveResult result = think(in,out,false);
+    int id            = KGameMessage::IdPlayerInput;
     proc.sendSystemMessage(out,id,0);
-    sendValue(value, aktzug);
-    fprintf(stderr,"  KComputer::slotTurn sending value (value=%ld)\n",long(value));
-    fflush(stderr);
+    sendValue(result.value, mCurMoveNo);
+    //fprintf(stderr,"  KComputer::slotTurn sending value (value=%ld)\n",result.value);
+    //fflush(stderr);
   }
 }
 
 
-// Send position value back to main program
+// Send position data back to main program
 void KComputer::sendValue(long value, int moveNo)
 {
   qint8 cid = 1; // notifies our KGameIO that this is a value message
   int id    = KGameMessage::IdProcessQuery;
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
-  out << cid << (qint32 )value << (qint32)moveNo;
+  out << cid << (qint32 )value << (qint32)moveNo << (qint32)mLevel << mMaxAIBoard;
   proc.sendSystemMessage(out,id,0);
-  fprintf(stderr,"  KComputer::sendValue (value=%ld)\n",value);
+  //fprintf(stderr,"  KComputer::sendValue (value=%ld)\n",value);
+  //fflush(stderr);
+}
+
+
+// Load brain position cache
+void KComputer::loadBrain()
+{
+  QFile file(mBrainDir+QString("kwin4.brain"));
+  if (!file.open(QIODevice::ReadOnly ))
+  {
+    fprintf(stderr,"  KComputer::Brain file cannot be opened.\n");
+    fflush(stderr);
+    return;
+  }
+
+  QDataStream in(&file);
+  qint32 version;
+  in >> version;
+  if (version != (qint32)BRAIN_VERSION)
+  {
+    fprintf(stderr,"  KComputer::Loading brain version error %ld\n",(long)version);
+    fflush(stderr);
+    file.close();
+    return;
+  }
+
+  qint32 noOfItems;
+  in >> noOfItems;
+  fprintf(stderr,"  KComputer::Loading %ld brain data\n",(long)noOfItems);
+  fflush(stderr);
+
+  bool erase = false;
+  if (noOfItems >MAX_LEARNED_POSITIONS) erase = true; 
+
+  for (int cnt=0; cnt<noOfItems; cnt++)
+  {
+    AIBoard board;
+    AIValue value;
+    in >> board >> value;
+
+    // Forget 10% positions in case of overload
+    if (erase && cnt%10 != 0)
+    {
+      mBrain.insert(board, value);
+    }
+  }
+  fflush(stderr);
+  qint32 check;
+  in >> check;
+  file.close();
+
+  if (check != (qint32)0x18547237)
+  {
+    fprintf(stderr,"  KComputer::Loading brain CRC error %ld cnt=%d\n",(long)check,noOfItems);
+    fflush(stderr);
+    mBrain.clear();
+    return;
+  }
+  fprintf(stderr,"  KComputer::Loading brain (%d items) succeeded\n",(int)noOfItems);
+  fflush(stderr);
+}
+
+
+// Save brain position cache
+void KComputer::saveBrain()
+{
+  QFile file(mBrainDir+QString("kwin4.brain"));
+  if (!file.open(QIODevice::WriteOnly ))
+  {
+    fprintf(stderr,"  KComputer::saving brain failed.\n");
+    fflush(stderr);
+    return;
+  }
+
+  QDataStream out(&file);
+  out << (qint32)BRAIN_VERSION; // Version
+  out << (qint32)mBrain.size();
+  
+  QHashIterator<AIBoard, AIValue> it(mBrain);
+  while (it.hasNext()) 
+  {
+      it.next();
+      AIBoard board = it.key();
+      AIValue value = it.value();
+      out << board << value;
+  }
+  out << (qint32)0x18547237; // Checksum
+  file.close();
+  fprintf(stderr,"  KComputer:: Brain saved.\n");
   fflush(stderr);
 }
 
@@ -127,8 +231,8 @@ void KComputer::sendValue(long value, int moveNo)
 // Received a command from the main program
 void KComputer::slotCommand(QDataStream &in, int msgid, int /*receiver*/, int /*sender*/)
 {
-  fprintf(stderr,"KComputer::slotCommand(Msgid=%d)\n",msgid);
-  fflush(stderr);
+  //fprintf(stderr,"KComputer::slotCommand(Msgid=%d)\n",msgid);
+  //fflush(stderr);
   QByteArray buffer;
   QDataStream out(&buffer,QIODevice::WriteOnly);
   switch(msgid)
@@ -138,40 +242,136 @@ void KComputer::slotCommand(QDataStream &in, int msgid, int /*receiver*/, int /*
       qint8 cid   = 2;
       qint32 recv = 0;
       out << cid;
-      long value  = think(in,out,true);
-      out << ( qint32 )value;
+      MoveResult result = think(in,out,true);
+      out << ( qint32 )result.value;
       int id = KGameMessage::IdProcessQuery;
       proc.sendSystemMessage(out, id, recv);
     }
     break;
+    case 3: // AI board value changed, maybe learn 
+    {
+      AIBoard aiBoard;
+      qint32  value, level, delta;
+      in >> aiBoard >> value >> delta >> level;
+      // Only learn big changes
+      if (mIsLearning && delta < LEARN_DELTA && level >= MIN_LEARN_LEVEL && level < MIN_LEARN_LEVEL+AIValue::NO_OF_LEVELS)
+      {
+        fprintf(stderr,"KComputer:: LEARNING Received AI board for value %ld delta %ld level %ld\n",
+                       (long)value, (long)delta, (long)level);
+        aiBoard.print();
+
+        // Learn board?
+        AIValue aiValue;
+        // Do we already store board?
+        if (mBrain.contains(aiBoard))
+        {
+          aiValue = mBrain.value(aiBoard);
+        }
+        // Do we store mirror board?
+        else if (mBrain.contains(aiBoard.mirror()))
+        {
+          aiBoard = aiBoard.mirror();
+          aiValue = mBrain.value(aiBoard);
+        }
+        // Set not set or decreased values in value structure
+        if (!aiValue.isSet((int)level-MIN_LEARN_LEVEL) || aiValue.value((int)level-MIN_LEARN_LEVEL) > (long)value)
+        {
+          aiValue.setValue((int)level-MIN_LEARN_LEVEL, (long)value);
+          mBrain.insert(aiBoard, aiValue);
+          saveBrain();
+          fprintf(stderr, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+          fprintf(stderr, "$        LEARNING                          $\n");
+          fprintf(stderr, "$ Setting board level %d to value = %ld\n",(int)level, (long)value);
+          fprintf(stderr, "$ mBrain size=%d\n", mBrain.size());
+          fprintf(stderr, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+          fflush(stderr);
+        }
+        else  // TODO: Remove else
+        {
+          fprintf(stderr, "NOT LEARNING $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+          fprintf(stderr, "     REASON: %d %ld %ld\n",
+                          aiValue.isSet((int)level-MIN_LEARN_LEVEL), aiValue.value((int)level-MIN_LEARN_LEVEL),(long)value);
+          fflush(stderr);
+        }
+      }// end delta
+    }
+    break;
     default:
       fprintf(stderr,"KComputer:: unknown command (msgid=%d)\n",msgid);
+      fflush(stderr);
   }
 }
 
+
 // Think up a move (plus reading data from stream)
-long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
+KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
 {
   qint32 pl;
   qint32 move;
   qint32 tmp;
+  COLOUR secondPlayer;
+  // Which color's move is to come
+  COLOUR currentPlayer;   
+  // Which player started the game
+  COLOUR startPlayer; 
+
+  // Read command data stream into local variables
   in >> pl ;
   in >> tmp;
-  aktzug=tmp;
+  mCurMoveNo=tmp;
   in >> tmp;
-  amZug=(COLOUR)(tmp);
+  currentPlayer=(COLOUR)(tmp);
   in >> tmp;
-  beginner=(COLOUR)(tmp);
+  startPlayer=(COLOUR)(tmp);
   in >> tmp;
-  second=(COLOUR)(tmp);
+  secondPlayer=(COLOUR)(tmp);
   in >> tmp;
-  mymaxreklev=tmp;
-  fprintf(stderr,"KComputer::think: pl=%d, aktzug=%d amzug=%d begin=%d second=%d level=%d\n",
-                 pl,aktzug,amZug,beginner,second,mymaxreklev);
+  mLevel=tmp;
+  in >> tmp;
+  mIsLearning=tmp;
+  in >> mBrainDir;
 
-  InitField();
+  // Check proper learning level. If not proper switch learning off.
+  if (mLevel<MIN_LEARN_LEVEL || mLevel>=MIN_LEARN_LEVEL+AIValue::NO_OF_LEVELS)
+  {
+    mIsLearning = false;
+    fprintf(stderr,"KComputer:: Switching off learning for level %d\n",mLevel);
+  }
 
-  // Field as 42 qint8's
+  fprintf(stderr,"KComputer::think: pl=%d, mCurMoveNo=%d currentPlayer=%d begin=%d secondPlayer=%d level=%d learn=%d\n",
+                 pl,mCurMoveNo,currentPlayer,startPlayer,secondPlayer,mLevel,mIsLearning);
+  //fprintf(stderr,"KComputer::learning=%d path=%s\n",mIsLearning,mBrainDir.toLatin1().data());
+
+  // Brain loaded?
+  if (!mBrainLoaded && mIsLearning)
+  {
+    mBrainLoaded = true;
+    loadBrain();
+  }
+
+  // Setup board (init)
+  // The game board prepared for the AI
+  FARBE fieldMatrix[SIZE_Y_ALL+1][SIZE_X+1];
+  // Amount of pieces on the game board
+  char numberMatrix[SIZE_Y_ALL+1];
+
+  for (int y=0;y<=SIZE_Y_ALL;y++)
+  {
+    numberMatrix[y]=0;
+  }
+
+  for (int y=0;y<=SIZE_Y;y++)
+  {
+    for (int x=0;x<=SIZE_X;x++)
+    {
+      fieldMatrix[y][x]      = (FARBE)(y+FIELD_OFFSET);
+      fieldMatrix[6+x][y]    = (FARBE)(y+FIELD_OFFSET);
+      fieldMatrix[13+x+y][x] = (FARBE)(y+FIELD_OFFSET);
+      fieldMatrix[30+x-y][x] = (FARBE)(y+FIELD_OFFSET);
+    } // next x
+  }// next y 
+
+  // Field comes as 42 qint8's representing moves
   int i,j;
   for (i=0;i<=SIZE_Y;i++)
   {
@@ -179,27 +379,22 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
     {
       qint8 col;
       in >> col;
-      DoMove(j, (COLOUR)col, feldmatrix, anzahlmatrix);
+      DoMove(j, (COLOUR)col, fieldMatrix, numberMatrix);
     }
   }
 
-  for (i=0;i<=SIZE_Y;i++)
-  {
-    char tstr[1024];
-    tstr[0]=0;
-    for (j=0;j<=SIZE_X;j++)
-    {
-      sprintf(tstr+strlen(tstr),"%02d ", feldmatrix[i][j]);
-    }
-    fprintf(stderr,"%s\n",tstr);
-  }
 
+  // Check final checksum
   in >> tmp;
-  fprintf(stderr,"CHECKSUM=%ld [should be 421256]\n",(long)tmp);
+  if ((long)tmp != 421256L)
+  {
+    fprintf(stderr,"CHECKSUM=%ld [should be 421256]\n",(long)tmp);
+    fflush(stderr);
+  }
 
   // Estimated number of positions to evaluate (MAX)
   int estimated = 0;
-  for (int i=1; i<= mymaxreklev; i++)
+  for (int i=1; i<= mLevel+1; i++)
   {
     estimated += int(pow(7.,i));
   }
@@ -207,39 +402,39 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
   // Measure time of move and positions evaluated
   QTime timer;
   timer.start();
-  pos_evaluations = 0;
+  mPosEvaluations = 0;
 
   // Get move
-  int mymove;
   int gameOver = 0;
   int extraRecurstion = 0;
+  MoveResult result;
 
-  // Loop movement if not many positions are evaulated (end game)
+  // Loop movement if not many positions are evaluated (end game)
   // to look ahead a bit more
   do
   {
     // Actually calculate move
-    mymove = GetCompMove(mymaxreklev + extraRecurstion);
+    result = MinMax(currentPlayer, fieldMatrix, numberMatrix,  mLevel + extraRecurstion, mCurMoveNo, true);
+    result.value = -result.value;
 
     // Do not recalcuate for (nearly finished) games
-    if (aktwert >= SIEG_WERT*0.95 || aktwert <= -SIEG_WERT *0.95) gameOver = 1;
+   // if (result.value >= VICTORY_VALUE*0.95 || result.value <= -VICTORY_VALUE *0.95) gameOver = 1;
     extraRecurstion++;
-  }while(4*pos_evaluations <= estimated && !gameOver);
+  }while(PERCENT_FOR_INC_ITERATION/10*mPosEvaluations <= estimated && !gameOver && extraRecurstion < MAX_EXTRA_RECURSION);
 
   // Measure elapsed time
   int elapsed = timer.elapsed();
   if (elapsed < 1) elapsed = 1;
-  if (calcPosPerMS <= 0.0) calcPosPerMS = (float)pos_evaluations/(float)elapsed;
+  mCalcPosPerMS = (float)mPosEvaluations/(float)elapsed;
 
   // Debug
-  fprintf(stderr,"Computer sends move to %d with value=%ld\n",mymove,aktwert);
-  fprintf(stderr,"AI MOVE level %d took time=%d ms and evaluations=%d estimated=%d pos/ms=%f\n",
-             mymaxreklev, elapsed, pos_evaluations,estimated,calcPosPerMS);
+  fprintf(stderr,"AI MOVE to %d value=%ld level %d took time=%d ms and evals=%d estimated=%d pos/ms=%f brain=%ld\n",
+             result.move,result.value,mLevel, elapsed, mPosEvaluations,estimated,mCalcPosPerMS,mBrainUsed);
 
   // Sleep a minimum amount to slow down moves
   if (elapsed < MIN_TIME) 
   {
-    // usleep(1000*(MIN_TIME-elapsed));
+    // is usleep(1000*(MIN_TIME-elapsed));
     QMutex mutex;
     QWaitCondition cond;
     mutex.lock();
@@ -252,130 +447,163 @@ long KComputer::think(QDataStream& in, QDataStream& out, bool /*hint*/)
 
 
   // Send out move
-  move = mymove;
+  move = result.move;
   out << pl << move;
-  return aktwert;
-}
-
-
-// Computer AI algorithms
-int KComputer::GetCompMove(int maxRecursion)
-{
-  int cmove;
-  long cmax,wert;
-  int x;
-  FARBE lfeld[SIZE_Y_ALL+1][SIZE_X+1];
-  char lanzahl[SIZE_Y_ALL+1];
-  COLOUR farbe;
-
-
-  farbe = amZug;
-  cmove = -1; /* Kein Zug */
-  cmax  = LOWERT;
-  for (x=0;x<=SIZE_X;x++)
-  {
-    if (anzahlmatrix[6+x]>=MAXANZAHL) continue;
-    memcpy(lanzahl,anzahlmatrix,sizeof(lanzahl));
-    memcpy(lfeld,feldmatrix,sizeof(lfeld));
-
-    DoMove(x,farbe,lfeld,lanzahl);
-    wert=MinMax(farbe,lfeld,lanzahl,maxRecursion,aktzug+1);
-
-    if (wert>=cmax)
-    {
-     cmax  = wert;
-     cmove = x;
-     if (cmax>=SIEG_WERT) break;
-    }
-  }/*next x*/
-  aktwert = cmax;
-  amZug   = farbe; // Wertung changes amZug!
-  return cmove;
+  return result;
 }
 
 
 // Min-Max AI algorithm
-long KComputer::MinMax(COLOUR farbe,FARBE feld[][SIZE_X+1], char anzahl[], int reklev, int zug)
+KComputer::MoveResult KComputer::MinMax(COLOUR color, FARBE field[][SIZE_X+1], char numbers[], int reklev, int moveNo, bool first)
 {
-  static long gaus[]={10,50,300,500,300,50,10};
-  FARBE lfeld[SIZE_Y_ALL+1][SIZE_X+1];
-  char lanzahl[SIZE_Y_ALL+1];
-  long max,wert;
-  int x;
-  COLOUR winner;
+  // Modify move value
+  static long gauss[]={10,50,300,500,300,50,10};
 
-  pos_evaluations++;
+  // Local board
+  FARBE locField[SIZE_Y_ALL+1][SIZE_X+1];
+  char locNumbers[SIZE_Y_ALL+1];
 
-  winner=IsGameOver(feld,anzahl);
-  if (winner!=Nobody)
+  // Result of move
+  MoveResult result;
+  result.move  = -1; // No move found
+  result.value = LOWERT; 
+
+  for (int x=0; x<=SIZE_X; x++)
   {
-     if (winner==farbe) return(SIEG_WERT);
-     else return(-SIEG_WERT);
-  }
-  if (zug>=MAXZUG) return(0); /* Remis */
-  if (reklev <= 1) return PositionEvaluation(farbe,feld);
+    long wert;
+    if (numbers[6+x]>=MAX_PIECES_COL) continue;
+    
+    // Perform test move
+    memcpy(locNumbers, numbers, sizeof(locNumbers));
+    memcpy(locField, field, sizeof(locField));
+    DoMove(x, color, locField, locNumbers);
+
+    // Count evaluations
+    mPosEvaluations++;
 
 
-  farbe = SwitchPlayer(farbe);
-  max   = LOWERT;
-  for (x=0;x<=SIZE_X;x++)
-  {
-    if (anzahl[6+x]>=MAXANZAHL) continue;
-    memcpy(lfeld,feld,sizeof(lfeld));
-    memcpy(lanzahl,anzahl,sizeof(lanzahl));
-    DoMove(x,farbe,lfeld,lanzahl);
-    wert=MinMax(farbe,lfeld,lanzahl,reklev-1,zug+1)+gaus[x];
-    if (wert>=max)
+    // Check for game over
+    COLOUR winner = isGameOver(field, numbers);
+    if (winner != Nobody)
     {
-      max=wert;
-      if (max>=SIEG_WERT) break;
+      // Choose tree with fastest victory or slowest loss
+      if (winner==color) wert = VICTORY_VALUE+reklev*5000;
+      else wert = -VICTORY_VALUE-reklev*5000;
+    }
+    // Drawn / Remis
+    else if (moveNo >= MAX_MOVE)
+    {
+      wert = 0;
+    } 
+    // End of recursion reached
+    else if (reklev <= 0) 
+    {
+      wert = PositionEvaluation(color, field);
+      //wert += gauss[x]; // TODO: Gauss should be here
+      // No need for filling the test board here
+    }
+    // MinMax calculation for next recursion level
+    else
+    {
+      // Check learning
+      AIBoard testBoard(color, locField);
+      // Found cached board or not
+      bool haveToCalculate = true;
+
+      // Check for learned board
+      if (mIsLearning && mBrain.contains(testBoard))
+      {
+        AIValue testValue = mBrain.value(testBoard);
+        if (testValue.isSet(mLevel-MIN_LEARN_LEVEL)) 
+        {
+          wert = testValue.value(mLevel-MIN_LEARN_LEVEL);
+          mBrainUsed++;
+          haveToCalculate = false;
+          fprintf(stderr, "$$$$$$ Board[%d] found in cache value = %ld used=%ld\n",mLevel, wert, mBrainUsed);
+          fflush(stderr);
+        }
+      }
+      // Check for learned mirror board
+      else if (mIsLearning && mBrain.contains(testBoard.mirror()))
+      {
+        testBoard = testBoard.mirror();
+        AIValue testValue = mBrain.value(testBoard);
+        if (testValue.isSet(mLevel-MIN_LEARN_LEVEL)) 
+        {
+          wert = testValue.value(mLevel-MIN_LEARN_LEVEL);
+          mBrainUsed++;
+          haveToCalculate = false;
+          fprintf(stderr, "$$$$$$ MIRROR 2 Board[%d] found in cache value = %ld  used=%ld\n",mLevel, wert, mBrainUsed);
+          fflush(stderr);
+        }
+      }
+
+      // Real calculation necessary
+      if (haveToCalculate)
+      {
+        // Swap color for next move
+        COLOUR nextColor;
+        if (color == Red) nextColor = Yellow;
+        else nextColor = Red;
+        MoveResult minmaxResult = MinMax(nextColor, locField, locNumbers, reklev-1, moveNo+1, false);
+        wert = minmaxResult.value + gauss[x]; // TODO: Remove gauss here
+      }
+    }// end else MinMax 
+
+    // New maximum?
+    if (wert >= result.value)
+    {
+      result.value = wert;
+      result.move  = x;
+      if (first) mMaxAIBoard.fromField(color, false, locField);
+      //if (result.value >= VICTORY_VALUE) break;
     }
    }//next x
-   return(-max);
+
+   // MinMax
+   result.value = -result.value; 
+   return result;
 }// end MinMax
 
 
 // Position evaluation
-long KComputer::PositionEvaluation(COLOUR farbe, FARBE feld[][SIZE_X+1])
+long KComputer::PositionEvaluation(COLOUR curColor, FARBE field[][SIZE_X+1])
 {
 /* Abstand:              0    1    2    3    4    5    */
 static long myWERT[]={2200,600, 300,  75,  20,   0};
 //static long myWERT[]={0,0,0,0,0,0};
-/* Wieviele von COLOUR:       0     1     2     3    4 */
+/* How many ofCOLOUR:       0     1     2     3    4 */
 static long steinWERT[4][5]=
 {
-        {     0,  500L, 40000L,200000L,SIEG_WERT}, // Leerfelder=0
-        {     0,  500L,  8000L, 40000L,SIEG_WERT}, //           =1
-        {     0,   00L,  4000L, 25000L,SIEG_WERT}, //           =2
-        {     0,   00L,  2000L, 12500L,SIEG_WERT}, //           =3
+        {     0,  500L, 40000L,200000L,VICTORY_VALUE}, // Leerfelder=0
+        {     0,  500L,  8000L, 40000L,VICTORY_VALUE}, //           =1
+        {     0,   00L,  4000L, 25000L,VICTORY_VALUE}, //           =2
+        {     0,   00L,  2000L, 12500L,VICTORY_VALUE}, //           =3
 };
-  long gelb_wert,rot_wert,wert;
-  int cntcol,cnt;
-  COLOUR color;
-  FARBE field;
-  int y,i,j;
 
-  gelb_wert = random(2500);
-  rot_wert  = random(2500);
-  for (y=0;y<=SIZE_Y_ALL;y++)
+  // Initial values
+  long yellow_value = random(2000);
+  long red_value    = random(2000);
+
+  for (int y=0; y<=SIZE_Y_ALL; y++)
   {
-    if (lenofrow[y]<WIN4) continue;
-    for (i=0;i<=(lenofrow[y]-WIN4);i++)
+    if (mRowLengths[y]<WIN4) continue;
+    for (int i=0;i<=(mRowLengths[y]-WIN4);i++)
     {
-      color  = Nobody;
-      wert   = 0;
-      cntcol = 0;
-      cnt    = 0;
-      for (j=0;j<WIN4;j++)
+      COLOUR color = Nobody;
+      long value   = 0;
+      int cntcol   = 0;
+      int cnt      = 0;
+      for (int j=0; j<WIN4; j++)
       {
-        field=feld[y][i+j+startofrow[y]];
-        if ((COLOUR)field==Red)
+        FARBE checkField = field[y][i+j+mStartOfRows[y]];
+        if ((COLOUR)checkField==Red)
         {
           if (color==Yellow) {color=Nobody;break;}
           cntcol++;
           color=Red;
         }
-        else if ((COLOUR)field==Yellow)
+        else if ((COLOUR)checkField==Yellow)
         {
           if (color==Red) {color=Nobody;break;}
           cntcol++;
@@ -383,115 +611,74 @@ static long steinWERT[4][5]=
         }
         else
         {
-          cnt+=field-FELD_OFF;
-          wert+=myWERT[field-FELD_OFF];
+          cnt   += checkField-FIELD_OFFSET;
+          value += myWERT[checkField-FIELD_OFFSET];
         }
       }/*next j */
       if (cnt>3) cnt=3;
-      if (color==Red) rot_wert+=(wert+steinWERT[cnt][cntcol]);
-      else if (color==Yellow) gelb_wert+=(wert+steinWERT[cnt][cntcol]);
+      if (color==Red)         red_value    += (value+steinWERT[cnt][cntcol]);
+      else if (color==Yellow) yellow_value += (value+steinWERT[cnt][cntcol]);
     }/*next i*/
   }/*next y*/
-  if (farbe==Red) wert=rot_wert-gelb_wert;
-  else wert=gelb_wert-rot_wert;
-  return(wert);
+
+  // Return value
+  if (curColor==Red) return red_value-yellow_value;
+  else return yellow_value-red_value;
 }
 
 
 // Check for game over 
-COLOUR KComputer::IsGameOver(FARBE feld[][SIZE_X+1],char anzahl[])
+COLOUR KComputer::isGameOver(FARBE field[][SIZE_X+1],char numbers[])
 {
-  COLOUR thiscolor,field;
-  int x,y,cnt;
-  for (y=0;y<=SIZE_Y_ALL;y++)
+  for (int y=0; y<=SIZE_Y_ALL; y++)
   {
-     if (anzahl[y]<WIN4) continue;
-     if (lenofrow[y]<WIN4) continue;
+     if (numbers[y] < WIN4) continue;
+     if (mRowLengths[y] < WIN4) continue;
 
-     cnt       = 0;
-     thiscolor = Nobody;
-     for (x=0;x<lenofrow[y];x++)
+     int cnt   = 0;
+     COLOUR thiscolor = Nobody;
+     for (int x=0; x<mRowLengths[y]; x++)
      {
-       field = (COLOUR)feld[y][x+startofrow[y]];
-       if (field == thiscolor) cnt++;
-       else {cnt=1; thiscolor=field;}
-       if ( (cnt>=WIN4)&&( (thiscolor==Yellow)||(thiscolor==Red) ) ) return(thiscolor);
+       COLOUR checkField = (COLOUR)field[y][x+mStartOfRows[y]];
+       if (checkField == thiscolor) cnt++;
+       else {cnt=1; thiscolor=checkField;}
+       if ( (cnt>=WIN4) &&( (thiscolor==Yellow)||(thiscolor==Red) ) ) return thiscolor;
      }// next x
   }// next y
-  return(Nobody);
-}
-
-
-// Swap player color
-COLOUR KComputer::SwitchPlayer(COLOUR m_amZug)
-{
-  if (m_amZug==Nobody)
-    m_amZug=amZug;
-  if (m_amZug==Red)
-    amZug=Yellow;
-  else if (m_amZug==Yellow)
-     amZug=Red;
-  else amZug=beginner;
-  return amZug;
+  return Nobody ;
 }
 
 
 // Execute move on given board
-void KComputer::DoMove(char move,COLOUR farbe,FARBE feld[][SIZE_X+1],char anzahl[])
+void KComputer::DoMove(int move, COLOUR color, FARBE field[][SIZE_X+1], char numbers[])
 {
-  int x,i,y;
+  if (color==Tip || color==Nobody) return ;  // no real move
+  int x       = move;
+  int y       = numbers[6+move];
+  field[y][x] = color;
 
-  if (farbe==Tip || farbe==Nobody) return ;  // no real move
-  x          = move;
-  y          = anzahl[6+move];
-  feld[y][x] = farbe;
-
-  feld[6+x][y]    = farbe;
-  feld[13+x+y][x] = farbe;
-  feld[30+x-y][x] = farbe;
-  anzahl[y]++;
-  anzahl[6+x]++;
-  anzahl[13+x+y]++;
-  anzahl[30+x-y]++;
-  for (i=y+1;i<=SIZE_Y;i++)
+  field[6+x][y]    = color;
+  field[13+x+y][x] = color;
+  field[30+x-y][x] = color;
+  numbers[y]++;
+  numbers[6+x]++;
+  numbers[13+x+y]++;
+  numbers[30+x-y]++;
+  for (int i=y+1; i<=SIZE_Y; i++)
   {
-     feld[i][x]--;
-     feld[6+x][i]--;
-     feld[13+x+i][x]--;
-     feld[30+x-i][x]--;
+     field[i][x]--;
+     field[6+x][i]--;
+     field[13+x+i][x]--;
+     field[30+x-i][x]--;
   }
-}
-
-
-// Clear board and diagonal matrix
-void KComputer::InitField() 
-{
-  int x,y;
-
-  for (y=0;y<=SIZE_Y_ALL;y++)
-  {
-    anzahlmatrix[y]=0;
-  }
-
-  for (y=0;y<=SIZE_Y;y++)
-  {
-    for (x=0;x<=SIZE_X;x++)
-    {
-      feldmatrix[y][x]      = (FARBE)(y+FELD_OFF);
-      feldmatrix[6+x][y]    = (FARBE)(y+FELD_OFF);
-      feldmatrix[13+x+y][x] = (FARBE)(y+FELD_OFF);
-      feldmatrix[30+x-y][x] = (FARBE)(y+FELD_OFF);
-    } // next x
-  }// next y 
 }
 
 
 // Retreive random number 0..max
 long KComputer::random(long max)
 {
-  long wert;
-  wert=proc.random()->getLong(max);
-  return wert;
+  //return 0; 
+  return proc.random()->getLong(max);
 }
 
 // Main startup

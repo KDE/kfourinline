@@ -22,6 +22,7 @@
 
 // Qt Includes
 #include <QList>
+#include <QVector>
 
 // KDE includes
 #include <kgame.h>
@@ -32,6 +33,7 @@
 // Local includes
 #include "kwin4global.h"
 #include "kwin4player.h"
+#include "aiboard.h"
 
 class KWin4View;
 class QGraphicsItem;
@@ -437,6 +439,9 @@ class KWin4Doc : public KGame
 
     // Score and status storage to communicate with view
     Score* mStatus; 
+
+    // Keep AI move values
+    QVector<long> mAIValues;
 };
 
 #endif // KWIN4DOC_H

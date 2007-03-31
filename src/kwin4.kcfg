@@ -57,5 +57,11 @@
       <default>false</default>
     </entry>
 
+    <entry name="learning" type="Bool">
+      <default>true</default>
+    </entry>
+    <entry name="ailock" type="Bool">
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>
