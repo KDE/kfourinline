@@ -38,8 +38,8 @@
 #include "kwin4proc.h"
 
 // Algorithm defines
-//#define MIN_TIME        1000       // min time in milli sec for move
-#define MIN_TIME        10           // min time in milli sec for move
+#define MIN_TIME        1000       // min time in milli sec for move
+//#define MIN_TIME        10           // min time in milli sec for move
 
 // Board and game geomertry
 #define MAX_PIECES_COL     6         // Max 6 pieces per column 
@@ -52,6 +52,7 @@
 #define VICTORY_VALUE    9999999L    // Win or loss value
 #define MAX_EXTRA_RECURSION    15    // Maximum so many extra recursions
 #define PERCENT_FOR_INC_ITERATION 40 // If less than this amount of estimated moves are
+#define EVAL_RANDOM        2500      // Randomize position evaluation by this
                                      // calculated increase recursion
 
 // AI Learning
@@ -582,8 +583,8 @@ static long steinWERT[4][5]=
 };
 
   // Initial values
-  long yellow_value = random(2000);
-  long red_value    = random(2000);
+  long yellow_value = random(EVAL_RANDOM);
+  long red_value    = random(EVAL_RANDOM);
 
   for (int y=0; y<=SIZE_Y_ALL; y++)
   {
