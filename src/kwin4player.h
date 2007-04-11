@@ -18,8 +18,9 @@
 #ifndef KWIN4_PLAYER_H
 #define KWIN4_PLAYER_H
 
-// KDE i9ncludes
+// KDE includes
 #include <kplayer.h>
+#include <kgameproperty.h>
 #include <kconfiggroup.h>
 
 

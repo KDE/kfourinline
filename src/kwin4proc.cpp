@@ -33,6 +33,7 @@
 
 // KDE includes
 #include <kgamemessage.h>
+#include <krandomsequence.h>
 
 // Local includes
 #include "kwin4proc.h"
