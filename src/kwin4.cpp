@@ -15,7 +15,7 @@
  *                                                                         *
  ***************************************************************************/
 
-// Qt includes 
+// Qt includes
 #include <QRadioButton>
 #include <QLayout>
 #include <QTimer>
@@ -66,8 +66,8 @@
 #include "config-src.h"
 
 // Construct the main application window
-KWin4App::KWin4App(QWidget *parent) 
-        : KMainWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
+KWin4App::KWin4App(QWidget *parent)
+        : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
 {
   #ifdef SRC_DIR
   kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
@@ -89,12 +89,12 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Theme
   mTheme  = new ThemeManager("default.rc", this);
-  
+
   // View
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
   mDoc->setView(mView);
 
-  // Players  
+  // Players
   mDoc->initPlayers();
 
   // Adjust GUI
@@ -141,8 +141,8 @@ void KWin4App::checkMenus(CheckFlags menu)
 {
   bool localgame=(!mDoc->isNetwork());
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
-    
-  // Check file menu  
+
+  // Check file menu
   if (!menu || (menu&CheckFileMenu))
   {
     changeAction("hint", !(!isRunning && localgame));
@@ -233,7 +233,7 @@ void KWin4App::initGUI()
   action->setText(i18n("Network Chat..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureChat()));
 
-  if (global_debug>0) 
+  if (global_debug>0)
   {
     action = actionCollection()->addAction("file_debug");
     action->setText(i18n("Debug KGame"));
@@ -271,7 +271,7 @@ void KWin4App::initGUI()
   QStringList rcFiles = dir.entryList(filters);
   kDebug() << "Theme dir = " << mThemeDirName << endl;
   kDebug() << "Available theme files="<<rcFiles<<endl;
- 
+
   action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
   ((KSelectAction*)action)->setItems(rcFiles);
   connect( action, SIGNAL(triggered(const QString&)), SLOT(changeTheme(const QString&)) );
@@ -304,7 +304,7 @@ void KWin4App::initStatusBar()
 void KWin4App::initDocument()
 {
   mDoc = new KWin4Doc(this);
-  
+
   // KGame signals
   connect(mDoc,SIGNAL(signalGameOver(int, KPlayer*,KGame*)),
          this,SLOT(slotGameOver(int, KPlayer*,KGame *)));
@@ -321,9 +321,9 @@ void KWin4App::initDocument()
 void KWin4App::changeAction(const char* action, bool enable)
 {
   if (!action)
-  {  
+  {
     return;
-  }  
+  }
 
   QAction* act=actionCollection()->action(action);
   if (act)
@@ -333,7 +333,7 @@ void KWin4App::changeAction(const char* action, bool enable)
 }
 
 
-// Store the current game 
+// Store the current game
 void KWin4App::saveProperties(KConfigGroup& /*cfg*/)
 {
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
@@ -521,7 +521,7 @@ void KWin4App::updateStatusNames()
 void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
   kDebug(12010) <<  "KWin4App::networkBroken("<<oldstatus<<")" << endl;
-  
+
   // Set all input devices back to default
   if (mDoc->playedBy(Yellow)==0)
     mDoc->setPlayedBy(Yellow,KGameIO::MouseIO);
@@ -530,14 +530,14 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 
   kDebug(12010) << "CurrrentPlayer=" << mDoc->getCurrentPlayer() << endl;
   kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer()) << endl;
-  
+
   // Activate input device
   mDoc->getPlayer(mDoc->getCurrentPlayer())->setTurn(true,true);
 
   // Issue message
   KMessageBox::information(this,i18n("The network game ended!\n"));
-    
-  // Restore status  
+
+  // Restore status
   mDoc->setGameStatus(oldstatus);
 }
 
@@ -585,7 +585,7 @@ void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
 // Show the network configuration dialog
 void KWin4App::configureNetwork()
 {
-  if (mDoc->gameStatus()==KWin4Doc::Intro) 
+  if (mDoc->gameStatus()==KWin4Doc::Intro)
   {
     mDoc->setGameStatus(KWin4Doc::Pause);
   }
