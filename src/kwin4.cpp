@@ -38,6 +38,7 @@
 #include <kicon.h>
 #include <kstandarddirs.h>
 #include <kglobal.h>
+#include <kselectaction.h>
 
 // KGame includes
 #include <kgamechat.h>
