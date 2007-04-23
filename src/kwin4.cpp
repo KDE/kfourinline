@@ -682,10 +682,11 @@ void KWin4App::configureSettings()
     return;
   }
 
-  KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self(), KPageDialog::Plain,
-                               KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help,
-                               KDialog::Ok,
-                               true);
+  KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self());
+  dialog->setFaceType(KPageDialog::Plain);
+  dialog->setButtons(KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help);
+  dialog->setDefaultButton(KDialog::Ok);
+  dialog->setModal(true);
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
   dialog->addPage(frame, i18n("General"), "package_settings");
