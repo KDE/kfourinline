@@ -52,6 +52,13 @@ KWin4Player::KWin4Player() : KPlayer()
   mRemis.setValue(0);
 }
 
+// Destructor
+KWin4Player::~KWin4Player()
+{
+  kDebug() << "~KPlayer()" << endl;
+  kDebug() << "~KPlayer() done" << endl;
+}
+
 
 // A registered player property changed (KGame framework function). Store this property
 // in the score object for the GUI.

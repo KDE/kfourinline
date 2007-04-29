@@ -41,6 +41,7 @@ class KWin4Player : public KPlayer
     /** Construct a player object,.
       */
     KWin4Player();
+    ~KWin4Player();
     
     /** Runtime identification for the player type (KGame). Only one player
       * _type_ for kwin4.

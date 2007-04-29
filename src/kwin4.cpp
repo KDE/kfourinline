@@ -130,6 +130,7 @@ KWin4App::~KWin4App()
   if (mScene) delete mScene;
   if (mTheme) delete mTheme;
   if (mMyChatDlg) delete mMyChatDlg;
+  kDebug() << "~KWin4App()" << endl;
 
 }
 
