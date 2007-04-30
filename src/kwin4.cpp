@@ -293,8 +293,11 @@ void KWin4App::changeTheme(const QString& name)
 // Create the status bar with the message part, the player part.
 void KWin4App::initStatusBar()
 {
+  statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG,1);
   statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
-  statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG);
+  statusBar()->setItemAlignment(ID_STATUS_MOVER, Qt::AlignLeft | Qt::AlignVCenter);
+  statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft | Qt::AlignVCenter);
+
 
   displayStatusbarMover("");
   displayStatusMessage(i18n("Welcome to Four Wins"));

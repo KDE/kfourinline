@@ -74,8 +74,10 @@ void PixmapSprite::changeTheme()
 
   // Retrieve theme data from configuration
   KConfigGroup config = thememanager()->config(id());
-  double width = config.readEntry("width", 1.0);
+  double width  = config.readEntry("width", 1.0);
+  double height = config.readEntry("height", 0.0);
   width *= scale;
+  height *= scale;
   QPointF pos = config.readEntry("pos", QPointF(1.0,1.0));
   pos *= scale;
   // Set fixed z value?
@@ -107,15 +109,25 @@ void PixmapSprite::changeTheme()
   // SVG graphics
   QString svgid = config.readEntry("svgid");
   // Read sequence of frame pixmaps when auto ID given
+  QPixmap pixmap;
   if (svgid == "auto")
   {
     for (int i=mStartFrame;i<=mEndFrame;i++)
     {
       QString name = QString("frame%1").arg(i);
       svgid = config.readEntry(name.toUtf8());
-      QPixmap pixmap;
-      if (refframe.isNull()) pixmap = thememanager()->getPixmap(svgid, width);
-      else pixmap = thememanager()->getPixmap(svgid, refframe, width);
+      if (!refframe.isNull())
+      {
+        pixmap = thememanager()->getPixmap(svgid, refframe, width);
+      }
+      else if (config.hasKey("height"))
+      {
+        pixmap = thememanager()->getPixmap(svgid, QSize(int(width), int(height)));
+      }
+      else
+      {
+        pixmap = thememanager()->getPixmap(svgid, width);
+      }
       mFrames.append(pixmap);
       if (center) mHotspots.append(QPointF(pixmap.width()/2,pixmap.height()/2));
       else mHotspots.append(QPointF(0.0,0.0));
@@ -124,7 +136,14 @@ void PixmapSprite::changeTheme()
   // Read only one named pixmap
   else
   {
-    QPixmap pixmap = thememanager()->getPixmap(svgid, width);
+    if (config.hasKey("height"))
+    {
+      pixmap = thememanager()->getPixmap(svgid, QSize(int(width), int(height)));
+    }
+    else
+    {
+      pixmap = thememanager()->getPixmap(svgid, width);
+    }
     mFrames.append(pixmap);
     if (center) mHotspots.append(QPointF(pixmap.width()/2,pixmap.height()/2));
     else mHotspots.append(QPointF(0.0,0.0));

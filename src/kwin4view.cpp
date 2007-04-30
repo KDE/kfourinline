@@ -148,7 +148,6 @@ void  KWin4View::endGame()
 // Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
-  kDebug() << "++++ KWin4View::resizeEvent "<<e->size().width()<<" , "<< e->size().height() <<endl;
   // Adapt the canvas size to the window size
   if (scene())
   {

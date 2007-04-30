@@ -107,7 +107,6 @@ void ThemeManager::rescale(int scale)
 {
   if (scale==mScale) return;
   mScale = scale;
-  kDebug() << "Rescale to " << scale<<endl;
 
   QHashIterator<Themable*, int> it(mObjects);
   while (it.hasNext())
