@@ -34,6 +34,7 @@
 
 // Local includes
 #include "thememanager.h"
+#include "kwin4global.h"
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(QString themefile, QObject* parent, int initialSize)
@@ -105,7 +106,12 @@ void ThemeManager::updateTheme(QString themefile)
 // Rescale the theme. Call all registed objects so that they can refresh.
 void ThemeManager::rescale(int scale)
 {
-  if (scale==mScale) return;
+  if (global_debug > 1)
+  {
+    if (scale==mScale)
+      kDebug() <<" No scale change to " << scale << " If this happends to often its BAD " << endl;
+  }
+  //if (scale==mScale) return;
   mScale = scale;
 
   QHashIterator<Themable*, int> it(mObjects);
