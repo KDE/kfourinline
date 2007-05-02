@@ -32,7 +32,7 @@ class KWin4Player;
  * It supports a user defined chat and the setting of the
  * owner player
  **/
-class KDE_EXPORT ChatDlg : public KDialog
+class ChatDlg : public KDialog
 {
   Q_OBJECT
 
