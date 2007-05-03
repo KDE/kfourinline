@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "kwin4view.h"
+
 // Standard includes
 #include <math.h>
 
@@ -32,7 +35,6 @@
 #include <kplayer.h>
 
 // Local includes
-#include "kwin4view.h"
 #include "kwin4global.h"
 #include "displayintro.h"
 #include "displaygame.h"

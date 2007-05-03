@@ -18,12 +18,14 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "score.h"
+
 // KDE includes
 #include <kdebug.h>
 #include <kgameio.h>
 
 // Local includes
-#include "score.h"
 #include "scoresprite.h"
 #include "scoresprite.h"
 

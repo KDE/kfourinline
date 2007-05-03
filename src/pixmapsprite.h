@@ -50,7 +50,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
      * @param no            A user defined ID number
      * @param scene        The graphics scene   
      */
-    PixmapSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
+    PixmapSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
     
     /** Possible animation states of the sprite
      */
@@ -85,7 +85,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
       */
     void setFrame(int no, bool force=false);
     
-    /** Initalize and start a frame animation between the start and end frame.
+    /** Initialize and start a frame animation between the start and end frame.
       * The delay between the frames is given in [ms]. After the last frame
       * is displayed the animation starts with the first frame.
       * @param start   The start frame number
@@ -112,7 +112,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
       * @param item  The theme configuration item name
       * @return The read double value.
       */
-    double getDoubleValue(QString item);
+    double getDoubleValue(const QString &item);
 
   protected:
 

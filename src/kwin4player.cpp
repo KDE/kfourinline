@@ -15,13 +15,12 @@
  *                                                                         *
  ***************************************************************************/
 
+// Header includes
+#include "kwin4player.h"
 
 // KDE includes
 #include <kdebug.h>
 #include <kgamepropertyhandler.h>
-
-// Local includes
-#include "kwin4player.h"
 
 
 // Construct a player object

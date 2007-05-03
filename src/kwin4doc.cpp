@@ -25,6 +25,9 @@
   *       see e.g. the Valena AI Engine http://www.ce.unipr.it/~gbe/velena.html
   */
 
+// Header includes
+#include "kwin4doc.h"
+
 // include files for Qt
 #include <QDir>
 #include <QTimer>
@@ -41,7 +44,6 @@
 #include <kcomponentdata.h>
 
 // application specific includes
-#include "kwin4doc.h"
 #include "kwin4view.h"
 #include "scoresprite.h"
 #include "prefs.h"
@@ -438,7 +440,7 @@ QString KWin4Doc::getName(COLOUR col)
 
 
 // Returns the all time statistics for player of given color
-// The mode determins what statistics to access.
+// The mode determines what statistics to access.
 int KWin4Doc::getStatistic(COLOUR col, TABLE mode)
 {
   KWin4Player *player=getPlayer(col);
@@ -1007,7 +1009,7 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
   }
 }
 
-void KWin4Doc::receivedStderr(QString s)
+void KWin4Doc::receivedStderr(const QString &s)
 {
   if (global_debug>0)
     kDebug() << "##### AI: " << s << endl;

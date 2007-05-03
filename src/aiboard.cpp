@@ -18,15 +18,14 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "aiboard.h"
+
 // Standard includes
 #include <stdio.h>
 
 // KDE includes
 #include <kdebug.h>
-
-// Local includes
-#include "aiboard.h"
-
 
 // Construct a board object
 AIBoard::AIBoard()

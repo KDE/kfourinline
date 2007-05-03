@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "displaygame.h"
+
 // Standard includes
 #include <math.h>
 #include <assert.h>
@@ -33,7 +36,6 @@
 #include <kdebug.h>
 
 // Local includes
-#include "displaygame.h"
 #include "thememanager.h"
 #include "piecesprite.h"
 #include "pixmapsprite.h"

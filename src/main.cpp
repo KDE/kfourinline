@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
   if (args->isSet("skipintro"))
   {
     global_skip_intro = true;
-    kDebug(12010) << "Skip intro cmd line choosen " << global_skip_intro << endl;
+    kDebug(12010) << "Skip intro cmd line chosen " << global_skip_intro << endl;
   }
   // Check for debug command line option
   if (args->isSet("demo"))

@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "piecesprite.h"
+
 // General includes
 #include <math.h>
 
@@ -27,9 +30,6 @@
 // KDE includes
 #include <kdebug.h>
 #include <kconfig.h>
-
-// Local includes
-#include "piecesprite.h"
 
 // Constructor for the pixmap sprite
 PieceSprite::PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)

@@ -45,7 +45,7 @@ class ScoreSprite : public PixmapSprite
       * @param no              A used defined number (unused)
       * @param scene           The graphics scene
       */
-    ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
+    ScoreSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
     
     /** Destructor 
       */
@@ -76,31 +76,31 @@ class ScoreSprite : public PixmapSprite
       * @param s  The name
       * @param no The player number [0,1]
       */ 
-    void setPlayerName(QString s,int no);
+    void setPlayerName(const QString &s,int no);
     
     /** Store the amounts of wins for a player.
       * @param s  The amount of wins
       * @param no The player number [0,1]
       */ 
-    void setWon(QString s,int no);
+    void setWon(const QString &s,int no);
 
     /** Store the amounts of draws for a player.
       * @param s  The amount of draws
       * @param no The player number [0,1]
       */ 
-    void setDraw(QString s,int no);
+    void setDraw(const QString &s,int no);
     
     /** Store the amounts of losses for a player.
       * @param s  The amount of losses
       * @param no The player number [0,1]
       */ 
-    void setLoss(QString s,int no);
+    void setLoss(const QString &s,int no);
 
     /** Store the amounts of aborted games for a player.
       * @param s  The amount of aborted games
       * @param no The player number [0,1]
       */ 
-    void setBreak(QString s,int no);
+    void setBreak(const QString &s,int no);
     
      /** Define who's turn it is next
       * @param no The next player number [0,1]

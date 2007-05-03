@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "scoresprite.h"
+
 // General includes
 #include <math.h>
 
@@ -30,11 +33,8 @@
 #include <kconfig.h>
 #include <klocale.h>
 
-// Local includes
-#include "scoresprite.h"
-
 // Constructor for the score sprite
-ScoreSprite::ScoreSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
+ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
            :  Themable(id, theme), PixmapSprite(advancePeriod, no, scene)
 {
 	// Create all sub sprites
@@ -178,7 +178,7 @@ void ScoreSprite::setLevel(int level, int no)
 
 
 // Store and display the name of a player
-void ScoreSprite::setPlayerName(QString s,int no)
+void ScoreSprite::setPlayerName(const QString &s,int no)
 {
   mName[no]->setPlainText(s);
   update();
@@ -186,7 +186,7 @@ void ScoreSprite::setPlayerName(QString s,int no)
 
 
 // Store and display amount of wins
-void ScoreSprite::setWon(QString s,int no)
+void ScoreSprite::setWon(const QString &s,int no)
 {
   mWon[no]->setPlainText(s);
   update();
@@ -194,7 +194,7 @@ void ScoreSprite::setWon(QString s,int no)
 
 
 // Store and display amount of draws
-void ScoreSprite::setDraw(QString s,int no)
+void ScoreSprite::setDraw(const QString &s,int no)
 {
   mDraw[no]->setPlainText(s);
   update();
@@ -202,7 +202,7 @@ void ScoreSprite::setDraw(QString s,int no)
 
 
 // Store and display amount of losses
-void ScoreSprite::setLoss(QString s,int no)
+void ScoreSprite::setLoss(const QString &s,int no)
 {
   mLoss[no]->setPlainText(s);
   update();
@@ -210,7 +210,7 @@ void ScoreSprite::setLoss(QString s,int no)
 
 
 // Store and display amount of breaks
-void ScoreSprite::setBreak(QString s,int no)
+void ScoreSprite::setBreak(const QString &s,int no)
 {
   mBreak[no]->setPlainText(s);
   update();

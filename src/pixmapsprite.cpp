@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "pixmapsprite.h"
+
 // General includes
 #include <math.h>
 
@@ -28,11 +31,8 @@
 #include <kdebug.h>
 #include <kconfig.h>
 
-// Local includes
-#include "pixmapsprite.h"
-
 // Constructor for the sprite
-PixmapSprite::PixmapSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
+PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), QGraphicsPixmapItem(0, canvas)
 {
   hide();
@@ -156,7 +156,7 @@ void PixmapSprite::changeTheme()
 
 
 // Debug only: Retrieve double value from configuration file
-double PixmapSprite::getDoubleValue(QString item)
+double PixmapSprite::getDoubleValue(const QString &item)
 {
   KConfigGroup config = thememanager()->config(id());
   return config.readEntry(item, 0.0);

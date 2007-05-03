@@ -84,7 +84,7 @@ class KWin4App : public KXmlGuiWindow
       */
     void disableAction(const char *action) {changeAction(action, false); }
 
-    /** Checks all menues and depening on the game status enables or disables them.
+    /** Checks all menus and depening on the game status enables or disables them.
       * This is usually done on  program init.
       * @param menu Which menu to check, default all menus
       */

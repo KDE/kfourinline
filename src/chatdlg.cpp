@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "chatdlg.h"
+
 // include files for QT
 #include <QPushButton>
 #include <QLayout>
@@ -30,9 +33,7 @@
 #include <kgamechat.h>
 #include <dialogs/kgamedialog.h>
 
-
 // application specific includes
-#include "chatdlg.h"
 #include "kwin4player.h"
 
 

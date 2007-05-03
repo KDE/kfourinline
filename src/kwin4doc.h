@@ -109,7 +109,7 @@ class KWin4Doc : public KGame
     void calculateHint();
 
     /** Returns the all time statistics for player of given color
-      * The mode determins what statistics to access.
+      * The mode determines what statistics to access.
       * @param col  The player color 
       * @param mode The type of data to retrieve [TWin, TRemis, TLost, TBrk, TSum]
       * @return The amount of the queried category.
@@ -374,7 +374,7 @@ class KWin4Doc : public KGame
     /** Reveived a debug message from the AI (debug only)
       * @param s The message
       */
-    void receivedStderr(QString s);
+    void receivedStderr(const QString &s);
 
   signals:
     /** Emmitted if the game status changes to run.

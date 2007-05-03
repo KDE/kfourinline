@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "displayintro.h"
+
 // Standard includes
 #include <math.h>
 
@@ -32,7 +35,6 @@
 #include <kdebug.h>
 
 // Local includes
-#include "displayintro.h"
 #include "introsprite.h"
 
 

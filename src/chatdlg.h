@@ -23,6 +23,7 @@
 // KDE includes
 #include <kdialog.h>
 
+class KGame;
 class KGameChat;
 class KChatDialog;
 class KWin4Player;

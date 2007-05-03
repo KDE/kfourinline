@@ -15,6 +15,8 @@
  *                                                                         *
  ***************************************************************************/
 
+// Header includes
+#include "kwin4proc.h"
 
 // Standard includes
 #include <stdio.h>
@@ -34,9 +36,6 @@
 // KDE includes
 #include <kgamemessage.h>
 #include <krandomsequence.h>
-
-// Local includes
-#include "kwin4proc.h"
 
 // Algorithm defines
 #define MIN_TIME        1000       // min time in milli sec for move

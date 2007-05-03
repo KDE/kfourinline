@@ -18,15 +18,13 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "spritenotify.h"
 
 // Qt includes
 
 // KDE includes
 #include <kdebug.h>
-
-// Local includes
-#include "spritenotify.h"
-
 
 // Construct the object
 SpriteNotify::SpriteNotify(QGraphicsItem* parent)

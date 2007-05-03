@@ -43,7 +43,7 @@ class IntroSprite : public PixmapSprite
       * @param no            The sprite number [0..41]
       * @param scence        The scene
       */
-    IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
+    IntroSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
 
     /** Destructor 
     */

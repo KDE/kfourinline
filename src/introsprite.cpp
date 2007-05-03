@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+#include "introsprite.h"
+#include "introsprite.h"
+
 // General includes
 #include <math.h>
 
@@ -27,11 +30,8 @@
 #include <kdebug.h>
 #include <kconfig.h>
 
-// Local includes
-#include "introsprite.h"
-
 // Constructor for the sprite
-IntroSprite::IntroSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
+IntroSprite::IntroSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
   hide();

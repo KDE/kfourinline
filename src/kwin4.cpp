@@ -15,6 +15,9 @@
  *                                                                         *
  ***************************************************************************/
 
+// Header includes
+#include "kwin4.h"
+
 // Qt includes
 #include <QRadioButton>
 #include <QLayout>
@@ -49,7 +52,6 @@
 #include <dialogs/kgamedebugdialog.h>
 
 // application specific includes
-#include "kwin4.h"
 #include "chatdlg.h"
 #include "kwin4doc.h"
 #include "kwin4view.h"
@@ -105,7 +107,7 @@ KWin4App::KWin4App(QWidget *parent)
   // Read global config
   mDoc->readConfig(KGlobal::config().data());
 
-  // Check menues
+  // Check menus
   checkMenus();
 
   // Skip intro?

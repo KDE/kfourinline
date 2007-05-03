@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Header includes
+#include "thememanager.h"
+
 // General includes
 // #include <typeinfo>
 
@@ -33,11 +36,10 @@
 #include <kstandarddirs.h>
 
 // Local includes
-#include "thememanager.h"
 #include "kwin4global.h"
 
 // Constructor for the theme manager
-ThemeManager::ThemeManager(QString themefile, QObject* parent, int initialSize)
+ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
     : QObject(parent)
 {
   mScale = initialSize;
@@ -68,7 +70,7 @@ void ThemeManager::updateTheme(Themable* ob)
 
 // Update the theme file and refresh all registered objects. Used 
 // to really change the theme.
-void ThemeManager::updateTheme(QString themefile)
+void ThemeManager::updateTheme(const QString &themefile)
 {
   // Empty cache
   mPixmapCache.clear();
@@ -132,7 +134,7 @@ double ThemeManager::getScale()
 
 
 // Retreive the current theme configuration file.
-KConfigGroup ThemeManager::config(QString id)
+KConfigGroup ThemeManager::config(const QString &id)
 {
    KConfigGroup grp = mConfig->group(id); 
    return grp;
@@ -140,7 +142,7 @@ KConfigGroup ThemeManager::config(QString id)
 
 
 // Get a pixmap when its size is given (this can distort the image)
-const QPixmap ThemeManager::getPixmap(QString svgid, QSize size)
+const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
 {
   if (size.width() < 1 || size.height() < 1) 
     kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size " << size << endl;
@@ -174,7 +176,7 @@ const QPixmap ThemeManager::getPixmap(QString svgid, QSize size)
 
 
 // Get a pixmap when only width is given (this keeps the aspect ratio)
-const QPixmap ThemeManager::getPixmap(QString svgid, double width)
+const QPixmap ThemeManager::getPixmap(const QString &svgid, double width)
 {
   QRectF rect   = mRenderer->boundsOnElement(svgid);
   double factor = width/rect.width();
@@ -185,7 +187,7 @@ const QPixmap ThemeManager::getPixmap(QString svgid, double width)
 
 // Get a pixmap with original properties and a scale factor given with respect to
 // another SVG item.
-const QPixmap ThemeManager::getPixmap(QString svgid, QString svgref, double refwidth)
+const QPixmap ThemeManager::getPixmap(const QString &svgid, const QString &svgref, double refwidth)
 {
   QRectF refrect    = mRenderer->boundsOnElement(svgref);
   QRectF rect       = mRenderer->boundsOnElement(svgid);
@@ -207,7 +209,7 @@ Themable::Themable()
 
 // Constructs a themeable interface given its id and the master theme manager. 
 // This automatically registeres the object with the manager.
-Themable::Themable(QString id, ThemeManager* thememanager)
+Themable::Themable(const QString &id, ThemeManager* thememanager)
 {
   mScale        = 1.0;
   mId           = id;
