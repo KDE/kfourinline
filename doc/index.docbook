@@ -18,19 +18,27 @@
 <address>&Martin.Heni.mail;</address>
 </affiliation>
 </author>
+<author>
+<firstname>Benjamin</firstname>
+<surname>Meyer</surname>
+</author>
+<author>
+<firstname>Johann Ollivier</firstname>
+<surname>Lapeyre</surname>
+</author>
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
-<year>1995</year><year>2002</year>
+<year>1995</year><year>2007</year>
 <holder>&Martin.Heni;</holder>
 </copyright>
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2006-06-17</date>
-<releaseinfo>1.1.0</releaseinfo>
+<date>2007-05-01</date>
+<releaseinfo>1.4.0</releaseinfo>
 
 <abstract>
 <para>
@@ -57,26 +65,29 @@
 <title>Overview</title>
 
 <para>
-Four wins is a game for two players.
+KWin4 is a desktop game for two players following the rules of the
+Connect-Four &trade; game.
 </para>
 
 <para>
-Each player is represented by a color (yellow and red).  The goal of the
-game is to get four connected pieces of your color into a row, column or
-any diagonal.  This is done by placing one of your pieces into any of
-the seven columns.
+Each player is represented by a color (for example yellow or white for player one and red for player two).  
+The goal of the game is to get four connected pieces of your color into any row, column or
+diagonal.  
+The players move in turns. Each turn the player can place one of his or her pieces
+into any of the seven columns where each piece will fall to the lowest possible free place &ie; it
+will fall down until it reaches the ground level or another piece.
 </para>
 
 <para>
-A piece will begin to fill a column from the bottom, &ie; it
-will fall down until it reaches the ground level or another stone.
-After a move is done it is the turn of the other player.
-</para>
-
-<para>
+After one player's move is done the second player can make his or her input.
 This is repeated until the game is over, which is when one of the
 players has four pieces in a row, column or diagonal or no more moves
 are possible because the board is filled.
+</para>
+
+<para>
+A player who first manages to get four pieces in a row, column or diagonal wins the
+game. If no more moves can be made but no player has won, the game ends drawn.
 </para>
 
 </chapter>
@@ -85,30 +96,29 @@ are possible because the board is filled.
 <title>Rules</title>
 
 <para>
-The board is separated into three regions.
+The board is separated into several regions.
 </para>
 
 <para>
 The <firstterm>game board</firstterm> is constructed out of 7x6 fields
-which will be filled from bottom to top. The fields are marked in the
-color of the player who made the current move.  On top of each column a
+which will be filled from bottom to top. The fields are marked with pieces in the
+color of the player who made the move to this position.  On top of each column a
 colored arrow shows were the last piece had been put.
 </para>
 
 <para>
-The <firstterm>status display</firstterm> shows which player color
-starts and which color is played by whom (player, computer, remote
-connection). It further shows the level of the computer opponent, the
-number of moves done as well as the computer calculated chance of
-winning. This chance is calculated only if the computer opponent makes a
-move. A positive number means that the player has an advantage, a
-negative number means that the computer thinks he is better.
+The <firstterm>status display</firstterm> shows which player 
+is controlled by which input device. A local player can input moves using
+keyboard or mouse, a remote player is shown as network input and finally
+a the computer can control the input for a player.
+The status display further shows the player's names and the level of the computer opponent.
+Additionally the number of won, drawn, lost and aborted games is noted for both player. 
+Which player is next to move is indicated by one of the player's names being highlighted.
 </para>
 
 <para>
-The <firstterm>table display</firstterm> shows the number of won, lost
-and drawn games is noted for both player.  Also the number of aborted
-games (Brk) and the sum of games is shown.
+The <firstterm>statusbar</firstterm> at the bottom of the screen displays the status of the game and
+which player is next to play.
 </para>
 
 </chapter>
@@ -121,9 +131,11 @@ It is possible to play the game over a network connection with another
 computer. 
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
-in the menu <menuchoice><guimenu>Game</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
-There you also find a chat dialog
-box which allows you to speak with your friend.
+in the menu 
+<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
+In the menu
+<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat...</guimenuitem></menuchoice>.
+you find a chat dialog box which allows you to speak with your friend.
 </para>
 
 
@@ -244,9 +256,26 @@ other party.
 </menuchoice></term>
 <listitem>
 <para>
-The computer will calculate the best possible move and mark it with a
-small circle on the board.  How good the move is depends on the level of
+The computer will calculate the best possible move for you and mark it with a
+sign on the game board.  How good the move actually is depends on the level of
 the computer.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>o</keycap>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Show Statistics</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Shows a dialog containing information about the overall game statistics, that is
+games won, lost or drawn by both player. 
+The dialog also allows to clear this all time statistics.
 </para>
 </listitem>
 </varlistentry>
@@ -298,7 +327,8 @@ moves are taken back so that it is the player's turn again.
 </menuchoice></term>
 <listitem>
 <para>
-Replay a move which had been undone.
+Replay a move which had been undone. If one of the players if played by
+the computer two moves are redone so that it is the player's turn again.
 </para>
 </listitem>
 </varlistentry>
@@ -320,18 +350,6 @@ Replay a move which had been undone.
 <listitem>
 <para>
 Toggle on and off the display of the toolbar.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Toggle on and off the display of the status bar.
 </para>
 </listitem>
 </varlistentry>
@@ -372,7 +390,18 @@ plays for this player.</para>
 <para><guilabel>Red Plays With</guilabel>: Same as <guilabel>Yellow Playes With</guilabel> but for player 2
 (red).</para>
 <para><guilabel>Computer Difficulty</guilabel>: Select the level of the computer player.</para>
+<para><guilabel>Use AI learning</guilabel>: The computer AI can learn from mistakes made in one game.</para>
 </listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Themes</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Choose a graphical theme for the game. Which themes are available depends on the current installation.</action>
+</para></listitem>
 </varlistentry>
 
 </variablelist>
@@ -394,10 +423,10 @@ plays for this player.</para>
 &k4wins;
 </para>
 <para>
-Program copyright 1995-2002 &Martin.Heni; &Martin.Heni.mail;
+Program copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail;
 </para>
 <para>
-Documentation copyright 2002 &Martin.Heni; &Martin.Heni.mail;
+Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail;
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
