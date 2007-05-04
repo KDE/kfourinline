@@ -103,14 +103,26 @@ class KWin4App : public KXmlGuiWindow
     void initDocument();
 
     /** Save the properties of the application.
-      * @param cfg Save to this config group
       */
-    virtual void saveProperties(KConfigGroup& cfg);
+    void saveProperties();
 
     /** Read the properties of the application.
-      * @param cfg Load from this config group
       */
-    virtual void readProperties(const KConfigGroup& cfg);
+    void readProperties();
+
+    /** Called by KMainWindow when the last window of the application is
+     * going to be closed.
+     * @see KMainWindow#queryExit
+     * @see KMainWindow#closeEvent
+     */
+    virtual bool queryExit();
+
+
+    /** Retrieve the theme file from the theme index number give.
+      * @param idx The theme index number [0..]
+      * @return The theme file name.
+      */
+    QString themefileFromIdx(int idx);
 
   public slots:
     /** The server type was changed (KGame)
@@ -188,9 +200,9 @@ class KWin4App : public KXmlGuiWindow
     void askForHint();
 
     /** A new theme is selected from the menu.
-      * @param name The theme name
+      * @param idx The theme index
       */
-    void changeTheme(const QString& name);
+    void changeTheme(int idx);
 
     /** A move undo request is given via the menu.
       */
@@ -217,6 +229,12 @@ class KWin4App : public KXmlGuiWindow
   private:
     // The theme manager used
     ThemeManager* mTheme;
+
+    // The available themes
+    QHash<QString,QString> mThemeFiles;
+
+    // Current theme index
+    int mThemeIndexNo;
 
     // The game view
     KWin4View *mView;

@@ -82,16 +82,36 @@ KWin4App::KWin4App(QWidget *parent)
   mThemeDirName = KGlobal::dirs()->findResourceDir("data","default.rc");
   kDebug() << "THEME DIR IS " << mThemeDirName << endl;
 
+  // Read theme files
+  QString themeIndex = KGlobal::dirs()->findResource("data","index.desktop");
+  KConfig themeInfo( themeIndex, KConfig::OnlyLocal);
+  QStringList themeList = themeInfo.groupList();
+  for (int i = 0; i < themeList.size(); i++)
+  {
+    KConfigGroup themeGroup(&themeInfo, themeList.at(i));
+    QString name = themeGroup.readEntry("Name", QString());
+    QString file = themeGroup.readEntry("File", QString());
+    mThemeFiles[name] = file;
+    kDebug() <<  "Found theme: Name(i18n)="<<name<<" File="<<file<<endl;   
+  }
+  mThemeIndexNo =0;
+
+
   // Setup application
-  initGUI();
-  initStatusBar();
+  mDoc = new KWin4Doc(this);
   initDocument();
+
 
   // Scene
   mScene  = new QGraphicsScene(this);
 
+  // Read properties
+  readProperties();
+
   // Theme
-  mTheme  = new ThemeManager("default.rc", this);
+  QString themeFile = themefileFromIdx(mThemeIndexNo);
+  kDebug() << "Load theme " << themeFile << endl;
+  mTheme  = new ThemeManager(themeFile, this);
 
   // View
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
@@ -99,6 +119,10 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Players
   mDoc->initPlayers();
+
+  // Init GUI
+  initGUI();
+  initStatusBar();
 
   // Adjust GUI
   setCentralWidget(mView);
@@ -109,6 +133,7 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Check menus
   checkMenus();
+
 
   // Skip intro?
   if (global_skip_intro)
@@ -133,8 +158,24 @@ KWin4App::~KWin4App()
   if (mTheme) delete mTheme;
   if (mMyChatDlg) delete mMyChatDlg;
   kDebug() << "~KWin4App()" << endl;
-
 }
+
+
+// Called by KMainWindow when the last window of the application is
+bool KWin4App::queryExit()
+{
+  saveProperties();
+  return true;
+}
+
+QString KWin4App::themefileFromIdx(int idx)
+{
+  QStringList list(mThemeFiles.keys());
+  list.sort();
+  QString themeFile = mThemeFiles[list.at(idx)];
+  return themeFile;
+}
+
 
 // This method is called from various places
 // and signals to check, uncheck and enable
@@ -268,27 +309,25 @@ void KWin4App::initGUI()
 
   actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(configureSettings()));
 
-  // TODO: The actions need to work with translated theme names. How?
-  QDir dir(mThemeDirName);
-  QStringList filters;
-  filters.append("*.rc");
-  QStringList rcFiles = dir.entryList(filters);
-  kDebug() << "Theme dir = " << mThemeDirName << endl;
-  kDebug() << "Available theme files="<<rcFiles<<endl;
+  // Add all theme files to the menu
+  QStringList themes(mThemeFiles.keys());
+  themes.sort();
 
   action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
-  ((KSelectAction*)action)->setItems(rcFiles);
-  connect( action, SIGNAL(triggered(const QString&)), SLOT(changeTheme(const QString&)) );
+  ((KSelectAction*)action)->setItems(themes);
+  connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
+  kDebug() << "Setting current item to " << mThemeIndexNo << endl;
+  ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
 }
 
 
 // Change the theme of the game
-void KWin4App::changeTheme(const QString& name)
+void KWin4App::changeTheme(int idx)
 {
-  QString theme = name;
-  theme.replace("&","");
-  mTheme->updateTheme(theme);
-  // TODO: Write Preferences
+  mThemeIndexNo = idx;
+  QString themeFile = themefileFromIdx(idx);
+  kDebug() << "Select theme " << themeFile << endl;
+  mTheme->updateTheme(themeFile);
 }
 
 
@@ -310,8 +349,6 @@ void KWin4App::initStatusBar()
 // and connect all signals emitted by it
 void KWin4App::initDocument()
 {
-  mDoc = new KWin4Doc(this);
-
   // KGame signals
   connect(mDoc,SIGNAL(signalGameOver(int, KPlayer*,KGame*)),
          this,SLOT(slotGameOver(int, KPlayer*,KGame *)));
@@ -341,20 +378,43 @@ void KWin4App::changeAction(const char* action, bool enable)
 
 
 // Store the current game
-void KWin4App::saveProperties(KConfigGroup& /*cfg*/)
+void KWin4App::saveProperties()
 {
+  KConfig *config = KGlobal::config().data();
+
+  // Program data
+  KConfigGroup cfg = config->group("ProgramData");
+  cfg.writeEntry("ThemeIndexNo", mThemeIndexNo);
+
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
+  kDebug() << "Saving " << filename << endl;
   mDoc->save(filename);
+
+  config->sync();
+  kDebug() << "SAVED PROPERTIES " << endl;
 }
 
 // Load current game back
-void KWin4App::readProperties(const KConfigGroup& /*cfg*/)
+void KWin4App::readProperties()
 {
+  kDebug() << "LOADED PROPERTIES start" << endl;
+  KConfig *config = KGlobal::config().data();
+
+  // Program data
+  KConfigGroup cfg = config->group("ProgramData");
+  mThemeIndexNo = cfg.readEntry("ThemeIndexNo", 0);
+  kDebug() << "Loaded index to " << mThemeIndexNo << endl;
+  if (mThemeIndexNo >= mThemeFiles.size()) mThemeIndexNo = 0;
+  kDebug() << "Loaded index to " << mThemeIndexNo << endl;
+
   QString filename = KStandardDirs::locateLocal("appdata", "current_game");
   if(QFile::exists(filename))
   {
-    mDoc->load(filename);
+    kDebug() << "Loading " << filename << endl;
+    // TODO: CRASHES mDoc->load(filename);
+    kDebug() << "Loading " << filename << " done"<< endl;
   }
+  kDebug() << "LOADED PROPERTIES " << endl;
 }
 
 

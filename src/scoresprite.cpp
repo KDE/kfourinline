@@ -48,6 +48,7 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int advancePeri
     mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, advancePeriod, i, scene);
     if (!mInput[i]) kFatal() << "Cannot load sprite " << "scoreinput"<<i << endl;
     mInput[i]->setParentItem(this);
+    mInput[i]->show();
     mInputFrame[i] = 0;
   }
 

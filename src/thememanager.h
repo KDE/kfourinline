@@ -22,7 +22,7 @@
 
 // Qt includes
 #include <QObject>
-#include <QSvgRenderer>
+#include <KSvgRenderer>
 #include <QHash>
 
 // KDE includes
@@ -187,7 +187,7 @@ class ThemeManager : public QObject
 
    private:
      // The used SVG rendered
-     QSvgRenderer* mRenderer;
+     KSvgRenderer* mRenderer;
      
      // Storage of all theme objects [object,1] [TODO: Alist might suffice]
      QHash<Themable*,int> mObjects;

@@ -86,7 +86,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   kDebug() << "Reading SVG master file  = " << svgfile << endl;
 
 
-  mRenderer = new QSvgRenderer(this);
+  mRenderer = new KSvgRenderer(this);
   bool result = mRenderer->load(svgfile);
   if (!result) 
   {

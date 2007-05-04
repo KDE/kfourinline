@@ -1,0 +1,7 @@
+[Default]
+Name=White and Red
+File=default.rc
+
+[Yellow]
+Name=Yellow and Red
+File=yellow.rc
