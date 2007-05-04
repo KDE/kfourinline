@@ -134,7 +134,6 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
 KWin4Doc::~KWin4Doc()
 {
   kDebug() << "~KWin4Doc()" << endl;
-  writeConfig(KGlobal::config().data());
   if (mHintProcess) delete mHintProcess;
   delete mStatus;
   mStatus = 0;

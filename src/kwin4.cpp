@@ -99,14 +99,17 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Setup application
   mDoc = new KWin4Doc(this);
-  initDocument();
+  kDebug() << "Init doc " << endl;
+
+ 
+  // Read properties (before GUI and thememanager but after new document)
+  kDebug() << "read prop " << endl;
+  readProperties();
 
 
   // Scene
   mScene  = new QGraphicsScene(this);
 
-  // Read properties
-  readProperties();
 
   // Theme
   QString themeFile = themefileFromIdx(mThemeIndexNo);
@@ -117,7 +120,9 @@ KWin4App::KWin4App(QWidget *parent)
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
   mDoc->setView(mView);
 
-  // Players
+
+  // Players (after view)
+  kDebug() << "Init pl " << endl;
   mDoc->initPlayers();
 
   // Init GUI
@@ -128,7 +133,9 @@ KWin4App::KWin4App(QWidget *parent)
   setCentralWidget(mView);
   setupGUI();
 
-  // Read global config
+  // Connect signals
+  connectDocument();
+  // Read global config for document (after initPlayers)
   mDoc->readConfig(KGlobal::config().data());
 
   // Check menus
@@ -347,7 +354,7 @@ void KWin4App::initStatusBar()
 
 // Set up the document, i.e. the KGame object
 // and connect all signals emitted by it
-void KWin4App::initDocument()
+void KWin4App::connectDocument()
 {
   // KGame signals
   connect(mDoc,SIGNAL(signalGameOver(int, KPlayer*,KGame*)),
@@ -377,6 +384,49 @@ void KWin4App::changeAction(const char* action, bool enable)
 }
 
 
+// Save instance-specific properties. The function is
+void KWin4App::saveProperties(KConfigGroup& grp)
+{
+  kDebug() << "SAVE PROPERTIES for GROUP " << grp.group() << endl;
+
+  // Save current game?
+  QString name = QString("current_game")+grp.group();
+  QString filename = KStandardDirs::locateLocal("appdata", name);
+  bool isRunning = (mDoc->gameStatus()==KGame::Run);
+  if (isRunning)
+  {
+    kDebug() << "Saving " << filename << endl;
+    mDoc->save(filename);
+    grp.writeEntry("CurrentGame", filename);
+  }
+  else
+  {
+    QFile file(filename);
+    kDebug() << "Deleting " << file.fileName() << endl;
+    file.remove();
+    grp.deleteEntry("CurrentGame");
+  }
+}
+
+
+// Read instance-specific properties.
+void KWin4App::readProperties(const KConfigGroup& grp)
+{
+  kDebug() << "READ PROPERTIES for GROUP " << grp.group() << endl;
+
+  QString filename = grp.readEntry("CurrentGame", QString());
+  kDebug() << "Filename is " << filename << endl;
+  
+  if(!filename.isNull() && QFile::exists(filename))
+  {
+    kDebug() << "Loading " << filename << endl;
+    // TODO: CRASHES mDoc->load(filename);
+    kDebug() << "Loading " << filename << " done"<< endl;
+  }
+
+}
+
+
 // Store the current game
 void KWin4App::saveProperties()
 {
@@ -386,9 +436,7 @@ void KWin4App::saveProperties()
   KConfigGroup cfg = config->group("ProgramData");
   cfg.writeEntry("ThemeIndexNo", mThemeIndexNo);
 
-  QString filename = KStandardDirs::locateLocal("appdata", "current_game");
-  kDebug() << "Saving " << filename << endl;
-  mDoc->save(filename);
+  mDoc->writeConfig(config);
 
   config->sync();
   kDebug() << "SAVED PROPERTIES " << endl;
@@ -397,23 +445,14 @@ void KWin4App::saveProperties()
 // Load current game back
 void KWin4App::readProperties()
 {
-  kDebug() << "LOADED PROPERTIES start" << endl;
   KConfig *config = KGlobal::config().data();
 
   // Program data
   KConfigGroup cfg = config->group("ProgramData");
   mThemeIndexNo = cfg.readEntry("ThemeIndexNo", 0);
-  kDebug() << "Loaded index to " << mThemeIndexNo << endl;
   if (mThemeIndexNo >= mThemeFiles.size()) mThemeIndexNo = 0;
-  kDebug() << "Loaded index to " << mThemeIndexNo << endl;
 
-  QString filename = KStandardDirs::locateLocal("appdata", "current_game");
-  if(QFile::exists(filename))
-  {
-    kDebug() << "Loading " << filename << endl;
-    // TODO: CRASHES mDoc->load(filename);
-    kDebug() << "Loading " << filename << " done"<< endl;
-  }
+
   kDebug() << "LOADED PROPERTIES " << endl;
 }
 

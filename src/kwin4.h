@@ -100,15 +100,27 @@ class KWin4App : public KXmlGuiWindow
 
     /** Prepare the game engine (document) and connect its signals.
       */
-    void initDocument();
+    void connectDocument();
 
     /** Save the properties of the application.
       */
     void saveProperties();
 
+    /** Save instance-specific properties. The function is
+     * invoked when the session manager requests your application
+     * to save its state.
+     * @param grp The config group
+     */
+    virtual void saveProperties(KConfigGroup& grp);
+
     /** Read the properties of the application.
       */
     void readProperties();
+
+   /** Read instance-specific properties.
+     * @param grp The config group
+    */
+    virtual void readProperties(const KConfigGroup& grp);
 
     /** Called by KMainWindow when the last window of the application is
      * going to be closed.
