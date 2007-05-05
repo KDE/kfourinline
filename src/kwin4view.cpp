@@ -64,6 +64,7 @@ KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, Theme
   // We do not need scrolling so switch it off
   setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
 
   // Choose a background color
