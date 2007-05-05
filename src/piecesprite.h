@@ -40,7 +40,7 @@ class PieceSprite : public PixmapSprite
   public:
     /** Constructor for the sprite.
      */
-    PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
+    PieceSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas);
     
     /** Destructor 
      */

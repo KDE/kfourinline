@@ -38,7 +38,7 @@ class ChatDlg : public KDialog
   Q_OBJECT
 
   public:
-    ChatDlg(KGame *game,QWidget* parent=0);
+    explicit ChatDlg(KGame *game,QWidget* parent=0);
 
   public slots:  
     void setPlayer(KWin4Player *p);

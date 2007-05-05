@@ -26,7 +26,6 @@
 
 // Qt includes
 #include <QTimer>
-#include <QTimer>
 #include <QColor>
 
 // KDE includes

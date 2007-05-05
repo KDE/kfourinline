@@ -18,7 +18,7 @@
    Boston, MA 02110-1301, USA.
 */
 
-#include "introsprite.h"
+// Header includes
 #include "introsprite.h"
 
 // General includes

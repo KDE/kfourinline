@@ -27,8 +27,6 @@
 
 // Local includes
 #include "scoresprite.h"
-#include "scoresprite.h"
-
 
 // Construct a score object
 Score::Score(QObject* parent)

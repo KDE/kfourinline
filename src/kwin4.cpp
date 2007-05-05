@@ -66,7 +66,7 @@
 
 
 // Configuration file
-#include "config-src.h"
+#include <config-src.h>
 
 // Construct the main application window
 KWin4App::KWin4App(QWidget *parent)

@@ -32,7 +32,7 @@
 #include <kconfig.h>
 
 // Constructor for the pixmap sprite
-PieceSprite::PieceSprite(QString id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
+PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
   mMovementState = Idle;

@@ -49,7 +49,7 @@
 #include "prefs.h"
 #include "score.h"
 #include "ui_statuswidget.h"
-#include "config-src.h"
+#include <config-src.h>
 
 
 #define FIELD_SIZE_X 7
