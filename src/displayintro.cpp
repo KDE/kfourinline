@@ -29,6 +29,7 @@
 #include <QColor>
 #include <QPixmap>
 #include <QPoint>
+#include <QGraphicsView>
 
 // KDE includes
 #include <klocale.h>
@@ -40,7 +41,7 @@
 
 
 // Constructor for the intro display
-DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QObject* parent)
+DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
           : Themable("introdisplay",theme), QObject(parent)
 {
   // Choose a background color
@@ -49,6 +50,7 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   // Store the theme manager and other attributes
   mTheme         = theme;
   mScene         = scene;
+  mView          = parent;
   mAdvancePeriod = advancePeriod;
 
   // Storage of all sprites
@@ -71,8 +73,8 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   mTimer = new QTimer(this);
   connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));
 
-  // Draw us
-  theme->updateTheme(this);
+  // Redraw
+  if (theme) theme->updateTheme(this);
 }
 
 
@@ -90,7 +92,14 @@ DisplayIntro::~DisplayIntro()
 // Master theme change function. Redraw the display
 void DisplayIntro::changeTheme()
 {
-   // Nothing to do here as the sprites handles this by themselves
+  // Retrieve theme data
+  KConfigGroup config = thememanager()->config(id());
+  
+  // Retrieve background pixmap
+  QString bgsvgid = config.readEntry("background-svgid");
+  QPixmap pixmap  = thememanager()->getPixmap(bgsvgid, mScene->sceneRect().size().toSize());
+  mScene->setBackgroundBrush(pixmap);
+  mView->update();
 }
 
 

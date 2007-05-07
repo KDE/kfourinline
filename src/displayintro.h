@@ -31,6 +31,7 @@
 #include "thememanager.h"
 
 // Forward declaration
+class QGraphicsView;
 
 
 /**
@@ -48,7 +49,7 @@ class DisplayIntro : public QObject, public virtual Themable
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QObject* parent = 0);
+    DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent);
     
     /** Destructor of the display.
      */
@@ -88,6 +89,9 @@ class DisplayIntro : public QObject, public virtual Themable
     
     // The animation timer
     QTimer* mTimer;
+
+    // The view
+    QGraphicsView* mView;
     
     // The current state of the animation
     IntroState mIntroState;

@@ -3,6 +3,10 @@
 # SVG file to load (path relative to this file) which contains all SVG items
 svgfile=default.svg
 
+# The 'intro display' (display for intro screen)
+[introdisplay]
+# SVG ID of background grafix
+background-svgid=background
 
 
 # The 'game display' itself
