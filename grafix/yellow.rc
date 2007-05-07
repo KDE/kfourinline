@@ -1,6 +1,11 @@
 [general]
 svgfile=yellow.svg
 
+# The 'intro display' (display for intro screen)
+[introdisplay]
+# SVG ID of background grafix
+background-svgid=background
+
 # A game piece in the introduction
 [intro_piece]
 # 'pos' set by program!
