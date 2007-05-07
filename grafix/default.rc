@@ -44,9 +44,9 @@ frame1=piece1
 # Center the graphics around its position
 center=true
 # Z-Value 
-zValue=150.0
+zValue=10.0
 # Width of the item [0..1]
-width=0.045
+width=0.0478
 # SVG ID of the image: Auto means to read read ID from frameX (below)
 svgid=auto
 # First frame number to read
@@ -66,7 +66,7 @@ frame1=piece1
 # Center the graphics around its position
 center=true
 # Z-Value 
-zValue=155.0
+zValue=10.0
 # Width of the item [0..1]
 width=0.045
 # SVG ID of the image
@@ -139,7 +139,7 @@ animation-delay=100
 # Width of the item  [0..1]
 width=0.080
 # Item positions relativ to score widget itself [0..1,0..1]
-pos=0.01,0.05
+pos=0.01,0.02
 # Z-Value 
 zValue=120.0
 # SVG ID of the image: Auto means to read read ID from frameX (below)
@@ -164,7 +164,7 @@ frame3=score_network
 # Width of the item [0..1]
 width=0.080
 # Item positions relativ to score widget itself [0..1,0..1]
-pos=0.19,0.05
+pos=0.19,0.02
 # Z-Value 
 zValue=120.0
 # SVG ID of the image: Auto means to read read ID from frameX (below)
@@ -189,7 +189,7 @@ frame3=score_network
 # Width of the item [0..1]
 width=0.28
 # Item position [0..1,0..1]
-pos=0.63,0.044
+pos=0.63,0.074
 # Z-Value 
 zValue=100.0
 # SVG ID
@@ -222,9 +222,9 @@ fontColorPlayer1=255,0,0
 # Width of the item [0..1]
 width=0.44
 # Item position [0..1,0..1]
-pos=0.1,0.1
+pos=0.0975,0.098
 # Z-Value 
-zValue=10.0
+zValue=150.0
 # SVG ID
 svgid=board
 
