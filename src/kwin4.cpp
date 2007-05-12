@@ -200,10 +200,10 @@ void KWin4App::checkMenus(CheckFlags menu)
   // Check file menu
   if (!menu || (menu&CheckFileMenu))
   {
-    changeAction("hint", !(!isRunning && localgame));
-    changeAction("new_game", !isRunning);
-    changeAction("save", isRunning);
-    changeAction("end_game", isRunning);
+    changeAction("move_hint", !(!isRunning && localgame));
+    changeAction("game_new", !isRunning);
+    changeAction("game_save", isRunning);
+    changeAction("game_end", isRunning);
   }
 
   // Edit menu
@@ -211,33 +211,33 @@ void KWin4App::checkMenus(CheckFlags menu)
   {
     if (!isRunning || !localgame)
     {
-      disableAction("edit_undo");
+      disableAction("move_undo");
     }
     else if (mDoc->getHistoryCnt()==0)
     {
-      disableAction("edit_undo");
+      disableAction("move_undo");
     }
     else if (mDoc->getCurrentMove()<1 )
     {
-      disableAction("edit_undo");
+      disableAction("move_undo");
     }
     else
     {
-      enableAction("edit_undo");
+      enableAction("move_undo");
     }
 
     // Show redo
     if (!isRunning || !localgame)
     {
-      disableAction("edit_redo");
+      disableAction("move_redo");
     }
     else if (mDoc->getHistoryCnt()==mDoc->getMaxMove())
     {
-      disableAction("edit_redo");
+      disableAction("move_redo");
     }
     else
     {
-      enableAction("edit_redo");
+      enableAction("move_redo");
     }
   }
 
@@ -245,16 +245,16 @@ void KWin4App::checkMenus(CheckFlags menu)
   if (global_demo_mode)
   {
     disableAction(KStandardAction::name(KStandardAction::Preferences));
-    disableAction("edit_undo");
-    disableAction("edit_redo");
-    disableAction("new_game");
-    disableAction("end_game");
-    disableAction("save");
-    disableAction("open");
+    disableAction("move_undo");
+    disableAction("move_redo");
+    disableAction("game_new");
+    disableAction("game_end");
+    disableAction("game_save");
+    disableAction("game_open");
     disableAction("network_conf");
     disableAction("network_chat");
     disableAction("statistics");
-    disableAction("hint");
+    disableAction("move_hint");
   }
 }
 
@@ -263,23 +263,15 @@ void KWin4App::initGUI()
 {
   QAction* action;
 
-  action = KStandardGameAction::gameNew(this, SLOT(menuNewGame()), this);
-  actionCollection()->addAction("new_game", action);
-  ACTION("new_game")->setToolTip(i18n("Start a new game"));
-
-  action = KStandardGameAction::load(this, SLOT(menuOpenGame()), this);
-  actionCollection()->addAction("open", action);
-  ACTION("open")->setToolTip(i18n("Open a saved game..."));
-
-  action = KStandardGameAction::save(this, SLOT(menuSaveGame()), this);
-  actionCollection()->addAction("save", action);
-  ACTION("save")->setToolTip(i18n("Save a game..."));
-
-  action = KStandardGameAction::end(this, SLOT(endGame()), this);
-  actionCollection()->addAction("end_game", action);
-  ACTION("end_game")->setToolTip(i18n("Ending the current game..."));
-  ACTION("end_game")->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
-
+  // Game
+  KStandardGameAction::gameNew(this, SLOT(menuNewGame()), actionCollection());
+  KStandardGameAction::load(this, SLOT(menuOpenGame()), actionCollection());
+  KStandardGameAction::save(this, SLOT(menuSaveGame()), actionCollection());
+  action = KStandardGameAction::end(this, SLOT(endGame()), actionCollection());
+  action->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
+  KStandardGameAction::hint(this, SLOT(askForHint()), actionCollection());
+  KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+  
   action = actionCollection()->addAction("network_conf");
   action->setText(i18n("&Network Configuration..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureNetwork()));
@@ -288,34 +280,15 @@ void KWin4App::initGUI()
   action->setText(i18n("Network Chat..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureChat()));
 
-  if (global_debug>0)
-  {
-    action = actionCollection()->addAction("file_debug");
-    action->setText(i18n("Debug KGame"));
-    connect(action, SIGNAL(triggered(bool) ), SLOT(debugKGame()));
-  }
-
   action = actionCollection()->addAction("statistics");
   action->setIcon(KIcon("flag"));
   action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   ACTION("statistics")->setToolTip(i18n("Show statistics."));
 
-  action = KStandardGameAction::hint(this, SLOT(askForHint()), this);
-  actionCollection()->addAction("hint", action);
-  ACTION("hint")->setToolTip(i18n("Shows a hint on how to move."));
-
-  action = KStandardGameAction::quit(this, SLOT(close()), this);
-  actionCollection()->addAction("game_exit", action);
-  ACTION("game_exit")->setToolTip(i18n("Quits the program."));
-
-  action = KStandardGameAction::undo(this, SLOT(undoMove()), this);
-  actionCollection()->addAction("edit_undo", action);
-  ACTION("edit_undo")->setToolTip(i18n("Undo last move."));
-
-  action = KStandardGameAction::redo(this, SLOT(redoMove()), this);
-  actionCollection()->addAction("edit_redo", action);
-  ACTION("edit_redo")->setToolTip(i18n("Redo last move."));
+  // Move
+  KStandardGameAction::undo(this, SLOT(undoMove()), actionCollection());
+  KStandardGameAction::redo(this, SLOT(redoMove()), actionCollection());
 
   actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(configureSettings()));
 
@@ -328,6 +301,14 @@ void KWin4App::initGUI()
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
   kDebug() << "Setting current item to " << mThemeIndexNo << endl;
   ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
+
+  // Debug
+  if (global_debug>0)
+  {
+    action = actionCollection()->addAction("file_debug");
+    action->setText(i18n("Debug KGame"));
+    connect(action, SIGNAL(triggered(bool) ), SLOT(debugKGame()));
+  }
 }
 
 
