@@ -16,7 +16,7 @@ background-svgid=background
 # Position of the game board for the pieces [0..1]
 board-pos=0.1431,0.1430
 # Spread of sprites for board columns [0..1]
-board-spread=0.0586,0.0588
+board-spread=0.0588,0.0588
 # Movebar arrow position (must be same than movebar pos) [0..1]
 arrow-pos=0.12,0.04
 # Velocity [relativ/second] for game piece move animation
@@ -224,7 +224,7 @@ fontColorPlayer1=255,0,0
 # The game board (frame)
 [board]
 # Width of the item [0..1]
-width=0.44
+width=0.442424242
 # Item position [0..1,0..1]
 pos=0.0975,0.098
 # Z-Value 
