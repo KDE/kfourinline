@@ -284,7 +284,7 @@ void KWin4App::initGUI()
   action->setIcon(KIcon("flag"));
   action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
-  ACTION("statistics")->setToolTip(i18n("Show statistics."));
+  action->setToolTip(i18n("Show statistics."));
 
   // Move
   KStandardGameAction::undo(this, SLOT(undoMove()), actionCollection());
