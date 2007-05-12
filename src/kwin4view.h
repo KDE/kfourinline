@@ -56,7 +56,7 @@ class KWin4View : public QGraphicsView
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
+    KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
 
     /** Destructor
       */

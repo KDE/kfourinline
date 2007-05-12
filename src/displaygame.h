@@ -105,7 +105,7 @@ class DisplayGame : public QObject, public virtual Themable
       * @param pos  The mouse position.
       * @return     The game board position [0-6] or [-1] on error.
       */
-    int mapMouseToMove(QPoint pos);
+    int mapMouseToMove(const QPoint &pos);
     
     /** Shows the game over sprite.
       */

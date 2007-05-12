@@ -53,7 +53,7 @@ void KWin4View::paintEvent(QPaintEvent* event)
 }
 
 // Constructor for the view
-KWin4View::KWin4View(QSize size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
+KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : QGraphicsView(scene, parent)
 {
   // Store attributes    

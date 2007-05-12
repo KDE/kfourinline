@@ -142,7 +142,7 @@ KConfigGroup ThemeManager::config(const QString &id)
 
 
 // Get a pixmap when its size is given (this can distort the image)
-const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
+const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
 {
   if (size.width() < 1 || size.height() < 1) 
     kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size " << size << endl;

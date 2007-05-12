@@ -334,7 +334,7 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
 
 // Return the mouse mapped to the board or bar item so that a
 // move 0..6 is generated. -1 means an illegal position.
-int DisplayGame::mapMouseToMove(QPoint pos)
+int DisplayGame::mapMouseToMove(const QPoint &pos)
 {
   // Error?
   if (!mBoard) return -1;
