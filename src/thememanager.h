@@ -104,7 +104,7 @@ class Themable
   */
 class ThemeManager : public QObject
 {
-
+  Q_OBJECT
   public:
     /** Constructor for the theme manager.
       * @param themefile   The theme configuration file
