@@ -1,5 +1,6 @@
-<!DOCTYPE kpartgui>
-<kpartgui name="kwin4" version="2">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<gui name="kwin4" version="2">
 
 <MenuBar>
   <Menu name="game"><text>&amp;Game</text>
@@ -24,4 +25,4 @@
   <Action name="move_redo"/>
 </ToolBar>
 
-</kpartgui>
+</gui>
