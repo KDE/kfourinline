@@ -804,7 +804,7 @@ COLOUR KWin4Doc::switchStartPlayer()
     Prefs::setStartcolourred(false);
     kDebug() << "Setting startplayer to YELLOW" << endl;
   }
-  Prefs::writeConfig();
+  Prefs::self()->writeConfig();
   
   return (COLOUR)mStartPlayer.value();
 }
