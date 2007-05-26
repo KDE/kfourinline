@@ -30,6 +30,7 @@
 #include <QPixmap>
 #include <QPoint>
 #include <QGraphicsView>
+#include <QStringList>
 
 // KDE includes
 #include <klocale.h>
@@ -37,6 +38,7 @@
 
 // Local includes
 #include "introsprite.h"
+#include "pixmapsprite.h"
 
 
 
@@ -66,6 +68,17 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
     else  sprite->setFrame(1);
     sprite->setZValue(i);
     sprite->hide();
+  }
+
+  // Static decoration
+  KConfigGroup config = thememanager()->config(id());
+  QStringList deco = config.readEntry("decoration", QStringList());
+  for (int i = 0; i < deco.size(); i++)
+  {
+    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, mAdvancePeriod, i, mScene);
+    if (!sprite) kFatal() << "Cannot load sprite " << deco.at(i) << endl;
+    mSprites.append(sprite);
+    sprite->show();
   }
 
 

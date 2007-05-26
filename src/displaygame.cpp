@@ -126,6 +126,17 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
     arrow->hide();
   }
 
+  // Static decoration
+  KConfigGroup config = thememanager()->config(id());
+  QStringList deco = config.readEntry("decoration", QStringList());
+  for (int i = 0; i < deco.size(); i++)
+  {
+    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, mAdvancePeriod, i, mScene);
+    if (!sprite) kFatal() << "Cannot load sprite " << deco.at(i) << endl;
+    mSprites.append(sprite);
+    sprite->show();
+  }
+
   // Animation timer
   mTimer = new QTimer(this);
   connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));

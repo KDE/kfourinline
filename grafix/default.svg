@@ -16,7 +16,7 @@
    id="svg5490"
    sodipodi:version="0.32"
    inkscape:version="0.44.1"
-   sodipodi:docbase="/home/kdedev/kde/src/KDE/kdegames/kwin4/grafix"
+   sodipodi:docbase="Y:\"
    sodipodi:docname="default.svg">
   <defs
      id="defs3">
@@ -17392,12 +17392,12 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="17.520429"
-     inkscape:cx="66.381637"
-     inkscape:cy="1025.8704"
-     inkscape:current-layer="piece0"
-     inkscape:window-width="1920"
-     inkscape:window-height="1127"
+     inkscape:zoom="1.4782315"
+     inkscape:cx="267.72007"
+     inkscape:cy="935.37711"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1028"
+     inkscape:window-height="746"
      inkscape:window-x="0"
      inkscape:window-y="0"
      showgrid="false"
@@ -27761,5 +27761,14 @@
          d="M 623.23457,351.00554 C 621.70392,350.47288 619.68224,351.61515 617.39758,353.81256 C 616.20916,354.95558 614.86126,357.14292 614.86126,358.75916 C 614.86126,360.93985 618.00427,362.04102 619.60381,361.56618 C 621.84614,360.90053 622.15324,359.19419 622.83888,357.87531 C 623.95878,355.72108 625.80563,355.58775 625.80563,352.44337 C 625.80563,351.06296 624.06367,351.16503 623.23457,351.00554 z "
          id="path5661" />
     </g>
+    <path
+       sodipodi:nodetypes="ccccccccc"
+       id="boardback"
+       d="M 235.43682,47.653572 L 378.5685,47.653572 C 380.40361,47.653572 381.88096,49.570222 381.88096,51.950992 L 381.88096,172.06265 C 381.88096,174.4434 380.40361,176.36006 378.5685,176.36006 L 235.43682,176.36006 C 233.60173,176.36006 232.12438,174.4434 232.12438,172.06265 L 232.12438,51.950992 C 232.12438,49.570222 233.60173,47.653572 235.43682,47.653572 z "
+       style="opacity:0.71900826;fill:#242366;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dashoffset:4;stroke-opacity:0.05963302"
+       inkscape:export-filename="/home/johann/Developpement/kdegames/board.png"
+       inkscape:export-xdpi="90.455032"
+       inkscape:export-ydpi="90.455032"
+       inkscape:label="#path5675" />
   </g>
 </svg>
