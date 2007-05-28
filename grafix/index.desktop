@@ -1,7 +1,9 @@
 [Default]
 Name=White and Red
+Name[el]=Λευκό και κόκκινο
 File=default.rc
 
 [Yellow]
 Name=Yellow and Red
+Name[el]=Κίτρινο και κόκκινο
 File=yellow.rc
