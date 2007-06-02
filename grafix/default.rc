@@ -9,6 +9,18 @@ svgfile=default.svg
 background-svgid=background
 # Static decoration sprites, always displayed
 decoration=
+# Position of the game board for the pieces [0..1]
+board-pos=0.445,0.15
+# Spread pieces on board [0..1]
+board-spread=0.0588,0.0588
+# Speed in [rel/ms]
+move-velocity=0.5
+
+# Position and spread of the pieces above the board
+piece0-pos=0.4400,0.0300
+piece1-pos=0.4400,0.1000
+piece-spread=0.0095
+
 
 
 # The 'game display' itself
@@ -249,6 +261,18 @@ zValue=1.0
 svgid=boardback
 
 
+# One 'hole' in the game board
+[boardholes]
+# Center the graphics around its position
+center=true
+# 'pos' set by program!
+# Width of the item [0..1]
+width=0.045
+# Z-Value
+zValue=15.0
+# SVG ID
+svgid=piece
+
 
 # The game over message
 [gameover]
@@ -262,17 +286,216 @@ zValue=300.0
 svgid=gameover
 
 
-
-# One 'hole' in the game board
-[boardholes]
-# Center the graphics around its position
-center=true
-# 'pos' set by program!
+# The game board (frame) used in the intro
+[introboard]
 # Width of the item [0..1]
-width=0.045
-# Z-Value
-zValue=15.0
+width=0.442424242
+# Item position [0..1,0..1]
+pos=0.4300,0.190
+# Z-Value 
+zValue=150.0
 # SVG ID
-svgid=piece
+svgid=board
 
+
+# The quicklaunch field in the intro
+[quicklaunch]
+# Width of the item [0..1]
+width=0.30       
+# Item position [0..1,0..1]
+pos=0.0500,0.0500
+# Z-Value 
+zValue=150.0
+# SVG ID
+svgid=quicklaunch
+
+# Position of text
+posQuickstart=0.04,0.005
+posStartplayer=0.08,0.14
+posColor=0.08,0.31
+# Font for text quickstart
+fontHeightHeader=0.070
+fontWidthHeader=0.95
+fontColorHeader=0,0,0
+# Font for other text 
+fontHeight=0.050
+fontWidth=0.50
+fontColor=0,0,0
+
+
+# The 'black' start button
+[button0_start]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.230,0.143
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece0
+frame1=piece0_hover
+frame2=piece0_on
+frame3=piece0_on_hover
+
+# The 'red' start button
+[button1_start]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.275,0.143
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece1
+frame1=piece1_hover
+frame2=piece1_on
+frame3=piece1_on_hover
+
+# The 'black' color choice button
+[button0_color]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.230,0.233
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece0
+frame1=piece0_hover
+frame2=piece0_on
+frame3=piece0_on_hover
+
+# The 'red' color choice button
+[button1_color]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.275,0.233 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece1
+frame1=piece1_hover
+frame2=piece1_on
+frame3=piece1_on_hover
+
+# The 'start_ai_easy' button
+[button_aieasy]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.340 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+frame3=button_on_hover
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_ai_normal' button
+[button_ainormal]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.400
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+frame3=button_on_hover
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_ai_hard' button
+[button_aihard]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.460 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+frame3=button_on_hover
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_player' button
+[button_player]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.520 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+frame3=button_on_hover
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
 

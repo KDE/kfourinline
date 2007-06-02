@@ -103,6 +103,10 @@ class KWin4View : public QGraphicsView
       */
     void signalMoveDone(int mode);
 
+    /** Emit this signal if a new game is started from the view.
+      */
+    void signalNewGame();  
+
   public slots:  
     /** The update and advance for the canvas. 
      *  This is called by a timer at regular intervals.
@@ -142,6 +146,8 @@ class KWin4View : public QGraphicsView
       * @param event The paint event
       */
     void paintEvent(QPaintEvent* event);
+
+    virtual bool viewportEvent ( QEvent * event )  ;
 
   private:
     // The theme manager 

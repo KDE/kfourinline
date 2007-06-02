@@ -75,8 +75,15 @@ class IntroSprite : public PixmapSprite
      */
     void startLinear(QPointF end, double duration);
 
+    /** Start a linear manhatte movement (edge following) from the current position to end with the given duration.
+     *  @param end      The end point [rel. coord]
+     *  @param velocity The velocity of the move [rel]
+     *  @param delay    Delay start of movement by this [ms]
+     */
+    void startManhatten(QPointF end, double velocity, double delay);
+
     // Possible animation states of the sprite
-    enum MovementState {Idle, IntroDelay, IntroLinear1, IntroCircle, IntroLinear2, LinearMove};
+    enum MovementState {Idle, IntroDelay, IntroLinear1, IntroCircle, IntroLinear2, LinearMove, ManhattenDelay, ManhattenMove};
 
     /** Standard QGI advance function.
      *  @param phase The advance phase
@@ -98,6 +105,11 @@ class IntroSprite : public PixmapSprite
       */
     virtual void changeTheme();
 
+    /** Retrieve the duration of an animation.
+      * @return The duration [ms]
+      */
+    double duration() {return mDuration;}
+
   private:
 
     // The duration of the movement animation 
@@ -106,6 +118,8 @@ class IntroSprite : public PixmapSprite
     double mTime;
     // The start delay before movement starts
     double mDelay;
+    // The velocity [rel]
+    double mVelocity;
 
     // The start points of the movement [rel]
     QPointF mStart;

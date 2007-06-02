@@ -30,6 +30,8 @@
 #include <kdebug.h>
 #include <kconfig.h>
 
+#define sign(x) ( (x)>0?1:((x)<0?-1:0) )
+
 // Constructor for the sprite
 IntroSprite::IntroSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
     :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
@@ -39,6 +41,7 @@ IntroSprite::IntroSprite(const QString &id, ThemeManager* theme, int advancePeri
   mAdvancePeriod = advancePeriod;
   mNo = no;
   mAnimationState = Idle;
+  mVelocity = 0.0;
 
   if (theme) theme->updateTheme(this);
 }
@@ -93,6 +96,21 @@ void IntroSprite::startLinear(QPointF end, double duration)
   mDuration       = duration;
   mAnimationState = LinearMove;
   mTime           = 0;
+  show();
+}
+
+
+// Start linear manhatten movement from current position
+void IntroSprite::startManhatten(QPointF end, double velocity, double delay)
+{
+  mStart            = QPointF(x()/getScale(), y()/getScale());
+  mEnd              = end;
+  mDelay            = delay;
+  double dManhatten = fabs(mEnd.x()-mStart.x())+fabs(mEnd.y()-mStart.y());
+  mDuration         = dManhatten/velocity*1000.0;
+  mAnimationState   = ManhattenDelay;
+  mVelocity         = velocity;
+  mTime             = 0;
   show();
 }
 
@@ -189,6 +207,52 @@ void IntroSprite::advance(int phase)
        qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
        qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
        setPos(x*scale, y*scale);
+     }
+  }
+    
+  // Delay Manhatten move
+  if (mAnimationState == ManhattenDelay)
+  {
+     if (mTime >= mDelay)
+     {
+       mAnimationState = ManhattenMove;
+       mTime = 0.0;
+     }
+  }
+  // Handle manhatten phase
+  if (mAnimationState == ManhattenMove)
+  {
+     if (fabs(mEnd.x()-x()/scale) <= 0.00001 && 
+         fabs(mEnd.y()-y()/scale) <= 0.00001 )
+     {
+       mAnimationState = Idle;
+       setPos(mEnd.x()*scale, mEnd.y()*scale);
+     }
+     // x-edge
+     else if (fabs(mEnd.x()-x()/scale) > 0.00001)
+     {
+       qreal x = mStart.x() + sign(mEnd.x()-mStart.x())*mVelocity*mTime/1000.0;
+       // Finished?
+       if ( (mEnd.x() > mStart.x() && x >= mEnd.x()) ||
+            (mEnd.x() < mStart.x() && x <= mEnd.x()) )
+       {
+         x = mEnd.x();
+         mTime = 0.0;
+       }
+       setPos(x*scale, mStart.y()*scale);
+     }
+     // y-edge
+     else
+     {
+       qreal y = mStart.y() + sign(mEnd.y()-mStart.y())*mVelocity*mTime/1000.0;
+       // Finished?
+       if ( (mEnd.y() > mStart.y() && y >= mEnd.y()) ||
+            (mEnd.y() < mStart.y() && y <= mEnd.y()) )
+       {
+         y = mEnd.y();
+         mTime = 0.0;
+       }
+       setPos(mEnd.x()*scale, y*scale);
      }
   }
     

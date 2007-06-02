@@ -36,6 +36,7 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePe
     :  Themable(id, theme), QGraphicsPixmapItem(0, canvas)
 {
   hide();
+  setAcceptsHoverEvents(false);
 
   mAnimationState = Idle;
   mAdvancePeriod  = advancePeriod;

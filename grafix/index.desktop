@@ -1,7 +1,5 @@
 [Default]
-Name=White and Red
-Name[el]=Λευκό και κόκκινο
-Name[ja]=白と赤
+Name=Black and Red
 File=default.rc
 
 [Yellow]

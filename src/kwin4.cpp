@@ -122,6 +122,8 @@ KWin4App::KWin4App(QWidget *parent)
   // View
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
   mDoc->setView(mView);
+  connect(mView, SIGNAL(signalNewGame()), this,SLOT(menuNewGame()));
+           
 
 
   // Players (after view)
@@ -468,6 +470,7 @@ void KWin4App::menuSaveGame()
 // Start a new game menu
 void KWin4App::menuNewGame()
 {
+  kDebug() << "MENU NEW GAME " << endl;
   // End the intro if it is running
   mDoc->setGameStatus(KWin4Doc::End);
   // Init the board and Clear the old game out

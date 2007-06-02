@@ -16,6 +16,7 @@ set(kwin4_SRCS
    kwin4view.cpp 
    kwin4doc.cpp 
    kwin4player.cpp 
+   buttonsprite.cpp
    introsprite.cpp
    piecesprite.cpp
    scoresprite.cpp

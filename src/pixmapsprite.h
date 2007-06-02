@@ -124,9 +124,6 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
      */
     int mAdvancePeriod;
 
-    /**  The theme id.
-     */
-    QString mId;
     
     /** The state of the animation.
      */

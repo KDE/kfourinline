@@ -27,6 +27,7 @@
 // Qt includes
 #include <QTimer>
 #include <QColor>
+#include <QEvent>
 
 // KDE includes
 #include <klocale.h>
@@ -66,6 +67,7 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
+  viewport()->setMouseTracking(true);
 
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -99,8 +101,10 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   if (!global_skip_intro)
   {
     mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
+    connect(mIntroDisplay, SIGNAL(signalNewGame()), this, SIGNAL(signalNewGame()));
     mIntroDisplay->start();
   }
+
 }
 
 
@@ -109,6 +113,7 @@ KWin4View::~KWin4View()
 {
   if (mIntroDisplay) delete mIntroDisplay;
   if (mGameDisplay) delete mGameDisplay;
+  kDebug() << "TRACKING " << hasMouseTracking() << " and " << viewport()->hasMouseTracking() << endl;
 }
 
 
@@ -124,6 +129,7 @@ void KWin4View::updateAndAdvance()
 // Stop intro display and init game display
 void KWin4View::initGame(Score* scoreData)
 {
+  kDebug() << "KWin4View::initGame" << endl;
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;
   if (!mGameDisplay)
@@ -150,6 +156,12 @@ void  KWin4View::endGame()
 // Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
+
+  if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
+  {
+    return;
+  }
+
   // Adapt the canvas size to the window size
   if (scene())
   {
@@ -266,6 +278,13 @@ void KWin4View::displayHint(int x, int y)
 void KWin4View::moveDone(QGraphicsItem* /*item*/, int mode)
 {
   emit signalMoveDone(mode);
+}
+
+
+bool KWin4View::viewportEvent ( QEvent * event ) 
+{
+  if (mIntroDisplay) mIntroDisplay->viewEvent(event);
+  return QAbstractScrollArea::viewportEvent(event);
 }
 
 #include "kwin4view.moc"

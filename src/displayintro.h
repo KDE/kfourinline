@@ -26,12 +26,17 @@
 #include <QHash>
 #include <QList>
 #include <QTimer>
+#include <QEvent>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsTextItem>
 
 // Local includes
 #include "thememanager.h"
 
 // Forward declaration
 class QGraphicsView;
+class PixmapSprite;
+class ButtonSprite;
 
 
 /**
@@ -57,7 +62,7 @@ class DisplayIntro : public QObject, public virtual Themable
 
     /** Animation states of the intro animation
       */
-    enum IntroState {IntroMoveIn, IntroCollapse, IntroExplode};
+    enum IntroState {IntroMoveIn, IntroPlay, IntroExplode};
 
     /** Start the animation.
       */
@@ -68,10 +73,35 @@ class DisplayIntro : public QObject, public virtual Themable
     virtual void changeTheme();
 
 
+    /* Called from the view event viewportEvent() to handle mouse events.
+     * NOTE: An own event handler is implemeted  because the Qt4.3 QGraphicsView event
+     *       handling system is faulty!!!! This can be moved to Qt events if they work.
+     * @param event The event
+     */
+    void viewEvent(QEvent* event);
+
+  signals:
+    /** Emit this signal if a new game is started from the intro display.
+      */
+    void signalNewGame();
+
+
   protected slots:  
      /** Animation routine, called by a timer.
        */
      void advance();
+
+     /** A graphic button is pressed.
+       * @param item The button
+       * @param id   The button id
+       */
+     void buttonPressed(QGraphicsItem* item, int id);
+
+     /** Find a sprite for a given absolute widget coordinate.
+       * @param pos The screen coordinate
+       * @return The highest sprite under the position or null.
+       */
+     QGraphicsItem* findSprite(QPoint pos);
 
 
   private:
@@ -95,6 +125,25 @@ class DisplayIntro : public QObject, public virtual Themable
     
     // The current state of the animation
     IntroState mIntroState;
+
+    // Text items
+    QGraphicsTextItem* mTextQuicklaunch;
+    // Text items
+    QGraphicsTextItem* mTextStartplayer;
+    // Text items
+    QGraphicsTextItem* mTextColor;
+
+    // Buttons
+    ButtonSprite* mStartButton[2];
+    ButtonSprite* mPlayerButton[2];
+
+    // Quick launch sprite
+    PixmapSprite* mQuickLaunch;
+
+    // Last event sprite
+    QGraphicsItem* mLastMoveEvent;
+
+
 };
 
 #endif

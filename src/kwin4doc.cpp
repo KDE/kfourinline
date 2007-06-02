@@ -969,7 +969,7 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     KGameMouseIO *input;
     if (global_debug>1) kDebug() << "Creating MOUSE IO to "<<pView<< endl;
     // We want the player to work over mouse
-    input=new KGameMouseIO(pView->viewport());
+    input=new KGameMouseIO(pView->viewport(), true);
     if (global_debug>1) kDebug(12010) << "MOUSE IO added " << endl;
     // Connect mouse input to a function to process the actual input
     connect(input,SIGNAL(signalMouseEvent(KGameIO *,QDataStream &,QMouseEvent *,bool *)),
