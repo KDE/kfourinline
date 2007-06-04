@@ -1,5 +1,6 @@
 [Default]
 Name=Black and Red
+Name[el]=Μαύρο και κόκκινο
 File=default.rc
 
 [Yellow]
