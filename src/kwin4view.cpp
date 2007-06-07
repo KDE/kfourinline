@@ -101,7 +101,8 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   if (!global_skip_intro)
   {
     mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
-    connect(mIntroDisplay, SIGNAL(signalNewGame()), this, SIGNAL(signalNewGame()));
+    connect(mIntroDisplay, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
+            this, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
     mIntroDisplay->start();
   }
 
@@ -157,10 +158,11 @@ void  KWin4View::endGame()
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
 
-  if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
-  {
-    return;
-  }
+  // Test to prevent double resizing
+  // if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
+  // {
+  //   return;
+  // }
 
   // Adapt the canvas size to the window size
   if (scene())

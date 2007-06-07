@@ -21,6 +21,12 @@
 // Header includes
 #include "displayintro.h"
 
+// Local includes
+#include "introsprite.h"
+#include "pixmapsprite.h"
+#include "buttonsprite.h"
+#include "prefs.h"
+
 // Standard includes
 #include <math.h>
 
@@ -39,11 +45,6 @@
 #include <klocale.h>
 #include <kdebug.h>
 
-// Local includes
-#include "introsprite.h"
-#include "pixmapsprite.h"
-#include "buttonsprite.h"
-#include "prefs.h"
 
 
 // Constructor for the intro display
@@ -177,6 +178,7 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
 }
 
 
+// One of the graphical sprite buttons was pressed. Item and its id are delivered
 void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
 {
   int status = id >> 8;
@@ -211,10 +213,28 @@ void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
   // Start game from button
   if (no >=10 && no <= 13 && status == 1)
   {
-    // Direct signal emission crashes as this object is deleted on new game
-    //emit signalNewGame();
-    QTimer::singleShot(0, this,SIGNAL(signalNewGame()));
+    // Emit quick start with status (start player color, player color, AI level, two player?
 
+    // Color
+    COLOUR startPlayer;
+    if (mStartButton[0]->status()) startPlayer = Yellow;
+    else startPlayer = Red;
+
+    // Inputs
+    KGameIO::IOMode input0 = KGameIO::ProcessIO;
+    KGameIO::IOMode input1 = KGameIO::ProcessIO;
+    if (mPlayerButton[0]->status()) input0 = KGameIO::MouseIO;
+    if (mPlayerButton[1]->status()) input1 = KGameIO::MouseIO;
+
+    // Level
+    int level = -1;
+    if (no == 10) level = 2;
+    else if (no == 11) level = 4;
+    else if (no == 12) level = 6;
+    if (no == 13) {input0=KGameIO::MouseIO;input1=KGameIO::MouseIO;}
+
+    // Emit signal
+    emit signalQuickStart(startPlayer, input0, input1, level);
   }
 }
 

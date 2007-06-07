@@ -160,7 +160,7 @@ class DisplayGame : public QObject, public virtual Themable
     PixmapSprite* mHint;
     
     // The game over sprite
-    PixmapSprite* mGameOver;
+    // PixmapSprite* mGameOver;
     
     // The time used for advance()
     QTimer* mTimer;

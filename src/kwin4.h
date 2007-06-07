@@ -27,6 +27,7 @@
 // KDE includes
 #include <kxmlguiwindow.h>
 #include <kdemacros.h>
+#include <kgameio.h>
 
 // local includes
 #include "kwin4global.h"
@@ -240,6 +241,14 @@ class KWin4App : public KXmlGuiWindow
     /** Show the settings dialog.
       */
     void configureSettings();
+
+    /** SLot if a new game is started from the intro display.
+      * @param startPlayer Color of the starting player
+      * @param input0      Input device of player 1
+      * @param input1      Input device of player 2
+      * @param aiLevel     Level for AI (-1: no change)
+      */
+    void quickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::IOMode input1, int level);
 
   private:
     // The theme manager used

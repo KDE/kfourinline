@@ -156,6 +156,8 @@ void ButtonSprite::changeFrame()
   int frame = 0;
   if (mButtonPressed) frame = 2;
   if (mHover) frame += 1;
+  // Hover ignored for pressed pushbutton
+  if (mPushButton && mButtonPressed) frame = 2;
   setFrame(frame);
 }
 
@@ -172,6 +174,7 @@ void ButtonSprite::hoverEnterEvent(QMouseEvent* /*event*/)
 void ButtonSprite::hoverLeaveEvent(QMouseEvent* /*event*/)
 {
   mHover = false;
+  if (mPushButton) mButtonPressed = false;
   changeFrame();
 }
 
@@ -197,7 +200,7 @@ void ButtonSprite::mouseReleaseEvent(QMouseEvent* event)
   if (!contains(p)) 
   {
     mHover = false;
-    if (mPushButton) mButtonPressed = !mButtonPressed;
+    if (mPushButton) mButtonPressed = false;
   }
   else
   {
@@ -208,6 +211,7 @@ void ButtonSprite::mouseReleaseEvent(QMouseEvent* event)
       else mSignal->emitSignal(number());
 
     }
+    else mButtonPressed = false;
   }
   changeFrame();
 }

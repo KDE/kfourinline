@@ -16,7 +16,7 @@
    id="svg5490"
    sodipodi:version="0.32"
    inkscape:version="0.44.1"
-   sodipodi:docbase="Y:\"
+   sodipodi:docbase="\\Noah\e\"
    sodipodi:docname="default.svg">
   <defs
      id="defs3">
@@ -16843,7 +16843,7 @@
        xlink:href="#linearGradient18125"
        id="linearGradient5733"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.164589,0,0,0.263291,-185.9617,276.1134)"
+       gradientTransform="matrix(1.164589,0,0,0.263291,-149.6074,274.2)"
        x1="466.79886"
        y1="38.31686"
        x2="446.94785"
@@ -17718,7 +17718,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.0452675"
      inkscape:cx="337.87659"
-     inkscape:cy="621.79322"
+     inkscape:cy="889.66723"
      inkscape:current-layer="layer1"
      inkscape:window-width="925"
      inkscape:window-height="746"
@@ -27345,8 +27345,8 @@
        id="button_off"
        width="142.81485"
        height="37.649525"
-       x="241.9671"
-       y="291.85898"
+       x="278.32144"
+       y="289.94559"
        ry="0.80446732"
        rx="3.8668275"
        inkscape:label="#rect5536" />
@@ -27355,28 +27355,18 @@
        id="button_off_hover"
        width="142.81485"
        height="37.649525"
-       x="244.30122"
-       y="346.63193"
+       x="280.65555"
+       y="344.71854"
        ry="0.80446732"
        rx="3.8668275"
        inkscape:label="#rect6620" />
-    <rect
-       style="opacity:0.92467532;fill:#ee8080;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:0.92914402px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="button_on_hover"
-       width="142.79242"
-       height="39.540489"
-       x="398.34"
-       y="290.67661"
-       ry="0.84487212"
-       rx="3.8662205"
-       inkscape:label="#rect7509" />
     <rect
        style="opacity:0.92467532;fill:#d93131;fill-opacity:1;fill-rule:evenodd;stroke:black;stroke-width:0.89530629px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="button_on"
        width="142.82626"
        height="36.70425"
-       x="397.36639"
-       y="347.10455"
+       x="280.64987"
+       y="398.76596"
        ry="0.78426939"
        rx="3.8671367"
        inkscape:label="#rect7509" />

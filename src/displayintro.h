@@ -32,6 +32,10 @@
 
 // Local includes
 #include "thememanager.h"
+#include "kwin4global.h"
+
+// KDE includes
+#include <kgameio.h>
 
 // Forward declaration
 class QGraphicsView;
@@ -82,8 +86,12 @@ class DisplayIntro : public QObject, public virtual Themable
 
   signals:
     /** Emit this signal if a new game is started from the intro display.
+      * @param startPlayer Color of the starting player
+      * @param input0      Input device of player 1
+      * @param input1      Input device of player 2
+      * @param aiLevel     Level for AI (-1: no change)
       */
-    void signalNewGame();
+    void signalQuickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::IOMode input1, int aiLevel);
 
 
   protected slots:  

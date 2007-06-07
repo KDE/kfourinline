@@ -29,8 +29,6 @@ extern bool global_demo_mode;
 
 // The user or color */
 typedef enum {Nobody=-1,Yellow=0,Red=1,Tip=3} COLOUR;
-/** The type of player */
-typedef enum  {Men=0,Computer=1,Remote=2} PLAYER;
 /** Type of statistics */
 typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
 /** Movement status */

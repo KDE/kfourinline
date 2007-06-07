@@ -416,12 +416,11 @@ svgid=auto
 # First frame number to read
 start-frame=0
 # Last frame number to read
-end-frame=3
+end-frame=2
 # SVG ID for frame0
 frame0=button_off
 frame1=button_off_hover
 frame2=button_on
-frame3=button_on_hover
 # Font color, width and height relativ to button size!!!
 fontHeight=0.400
 fontWidth=0.80
@@ -440,12 +439,11 @@ svgid=auto
 # First frame number to read
 start-frame=0
 # Last frame number to read
-end-frame=3
+end-frame=2
 # SVG ID for frame0
 frame0=button_off
 frame1=button_off_hover
 frame2=button_on
-frame3=button_on_hover
 # Font color, width and height relativ to button size!!!
 fontHeight=0.400
 fontWidth=0.80
@@ -464,12 +462,11 @@ svgid=auto
 # First frame number to read
 start-frame=0
 # Last frame number to read
-end-frame=3
+end-frame=2
 # SVG ID for frame0
 frame0=button_off
 frame1=button_off_hover
 frame2=button_on
-frame3=button_on_hover
 # Font color, width and height relativ to button size!!!
 fontHeight=0.400
 fontWidth=0.80
@@ -488,12 +485,11 @@ svgid=auto
 # First frame number to read
 start-frame=0
 # Last frame number to read
-end-frame=3
+end-frame=2
 # SVG ID for frame0
 frame0=button_off
 frame1=button_off_hover
 frame2=button_on
-frame3=button_on_hover
 # Font color, width and height relativ to button size!!!
 fontHeight=0.400
 fontWidth=0.80

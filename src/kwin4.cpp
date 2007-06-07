@@ -122,7 +122,9 @@ KWin4App::KWin4App(QWidget *parent)
   // View
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
   mDoc->setView(mView);
-  connect(mView, SIGNAL(signalNewGame()), this,SLOT(menuNewGame()));
+  connect(mView, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
+          this, SLOT(quickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
+
            
 
 
@@ -467,6 +469,55 @@ void KWin4App::menuSaveGame()
 }
 
 
+// Received quick start command from view
+void KWin4App::quickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::IOMode input1, int level)
+{
+  if (startPlayer == Yellow) 
+  {
+    Prefs::setStartcolourred(false);
+    Prefs::setStartcolouryellow(true);
+  }
+  else if (startPlayer == Red) 
+  {
+    Prefs::setStartcolourred(true);
+    Prefs::setStartcolouryellow(false);
+  }
+  if (level >= 0) 
+  {
+    Prefs::setLevel(level);
+  }
+  if (input0 == KGameIO::MouseIO)
+  {
+    Prefs::setInput0mouse(true);
+    Prefs::setInput0key(false);
+    Prefs::setInput0ai(false);
+  }
+  if (input0 == KGameIO::ProcessIO)
+  {
+    Prefs::setInput0mouse(false);
+    Prefs::setInput0key(false);
+    Prefs::setInput0ai(true);
+  }
+  if (input1 == KGameIO::MouseIO)
+  {
+    Prefs::setInput1mouse(true);
+    Prefs::setInput1key(false);
+    Prefs::setInput1ai(false);
+  }
+  if (input1 == KGameIO::ProcessIO)
+  {
+    Prefs::setInput1mouse(false);
+    Prefs::setInput1key(false);
+    Prefs::setInput1ai(true);
+  }
+
+  // Reload settings
+  mDoc->loadSettings();
+
+  // Start game (direct call will crash as intro object will be deleted)
+  QTimer::singleShot(0, this,SLOT(menuNewGame()));
+}
+
 // Start a new game menu
 void KWin4App::menuNewGame()
 {
@@ -768,9 +819,18 @@ void KWin4App::configureSettings()
   static Ui::Settings ui; // Dialog is internally static anyway
   if(KConfigDialog::showDialog("settings"))
   {
-    // The dialog need to refresh the buttons
+    // The dialog need to refresh the buttons as they are not conectable via a signal-slot 
+    // in KConfigDialog
     ui.kcfg_startcolourred->setChecked(Prefs::startcolourred());
     ui.kcfg_startcolouryellow->setChecked(Prefs::startcolouryellow());
+    ui.kcfg_level->setValue(Prefs::level());
+    ui.kcfg_input0mouse->setChecked(Prefs::input0mouse());
+    ui.kcfg_input0key->setChecked(Prefs::input0key());
+    ui.kcfg_input0ai->setChecked(Prefs::input0ai());
+    ui.kcfg_input1mouse->setChecked(Prefs::input1mouse());
+    ui.kcfg_input1key->setChecked(Prefs::input1key());
+    ui.kcfg_input1ai->setChecked(Prefs::input1ai());
+
     return;
   }
 
