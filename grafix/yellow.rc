@@ -1,119 +1,223 @@
+# General section defines properties of the thememanger
 [general]
+# SVG file to load (path relative to this file) which contains all SVG items
 svgfile=yellow.svg
+# Game aspect ratio
+aspect-ratio=1.60
 
 # The 'intro display' (display for intro screen)
 [introdisplay]
 # SVG ID of background grafix
 background-svgid=background
+# Static decoration sprites, always displayed
+decoration=
+# Position of the game board for the pieces [0..1]
+board-pos=0.445,0.15
+# Spread pieces on board [0..1]
+board-spread=0.0588,0.0588
+# Speed in [rel/ms]
+move-velocity=0.5
 
-# A game piece in the introduction
+# Position and spread of the pieces above the board
+piece0-pos=0.4400,0.0300
+piece1-pos=0.4400,0.1000
+piece-spread=0.0095
+
+
+
+# The 'game display' itself
+[gamedisplay]
+# SVG ID of background grafix
+background-svgid=background
+# Static decoration sprites, always displayed
+decoration=boardback
+# Position of the game board for the pieces [0..1]
+board-pos=0.1431,0.1430
+# Spread of sprites for board columns [0..1]
+board-spread=0.0588,0.0588
+# Movebar arrow position (must be same than movebar pos) [0..1]
+arrow-pos=0.12,0.04
+# Velocity [relativ/second] for game piece move animation
+move-velocity=0.5
+
+
+
+# A game piece used in the intro screen
 [intro_piece]
-# 'pos' set by program!
+# 'pos' is set by program!
+# Width of the item [0..1]
 width=0.06
-# Auto means to read frameX
+# SVG ID of the image: Auto means to read ID from frameX (below)
 svgid=auto
+# First frame number to read
 start-frame=0
+# Last frame number to read
 end-frame=1
+# SVG ID for frame0
 frame0=piece0
+# SVG ID for frame1
 frame1=piece1
 
-# A game piece
+
+
+# A game piece used in the game screen 
 [piece]
+# 'pos' set by program!
+# Center the graphics around its position
 center=true
-zValue=150.0
-width=0.045
-# Auto means to read frameX
+# Z-Value 
+zValue=10.0
+# Width of the item [0..1]
+width=0.0478
+# SVG ID of the image: Auto means to read read ID from frameX (below)
+svgid=auto
+# First frame number to read
 start-frame=0
+# Last frame number to read
 end-frame=1
-svgid=auto
+# SVG ID for frame0
 frame0=piece0
+# SVG ID for frame1
 frame1=piece1
-# 'pos' set by program!
 
-# A HINT piece
+
+
+# A HINT piece used in the game screen
 [hint]
+# 'pos' set by program!
+# Center the graphics around its position
 center=true
-zValue=150.0
+# Z-Value 
+zValue=10.0
+# Width of the item [0..1]
 width=0.045
+# SVG ID of the image
 svgid=hint
-# 'pos' set by program!
 
 
-# Arrow to indicate the column to play
+
+# Arrow to indicate the column which was played
 [arrow]
-#center=true
-width=0.045
-zValue=250.0
-# Auto means to read frameX
-start-frame=0
-end-frame=2
-svgid=auto
-frame0=arrow
-frame1=arrow0
-frame2=arrow1
 # 'pos' set by program!
+# Width of the item [0..1]
+width=0.045
+# Z-Value 
+zValue=250.0
+# SVG ID of the image: Auto means to read read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=2
+# SVG ID for frame0
+frame0=arrow
+# SVG ID for frame1
+frame1=arrow0
+# SVG ID for frame2
+frame2=arrow1
+
 
 
 # A star to indicate the winning pieces
 [star]
-zValue=200.0
-width=0.045
-center=true
-start-frame=0
-end-frame=7
-# Scale pixmaps with reference to this frame (which get size width)
-ref-frame=star4
-# Auto means to read frameX
-svgid=auto
-frame0=star0
-frame1=star1
-frame2=star2
-frame3=star3
-frame4=star4
-frame5=star5
-frame6=star6
-frame7=star7
-# Frame delay in [ms]
-animation-delay=100
 # 'pos' set by program!
+# Z-Value 
+zValue=200.0
+# Width of the item [0..1]
+width=0.045
+# Center the graphics around its position
+center=true
+# SVG ID of the image: Auto means to read read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=7
+# Scale pixmaps with reference to this frame (which get sized to 'width')
+ref-frame=star4
+# SVG ID for frame0
+frame0=star0
+# SVG ID for frame1
+frame1=star1
+# SVG ID for frame2
+frame2=star2
+# SVG ID for frame3
+frame3=star3
+# SVG ID for frame4
+frame4=star4
+# SVG ID for frame5
+frame5=star5
+# SVG ID for frame6
+frame6=star6
+# SVG ID for frame7
+frame7=star7
+# Frame animation delay in [ms]
+animation-delay=100
 
 
-# The score board input icons
+
+# The score board input icons player 0
 [scoreinput0]
+# Width of the item  [0..1]
 width=0.080
-# Item positions relativ to score widget itself
-pos=0.01,0.05
+# Item positions relativ to score widget itself [0..1,0..1]
+pos=0.01,0.02
+# Z-Value 
 zValue=120.0
+# SVG ID of the image: Auto means to read read ID from frameX (below)
 svgid=auto
+# First frame number to read
 start-frame=0
+# Last frame number to read
 end-frame=3
+# SVG ID for frame0 (Mouse input)
 frame0=score_mouse
+# SVG ID for frame1 (Keyboard input)
 frame1=score_key
+# SVG ID for frame2 (AI input)
 frame2=score_ai
+# SVG ID for frame3 (Network input)
 frame3=score_network
 
-# The score board input icons
+
+
+# The score board input icons player 1
 [scoreinput1]
+# Width of the item [0..1]
 width=0.080
-# Item positions relativ to score widget itself
-pos=0.19,0.05
+# Item positions relativ to score widget itself [0..1,0..1]
+pos=0.19,0.02
+# Z-Value 
 zValue=120.0
+# SVG ID of the image: Auto means to read read ID from frameX (below)
 svgid=auto
+# First frame number to read
 start-frame=0
+# Last frame number to read
 end-frame=3
+# SVG ID for frame0 (Mouse input)
 frame0=score_mouse
+# SVG ID for frame1 (Keyboard input)
 frame1=score_key
+# SVG ID for frame2 (AI input)
 frame2=score_ai
+# SVG ID for frame3 (Network input)
 frame3=score_network
+
+
 
 # The score board next to the game board
 [scoreboard]
+# Width of the item [0..1]
 width=0.28
-pos=0.63,0.044
+# Item position [0..1,0..1]
+pos=0.63,0.074
+# Z-Value 
 zValue=100.0
+# SVG ID
 svgid=score
 
-# Item positions relativ to score widget itself
+# Sub-item positions relativ to score widget itself (status texts player 0 and 1)
 posWon0=0.05,0.33
 posDraw0=0.05,0.44
 posLoss0=0.05,0.55
@@ -125,50 +229,271 @@ posLoss1=0.65,0.55
 posBreak1=0.65,0.66
 posName1=0.65,0.78
 #posAI=0.35,0.90
-# Font width height relativ to score widget size!!!
+# Font width and height relativ to score widget size!!!
 fontHeight=0.067
 fontWidth=0.35
-# Font color
+# Font color for name of player 0 and 1. The current player's name is colored with 'active'
 fontColorActive=255,255,0
 fontColorPlayer0=255,255,255
 fontColorPlayer1=255,0,0
 
+
+
 # The game board (frame)
 [board]
+# Width of the item [0..1]
+width=0.442424242
+# Item position [0..1,0..1]
+pos=0.0975,0.098
+# Z-Value 
+zValue=150.0
+# SVG ID
 svgid=board
-width=0.44
-pos=0.1,0.1
-zValue=10.0
 
-# The game over message
-[gameover]
-svgid=gameover
-width=0.30
-pos=0.62,0.19
-zValue=300.0
+
+# The back of the game board 
+[boardback]
+# Width of the item [0..1]
+width=0.442424242
+# Item position [0..1,0..1]
+pos=0.0975,0.098
+# Z-Value 
+zValue=1.0
+# SVG ID
+svgid=boardback
 
 
 # One 'hole' in the game board
 [boardholes]
-svgid=piece
+# Center the graphics around its position
 center=true
 # 'pos' set by program!
+# Width of the item [0..1]
 width=0.045
+# Z-Value
 zValue=15.0
-
-# The display itself
-[gamedisplay]
-# SVG Id of background grafix
-background-svgid=background
-# Position of board for sprite movement
-board-pos=0.1431,0.1430
-# Spread of sprites for board columns
-board-spread=0.0586,0.0588
-# Movebar arrow position (must be same than movebar pos)
-arrow-pos=0.12,0.04
-# Velocity [relativ/second] for move animation
-move-velocity=0.5
+# SVG ID
+svgid=piece
 
 
+# The game over message
+[gameover]
+# Item position [0..1,0..1]
+pos=0.62,0.19
+# Width of the item [0..1]
+width=0.30
+# Z-Value 
+zValue=300.0
+# SVG ID
+svgid=gameover
 
+
+# The game board (frame) used in the intro
+[introboard]
+# Width of the item [0..1]
+width=0.442424242
+# Item position [0..1,0..1]
+pos=0.4300,0.190
+# Z-Value 
+zValue=150.0
+# SVG ID
+svgid=board
+
+
+# The quicklaunch field in the intro
+[quicklaunch]
+# Width of the item [0..1]
+width=0.30       
+# Item position [0..1,0..1]
+pos=0.0500,0.0500
+# Z-Value 
+zValue=150.0
+# SVG ID
+svgid=quicklaunch
+
+# Position of text
+posQuickstart=0.04,0.005
+posStartplayer=0.08,0.14
+posColor=0.08,0.31
+# Font for text quickstart
+fontHeightHeader=0.070
+fontWidthHeader=0.95
+fontColorHeader=0,0,0
+# Font for other text 
+fontHeight=0.050
+fontWidth=0.50
+fontColor=0,0,0
+
+
+# The 'black' start button
+[button0_start]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.230,0.143
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece0
+frame1=piece0_hover
+frame2=piece0_on
+frame3=piece0_on_hover
+
+# The 'red' start button
+[button1_start]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.275,0.143
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece1
+frame1=piece1_hover
+frame2=piece1_on
+frame3=piece1_on_hover
+
+# The 'black' color choice button
+[button0_color]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.230,0.233
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece0
+frame1=piece0_hover
+frame2=piece0_on
+frame3=piece0_on_hover
+
+# The 'red' color choice button
+[button1_color]
+# Width of the item [0..1]
+width=0.040
+# Item position [0..1,0..1]
+pos=0.275,0.233 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=3
+# SVG ID for frame0
+frame0=piece1
+frame1=piece1_hover
+frame2=piece1_on
+frame3=piece1_on_hover
+
+# The 'start_ai_easy' button
+[button_aieasy]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.340 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=2
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_ai_normal' button
+[button_ainormal]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.400
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=2
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_ai_hard' button
+[button_aihard]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.460 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=2
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
+
+# The 'start_player' button
+[button_player]
+# Width of the item [0..1]
+width=0.19
+# Item position [0..1,0..1]
+pos=0.100,0.520 
+# Z-Value 
+zValue=200.0
+# SVG ID of the image: Auto means to read ID from frameX (below)
+svgid=auto
+# First frame number to read
+start-frame=0
+# Last frame number to read
+end-frame=2
+# SVG ID for frame0
+frame0=button_off
+frame1=button_off_hover
+frame2=button_on
+# Font color, width and height relativ to button size!!!
+fontHeight=0.400
+fontWidth=0.80
+fontColor=0,0,0
 
