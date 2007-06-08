@@ -42,9 +42,6 @@
 #include "score.h"
 
 
-// Aspect ratio for the Scene in the window. The game is always displayed with this ratio.
-#define VIEW_ASPECT_RATIO 1.6
-
 // Our subclassed (temporary) QGraphicsView paintEvent, see header file
 void KWin4View::paintEvent(QPaintEvent* event)
 {
@@ -173,7 +170,7 @@ void KWin4View::resizeEvent (QResizeEvent* e)
 
   // Rescale on minimum fitting aspect ratio either width or height limiting
   double aspect = size.width() / size.height();
-  if (aspect > VIEW_ASPECT_RATIO) mTheme->rescale(int(e->size().height()*VIEW_ASPECT_RATIO));
+  if (aspect > mTheme->aspectRatio()) mTheme->rescale(int(e->size().height()*mTheme->aspectRatio()));
   else mTheme->rescale(int(e->size().width()));
 }
 

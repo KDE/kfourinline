@@ -42,7 +42,8 @@
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
     : QObject(parent)
 {
-  mScale = initialSize;
+  mScale        = initialSize;
+  mAspectRatio  = 1.0;
   updateTheme(themefile);
 }
 
@@ -61,6 +62,15 @@ void ThemeManager::unregisterTheme(Themable* ob)
 }
 
 
+// Check whether the theme is alright
+int ThemeManager::checkTheme()
+{
+  // Check theme
+  if (mRenderer == 0) return 1;
+  return 0; // Ok
+}
+
+
 // Force an refresh of the theme object given
 void ThemeManager::updateTheme(Themable* ob)
 {
@@ -76,20 +86,24 @@ void ThemeManager::updateTheme(const QString &themefile)
   mPixmapCache.clear();
 
   // Process dirs
-  QString rcfile = KStandardDirs::locate("data", themefile);
+  QString rcfile = KStandardDirs::locate("kwin4theme", themefile);
   kDebug() << "ThemeManager LOAD with theme "<<rcfile << endl;
 
   // Read config and SVG file for theme
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general").readEntry("svgfile");
-  svgfile = KStandardDirs::locate("data", svgfile);
+  svgfile = KStandardDirs::locate("kwin4theme", svgfile);
   kDebug() << "Reading SVG master file  = " << svgfile << endl;
+  mAspectRatio     =  config("general").readEntry("aspect-ratio", 1.0);
+  kDebug() << "Aspect ration = " << mAspectRatio << endl;
+
 
 
   mRenderer = new KSvgRenderer(this);
   bool result = mRenderer->load(svgfile);
   if (!result) 
   {
+    mRenderer = 0;
     kFatal() << "Cannot open file " << svgfile << endl;
   }
   kDebug() << "Renderer " << mRenderer<<" = " << result << endl;

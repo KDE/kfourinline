@@ -75,18 +75,40 @@
 KWin4App::KWin4App(QWidget *parent)
         : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
 {
+  mDoc       = 0;
+  mView      = 0;
+  mScene     = 0;
+  mTheme     = 0;
+  mMyChatDlg = 0;
+
+  // Add resource type to grafix
+  KGlobal::dirs()->addResourceType("kwin4theme", "appdata", "grafix/");
+
   #ifdef SRC_DIR
   kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
-  KGlobal::dirs()->addResourceDir("data",QString(SRC_DIR)+QString("/grafix/"));
-  QString theme = KStandardDirs::locate("data", "default.rc");
-  kDebug() << "theme =" << theme << endl;
+  KGlobal::dirs()->addResourceDir("kwin4theme",QString(SRC_DIR)+QString("/grafix/"));
   #endif
 
-  mThemeDirName = KGlobal::dirs()->findResourceDir("data","default.rc");
+  QString theme = KStandardDirs::locate("kwin4theme", "default.rc");
+  kDebug() << "theme =" << theme << endl;
+  if (theme.isEmpty())
+  {
+    KMessageBox::error(this, i18n("Installation error: No theme file found."));
+    QTimer::singleShot(0, this,SLOT(close()));
+    return;
+  }
+
+  mThemeDirName = KGlobal::dirs()->findResourceDir("kwin4theme","default.rc");
   kDebug() << "THEME DIR IS " << mThemeDirName << endl;
 
   // Read theme files
-  QString themeIndex = KGlobal::dirs()->findResource("data","index.desktop");
+  QString themeIndex = KGlobal::dirs()->findResource("kwin4theme","index.desktop");
+  if (themeIndex.isEmpty())
+  {
+    KMessageBox::error(this, i18n("Installation error: No theme list found."));
+    QTimer::singleShot(0, this,SLOT(close()));
+    return;
+  }
   KConfig themeInfo( themeIndex, KConfig::OnlyLocal);
   QStringList themeList = themeInfo.groupList();
   for (int i = 0; i < themeList.size(); i++)
@@ -103,6 +125,12 @@ KWin4App::KWin4App(QWidget *parent)
   // Setup application
   mDoc = new KWin4Doc(this);
   kDebug() << "Init doc " << endl;
+  QString aiEngine = mDoc->findProcessName();
+  kDebug() << "Init AI " << aiEngine << endl;
+  if (aiEngine.isEmpty())
+  {
+    KMessageBox::error(this, i18n("Installation error: No AI engine found. Continue without AI."));
+  }
 
  
   // Read properties (before GUI and thememanager but after new document)
@@ -118,6 +146,12 @@ KWin4App::KWin4App(QWidget *parent)
   QString themeFile = themefileFromIdx(mThemeIndexNo);
   kDebug() << "Load theme " << themeFile << endl;
   mTheme  = new ThemeManager(themeFile, this);
+  if (mTheme->checkTheme() != 0)
+  {
+    KMessageBox::error(this, i18n("Installation error: Theme file error."));
+    QTimer::singleShot(0, this,SLOT(close()));
+    return;
+  }
 
   // View
   mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);

@@ -176,6 +176,11 @@ class KWin4Doc : public KGame
       */
     int getHistoryCnt(); 
 
+    /** Find the name of the AI process executable file.
+      * @return The filename
+      */
+    QString findProcessName();
+
 
   protected:
     /** Create and add an KGameIO device to an given player. 
@@ -268,11 +273,6 @@ class KWin4Doc : public KGame
       * he can move.
       */
     void activateCurrentPlayer();
-
-    /** Find the name of the AI process executable file.
-      * @return The filename
-      */
-    QString findProcessName();
 
     /** Set the score value of the AI.
       * @param value The score value.

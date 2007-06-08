@@ -2,6 +2,7 @@
 ########### install files ###############
 
 install( FILES
+index.desktop
 default.rc
 yellow.rc
 default.svg

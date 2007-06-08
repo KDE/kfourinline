@@ -183,6 +183,17 @@ class ThemeManager : public QObject
       * @param scale The new scale (maximum extension)
       */
     void rescale(int scale);
+
+    /** Retrieve the theme's apsect ratio. This is stored as
+      * 'aspect-ratio' key in the 'general' group of the theme.
+      * @return The aspect ratio (x/y).
+      */
+    double aspectRatio() {return mAspectRatio;}
+
+    /** Check whether the theme is properly initialized.
+      * @return 0 if everything is alright
+      */
+    int checkTheme();
     
 
    private:
@@ -200,6 +211,9 @@ class ThemeManager : public QObject
      
      // The current theme scale
      int mScale;
+
+     // The aspect ration
+     double mAspectRatio;
      
 };
 
