@@ -2,11 +2,13 @@
 Name=Black and Red
 Name[be]=Белыя і чырвоныя
 Name[el]=Μαύρο και κόκκινο
+Name[es]=Blanco y rojo
 File=default.rc
 
 [Yellow]
 Name=Yellow and Red
 Name[be]=Жоўтыя і чырвоныя
 Name[el]=Κίτρινο και κόκκινο
+Name[es]=Amarillo y rojo
 Name[ja]=黄色と赤
 File=yellow.rc
