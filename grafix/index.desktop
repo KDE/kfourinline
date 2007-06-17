@@ -3,6 +3,8 @@ Name=Black and Red
 Name[be]=Белыя і чырвоныя
 Name[el]=Μαύρο και κόκκινο
 Name[es]=Blanco y rojo
+Name[pt]=Preto e Vermelho
+Name[pt_BR]=Preto e Vermelho
 Name[zh_TW]=黑與紅
 File=default.rc
 
@@ -12,5 +14,7 @@ Name[be]=Жоўтыя і чырвоныя
 Name[el]=Κίτρινο και κόκκινο
 Name[es]=Amarillo y rojo
 Name[ja]=黄色と赤
+Name[pt]=Amarelo e Vermelho
+Name[pt_BR]=Amarelo e Vermelho
 Name[zh_TW]=黃與紅
 File=yellow.rc
