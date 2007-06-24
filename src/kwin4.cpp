@@ -84,9 +84,11 @@ KWin4App::KWin4App(QWidget *parent)
   // Add resource type to grafix
   KGlobal::dirs()->addResourceType("kwin4theme", "appdata", "grafix/");
 
+  #ifndef NDEBUG
   #ifdef SRC_DIR
   kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
   KGlobal::dirs()->addResourceDir("kwin4theme",QString(SRC_DIR)+QString("/grafix/"));
+  #endif
   #endif
 
   QString theme = KStandardDirs::locate("kwin4theme", "default.rc");

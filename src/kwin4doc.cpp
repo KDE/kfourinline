@@ -835,6 +835,7 @@ int KWin4Doc::getHistoryCnt()
 QString KWin4Doc::findProcessName()
 {
   // Try whether we run from a development source dir
+  #ifndef NDEBUG
   #ifdef SRC_DIR
     QString srcname = QString(SRC_DIR)+QString("/src/kwin4proc");
     QFile fsrc(srcname);
@@ -843,6 +844,7 @@ QString KWin4Doc::findProcessName()
       if (global_debug>1) kDebug() << " Found SRC_DIR process " << srcname << endl;
       return srcname;
     }
+  #endif
   #endif
   
 
