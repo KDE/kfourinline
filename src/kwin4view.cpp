@@ -41,15 +41,6 @@
 #include "spritenotify.h"
 #include "score.h"
 
-
-// Our subclassed (temporary) QGraphicsView paintEvent, see header file
-void KWin4View::paintEvent(QPaintEvent* event)
-{
-    QPaintEvent* newEvent = new QPaintEvent(event->region().boundingRect());
-    QGraphicsView::paintEvent(newEvent);
-    delete newEvent;
-}
-
 // Constructor for the view
 KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : QGraphicsView(scene, parent)
@@ -64,6 +55,7 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
+  setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
   viewport()->setMouseTracking(true);
 
   // Choose a background color

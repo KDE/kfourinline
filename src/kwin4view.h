@@ -150,10 +150,6 @@ class KWin4View : public QGraphicsView
      * @param e The resize event
      */
     void resizeEvent(QResizeEvent* e);
-    /** Paint function for the widget, temporary fix while we wait for QGV 4.3
-      * @param event The paint event
-      */
-    void paintEvent(QPaintEvent* event);
 
     virtual bool viewportEvent ( QEvent * event )  ;
 
