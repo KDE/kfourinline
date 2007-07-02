@@ -47,15 +47,6 @@
 
 #define KWIN4_VERSION "v1.40"
 
-static KCmdLineOptions options[] =
-{
-  { "d", 0, 0},
-  { "debug <level>", I18N_NOOP("Enter debug level"), 0 },
-  { "skipintro", I18N_NOOP("Skip intro animation"), 0 },
-  { "demo", I18N_NOOP("Run game in demo (autoplay) mode"), 0 },
-  KCmdLineLastOption
-};
-
 
 // Debug level for the program
 int global_debug = 0;
@@ -69,15 +60,21 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
-  KAboutData aboutData( "kwin4", I18N_NOOP("KWin4"),
+  KAboutData aboutData( "kwin4", 0, ki18n("KWin4"),
                         KWIN4_VERSION,
-                        I18N_NOOP("KWin4: Two player board game"),
+                        ki18n("KWin4: Two player board game"),
                         KAboutData::License_GPL,
-                        "(c) 1995-2007, Martin Heni");
-  aboutData.addAuthor("Martin Heni",I18N_NOOP("Game design and code"), "kde@heni-online.de");
-  aboutData.addAuthor("Johann Ollivier Lapeyre",I18N_NOOP("Graphics"), "johann.ollivierlapeyre@gmail.com");
-  aboutData.addAuthor("Benjamin Meyer", I18N_NOOP("Code Improvements"), 0);
+                        ki18n("(c) 1995-2007, Martin Heni"));
+  aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");
+  aboutData.addAuthor(ki18n("Johann Ollivier Lapeyre"),ki18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
+  aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Code Improvements"));
   KCmdLineArgs::init( argc, argv, &aboutData );
+
+  KCmdLineOptions options;
+  options.add("d");
+  options.add("debug <level>", ki18n("Enter debug level"));
+  options.add("skipintro", ki18n("Skip intro animation"));
+  options.add("demo", ki18n("Run game in demo (autoplay) mode"));
   KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
 
   /* command line handling */
