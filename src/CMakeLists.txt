@@ -26,8 +26,6 @@ set(kwin4_SRCS
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
-kde4_automoc(${kwin4_SRCS})
-
 kde4_add_ui_files(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
@@ -44,8 +42,6 @@ install(TARGETS kwin4  DESTINATION ${BIN_INSTALL_DIR} )
 set(kwin4proc_SRCS 
     aiboard.cpp
     kwin4proc.cpp )
-
-kde4_automoc(${kwin4proc_SRCS})
 
 kde4_add_executable(kwin4proc ${kwin4proc_SRCS})
 
