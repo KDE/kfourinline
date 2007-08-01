@@ -65,7 +65,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   for (int i=0; i<42; i++)
   {
     PieceSprite* sprite = new PieceSprite("piece", mTheme, mAdvancePeriod, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite " << "piece" << endl;
+    if (!sprite) kFatal() << "Cannot load sprite" << "piece";
     mSprites.append(sprite);
     mPieces.append(sprite);
     sprite->hide();
@@ -75,7 +75,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   for (int i=0;i<4;i++)
   {
     PixmapSprite* sprite = new PixmapSprite("star", mTheme, mAdvancePeriod, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite " << "star" << endl;
+    if (!sprite) kFatal() << "Cannot load sprite" << "star";
     mSprites.append(sprite);
     mStars.append(sprite);
     sprite->hide();
@@ -83,19 +83,19 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
 
   // Create board
   mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, 0, mScene);
-  if (!mBoard) kFatal() << "Cannot load sprite " << "board" << endl;
+  if (!mBoard) kFatal() << "Cannot load sprite" << "board";
   mSprites.append(mBoard);
   mBoard->hide();
 
   // Create hint
   mHint = new PixmapSprite("hint", mTheme, mAdvancePeriod, 0, mScene);
-  if (!mHint) kFatal() << "Cannot load sprite " << "hint" << endl;
+  if (!mHint) kFatal() << "Cannot load sprite" << "hint";
   mSprites.append(mHint);
   mHint->hide();
 
   // Create Game Over
   // mGameOver = new PixmapSprite("gameover", mTheme, mAdvancePeriod, 0, mScene);
-  // if (!mGameOver) kFatal() << "Cannot load sprite " << "gameover" << endl;
+  // if (!mGameOver) kFatal() << "Cannot load sprite" << "gameover";
   // mSprites.append(mGameOver);
   // mGameOver->hide();
 
@@ -103,7 +103,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   for (int i=0; i<42; i++)
   {
     PixmapSprite* boardHole = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, i, mScene);
-    if (!boardHole) kFatal() << "Cannot load sprite " << "boardHoles" << endl;
+    if (!boardHole) kFatal() << "Cannot load sprite" << "boardHoles";
     mSprites.append(boardHole);
     mBoardHoles.append(boardHole);
     boardHole->hide();
@@ -111,7 +111,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
 
   // Create score board
   mScoreBoard = new ScoreSprite("scoreboard", mTheme, mAdvancePeriod, 0, mScene);
-  if (!mScoreBoard) kFatal() << "Cannot load sprite " << "scoreboard" << endl;
+  if (!mScoreBoard) kFatal() << "Cannot load sprite" << "scoreboard";
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
 
@@ -120,7 +120,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   for (int i=0; i<7; i++)
   {
     PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, i, mScene);
-    if (!arrow) kFatal() << "Cannot load sprite " << "arrow" << endl;
+    if (!arrow) kFatal() << "Cannot load sprite" << "arrow";
     mSprites.append(arrow);
     mArrows.append(arrow);
     arrow->hide();
@@ -132,7 +132,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   for (int i = 0; i < deco.size(); i++)
   {
     PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, mAdvancePeriod, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite " << deco.at(i) << endl;
+    if (!sprite) kFatal() << "Cannot load sprite" << deco.at(i);
     mSprites.append(sprite);
     sprite->show();
   }

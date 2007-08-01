@@ -183,7 +183,7 @@ void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
 {
   int status = id >> 8;
   int no = id & 0xff;
-  //kDebug() << "Button " << no  << " pressed status="<<status  << endl;
+  //kDebug() << "Button" << no  << "pressed status="<<status;
   ButtonSprite* button = dynamic_cast<ButtonSprite*>(item);
   Q_ASSERT(button);
   if (button == mStartButton[0])

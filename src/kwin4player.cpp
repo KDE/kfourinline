@@ -57,8 +57,8 @@ KWin4Player::KWin4Player() : KPlayer()
 // Destructor
 KWin4Player::~KWin4Player()
 {
-  kDebug() << "~KPlayer()" << endl;
-  kDebug() << "~KPlayer() done" << endl;
+  kDebug() << "~KPlayer()";
+  kDebug() << "~KPlayer() done";
 }
 
 

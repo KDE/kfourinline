@@ -196,7 +196,7 @@ void ButtonSprite::mousePressEvent(QMouseEvent* /*event*/)
 void ButtonSprite::mouseReleaseEvent(QMouseEvent* event)
 {
   QPointF p = mapFromScene (QPointF(event->pos()) );
-  // kDebug() << "ButtonSprite::mouseReleaseEvent contains?"<< contains(p) << endl;
+  // kDebug() << "ButtonSprite::mouseReleaseEvent contains?"<< contains(p);
   if (!contains(p)) 
   {
     mHover = false;

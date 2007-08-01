@@ -86,13 +86,13 @@ KWin4App::KWin4App(QWidget *parent)
 
   #ifndef NDEBUG
   #ifdef SRC_DIR
-  kDebug() << "Found SRC_DIR =" << SRC_DIR << endl;
+  kDebug() << "Found SRC_DIR =" << SRC_DIR;
   KGlobal::dirs()->addResourceDir("kwin4theme",QString(SRC_DIR)+QString("/grafix/"));
   #endif
   #endif
 
   QString theme = KStandardDirs::locate("kwin4theme", "default.rc");
-  kDebug() << "theme =" << theme << endl;
+  kDebug() << "theme =" << theme;
   if (theme.isEmpty())
   {
     KMessageBox::error(this, i18n("Installation error: No theme file found."));
@@ -101,7 +101,7 @@ KWin4App::KWin4App(QWidget *parent)
   }
 
   mThemeDirName = KGlobal::dirs()->findResourceDir("kwin4theme","default.rc");
-  kDebug() << "THEME DIR IS " << mThemeDirName << endl;
+  kDebug() << "THEME DIR IS" << mThemeDirName;
 
   // Read theme files
   QString themeIndex = KGlobal::dirs()->findResource("kwin4theme","index.desktop");
@@ -126,9 +126,9 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Setup application
   mDoc = new KWin4Doc(this);
-  kDebug() << "Init doc " << endl;
+  kDebug() << "Init doc";
   QString aiEngine = mDoc->findProcessName();
-  kDebug() << "Init AI " << aiEngine << endl;
+  kDebug() << "Init AI" << aiEngine;
   if (aiEngine.isEmpty())
   {
     KMessageBox::error(this, i18n("Installation error: No AI engine found. Continue without AI."));
@@ -136,7 +136,7 @@ KWin4App::KWin4App(QWidget *parent)
 
  
   // Read properties (before GUI and thememanager but after new document)
-  kDebug() << "read prop " << endl;
+  kDebug() << "read prop";
   readProperties();
 
 
@@ -146,7 +146,7 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Theme
   QString themeFile = themefileFromIdx(mThemeIndexNo);
-  kDebug() << "Load theme " << themeFile << endl;
+  kDebug() << "Load theme" << themeFile;
   mTheme  = new ThemeManager(themeFile, this);
   if (mTheme->checkTheme() != 0)
   {
@@ -165,7 +165,7 @@ KWin4App::KWin4App(QWidget *parent)
 
 
   // Players (after view)
-  kDebug() << "Init pl " << endl;
+  kDebug() << "Init pl";
   mDoc->initPlayers();
 
   // Init GUI
@@ -201,13 +201,13 @@ KWin4App::KWin4App(QWidget *parent)
 // Destruct application
 KWin4App::~KWin4App()
 {
-  kDebug() << "~KWin4App()" << endl;
+  kDebug() << "~KWin4App()";
   if (mDoc) delete mDoc;
   if (mView) delete mView;
   if (mScene) delete mScene;
   if (mTheme) delete mTheme;
   if (mMyChatDlg) delete mMyChatDlg;
-  kDebug() << "~KWin4App()" << endl;
+  kDebug() << "~KWin4App()";
 }
 
 
@@ -339,7 +339,7 @@ void KWin4App::initGUI()
   action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
   ((KSelectAction*)action)->setItems(themes);
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
-  kDebug() << "Setting current item to " << mThemeIndexNo << endl;
+  kDebug() << "Setting current item to" << mThemeIndexNo;
   ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
 
   // Debug
@@ -357,7 +357,7 @@ void KWin4App::changeTheme(int idx)
 {
   mThemeIndexNo = idx;
   QString themeFile = themefileFromIdx(idx);
-  kDebug() << "Select theme " << themeFile << endl;
+  kDebug() << "Select theme" << themeFile;
   mTheme->updateTheme(themeFile);
 }
 
@@ -411,7 +411,7 @@ void KWin4App::changeAction(const char* action, bool enable)
 // Save instance-specific properties. The function is
 void KWin4App::saveProperties(KConfigGroup& grp)
 {
-  kDebug() << "SAVE PROPERTIES for GROUP " << grp.group() << endl;
+  kDebug() << "SAVE PROPERTIES for GROUP" << grp.group();
 
   // Save current game?
   QString name = QString("current_game")+grp.group();
@@ -419,14 +419,14 @@ void KWin4App::saveProperties(KConfigGroup& grp)
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (isRunning)
   {
-    kDebug() << "Saving " << filename << endl;
+    kDebug() << "Saving" << filename;
     mDoc->save(filename);
     grp.writeEntry("CurrentGame", filename);
   }
   else
   {
     QFile file(filename);
-    kDebug() << "Deleting " << file.fileName() << endl;
+    kDebug() << "Deleting" << file.fileName();
     file.remove();
     grp.deleteEntry("CurrentGame");
   }
@@ -436,16 +436,16 @@ void KWin4App::saveProperties(KConfigGroup& grp)
 // Read instance-specific properties.
 void KWin4App::readProperties(const KConfigGroup& grp)
 {
-  kDebug() << "READ PROPERTIES for GROUP " << grp.group() << endl;
+  kDebug() << "READ PROPERTIES for GROUP" << grp.group();
 
   QString filename = grp.readEntry("CurrentGame", QString());
-  kDebug() << "Filename is " << filename << endl;
+  kDebug() << "Filename is" << filename;
   
   if(!filename.isNull() && QFile::exists(filename))
   {
-    kDebug() << "Loading " << filename << endl;
+    kDebug() << "Loading" << filename;
     // TODO: CRASHES mDoc->load(filename);
-    kDebug() << "Loading " << filename << " done"<< endl;
+    kDebug() << "Loading" << filename << "done"<< endl;
   }
 
 }
@@ -463,7 +463,7 @@ void KWin4App::saveProperties()
   mDoc->writeConfig(config);
 
   config->sync();
-  kDebug() << "SAVED PROPERTIES " << endl;
+  kDebug() << "SAVED PROPERTIES";
 }
 
 // Load current game back
@@ -477,7 +477,7 @@ void KWin4App::readProperties()
   if (mThemeIndexNo >= mThemeFiles.size()) mThemeIndexNo = 0;
 
 
-  kDebug() << "LOADED PROPERTIES " << endl;
+  kDebug() << "LOADED PROPERTIES";
 }
 
 
@@ -557,7 +557,7 @@ void KWin4App::quickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::I
 // Start a new game menu
 void KWin4App::menuNewGame()
 {
-  kDebug() << "MENU NEW GAME " << endl;
+  kDebug() << "MENU NEW GAME";
   // End the intro if it is running
   mDoc->setGameStatus(KWin4Doc::End);
   // Init the board and Clear the old game out
@@ -700,7 +700,7 @@ void KWin4App::updateStatusNames()
 // Notification that the network connection is lost.
 void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
-  kDebug(12010) <<  "KWin4App::networkBroken("<<oldstatus<<")" << endl;
+  kDebug(12010) <<  "KWin4App::networkBroken("<<oldstatus<<")";
 
   // Set all input devices back to default
   if (mDoc->playedBy(Yellow)==0)
@@ -708,8 +708,8 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
   if (mDoc->playedBy(Red)==0)
     mDoc->setPlayedBy(Red,KGameIO::MouseIO);
 
-  kDebug(12010) << "CurrrentPlayer=" << mDoc->getCurrentPlayer() << endl;
-  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer()) << endl;
+  kDebug(12010) << "CurrrentPlayer=" << mDoc->getCurrentPlayer();
+  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer());
 
   // Activate input device
   mDoc->getPlayer(mDoc->getCurrentPlayer())->setTurn(true,true);
@@ -733,7 +733,7 @@ void KWin4App::moveDone(int /*playerNumber*/)
 // The game is over or aborted. Set status and display it.
 void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
 {
-  kDebug() << "KWin4App::slotGameOver" << endl;
+  kDebug() << "KWin4App::slotGameOver";
   if (status==-1) // remis
   {
     EndGame(TRemis);
@@ -756,7 +756,7 @@ void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
   }
   else
   {
-    kError() << "Gameover with status " << status << ". This is unexpected and a serious problem" << endl;
+    kError() << "Gameover with status" << status << ". This is unexpected and a serious problem";
   }
   checkMenus(CheckEditMenu);
 }

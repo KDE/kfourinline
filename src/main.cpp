@@ -84,19 +84,19 @@ int main(int argc, char *argv[])
   if (args->isSet("debug"))
   {
     global_debug=QString(args->getOption("debug")).toInt();
-    kDebug(12010) << "Debug level set to " << global_debug << endl;
+    kDebug(12010) << "Debug level set to" << global_debug;
   }
   // Check for debug command line option
   if (args->isSet("skipintro"))
   {
     global_skip_intro = true;
-    kDebug(12010) << "Skip intro cmd line chosen " << global_skip_intro << endl;
+    kDebug(12010) << "Skip intro cmd line chosen" << global_skip_intro;
   }
   // Check for debug command line option
   if (args->isSet("demo"))
   {
     global_demo_mode = true;
-    kDebug(12010) << "Running in demo mode " << global_demo_mode << endl;
+    kDebug(12010) << "Running in demo mode" << global_demo_mode;
   }
  
   args->clear(); 

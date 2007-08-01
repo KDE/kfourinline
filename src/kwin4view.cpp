@@ -103,7 +103,7 @@ KWin4View::~KWin4View()
 {
   if (mIntroDisplay) delete mIntroDisplay;
   if (mGameDisplay) delete mGameDisplay;
-  kDebug() << "TRACKING " << hasMouseTracking() << " and " << viewport()->hasMouseTracking() << endl;
+  kDebug() << "TRACKING" << hasMouseTracking() << "and" << viewport()->hasMouseTracking();
 }
 
 
@@ -119,7 +119,7 @@ void KWin4View::updateAndAdvance()
 // Stop intro display and init game display
 void KWin4View::initGame(Score* scoreData)
 {
-  kDebug() << "KWin4View::initGame" << endl;
+  kDebug() << "KWin4View::initGame";
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;
   if (!mGameDisplay)
@@ -183,7 +183,7 @@ void KWin4View::mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mou
   KPlayer* player=input->player();
   if (!player->myTurn())
   {
-    kDebug() <<" Kwin4View::TODO wrongPlayer " << endl;
+    kDebug() <<" Kwin4View::TODO wrongPlayer";
   //  *eatevent=wrongPlayer(player,KGameIO::MouseIO);
     return;
   }
@@ -222,7 +222,7 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
   KPlayer *player=input->player();
   if (!player->myTurn())
   {
-    kDebug() <<" Kwin4View::TODO wrongPlayer " << endl;
+    kDebug() <<" Kwin4View::TODO wrongPlayer";
    // *eatevent=wrongPlayer(player,KGameIO::KeyIO);
     return;
   }

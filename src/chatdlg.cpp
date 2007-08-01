@@ -73,12 +73,12 @@ void ChatDlg::setPlayer(KWin4Player* p)
 {
   if (!mChat)
   {
-    kError() << "ChatDlg::setPlayer::Chat not defined can't set player" << endl;
+    kError() << "ChatDlg::setPlayer::Chat not defined can't set player";
     return ;
   }
   if (!p)
   {
-    kError() << "ChatDlg::setPlayer::Player not defined can't set player" << endl;
+    kError() << "ChatDlg::setPlayer::Player not defined can't set player";
     return ;
   }
   mChat->setFromPlayer(p);

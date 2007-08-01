@@ -87,15 +87,15 @@ void ThemeManager::updateTheme(const QString &themefile)
 
   // Process dirs
   QString rcfile = KStandardDirs::locate("kwin4theme", themefile);
-  kDebug() << "ThemeManager LOAD with theme "<<rcfile << endl;
+  kDebug() << "ThemeManager LOAD with theme "<<rcfile;
 
   // Read config and SVG file for theme
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general").readEntry("svgfile");
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
-  kDebug() << "Reading SVG master file  = " << svgfile << endl;
+  kDebug() << "Reading SVG master file  =" << svgfile;
   mAspectRatio     =  config("general").readEntry("aspect-ratio", 1.0);
-  kDebug() << "Aspect ration = " << mAspectRatio << endl;
+  kDebug() << "Aspect ration =" << mAspectRatio;
 
 
 
@@ -104,9 +104,9 @@ void ThemeManager::updateTheme(const QString &themefile)
   if (!result) 
   {
     mRenderer = 0;
-    kFatal() << "Cannot open file " << svgfile << endl;
+    kFatal() << "Cannot open file" << svgfile;
   }
-  kDebug() << "Renderer " << mRenderer<<" = " << result << endl;
+  kDebug() << "Renderer" << mRenderer<<" =" << result;
 
   // Notify all theme objects of a change
   QHashIterator<Themable*, int> it(mObjects);
@@ -125,7 +125,7 @@ void ThemeManager::rescale(int scale)
   if (global_debug > 1)
   {
     if (scale==mScale)
-      kDebug() <<" No scale change to " << scale << " If this happends to often its BAD " << endl;
+      kDebug() <<" No scale change to" << scale << "If this happends to often its BAD";
   }
   //if (scale==mScale) return;
   mScale = scale;
@@ -159,7 +159,7 @@ KConfigGroup ThemeManager::config(const QString &id)
 const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
 {
   if (size.width() < 1 || size.height() < 1) 
-    kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size " << size << endl;
+    kFatal() << "ThemeManager::getPixmap Cannot create svgid ID" << svgid << "with zero size" << size;
   
   QPixmap pixmap;
 
@@ -180,7 +180,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
   mRenderer->render(&p, svgid);
   pixmap = QPixmap::fromImage(image);
   if (pixmap.isNull())
-    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid << endl;
+    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID" << svgid;
 
   // Cache image
   mPixmapCache[svgid] = pixmap;
