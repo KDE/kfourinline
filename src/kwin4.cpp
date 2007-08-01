@@ -119,7 +119,7 @@ KWin4App::KWin4App(QWidget *parent)
     QString name = themeGroup.readEntry("Name", QString());
     QString file = themeGroup.readEntry("File", QString());
     mThemeFiles[name] = file;
-    kDebug() <<  "Found theme: Name(i18n)="<<name<<" File="<<file<<endl;   
+    kDebug() <<  "Found theme: Name(i18n)="<<name<<" File="<<file;   
   }
   mThemeIndexNo =0;
 
@@ -445,7 +445,7 @@ void KWin4App::readProperties(const KConfigGroup& grp)
   {
     kDebug() << "Loading" << filename;
     // TODO: CRASHES mDoc->load(filename);
-    kDebug() << "Loading" << filename << "done"<< endl;
+    kDebug() << "Loading" << filename << "done";
   }
 
 }
