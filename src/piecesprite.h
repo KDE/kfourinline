@@ -61,7 +61,7 @@ class PieceSprite : public PixmapSprite
     virtual int type() const {return QGraphicsItem::UserType+2;}
 
     /** Standard Themable function. It is called when the theme item
-      * needs to completely refresh iteself.
+      * needs to completely refresh itself.
       */
     virtual void changeTheme();
 
@@ -88,16 +88,16 @@ class PieceSprite : public PixmapSprite
 
   private:
 
-    // The duration of the movement 
+    /// The duration of the movement 
     double mDuration;
 
-    // The state of the movement
+    /// The state of the movement
     MovementState mMovementState;
 
-    // The end points of the movement [rel]
+    /// The end points of the movement [rel]
     QPointF mEnd;
 
-    // The movment sprite notifier
+    /// The movment sprite notifier
     SpriteNotify* mNotify;
 
 };

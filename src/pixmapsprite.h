@@ -120,7 +120,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
      */
     int mNo;
 
-    /**  The canvas advance peridod (e.g. 25) [ms]
+    /**  The canvas advance period (e.g. 25) [ms]
      */
     int mAdvancePeriod;
 
