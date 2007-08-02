@@ -8,6 +8,7 @@ Name[ja]=黒と赤
 Name[pt]=Preto e Vermelho
 Name[pt_BR]=Preto e Vermelho
 Name[sv]=Svart och röd
+Name[te]=నలుపు మరయు ఎరుపు
 Name[zh_TW]=黑與紅
 File=default.rc
 
@@ -21,5 +22,6 @@ Name[ja]=黄色と赤
 Name[pt]=Amarelo e Vermelho
 Name[pt_BR]=Amarelo e Vermelho
 Name[sv]=Gul och röd
+Name[te]=పసుపు మరయు ఎరుపు
 Name[zh_TW]=黃與紅
 File=yellow.rc
