@@ -1,5 +1,5 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames ${CMAKE_SOURCE_DIR}/libkdegames/kgame  )
+include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/kgame  )
 
 
 
