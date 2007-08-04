@@ -55,8 +55,11 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
+
   setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
-  viewport()->setMouseTracking(true);
+
+  viewport()->setMouseTracking(false);
+  setMouseTracking(false);
 
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -94,7 +97,6 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
             this, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
     mIntroDisplay->start();
   }
-
 }
 
 
@@ -146,7 +148,6 @@ void  KWin4View::endGame()
 // Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
-
   // Test to prevent double resizing
   if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
   {
@@ -201,7 +202,7 @@ void KWin4View::mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mou
 }
 
 
-// This slot is called when a key event is received. It then prduces a
+// This slot is called when a key event is received. It then produces a
 // valid move for the game.
 // This is analogous to the mouse event only it is called when a key is
 // pressed.

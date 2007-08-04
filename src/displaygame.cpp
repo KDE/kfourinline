@@ -351,7 +351,7 @@ int DisplayGame::mapMouseToMove(const QPoint &pos)
   if (!mBoard) return -1;
 
   // Find which arrow the mouse is closest to. This way
-  // all board scaling become irrelevant. An alteratnive
+  // all board scaling become irrelevant. An alternative
   // would be to calculate the position using board_pos and
   // board_spread.
   for (int i=0; i<7; i++)
