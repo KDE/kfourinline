@@ -39,11 +39,10 @@ class IntroSprite : public PixmapSprite
     /** Constructor for the sprite.
       * @param id            The theme id
       * @param theme         The theme manager
-      * @param advancePeriod The canvas advance period
       * @param no            The sprite number [0..41]
-      * @param scence        The scene
+      * @param scene        The scene
       */
-    IntroSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scence);
+    IntroSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene);
 
     /** Destructor 
     */
@@ -112,10 +111,12 @@ class IntroSprite : public PixmapSprite
 
   private:
 
-    // The duration of the movement animation 
+    /// The duration of the movement animation 
     double mDuration;
-    // The current time of the movement animation [0..mDuration]
-    double mTime;
+
+    /// The current running time for the animation.
+    QTime mTime;
+
     // The start delay before movement starts
     double mDelay;
     // The velocity [rel]

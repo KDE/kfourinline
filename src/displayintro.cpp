@@ -48,7 +48,7 @@
 
 
 // Constructor for the intro display
-DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
+DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
           : Themeable("introdisplay",theme), QObject(parent)
 {
   // Choose a background color
@@ -59,7 +59,6 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   mTheme         = theme;
   mScene         = scene;
   mView          = parent;
-  mAdvancePeriod = advancePeriod;
 
   // Storage of all sprites
   mSprites.clear();
@@ -67,7 +66,7 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   // Create all sprites used for intro
   for (int i=0; i<42; i++)
   {
-    IntroSprite* sprite = new IntroSprite("intro_piece", mTheme, mAdvancePeriod, i, mScene);
+    IntroSprite* sprite = new IntroSprite("intro_piece", mTheme, i, mScene);
     mSprites.append(sprite);
     if ((i/1)%2==0) sprite->setFrame(0);
     else  sprite->setFrame(1);
@@ -76,12 +75,12 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   }
 
   // Create board
-  PixmapSprite* pixmap = new PixmapSprite("introboard", mTheme, mAdvancePeriod, 0, mScene);
+  PixmapSprite* pixmap = new PixmapSprite("introboard", mTheme, 0, mScene);
   mSprites.append(pixmap);
   pixmap->show();
 
   // Create quicklaunch
-  mQuickLaunch = new PixmapSprite("quicklaunch", mTheme, mAdvancePeriod, 0, mScene);
+  mQuickLaunch = new PixmapSprite("quicklaunch", mTheme, 0, mScene);
   mSprites.append(mQuickLaunch);
   mQuickLaunch->show();
   mTextQuicklaunch  = new QGraphicsTextItem(mQuickLaunch, scene);
@@ -101,14 +100,14 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   QStringList deco = config.readEntry("decoration", QStringList());
   for (int i = 0; i < deco.size(); i++)
   {
-    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, mAdvancePeriod, i, mScene);
+    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, i, mScene);
     mSprites.append(sprite);
     sprite->show();
   }
 
 
   // Color buttons
-  mStartButton[0] = new ButtonSprite(false, "button0_start", mTheme, mAdvancePeriod, 0, mScene);
+  mStartButton[0] = new ButtonSprite(false, "button0_start", mTheme, 0, mScene);
   mSprites.append(mStartButton[0]);
   mStartButton[0]->show();
   connect(mStartButton[0]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
@@ -116,21 +115,21 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
   if (Prefs::startcolouryellow()) mStartButton[0]->setStatus(true);
 
    
-  mStartButton[1] = new ButtonSprite(false, "button1_start", mTheme, mAdvancePeriod, 1, mScene);
+  mStartButton[1] = new ButtonSprite(false, "button1_start", mTheme, 1, mScene);
   mSprites.append(mStartButton[1]);
   mStartButton[1]->show();
   connect(mStartButton[1]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
   if (Prefs::startcolourred()) mStartButton[1]->setStatus(true);
 
-  mPlayerButton[0] = new ButtonSprite(false, "button0_color", mTheme, mAdvancePeriod, 2, mScene);
+  mPlayerButton[0] = new ButtonSprite(false, "button0_color", mTheme,  2, mScene);
   mSprites.append(mPlayerButton[0]);
   mPlayerButton[0]->show();
   connect(mPlayerButton[0]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
   if (Prefs::input0mouse()|| Prefs::input0key()) mPlayerButton[0]->setStatus(true); 
 
-  mPlayerButton[1] = new ButtonSprite(false, "button1_color", mTheme, mAdvancePeriod, 3, mScene);
+  mPlayerButton[1] = new ButtonSprite(false, "button1_color", mTheme, 3, mScene);
   mSprites.append(mPlayerButton[1]);
   mPlayerButton[1]->show();
   connect(mPlayerButton[1]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
@@ -139,28 +138,28 @@ DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManage
        !mPlayerButton[0]->status()) mPlayerButton[0]->setStatus(true); 
 
   // Start game buttons
-  ButtonSprite* button = new ButtonSprite(true, "button_aieasy", mTheme, mAdvancePeriod, 10, mScene);
+  ButtonSprite* button = new ButtonSprite(true, "button_aieasy", mTheme,  10, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level easy", "Easy Game"));
   button->show();
   connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
 
-  button = new ButtonSprite(true, "button_ainormal", mTheme, mAdvancePeriod, 11, mScene);
+  button = new ButtonSprite(true, "button_ainormal", mTheme, 11, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level normal", "Normal Game"));
   button->show();
   connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
 
-  button = new ButtonSprite(true, "button_aihard", mTheme, mAdvancePeriod, 12, mScene);
+  button = new ButtonSprite(true, "button_aihard", mTheme,  12, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level hard", "Hard Game"));
   button->show();
   connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
 
-  button = new ButtonSprite(true, "button_player", mTheme, mAdvancePeriod, 13, mScene);
+  button = new ButtonSprite(true, "button_player", mTheme, 13, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus player", "Two player game"));
   button->show();
@@ -484,7 +483,7 @@ QGraphicsItem* DisplayIntro::findSprite(QPoint pos)
 // Handle view events and forward them to the sprites
 void DisplayIntro::viewEvent(QEvent* event)
 {
-   // Only process some mouse eventws
+   // Only process some mouse events
    QEvent::Type type = event->type();
    if (type != QEvent::MouseButtonPress && 
        type != QEvent::MouseButtonRelease && 

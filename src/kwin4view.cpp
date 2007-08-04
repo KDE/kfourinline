@@ -40,15 +40,15 @@
 #include "displaygame.h"
 #include "spritenotify.h"
 #include "score.h"
+#include "reflectiongraphicsscene.h"
 
 // Constructor for the view
-KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
+KWin4View::KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : QGraphicsView(scene, parent)
 {
   // Store attributes    
   mScene         = scene;
   mTheme         = theme;
-  mAdvancePeriod = advancePeriod;
 
   // We do not need scrolling so switch it off
   setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -65,10 +65,9 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   scene->setBackgroundBrush(QColor(0,0,128));
 
 
-  // Update/advance view every 25ms
   QTimer* timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
-  timer->start(advancePeriod);
+  timer->start(25);
 
   // Game status
   mIsRunning = false;
@@ -92,7 +91,7 @@ KWin4View::KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene
   // Skip the intro?
   if (!global_skip_intro)
   {
-    mIntroDisplay = new DisplayIntro(advancePeriod, scene, mTheme, this);
+    mIntroDisplay = new DisplayIntro(scene, mTheme, this);
     connect(mIntroDisplay, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
             this, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
     mIntroDisplay->start();
@@ -126,7 +125,7 @@ void KWin4View::initGame(Score* scoreData)
   mIntroDisplay = 0;
   if (!mGameDisplay)
   {
-     mGameDisplay = new DisplayGame(mAdvancePeriod, mScene, mTheme, this);
+     mGameDisplay = new DisplayGame(mScene, mTheme, this);
   }
   mGameDisplay->start();
 
@@ -241,7 +240,7 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
 void KWin4View::displayMove(int x, int y, int color, int xarrow, int colorarrow, int no, bool animation)
 {
   mGameDisplay->displayArrow(xarrow, colorarrow);
-  // animation onyl if no redo
+  // animation only if no redo
   SpriteNotify* notify = mGameDisplay->displayPiece(x, y, color, no, animation);
   if (notify && animation)
   {
@@ -280,3 +279,4 @@ bool KWin4View::viewportEvent ( QEvent * event )
 }
 
 #include "kwin4view.moc"
+

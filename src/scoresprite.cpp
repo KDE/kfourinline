@@ -34,8 +34,8 @@
 #include <klocale.h>
 
 // Constructor for the score sprite
-ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
-           :  Themeable(id, theme), PixmapSprite(advancePeriod, no, scene)
+ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)
+           :  Themeable(id, theme), PixmapSprite(no, scene)
 {
 	// Create all sub sprites
   for (int i=0; i<2; i++)
@@ -45,7 +45,7 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int advancePeri
     mLoss[i]  = new QGraphicsTextItem(this, scene);
     mBreak[i] = new QGraphicsTextItem(this, scene);
     mName[i]  = new QGraphicsTextItem(this, scene);
-    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, advancePeriod, i, scene);
+    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, i, scene);
     if (!mInput[i]) kFatal() << "Cannot load sprite" << "scoreinput"<<i;
     mInput[i]->setParentItem(this);
     mInput[i]->show();

@@ -50,11 +50,10 @@ class ButtonSprite : public PixmapSprite
       * @param pushButton      True: push button, False: Toggle button
       * @param id              The theme id
       * @param theme           The theme manager
-      * @param advancePeriod   The canvas advance period [ms]
       * @param no              A used defined number (unused)
       * @param scene           The graphics scene
       */
-    ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
+    ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene);
     
     /** Destructor 
       */

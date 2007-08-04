@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QWidget>
-#include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QHash>
 #include <QList>
@@ -37,6 +36,7 @@ class PieceSprite;
 class SpriteNotify;
 class PixmapSprite;
 class ScoreSprite;
+class ReflectionGraphicsScene;
 
 /**
  * The display engine for the actual game.
@@ -47,12 +47,11 @@ class DisplayGame : public QObject, public virtual Themeable
 
   public:
     /** Constructor for the game display.
-     *  @param advancePeriod The canvas advance period
      *  @param scene         The graphics scene
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent = 0);
+    DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent = 0);
     
     /** Destructor
       */
@@ -127,13 +126,10 @@ class DisplayGame : public QObject, public virtual Themeable
     ThemeManager* mTheme;
     
     // The grapics scene used for display
-    QGraphicsScene* mScene;
+    ReflectionGraphicsScene* mScene;
     
     // The graphics view used for display
     QGraphicsView* mView;
-    
-    // The advance period of the scene [ms]
-    int mAdvancePeriod;
     
     // List of all sprites used
     QList<QGraphicsItem*> mSprites;

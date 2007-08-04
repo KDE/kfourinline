@@ -35,8 +35,8 @@
 #include <klocale.h>
 
 // Constructor for the score sprite
-ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
-           :  Themeable(id, theme), PixmapSprite(advancePeriod, no, scene)
+ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)
+           :  Themeable(id, theme), PixmapSprite(no, scene)
 {
 
   mButtonPressed = false;

@@ -53,12 +53,11 @@ class DisplayIntro : public QObject, public virtual Themeable
 
   public:
     /** Constructor for the intro display.
-     *  @param advancePeriod The canvas advance period
      *  @param scene         The graphics scene
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent);
+    DisplayIntro(QGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent);
     
     /** Destructor of the display.
      */
@@ -118,9 +117,6 @@ class DisplayIntro : public QObject, public virtual Themeable
     
     // The graphics scene to write to
     QGraphicsScene* mScene;
-    
-    // The advance period of the scene [ms]
-    int mAdvancePeriod;
     
     // List of all sprites used
     QList<QGraphicsItem*> mSprites;

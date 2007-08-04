@@ -37,20 +37,18 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
 
   public:
     /** Constructor for the sprite.
-     * @param advancePeriod The advance period time [ms]
      * @param no            A user defined ID number
      * @param scene        The graphics scene   
      */
-    PixmapSprite(int advancePeriod, int no, QGraphicsScene* scene);
+    PixmapSprite(int no, QGraphicsScene* scene);
     
     /** Constructor for the sprite.
      * @param id            The theme file ID string
      * @param theme         The theme manager 
-     * @param advancePeriod The advance period time [ms]
      * @param no            A user defined ID number
      * @param scene        The graphics scene   
      */
-    PixmapSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
+    PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene);
     
     /** Possible animation states of the sprite
      */
@@ -120,11 +118,6 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
      */
     int mNo;
 
-    /**  The canvas advance period (e.g. 25) [ms]
-     */
-    int mAdvancePeriod;
-
-    
     /** The state of the animation.
      */
     AnimationState mAnimationState;
@@ -147,7 +140,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     
     /** The current running time for the animation.
      */
-    int mTime;
+    QTime mTime;
 
     /** The current running frame number for the animation.
      */

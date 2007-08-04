@@ -21,9 +21,6 @@
 #ifndef KWIN4_H
 #define KWIN4_H
 
-// Qt includes
-#include <QGraphicsScene>
-
 // KDE includes
 #include <kxmlguiwindow.h>
 #include <kdemacros.h>
@@ -33,15 +30,15 @@
 #include "kwin4global.h"
 #include "thememanager.h"
 
-
 class Kwin4Player;
 class KWin4Doc;
 class KWin4View;
 class KButtonGroup;
 class KPlayer;
 class KGameChat;
-class ChatDlg;
 class KGame;
+class ChatDlg;
+class ReflectionGraphicsScene;
 
 /**
  * The base class for Kwin4 application.
@@ -267,7 +264,7 @@ class KWin4App : public KXmlGuiWindow
     KWin4Doc *mDoc;
 
     // The graphics scene to use
-    QGraphicsScene* mScene;
+    ReflectionGraphicsScene* mScene;
 
     // The directory for the theme files
     QString mThemeDirName;

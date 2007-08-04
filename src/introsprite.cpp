@@ -33,12 +33,11 @@
 #define sign(x) ( (x)>0?1:((x)<0?-1:0) )
 
 // Constructor for the sprite
-IntroSprite::IntroSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themeable(id, theme), PixmapSprite(advancePeriod, no, canvas)
+IntroSprite::IntroSprite(const QString &id, ThemeManager* theme,  int no, QGraphicsScene* scene)
+    :  Themeable(id, theme), PixmapSprite(no, scene)
 {
   hide();
 
-  mAdvancePeriod = advancePeriod;
   mNo = no;
   mAnimationState = Idle;
   mVelocity = 0.0;
@@ -69,7 +68,7 @@ void IntroSprite::startIntro(QPointF start, QPointF end, double radius, double d
   mRadius         = radius;
   mDelay = delay;
   mAnimationState = IntroDelay;
-  mTime           = 0;
+  mTime.restart();
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
   show();
 }
@@ -82,7 +81,7 @@ void IntroSprite::startLinear(QPointF start, QPointF end, double duration)
   mEnd            = end;
   mDuration       = duration;
   mAnimationState = LinearMove;
-  mTime           = 0;
+  mTime.restart();
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
   show();
 }
@@ -95,7 +94,7 @@ void IntroSprite::startLinear(QPointF end, double duration)
   mEnd            = end;
   mDuration       = duration;
   mAnimationState = LinearMove;
-  mTime           = 0;
+  mTime.restart();
   show();
 }
 
@@ -110,7 +109,7 @@ void IntroSprite::startManhatten(QPointF end, double velocity, double delay)
   mDuration         = dManhatten/velocity*1000.0;
   mAnimationState   = ManhattenDelay;
   mVelocity         = velocity;
-  mTime             = 0;
+  mTime.restart();
   show();
 }
 
@@ -127,29 +126,26 @@ void IntroSprite::advance(int phase)
 
   double scale = this->getScale();
 
-  // Increase time
-  mTime += mAdvancePeriod;
-
   // Delay animation
   if (mAnimationState == IntroDelay)
   {
-     if (mTime >= mDelay)
+     if (mTime.elapsed() >= mDelay)
      {
        mAnimationState = IntroLinear1;
-       mTime = 0.0;
+       mTime.restart();
      }
   }
 
   // Handle first linear phase
   if (mAnimationState == IntroLinear1)
   {
-     if (mTime >= 0.25*mDuration)
+     if (mTime.elapsed() >= 0.25*mDuration)
      {
        mAnimationState = IntroCircle;
      }
      else
      {
-       double t = 2.0*mTime/mDuration;
+       double t = 2.0*mTime.elapsed()/mDuration;
        qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
        qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
        setPos(x*scale, y*scale);
@@ -159,13 +155,13 @@ void IntroSprite::advance(int phase)
   // Handle circle phase
   if (mAnimationState == IntroCircle)
   {
-     if (mTime >= 0.75*mDuration)
+     if (mTime.elapsed() >= 0.75*mDuration)
      {
        mAnimationState = IntroLinear2;
      }
      else
      {
-       double t = 2.0*(mTime/mDuration-0.25);
+       double t = 2.0*(mTime.elapsed()/mDuration-0.25);
        double sign = 1.0;
        if (mStart.x() > 0.5) sign = -1.0; // Direction of turn
        qreal cx = mStart.x() + 0.5*(mEnd.x()-mStart.x());
@@ -179,14 +175,14 @@ void IntroSprite::advance(int phase)
   // Handle second linear phase
   if (mAnimationState == IntroLinear2)
   {
-     if (mTime >= 1.00*mDuration)
+     if (mTime.elapsed() >= 1.00*mDuration)
      {
        mAnimationState = Idle;
        setPos(mEnd.x()*scale, mEnd.y()*scale);
      }
      else
      {
-       double t = 2.0*(mTime/mDuration-0.75)+0.5;
+       double t = 2.0*(mTime.elapsed()/mDuration-0.75)+0.5;
        qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
        qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
        setPos(x*scale, y*scale);
@@ -196,14 +192,14 @@ void IntroSprite::advance(int phase)
   // Handle linear phase
   if (mAnimationState == LinearMove)
   {
-     if (mTime >= mDuration)
+     if (mTime.elapsed() >= mDuration)
      {
        mAnimationState = Idle;
        setPos(mEnd.x()*scale, mEnd.y()*scale);
      }
      else
      {
-       double t = mTime/mDuration;
+       double t = mTime.elapsed()/mDuration;
        qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
        qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
        setPos(x*scale, y*scale);
@@ -213,10 +209,10 @@ void IntroSprite::advance(int phase)
   // Delay Manhatten move
   if (mAnimationState == ManhattenDelay)
   {
-     if (mTime >= mDelay)
+     if (mTime.elapsed() >= mDelay)
      {
        mAnimationState = ManhattenMove;
-       mTime = 0.0;
+       mTime.restart();
      }
   }
   // Handle manhatten phase
@@ -231,26 +227,26 @@ void IntroSprite::advance(int phase)
      // x-edge
      else if (fabs(mEnd.x()-x()/scale) > 0.00001)
      {
-       qreal x = mStart.x() + sign(mEnd.x()-mStart.x())*mVelocity*mTime/1000.0;
+       qreal x = mStart.x() + sign(mEnd.x()-mStart.x())*mVelocity*mTime.elapsed()/1000.0;
        // Finished?
        if ( (mEnd.x() > mStart.x() && x >= mEnd.x()) ||
             (mEnd.x() < mStart.x() && x <= mEnd.x()) )
        {
          x = mEnd.x();
-         mTime = 0.0;
+         mTime.restart();
        }
        setPos(x*scale, mStart.y()*scale);
      }
      // y-edge
      else
      {
-       qreal y = mStart.y() + sign(mEnd.y()-mStart.y())*mVelocity*mTime/1000.0;
+       qreal y = mStart.y() + sign(mEnd.y()-mStart.y())*mVelocity*mTime.elapsed()/1000.0;
        // Finished?
        if ( (mEnd.y() > mStart.y() && y >= mEnd.y()) ||
             (mEnd.y() < mStart.y() && y <= mEnd.y()) )
        {
          y = mEnd.y();
-         mTime = 0.0;
+         mTime.restart();
        }
        setPos(mEnd.x()*scale, y*scale);
      }

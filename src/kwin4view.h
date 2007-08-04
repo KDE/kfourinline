@@ -23,7 +23,6 @@
 // Qt includes
 #include <QWidget>
 #include <QGraphicsView>
-#include <QGraphicsScene>
 #include <QSize>
 #include <QPoint>
 #include <QResizeEvent>
@@ -44,6 +43,7 @@
 class DisplayIntro;
 class DisplayGame;
 class Score;
+class ReflectionGraphicsScene;
 
 /**
  * The view object which shows the graphics for the game.
@@ -55,12 +55,11 @@ class KWin4View : public QGraphicsView
   public:
     /** Constructor for the canvas view.
      *  @param size          The canvas size
-     *  @param advancePeriod The canvas advance period
      *  @param scene         The graphics scene
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    KWin4View(const QSize &size, int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
+    KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
 
     /** Destructor
       */
@@ -158,7 +157,7 @@ class KWin4View : public QGraphicsView
     ThemeManager* mTheme;
     
     // The scene to plot to
-    QGraphicsScene* mScene;
+    ReflectionGraphicsScene* mScene;
     
     // The advance period of the scene [ms]
     int mAdvancePeriod;

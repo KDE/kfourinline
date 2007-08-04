@@ -31,9 +31,8 @@
 #include <kdebug.h>
 #include <kconfig.h>
 
-// Constructor for the pixmap sprite
-PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themeable(id, theme), PixmapSprite(advancePeriod, no, canvas)
+PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
+    :  Themeable(id, theme), PixmapSprite(no, canvas)
 {
   mMovementState = Idle;
   mNotify = new SpriteNotify(this);
@@ -64,7 +63,7 @@ void PieceSprite::startLinear(QPointF start, QPointF end, double velocity)
   else mDuration = 0.0;
   
   mMovementState = LinearMove;
-  mTime           = 0;
+  mTime.restart();
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
   show();
 }
@@ -80,7 +79,7 @@ void PieceSprite::startLinear(QPointF end, double velocity)
   if (dist > 0.0) mDuration = dist/velocity*1000.0; // Duration in [ms]
   else mDuration = 0.0;
   mMovementState = LinearMove;
-  mTime           = 0;
+  mTime.restart();
   show();
 }
 
@@ -104,7 +103,7 @@ void PieceSprite::advance(int phase)
   if (mMovementState == LinearMove)
   {
   	 // Movement over?
-     if (mTime >= mDuration)
+     if (mTime.elapsed() >= mDuration)
      {
        mMovementState = Idle;
 
@@ -115,7 +114,7 @@ void PieceSprite::advance(int phase)
      else
      {
      	 // Continue moving
-       double t = mTime/mDuration;
+       double t = mTime.elapsed()/mDuration;
        qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
        qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
        setPos(x*scale, y*scale);

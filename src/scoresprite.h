@@ -41,11 +41,10 @@ class ScoreSprite : public PixmapSprite
     /** Constructor for the score sprite.
       * @param id              The theme id
       * @param theme           The theme manager
-      * @param advancePeriod   The canvas advance period [ms]
       * @param no              A used defined number (unused)
       * @param scene           The graphics scene
       */
-    ScoreSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene);
+    ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene);
     
     /** Destructor 
       */

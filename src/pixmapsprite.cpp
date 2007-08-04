@@ -32,14 +32,13 @@
 #include <kconfig.h>
 
 // Constructor for the sprite
-PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
+PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
     :  Themeable(id, theme), QGraphicsPixmapItem(0, canvas)
 {
   hide();
   setAcceptsHoverEvents(false);
 
   mAnimationState = Idle;
-  mAdvancePeriod  = advancePeriod;
   mNo             = no;
   mCurrentFrame   = 0;
 
@@ -48,13 +47,12 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePe
 
 
 // Constructor for the sprite
-PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
+PixmapSprite::PixmapSprite(int no, QGraphicsScene* canvas)
     :  Themeable(), QGraphicsPixmapItem(0, canvas)
 {
   hide();
 
   mAnimationState = Idle;
-  mAdvancePeriod  = advancePeriod;
   mNo             = no;
   mCurrentFrame   = 0;
 }
@@ -177,7 +175,7 @@ void PixmapSprite::setAnimation(bool status)
 {
   if (status) mAnimationState = Animated;
   else mAnimationState = Idle;
-  mTime           = 0;
+  mTime.start();
   setFrame(mStartFrame);
 }
 
@@ -216,20 +214,16 @@ void PixmapSprite::advance(int phase)
     return ;
   }
 
-  // Increase time
-  mTime += mAdvancePeriod;
-
   // Handle animation
   if (mAnimationState == Animated)
   {
   	// Frame delay passed?
-    if (mTime>mDelay)
-    {
-      mTime = 0;
-      int frame = mCurrentFrame+1;
-      if (frame > mEndFrame) setFrame(mStartFrame);
-      else setFrame(frame);
+    int frame = mTime.elapsed() / mDelay + mEndFrame;
+    while(frame > mEndFrame) {
+	    frame -= (mEndFrame - mStartFrame);
+	    mTime.addSecs( -(mEndFrame - mStartFrame)*mDelay);
     }
+    setFrame(frame);
   }
 
   QGraphicsItem::advance(phase);

@@ -22,6 +22,7 @@ set(kwin4_SRCS
    scoresprite.cpp
    score.cpp
    aiboard.cpp
+   reflectiongraphicsscene.cpp
    pixmapsprite.cpp)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)

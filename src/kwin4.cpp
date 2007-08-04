@@ -58,6 +58,7 @@
 #include "chatdlg.h"
 #include "kwin4doc.h"
 #include "kwin4view.h"
+#include "reflectiongraphicsscene.h"
 #include "prefs.h"
 #include "ui_settings.h"
 #include "ui_statistics.h"
@@ -141,7 +142,7 @@ KWin4App::KWin4App(QWidget *parent)
 
 
   // Scene
-  mScene  = new QGraphicsScene(this);
+  mScene  = new ReflectionGraphicsScene(this);
 
 
   // Theme
@@ -156,7 +157,7 @@ KWin4App::KWin4App(QWidget *parent)
   }
 
   // View
-  mView   = new KWin4View(QSize(800,600),25,mScene,mTheme,this);
+  mView   = new KWin4View(QSize(800,600),mScene,mTheme,this);
   mDoc->setView(mView);
   connect(mView, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
           this, SLOT(quickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));

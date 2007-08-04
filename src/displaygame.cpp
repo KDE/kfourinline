@@ -43,16 +43,17 @@
 #include "spritenotify.h"
 #include "kwin4doc.h"
 
+#include "reflectiongraphicsscene.h"
+
 
 
 // Constructor for the display
-DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
+DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
            : Themeable("gamedisplay",theme), QObject(parent)
 {
   // Store arguments as attributes
   mScene         = scene;
   mView          = parent;
-  mAdvancePeriod = advancePeriod;
   mTheme         = theme;
   
     // Choose a background color
@@ -64,7 +65,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   // Create piece sprites 
   for (int i=0; i<42; i++)
   {
-    PieceSprite* sprite = new PieceSprite("piece", mTheme, mAdvancePeriod, i, mScene);
+    PieceSprite* sprite = new PieceSprite("piece", mTheme, i, mScene);
     if (!sprite) kFatal() << "Cannot load sprite" << "piece";
     mSprites.append(sprite);
     mPieces.append(sprite);
@@ -74,7 +75,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   // Create stars
   for (int i=0;i<4;i++)
   {
-    PixmapSprite* sprite = new PixmapSprite("star", mTheme, mAdvancePeriod, i, mScene);
+    PixmapSprite* sprite = new PixmapSprite("star", mTheme, i, mScene);
     if (!sprite) kFatal() << "Cannot load sprite" << "star";
     mSprites.append(sprite);
     mStars.append(sprite);
@@ -82,19 +83,19 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   }
 
   // Create board
-  mBoard = new PixmapSprite("board", mTheme, mAdvancePeriod, 0, mScene);
+  mBoard = new PixmapSprite("board", mTheme, 0, mScene);
   if (!mBoard) kFatal() << "Cannot load sprite" << "board";
   mSprites.append(mBoard);
   mBoard->hide();
 
   // Create hint
-  mHint = new PixmapSprite("hint", mTheme, mAdvancePeriod, 0, mScene);
+  mHint = new PixmapSprite("hint", mTheme, 0, mScene);
   if (!mHint) kFatal() << "Cannot load sprite" << "hint";
   mSprites.append(mHint);
   mHint->hide();
 
   // Create Game Over
-  // mGameOver = new PixmapSprite("gameover", mTheme, mAdvancePeriod, 0, mScene);
+  // mGameOver = new PixmapSprite("gameover", mTheme, 0, mScene);
   // if (!mGameOver) kFatal() << "Cannot load sprite" << "gameover";
   // mSprites.append(mGameOver);
   // mGameOver->hide();
@@ -102,7 +103,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   // Create board holes
   for (int i=0; i<42; i++)
   {
-    PixmapSprite* boardHole = new PixmapSprite("boardholes", mTheme, mAdvancePeriod, i, mScene);
+    PixmapSprite* boardHole = new PixmapSprite("boardholes", mTheme, i, mScene);
     if (!boardHole) kFatal() << "Cannot load sprite" << "boardHoles";
     mSprites.append(boardHole);
     mBoardHoles.append(boardHole);
@@ -110,7 +111,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   }
 
   // Create score board
-  mScoreBoard = new ScoreSprite("scoreboard", mTheme, mAdvancePeriod, 0, mScene);
+  mScoreBoard = new ScoreSprite("scoreboard", mTheme, 0, mScene);
   if (!mScoreBoard) kFatal() << "Cannot load sprite" << "scoreboard";
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
@@ -119,7 +120,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   // Create movement indication arrows
   for (int i=0; i<7; i++)
   {
-    PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, mAdvancePeriod, i, mScene);
+    PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, i, mScene);
     if (!arrow) kFatal() << "Cannot load sprite" << "arrow";
     mSprites.append(arrow);
     mArrows.append(arrow);
@@ -131,7 +132,7 @@ DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager*
   QStringList deco = config.readEntry("decoration", QStringList());
   for (int i = 0; i < deco.size(); i++)
   {
-    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, mAdvancePeriod, i, mScene);
+    PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, i, mScene);
     if (!sprite) kFatal() << "Cannot load sprite" << deco.at(i);
     mSprites.append(sprite);
     sprite->show();
@@ -169,6 +170,10 @@ void DisplayGame::changeTheme()
   QString bgsvgid = config.readEntry("background-svgid");
   QPixmap pixmap  = thememanager()->getPixmap(bgsvgid, mScene->sceneRect().size().toSize());
   mScene->setBackgroundBrush(pixmap);
+  QRectF pos = mBoard->sceneBoundingRect();
+
+  if( config.readEntry("use-reflection", false))
+	  mScene->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
   mView->update();
 
 }
