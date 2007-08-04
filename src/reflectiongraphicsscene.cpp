@@ -82,7 +82,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
 			imagePainter.setMatrix(sceneMatrix, true);
 			items[i]->paint(&imagePainter, &options[i], widget);
 			
-			if(sceneMatrix
+//			if(sceneMatrix
 			
 
 			imagePainter.restore();
