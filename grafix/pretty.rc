@@ -1,7 +1,7 @@
 # General section defines properties of the thememanger
 [general]
 # SVG file to load (path relative to this file) which contains all SVG items
-svgfile=default.svg
+svgfile=pretty.svg
 # Game aspect ratio
 aspect-ratio=1.60
 
@@ -16,7 +16,7 @@ board-pos=0.445,0.15
 # Spread pieces on board [0..1]
 board-spread=0.0588,0.0588
 # Speed in [rel/ms]
-move-velocity=0.5
+move-velocity=0.4
 
 # Position and spread of the pieces above the board
 piece0-pos=0.4400,0.0300
@@ -244,7 +244,7 @@ fontColorPlayer1=255,0,0
 # The game board (frame)
 [board]
 # Width of the item [0..1]
-width=0.442424242
+width=0.44
 # Item position [0..1,0..1]
 pos=0.0975,0.098
 # Z-Value 
@@ -256,7 +256,7 @@ svgid=board
 # The back of the game board 
 [boardback]
 # Width of the item [0..1]
-width=0.442424242
+width=0.44
 # Item position [0..1,0..1]
 pos=0.0975,0.098
 # Z-Value 

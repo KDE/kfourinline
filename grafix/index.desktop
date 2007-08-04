@@ -25,3 +25,7 @@ Name[sv]=Gul och röd
 Name[te]=పసుపు మరయు ఎరుపు
 Name[zh_TW]=黃與紅
 File=yellow.rc
+
+[Pretty]
+Name=Black and Red 2
+File=pretty.rc
