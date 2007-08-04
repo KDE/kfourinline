@@ -36,12 +36,12 @@ class ThemeManager;
   * by the theme manager and allows them to retrieve theme data
   * from a configuration theme file.
   */
-class Themable 
+class Themeable 
 {
    public:
      /** Default constructor for the interface 
       */
-     Themable();
+     Themeable();
      
      /** Constructor for the interface given the theme item unique ID string
        * and a reference to the theme manager. The ID string is used to refer
@@ -49,11 +49,11 @@ class Themable
        * @param id           The user defined theme id 
        * @param thememanager The used theme manager
        */
-     Themable(const QString &id, ThemeManager* thememanager);
+     Themeable(const QString &id, ThemeManager* thememanager);
      
      /** Destructor 
       */
-     virtual ~Themable();
+     virtual ~Themeable();
      
      /** Retrieve the ID of the object.
       *  @return The ID.
@@ -76,7 +76,7 @@ class Themable
      void setScale(double scale)  {mScale = scale;}
 
      /** Main theme notification method. This method is called in the
-       * Themable object to indicate a theme change. The object needs
+       * Themeable object to indicate a theme change. The object needs
        * to overwrite this and respond with a properly scaled redraw.
        */
      virtual void changeTheme() = 0;
@@ -95,7 +95,7 @@ class Themable
 
 
 /**
-  * The graphics theme manager. The theme manager holds a list of all Themable
+  * The graphics theme manager. The theme manager holds a list of all Themeable
   * objects and notifies them in the event of a theme change so that the objects
   * can then redraw. It also allows access to the theme configuration file and
   * reads pixmaps from an SVG file given a certain size or scale. The pixmaps
@@ -156,18 +156,18 @@ class ThemeManager : public QObject
     /** Register an object with the theme manager.
       * @param ob The object to be registered.
       */
-    void registerTheme(Themable* ob);
+    void registerTheme(Themeable* ob);
     
     /** Unregister an object with the theme manager.
       * @param ob The object to be unregistered.
       */
-    void unregisterTheme(Themable* ob);
+    void unregisterTheme(Themeable* ob);
     
     /** Forces an update to a theme objects. That is its
       * changeTheme() method is called.
       * @param ob The object to be updated.
       */
-    void updateTheme(Themable* ob);
+    void updateTheme(Themeable* ob);
     
     /** Forces an update to all theme objects. That is their
       * changeTheme() method is called. Before this a (new)
@@ -200,8 +200,8 @@ class ThemeManager : public QObject
      // The used SVG rendered
      KSvgRenderer* mRenderer;
      
-     // Storage of all theme objects [object,1] [TODO: Alist might suffice]
-     QHash<Themable*,int> mObjects;
+     // Storage of all theme objects
+     QList<Themeable*> mObjects;
 
      // The cache of all pixmap objects [id,pixmap]
      QHash<QString,QPixmap> mPixmapCache;

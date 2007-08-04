@@ -30,9 +30,9 @@
 
 
 /** This sprite is used to display a pixmap on the canvas.
- *  It can be animated and it is themable.
+ *  It can be animated and it is themeable.
  */
-class PixmapSprite : public QGraphicsPixmapItem, public virtual Themable
+class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
 {
 
   public:

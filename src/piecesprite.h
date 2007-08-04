@@ -60,7 +60,7 @@ class PieceSprite : public PixmapSprite
      */
     virtual int type() const {return QGraphicsItem::UserType+2;}
 
-    /** Standard Themable function. It is called when the theme item
+    /** Standard Themeable function. It is called when the theme item
       * needs to completely refresh itself.
       */
     virtual void changeTheme();

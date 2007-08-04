@@ -36,7 +36,7 @@
 
 // Constructor for the score sprite
 ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
-           :  Themable(id, theme), PixmapSprite(advancePeriod, no, scene)
+           :  Themeable(id, theme), PixmapSprite(advancePeriod, no, scene)
 {
 
   mButtonPressed = false;

@@ -49,7 +49,7 @@
 
 // Constructor for the intro display
 DisplayIntro::DisplayIntro(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
-          : Themable("introdisplay",theme), QObject(parent)
+          : Themeable("introdisplay",theme), QObject(parent)
 {
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -262,8 +262,6 @@ void DisplayIntro::changeTheme()
   QPixmap pixmap  = thememanager()->getPixmap(bgsvgid, mScene->sceneRect().size().toSize());
   mScene->setBackgroundBrush(pixmap);
   mView->update();
-
-
 
   // Process quicklaunch sprite (could be own class...)
   double width  = mQuickLaunch->boundingRect().width();

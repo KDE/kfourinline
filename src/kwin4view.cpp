@@ -148,10 +148,10 @@ void KWin4View::resizeEvent (QResizeEvent* e)
 {
 
   // Test to prevent double resizing
-  // if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
-  // {
-  //   return;
-  // }
+  if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
+  {
+    return;
+  }
 
   // Adapt the canvas size to the window size
   if (scene())

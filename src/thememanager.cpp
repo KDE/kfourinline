@@ -49,16 +49,17 @@ ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initia
 
 
 // Register an object with the manager
-void ThemeManager::registerTheme(Themable* ob)
+void ThemeManager::registerTheme(Themeable* ob)
 {
-  mObjects[ob] = 1;
+  //We want to make sure that we draw the items registered last, first.
+  mObjects.prepend(ob);
 }
 
 
 // Unregister an object from the manager
-void ThemeManager::unregisterTheme(Themable* ob)
+void ThemeManager::unregisterTheme(Themeable* ob)
 {
-  mObjects.remove(ob);
+  mObjects.removeAll(ob);
 }
 
 
@@ -72,7 +73,7 @@ int ThemeManager::checkTheme()
 
 
 // Force an refresh of the theme object given
-void ThemeManager::updateTheme(Themable* ob)
+void ThemeManager::updateTheme(Themeable* ob)
 {
   ob->changeTheme();
 }
@@ -109,12 +110,8 @@ void ThemeManager::updateTheme(const QString &themefile)
   kDebug() << "Renderer" << mRenderer<<" =" << result;
 
   // Notify all theme objects of a change
-  QHashIterator<Themable*, int> it(mObjects);
-  while (it.hasNext())
-  {
-      it.next();
-      Themable* ob = it.key();
-      ob->changeTheme();
+  foreach(Themeable *object, mObjects) {
+      object->changeTheme();
   }
 }
 
@@ -125,17 +122,13 @@ void ThemeManager::rescale(int scale)
   if (global_debug > 1)
   {
     if (scale==mScale)
-      kDebug() <<" No scale change to" << scale << "If this happends to often its BAD";
+      kDebug() <<" No scale change to" << scale << ". If this happends too often it is BAD";
   }
   //if (scale==mScale) return;
   mScale = scale;
 
-  QHashIterator<Themable*, int> it(mObjects);
-  while (it.hasNext())
-  {
-      it.next();
-      Themable* ob = it.key();
-      ob->changeTheme();
+  foreach(Themeable *object, mObjects) {
+      object->changeTheme();
   }
 }
 
@@ -159,7 +152,7 @@ KConfigGroup ThemeManager::config(const QString &id)
 const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
 {
   if (size.width() < 1 || size.height() < 1) 
-    kFatal() << "ThemeManager::getPixmap Cannot create svgid ID" << svgid << "with zero size" << size;
+    kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
   
   QPixmap pixmap;
 
@@ -180,7 +173,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
   mRenderer->render(&p, svgid);
   pixmap = QPixmap::fromImage(image);
   if (pixmap.isNull())
-    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID" << svgid;
+    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
 
   // Cache image
   mPixmapCache[svgid] = pixmap;
@@ -211,10 +204,10 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, const QString &svgre
 }
 
 
-// ========================== Themable interface ===============================
+// ========================== Themeable interface ===============================
 
-// Constructs a themable interface
-Themable::Themable()
+// Constructs a themeable interface
+Themeable::Themeable()
 {
   mScale        = 1.0;
   mThemeManager = 0;
@@ -223,7 +216,7 @@ Themable::Themable()
 
 // Constructs a themeable interface given its id and the master theme manager. 
 // This automatically registeres the object with the manager.
-Themable::Themable(const QString &id, ThemeManager* thememanager)
+Themeable::Themeable(const QString &id, ThemeManager* thememanager)
 {
   mScale        = 1.0;
   mId           = id;
@@ -234,7 +227,7 @@ Themable::Themable(const QString &id, ThemeManager* thememanager)
 
 
 // Destructs the themeable object
-Themable::~Themable()
+Themeable::~Themeable()
 {
   if (mThemeManager) mThemeManager->unregisterTheme(this);
 }

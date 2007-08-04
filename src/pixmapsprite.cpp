@@ -33,7 +33,7 @@
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(id, theme), QGraphicsPixmapItem(0, canvas)
+    :  Themeable(id, theme), QGraphicsPixmapItem(0, canvas)
 {
   hide();
   setAcceptsHoverEvents(false);
@@ -49,7 +49,7 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int advancePe
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(), QGraphicsPixmapItem(0, canvas)
+    :  Themeable(), QGraphicsPixmapItem(0, canvas)
 {
   hide();
 
@@ -60,7 +60,7 @@ PixmapSprite::PixmapSprite(int advancePeriod, int no, QGraphicsScene* canvas)
 }
 
 
-// Main themable function. Called for any theme change. The sprites needs to
+// Main themeable function. Called for any theme change. The sprites needs to
 // resiez and redraw here.
 void PixmapSprite::changeTheme()
 {

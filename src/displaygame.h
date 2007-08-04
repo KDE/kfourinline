@@ -41,7 +41,7 @@ class ScoreSprite;
 /**
  * The display engine for the actual game.
  */
-class DisplayGame : public QObject, public virtual Themable
+class DisplayGame : public QObject, public virtual Themeable
 {
   Q_OBJECT
 

@@ -47,7 +47,7 @@ class ButtonSprite;
  * The view object which shows the graphics of the welcome screen
  * animation.
  */
-class DisplayIntro : public QObject, public virtual Themable
+class DisplayIntro : public QObject, public virtual Themeable
 {
   Q_OBJECT
 

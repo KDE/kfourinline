@@ -35,7 +35,7 @@
 
 // Constructor for the score sprite
 ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* scene)
-           :  Themable(id, theme), PixmapSprite(advancePeriod, no, scene)
+           :  Themeable(id, theme), PixmapSprite(advancePeriod, no, scene)
 {
 	// Create all sub sprites
   for (int i=0; i<2; i++)

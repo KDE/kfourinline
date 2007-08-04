@@ -47,7 +47,7 @@
 
 // Constructor for the display
 DisplayGame::DisplayGame(int advancePeriod, QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
-           : Themable("gamedisplay",theme), QObject(parent)
+           : Themeable("gamedisplay",theme), QObject(parent)
 {
   // Store arguments as attributes
   mScene         = scene;

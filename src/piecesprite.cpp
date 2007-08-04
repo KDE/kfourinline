@@ -33,7 +33,7 @@
 
 // Constructor for the pixmap sprite
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int advancePeriod, int no, QGraphicsScene* canvas)
-    :  Themable(id, theme), PixmapSprite(advancePeriod, no, canvas)
+    :  Themeable(id, theme), PixmapSprite(advancePeriod, no, canvas)
 {
   mMovementState = Idle;
   mNotify = new SpriteNotify(this);
