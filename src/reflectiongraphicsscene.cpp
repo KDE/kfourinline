@@ -44,7 +44,7 @@ void ReflectionGraphicsScene::setReflection(int x, int y, int width, int height)
 	mX = x;
 	mY = y;
 	mWidth = width;
-	mHeight = height;
+	mHeight = height*2;
 
 	QPoint p1, p2;
 	p2.setY(mHeight);
@@ -54,9 +54,9 @@ void ReflectionGraphicsScene::setReflection(int x, int y, int width, int height)
 
 	kDebug() << "Set reflection "<< x << " " << y << " " << width << " " << height ;
 
-	mGradientPixmap = QPixmap(mWidth, mHeight);
-	mGradientPixmap.fill(Qt::transparent);
-	QPainter p( &mGradientPixmap );
+	mGradientImage = QImage(mWidth, mHeight, QImage::Format_ARGB32);
+	mGradientImage.fill(Qt::transparent);
+	QPainter p( &mGradientImage );
 	p.fillRect(0,0,mWidth, mHeight, mGradient);
 	p.end();
 }
@@ -66,39 +66,44 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
 					const QStyleOptionGraphicsItem options[],
 					QWidget *widget)
 {
-	QTime time;
-	time.start();
-
-	QPixmap image(painter->viewport().size());
-	image.fill(Qt::transparent);
+//	QTime time;
+//	time.start();
 
 	{
-		QPainter imagePainter(&image);
+		if(mWidth == 0) {  //No reflection
+			for (int i = 0; i < numItems; ++i) {
+				QTransform sceneTransform = items[i]->sceneTransform();
+				painter->setTransform(sceneTransform, false);
+				items[i]->paint(painter, &options[i], widget);
+			}
+		} else {  //With reflection
 
-		for (int i = 0; i < numItems; ++i) {
-			// Draw the item
-			QMatrix sceneMatrix = items[i]->sceneMatrix();
-			imagePainter.setMatrix(sceneMatrix, false);
-			items[i]->paint(&imagePainter, &options[i], widget);
+			QImage image(mWidth, mHeight, QImage::Format_ARGB32);
+			image.fill(Qt::transparent);
+			QPainter imagePainter(&image);
+			//Turn on all optimizations
+			imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
+			imagePainter.setClipping(true);
+			painter->save();
+
+			for (int i = 0; i < numItems; ++i) {
+				QTransform sceneTransform = items[i]->sceneTransform();
+				painter->setTransform(sceneTransform, false);
+				items[i]->paint(painter, &options[i], widget);
+				if(sceneTransform.dy() + items[i]->boundingRect().height() > mY - mHeight) {
+					sceneTransform = QTransform(sceneTransform.m11(), sceneTransform.m12(), sceneTransform.m21(), -sceneTransform.m22(), sceneTransform.dx() - mX, mY - sceneTransform.dy());
+					imagePainter.setTransform(sceneTransform, false);
+					items[i]->paint(&imagePainter, &options[i], widget);
+				}
+			}
+			imagePainter.setTransform(QTransform());
+			imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+			imagePainter.drawImage(0,0,mGradientImage);
+			painter->restore();
+			painter->drawImage( mX,mY,image);
 		}
-
-		painter->drawPixmap( 0,0,image);
 	}
-	kDebug() << "1 : " << time.elapsed();
-	if(mWidth == 0) return; // No reflections
-	
-	image = image.copy(mX,mY-mHeight,mWidth,mHeight);
-	kDebug() << "2 : " << time.elapsed();
-	image = image.transformed(QMatrix(1, 0, 0, -1, 0, mHeight), Qt::FastTransformation);
-	kDebug() << "3 : " << time.elapsed();
-
-	QPainter p (&image);
-	p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-	kDebug() << "4 : " << time.elapsed();
-	p.drawPixmap(0,0,mGradientPixmap);
-	p.end();
-	painter->drawPixmap(mX,mY, image);
-	kDebug() << "5 : " << time.elapsed();
+//	kDebug() << "1 : " << time.elapsed();
 }
 
 #include "reflectiongraphicsscene.moc"

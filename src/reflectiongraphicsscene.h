@@ -58,7 +58,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
     int mWidth;
     int mHeight;
     QLinearGradient mGradient;
-    QPixmap mGradientPixmap;
+    QImage mGradientImage;
     QTransform mTransform;
 
 };
