@@ -77,15 +77,9 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
 
 		for (int i = 0; i < numItems; ++i) {
 			// Draw the item
-			imagePainter.save();
 			QMatrix sceneMatrix = items[i]->sceneMatrix();
-			imagePainter.setMatrix(sceneMatrix, true);
+			imagePainter.setMatrix(sceneMatrix, false);
 			items[i]->paint(&imagePainter, &options[i], widget);
-			
-//			if(sceneMatrix
-			
-
-			imagePainter.restore();
 		}
 
 		painter->drawPixmap( 0,0,image);
