@@ -30,4 +30,6 @@ File=yellow.rc
 
 [Pretty]
 Name=Black and Red 2
+Name[ga]=Dubh agus Dearg 2
+Name[zh_TW]=黑與紅 2
 File=pretty.rc
