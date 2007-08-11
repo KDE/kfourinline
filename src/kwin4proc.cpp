@@ -244,7 +244,7 @@ void KComputer::slotCommand(QDataStream &in, int msgid, int /*receiver*/, int /*
     case 2:  // hint
     {
       qint8 cid   = 2;
-      qint32 recv = 0;
+      quint32 recv = 0;
       out << cid;
       MoveResult result = think(in,out,true);
       out << ( qint32 )result.value;
