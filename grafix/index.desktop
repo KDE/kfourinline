@@ -2,7 +2,7 @@
 Name=Black and Red
 Name[be]=Белыя і чырвоныя
 Name[el]=Μαύρο και κόκκινο
-Name[es]=Blanco y rojo
+Name[es]=Negro y rojo
 Name[fa]=سیاه و سفید
 Name[ga]=Dubh agus Dearg
 Name[ja]=黒と赤
@@ -30,6 +30,7 @@ File=yellow.rc
 
 [Pretty]
 Name=Black and Red 2
+Name[es]=Negro y rojo 2
 Name[fa]=سیاه و قرمز ۲
 Name[ga]=Dubh agus Dearg 2
 Name[pt]=Preto e Vermelho 2
