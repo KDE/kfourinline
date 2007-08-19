@@ -32,9 +32,9 @@ background-svgid=background
 # Static decoration sprites, always displayed
 decoration=boardback
 # Position of the game board for the pieces [0..1]
-board-pos=0.1432,0.1430
+board-pos=0.142,0.1430
 # Spread of sprites for board columns [0..1]
-board-spread=0.0588,0.0588
+board-spread=0.0586,0.059
 # Movebar arrow position (must be same than movebar pos) [0..1]
 arrow-pos=0.12,0.04
 # Velocity [relativ/second] for game piece move animation
@@ -314,12 +314,12 @@ zValue=150.0
 svgid=quicklaunch
 
 # Position of text
-posQuickstart=0.08,0.02
+posQuickstart=0.12,0.016
 posStartplayer=0.08,0.2
 posColor=0.08,0.31
 # Font for text quickstart
 fontHeightHeader=0.070
-fontWidthHeader=0.95
+fontWidthHeader=0.90
 fontColorHeader=255,255,255
 # Font for other text 
 fontHeight=0.050
