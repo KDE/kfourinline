@@ -279,7 +279,7 @@ void KWin4Doc::moveDone(int /*mode*/ )
 KPlayer* KWin4Doc::nextPlayer(KPlayer* last, bool /*exclusive*/)
 {
   if (global_debug>1)
-     kDebug(12010) << k_funcinfo << "nextPlayer last="<<last->id() << "admin=" << isAdmin();
+     kDebug(12010) << "nextPlayer last="<<last->id() << "admin=" << isAdmin();
 
   // Should be enough if the admin sets the turn
   if (last->userId()==Yellow)
