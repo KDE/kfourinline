@@ -1,5 +1,3 @@
-#ifndef KWIN4_VIEW_H
-#define KWIN4_VIEW_H
 /*
    This file is part of the KDE games kwin4 program
    Copyright (c) 2006 Martin Heni <kde@heni-online.de>
@@ -20,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+#ifndef KWIN4_KWIN4VIEW_H
+#define KWIN4_KWIN4VIEW_H
+
 // Qt includes
 #include <QWidget>
 #include <QGraphicsView>
@@ -35,9 +36,6 @@
 // Local includes
 #include "thememanager.h"
 #include "kwin4global.h"
-
-// KDE includes
-#include <kgameio.h>
 
 // Forward declaration
 class DisplayIntro;
@@ -172,4 +170,4 @@ class KWin4View : public QGraphicsView
     bool mIsRunning;
 };
 
-#endif
+#endif // KWIN4_KWIN4VIEW_H
