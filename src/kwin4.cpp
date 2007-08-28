@@ -219,6 +219,8 @@ bool KWin4App::queryExit()
   return true;
 }
 
+
+// Retrieve a theme file name from the menu index number
 QString KWin4App::themefileFromIdx(int idx)
 {
   QStringList list(mThemeFiles.keys());
@@ -340,7 +342,7 @@ void KWin4App::initGUI()
   action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
   ((KSelectAction*)action)->setItems(themes);
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
-  kDebug() << "Setting current item to" << mThemeIndexNo;
+  kDebug() << "Setting current theme item to" << mThemeIndexNo;
   ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
 
   // Debug
@@ -554,6 +556,7 @@ void KWin4App::quickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::I
   // Start game (direct call will crash as intro object will be deleted)
   QTimer::singleShot(0, this,SLOT(menuNewGame()));
 }
+
 
 // Start a new game menu
 void KWin4App::menuNewGame()
