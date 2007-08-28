@@ -58,8 +58,8 @@ KWin4View::KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeMan
 
   setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
 
-  viewport()->setMouseTracking(false);
-  setMouseTracking(false);
+  viewport()->setMouseTracking(true);
+  setMouseTracking(true);
 
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -121,6 +121,11 @@ void KWin4View::updateAndAdvance()
 void KWin4View::initGame(Score* scoreData)
 {
   kDebug() << "KWin4View::initGame";
+
+  // For better performance disable mouse tracking now
+  viewport()->setMouseTracking(true);
+  setMouseTracking(true);
+
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;
   if (!mGameDisplay)
