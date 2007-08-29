@@ -32,9 +32,9 @@ background-svgid=background
 # Static decoration sprites, always displayed
 decoration=boardback
 # Position of the game board for the pieces [0..1]
-board-pos=0.144,0.152
+board-pos=0.145,0.151
 # Spread of sprites for board columns [0..1]
-board-spread=0.0588,0.059
+board-spread=0.059,0.059
 # Movebar arrow position (must be same than movebar pos) [0..1]
 arrow-pos=0.12,0.04
 # Velocity [relativ/second] for game piece move animation
