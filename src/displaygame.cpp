@@ -172,8 +172,17 @@ void DisplayGame::changeTheme()
   mScene->setBackgroundBrush(pixmap);
   QRectF pos = mBoard->sceneBoundingRect();
 
+  // Check whether the theme uses reflection handling
   if( config.readEntry("use-reflection", false))
-	  mScene->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
+  {
+	  mScene->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), 
+                                (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
+  }
+  else
+  {
+    // Zero width disables the reflections
+    mScene->setReflection(0,0,0,0);
+  }
   mView->update();
 
 }
