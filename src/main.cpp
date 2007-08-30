@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
                         ki18n("(c) 1995-2007, Martin Heni"));
   aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");
   aboutData.addAuthor(ki18n("Johann Ollivier Lapeyre"),ki18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
+  aboutData.addAuthor(ki18n("Eugene Trounev"),ki18n("Graphics"), "eugene.trounev@gmail.com");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Code Improvements"));
   KCmdLineArgs::init( argc, argv, &aboutData );
 
