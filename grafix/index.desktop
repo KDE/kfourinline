@@ -32,12 +32,4 @@ File=yellow.rc
 
 [Pretty]
 Name=True Reflection
-Name[es]=
-Name[fa]=
-Name[ga]=
-Name[ja]=
-Name[pt]=
-Name[pt_BR]=
-Name[sv]=
-Name[zh_TW]=
 File=pretty.rc
