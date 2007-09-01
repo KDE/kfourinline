@@ -32,4 +32,6 @@ File=yellow.rc
 
 [Pretty]
 Name=True Reflection
+Name[pt]=Reflexão Verdadeira
+Name[pt_BR]=Reflexão Verdadeira
 File=pretty.rc
