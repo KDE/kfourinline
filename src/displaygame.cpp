@@ -343,6 +343,8 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
                            board_spread.y()*y    + board_pos.y());
     sprite->setFrame(frame);
     sprite->startLinear(from, to, velocity);
+    // For theme store (x,y) board coordinate 
+    sprite->setLogicalPos(QPoint(x, y));
   }
   else
   {
@@ -350,6 +352,8 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
                            board_spread.y()*y + board_pos.y());
     sprite->setFrame(frame);
     sprite->setPosition(to);
+    // For theme store (x,y) board coordinate 
+    sprite->setLogicalPos(QPoint(x, y));
   }
 
   sprite->show();

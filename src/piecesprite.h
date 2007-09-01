@@ -86,6 +86,12 @@ class PieceSprite : public PixmapSprite
       */
     void startLinear(QPointF start, QPointF end, double velocity);
 
+    /** Store the logical board coordinates (0-6, 0-5) for theme changes. Need to
+     *  manually be called after all setPosition or set Linear calls.
+     *  @param pos The logical position [0-6, 0-5]
+     */
+    void setLogicalPos(QPoint pos);
+
   private:
 
     /// The duration of the movement 
@@ -99,6 +105,9 @@ class PieceSprite : public PixmapSprite
 
     /// The movment sprite notifier
     SpriteNotify* mNotify;
+
+    // The logical sprite pos for theme changs
+    QPoint mLPos;
 
 };
 
