@@ -30,6 +30,13 @@ Name[te]=పసుపు మరయు ఎరుపు
 Name[zh_TW]=黃與紅
 File=yellow.rc
 
+[YellowReflection]
+Name=Yellow and Red Reflection
+Name[es]=Amarillo y rojo Reflexión
+Name[pt]=Amarelo e Vermelho Reflexão
+Name[pt_BR]=Amarelo e Vermelho Reflexão
+File=yellow_reflection.rc
+
 [Pretty]
 Name=True Reflection
 Name[es]=Reflexión real
