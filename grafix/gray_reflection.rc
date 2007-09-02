@@ -1,7 +1,7 @@
 # General section defines properties of the thememanger
 [general]
 # SVG file to load (path relative to this file) which contains all SVG items
-svgfile=pretty.svg
+svgfile=gray_reflection.svg
 # Game aspect ratio
 aspect-ratio=1.60
 

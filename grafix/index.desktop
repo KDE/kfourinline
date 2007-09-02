@@ -37,9 +37,3 @@ Name[pt]=Amarelo e Vermelho Reflexão
 Name[pt_BR]=Amarelo e Vermelho Reflexão
 File=yellow_reflection.rc
 
-[Pretty]
-Name=True Reflection
-Name[es]=Reflexión real
-Name[pt]=Reflexão Verdadeira
-Name[pt_BR]=Reflexão Verdadeira
-File=pretty.rc
