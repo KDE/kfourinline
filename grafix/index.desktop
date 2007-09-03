@@ -32,9 +32,6 @@ File=yellow.rc
 
 [YellowReflection]
 Name=Yellow and Red Reflection
-Name[es]=Amarillo y rojo Reflexión
-Name[pt]=Amarelo e Vermelho Reflexão
-Name[pt_BR]=Amarelo e Vermelho Reflexão
 File=yellow_reflection.rc
 
 [GrayReflection]
