@@ -2,12 +2,16 @@
 ########### install files ###############
 
 install( FILES
-index.desktop
+default.desktop
 default.rc
-yellow.rc
 default.svg
-gray_reflection.svg
+yellow.desktop
+yellow.rc
+yellow.svg 
+gray_reflection.desktop
 gray_reflection.rc
+gray_reflection.svg
+yellow_reflection.desktop
 yellow_reflection.rc
-yellow.svg DESTINATION ${DATA_INSTALL_DIR}/kwin4/grafix)
+DESTINATION ${DATA_INSTALL_DIR}/kwin4/grafix)
 

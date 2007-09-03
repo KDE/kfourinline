@@ -92,35 +92,24 @@ KWin4App::KWin4App(QWidget *parent)
   #endif
   #endif
 
-  QString theme = KStandardDirs::locate("kwin4theme", "default.rc");
-  kDebug() << "theme =" << theme;
-  if (theme.isEmpty())
-  {
-    KMessageBox::error(this, i18n("Installation error: No theme file found."));
-    QTimer::singleShot(0, this,SLOT(close()));
-    return;
-  }
-
-  mThemeDirName = KGlobal::dirs()->findResourceDir("kwin4theme","default.rc");
-  kDebug() << "THEME DIR IS" << mThemeDirName;
-
   // Read theme files
-  QString themeIndex = KGlobal::dirs()->findResource("kwin4theme","index.desktop");
-  if (themeIndex.isEmpty())
+  QStringList themeList =  KGlobal::dirs()->findAllResources("kwin4theme", "*.desktop", KStandardDirs::NoDuplicates);
+  if (themeList.isEmpty())
   {
     KMessageBox::error(this, i18n("Installation error: No theme list found."));
     QTimer::singleShot(0, this,SLOT(close()));
     return;
   }
-  KConfig themeInfo( themeIndex, KConfig::OnlyLocal);
-  QStringList themeList = themeInfo.groupList();
+
+  // Read theme files
   for (int i = 0; i < themeList.size(); i++)
   {
-    KConfigGroup themeGroup(&themeInfo, themeList.at(i));
+    KConfig themeInfo( themeList.at(i), KConfig::OnlyLocal);
+    KConfigGroup themeGroup(&themeInfo, "Theme");
     QString name = themeGroup.readEntry("Name", QString());
     QString file = themeGroup.readEntry("File", QString());
     mThemeFiles[name] = file;
-    kDebug() <<  "Found theme: Name(i18n)="<<name<<" File="<<file;   
+    kDebug() <<  "Found theme: " <<themeList.at(i) <<" Name(i18n)="<<name<<" File="<<file;   
   }
   mThemeIndexNo =0;
 

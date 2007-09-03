@@ -266,9 +266,6 @@ class KWin4App : public KXmlGuiWindow
     // The graphics scene to use
     ReflectionGraphicsScene* mScene;
 
-    // The directory for the theme files
-    QString mThemeDirName;
-
     // Buttons of the network dialog
     KButtonGroup *mColorGroup;
 
