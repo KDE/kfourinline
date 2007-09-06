@@ -78,5 +78,5 @@ SwallowExec=
 SwallowTitle=
 Terminal=false
 Type=Application
-DocPath=kwin4/index.html
+X-DocPath=kwin4/index.html
 Categories=Qt;KDE;Game;BoardGame;
