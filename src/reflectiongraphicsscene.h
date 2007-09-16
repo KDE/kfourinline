@@ -29,7 +29,6 @@
 #include <QTransform>
 
 class QPainter;
-class QRectF;
 class QGraphicsItem;
 class QWidget;
 

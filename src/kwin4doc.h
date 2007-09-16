@@ -36,7 +36,6 @@
 #include "aiboard.h"
 
 class KWin4View;
-class QGraphicsItem;
 class Score;
 
 

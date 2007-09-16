@@ -30,12 +30,10 @@
 #include "kwin4global.h"
 #include "thememanager.h"
 
-class Kwin4Player;
 class KWin4Doc;
 class KWin4View;
 class KButtonGroup;
 class KPlayer;
-class KGameChat;
 class KGame;
 class ChatDlg;
 class ReflectionGraphicsScene;
