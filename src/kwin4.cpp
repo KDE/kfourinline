@@ -76,6 +76,10 @@
 KWin4App::KWin4App(QWidget *parent)
         : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
 {
+  // default names for players
+  (void)I18N_NOOP2("default name of first player", "Player 1");
+  (void)I18N_NOOP2("default name of second player", "Player 2");
+
   mDoc       = 0;
   mView      = 0;
   mScene     = 0;
