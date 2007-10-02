@@ -42,6 +42,8 @@
 #include "score.h"
 #include "reflectiongraphicsscene.h"
 
+#define UPDATE_TIME  25
+
 // Constructor for the view
 KWin4View::KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeManager* theme, QWidget* parent)
           : QGraphicsView(scene, parent)
@@ -56,7 +58,11 @@ KWin4View::KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeMan
   setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
 
-  setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+  //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
+  setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+  setOptimizationFlags(QGraphicsView::DontClipPainter |
+                       QGraphicsView::DontSavePainterState |
+                       QGraphicsView::DontAdjustForAntialiasing );
 
   viewport()->setMouseTracking(true);
   setMouseTracking(true);
@@ -67,7 +73,7 @@ KWin4View::KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeMan
 
   QTimer* timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
-  timer->start(25);
+  timer->start(UPDATE_TIME);
 
   // Game status
   mIsRunning = false;
@@ -111,6 +117,21 @@ KWin4View::~KWin4View()
 // Advance and update canvas/scene
 void KWin4View::updateAndAdvance()
 {
+  static int elapsed = -1;
+  static QTime timer;
+
+  if (elapsed < 0 ) 
+  {
+    timer.start();
+    elapsed = 0;
+  }
+  else
+  {
+    elapsed = timer.elapsed();
+    timer.start();
+    dynamic_cast<ReflectionGraphicsScene*>(scene())->displayUpdateTime(elapsed);
+  }
+  
   scene()->advance();
   // QGV takes care of updating dirty rects, no need to call update or the whole scene is dirtied and repainted
   // scene()->update();
@@ -123,8 +144,8 @@ void KWin4View::initGame(Score* scoreData)
   kDebug() << "KWin4View::initGame";
 
   // For better performance disable mouse tracking now
-  viewport()->setMouseTracking(true);
-  setMouseTracking(true);
+  viewport()->setMouseTracking(false);
+  setMouseTracking(false);
 
   if (mIntroDisplay) delete mIntroDisplay;
   mIntroDisplay = 0;

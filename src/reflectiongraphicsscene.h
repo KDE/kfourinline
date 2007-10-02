@@ -27,6 +27,9 @@
 #include <QLinearGradient>
 #include <QPixmap>
 #include <QTransform>
+#include <QGraphicsTextItem>
+#include <QList>
+
 
 class QPainter;
 class QGraphicsItem;
@@ -51,6 +54,8 @@ class ReflectionGraphicsScene : public QGraphicsScene
 
     void setReflection(int x, int y, int width, int height);
 
+    void displayUpdateTime(int time);
+
   private:
     int mX;
     int mY;
@@ -59,6 +64,11 @@ class ReflectionGraphicsScene : public QGraphicsScene
     QLinearGradient mGradient;
     QImage mGradientImage;
     QTransform mTransform;
+    // Allow reflections scene?
+    bool mAllowReflections;
+    QGraphicsTextItem* mFrameSprite;
+    int mDisplayUpdateTime;
+    QList<int> mDrawTimes;
 
 };
 

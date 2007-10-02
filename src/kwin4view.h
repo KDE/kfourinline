@@ -168,6 +168,7 @@ class KWin4View : public QGraphicsView
     
     // Status of the game (running or not)
     bool mIsRunning;
+
 };
 
 #endif // KWIN4_KWIN4VIEW_H

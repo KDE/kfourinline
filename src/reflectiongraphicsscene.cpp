@@ -20,6 +20,7 @@
 
 // Header includes
 #include "reflectiongraphicsscene.h"
+#include "kwin4global.h"
 
 #include <QPainter>
 #include <QRectF>
@@ -33,77 +34,115 @@
 
 ReflectionGraphicsScene::ReflectionGraphicsScene(QObject * parent) : QGraphicsScene(parent)
 {
-	mX = mY = mWidth = mHeight = 0;
+  mX = mY = mWidth = mHeight = 0;
+  mAllowReflections = true;
+  mDisplayUpdateTime = 0;
+  mFrameSprite = new QGraphicsTextItem(0, this);
+  mFrameSprite->setPos(QPointF(0.0, 0.0));
+  mFrameSprite->setZValue(1000.0);
+  if (global_debug > 0) mFrameSprite->show();
+  else mFrameSprite->hide();
 }
 
 ReflectionGraphicsScene::~ReflectionGraphicsScene()
 {
+  delete mFrameSprite;
 }
 
-void ReflectionGraphicsScene::setReflection(int x, int y, int width, int height) {
-	mX = x;
-	mY = y;
-	mWidth = width;
-	mHeight = height*2;
+void ReflectionGraphicsScene::displayUpdateTime(int time)
+{
+  mDisplayUpdateTime = time;
+}
 
-	QPoint p1, p2;
-	p2.setY(mHeight);
-	mGradient = QLinearGradient(p1, p2);
-        mGradient.setColorAt(0, QColor(0, 0, 0, 100));
-        mGradient.setColorAt(1, Qt::transparent);
+void ReflectionGraphicsScene::setReflection(int x, int y, int width, int height)
+{
+  mX = x;
+  mY = y;
+  mWidth = width;
+  mHeight = height*2;
 
-	kDebug() << "Set reflection "<< x << " " << y << " " << width << " " << height ;
+  QPoint p1, p2;
+  p2.setY(mHeight);
+  mGradient = QLinearGradient(p1, p2);
+  mGradient.setColorAt(0, QColor(0, 0, 0, 100));
+  mGradient.setColorAt(1, Qt::transparent);
 
-	mGradientImage = QImage(mWidth, mHeight, QImage::Format_ARGB32);
-	mGradientImage.fill(Qt::transparent);
-	QPainter p( &mGradientImage );
-	p.fillRect(0,0,mWidth, mHeight, mGradient);
-	p.end();
+  kDebug() << "Set reflection "<< x << " " << y << " " << width << " " << height ;
+
+  mGradientImage = QImage(mWidth, mHeight, QImage::Format_ARGB32);
+  mGradientImage.fill(Qt::transparent);
+  QPainter p( &mGradientImage );
+  p.fillRect(0,0,mWidth, mHeight, mGradient);
+  p.end();
 }
 
 void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
-		                        QGraphicsItem *items[],
-					const QStyleOptionGraphicsItem options[],
-					QWidget *widget)
+                                        QGraphicsItem *items[],
+                                        const QStyleOptionGraphicsItem options[],
+                                        QWidget *widget)
 {
-//	QTime time;
-//	time.start();
+  QTime time;
+  time.start();
+  
+  if (mAllowReflections)
+  {
+   if(mWidth == 0) 
+   {  //No reflection
+     for (int i = 0; i < numItems; ++i) 
+     {
+       QTransform sceneTransform = items[i]->sceneTransform();
+       painter->setTransform(sceneTransform, false);
+       items[i]->paint(painter, &options[i], widget);
+     }
+   } 
+   else
+   {  //With reflection
+     QImage image(mWidth, mHeight, QImage::Format_ARGB32);
+     image.fill(Qt::transparent);
+     QPainter imagePainter(&image);
+     //Turn on all optimizations
+     imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
+     imagePainter.setClipping(true);
+     painter->save();
+  
+     for (int i = 0; i < numItems; ++i) 
+     {
+       QTransform sceneTransform = items[i]->sceneTransform();
+       painter->setTransform(sceneTransform, false);
+       items[i]->paint(painter, &options[i], widget);
+       if(sceneTransform.dy() + items[i]->boundingRect().height() > mY - mHeight) 
+       {
+         sceneTransform = QTransform(sceneTransform.m11(), sceneTransform.m12(), sceneTransform.m21(), -sceneTransform.m22(), sceneTransform.dx() - mX, mY - sceneTransform.dy());
+         imagePainter.setTransform(sceneTransform, false);
+         items[i]->paint(&imagePainter, &options[i], widget);
+       }
+     }
+     imagePainter.setTransform(QTransform());
+     imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+     imagePainter.drawImage(0,0,mGradientImage);
+     painter->restore();
+     painter->drawImage( mX,mY,image);
+   }
+  }
+  else QGraphicsScene::drawItems(painter, numItems, items, options, widget);
 
-	{
-		if(mWidth == 0) {  //No reflection
-			for (int i = 0; i < numItems; ++i) {
-				QTransform sceneTransform = items[i]->sceneTransform();
-				painter->setTransform(sceneTransform, false);
-				items[i]->paint(painter, &options[i], widget);
-			}
-		} else {  //With reflection
+  // Time display
+  int elapsed = time.elapsed();
+  mDrawTimes.append(elapsed);
+  if (mDrawTimes.size() > 50) mDrawTimes.removeFirst();
+  double avg = 0.0;
+  for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
+  avg /= mDrawTimes.size();
 
-			QImage image(mWidth, mHeight, QImage::Format_ARGB32);
-			image.fill(Qt::transparent);
-			QPainter imagePainter(&image);
-			//Turn on all optimizations
-			imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
-			imagePainter.setClipping(true);
-			painter->save();
 
-			for (int i = 0; i < numItems; ++i) {
-				QTransform sceneTransform = items[i]->sceneTransform();
-				painter->setTransform(sceneTransform, false);
-				items[i]->paint(painter, &options[i], widget);
-				if(sceneTransform.dy() + items[i]->boundingRect().height() > mY - mHeight) {
-					sceneTransform = QTransform(sceneTransform.m11(), sceneTransform.m12(), sceneTransform.m21(), -sceneTransform.m22(), sceneTransform.dx() - mX, mY - sceneTransform.dy());
-					imagePainter.setTransform(sceneTransform, false);
-					items[i]->paint(&imagePainter, &options[i], widget);
-				}
-			}
-			imagePainter.setTransform(QTransform());
-			imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-			imagePainter.drawImage(0,0,mGradientImage);
-			painter->restore();
-			painter->drawImage( mX,mY,image);
-		}
-	}
-//	kDebug() << "1 : " << time.elapsed();
+  if (global_debug > 0)
+     mFrameSprite->setHtml(QString("<b>Draw: %1 ms  Average %2 ms  Update: %3 ms </b>").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
+
+   if (avg > 50.0)
+   {
+     mAllowReflections = false;   
+     kDebug() << "DISABLING REFLECTIONS DUE TO SLOW COMPUTER";
+   }
 }
 
 #include "reflectiongraphicsscene.moc"
