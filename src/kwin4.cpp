@@ -110,12 +110,15 @@ KWin4App::KWin4App(QWidget *parent)
   {
     KConfig themeInfo( themeList.at(i), KConfig::OnlyLocal);
     KConfigGroup themeGroup(&themeInfo, "Theme");
-    QString name = themeGroup.readEntry("Name", QString());
-    QString file = themeGroup.readEntry("File", QString());
+    QString name   = themeGroup.readEntry("Name", QString());
+    QString file   = themeGroup.readEntry("File", QString());
+    bool isDefault = themeGroup.readEntry("Default", false);
+    if (mThemeDefault.isNull()) mThemeDefault = name;
+    if (isDefault) mThemeDefault = name;
     mThemeFiles[name] = file;
-    kDebug() <<  "Found theme: " <<themeList.at(i) <<" Name(i18n)="<<name<<" File="<<file;   
+    kDebug() <<  "Found theme("<<i<<"): " <<themeList.at(i) <<" Name(i18n)="<<name<<" File="<<file << " default="<<isDefault;   
   }
-  mThemeIndexNo =0;
+  mThemeIndexNo = themeIdxFromName(mThemeDefault);
 
 
   // Setup application
@@ -140,7 +143,7 @@ KWin4App::KWin4App(QWidget *parent)
 
   // Theme
   QString themeFile = themefileFromIdx(mThemeIndexNo);
-  kDebug() << "Load theme" << themeFile;
+  kDebug() << "Loading theme" << themeFile << " #"<<mThemeIndexNo;
   mTheme  = new ThemeManager(themeFile, this);
   if (mTheme->checkTheme() != 0)
   {
@@ -220,6 +223,20 @@ QString KWin4App::themefileFromIdx(int idx)
   list.sort();
   QString themeFile = mThemeFiles[list.at(idx)];
   return themeFile;
+}
+
+
+// Retrieve a theme idx from a theme name 
+int KWin4App::themeIdxFromName(QString name)
+{
+  QStringList list(mThemeFiles.keys());
+  list.sort();
+  for (int i=0; i < list.size(); ++i)
+  {
+    if (list[i] == name) return i;
+  }
+  kError() << "Theme index lookup failed for " << name;
+  return 0;
 }
 
 
@@ -469,8 +486,9 @@ void KWin4App::readProperties()
 
   // Program data
   KConfigGroup cfg = config->group("ProgramData");
-  mThemeIndexNo = cfg.readEntry("ThemeIndexNo", 0);
+  mThemeIndexNo = cfg.readEntry("ThemeIndexNo", themeIdxFromName(mThemeDefault));
   if (mThemeIndexNo >= mThemeFiles.size()) mThemeIndexNo = 0;
+  kDebug() << "Index = " << mThemeIndexNo << " def index=" << themeIdxFromName(mThemeDefault);
 
 
   kDebug() << "LOADED PROPERTIES";

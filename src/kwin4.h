@@ -128,12 +128,17 @@ class KWin4App : public KXmlGuiWindow
      */
     virtual bool queryExit();
 
-
     /** Retrieve the theme file from the theme index number give.
       * @param idx The theme index number [0..]
       * @return The theme file name.
       */
     QString themefileFromIdx(int idx);
+
+    /** Retrieve the theme idx number from the theme name give.
+      * @param name The theme file name.
+      * @return The theme index number [0..]
+      */
+    int themeIdxFromName(QString name);
 
   public slots:
     /** The server type was changed (KGame)
@@ -254,6 +259,9 @@ class KWin4App : public KXmlGuiWindow
 
     // Current theme index
     int mThemeIndexNo;
+
+    // Default theme 
+    QString mThemeDefault;
 
     // The game view
     KWin4View *mView;
