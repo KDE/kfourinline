@@ -136,7 +136,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
 
 
   if (global_debug > 0)
-     mFrameSprite->setHtml(QString("<b>Draw: %1 ms  Average %2 ms  Update: %3 ms </b>").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
+     mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
 
    if (avg > 50.0 && mDrawTimes.size() == 50)
    {

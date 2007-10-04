@@ -401,7 +401,6 @@ void DisplayGame::displayStar(int x,int y,int no)
   KConfigGroup config  = thememanager()->config(id());
   QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
   QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
-  //double velocity      = config.readEntry("move-velocity", 0.1);
 
   QPointF pos  = QPointF(board_spread.x()*x    + board_pos.x(),
                          board_spread.y()*y    + board_pos.y());

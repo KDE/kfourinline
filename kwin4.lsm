@@ -1,11 +1,11 @@
 Begin3
 Title:          Kwin4 
-Version:        0.9
+Version:        1.40
 Entered-date:   
-Description:    A small game for the KDE 2 desktop  
+Description:    A desktop game for KDE 
 Keywords:       four wins,game,computer,network,kde
-Author:         Martin Heni <martin@heni-online.de> 
-Maintained-by:  Martin Heni <martin@heni-online.de> 
+Author:         Martin Heni <kde@heni-online.de> 
+Maintained-by:  Martin Heni <kde@heni-online.de> 
 Primary-site:   	        
 Home-page:      http://www.heni-online.de/linux 
 Original-site:  
