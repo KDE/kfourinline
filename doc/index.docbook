@@ -19,6 +19,12 @@
 </affiliation>
 </author>
 <author>
+<firstname>Eugene</firstname>
+<surname>Trounev</surname>
+<affiliation>
+<address><email>eugene.trounev@gmail.com</email></address></affiliation>
+</author>
+<author>
 <firstname>Benjamin</firstname>
 <surname>Meyer</surname>
 </author>
@@ -26,6 +32,7 @@
 <firstname>Johann Ollivier</firstname>
 <surname>Lapeyre</surname>
 </author>
+
 
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
@@ -223,42 +230,11 @@ Aborts a running game.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
-<listitem>
-<para>
-Pops up a dialog for the network configuration. You can choose to be
-server or client. If you are server you can also choose what color the
-remote player should take over. If a network game is running you can 
-also disconnect it in this menu.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Game</guimenu>
 <guimenuitem>Network Chat...</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Pops up a chat widget which allows you to send messages to the
 other party.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut>
-<keycap>H</keycap>
-</shortcut>
-<guimenu>Game</guimenu>
-<guimenuitem>Hint</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-The computer will calculate the best possible move for you and mark it with a
-sign on the game board.  How good the move actually is depends on the level of
-the computer.
 </para>
 </listitem>
 </varlistentry>
@@ -298,15 +274,15 @@ Quits the program.
 
 </sect1>
 
-<sect1 id="edit-menu">
-<title><guimenu>Edit</guimenu> Menu</title>
+<sect1 id="move-menu">
+<title><guimenu>Move</guimenu> Menu</title>
 <variablelist>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
 </shortcut>
-<guimenu>Edit</guimenu>
+<guimenu>Move</guimenu>
 <guimenuitem>Undo</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -322,7 +298,7 @@ moves are taken back so that it is the player's turn again.
 <shortcut>
 <keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
 </shortcut>
-<guimenu>Edit</guimenu>
+<guimenu>Move</guimenu>
 <guimenuitem>Redo</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -332,6 +308,24 @@ the computer two moves are redone so that it is the player's turn again.
 </para>
 </listitem>
 </varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
+<keycap>H</keycap>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Hint</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+The computer will calculate the best possible move for you and mark it with a
+sign on the game board.  How good the move actually is depends on the level of
+the computer.
+</para>
+</listitem>
+</varlistentry>
+
 </variablelist>
 
 </sect1>
@@ -342,6 +336,7 @@ the computer two moves are redone so that it is the player's turn again.
 
 <variablelist>
 
+
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -350,6 +345,42 @@ the computer two moves are redone so that it is the player's turn again.
 <listitem>
 <para>
 Toggle on and off the display of the toolbar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Toggle on and off the display of the statusbar.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Themes</guimenuitem>
+</menuchoice></term>
+<listitem><para>
+<action>Choose a graphical theme for the game. Which themes are available depends on the current installation.</action>
+</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Pops up a dialog for the network configuration. You can choose to be
+server or client. If you are server you can also choose what color the
+remote player should take over. If a network game is running you can 
+also disconnect it in this menu.
 </para>
 </listitem>
 </varlistentry>
@@ -379,10 +410,10 @@ Toggle on and off the display of the toolbar.
 </menuchoice></term>
 <listitem><para><action>Displays</action> the &k4wins;
 configuration dialog with these options:</para>
-<para><guilabel>Starting Player Color</guilabel>: Determine which color player has the first move in the next game.</para>
+<para><guilabel>Starting Player Color</guilabel>: Determine which  player color has the first move in the next game.</para>
 <para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
-<para><guilabel>Yellow Plays With</guilabel>: 
-Choose who should play for player 1 (yellow). It can be either
+<para><guilabel>Black Plays With</guilabel>: 
+Choose who should play for player 1 (black, yellowm white, ...). It can be either
 <guilabel>Mouse</guilabel> or <guilabel>Keyboard</guilabel>,
 &ie; a local player using the mouse or keyboard
 as input device or <guilabel>Computer</guilabel>, &ie; the computer
@@ -394,15 +425,7 @@ plays for this player.</para>
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Themes</guimenuitem>
-</menuchoice></term>
-<listitem><para>
-<action>Choose a graphical theme for the game. Which themes are available depends on the current installation.</action>
-</para></listitem>
-</varlistentry>
+
 
 </variablelist>
 </sect1>
@@ -424,9 +447,14 @@ plays for this player.</para>
 </para>
 <para>
 Program copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail;
+and Benjamin Meyer.
 </para>
 <para>
-Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail;
+Graphics copyright 2007 Eugene Trounev <email>eugene.trounev@gmail.com</email>
+and Johann Ollivier Lapeyre.
+</para>
+<para>
+Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer.
 </para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
