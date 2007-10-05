@@ -33,6 +33,7 @@
 #include <kdebug.h>
 #include <kconfig.h>
 #include <klocale.h>
+#include <kconfiggroup.h>
 
 // Constructor for the score sprite
 ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)

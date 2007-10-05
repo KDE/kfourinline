@@ -30,6 +30,7 @@
 // KDE includes
 #include <kdebug.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
     :  Themeable(id, theme), PixmapSprite(no, canvas)

@@ -24,6 +24,7 @@
 #include <QPointF>
 #include <QSizeF>
 #include <QGraphicsPixmapItem>
+#include <QTime>
 
 // Local includes
 #include "thememanager.h"

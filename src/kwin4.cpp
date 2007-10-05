@@ -424,10 +424,10 @@ void KWin4App::changeAction(const char* action, bool enable)
 // Save instance-specific properties. The function is
 void KWin4App::saveProperties(KConfigGroup& grp)
 {
-  kDebug() << "SAVE PROPERTIES for GROUP" << grp.group();
+  kDebug() << "SAVE PROPERTIES for GROUP" << grp.name();
 
   // Save current game?
-  QString name = QString("current_game")+grp.group();
+  QString name = QString("current_game")+grp.name();
   QString filename = KStandardDirs::locateLocal("appdata", name);
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (isRunning)
@@ -449,7 +449,7 @@ void KWin4App::saveProperties(KConfigGroup& grp)
 // Read instance-specific properties.
 void KWin4App::readProperties(const KConfigGroup& grp)
 {
-  kDebug() << "READ PROPERTIES for GROUP" << grp.group();
+  kDebug() << "READ PROPERTIES for GROUP" << grp.name();
 
   QString filename = grp.readEntry("CurrentGame", QString());
   kDebug() << "Filename is" << filename;

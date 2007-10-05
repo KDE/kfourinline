@@ -28,6 +28,7 @@
 #include <QTimer>
 #include <QColor>
 #include <QEvent>
+#include <QTime>
 
 // KDE includes
 #include <klocale.h>

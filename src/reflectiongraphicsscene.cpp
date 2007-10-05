@@ -22,6 +22,8 @@
 #include "reflectiongraphicsscene.h"
 #include "kwin4global.h"
 
+#include <kdebug.h>
+
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsItem>

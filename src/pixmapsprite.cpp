@@ -30,6 +30,7 @@
 // KDE includes
 #include <kdebug.h>
 #include <kconfig.h>
+#include <kconfiggroup.h>
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
