@@ -789,8 +789,7 @@ void KWin4App::configureNetwork()
   int port=Prefs::port();
 
   // just for testing - should be non-modal
-  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this,
-      KGameDialog::NetworkConfig, 20000, true);
+  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this, KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
 
@@ -801,12 +800,15 @@ void KWin4App::configureNetwork()
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(remoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(serverTypeChanged(int)));
 
-  new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
-  new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
-  l->addWidget(mColorGroup);
+  QRadioButton *b1 = new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
+  QRadioButton *b2 = new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
+  l->addWidget(b1);
+  l->addWidget(b2);
+  //l->addWidget(mColorGroup);
   mColorGroup->setSelected(0);
   remoteChanged(0);
 
+  dlg.adjustSize();
   dlg.exec();// note: we don't have to check for the result - maybe a bug
 }
 
