@@ -140,9 +140,6 @@ class DisplayGame : public QObject, public virtual Themeable
     // The game boad sprite
     PixmapSprite* mBoard;
     
-    // All board hole sprites
-    QList<PixmapSprite*> mBoardHoles;
-    
     // All arrow sprites
     QList<PixmapSprite*> mArrows;
     
@@ -154,9 +151,6 @@ class DisplayGame : public QObject, public virtual Themeable
     
     // The hint sprite
     PixmapSprite* mHint;
-    
-    // The game over sprite
-    // PixmapSprite* mGameOver;
     
     // The time used for advance()
     QTimer* mTimer;

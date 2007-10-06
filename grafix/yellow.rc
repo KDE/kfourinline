@@ -159,9 +159,9 @@ animation-delay=100
 # The score board input icons player 0
 [scoreinput0]
 # Width of the item  [0..1]
-width=0.080
+width=0.050
 # Item positions relativ to score widget itself [0..1,0..1]
-pos=0.01,0.02
+pos=0.04,0.02
 # Z-Value 
 zValue=120.0
 # SVG ID of the image: Auto means to read read ID from frameX (below)
@@ -184,9 +184,9 @@ frame3=score_network
 # The score board input icons player 1
 [scoreinput1]
 # Width of the item [0..1]
-width=0.080
+width=0.050
 # Item positions relativ to score widget itself [0..1,0..1]
-pos=0.19,0.02
+pos=0.20,0.02
 # Z-Value 
 zValue=120.0
 # SVG ID of the image: Auto means to read read ID from frameX (below)
@@ -211,23 +211,23 @@ frame3=score_network
 # Width of the item [0..1]
 width=0.28
 # Item position [0..1,0..1]
-pos=0.63,0.074
+pos=0.60,0.133
 # Z-Value 
 zValue=100.0
 # SVG ID
 svgid=score
 
 # Sub-item positions relativ to score widget itself (status texts player 0 and 1)
-posWon0=0.05,0.33
-posDraw0=0.05,0.44
-posLoss0=0.05,0.55
-posBreak0=0.05,0.66
-posName0=0.05,0.78
-posWon1=0.65,0.33
-posDraw1=0.65,0.44
-posLoss1=0.65,0.55
-posBreak1=0.65,0.66
-posName1=0.65,0.78
+posWon0=0.20,0.33
+posDraw0=0.20,0.44
+posLoss0=0.20,0.55
+posBreak0=0.20,0.66
+posName0=0.08,0.78
+posWon1=0.75,0.33
+posDraw1=0.75,0.44
+posLoss1=0.75,0.55
+posBreak1=0.75,0.66
+posName1=0.62,0.78
 #posAI=0.35,0.90
 # Font width and height relativ to score widget size!!!
 fontHeight=0.067
@@ -263,29 +263,16 @@ zValue=1.0
 svgid=boardback
 
 
-# One 'hole' in the game board
-[boardholes]
-# Center the graphics around its position
-center=true
-# 'pos' set by program!
-# Width of the item [0..1]
-width=0.045
-# Z-Value
-zValue=15.0
-# SVG ID
-svgid=piece
-
-
-# The game over message
-[gameover]
-# Item position [0..1,0..1]
-pos=0.62,0.19
-# Width of the item [0..1]
-width=0.30
-# Z-Value 
-zValue=300.0
-# SVG ID
-svgid=gameover
+# # The game over message
+# [gameover]
+# # Item position [0..1,0..1]
+# pos=0.62,0.19
+# # Width of the item [0..1]
+# width=0.30
+# # Z-Value 
+# zValue=300.0
+# # SVG ID
+# svgid=gameover
 
 
 # The game board (frame) used in the intro

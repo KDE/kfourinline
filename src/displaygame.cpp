@@ -100,16 +100,6 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   // mSprites.append(mGameOver);
   // mGameOver->hide();
 
-  // Create board holes
-  for (int i=0; i<42; i++)
-  {
-    PixmapSprite* boardHole = new PixmapSprite("boardholes", mTheme, i, mScene);
-    if (!boardHole) kFatal() << "Cannot load sprite" << "boardHoles";
-    mSprites.append(boardHole);
-    mBoardHoles.append(boardHole);
-    boardHole->hide();
-  }
-
   // Create score board
   mScoreBoard = new ScoreSprite("scoreboard", mTheme, 0, mScene);
   if (!mScoreBoard) kFatal() << "Cannot load sprite" << "scoreboard";
@@ -165,26 +155,73 @@ void DisplayGame::changeTheme()
 {
   // Retrieve theme data
   KConfigGroup config = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF arrow_pos    = config.readEntry("arrow-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
 
   // Retrieve background pixmap
   QString bgsvgid = config.readEntry("background-svgid");
   QPixmap pixmap  = thememanager()->getPixmap(bgsvgid, mScene->sceneRect().size().toSize());
   mScene->setBackgroundBrush(pixmap);
   QRectF pos = mBoard->sceneBoundingRect();
+  
+
+  // Move movement arrows
+  for (int i=0; i<7; i++)
+  {
+    PixmapSprite* arrow = mArrows.value(i);
+    QPointF to   = QPointF(board_spread.x()*i + arrow_pos.x(),
+                           board_spread.y()*0 + arrow_pos.y());
+    arrow->setPosition(to);
+
+  }
+  
+  // Move piece sprites 
+  for (int i=0; i<42; i++)
+  {
+    PieceSprite* piece = mPieces.value(i);
+    int x = piece->logicalPos().x();
+    int y = piece->logicalPos().y();
+    QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
+                           board_spread.y()*y + board_pos.y());
+    piece->setPosition(to);
+  }
+  
+  // Move hint
+  {
+    int x = mHint->logicalPos().x();
+    int y = mHint->logicalPos().y();
+    QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
+                           board_spread.y()*y + board_pos.y());
+    mHint->setPosition(to);
+  }
+  
+  
+  // Move stars
+  for (int i=0;i<4;i++)
+  {
+    PixmapSprite* star = mStars.value(i);
+    int x = star->logicalPos().x();
+    int y = star->logicalPos().y();
+    QPointF to  = QPointF(board_spread.x()*x    + board_pos.x(),
+                          board_spread.y()*y    + board_pos.y());
+    star->setPosition(to);
+  }
+  
 
   // Check whether the theme uses reflection handling
   if( config.readEntry("use-reflection", false))
   {
 	  mScene->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), 
-                                (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
+                            (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
   }
   else
   {
     // Zero width disables the reflections
     mScene->setReflection(0,0,0,0);
   }
+  
   mView->update();
-
 }
 
 
@@ -195,33 +232,15 @@ void DisplayGame::start()
   // mTimer->setSingleShot(true);
   // mTimer->start(0);
 
-  // Retrieve theme data
-  KConfigGroup config = thememanager()->config(id());
-  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF arrow_pos    = config.readEntry("arrow-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
 
   // Show decoration
   mBoard->show();
   mScoreBoard->show();
 
-  // Show board holes
-  for (int i=0; i<42; i++)
-  {
-    int x = i/6;
-    int y = i%6;
-    QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
-                           board_spread.y()*y + board_pos.y());
-    mBoardHoles.value(i)->setPosition(to);
-    mBoardHoles.value(i)->show();
-  }
-
+  
   // Show movement arrows
   for (int i=0; i<7; i++)
   {
-    QPointF to   = QPointF(board_spread.x()*i + arrow_pos.x(),
-                           board_spread.y()*0 + arrow_pos.y());
-    mArrows.value(i)->setPosition(to);
     mArrows.value(i)->setFrame(0);
     mArrows.value(i)->show();
   }
@@ -239,8 +258,6 @@ void DisplayGame::start()
     mStars.value(i)->hide();
   }
 
-  // Hide game over
-  // mGameOver->hide();
 }
 
 
@@ -300,6 +317,7 @@ void DisplayGame::displayHint(int x, int y, bool show)
 
   QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
                          board_spread.y()*y + board_pos.y());
+  mHint->setLogicalPos(QPoint(x,y));                       
   mHint->setPosition(to);
   mHint->show();
 }
@@ -361,6 +379,28 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
 }
 
 
+// Draw Star Sprites as winning indicator
+void DisplayGame::displayStar(int x,int y,int no)
+{
+  // Invert height
+  y=5-y;
+  PixmapSprite* star = mStars.value(no-1);
+  assert(star != 0);
+
+  // Retrieve theme data
+  KConfigGroup config  = thememanager()->config(id());
+  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
+  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
+
+  QPointF pos  = QPointF(board_spread.x()*x    + board_pos.x(),
+                         board_spread.y()*y    + board_pos.y());
+  star->setAnimation(true);
+  star->setLogicalPos(QPoint(x,y));
+  star->setPosition(pos);
+  star->show();
+}
+
+
 // Return the mouse mapped to the board or bar item so that a
 // move 0..6 is generated. -1 means an illegal position.
 int DisplayGame::mapMouseToMove(const QPoint &pos)
@@ -388,26 +428,6 @@ int DisplayGame::mapMouseToMove(const QPoint &pos)
   return -1;
 }
 
-
-// Draw Star Sprites as winning indicator
-void DisplayGame::displayStar(int x,int y,int no)
-{
-	// Invert height
-  y=5-y;
-  PixmapSprite* star = mStars.value(no-1);
-  assert(star != 0);
-
-  // Retrieve theme data
-  KConfigGroup config  = thememanager()->config(id());
-  QPointF board_pos    = config.readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread = config.readEntry("board-spread", QPointF(1.0,1.0));
-
-  QPointF pos  = QPointF(board_spread.x()*x    + board_pos.x(),
-                         board_spread.y()*y    + board_pos.y());
-  star->setAnimation(true);
-  star->setPosition(pos);
-  star->show();
-}
 
 
 // Retrieve the score sprite.

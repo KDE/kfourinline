@@ -104,6 +104,17 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
       * @param pos  The position of the sprite [0..1, 0..1]
       */
     void setPosition(QPointF pos);
+    
+   /** Store the logical  coordinates (e.g 0-6, 0-5) for theme changes. Need to
+     *  manually be called after all setPosition or set Linear calls.
+     *  @param pos The logical position
+     */
+    void setLogicalPos(QPoint pos);
+    
+    /** Retrieve the logical  coordinates.
+     *  @return The logical position.
+     */
+    QPoint logicalPos();
 
     /** Reads a theme configuration item of type double and of the given 
       * name.
@@ -154,6 +165,10 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     /** Storage of the frame pixmap offset points.
      */
     QList<QPointF> mHotspots;
+    
+    /** The logical sprite pos for theme changs
+     */
+    QPoint mLPos;
 };
 
 #endif

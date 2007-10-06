@@ -29,8 +29,6 @@
 
 // KDE includes
 #include <kdebug.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
 
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
     :  Themeable(id, theme), PixmapSprite(no, canvas)
@@ -51,28 +49,9 @@ PieceSprite::~PieceSprite()
 // Standard theme change function to redraw the item
 void PieceSprite::changeTheme()
 {
-  // Recalculate position from logical position
-  int x = mLPos.x();
-  int y = mLPos.y();
-
-  // Retrieve theme data: We need to access the gamedisplay data here
-  // Maybe change this later
-  KConfigGroup config   = thememanager()->config("gamedisplay");
-  QPointF board_pos     = config.readEntry("board-pos", QPointF(1.0,1.0));
-  QPointF board_spread  = config.readEntry("board-spread", QPointF(1.0,1.0));
-  QPointF to   = QPointF(board_spread.x()*x + board_pos.x(),
-                         board_spread.y()*y + board_pos.y());
-  setPosition(to);
-
   PixmapSprite::changeTheme();
 }
 
-
-// Store the logical board coordinates for theme changes
-void PieceSprite::setLogicalPos(QPoint pos)
-{
-  mLPos = pos;
-}
 
 
 // Start a linear movement

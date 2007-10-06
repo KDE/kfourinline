@@ -256,7 +256,7 @@ svgid=board
 # The back of the game board 
 [boardback]
 # Width of the item [0..1]
-width=0.44
+width=0.438
 # Item position [0..1,0..1]
 pos=0.1,0.106
 # Z-Value 
@@ -265,29 +265,16 @@ zValue=1.0
 svgid=boardback
 
 
-# One 'hole' in the game board
-[boardholes]
-# Center the graphics around its position
-center=true
-# 'pos' set by program!
-# Width of the item [0..1]
-width=0.045
-# Z-Value
-zValue=15.0
-# SVG ID
-svgid=piece
-
-
-# The game over message
-[gameover]
-# Item position [0..1,0..1]
-pos=0.62,0.19
-# Width of the item [0..1]
-width=0.30
-# Z-Value 
-zValue=300.0
-# SVG ID
-svgid=gameover
+# # The game over message
+# [gameover]
+# # Item position [0..1,0..1]
+# pos=0.62,0.19
+# # Width of the item [0..1]
+# width=0.30
+# # Z-Value 
+# zValue=300.0
+# # SVG ID
+# svgid=gameover
 
 
 # The game board (frame) used in the intro

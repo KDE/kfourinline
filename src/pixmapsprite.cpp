@@ -171,6 +171,20 @@ void PixmapSprite::setPosition(QPointF pos)
 }
 
 
+// Store the logical board coordinates for theme changes
+void PixmapSprite::setLogicalPos(QPoint pos)
+{
+  mLPos = pos;
+}
+
+
+// Retrieve the logical board coordinates for theme changes
+QPoint PixmapSprite::logicalPos()
+{
+  return mLPos;
+}
+
+
 // Start or stop a frame animation
 void PixmapSprite::setAnimation(bool status)
 {
