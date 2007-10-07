@@ -70,7 +70,7 @@ center=true
 # Z-Value 
 zValue=10.0
 # Width of the item [0..1]
-width=0.0478
+width=0.0500
 # SVG ID of the image: Auto means to read read ID from frameX (below)
 svgid=auto
 # First frame number to read

@@ -32,9 +32,9 @@ background-svgid=background
 # Static decoration sprites, always displayed
 decoration=boardback
 # Position of the game board for the pieces [0..1]
-board-pos=0.1431,0.1430
+board-pos=0.1443,0.1430
 # Spread of sprites for board columns [0..1]
-board-spread=0.0588,0.0588
+board-spread=0.0588,0.05870
 # Movebar arrow position (must be same than movebar pos) [0..1]
 arrow-pos=0.12,0.04
 # Velocity [relativ/second] for game piece move animation
@@ -70,7 +70,7 @@ center=true
 # Z-Value 
 zValue=10.0
 # Width of the item [0..1]
-width=0.0478
+width=0.0500
 # SVG ID of the image: Auto means to read read ID from frameX (below)
 svgid=auto
 # First frame number to read
