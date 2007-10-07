@@ -232,11 +232,12 @@ void PixmapSprite::advance(int phase)
   // Handle animation
   if (mAnimationState == Animated)
   {
-  	// Frame delay passed?
+    // Frame delay passed?
     int frame = mTime.elapsed() / mDelay + mEndFrame;
-    while(frame > mEndFrame) {
-	    frame -= (mEndFrame - mStartFrame);
-	    mTime.addSecs( -(mEndFrame - mStartFrame)*mDelay);
+    while(frame > mEndFrame)
+    {
+      frame -= (mEndFrame - mStartFrame);
+      mTime.addSecs( -(mEndFrame - mStartFrame)*mDelay);
     }
     setFrame(frame);
   }
