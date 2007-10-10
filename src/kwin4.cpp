@@ -794,17 +794,18 @@ void KWin4App::configureNetwork()
   dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
 
   KVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
-  QVBoxLayout *l=(QVBoxLayout *)(box->layout());
+  QLayout *l=box->layout();
 
   mColorGroup=new KButtonGroup(box);
+  QVBoxLayout *grouplay=new QVBoxLayout(mColorGroup);
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(remoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(serverTypeChanged(int)));
 
   QRadioButton *b1 = new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
   QRadioButton *b2 = new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
-  l->addWidget(b1);
-  l->addWidget(b2);
-  //l->addWidget(mColorGroup);
+  grouplay->addWidget(b1);
+  grouplay->addWidget(b2);
+  l->addWidget(mColorGroup);
   mColorGroup->setSelected(0);
   remoteChanged(0);
 
