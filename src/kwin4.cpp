@@ -69,6 +69,8 @@
 #define ID_STATUS_MOVER              1002
 
 
+#define UPDATE_TIME  25   /* [ms] */
+
 // Configuration file
 #include <config-src.h>
 
@@ -138,7 +140,7 @@ KWin4App::KWin4App(QWidget *parent)
 
 
   // Scene
-  mScene  = new ReflectionGraphicsScene(this);
+  mScene  = new ReflectionGraphicsScene(UPDATE_TIME, this);
 
 
   // Theme
@@ -153,7 +155,7 @@ KWin4App::KWin4App(QWidget *parent)
   }
 
   // View
-  mView   = new KWin4View(QSize(800,600),mScene,mTheme,this);
+  mView   = new KWin4View(UPDATE_TIME, QSize(800,600),mScene,mTheme,this);
   mDoc->setView(mView);
   connect(mView, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
           this, SLOT(quickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));

@@ -24,12 +24,14 @@
 #include <QPointF>
 #include <QSizeF>
 #include <QTime>
+#include <QList>
 #include <QGraphicsPixmapItem>
 
 // Local includes
 #include "thememanager.h"
 #include "pixmapsprite.h"
 
+class AnimationCommand;
 
 /** The sprite to display the introduction pieces and their animation.
  */
@@ -49,41 +51,80 @@ class IntroSprite : public PixmapSprite
     */
     ~IntroSprite();
 
-    /** Start an intro move. 
-     *  The first half of the move is is on a straight line from start to end. The second
-     *  part of the move is a circle with the given radius and the final part of the move
-     *  is again a straight line to the end location. The sprite movement is started delayed
-     *  with the given delay factor.
-     *  @param start    The start point [rel. coord]
-     *  @param end      The end point [rel. coord]
-     *  @param radius   The radius of the circle [rel. coord]
-     *  @param duration The duration of the move [ms]
-     *  @param delay    The initial movement delay [ms]
-     */
-    void startIntro(QPointF start, QPointF end, double radius, double duration, double delay);
+    /** Clear the animation script.
+      * @param restartTime Reset the timer too (default)
+      */
+    void clearAnimation(bool restartTime = true);
 
-    /** Start a linear movement from start to end with the given duration.
-     *  @param start    The start point [rel. coord]
-     *  @param end      The end point [rel. coord]
-     *  @param duration The duration of the move [ms]
-     */
-    void startLinear(QPointF start, QPointF end, double duration);
+    /** Create a set position command. The sprite is directly set to the given
+      * position.
+      * @param start The position [rel coord.]
+      * @return The command.
+      */
+    AnimationCommand* addPosition(QPointF start);
 
-    /** Start a linear movement from the current position to end with the given duration.
-     *  @param end      The end point [rel. coord]
-     *  @param duration The duration of the move [ms]
-     */
-    void startLinear(QPointF end, double duration);
+    /** Create a relative pause command. The sprite does nothing for the given
+      * amount of [ms].
+      * @param duration The pause duration [ms]
+      * @return The command.
+      */
+    AnimationCommand* addPause(int duration);  
 
-    /** Start a linear manhatte movement (edge following) from the current position to end with the given duration.
-     *  @param end      The end point [rel. coord]
-     *  @param velocity The velocity of the move [rel]
-     *  @param delay    Delay start of movement by this [ms]
-     */
-    void startManhatten(QPointF end, double velocity, double delay);
+    /** Create an absolute wait command. The sprite does nothing until the given
+      * animation time. If the time is in the past nothing is done. Used to
+      * synchronize several sprites.
+      * @param duration The time until when to pause [ms]
+      * @return The command.
+      */
+    AnimationCommand* addWait(int duration);   
 
-    // Possible animation states of the sprite
-    enum MovementState {Idle, IntroDelay, IntroLinear1, IntroCircle, IntroLinear2, LinearMove, ManhattenDelay, ManhattenMove};
+    /** Create a command to show the sprite.
+      * @return The command.
+      */
+    AnimationCommand* addShow();
+
+    /** Create an command to hide the sprite.
+      * @return The command.
+      */
+    AnimationCommand* addHide();
+
+    /** Create a linear movement from start to end with the given duration.
+      * @param start    The start point [rel. coord]
+      * @param end      The end point [rel. coord]
+      * @param duration The duration of the move [ms]
+      * @return The command.
+      */
+    AnimationCommand* addLinear(QPointF start, QPointF end, int duration);
+
+    /** Create a linear movement from the current position to end with the given duration.
+      * @param end      The end point [rel. coord]
+      * @param duration The duration of the move [ms]
+      * @return The command.
+      */
+    AnimationCommand* addRelativeLinear(QPointF end, int duration);
+
+    /** Create a command to move in a full circle around the given center position.
+      * The circle will have the given radius and take the given amount of time to
+      * perform.
+      * @param start   The center of the circle [rel. coord]
+      * @param radius  The circle radius [rel. coord]
+      * @param duration The duration of the move [ms]
+      * @return The command.
+      */
+    AnimationCommand* addCircle(QPointF start, double radius, int duration);
+
+    /** Create a linear manhatte movement (edge following) from the current position to end
+      * with the given duration.
+      * @param end      The end point [rel. coord]
+      * @param velocity The velocity of the move  times 1000 [rel]
+      * @return The command.
+     */
+    AnimationCommand* addRelativeManhatten(QPointF end, double velocity);
+
+    /** Retrieve the time the whole animation script takes.
+      * @return The animation duration  [ms]
+      */
+    int animationDuration();
 
     /** Standard QGI advance function.
      *  @param phase The advance phase
@@ -108,31 +149,50 @@ class IntroSprite : public PixmapSprite
     /** Retrieve the duration of an animation.
       * @return The duration [ms]
       */
-    double duration() {return mDuration;}
+    int duration(AnimationCommand* anim);
+
+    /** Delay the animation of this sprite by the given amount in [ms].
+      * Used to compensate for long delays in SVG resizes etc.
+      * @param duration The delay [ms]
+      */
+    void delayAnimation(int duration);
+
+  protected:
+    /** Execute a given animation command for the given time relative to the
+      * start of the command.
+      * @param anim    The command
+      * @param elapsed The time since the begin of the command [ms]
+      */
+    void executeCmd(AnimationCommand* anim, int elapsed);
+
+    /** Retrieve the start position of the last added animation command.
+      * @return The position [rel. coord].
+      */
+    QPointF previousStart();
+
+    /** Retrieve the end position of the last added animation command.
+      * @return The position [rel. coord].
+      */
+    QPointF previousEnd();
 
   private:
-
-    /// The duration of the movement animation 
-    double mDuration;
-
     /// The current running time for the animation.
     QTime mTime;
 
-    // The start delay before movement starts
-    double mDelay;
-    // The velocity [rel]
-    double mVelocity;
+    // List of animation commands
+    QList<AnimationCommand*> mAnimList;
 
-    // The start points of the movement [rel]
-    QPointF mStart;
-    // The end points of the movement [rel]
-    QPointF mEnd;
-    // The radius of the circular movement [rel]
-    double mRadius;
+    // Time since start of an animation command [ms]
+    int mDeltaT;
 
-    // The state of the animation
-    MovementState mAnimationState;
+    // Global animation delay [ms]
+    int mDelayT;
 
+    // Start animation
+    bool mStartAnimation;
+
+    // Debug timer
+    QTime mDebugTime;
 };
 
 #endif

@@ -25,6 +25,7 @@
 #include <math.h>
 
 // Qt includes
+#include <QListIterator>
 
 // KDE includes
 #include <kdebug.h>
@@ -32,16 +33,59 @@
 
 #define sign(x) ( (x)>0?1:((x)<0?-1:0) )
 
+/**
+ * Store an animation script command. The command represents certain possible
+ * animation sub mentods. The possible methods are listed in the enum Cmd
+ */
+class AnimationCommand
+{
+  public:
+    /**
+     * The supported commands.
+     */
+    enum Cmd {SHOW, HIDE, PAUSE, POSITION, LINEAR_DURATION, CIRCLE_DURATION, MANHATTEN};
+    /**
+     * Construct an animation command
+     */
+    AnimationCommand() 
+    {
+      cmd       = PAUSE;
+      duration  = 0;
+      radius    = 0.0;
+      velocity  = 0.0;
+    }
+    /** The command type.
+     */
+    Cmd cmd;
+    /** How long does the command take [ms].
+     */
+    int duration;
+    /** The start position [0..1, 0..1].
+     */
+    QPointF start;
+    /** The end position [0..1, 0..1].
+     */
+    QPointF end;
+    /** The radius  [0..1] (if necessary).
+     */
+    double radius;
+    /** The velocity [0...1000] (if necessary).
+      */
+    double velocity;
+};
+
+
 // Constructor for the sprite
 IntroSprite::IntroSprite(const QString &id, ThemeManager* theme,  int no, QGraphicsScene* scene)
     :  Themeable(id, theme), PixmapSprite(no, scene)
 {
   hide();
-
-  mNo = no;
-  mAnimationState = Idle;
-  mVelocity = 0.0;
-
+  mDeltaT = 0;
+  mDelayT = 0;
+  mNo     = no;
+  mTime.restart();
+  mDebugTime.restart();
+  mStartAnimation = true;
   if (theme) theme->updateTheme(this);
 }
 
@@ -49,6 +93,8 @@ IntroSprite::IntroSprite(const QString &id, ThemeManager* theme,  int no, QGraph
 // Destructor
 IntroSprite::~IntroSprite()
 {
+  // Clear animation list (deletes objects)
+  clearAnimation();
 }
 
 
@@ -59,58 +105,196 @@ void IntroSprite::changeTheme()
 }
 
 
-// Start the intro movement: linear, circle, linear
-void IntroSprite::startIntro(QPointF start, QPointF end, double radius, double duration, double delay)
+// Clear the animation script
+void IntroSprite::clearAnimation(bool restartTime)
 {
-  mStart          = start;
-  mEnd            = end;
-  mDuration       = duration;
-  mRadius         = radius;
-  mDelay = delay;
-  mAnimationState = IntroDelay;
-  mTime.restart();
-  setPos(mStart.x()*getScale(), mStart.y()*getScale());
-  show();
+  // Clear animation objects before list clear
+  while(!mAnimList.isEmpty())
+  {
+    AnimationCommand* anim = mAnimList.takeFirst();
+    if (anim) delete anim;
+  }
+
+  mAnimList.clear();
+
+  // Reset time?
+  if (restartTime)
+  {
+    mTime.restart();
+    mDeltaT = 0;
+    mDelayT = 0;
+  }
+  mStartAnimation = true;
 }
 
 
-// Start linear movement
-void IntroSprite::startLinear(QPointF start, QPointF end, double duration)
+// Add a show sprite command
+AnimationCommand* IntroSprite::addShow()
 {
-  mStart          = start;
-  mEnd            = end;
-  mDuration       = duration;
-  mAnimationState = LinearMove;
-  mTime.restart();
-  setPos(mStart.x()*getScale(), mStart.y()*getScale());
-  show();
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::SHOW;
+  cmd->duration = 0;
+  cmd->start=previousStart();
+  cmd->end=previousEnd();
+  mAnimList.append(cmd);
+  return cmd;
 }
 
 
-// Start linear movement from current position
-void IntroSprite::startLinear(QPointF end, double duration)
+// Add a hide sprite command
+AnimationCommand* IntroSprite::addHide()
 {
-  mStart          = QPointF(x()/getScale(), y()/getScale());
-  mEnd            = end;
-  mDuration       = duration;
-  mAnimationState = LinearMove;
-  mTime.restart();
-  show();
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::HIDE;
+  cmd->duration = 0;
+  cmd->start=previousStart();
+  cmd->end=previousEnd();
+  mAnimList.append(cmd);
+  return cmd;
 }
 
 
-// Start linear manhatten movement from current position
-void IntroSprite::startManhatten(QPointF end, double velocity, double delay)
+// Add a relative pause
+AnimationCommand* IntroSprite::addPause(int duration)
 {
-  mStart            = QPointF(x()/getScale(), y()/getScale());
-  mEnd              = end;
-  mDelay            = delay;
-  double dManhatten = fabs(mEnd.x()-mStart.x())+fabs(mEnd.y()-mStart.y());
-  mDuration         = dManhatten/velocity*1000.0;
-  mAnimationState   = ManhattenDelay;
-  mVelocity         = velocity;
-  mTime.restart();
-  show();
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::PAUSE;
+  cmd->duration = duration;
+  cmd->start=previousStart();
+  cmd->end=previousEnd();
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Add an absoulte pause...wait until the given time
+AnimationCommand* IntroSprite::addWait(int duration)
+{
+  int currentDuration = animationDuration();
+  if (currentDuration < duration)
+  {
+    AnimationCommand* cmd = new AnimationCommand();
+    cmd->cmd = AnimationCommand::PAUSE;
+    cmd->duration = duration-currentDuration;
+    cmd->start=previousStart();
+    cmd->end=previousEnd();
+    mAnimList.append(cmd);
+    return cmd;
+  }
+  return 0;
+}
+
+
+// Add a set position command
+AnimationCommand* IntroSprite::addPosition(QPointF start)
+{
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::POSITION;
+  cmd->duration = 0;
+  cmd->start=start;
+  cmd->end=start;
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Add a linear movement
+AnimationCommand* IntroSprite::addLinear(QPointF start, QPointF end, int duration)
+{
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::LINEAR_DURATION;
+  cmd->duration = duration;
+  cmd->start=start;
+  cmd->end=end;
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Add a relative linear movement, that is, starting from the previous position
+AnimationCommand* IntroSprite::addRelativeLinear(QPointF end, int duration)
+{
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::LINEAR_DURATION;
+  cmd->duration = duration;
+  cmd->start=previousEnd();
+  cmd->end=end;
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Add a circle movement
+AnimationCommand* IntroSprite::addCircle(QPointF start, double radius, int duration)
+{
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::CIRCLE_DURATION;
+  cmd->duration = duration;
+  cmd->start=start;
+  cmd->end=start;
+  cmd->radius=radius;
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Add a relative manhatten move
+AnimationCommand* IntroSprite::addRelativeManhatten(QPointF end, double velocity)
+{
+  AnimationCommand* cmd = new AnimationCommand();
+  cmd->cmd = AnimationCommand::MANHATTEN;
+  cmd->start = previousEnd();
+  cmd->end=end;
+  cmd->velocity=velocity;
+  qreal dtx = fabs(cmd->end.x()-cmd->start.x())/cmd->velocity*1000.0;
+  qreal dty = fabs(cmd->end.y()-cmd->start.y())/cmd->velocity*1000.0;
+  cmd->duration = int(dtx+dty+1.0);
+  mAnimList.append(cmd);
+  return cmd;
+}
+
+
+// Retrieve the last commands start position or the current position if none exists
+QPointF IntroSprite::previousStart()
+{
+  AnimationCommand* previous = mAnimList.last();
+  if (previous != 0) return previous->start;
+  else return QPointF(x()/getScale(), y()/getScale());
+}
+
+
+// Retrieve the last commands end position or the current position if none exists
+QPointF IntroSprite::previousEnd()
+{
+  AnimationCommand* previous = mAnimList.last();
+  if (previous != 0) return previous->end;
+  return QPointF(x()/getScale(), y()/getScale());
+}
+
+
+// Retrieve the duration of the given animation command
+int IntroSprite::duration(AnimationCommand* anim)
+{
+  return anim->duration;
+}
+
+
+// Retrieve the overall duration of the animation
+int IntroSprite::animationDuration()
+{
+  int dura = 0;
+  for (int i=0; i<mAnimList.size(); ++i)
+  { 
+    dura += mAnimList[i]->duration;
+  }
+  return dura;
+}
+
+
+// Globally delay the animation
+void IntroSprite::delayAnimation(int duration)
+{
+  mDelayT += duration;
 }
 
 
@@ -124,134 +308,140 @@ void IntroSprite::advance(int phase)
     return ;
   }
 
+  // No animation pending
+  if (mAnimList.isEmpty())
+  {
+    QGraphicsItem::advance(phase);
+    return ;
+  }
+
+  // First time animation start
+  if (mStartAnimation)
+  {
+    mTime.restart();
+    mStartAnimation = false;
+  }
+  int elapsed     = mTime.elapsed()+mDeltaT-mDelayT;
+  if (elapsed<0) elapsed = 0;
+
+
+  // Get the current/first command
+  AnimationCommand* anim = mAnimList.first();
+
+  // Execute commands who were passed in the time since the
+  // last call
+  while (anim != 0 &&  anim->duration <= elapsed)
+  {
+      executeCmd(anim, anim->duration);
+      mAnimList.removeFirst();
+      elapsed -= anim->duration;
+      if (!mAnimList.isEmpty()) anim = mAnimList.first();
+      else anim = 0;
+  }
+
+  // Handle current command
+  if (anim != 0)
+  {
+    executeCmd(anim, elapsed);
+  }
+
+  // Restart timer and store remaining time
+  mTime.restart();
+  mDeltaT = elapsed;
+  mDelayT = 0;
+
+  // Parent advance
+  QGraphicsItem::advance(phase);
+
+}
+
+
+// Execute the given animation command. The given time is the time elapsed 
+// since start of the animation sequence.
+void IntroSprite::executeCmd(AnimationCommand* anim, int elapsed)
+{
+  if (anim == 0) return;
+
+  // Scale
   double scale = this->getScale();
 
-  // Delay animation
-  if (mAnimationState == IntroDelay)
+  // Pause command
+  if (anim->cmd == AnimationCommand::PAUSE)
   {
-     if (mTime.elapsed() >= mDelay)
-     {
-       mAnimationState = IntroLinear1;
-       mTime.restart();
-     }
+    // Do nothing
   }
-
-  // Handle first linear phase
-  if (mAnimationState == IntroLinear1)
+  // Show sprite command
+  if (anim->cmd == AnimationCommand::SHOW)
   {
-     if (mTime.elapsed() >= 0.25*mDuration)
-     {
-       mAnimationState = IntroCircle;
-     }
-     else
-     {
-       double t = 2.0*mTime.elapsed()/mDuration;
-       qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
-       qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
-       setPos(x*scale, y*scale);
-     }
+    show();
   }
-
-  // Handle circle phase
-  if (mAnimationState == IntroCircle)
+  // Hide sprite command
+  if (anim->cmd == AnimationCommand::HIDE)
   {
-     if (mTime.elapsed() >= 0.75*mDuration)
-     {
-       mAnimationState = IntroLinear2;
-     }
-     else
-     {
-       double t = 2.0*(mTime.elapsed()/mDuration-0.25);
-       double sign = 1.0;
-       if (mStart.x() > 0.5) sign = -1.0; // Direction of turn
-       qreal cx = mStart.x() + 0.5*(mEnd.x()-mStart.x());
-       qreal cy = mStart.y() + 0.5*(mEnd.y()-mStart.y());
-       qreal x = cx + mRadius*sin(sign*t*2.0*M_PI);
-       qreal y = cy-mRadius + mRadius*cos(sign*t*2.0*M_PI);
-       setPos(x*scale, y*scale);
-     }
+    hide();
   }
-
-  // Handle second linear phase
-  if (mAnimationState == IntroLinear2)
+  // Set position command
+  if (anim->cmd == AnimationCommand::POSITION)
   {
-     if (mTime.elapsed() >= 1.00*mDuration)
-     {
-       mAnimationState = Idle;
-       setPos(mEnd.x()*scale, mEnd.y()*scale);
-     }
-     else
-     {
-       double t = 2.0*(mTime.elapsed()/mDuration-0.75)+0.5;
-       qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
-       qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
-       setPos(x*scale, y*scale);
-     }
+    qreal x   = anim->end.x();
+    qreal y   = anim->end.y();
+    setPos(x*scale, y*scale);
   }
-
-  // Handle linear phase
-  if (mAnimationState == LinearMove)
+  // Linear move command
+  if (anim->cmd == AnimationCommand::LINEAR_DURATION)
   {
-     if (mTime.elapsed() >= mDuration)
-     {
-       mAnimationState = Idle;
-       setPos(mEnd.x()*scale, mEnd.y()*scale);
-     }
-     else
-     {
-       double t = mTime.elapsed()/mDuration;
-       qreal x = mStart.x() + t*(mEnd.x()-mStart.x());
-       qreal y = mStart.y() + t*(mEnd.y()-mStart.y());
-       setPos(x*scale, y*scale);
-     }
+    double qt = double(elapsed)/double(anim->duration);
+    qreal x   = anim->start.x() + qt*(anim->end.x()-anim->start.x());
+    qreal y   = anim->start.y() + qt*(anim->end.y()-anim->start.y());
+    setPos(x*scale, y*scale);
   }
-    
-  // Delay Manhatten move
-  if (mAnimationState == ManhattenDelay)
+  // Circle move command
+  if (anim->cmd == AnimationCommand::CIRCLE_DURATION)
   {
-     if (mTime.elapsed() >= mDelay)
-     {
-       mAnimationState = ManhattenMove;
-       mTime.restart();
-     }
+    double qt   = double(elapsed)/double(anim->duration);
+    double sign = 1.0;
+    if (anim->start.x() > 0.5) sign = -1.0; // Direction of turn
+    qreal cx = anim->start.x(); 
+    qreal cy = anim->start.y();
+    qreal x = cx + anim->radius*sin(sign*qt*2.0*M_PI);
+    qreal y = cy-anim->radius + anim->radius*cos(sign*qt*2.0*M_PI);
+    setPos(x*scale, y*scale);
   }
-  // Handle manhatten phase
-  if (mAnimationState == ManhattenMove)
+  // Manhatten move command
+  if (anim->cmd == AnimationCommand::MANHATTEN)
   {
-     if (fabs(mEnd.x()-x()/scale) <= 0.00001 && 
-         fabs(mEnd.y()-y()/scale) <= 0.00001 )
+     if ( (fabs(anim->end.x()-x()/scale) <= 0.00001 && 
+         fabs(anim->end.y()-y()/scale) <= 0.00001 ) ||
+         (elapsed >= anim->duration) )
      {
-       mAnimationState = Idle;
-       setPos(mEnd.x()*scale, mEnd.y()*scale);
+       setPos(anim->end.x()*scale, anim->end.y()*scale);
      }
      // x-edge
-     else if (fabs(mEnd.x()-x()/scale) > 0.00001)
+     else if (fabs(anim->end.x()-x()/scale) > 0.00001)
      {
-       qreal x = mStart.x() + sign(mEnd.x()-mStart.x())*mVelocity*mTime.elapsed()/1000.0;
+       qreal x = anim->start.x() + sign(anim->end.x()-anim->start.x())*anim->velocity*double(elapsed)/1000.0;
        // Finished?
-       if ( (mEnd.x() > mStart.x() && x >= mEnd.x()) ||
-            (mEnd.x() < mStart.x() && x <= mEnd.x()) )
+       if ( (anim->end.x() > anim->start.x() && x >= anim->end.x()) ||
+            (anim->end.x() < anim->start.x() && x <= anim->end.x()) )
        {
-         x = mEnd.x();
-         mTime.restart();
+         x = anim->end.x();
        }
-       setPos(x*scale, mStart.y()*scale);
+       setPos(x*scale, anim->start.y()*scale);
      }
      // y-edge
      else
      {
-       qreal y = mStart.y() + sign(mEnd.y()-mStart.y())*mVelocity*mTime.elapsed()/1000.0;
+       qreal dtx = fabs(anim->end.x()-anim->start.x())/anim->velocity*1000.0;
+       qreal y = anim->start.y() + sign(anim->end.y()-anim->start.y())*anim->velocity*double(elapsed-dtx)/1000.0;
        // Finished?
-       if ( (mEnd.y() > mStart.y() && y >= mEnd.y()) ||
-            (mEnd.y() < mStart.y() && y <= mEnd.y()) )
+       if ( (anim->end.y() > anim->start.y() && y >= anim->end.y()) ||
+            (anim->end.y() < anim->start.y() && y <= anim->end.y()) )
        {
-         y = mEnd.y();
-         mTime.restart();
+         y = anim->end.y();
        }
-       setPos(mEnd.x()*scale, y*scale);
+       setPos(anim->end.x()*scale, y*scale);
      }
   }
-    
-  QGraphicsItem::advance(phase);
+
 }
 

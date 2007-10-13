@@ -34,50 +34,28 @@
 #include <klocale.h>
 #include <QTime>
 
-ReflectionGraphicsScene::ReflectionGraphicsScene(QObject * parent) : QGraphicsScene(parent)
+// How many time measurements for average
+#define MEASUREMENT_LIST_SIZE  50
+// How many warnings until reflections are switched off
+#define WARNING_MAX_COUNT      10
+
+
+// Construct a new scene
+ReflectionGraphicsScene::ReflectionGraphicsScene(int updateTime, QObject * parent) 
+                       : QGraphicsScene(parent)
 {
-  mX = mY = mWidth = mHeight = 0;
-  mAllowReflections = true;
-  mDisplayUpdateTime = 0;
-  mFrameSprite = new QGraphicsTextItem(0, this);
-  mFrameSprite->setPos(QPointF(0.0, 0.0));
-  mFrameSprite->setZValue(1000.0);
-  if (global_debug > 0) mFrameSprite->show();
-  else mFrameSprite->hide();
+  // Initialize
+  mBackground = true;
 }
 
+
+// Destruct scene
 ReflectionGraphicsScene::~ReflectionGraphicsScene()
 {
-  delete mFrameSprite;
 }
 
-void ReflectionGraphicsScene::displayUpdateTime(int time)
-{
-  mDisplayUpdateTime = time;
-}
 
-void ReflectionGraphicsScene::setReflection(int x, int y, int width, int height)
-{
-  mX = x;
-  mY = y;
-  mWidth = width;
-  mHeight = height*2;
-
-  QPoint p1, p2;
-  p2.setY(mHeight);
-  mGradient = QLinearGradient(p1, p2);
-  mGradient.setColorAt(0, QColor(0, 0, 0, 100));
-  mGradient.setColorAt(1, Qt::transparent);
-
-  kDebug() << "Set reflection "<< x << " " << y << " " << width << " " << height ;
-
-  mGradientImage = QImage(mWidth, mHeight, QImage::Format_ARGB32);
-  mGradientImage.fill(Qt::transparent);
-  QPainter p( &mGradientImage );
-  p.fillRect(0,0,mWidth, mHeight, mGradient);
-  p.end();
-}
-
+// QGV basic function to draw all items of a scene
 void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
                                         QGraphicsItem *items[],
                                         const QStyleOptionGraphicsItem options[],
@@ -86,52 +64,15 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
   QTime time;
   time.start();
   
-  if (mAllowReflections)
-  {
-   if(mWidth == 0) 
-   {  //No reflection
-     for (int i = 0; i < numItems; ++i) 
-     {
-       QTransform sceneTransform = items[i]->sceneTransform();
-       painter->setTransform(sceneTransform, false);
-       items[i]->paint(painter, &options[i], widget);
-     }
-   } 
-   else
-   {  //With reflection
-     QImage image(mWidth, mHeight, QImage::Format_ARGB32);
-     image.fill(Qt::transparent);
-     QPainter imagePainter(&image);
-     //Turn on all optimizations
-     imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
-     imagePainter.setClipping(true);
-     painter->save();
-  
-     for (int i = 0; i < numItems; ++i) 
-     {
-       QTransform sceneTransform = items[i]->sceneTransform();
-       painter->setTransform(sceneTransform, false);
-       items[i]->paint(painter, &options[i], widget);
-       if(sceneTransform.dy() + items[i]->boundingRect().height() > mY - mHeight) 
-       {
-         sceneTransform = QTransform(sceneTransform.m11(), sceneTransform.m12(), sceneTransform.m21(), -sceneTransform.m22(), sceneTransform.dx() - mX, mY - sceneTransform.dy());
-         imagePainter.setTransform(sceneTransform, false);
-         items[i]->paint(&imagePainter, &options[i], widget);
-       }
-     }
-     imagePainter.setTransform(QTransform());
-     imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-     imagePainter.drawImage(0,0,mGradientImage);
-     painter->restore();
-     painter->drawImage( mX,mY,image);
-   }
-  }
-  else QGraphicsScene::drawItems(painter, numItems, items, options, widget);
+  // No relfections call parent function
+  QGraphicsScene::drawItems(painter, numItems, items, options, widget);
 
-  // Time display
+  /*
+  // ==========================================================================
+  // Update time measurement and display
   int elapsed = time.elapsed();
   mDrawTimes.append(elapsed);
-  if (mDrawTimes.size() > 50) mDrawTimes.removeFirst();
+  if (mDrawTimes.size() > MEASUREMENT_LIST_SIZE) mDrawTimes.removeFirst();
   double avg = 0.0;
   for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
   avg /= mDrawTimes.size();
@@ -140,11 +81,32 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
   if (global_debug > 0)
      mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
 
-   if (avg > 50.0 && mDrawTimes.size() == 50)
+   // Disable relfections on slow computers
+   if (mDrawTimes.size() >= MEASUREMENT_LIST_SIZE )
    {
-     mAllowReflections = false;   
-     kDebug() << "DISABLING REFLECTIONS DUE TO SLOW COMPUTER";
+     if (avg > 2*mUpdateTime )
+     {
+       mUpdateWarning++;
+       mDrawTimes.clear();
+       kDebug() << mUpdateWarning << ". slow computer reflection theme warning"; 
+     }
+     else
+     {
+       mUpdateWarning = 0;
+     }
    }
+   if (mUpdateWarning >= WARNING_MAX_COUNT )
+   {
+     update();
+     kDebug() << "DISABLING REFLECTIONS DUE TO POOR COMPUTER PERFORMANCE";
+   }
+  // ==========================================================================
+  */
+}
+
+void ReflectionGraphicsScene::drawBackground ( QPainter * painter, const QRectF & rect )
+{
+  if (mBackground) QGraphicsScene::drawBackground(painter, rect);
 }
 
 #include "reflectiongraphicsscene.moc"

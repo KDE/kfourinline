@@ -28,6 +28,7 @@
 #include <QPixmap>
 #include <QTransform>
 #include <QGraphicsTextItem>
+#include <QGraphicsPixmapItem>
 #include <QList>
 
 
@@ -37,38 +38,52 @@ class QWidget;
 
 
 /**
- * A scene that reflects what is in it, to look pretty
+ * A scene that reflects what is in it, to look pretty.
  */
 class ReflectionGraphicsScene : public QGraphicsScene
 {
   Q_OBJECT
 
   public:
-    ReflectionGraphicsScene(QObject * parent = 0);
+    /** Construct a new scene.
+      * @param updateTime The update interval of the canvas (kind of debug parameter)
+      * @param parent     The parent window.
+      */
+    ReflectionGraphicsScene(int updateTime, QObject * parent = 0);
     
+    /** Destruct the scene.
+      */
     virtual ~ReflectionGraphicsScene();
-    virtual void drawItems(QPainter *painter, int numItems,
+
+    /** Standard QGV command to draw all items of a scene.
+      * @param painter    The painter
+      * @param numItems   The amount of items
+      * @param items      The items to draw
+      * @param options    The draw options
+      * @param  widget    The widget
+      */
+    virtual void drawItems(QPainter *painter, 
+                           int numItems,
 		           QGraphicsItem *items[],
 		           const QStyleOptionGraphicsItem options[],
 			   QWidget *widget=0);
 
-    void setReflection(int x, int y, int width, int height);
+    /** Should the background be drawn or not.
+      * @ param status True to draw the background.
+      */
+    void setBackground(bool status) {mBackground = status;}
 
-    void displayUpdateTime(int time);
+
+    protected:
+    /** QGV background drawing.
+      * @param painter The painter
+      * @param rect    The clipping rect
+      */
+    void drawBackground ( QPainter * painter, const QRectF & rect );
 
   private:
-    int mX;
-    int mY;
-    int mWidth;
-    int mHeight;
-    QLinearGradient mGradient;
-    QImage mGradientImage;
-    QTransform mTransform;
-    // Allow reflections scene?
-    bool mAllowReflections;
-    QGraphicsTextItem* mFrameSprite;
-    int mDisplayUpdateTime;
-    QList<int> mDrawTimes;
+    // Draw background?
+    bool mBackground;
 
 };
 

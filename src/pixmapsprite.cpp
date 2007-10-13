@@ -222,6 +222,8 @@ void PixmapSprite::setFrame(int no, bool force)
 // Standard QGI advance method 
 void PixmapSprite::advance(int phase)
 {
+  int elapsed = mTime.elapsed();
+
   // Ignore phase 0 (collisions)
   if (phase == 0)
   {
@@ -233,13 +235,9 @@ void PixmapSprite::advance(int phase)
   if (mAnimationState == Animated)
   {
     // Frame delay passed?
-    int frame = mTime.elapsed() / mDelay + mEndFrame;
-    while(frame > mEndFrame)
-    {
-      frame -= (mEndFrame - mStartFrame);
-      mTime.addSecs( -(mEndFrame - mStartFrame)*mDelay);
-    }
-    setFrame(frame);
+    int frames = elapsed / mDelay;
+    int curFrame = frames % (mEndFrame-mStartFrame)+ mStartFrame;
+    setFrame(curFrame);
   }
 
   QGraphicsItem::advance(phase);

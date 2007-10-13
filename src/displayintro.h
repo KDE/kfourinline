@@ -63,18 +63,14 @@ class DisplayIntro : public QObject, public virtual Themeable
      */
     ~DisplayIntro();
 
-    /** Animation states of the intro animation
-      */
-    enum IntroState {IntroMoveIn, IntroPlay, IntroExplode};
-
     /** Start the animation.
+      * @param delay An optional delay for the animation [ms]
       */
-    void start();
+    void start(int delay=1000);
 
     /** Theme change method. The object has to completely redraw
       */
     virtual void changeTheme();
-
 
     /* Called from the view event viewportEvent() to handle mouse events.
      * NOTE: An own event handler is implemeted  because the Qt4.3 QGraphicsView event
@@ -82,6 +78,19 @@ class DisplayIntro : public QObject, public virtual Themeable
      * @param event The event
      */
     void viewEvent(QEvent* event);
+
+  protected:  
+    /** Setup the sprite animation scripts.
+      * @param restartTime Restart the time (debug, should be true)
+      * @return The animation duration [ms].
+      */
+    int createAnimation(bool restartTime);
+
+    /** Put a global delay on the animation of all sprites. Could be caused by
+      * slow SVG resizes.
+      * @param duration Delay [ms]
+      */
+    void delaySprites(int duration);
 
   signals:
     /** Emit this signal if a new game is started from the intro display.
@@ -127,9 +136,6 @@ class DisplayIntro : public QObject, public virtual Themeable
     // The view
     QGraphicsView* mView;
     
-    // The current state of the animation
-    IntroState mIntroState;
-
     // Text items
     QGraphicsTextItem* mTextQuicklaunch;
     // Text items

@@ -24,11 +24,16 @@
 // Qt includes
 #include <QWidget>
 #include <QGraphicsView>
+#include <QRect>
 #include <QSize>
 #include <QPoint>
 #include <QResizeEvent>
 #include <QDataStream>
 #include <QMouseEvent>
+#include <QGraphicsPixmapItem>
+#include <QLinearGradient>
+#include <QImage>
+#include <QPixmap>
 
 // KDE includes
 #include <kgameio.h>
@@ -52,12 +57,17 @@ class KWin4View : public QGraphicsView
 
   public:
     /** Constructor for the canvas view.
+     *  @param updateTime    The canvas advance rate
      *  @param size          The canvas size
      *  @param scene         The graphics scene
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    KWin4View(const QSize &size, ReflectionGraphicsScene* scene, ThemeManager* theme, QWidget* parent = 0);
+    KWin4View(int updateTime, 
+              const QSize &size, 
+              ReflectionGraphicsScene* scene, 
+              ThemeManager* theme, 
+              QWidget* parent = 0);
 
     /** Destructor
       */
@@ -97,6 +107,15 @@ class KWin4View : public QGraphicsView
       * @param y          The y position on the game board [0-5]
       */
     void displayHint(int x, int y);
+
+    /** Enable reflections on the given position. If width or height is zero
+      * the reflections are disabled.
+      * @param x      The The x position of the reflection  [screen coord]
+      * @param y      The The y position of the reflection  [screen coord]
+      * @param width  The The width of the reflection  [screen coord]
+      * @param height The The height of the reflection  [screen coord]
+      */
+    void setReflection(int x, int y, int width, int height);
 
   signals:
     /** Emit this signal if a sprite animation move is finished.
@@ -140,6 +159,10 @@ class KWin4View : public QGraphicsView
        */
      void moveDone(QGraphicsItem* item, int mode);
 
+     /** Rescale the theme (update theme SVG graphics).
+      */
+    void rescaleTheme();
+
   protected:
     /**
      * Will be called when the widgets contents
@@ -148,11 +171,22 @@ class KWin4View : public QGraphicsView
      */
     void resizeEvent(QResizeEvent* e);
 
+    /** Widget viewport event.
+      * @parma event The event.
+      */
     virtual bool viewportEvent ( QEvent * event )  ;
+
+   /** Overwritten Qt function.
+    */
+    virtual void drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[]);
+
 
   private:
     // The theme manager 
     ThemeManager* mTheme;
+
+    // Theme Queue
+    QList<int> mThemeQueue;
     
     // The scene to plot to
     ReflectionGraphicsScene* mScene;
@@ -169,6 +203,21 @@ class KWin4View : public QGraphicsView
     // Status of the game (running or not)
     bool mIsRunning;
 
+    // Gradient for the reflection
+    QLinearGradient mGradient;
+    // Image for the reflection
+    QImage mGradientImage;
+    // Reflection sprite
+    QGraphicsPixmapItem* mReflectionSprite;
+    // Refection size
+    QRect mReflectionRect;
+
+    // Debug frame rate sprite
+    QGraphicsTextItem* mFrameSprite;
+    // Time between updates
+    int mDisplayUpdateTime;
+    // Average update times
+    QList<int> mDrawTimes;
 };
 
 #endif // KWIN4_KWIN4VIEW_H

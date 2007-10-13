@@ -174,6 +174,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
 
   // Redraw
   if (theme) theme->updateTheme(this);
+  kDebug() << "CONSTRUCTOR DONE";
 }
 
 
@@ -253,6 +254,11 @@ DisplayIntro::~DisplayIntro()
 // Master theme change function. Redraw the display
 void DisplayIntro::changeTheme()
 {
+  kDebug() << "THEME CHANGE " << thememanager()->themefileChanged();
+  // Measure time for resize
+  QTime time;
+  time.restart();
+
   // Retrieve theme data
   KConfigGroup config = thememanager()->config(id());
   
@@ -321,18 +327,45 @@ void DisplayIntro::changeTheme()
   // Set position of sub sprites
   mTextStartplayer->setPos(posStartplayer.x()*width, posStartplayer.y()*height);
   mTextColor->setPos(posColor.x()*width, posColor.y()*height);
+
+  int elapsed = time.elapsed();
+  kDebug() << "THEME CHANGE took " << elapsed << " ms";
+
+  // Renew animation on theme change?
+  if (thememanager()->themefileChanged())
+  {  
+    start(0);
+  }
+  else
+  {
+    delaySprites(elapsed);
+  }
 }
 
 
 // Start the animation
-void DisplayIntro::start()
+void DisplayIntro::start(int delay)
 {
-  // Begin with the first state
-  mIntroState = IntroMoveIn;
-
-  // Tun the timer
+  kDebug() << "START TIMER";
+  // Do the timer
+  mTimer->stop();
   mTimer->setSingleShot(true);
-  mTimer->start(0);
+  mTimer->start(delay);
+}
+
+
+// Delay all sprite animation by the given time
+void DisplayIntro::delaySprites(int duration)
+{
+  // Setup sprites
+  for (int i = 0; i < mSprites.size(); ++i) 
+  {
+     // Use only intro sprites
+    if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+    
+    IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
+    sprite->delayAnimation(duration);
+  }
 }
 
 
@@ -340,6 +373,21 @@ void DisplayIntro::start()
 // by a timer
 void DisplayIntro::advance()
 {
+  QTime time;
+  time.restart();
+  int duration = createAnimation(true);
+
+  kDebug() << "ADVANCE: Restarting timer in " << (duration+5000) <<" creation time " << time.elapsed();
+  mTimer->start(duration + 5000);  // [ms]
+}
+
+
+// Animation main routine to advance the aniamtion. Called
+// by a timer
+int DisplayIntro::createAnimation(bool restartTime)
+{
+  // Columns for the moves in the intro. Results in a drawn game
+  // Note: Once could load the last played game here or so.
   static int moves[] = {
                         3,4,4,3,3,4,4,
                         1,3,5,3,3,6,6,
@@ -348,6 +396,8 @@ void DisplayIntro::advance()
                         5,0,0,1,1,1,2,
                         2,2,2,1,0,0,0
                         };
+  // How many moves to perform (size of moves array)
+  static int maxMoves = 42;                      
 
   // Config data
   KConfigGroup config = thememanager()->config(id());
@@ -361,108 +411,131 @@ void DisplayIntro::advance()
   // Local variables
   double dura, delay, rad;
   QPointF start, end;
+  int maxDuration = 0;
+  int addWaitTime = 0;
 
+  // ============================================================================
+  // Setup sprites
+  for (int i = 0; i < mSprites.size(); ++i) 
+  {
+     // Use only intro sprites
+    if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+    
+    IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
+    int no = sprite->number();
+    sprite->setZValue(no);
+    sprite->hide();
+
+    sprite->clearAnimation(restartTime);
+  }
+
+  // ============================================================================
   // First part of intro animation. Move sprites into window
-  if (mIntroState == IntroMoveIn)
+  // Loop all sprites
+  for (int i = 0; i < mSprites.size(); ++i) 
   {
-        // Loop all sprites
-    for (int i = 0; i < mSprites.size(); ++i) 
+      // Move only intro sprites
+    if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+    IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
+
+    int no = sprite->number();
     {
-        // Move only intro sprites
-      if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
-      
-      IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
-      int no = sprite->number();
+      if (no%2==0)
       {
-        if (no%2==0)
-        {
-          start = QPointF(1.05, 0.5);
-          // end   = QPointF(0.35 + no/300.0, 105.0/800.0+no/125.0);
-          end   = QPointF(piece0_pos.x() + piece_spread*no, piece0_pos.y());
-          dura  = 3000.0;
-          delay = 80.0*no;
-          rad   = 0.1;
-        }
-        else
-        {
-          start = QPointF(-0.05, 0.5);
-          // end   = QPointF(0.65-(no-1)/300.0, 105.0/800.0+(no-1)/125.0);
-          end   = QPointF(piece1_pos.x() + piece_spread*(no-1), piece1_pos.y());
-          dura  = 3000.0;
-          delay = 80.0*(no-1);
-          rad   = 0.1;
-        }
-        sprite->setZValue(no);
-        sprite->startIntro(start, end, rad, dura, delay);
+        start = QPointF(1.05, 0.5);
+        end   = QPointF(piece0_pos.x() + piece_spread*no, piece0_pos.y());
+        dura  = 3000.0;
+        delay = 80.0*no;
+        rad   = 0.1;
       }
-    }// end list loop
+      else
+      {
+        start = QPointF(-0.05, 0.5);
+        end   = QPointF(piece1_pos.x() + piece_spread*(no-1), piece1_pos.y());
+        dura  = 3000.0;
+        delay = 80.0*(no-1);
+        rad   = 0.1;
+      }
 
-    // Continue with next intro state
-    mIntroState = IntroPlay;
-    mTimer->start(8000); // [ms]
-    return;
-  }// end IntroMoveIn
+      sprite->addPosition(start);
+      sprite->addShow();
+      sprite->addPause(int(delay));
+      sprite->addLinear(start, (start+end)*0.5, int(dura/4.0));
+      sprite->addCircle((start+end)*0.5, rad, int(dura/2.0));
+      sprite->addLinear((start+end)*0.5, end, int(dura/4.0));
+      if (sprite->animationDuration() > maxDuration) maxDuration = sprite->animationDuration();
+    }
+  }// end list loop
+  // ============================================================================
 
+
+  // ============================================================================
   // Second part of intro animation. Move sprites inwards
-  if (mIntroState == IntroPlay)
+  int moveCnt  = 0;
+  delay = 0.0;
+  // Reset height
+  int height[7];
+  addWaitTime = maxDuration;
+  for (int i=0; i<=6; i++) height[i] = 6;
+  // Loop all sprites
+  for (int i = mSprites.size()-1; i >= 0 ; --i) 
   {
-    int moveCnt  = 0;
-    double delay = 0.0;
-    // Reset height
-    int height[7];
-    for (int i=0; i<=6; i++) height[i] = 6;
-    // Loop all sprites
-    for (int i = mSprites.size()-1; i >= 0 ; --i) 
-    {
-        // Move only intro sprites
-      if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+      // Move only intro sprites
+    if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+    IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
 
-      int ix = moves[moveCnt];
-      moveCnt++;
-      if (moveCnt>=42) moveCnt = 42;
-      int iy = height[ix];
-      height[ix]--;
-      double x = board_pos.x() + ix*board_spread.x();
-      double y = board_pos.y() + iy*board_spread.y();
-      
-      IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
-      sprite->startManhatten(QPointF(x, y), move_velocity, delay);
-      delay += sprite->duration();
-    }// end for
+    // No more moves left
+    if (moveCnt >= maxMoves) continue;
+    int ix = moves[moveCnt];
+    moveCnt++;
+  
+    int iy = height[ix];
+    height[ix]--;
+    double x = board_pos.x() + ix*board_spread.x();
+    double y = board_pos.y() + iy*board_spread.y();
+    
+    sprite->addWait(addWaitTime);
+    sprite->addPause(3000);
+    sprite->addPause(int(delay));
+    AnimationCommand* anim = sprite->addRelativeManhatten(QPointF(x, y), move_velocity);
 
-    // Continue with next intro state
-    mIntroState = IntroExplode;
-    mTimer->start(10000+int(delay));  // [ms]
-    return;
-  }// end IntroPlay
+    delay += sprite->duration(anim);
 
+    if (sprite->animationDuration() > maxDuration) maxDuration = sprite->animationDuration();
+  }// end for
+  // ============================================================================
+
+
+  // ============================================================================
   // Third part of intro animation. Move sprites outwards
-  if (mIntroState == IntroExplode)
+  addWaitTime = maxDuration;
+      // Loop all sprites
+  for (int i = 0; i < mSprites.size(); ++i) 
   {
-        // Loop all sprites
-    for (int i = 0; i < mSprites.size(); ++i) 
-    {
-        // Move only intro sprites
-      if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
-      
-      IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
-      int no = sprite->number();
-      double xc = board_pos.x() + 3.0*board_spread.x();
-      double yc = board_pos.y() + 3.5*board_spread.y();
+      // Move only intro sprites
+    if (mSprites.at(i)->type() != QGraphicsItem::UserType+1) continue;
+    IntroSprite* sprite = (IntroSprite*)mSprites.at(i);
 
-      double x = xc + 1.50*cos(no/42.0*2.0*M_PI);
-      double y = yc + 1.50*sin(no/42.0*2.0*M_PI);
-      sprite->startLinear(QPointF(x,y), 800);
-    }// end for
+    int no = sprite->number();
+    double xc = board_pos.x() + 3.0*board_spread.x();
+    double yc = board_pos.y() + 3.5*board_spread.y();
 
-    // Start again with first intro state
-    mIntroState = IntroMoveIn;
-    mTimer->start(12000);  // [ms]
-    return;
-  }// end IntroPlay
+    double x = xc + 1.50*cos(no/42.0*2.0*M_PI);
+    double y = yc + 1.50*sin(no/42.0*2.0*M_PI);
+
+    sprite->addWait(addWaitTime);
+    sprite->addPause(8000);
+    sprite->addRelativeLinear(QPointF(x,y), 800);
+
+    if (sprite->animationDuration() > maxDuration) maxDuration = sprite->animationDuration();
+  }// end for
+  // ============================================================================
+
+  return maxDuration;
 }
 
 
+// Find the sprite on the given poition (buttons)
 QGraphicsItem* DisplayIntro::findSprite(QPoint pos)
 {
    QGraphicsItem* found = 0; 
@@ -479,6 +552,7 @@ QGraphicsItem* DisplayIntro::findSprite(QPoint pos)
    }
    return found;
 }
+
 
 // Handle view events and forward them to the sprites
 void DisplayIntro::viewEvent(QEvent* event)

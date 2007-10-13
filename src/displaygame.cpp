@@ -42,6 +42,7 @@
 #include "scoresprite.h"
 #include "spritenotify.h"
 #include "kwin4doc.h"
+#include "kwin4view.h"
 
 #include "reflectiongraphicsscene.h"
 
@@ -212,13 +213,13 @@ void DisplayGame::changeTheme()
   // Check whether the theme uses reflection handling
   if( config.readEntry("use-reflection", false))
   {
-	  mScene->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), 
-                            (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.2));
+     dynamic_cast<KWin4View*>(mView)->setReflection((int)pos.x(), (int)(pos.y()+pos.height()), 
+                          (int)(mScene->sceneRect().width() - pos.x()), (int)(pos.height()*0.3));
   }
   else
   {
     // Zero width disables the reflections
-    mScene->setReflection(0,0,0,0);
+     dynamic_cast<KWin4View*>(mView)->setReflection(0,0,0,0);
   }
   
   mView->update();
@@ -228,7 +229,7 @@ void DisplayGame::changeTheme()
 // Start a new game. Initialize graphics.
 void DisplayGame::start()
 {
-	// Run timer (unused)
+        // Run timer (unused)
   // mTimer->setSingleShot(true);
   // mTimer->start(0);
 
@@ -264,7 +265,7 @@ void DisplayGame::start()
 // Run game animation
 void DisplayGame::advance()
 {
-	 // Currently unused
+         // Currently unused
 }
 
 

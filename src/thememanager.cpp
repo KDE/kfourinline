@@ -43,8 +43,9 @@
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
     : QObject(parent)
 {
-  mScale        = initialSize;
-  mAspectRatio  = 1.0;
+  mScale            = initialSize;
+  mAspectRatio      = 1.0;
+  mThemeFileChanged = false;
   updateTheme(themefile);
 }
 
@@ -73,6 +74,13 @@ int ThemeManager::checkTheme()
 }
 
 
+// Check the reason of the theme change (rescale or new theme)
+bool ThemeManager::themefileChanged()
+{
+  return mThemeFileChanged;
+}
+
+
 // Force an refresh of the theme object given
 void ThemeManager::updateTheme(Themeable* ob)
 {
@@ -84,6 +92,8 @@ void ThemeManager::updateTheme(Themeable* ob)
 // to really change the theme.
 void ThemeManager::updateTheme(const QString &themefile)
 {
+  mThemeFileChanged = true;
+
   // Empty cache
   mPixmapCache.clear();
 
@@ -120,6 +130,10 @@ void ThemeManager::updateTheme(const QString &themefile)
 // Rescale the theme. Call all registed objects so that they can refresh.
 void ThemeManager::rescale(int scale)
 {
+  if (global_debug > 0) kDebug() << "THEMEMANAGER::Rescaling theme to " << scale;
+
+  mThemeFileChanged = false;
+
   if (global_debug > 1)
   {
     if (scale==mScale)

@@ -194,7 +194,12 @@ class ThemeManager : public QObject
       * @return 0 if everything is alright
       */
     int checkTheme();
-    
+
+     /** Check whether a changeTheme call was due to themefile change
+       * or a rescaling.
+       */ 
+     bool themefileChanged();
+
 
    private:
      // The used SVG rendered
@@ -214,7 +219,9 @@ class ThemeManager : public QObject
 
      // The aspect ration
      double mAspectRatio;
-     
+
+     // Type of theme change
+     bool mThemeFileChanged;
 };
 
 
