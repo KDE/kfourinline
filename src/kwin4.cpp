@@ -897,7 +897,7 @@ void KWin4App::configureSettings()
   dialog->setModal(true);
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
-  dialog->addPage(frame, i18n("General"), "package_settings");
+  dialog->addPage(frame, i18n("General"), "games-config-options");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), mDoc, SLOT(loadSettings()));
   dialog->show();
 }
