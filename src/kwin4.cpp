@@ -110,7 +110,7 @@ KWin4App::KWin4App(QWidget *parent)
   // Read theme files
   for (int i = 0; i < themeList.size(); i++)
   {
-    KConfig themeInfo( themeList.at(i), KConfig::OnlyLocal);
+    KConfig themeInfo( themeList.at(i), KConfig::SimpleConfig);
     KConfigGroup themeGroup(&themeInfo, "Theme");
     QString name   = themeGroup.readEntry("Name", QString());
     QString file   = themeGroup.readEntry("File", QString());
