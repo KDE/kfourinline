@@ -66,6 +66,7 @@ KWin4View::KWin4View(int updateTime,
   setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   setFrameStyle(QFrame::NoFrame);
   setCacheMode(QGraphicsView::CacheBackground);
+  //setAlignment(Qt::AlignHCenter);
 
   //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
   setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
@@ -89,6 +90,7 @@ KWin4View::KWin4View(int updateTime,
 
   // Queue
   mThemeQueue.clear();
+  mThemeOffset.clear();
   
   // Set size and position of the view and the canvas:
   // they are reseized once a level is loaded
@@ -100,7 +102,7 @@ KWin4View::KWin4View(int updateTime,
   setInteractive(true);
   
   // Scale theme
-  mTheme->rescale(this->width());
+  mTheme->rescale(this->width(), QPoint(0,0));
 
   // Start with the intro display
   mGameDisplay  = 0;
@@ -300,17 +302,40 @@ void KWin4View::resizeEvent (QResizeEvent* e)
   // Rescale on minimum fitting aspect ratio either width or height limiting
   double width = 0.0;
   double aspect = size.width() / size.height();
-  //if (aspect > mTheme->aspectRatio()) mTheme->rescale(int(e->size().height()*mTheme->aspectRatio()));
-  //else mTheme->rescale(int(e->size().width()));
+  QPoint offset;
 
-  if (aspect > mTheme->aspectRatio()) width = e->size().height()*mTheme->aspectRatio();
-  else width = e->size().width();
-
+  // Scale width:
+  // Ideal size would be: 'width'*'height'
+  // Offset in width is (e->size().width()-width)/2, offset in height is zero
+  if (aspect > mTheme->aspectRatio())
+  {
+     width = e->size().height()*mTheme->aspectRatio(); 
+     offset = QPoint(int((e->size().width()-width)/2.0), 0);
+  }
+  // Scale height:
+  // 'height' = width/mTheme->aspectRatio()
+  // Ideal size would be: 'width'*'height': 
+  // Offset in height is (e->size().height()-width/mTheme->aspectRatio())/2, offset in width is zero
+  else
+  {
+     width = e->size().width();  // Scale height
+     offset = QPoint(0, int((e->size().height()-width/mTheme->aspectRatio())/2.0));
+  }
+  
+  
   // Pixel rescale
   double oldScale = mTheme->getScale();
-  resetTransform();
-  if (width > oldScale) scale(double(width/oldScale), double(width/oldScale));
+
+  //resetTransform();
+  QTransform transform;
+  if (width > oldScale) 
+  {
+    transform.scale(double(width/oldScale), double(width/oldScale));
+  }
+  setTransform(transform);
+  
   mThemeQueue.prepend(int(width));
+  mThemeOffset.prepend(offset);
   if (global_debug > 2) kDebug() << "Quequed resize, aspect=" << aspect << "theme aspect="<< mTheme->aspectRatio();
 
   long queueDelay = 0;
@@ -319,6 +344,7 @@ void KWin4View::resizeEvent (QResizeEvent* e)
 
   QTimer::singleShot(queueDelay, this, SLOT(rescaleTheme()) );
 }
+
 
 // Rescale the theme (update theme SVG graphics) from the theme list
 void KWin4View::rescaleTheme()
@@ -333,10 +359,14 @@ void KWin4View::rescaleTheme()
   t.start();
 
   resetTransform();
-  int width = mThemeQueue.first();
-  if (global_debug > 2) kDebug() << "Theme queue size=" << mThemeQueue.size() << "Rescale width to" << width;
+  
+  int width     = mThemeQueue.first();
+  QPoint offset = mThemeOffset.first();
+  if (global_debug > 2) kDebug() << "Theme queue size=" << mThemeQueue.size() << "Rescale width to" << width 
+                                 << " offset " << offset;
   mThemeQueue.clear();
-  mTheme->rescale(width);
+  mThemeOffset.clear();
+  mTheme->rescale(width, offset);
 
    if (global_debug > 2) kDebug() << "Time elapsed: "<< t.elapsed() << "ms";
 }

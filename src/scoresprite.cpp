@@ -49,6 +49,7 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphi
     mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, i, scene);
     if (!mInput[i]) kFatal() << "Cannot load sprite" << "scoreinput"<<i;
     mInput[i]->setParentItem(this);
+    mInput[i]->setOffsetStatus(false);
     mInput[i]->show();
     mInputFrame[i] = 0;
   }
@@ -81,9 +82,9 @@ ScoreSprite::~ScoreSprite()
 // Redraw the theme.
 void ScoreSprite::changeTheme()
 {
-	// Teh main display is handled by theparent
+  // The main display is handled by the parent
   PixmapSprite::changeTheme();
-  
+
   // Retrieve our size
   double width  = this->boundingRect().width();
   double height = this->boundingRect().height();

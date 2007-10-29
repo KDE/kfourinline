@@ -128,7 +128,7 @@ void ThemeManager::updateTheme(const QString &themefile)
 
 
 // Rescale the theme. Call all registed objects so that they can refresh.
-void ThemeManager::rescale(int scale)
+void ThemeManager::rescale(int scale, QPoint offset)
 {
   if (global_debug > 0) kDebug() << "THEMEMANAGER::Rescaling theme to " << scale;
 
@@ -141,6 +141,7 @@ void ThemeManager::rescale(int scale)
   }
   //if (scale==mScale) return;
   mScale = scale;
+  mOffset = offset;
 
   foreach(Themeable *object, mObjects) {
       object->changeTheme();
@@ -153,6 +154,13 @@ double ThemeManager::getScale()
 {
   return (double)mScale;
 }  
+
+
+// Retrieve the theme offset
+QPoint ThemeManager::getOffset()
+{
+  return mOffset;
+}
 
 
 // Retreive the current theme configuration file.

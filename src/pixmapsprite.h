@@ -124,6 +124,13 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
       */
     double getDoubleValue(const QString &item);
 
+    /** Set whether the sprite should respect a theme offset 
+      * (default: true) or not (false), that is, it is handled
+      * by its parent item.
+      * @param status True: Handle theme offset, False: dont
+      */
+    void setOffsetStatus(bool status);
+
   protected:
 
     /** The user defined sprite number.
@@ -169,6 +176,10 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     /** The logical sprite pos for theme changs
      */
     QPoint mLPos;
+
+    /** Offset status.
+     */
+     bool mOffsetStatus;
 };
 
 #endif

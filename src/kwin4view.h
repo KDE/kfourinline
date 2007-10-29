@@ -163,6 +163,7 @@ class KWin4View : public QGraphicsView
       */
     void rescaleTheme();
 
+
   protected:
     /**
      * Will be called when the widgets contents
@@ -187,6 +188,7 @@ class KWin4View : public QGraphicsView
 
     // Theme Queue
     QList<int> mThemeQueue;
+    QList<QPoint> mThemeOffset;
     
     // The scene to plot to
     ReflectionGraphicsScene* mScene;

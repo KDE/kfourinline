@@ -42,6 +42,7 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGrap
   mAnimationState = Idle;
   mNo             = no;
   mCurrentFrame   = 0;
+  mOffsetStatus   = true;
 
   if (theme) theme->updateTheme(this);
 }
@@ -56,6 +57,7 @@ PixmapSprite::PixmapSprite(int no, QGraphicsScene* canvas)
   mAnimationState = Idle;
   mNo             = no;
   mCurrentFrame   = 0;
+  mOffsetStatus   = true;
 }
 
 
@@ -71,7 +73,7 @@ void PixmapSprite::changeTheme()
   double oldscale = this->getScale();
   double scale = thememanager()->getScale();
   setScale(scale);
-
+ 
   // Retrieve theme data from configuration
   KConfigGroup config = thememanager()->config(id());
   double width  = config.readEntry("width", 1.0);
@@ -148,6 +150,11 @@ void PixmapSprite::changeTheme()
     if (center) mHotspots.append(QPointF(pixmap.width()/2,pixmap.height()/2));
     else mHotspots.append(QPointF(0.0,0.0));
   }
+  
+  // Set theme offset (probably not really necesary here)
+  QPoint offset = thememanager()->getOffset();
+  resetTransform();
+  if (mOffsetStatus) translate(offset.x(), offset.y());
 
   // Set pixmap to sprite
   setFrame(mCurrentFrame, true);
@@ -168,6 +175,14 @@ void PixmapSprite::setPosition(QPointF pos)
 {
   mStart          = pos;
   setPos(mStart.x()*getScale(), mStart.y()*getScale());
+}
+
+
+// Handle the offset status (true: theme offset, false: no offset)
+void PixmapSprite::setOffsetStatus(bool status)
+{
+  mOffsetStatus = status;
+  changeTheme();
 }
 
 
@@ -212,8 +227,19 @@ void PixmapSprite::setFrame(int no, bool force)
   if (!force && no == mCurrentFrame) return;
   if (no<0 || no >=mFrames.count()) return;
   setPixmap(mFrames.at(no));
-  resetMatrix();
-  translate(-mHotspots.at(no).x(), -mHotspots.at(no).y());
+  
+  QPoint offset = thememanager()->getOffset();
+  
+  // Set new item's scene transformation: Hotspot plus gloval theme offset
+  resetTransform();
+  if (mOffsetStatus)
+  {
+    translate(-mHotspots.at(no).x()+offset.x(), -mHotspots.at(no).y()+offset.y());
+  }
+  else 
+  {
+    translate(-mHotspots.at(no).x(), -mHotspots.at(no).y());
+  }
   mCurrentFrame = no;
   update();
 }
