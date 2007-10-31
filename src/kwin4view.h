@@ -34,6 +34,8 @@
 #include <QLinearGradient>
 #include <QImage>
 #include <QPixmap>
+#include <QTimer>
+
 
 // KDE includes
 #include <kgameio.h>
@@ -51,7 +53,7 @@ class ReflectionGraphicsScene;
 /**
  * The view object which shows the graphics for the game.
  */
-class KWin4View : public QGraphicsView
+class KWin4View : public QGraphicsView, public virtual Themeable
 {
   Q_OBJECT
 
@@ -72,6 +74,12 @@ class KWin4View : public QGraphicsView
     /** Destructor
       */
     ~KWin4View();
+
+    /** Main theme manager function. Called when any theme change like
+      * a new theme or a theme size change occurs. This object needs to
+      * resiez and redraw then.
+      */
+    virtual void changeTheme();
 
     /** Initial setup of the game view.
       */
@@ -186,8 +194,9 @@ class KWin4View : public QGraphicsView
     // The theme manager 
     ThemeManager* mTheme;
 
-    // Theme Queue
+    // Theme queue
     QList<int> mThemeQueue;
+    // Theme offset queque
     QList<QPoint> mThemeOffset;
     
     // The scene to plot to
@@ -213,13 +222,24 @@ class KWin4View : public QGraphicsView
     QGraphicsPixmapItem* mReflectionSprite;
     // Refection size
     QRect mReflectionRect;
+    // Paint image of reflection
+    QImage mReflectImage;
+    // Phase of reflection drawing
+    int mReflectPhase;
 
     // Debug frame rate sprite
     QGraphicsTextItem* mFrameSprite;
-    // Time between updates
-    int mDisplayUpdateTime;
     // Average update times
     QList<int> mDrawTimes;
+    
+    // Update and advance timer
+    QTimer* mTimer;
+    // Default update time [ms]
+    int mDefaultUpdateTime;
+    // Update slow down factor
+    double mSlowDownFactor;
+    // Slow incident counter
+    int mSlowCnt;
 };
 
 #endif // KWIN4_KWIN4VIEW_H

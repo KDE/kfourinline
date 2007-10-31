@@ -179,7 +179,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
 
     /** Offset status.
      */
-     bool mOffsetStatus;
+    bool mOffsetStatus;
 };
 
 #endif

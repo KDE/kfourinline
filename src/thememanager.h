@@ -184,12 +184,11 @@ class ThemeManager : public QObject
     void updateTheme(const QString &themefile);
     
     /** Change the scale of the theme and update all registered
-      * theme objects. If the scale did not change no action is
-      * performed!
+      * theme objects.
       * @param scale The new scale (maximum extension)
       * @param offset The new offset of the theme (left upper corner)
       */
-    void rescale(int scale,  QPoint offset);
+    void rescale(int scale, QPoint offset);
 
     /** Retrieve the theme's apsect ratio. This is stored as
       * 'aspect-ratio' key in the 'general' group of the theme.

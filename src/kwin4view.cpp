@@ -25,7 +25,6 @@
 #include <math.h>
 
 // Qt includes
-#include <QTimer>
 #include <QColor>
 #include <QEvent>
 #include <QTime>
@@ -46,7 +45,9 @@
 // How many time measurements for average
 #define MEASUREMENT_LIST_SIZE  50
 // How many warnings until reflections are switched off
-#define WARNING_MAX_COUNT      10
+#define WARNING_MAX_COUNT      5
+// How many milliseconds rounding error
+#define MEASUREMENT_ROUNDING_ERROR 5
 
 
 // Constructor for the view
@@ -55,11 +56,15 @@ KWin4View::KWin4View(int updateTime,
                      ReflectionGraphicsScene* scene,
                      ThemeManager* theme, 
                      QWidget* parent)
-          : QGraphicsView(scene, parent)
+          : Themeable("theview", theme), QGraphicsView(scene, parent)
 {
   // Store attributes    
-  mScene         = scene;
-  mTheme         = theme;
+  mScene             = scene;
+  mTheme             = theme;
+  mDefaultUpdateTime = updateTime;
+  mSlowDownFactor    = 1.0;
+  mSlowCnt           = 0;
+  mReflectPhase      = 0; 
 
   // We do not need scrolling so switch it off
   setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -81,9 +86,9 @@ KWin4View::KWin4View(int updateTime,
   scene->setBackgroundBrush(QColor(0,0,128));
 
 
-  QTimer* timer = new QTimer(this);
-  connect(timer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
-  timer->start(updateTime);
+  mTimer = new QTimer(this);
+  connect(mTimer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
+  mTimer->start(mDefaultUpdateTime);
 
   // Game status
   mIsRunning = false;
@@ -116,7 +121,6 @@ KWin4View::KWin4View(int updateTime,
   mReflectionSprite->hide();
 
   // Debug                      
-  mDisplayUpdateTime = updateTime;
   mFrameSprite = new QGraphicsTextItem(0, scene);
   mFrameSprite->setPos(QPointF(0.0, 0.0));
   mFrameSprite->setZValue(1000.0);
@@ -145,47 +149,118 @@ KWin4View::~KWin4View()
   if (mReflectionSprite) delete mReflectionSprite;
 }
 
+// Main themeable function. Called for any theme change. 
+void KWin4View::changeTheme()
+{
+  if (global_debug > 0) kDebug() << "CHANGE THEME IN VIEW ... resetting slow counter";
+  mDrawTimes.clear();
+  mSlowDownFactor = 1.0;
+  mSlowCnt = 0;
+  mTimer->setInterval(int(mDefaultUpdateTime*mSlowDownFactor)); 
+}
+
 
 // Advance and update canvas/scene
 void KWin4View::updateAndAdvance()
 {
+  // Time measurement (maybe remove static at some point)  
+  static bool first = true;
+  static QTime time;
+  int elapsed = time.elapsed();
+  if (first) {elapsed = 0;first=false;}
+  time.restart();
+
+  // Time display
+  mDrawTimes.append(elapsed);
+  if (mDrawTimes.size() > MEASUREMENT_LIST_SIZE) mDrawTimes.removeFirst();
+  double avg = 0.0;
+  for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
+  avg /= mDrawTimes.size();
+
+  // Set debug sprite
+  if (global_debug > 0)
+  {
+     mFrameSprite->setPlainText(QString("CurrentUpdate: %1 ms  AverageUpdate%2 ms  DefaultUpdate: %3*%4 ms").
+                  arg(elapsed).arg(int(avg)).arg(mDefaultUpdateTime).arg(mSlowDownFactor));
+  }
+     
+  
+  // Dynamic update of the graphics advance and update speed
+  if (mDrawTimes.size() == MEASUREMENT_LIST_SIZE && 
+      avg > mDefaultUpdateTime*mSlowDownFactor+MEASUREMENT_ROUNDING_ERROR)
+  {
+    mSlowCnt++;
+    kDebug() << "Warning " << mSlowCnt << " avg=" << avg;
+    mDrawTimes.clear();
+    if (mSlowCnt > WARNING_MAX_COUNT)
+    {
+      mSlowDownFactor = double(MEASUREMENT_ROUNDING_ERROR+avg)/double(mDefaultUpdateTime);
+      mSlowCnt = 0;
+      mTimer->setInterval(int(mDefaultUpdateTime*mSlowDownFactor)); 
+
+      kDebug() << "SLOW COMPUTER WARNING: Decreasing graphics update speed "
+               << mDefaultUpdateTime*mSlowDownFactor<<"ms. Maybe switch off reflections.";
+    }
+  }
+
+    
+  // Scene advance  
   scene()->advance();
   // QGV takes care of updating dirty rects, no need to call update or the whole scene is dirtied and repainted
   // scene()->update();
 
+
+  // ====================================================================================
   // Reflections need to be done in the view otherwise the update's go wrong
   if (mReflectionRect.width() >0 && mReflectionRect.height() > 0)
   {
-    QImage image(mReflectionRect.width(), mReflectionRect.height(), QImage::Format_ARGB32);
-    image.fill(Qt::transparent);
-    QPainter imagePainter(&image);
-    // imagePainter.fillRect(image.rect(),QBrush(Qt::red));
+    // Draw reflection in steps to save processing power
+    if (mReflectPhase == 0)
+    {
+      mReflectImage = QImage(mReflectionRect.width(), mReflectionRect.height(), QImage::Format_ARGB32);
+      mReflectImage.fill(Qt::transparent);
+      QPainter imagePainter(&mReflectImage);
+      // imagePainter.fillRect(image.rect(),QBrush(Qt::red));
 
-    //Turn on all optimizations
-    imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
-    imagePainter.setClipping(true);
-    imagePainter.setWorldMatrix(QMatrix(1.0,0.0,0.0,-1.0,0.0,image.height()));
-    QRect source = QRect(mReflectionRect.x(),mReflectionRect.y()-image.height(),   image.width(), image.height());
+      //Turn on all optimizations
+      imagePainter.setRenderHints(QPainter::Antialiasing |
+                                  QPainter::TextAntialiasing |
+                                  QPainter::SmoothPixmapTransform, false);
+      imagePainter.setClipping(true);
+      imagePainter.setWorldMatrix(QMatrix(1.0,0.0,0.0,-1.0,0.0,mReflectImage.height()));
+      QRect source = QRect(mReflectionRect.x(),mReflectionRect.y()-mReflectImage.height(), 
+                           mReflectImage.width(), mReflectImage.height());
 
-    bool vis = mReflectionSprite->isVisible();
-    mReflectionSprite->hide();
-    dynamic_cast<ReflectionGraphicsScene*>(scene())->setBackground(false);
-    scene()->render(&imagePainter, image.rect(), source, Qt::IgnoreAspectRatio);
-    dynamic_cast<ReflectionGraphicsScene*>(scene())->setBackground(true);
-    if (vis) mReflectionSprite->show();
-
-     // Semi transparent
-    imagePainter.setTransform(QTransform());
-    imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-    imagePainter.drawImage(0,0,mGradientImage);
-    
-     // Set to sprite
-    QPixmap pm = QPixmap::fromImage(image);
-    mReflectionSprite->setPixmap(pm);
-    mReflectionSprite->update();
+      bool vis = mReflectionSprite->isVisible();
+      mReflectionSprite->hide();
+      dynamic_cast<ReflectionGraphicsScene*>(scene())->setBackground(false);
+      scene()->render(&imagePainter, mReflectImage.rect(), source, Qt::IgnoreAspectRatio);
+      dynamic_cast<ReflectionGraphicsScene*>(scene())->setBackground(true);
+      if (vis) mReflectionSprite->show();
+      mReflectPhase = 1;
+    }
+    // Draw reflection in steps to save processing power
+    else if (mReflectPhase == 1)
+    {
+       // Semi transparent
+      QPainter imagePainter(&mReflectImage);
+      imagePainter.setTransform(QTransform());
+      imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+      imagePainter.drawImage(0,0,mGradientImage);
+      mReflectPhase = 2;
+    }
+    // Draw reflection in steps to save processing power
+    else if (mReflectPhase == 2)
+    {
+       // Set to sprite
+      QPixmap pm = QPixmap::fromImage(mReflectImage);
+      mReflectionSprite->setPixmap(pm);
+      mReflectionSprite->update();
+      mReflectPhase = 0;
+    }
   }
+  // ====================================================================================
 
-  
 }
 
 
@@ -219,27 +294,11 @@ void KWin4View::setReflection(int x, int y, int width, int height)
   }
 }
 
-// QGV drawItems function
+
+// QGV drawItems function (for debug time measurements)
 void KWin4View::drawItems(QPainter* painter, int numItems, QGraphicsItem* items[], const QStyleOptionGraphicsItem options[])
 {
-  static bool first = true;
-  static QTime time;
-  int elapsed = time.elapsed();
-  if (first) {elapsed = 0;first=false;}
-  time.restart();
   QGraphicsView::drawItems(painter, numItems, items, options);
-
-  // Time display
-  mDrawTimes.append(elapsed);
-  if (mDrawTimes.size() > MEASUREMENT_LIST_SIZE) mDrawTimes.removeFirst();
-  double avg = 0.0;
-  for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
-  avg /= mDrawTimes.size();
-
-
-  if (global_debug > 0)
-     mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
-
 }
 
 
