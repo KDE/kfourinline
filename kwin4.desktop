@@ -18,7 +18,6 @@ Name[tg]=K4 Ғолиб мешавад
 Name[tr]=4 Kazanır
 Name[x-test]=xxKWin4xx
 GenericName=Four-in-a-row Board Game
-GenericName[de]=Vier-Gewinnt Brettspiel
 Exec=kwin4
 Icon=kwin4
 MimeType=
