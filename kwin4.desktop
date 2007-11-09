@@ -22,6 +22,7 @@ GenericName[el]=Επιτραπέζιο παιχνίδι Τέσσερα στη σ
 GenericName[es]=Juego de tablero cuatro en línea
 GenericName[pt]=Jogo de Tabuleiro Quatro-em-Linha
 GenericName[pt_BR]=Jogo de Tabuleiro Quatro-em-Linha
+GenericName[zh_TW]=四子棋棋盤遊戲
 Exec=kwin4
 Icon=kwin4
 MimeType=
