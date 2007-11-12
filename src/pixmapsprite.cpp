@@ -117,7 +117,7 @@ void PixmapSprite::changeTheme()
     for (int i=mStartFrame;i<=mEndFrame;i++)
     {
       QString name = QString("frame%1").arg(i);
-      svgid = config.readEntry(name.toUtf8());
+      svgid = config.readEntry(name);
       if (!refframe.isNull())
       {
         pixmap = thememanager()->getPixmap(svgid, refframe, width);
