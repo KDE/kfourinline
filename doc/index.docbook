@@ -14,18 +14,30 @@
 <author>
 <firstname>Martin</firstname>
 <surname>Heni</surname>
-<affiliation><address>&Martin.Heni.mail;</address></affiliation>
+<affiliation>
+<address>&Martin.Heni.mail;</address>
+</affiliation>
 </author>
-
+<author>
+<firstname>Eugene</firstname>
+<surname>Trounev</surname>
+<affiliation>
+<address><email>eugene.trounev@gmail.com</email></address></affiliation>
+</author>
 <author>
 <firstname>Benjamin</firstname>
 <surname>Meyer</surname>
 </author>
-
+<author>
+<firstname>Johann Ollivier</firstname>
+<surname>Lapeyre</surname>
+</author>
 <author>
 <firstname>Anton</firstname>
 <surname>Brondz</surname>
-<affiliation><address><email>dinolinux@gmail.com</email></address></affiliation>
+<affiliation>
+<address><email>dinolinux@gmail.com</email></address>
+</affiliation>
 </author>
 
 
@@ -594,6 +606,7 @@ plays for this player.</para>
 
 <chapter id="credits">
 <title>Credits and License</title>
+
 <para>
 &k4wins;
 </para>
@@ -608,9 +621,12 @@ and Johann Ollivier Lapeyre.
 <para>
 Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer.
 </para>
+
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
 &underFDL;
 &underGPL;
+
 </chapter>
 
 <appendix id="installation">
