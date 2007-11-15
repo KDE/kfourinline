@@ -51,7 +51,7 @@
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2007-05-01</date>
+<date>2007-11-14</date>
 <releaseinfo>1.4.0</releaseinfo>
 
 <abstract>
@@ -95,7 +95,7 @@ placed on a board. The game can also be played against a computer.
 </chapter>
 
 <chapter id="howtoplay">
-<title>How to play</title>
+<title>How to Play</title>
 <para>
 When &k4wins; loads, you can select the difficulty or start a two player game. If you like,
 you can also pick your color and select which color starts the game.
@@ -154,7 +154,7 @@ which player is next to play.
 </para>
 
 <sect1 id="remote-connections">
-<title>Remote connections</title>
+<title>Remote Connections</title>
 
 <para>
 It is possible to play the game over a network connection with another
@@ -162,7 +162,7 @@ computer.
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
 in the menu 
-<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
+<menuchoice><guimenu>Settings</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
 In the menu
 <menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat...</guimenuitem></menuchoice>.
 you find a chat dialog box which allows you to speak with your friend.
@@ -195,7 +195,7 @@ How do I start a new game?
 </question>
 <answer>
 <para>
-Press the New button, select New from the Game menu or press 
+Press the <guibutton>New</guibutton> button, select <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> from the menubar or press 
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </para>
 </answer>
@@ -209,8 +209,8 @@ How can I end the game?
 </question>
 <answer>
 <para>
-Press the End game button, select End game from the Game menu or press
-<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
+Press the <guibutton>End Game</guibutton> button, select <menuchoice><guimenu>Game</guimenu><guimenuitem>End Game</guimenuitem></menuchoice> from the 
+menubar or press<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
 </para>
 </answer>
 </qandaentry>
@@ -236,7 +236,7 @@ I don't know what to do, is there a way to get help?
 </question>
 <answer>
 <para>
-You can get a hint by clicking the hint button, a differently colored 
+You can get a hint by clicking the <guibutton>Hint</guibutton> button, a differently colored 
 piece will appear where you should put your piece
 </para>
 </answer>
@@ -250,8 +250,9 @@ Is there a way to undo?
 </question>
 <answer>
 <para>
-Yes, you can use the undo button, press 
-<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo> or select undo from the Move menu.
+Yes, you can use the <guibutton>Undo</guibutton> button, press 
+<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo> or select <menuchoice><guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice> 
+from the menubar
 </para>
 </answer>
 </qandaentry>
@@ -264,7 +265,7 @@ Can I change the look of the game?
 </question>
 <answer>
 <para>
-You can change the color of the pieces by opening the Settings menu and select Theme
+You can change the color of the pieces by opening the <guimenu>Settings</guimenu> menu and select <guisubmenu>Theme</guisubmenu>.
 </para>
 </answer>
 </qandaentry>
@@ -278,9 +279,9 @@ Can I use the keyboard?
 <answer>
 <para>
 You can use the keyboard to do basic operations like staring a new game, 
-quiting and getting hints, but you can't use the keyboard to control the pieces.
-To view a list of the current keyboard bindings, open the Settings menu and 
-select Configure Shortcuts.
+quiting and getting hints, but you cannot use the keyboard to control the pieces.
+To view a list of the current keyboard bindings, open the <guimenu>Settings</guimenu> menu and 
+select <guimenuitem>Configure Shortcuts...</guimenuitem>.
 </para>
 </answer>
 </qandaentry>
@@ -288,13 +289,13 @@ select Configure Shortcuts.
 <qandaentry>
 <question>
 <para>
-I've lost control of who's in the lead, can I find it out?
+I have lost control of who is in the lead, can I find it out?
 </para>
 </question>
 <answer>
 <para>
-Yes, you can see statistics by opening the Game menu and 
-selecting Show statistics.
+Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and 
+selecting <guimenuitem>Show Statistics</guimenuitem>.
 </para>
 </answer>
 </qandaentry>
@@ -307,7 +308,7 @@ Can I replay a game?
 </question>
 <answer>
 <para>
-No, &k4wins; can't replay.
+No, &k4wins; cannot replay.
 </para>
 </answer>
 </qandaentry>
@@ -586,12 +587,12 @@ configuration dialog.</para>
 </chapter>
 
 <chapter id="config">
-<title>Game configuration</title>
-<para>&k4wins; can be configured using the configuration dialog in <guimenu>Settings</guimenu> <guimenuitem>Configure &k4wins;</guimenuitem> </para>
-<para><guilabel>Starting Player Color</guilabel>: Determine which  player color has the first move in the next game.</para>
+<title>Game Configuration</title>
+<para>&k4wins; can be configured using the configuration dialog with <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &k4wins;...</guimenuitem></menuchoice> </para>
+<para><guilabel>Starting Player Color</guilabel>: Determine which  player color (<guilabel>Red</guilabel> or <guilabel>Black</guilabel>) has the first move in the next game.</para>
 <para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
 <para><guilabel>Black Plays With</guilabel>: 
-Choose who should play for player 1 (black, yellowm white, ...). It can be either
+Choose who should play for player 1. It can be either
 <guilabel>Mouse</guilabel> or <guilabel>Keyboard</guilabel>,
 &ie; a local player using the mouse or keyboard
 as input device or <guilabel>Computer</guilabel>, &ie; the computer
