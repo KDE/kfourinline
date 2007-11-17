@@ -803,7 +803,7 @@ void KWin4App::configureNetwork()
   connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(remoteChanged(int)));
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(serverTypeChanged(int)));
 
-  QRadioButton *b1 = new QRadioButton(i18n("Yellow should be played by remote"), mColorGroup);
+  QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote"), mColorGroup);
   QRadioButton *b2 = new QRadioButton(i18n("Red should be played by remote"), mColorGroup);
   grouplay->addWidget(b1);
   grouplay->addWidget(b2);
