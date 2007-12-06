@@ -400,9 +400,6 @@ other party.
 
 <varlistentry>
 <term><menuchoice>
-<shortcut>
-<keycap>o</keycap>
-</shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>Show Statistics</guimenuitem>
 </menuchoice></term>
@@ -523,7 +520,7 @@ Toggle on and off the display of the statusbar.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Themes</guimenuitem>
+<guisubmenu>Theme</guisubmenu>
 </menuchoice></term>
 <listitem><para>
 <action>Choose a graphical theme for the game. Which themes are available depends on the current installation.</action>
@@ -532,7 +529,7 @@ Toggle on and off the display of the statusbar.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu>Game</guimenu>
+<guimenu>Settings</guimenu>
 <guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
 <listitem>
 <para>
