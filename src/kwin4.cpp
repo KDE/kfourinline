@@ -336,7 +336,7 @@ void KWin4App::initGUI()
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureChat()));
 
   action = actionCollection()->addAction("statistics");
-  action->setIcon(KIcon("flag"));
+  action->setIcon(KIcon("view-statistics"));
   action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   action->setToolTip(i18n("Show statistics."));
