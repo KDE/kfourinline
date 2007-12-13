@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-<!ENTITY kappname "&k4wins;">
+<!ENTITY kappname "&kfourinline;">
 <!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
 <!ENTITY % addindex "IGNORE">
@@ -56,7 +56,7 @@
 
 <abstract>
 <para>
-&k4wins; is a four-in-a-row game for &kde;.</para>
+&kfourinline; is a four-in-a-row game for &kde;.</para>
 </abstract>
 
 <keywordset>
@@ -68,8 +68,8 @@
 <keyword>four wins</keyword>
 <keyword>four</keyword>
 <keyword>four in a row</keyword>
-<keyword>win4</keyword>
-<keyword>kwin4</keyword>
+<keyword>four in line</keyword>
+<keyword>kfourinline</keyword>
 <keyword>connect four</keyword>
 <keyword>connect 4</keyword>
 </keywordset>
@@ -83,7 +83,7 @@ Game type: Strategy, Board
 </para>
 
 <para>
-&k4wins; is a board game for two players based on the
+&kfourinline; is a board game for two players based on the
 <trademark>Connect-Four</trademark> game.
 </para>
 
@@ -97,7 +97,7 @@ placed on a board. The game can also be played against a computer.
 <chapter id="howtoplay">
 <title>How to Play</title>
 <para>
-When &k4wins; loads, you can select the difficulty or start a two player game. If you like,
+When &kfourinline; loads, you can select the difficulty or start a two player game. If you like,
 you can also pick your color and select which color starts the game.
 </para>
 
@@ -223,7 +223,7 @@ How do I pause the game?
 </question>
 <answer>
 <para>
-&k4wins; is turn-based, there is no need to pause it.
+&kfourinline; is turn-based, there is no need to pause it.
 </para>
 </answer>
 </qandaentry>
@@ -308,7 +308,7 @@ Can I replay a game?
 </question>
 <answer>
 <para>
-No, &k4wins; cannot replay.
+No, &kfourinline; cannot replay.
 </para>
 </answer>
 </qandaentry>
@@ -562,10 +562,10 @@ also disconnect it in this menu.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure &k4wins;...</guimenuitem>
+<guimenuitem>Configure &kfourinline;...</guimenuitem>
 </menuchoice></term>
 
-<listitem><para><action>Displays</action> the &k4wins;
+<listitem><para><action>Displays</action> the &kfourinline;
 configuration dialog.</para>
 
 </listitem>
@@ -585,7 +585,7 @@ configuration dialog.</para>
 
 <chapter id="config">
 <title>Game Configuration</title>
-<para>&k4wins; can be configured using the configuration dialog with <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &k4wins;...</guimenuitem></menuchoice> </para>
+<para>&kfourinline; can be configured using the configuration dialog with <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> </para>
 <para><guilabel>Starting Player Color</guilabel>: Determine which  player color (<guilabel>Red</guilabel> or <guilabel>Black</guilabel>) has the first move in the next game.</para>
 <para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
 <para><guilabel>Black Plays With</guilabel>: 
@@ -606,7 +606,7 @@ plays for this player.</para>
 <title>Credits and License</title>
 
 <para>
-&k4wins;
+&kfourinline;
 </para>
 <para>
 Program copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail;
@@ -630,8 +630,8 @@ Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer
 <appendix id="installation">
 <title>Installation</title>
 
-<sect1 id="getting-kwin4">
-<title>How to obtain &k4wins;</title>
+<sect1 id="getting-kfourinline">
+<title>How to obtain &kfourinline;</title>
 
 &install.intro.documentation;
 
