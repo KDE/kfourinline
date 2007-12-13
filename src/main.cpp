@@ -60,9 +60,9 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
-  KAboutData aboutData( "kwin4", 0, ki18n("KWin4"),
+  KAboutData aboutData( "kfourinline", 0, ki18n("KFourInLine"),
                         KWIN4_VERSION,
-                        ki18n("KWin4: Two player board game"),
+                        ki18n("KFourInLine: Two player board game"),
                         KAboutData::License_GPL,
                         ki18n("(c) 1995-2007, Martin Heni"));
   aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");
