@@ -31,11 +31,11 @@ kde4_add_ui_files(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
-kde4_add_executable(kwin4 ${kwin4_SRCS})
+kde4_add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kwin4  ${KDE4_KDEUI_LIBS} kdegames )
+target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} kdegames )
 
-install(TARGETS kwin4  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS kfourinline  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### next target ###############
@@ -44,18 +44,15 @@ set(kwin4proc_SRCS
     aiboard.cpp
     kwin4proc.cpp )
 
-kde4_add_executable(kwin4proc ${kwin4proc_SRCS})
+kde4_add_executable(kfourinlineproc ${kwin4proc_SRCS})
 
-target_link_libraries(kwin4proc  ${KDE4_KDECORE_LIBS} kdegames )
+target_link_libraries(kfourinlineproc ${KDE4_KDECORE_LIBS} kdegames )
 
-install(TARGETS kwin4proc  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS kfourinlineproc DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
 
 install( FILES kwin4.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
-install( FILES kwin4ui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kwin4 )
-
-
-
+install( FILES kfourinlineui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kfourinline )
 

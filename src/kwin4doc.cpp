@@ -837,7 +837,7 @@ QString KWin4Doc::findProcessName()
   // Try whether we run from a development source dir
   #ifndef NDEBUG
   #ifdef SRC_DIR
-    QString srcname = QString(SRC_DIR)+QString("/src/kwin4proc");
+    QString srcname = QString(SRC_DIR)+QString("/src/kfourinlineproc");
     QFile fsrc(srcname);
     if (fsrc.exists())
     {
@@ -851,7 +851,7 @@ QString KWin4Doc::findProcessName()
   // First try a local dir override
   QDir dir;
   // TODO: This local filename is not found!!
-  QString filename=dir.path()+QString("/kwin4/kwin4proc");
+  QString filename=dir.path()+QString("/kwin4/kfourinlineproc");
   kDebug() << "PROC FILENAME="<<filename;
   QFile flocal(filename);
   if (flocal.exists())
@@ -859,7 +859,7 @@ QString KWin4Doc::findProcessName()
     if (global_debug>1) kDebug() << "Found local process" << filename;
     return filename;
   }
-  QString path=KGlobal::mainComponent().dirs()->findExe("kwin4proc");
+  QString path=KGlobal::mainComponent().dirs()->findExe("kfourinlineproc");
   if (!path.isNull())
   {
     if (global_debug>1) kDebug() << "Found system process" << path;
