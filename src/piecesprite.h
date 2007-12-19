@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QPointF>
-#include <QSizeF>
 #include <QGraphicsPixmapItem>
 
 // Local includes

@@ -23,7 +23,6 @@
 
 // include files for QT
 #include <QPushButton>
-#include <QLayout>
 #include <QGroupBox>
 
 // include files for KDE

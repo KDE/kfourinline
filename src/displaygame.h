@@ -21,7 +21,6 @@
 */
 
 // Qt includes
-#include <QWidget>
 #include <QGraphicsView>
 #include <QHash>
 #include <QList>

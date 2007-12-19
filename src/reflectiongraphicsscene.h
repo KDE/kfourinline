@@ -24,12 +24,8 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QStyleOptionGraphicsItem>
-#include <QLinearGradient>
-#include <QPixmap>
-#include <QTransform>
 #include <QGraphicsTextItem>
 #include <QGraphicsPixmapItem>
-#include <QList>
 
 
 class QPainter;

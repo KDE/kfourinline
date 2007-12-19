@@ -33,7 +33,6 @@
 #include <QGraphicsPixmapItem>
 #include <QLinearGradient>
 #include <QImage>
-#include <QPixmap>
 #include <QTimer>
 
 

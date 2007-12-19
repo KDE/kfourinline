@@ -21,9 +21,6 @@
 */
 
 // Qt includes
-#include <QPointF>
-#include <QSizeF>
-#include <QEvent>
 #include <QMouseEvent>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>

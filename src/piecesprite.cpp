@@ -25,7 +25,6 @@
 #include <math.h>
 
 // Qt includes
-#include <QSizeF>
 
 // KDE includes
 #include <kdebug.h>

@@ -22,7 +22,6 @@
 
 // Qt includes
 #include <QPointF>
-#include <QSizeF>
 #include <QTime>
 #include <QList>
 #include <QGraphicsPixmapItem>

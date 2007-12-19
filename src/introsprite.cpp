@@ -25,7 +25,6 @@
 #include <math.h>
 
 // Qt includes
-#include <QListIterator>
 
 // KDE includes
 #include <kdebug.h>

@@ -25,7 +25,6 @@
 #include <math.h>
 
 // Qt includes
-#include <QSizeF>
 #include <QFont>
 #include<QGraphicsSceneMouseEvent>
 

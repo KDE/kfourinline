@@ -30,7 +30,6 @@
 // Qt includes
 #include <QDataStream>
 #include <QByteArray>
-#include <QBuffer>
 #include <QTime>
 #include <QMutex>
 #include <QWaitCondition>

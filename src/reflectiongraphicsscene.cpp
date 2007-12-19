@@ -27,10 +27,8 @@
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsItem>
-#include <QTransform>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include <QLinearGradient>
 #include <klocale.h>
 #include <QTime>
 

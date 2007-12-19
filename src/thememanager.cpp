@@ -28,7 +28,6 @@
 #include <QImage>
 #include <QPixmap>
 #include <QPainter>
-#include <QColor>
 #include <QRectF>
 
 // KDE includes

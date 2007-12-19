@@ -26,7 +26,6 @@
 #include <assert.h>
 
 // Qt includes
-#include <QFont>
 #include <QColor>
 #include <QPixmap>
 #include <QPoint>
