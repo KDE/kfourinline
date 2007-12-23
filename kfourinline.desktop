@@ -2,6 +2,7 @@
 Name=KFourInLine
 Name[de]=Vier gewinnt
 Name[sv]=Fyra i rad
+Name[x-test]=xxKFourInLinexx
 GenericName=Four-in-a-row Board Game
 GenericName[ca]=Joc de quatre en fila
 GenericName[de]=Vier-Gewinnt Brettspiel
