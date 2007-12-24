@@ -194,6 +194,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
   image.fill(0);
   QPainter p(&image);
   mRenderer->render(&p, svgid);
+  p.end();
   pixmap = QPixmap::fromImage(image);
   if (pixmap.isNull())
     kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
