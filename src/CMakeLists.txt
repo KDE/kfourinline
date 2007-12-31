@@ -31,14 +31,7 @@ kde4_add_ui_files(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
-set(kfourinline_icons
-    ${CMAKE_CURRENT_SOURCE_DIR}/../hi16-app-kfourinline.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/../hi32-app-kfourinline.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/../hi48-app-kfourinline.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/../hi64-app-kfourinline.png
-    ${CMAKE_CURRENT_SOURCE_DIR}/../hi128-app-kfourinline.png
-)
-kde4_add_win32_app_icon(kwin4_SRCS ${kfourinline_icons})
+kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
 kde4_add_executable(kfourinline ${kwin4_SRCS})
 
 target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} kdegames )
@@ -63,4 +56,5 @@ install(TARGETS kfourinlineproc DESTINATION ${BIN_INSTALL_DIR} )
 
 install( FILES kwin4.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
 install( FILES kfourinlineui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kfourinline )
+
 
