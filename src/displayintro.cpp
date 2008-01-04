@@ -84,7 +84,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
   mSprites.append(mQuickLaunch);
   mQuickLaunch->show();
   mTextQuicklaunch  = new QGraphicsTextItem(mQuickLaunch, scene);
-  mTextQuicklaunch->setPlainText(i18nc("Name of quicklaunch field", "Quick launch"));
+  mTextQuicklaunch->setPlainText(i18nc("Name of quicklaunch field", "Quick Launch"));
   mTextQuicklaunch->show();
   mTextStartplayer  = new QGraphicsTextItem(mQuickLaunch, scene);
   mTextStartplayer->setPlainText(i18nc("Ask player who should start game", "Who starts?"));
@@ -161,7 +161,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
 
   button = new ButtonSprite(true, "button_player", mTheme, 13, mScene);
   mSprites.append(button);
-  button->setText(i18nc("quick start button - player versus player", "Two player game"));
+  button->setText(i18nc("quick start button - player versus player", "Two Player Game"));
   button->show();
   connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
           this,SLOT(buttonPressed(QGraphicsItem*,int)));
