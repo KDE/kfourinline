@@ -895,6 +895,7 @@ void KWin4App::configureSettings()
   dialog->setButtons(KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help);
   dialog->setDefaultButton(KDialog::Ok);
   dialog->setModal(true);
+  dialog->setHelp(QString(),"kfourinline");
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
   dialog->addPage(frame, i18n("General"), "games-config-options");
