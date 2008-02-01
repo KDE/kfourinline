@@ -459,7 +459,7 @@ moves are taken back so that it is the player's turn again.
 </menuchoice></term>
 <listitem>
 <para>
-Replay a move which had been undone. If one of the players if played by
+Replay a move which had been undone. If one of the players is played by
 the computer two moves are redone so that it is the player's turn again.
 </para>
 </listitem>
@@ -594,7 +594,7 @@ Choose who should play for player 1. It can be either
 &ie; a local player using the mouse or keyboard
 as input device or <guilabel>Computer</guilabel>, &ie; the computer
 plays for this player.</para>
-<para><guilabel>Red Plays With</guilabel>: Same as <guilabel>Yellow Playes With</guilabel> but for player 2
+<para><guilabel>Red Plays With</guilabel>: Same as <guilabel>Black Plays With</guilabel> but for player 2
 (red).</para>
 <para><guilabel>Computer Difficulty</guilabel>: Select the level of the computer player.</para>
 <para><guilabel>Use AI learning</guilabel>: The computer AI can learn from mistakes made in one game.</para>
