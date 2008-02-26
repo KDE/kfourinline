@@ -278,7 +278,7 @@ Can I use the keyboard?
 </question>
 <answer>
 <para>
-You can use the keyboard to do basic operations like staring a new game, 
+You can use the keyboard to do basic operations like starting a new game, 
 quiting and getting hints, but you cannot use the keyboard to control the pieces.
 To view a list of the current keyboard bindings, open the <guimenu>Settings</guimenu> menu and 
 select <guimenuitem>Configure Shortcuts...</guimenuitem>.
