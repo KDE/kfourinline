@@ -18,6 +18,9 @@
    Boston, MA 02110-1301, USA.
 */
 
+// Standard include
+#include <math.h>
+
 // Header includes
 #include "kwin4proc.h"
 
@@ -25,7 +28,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
 // Qt includes
 #include <QDataStream>
