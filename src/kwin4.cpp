@@ -352,6 +352,7 @@ void KWin4App::initGUI()
   themes.sort();
 
   action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
+  action->setIcon(KIcon("games-config-theme"));
   ((KSelectAction*)action)->setItems(themes);
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
   kDebug() << "Setting current theme item to" << mThemeIndexNo;
