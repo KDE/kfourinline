@@ -2,6 +2,7 @@
 Name=KFourInLine
 Name[cs]=Čtyři v řadě
 Name[de]=Vier gewinnt
+Name[hu]=Színes vonalak
 Name[pl]=Cztery w linii
 Name[pt_BR]=KQuatro Em Linha
 Name[sv]=Fyra i rad
@@ -19,6 +20,7 @@ GenericName[et]=Neli ritta lauamäng
 GenericName[fi]=Neljän suora -lautapeli
 GenericName[fr]=Jeu de plateau quatre-en-ligne
 GenericName[ga]=Cluiche Boird ceithre-cinn-as-a-chéile
+GenericName[hu]=Táblás játék
 GenericName[it]=Quattro-in-fila, gioco da tavolo
 GenericName[ja]=四目並べ
 GenericName[ko]=한 줄에 네 개 보드 게임
