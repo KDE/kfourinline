@@ -64,7 +64,8 @@ int main(int argc, char *argv[])
                         KWIN4_VERSION,
                         ki18n("KFourInLine: Two player board game"),
                         KAboutData::License_GPL,
-                        ki18n("(c) 1995-2007, Martin Heni"));
+                        ki18n("(c) 1995-2007, Martin Heni"),
+                        KLocalizedString(), "http://games.kde.org/kfourinline" );
   aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");
   aboutData.addAuthor(ki18n("Johann Ollivier Lapeyre"),ki18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
   aboutData.addAuthor(ki18n("Eugene Trounev"),ki18n("Graphics"), "eugene.trounev@gmail.com");
