@@ -37,40 +37,40 @@ class ThemeManager;
   * by the theme manager and allows them to retrieve theme data
   * from a configuration theme file.
   */
-class Themeable 
+class Themeable
 {
    public:
-     /** Default constructor for the interface 
+     /** Default constructor for the interface
       */
      Themeable();
-     
+
      /** Constructor for the interface given the theme item unique ID string
        * and a reference to the theme manager. The ID string is used to refer
        * to the group in the configuration file.
-       * @param id           The user defined theme id 
+       * @param id           The user defined theme id
        * @param thememanager The used theme manager
        */
      Themeable(const QString &id, ThemeManager* thememanager);
-     
-     /** Destructor 
+
+     /** Destructor
       */
      virtual ~Themeable();
-     
+
      /** Retrieve the ID of the object.
       *  @return The ID.
       */
      QString id() {return mId;}
-     
+
      /** Retrieve the associated theme manager of this object.
       *  @return The theme manager.
       */
      ThemeManager* thememanager() {return mThemeManager;}
-     
+
      /** Retrieve the current scale (maximum extension) of the theme.
        * @return The current scale.
        */
      double getScale() {return mScale;}
-     
+
      /** Set teh current scale for the object.
       *  @param scale The new scale.
       */
@@ -85,10 +85,10 @@ class Themeable
    private:
      // The theme ID
      QString mId;
-     
+
      // The theme manager
      ThemeManager* mThemeManager;
-     
+
      // The current scale for the object (maximum extension)
      double mScale;
 };
@@ -112,7 +112,8 @@ class ThemeManager : public QObject
       * @param parent      The parent object
       * @param initialSize Initial theme size, can be arbitrary.
       */
-    ThemeManager(const QString &themefile, QObject* parent, int initialSize = 1);
+  ThemeManager(const QString &themefile, QObject* parent, int initialSize = 1);
+    ~ThemeManager();
 
     /** Load a pixmap from the SVG theme file. Its filename is given in the
       * "general" section of the theme file as "svgfile". The pixmap is scaled
@@ -122,7 +123,7 @@ class ThemeManager : public QObject
       * @return The new pixmap.
       */
     const QPixmap getPixmap(const QString &svgid, const QSize &size);
-    
+
     /** Load a pixmap from the SVG theme file. Its filename is given in the
       * "general" section of the theme file as "svgfile". The pixmap is scaled
       * to the given width. The height is relative to the width as given in the SVG
@@ -132,28 +133,28 @@ class ThemeManager : public QObject
       * @return The new pixmap.
       */
     const QPixmap getPixmap(const QString &svgid, double width);
-    
+
      /** Load a pixmap from the SVG theme file. Its filename is given in the
       * "general" section of the theme file as "svgfile". The pixmap is scaled
       * with reference to another SVG item. This allows to generate a set of pixmaps
-      * with related sizes. 
+      * with related sizes.
       * @param svgid     The ID of the SVG item to be rendered as pixmap
       * @param svgref    The ID of the SVG item used as width reference
       * @param refwidth  The width of the resulting pixmap in relation to the reference item
       * @return The new pixmap.
       */
     const QPixmap getPixmap(const QString &svgid, const QString &svgref, double refwidth);
-    
+
     /** Retreive the current scale of the theme.
       * @return The scale.
       */
     double getScale();
-    
+
     /** Retrieve the theme offset.
       * @return The offset.
       */
     QPoint getOffset();
-    
+
     /** Retrieve the current theme configuration object.
       * @return The configuration object.
       */
@@ -163,18 +164,18 @@ class ThemeManager : public QObject
       * @param ob The object to be registered.
       */
     void registerTheme(Themeable* ob);
-    
+
     /** Unregister an object with the theme manager.
       * @param ob The object to be unregistered.
       */
     void unregisterTheme(Themeable* ob);
-    
+
     /** Forces an update to a theme objects. That is its
       * changeTheme() method is called.
       * @param ob The object to be updated.
       */
     void updateTheme(Themeable* ob);
-    
+
     /** Forces an update to all theme objects. That is their
       * changeTheme() method is called. Before this a (new)
       * theme file is loaded and all cached pixmaps deleted. This
@@ -182,7 +183,7 @@ class ThemeManager : public QObject
       * @param themefile The theme file to load
       */
     void updateTheme(const QString &themefile);
-    
+
     /** Change the scale of the theme and update all registered
       * theme objects.
       * @param scale The new scale (maximum extension)
@@ -203,26 +204,26 @@ class ThemeManager : public QObject
 
      /** Check whether a changeTheme call was due to themefile change
        * or a rescaling.
-       */ 
+       */
      bool themefileChanged();
 
 
    private:
      // The used SVG rendered
      KSvgRenderer* mRenderer;
-     
+
      // Storage of all theme objects
      QList<Themeable*> mObjects;
 
      // The cache of all pixmap objects [id,pixmap]
      QHash<QString,QPixmap> mPixmapCache;
-     
+
      // The theme configuration file
      KConfig* mConfig;
-     
+
      // The current theme scale
      int mScale;
-     
+
      // The current offset
      QPoint mOffset;
 

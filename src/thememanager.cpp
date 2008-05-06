@@ -40,7 +40,7 @@
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
-    : QObject(parent)
+    : QObject(parent), mConfig( 0 )
 {
   mScale            = initialSize;
   mAspectRatio      = 1.0;
@@ -48,6 +48,10 @@ ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initia
   updateTheme(themefile);
 }
 
+ThemeManager::~ThemeManager()
+{
+    delete mConfig;
+}
 
 // Register an object with the manager
 void ThemeManager::registerTheme(Themeable* ob)
@@ -87,7 +91,7 @@ void ThemeManager::updateTheme(Themeable* ob)
 }
 
 
-// Update the theme file and refresh all registered objects. Used 
+// Update the theme file and refresh all registered objects. Used
 // to really change the theme.
 void ThemeManager::updateTheme(const QString &themefile)
 {
@@ -101,6 +105,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   kDebug() << "ThemeManager LOAD with theme "<<rcfile;
 
   // Read config and SVG file for theme
+  delete mConfig;
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general").readEntry("svgfile");
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
@@ -112,7 +117,7 @@ void ThemeManager::updateTheme(const QString &themefile)
 
   mRenderer = new KSvgRenderer(this);
   bool result = mRenderer->load(svgfile);
-  if (!result) 
+  if (!result)
   {
     mRenderer = 0;
     kFatal() << "Cannot open file" << svgfile;
@@ -153,7 +158,7 @@ void ThemeManager::rescale(int scale, QPoint offset)
 double ThemeManager::getScale()
 {
   return (double)mScale;
-}  
+}
 
 
 // Retrieve the theme offset
@@ -166,7 +171,7 @@ QPoint ThemeManager::getOffset()
 // Retreive the current theme configuration file.
 KConfigGroup ThemeManager::config(const QString &id)
 {
-   KConfigGroup grp = mConfig->group(id); 
+   KConfigGroup grp = mConfig->group(id);
    return grp;
 }
 
@@ -174,16 +179,16 @@ KConfigGroup ThemeManager::config(const QString &id)
 // Get a pixmap when its size is given (this can distort the image)
 const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
 {
-  if (size.width() < 1 || size.height() < 1) 
+  if (size.width() < 1 || size.height() < 1)
     kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
-  
+
   QPixmap pixmap;
 
   //  Cached pixmap?
   if (mPixmapCache.contains(svgid))
   {
-    pixmap = mPixmapCache[svgid]; 
-    if (pixmap.size() == size) 
+    pixmap = mPixmapCache[svgid];
+    if (pixmap.size() == size)
     {
       return pixmap;
     }
@@ -238,7 +243,7 @@ Themeable::Themeable()
 }
 
 
-// Constructs a themeable interface given its id and the master theme manager. 
+// Constructs a themeable interface given its id and the master theme manager.
 // This automatically registeres the object with the manager.
 Themeable::Themeable(const QString &id, ThemeManager* thememanager)
 {
