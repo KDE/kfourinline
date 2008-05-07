@@ -113,6 +113,7 @@ class ThemeManager : public QObject
       * @param initialSize Initial theme size, can be arbitrary.
       */
     ThemeManager(const QString &themefile, QObject* parent, int initialSize = 1);
+    ~ThemeManager();
 
     /** Load a pixmap from the SVG theme file. Its filename is given in the
       * "general" section of the theme file as "svgfile". The pixmap is scaled

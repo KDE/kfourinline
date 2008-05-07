@@ -40,7 +40,7 @@
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
-    : QObject(parent)
+    : QObject(parent),mConfig(0)
 {
   mScale            = initialSize;
   mAspectRatio      = 1.0;
@@ -48,6 +48,11 @@ ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initia
   updateTheme(themefile);
 }
 
+
+ThemeManager::~ThemeManager()
+{
+   delete mConfig;
+}
 
 // Register an object with the manager
 void ThemeManager::registerTheme(Themeable* ob)
@@ -101,6 +106,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   kDebug() << "ThemeManager LOAD with theme "<<rcfile;
 
   // Read config and SVG file for theme
+  delete mConfig;
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general").readEntry("svgfile");
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
