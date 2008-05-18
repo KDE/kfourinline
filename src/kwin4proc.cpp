@@ -18,13 +18,11 @@
    Boston, MA 02110-1301, USA.
 */
 
-// Standard include
-#include <math.h>
-
 // Header includes
 #include "kwin4proc.h"
 
 // Standard includes
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -679,7 +677,7 @@ void KComputer::DoMove(int move, COLOUR color, FARBE field[][SIZE_X+1], char num
 }
 
 
-// Retreive random number 0..max
+// Retrieve random number 0..max
 long KComputer::random(long max)
 {
   //return 0; 

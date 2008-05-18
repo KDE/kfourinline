@@ -145,7 +145,7 @@ class ThemeManager : public QObject
       */
     const QPixmap getPixmap(const QString &svgid, const QString &svgref, double refwidth);
 
-    /** Retreive the current scale of the theme.
+    /** Retrieve the current scale of the theme.
       * @return The scale.
       */
     double getScale();

@@ -126,7 +126,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     /** Set whether the sprite should respect a theme offset 
       * (default: true) or not (false), that is, it is handled
       * by its parent item.
-      * @param status True: Handle theme offset, False: dont
+      * @param status True: Handle theme offset, False: do not
       */
     void setOffsetStatus(bool status);
 

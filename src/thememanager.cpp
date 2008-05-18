@@ -154,7 +154,7 @@ void ThemeManager::rescale(int scale, QPoint offset)
 }
 
 
-// Retreive the theme's scale
+// Retrieve the theme's scale
 double ThemeManager::getScale()
 {
   return (double)mScale;
@@ -168,7 +168,7 @@ QPoint ThemeManager::getOffset()
 }
 
 
-// Retreive the current theme configuration file.
+// Retrieve the current theme configuration file.
 KConfigGroup ThemeManager::config(const QString &id)
 {
    KConfigGroup grp = mConfig->group(id);
