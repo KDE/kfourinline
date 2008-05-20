@@ -21,6 +21,8 @@
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
+#include <math.h>
+
 // Qt includes
 #include <QHash>
 
