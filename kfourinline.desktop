@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KFourInLine
+Name[cs]=Čtyři v řadě
 Name[de]=Vier gewinnt
 Name[fa]=چهار-در-یک-خط
 Name[hu]=Színes vonalak
@@ -10,6 +11,7 @@ Name[uk]=Чотири-у-рядку
 Name[x-test]=xxKFourInLinexx
 GenericName=Four-in-a-row Board Game
 GenericName[ca]=Joc de quatre en fila
+GenericName[cs]=Desková hra "čtyři v řadě"
 GenericName[da]=Fire-på-række-brætspil
 GenericName[de]=Vier-Gewinnt Brettspiel
 GenericName[el]=Επιτραπέζιο παιχνίδι Τέσσερα στη σειρά
