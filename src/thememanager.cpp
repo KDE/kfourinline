@@ -40,7 +40,7 @@
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
-    : QObject(parent), mConfig( 0 )
+    : QObject(parent), mRenderer(0), mConfig( 0 )
 {
   mScale            = initialSize;
   mAspectRatio      = 1.0;
@@ -51,6 +51,7 @@ ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initia
 ThemeManager::~ThemeManager()
 {
     delete mConfig;
+    delete mRenderer;
 }
 
 // Register an object with the manager
@@ -114,7 +115,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   kDebug() << "Aspect ration =" << mAspectRatio;
 
 
-
+  delete mRenderer;
   mRenderer = new KSvgRenderer(this);
   bool result = mRenderer->load(svgfile);
   if (!result)
