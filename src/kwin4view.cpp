@@ -447,7 +447,7 @@ void KWin4View::mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mou
   KPlayer* player=input->player();
   if (!player->myTurn())
   {
-    kDebug() <<" Kwin4View::TODO wrongPlayer";
+    // kDebug() <<" Kwin4View::TODO wrongPlayer";
   //  *eatevent=wrongPlayer(player,KGameIO::MouseIO);
     return;
   }
@@ -486,7 +486,7 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
   KPlayer *player=input->player();
   if (!player->myTurn())
   {
-    kDebug() <<" Kwin4View::TODO wrongPlayer";
+    //kDebug() <<" Kwin4View::TODO wrongPlayer";
    // *eatevent=wrongPlayer(player,KGameIO::KeyIO);
     return;
   }
@@ -539,7 +539,7 @@ void KWin4View::moveDone(QGraphicsItem* /*item*/, int mode)
 bool KWin4View::viewportEvent ( QEvent * event ) 
 {
   if (mIntroDisplay) mIntroDisplay->viewEvent(event);
-  return QAbstractScrollArea::viewportEvent(event);
+  return QGraphicsView::viewportEvent(event);
 }
 
 #include "kwin4view.moc"
