@@ -120,6 +120,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   bool result = mRenderer->load(svgfile);
   if (!result)
   {
+    delete mRenderer;
     mRenderer = 0;
     kFatal() << "Cannot open file" << svgfile;
   }
