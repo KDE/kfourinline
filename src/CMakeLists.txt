@@ -34,7 +34,7 @@ kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
 kde4_add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} kdegames )
+target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} kdegames )
 
 install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
