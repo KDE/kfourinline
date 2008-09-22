@@ -794,7 +794,7 @@ void KWin4App::configureNetwork()
   // just for testing - should be non-modal
   KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this, KGameDialog::NetworkConfig, 20000, true);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
-  dlg.networkConfig()->setDiscoveryInfo("_kwin4._tcp",Prefs::gamename());
+  dlg.networkConfig()->setDiscoveryInfo("_kfourinline._tcp",Prefs::gamename());
 
   KVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
   QLayout *l=box->layout();
