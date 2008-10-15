@@ -237,7 +237,7 @@ I don't know what to do, is there a way to get help?
 <answer>
 <para>
 You can get a hint by clicking the <guibutton>Hint</guibutton> button, a differently colored 
-piece will appear where you should put your piece
+piece will appear where you should put your piece.
 </para>
 </answer>
 </qandaentry>
@@ -252,7 +252,7 @@ Is there a way to undo?
 <para>
 Yes, you can use the <guibutton>Undo</guibutton> button, press 
 <keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo> or select <menuchoice><guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice> 
-from the menubar
+from the menubar.
 </para>
 </answer>
 </qandaentry>
@@ -406,7 +406,7 @@ other party.
 <listitem>
 <para>
 Shows a dialog containing information about the overall game statistics, that is
-games won, lost or drawn by both player. 
+games won, lost or drawn by both players.
 The dialog also allows to clear this all time statistics.
 </para>
 </listitem>
@@ -547,7 +547,7 @@ also disconnect it in this menu.
 <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice></term>
 <listitem><para>
-<action>Open a dialog which lets you redefine all the keyboard shortcuts.</action>
+<action>Opens a dialog which lets you redefine all the keyboard shortcuts.</action>
 </para></listitem>
 </varlistentry>
 
