@@ -1188,7 +1188,7 @@ void KWin4Doc::clientConnected(quint32 cid, KGame* /* me */)
 // users id's
 KWin4Player* KWin4Doc::getPlayer(COLOUR col)
 {
- for (KGamePlayerList::const_iterator it = playerList()->begin(); it!= playerList()->end(); it++ )
+ for (KGamePlayerList::const_iterator it = playerList()->constBegin(); it!= playerList()->constEnd(); it++ )
  {
    if ((*it)->userId()==col)
      return (KWin4Player *)(*it);
@@ -1404,7 +1404,7 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) kDebug(12010) << "ADMIN keeps yellow and kicks red=" << red->id()<<" userId/col="<<red->userId();
     // loop all client players and deactivate the one which have the color
     // yellow
-    for ( KGamePlayerList::const_iterator it = newList->begin(); it != newList->end(); it++ ) 
+    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); it++ ) 
     {
       KPlayer *player = *it;
       if (player->userId()==yellow->userId()) 
@@ -1421,7 +1421,7 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) kDebug(12010) << "ADMIN keeps red and kicks yellow=" << yellow->id()<<" userId/col="<<yellow->userId();
     // loop all client players and deactivate the one which have the color
     // red
-    for ( KGamePlayerList::const_iterator it = newList->begin(); it != newList->end(); it++ ) 
+    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); it++ ) 
     {
       KPlayer *player = *it;
       if (player->userId()==red->userId()) 
