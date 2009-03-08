@@ -190,76 +190,6 @@ incoming connections.
 <qandaentry>
 <question>
 <para>
-How do I start a new game?
-</para>
-</question>
-<answer>
-<para>
-Press the <guibutton>New</guibutton> button, select <menuchoice><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> from the menubar or press 
-<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-How can I end the game?
-</para>
-</question>
-<answer>
-<para>
-Press the <guibutton>End Game</guibutton> button, select <menuchoice><guimenu>Game</guimenu><guimenuitem>End Game</guimenuitem></menuchoice> from the 
-menubar or press<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-How do I pause the game?
-</para>
-</question>
-<answer>
-<para>
-&kfourinline; is turn-based, there is no need to pause it.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-I don't know what to do, is there a way to get help?
-</para>
-</question>
-<answer>
-<para>
-You can get a hint by clicking the <guibutton>Hint</guibutton> button, a differently colored 
-piece will appear where you should put your piece.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-Is there a way to undo?
-</para>
-</question>
-<answer>
-<para>
-Yes, you can use the <guibutton>Undo</guibutton> button, press 
-<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo> or select <menuchoice><guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice> 
-from the menubar.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
 Can I change the look of the game?
 </para>
 </question>
@@ -273,15 +203,12 @@ You can change the color of the pieces by opening the <guimenu>Settings</guimenu
 <qandaentry>
 <question>
 <para>
-Can I use the keyboard?
+Can I use the keyboard to play the game?
 </para>
 </question>
 <answer>
 <para>
-You can use the keyboard to do basic operations like starting a new game, 
-quiting and getting hints, but you cannot use the keyboard to control the pieces.
-To view a list of the current keyboard bindings, open the <guimenu>Settings</guimenu> menu and 
-select <guimenuitem>Configure Shortcuts...</guimenuitem>.
+You cannot use the keyboard to control the pieces.
 </para>
 </answer>
 </qandaentry>
@@ -296,19 +223,6 @@ I have lost control of who is in the lead, can I find it out?
 <para>
 Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and 
 selecting <guimenuitem>Show Statistics</guimenuitem>.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-Can I replay a game?
-</para>
-</question>
-<answer>
-<para>
-No, &kfourinline; cannot replay.
 </para>
 </answer>
 </qandaentry>
