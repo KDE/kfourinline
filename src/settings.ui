@@ -306,8 +306,7 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <tabstops>
+  <tabstops>
   <tabstop>kcfg_startcolourred</tabstop>
   <tabstop>kcfg_startcolouryellow</tabstop>
   <tabstop>kcfg_Name1</tabstop>
