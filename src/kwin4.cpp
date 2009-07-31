@@ -323,7 +323,7 @@ void KWin4App::initGUI()
   KStandardGameAction::load(this, SLOT(menuOpenGame()), actionCollection());
   KStandardGameAction::save(this, SLOT(menuSaveGame()), actionCollection());
   action = KStandardGameAction::end(this, SLOT(endGame()), actionCollection());
-  action->setWhatsThis(i18n("Aborts a currently played game. No winner will be declared."));
+  action->setWhatsThis(i18n("Ends a currently played game. No winner will be declared."));
   KStandardGameAction::hint(this, SLOT(askForHint()), actionCollection());
   KStandardGameAction::quit(this, SLOT(close()), actionCollection());
   
@@ -769,7 +769,7 @@ void KWin4App::slotGameOver(int status, KPlayer* p, KGame* /*me*/)
   else if (status==2) // Abort
   {
     EndGame(TBrk);
-    QString  m=i18n(" Game aborted. Please restart next round.");
+    QString  m=i18n(" Game ended. Please restart next round.");
     displayStatusMessage(m);
   }
   else

@@ -144,7 +144,7 @@ is controlled by which input device. A local player can input moves using
 keyboard or mouse, a remote player is shown as network input and finally
 the computer can control the input for a player.
 The status display further shows the player's names and the level of the computer opponent.
-Additionally the number of won, drawn, lost and aborted games is noted for both players.
+Additionally the number of won, drawn, lost and ended games is noted for both players.
 Which player is next to move is indicated by one of the player's names being highlighted.
 </para>
 
@@ -295,7 +295,7 @@ Saves the current game.
 <guimenuitem>End Game</guimenuitem></menuchoice></term>
 <listitem>
 <para>
-Aborts a running game.
+Ends a running game.
 </para>
 </listitem>
 </varlistentry>
