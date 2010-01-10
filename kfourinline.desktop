@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KFourInLine
 Name[ca]=KFourInLine
+Name[ca@valencia]=KFourInLine
 Name[cs]=Čtyři v řadě
 Name[da]=KFourInLine
 Name[de]=Vier gewinnt
@@ -43,6 +44,7 @@ Name[zh_CN]=KFourInLine
 Name[zh_TW]=KFourInLine
 GenericName=Four-in-a-row Board Game
 GenericName[ca]=Joc de quatre en fila
+GenericName[ca@valencia]=Joc de quatre en fila
 GenericName[cs]=Desková hra "čtyři v řadě"
 GenericName[da]=Fire-på-række-brætspil
 GenericName[de]=Vier-Gewinnt-Brettspiel
