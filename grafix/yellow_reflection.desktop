@@ -1,6 +1,7 @@
 [Theme]
 Name=Yellow and Red Reflection
 Name[ca]=Groc i Vermell amb reflex
+Name[ca@valencia]=Groc i Roig amb reflex
 Name[da]=Gul og rød reflektion
 Name[de]=Gelb- und Rotspiegelung
 Name[el]=Κίτρινη και κόκκινη αντανάκλαση
@@ -29,8 +30,11 @@ Name[pt]=Reflexão a Amarelo e Vermelho
 Name[pt_BR]=Reflexão amarela e vermelha
 Name[ro]=Reflecție galbenă și roșie
 Name[ru]=Жёлтое и красное отражения
+Name[sk]=Žltá a červené odlesky
 Name[sl]=Rumeno in rdeče z odsevom
 Name[sr]=Жуто и црвено са рефлексијом
+Name[sr@ijekavian]=Жуто и црвено са рефлексијом
+Name[sr@ijekavianlatin]=Žuto i crveno sa refleksijom
 Name[sr@latin]=Žuto i crveno sa refleksijom
 Name[sv]=Gul och röd reflektion
 Name[tr]=Sarı ve Kırmızı Yansıma

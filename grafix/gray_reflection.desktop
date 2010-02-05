@@ -1,6 +1,7 @@
 [Theme]
 Name=True Reflection
 Name[ca]=Reflex Real
+Name[ca@valencia]=Reflex Real
 Name[cs]=Skutečný odraz
 Name[da]=Sand reflektion
 Name[de]=Echte Spiegelung
@@ -30,8 +31,11 @@ Name[pt]=Reflexão Verdadeira
 Name[pt_BR]=Reflexão real
 Name[ro]=Reflecție adevărată
 Name[ru]=Настоящее отражение
+Name[sk]=Skutočný odlesky
 Name[sl]=Pravi odsev
 Name[sr]=Права рефлексија
+Name[sr@ijekavian]=Права рефлексија
+Name[sr@ijekavianlatin]=Prava refleksija
 Name[sr@latin]=Prava refleksija
 Name[sv]=Sann reflektion
 Name[tr]=Gerçek Yansıma
