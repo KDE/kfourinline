@@ -22,7 +22,7 @@
 
 // Qt includes
 #include <QObject>
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <QHash>
 #include <QPoint>
 
@@ -210,7 +210,7 @@ class ThemeManager : public QObject
 
    private:
      // The used SVG rendered
-     KSvgRenderer* mRenderer;
+     QSvgRenderer* mRenderer;
 
      // Storage of all theme objects
      QList<Themeable*> mObjects;

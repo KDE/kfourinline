@@ -116,7 +116,7 @@ void ThemeManager::updateTheme(const QString &themefile)
 
 
   delete mRenderer;
-  mRenderer = new KSvgRenderer(this);
+  mRenderer = new QSvgRenderer(this);
   bool result = mRenderer->load(svgfile);
   if (!result)
   {
