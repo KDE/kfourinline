@@ -45,7 +45,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
       * @param updateTime The update interval of the canvas (kind of debug parameter)
       * @param parent     The parent window.
       */
-    ReflectionGraphicsScene(int updateTime, QObject * parent = 0);
+    explicit ReflectionGraphicsScene(int updateTime, QObject * parent = 0);
     
     /** Destruct the scene.
       */
