@@ -142,10 +142,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
 DisplayGame::~DisplayGame()
 {
   delete mTimer;
-  while (!mSprites.isEmpty())
-  {
-    delete mSprites.takeFirst();
-  }
+  qDeleteAll(mSprites);
 }
 
 

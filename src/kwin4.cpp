@@ -201,11 +201,11 @@ KWin4App::KWin4App(QWidget *parent)
 KWin4App::~KWin4App()
 {
   kDebug() << "~KWin4App()";
-  if (mDoc) delete mDoc;
-  if (mView) delete mView;
-  if (mScene) delete mScene;
-  if (mTheme) delete mTheme;
-  if (mMyChatDlg) delete mMyChatDlg;
+  delete mDoc;
+  delete mView;
+  delete mScene;
+  delete mTheme;
+  delete mMyChatDlg;
   kDebug() << "~KWin4App()";
 }
 

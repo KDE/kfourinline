@@ -107,13 +107,7 @@ void IntroSprite::changeTheme()
 // Clear the animation script
 void IntroSprite::clearAnimation(bool restartTime)
 {
-  // Clear animation objects before list clear
-  while(!mAnimList.isEmpty())
-  {
-    AnimationCommand* anim = mAnimList.takeFirst();
-    if (anim) delete anim;
-  }
-
+  qDeleteAll(mAnimList);
   mAnimList.clear();
 
   // Reset time?

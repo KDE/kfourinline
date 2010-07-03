@@ -142,11 +142,11 @@ KWin4View::KWin4View(int updateTime,
 // Destruct the view object
 KWin4View::~KWin4View()
 {
-  if (mIntroDisplay) delete mIntroDisplay;
-  if (mGameDisplay) delete mGameDisplay;
+  delete mIntroDisplay;
+  delete mGameDisplay;
   if (global_debug>0) kDebug() << "TRACKING" << hasMouseTracking() << "and" << viewport()->hasMouseTracking();
-  if (mFrameSprite) delete mFrameSprite;
-  if (mReflectionSprite) delete mReflectionSprite;
+  delete mFrameSprite;
+  delete mReflectionSprite;
 }
 
 // Main themeable function. Called for any theme change. 
@@ -311,7 +311,7 @@ void KWin4View::initGame(Score* scoreData)
   viewport()->setMouseTracking(false);
   setMouseTracking(false);
 
-  if (mIntroDisplay) delete mIntroDisplay;
+  delete mIntroDisplay;
   mIntroDisplay = 0;
   if (!mGameDisplay)
   {

@@ -244,10 +244,7 @@ void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
 DisplayIntro::~DisplayIntro()
 {
   delete mTimer;
-  while (!mSprites.isEmpty())
-  {
-    delete mSprites.takeFirst();
-  }
+  qDeleteAll(mSprites);
 }
 
 
