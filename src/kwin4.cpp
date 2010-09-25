@@ -327,16 +327,16 @@ void KWin4App::initGUI()
   KStandardGameAction::hint(this, SLOT(askForHint()), actionCollection());
   KStandardGameAction::quit(this, SLOT(close()), actionCollection());
   
-  action = actionCollection()->addAction("network_conf");
+  action = actionCollection()->addAction( QLatin1String( "network_conf" ));
   action->setText(i18n("&Network Configuration..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureNetwork()));
 
-  action = actionCollection()->addAction("network_chat");
+  action = actionCollection()->addAction( QLatin1String( "network_chat" ));
   action->setText(i18n("Network Chat..."));
   connect(action, SIGNAL(triggered(bool) ), SLOT(configureChat()));
 
-  action = actionCollection()->addAction("statistics");
-  action->setIcon(KIcon("view-statistics"));
+  action = actionCollection()->addAction( QLatin1String( "statistics" ));
+  action->setIcon(KIcon( QLatin1String( "view-statistics" )));
   action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   action->setToolTip(i18n("Show statistics."));
@@ -351,8 +351,8 @@ void KWin4App::initGUI()
   QStringList themes(mThemeFiles.keys());
   themes.sort();
 
-  action = actionCollection()->addAction("theme", new KSelectAction(i18n("Theme"), this));
-  action->setIcon(KIcon("games-config-theme"));
+  action = actionCollection()->addAction( QLatin1String( "theme" ) , new KSelectAction(i18n("Theme" ), this));
+  action->setIcon(KIcon( QLatin1String( "games-config-theme" )));
   ((KSelectAction*)action)->setItems(themes);
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
   kDebug() << "Setting current theme item to" << mThemeIndexNo;
@@ -361,7 +361,7 @@ void KWin4App::initGUI()
   // Debug
   if (global_debug>0)
   {
-    action = actionCollection()->addAction("file_debug");
+    action = actionCollection()->addAction( QLatin1String( "file_debug" ));
     action->setText(i18n("Debug KGame"));
     connect(action, SIGNAL(triggered(bool) ), SLOT(debugKGame()));
   }

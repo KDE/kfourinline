@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
   args->clear(); 
   // Start application
   KApplication application(true);
-  KGlobal::locale()->insertCatalog("libkdegames");
+  KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
 
   // Start session
   if (application.isSessionRestored())
