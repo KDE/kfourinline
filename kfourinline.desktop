@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KFourInLine
+Name[ast]=KFourInLine
 Name[ca]=KFourInLine
 Name[ca@valencia]=KFourInLine
 Name[cs]=Čtyři v řadě
@@ -46,6 +47,7 @@ Name[x-test]=xxKFourInLinexx
 Name[zh_CN]=KFourInLine
 Name[zh_TW]=KFourInLine
 GenericName=Four-in-a-row Board Game
+GenericName[ast]=Xuegu de tableru cuatro en llinia
 GenericName[ca]=Joc de quatre en fila
 GenericName[ca@valencia]=Joc de quatre en fila
 GenericName[cs]=Desková hra "čtyři v řadě"
