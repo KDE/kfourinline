@@ -229,7 +229,7 @@ void PixmapSprite::setFrame(int no, bool force)
   
   QPoint offset = thememanager()->getOffset();
   
-  // Set new item's scene transformation: Hotspot plus gloval theme offset
+  // Set new item's scene transformation: Hotspot plus global theme offset
   resetTransform();
   if (mOffsetStatus)
   {
