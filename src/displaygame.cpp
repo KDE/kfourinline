@@ -341,7 +341,7 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
   KConfigGroup config   = thememanager()->config(id());
   QPointF board_pos     = config.readEntry("board-pos", QPointF(1.0,1.0));
   QPointF board_spread  = config.readEntry("board-spread", QPointF(1.0,1.0));
-  double velocity       = config.readEntry("move-velocity", 0.1);
+  double velocity       = config.readEntry("move-velocity", 0.8);
 
   // Make sure the frames are ok
   int frame;

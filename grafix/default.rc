@@ -38,7 +38,7 @@ board-spread=0.059,0.059
 # Movebar arrow position (must be same than movebar pos) [0..1]
 arrow-pos=0.12,0.04
 # Velocity [relativ/second] for game piece move animation
-move-velocity=0.3
+move-velocity=0.8
 # Show reflections
 use-reflection=false
 
