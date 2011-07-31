@@ -85,12 +85,12 @@ KComputer::KComputer()
   mBrainUsed   = 0;
 
   // Connect signals of KGame framework
-  connect(&proc,SIGNAL(signalCommand(QDataStream &,int ,int ,int )),
-                   this,SLOT(slotCommand(QDataStream & ,int ,int ,int )));
-  connect(&proc,SIGNAL(signalInit(QDataStream &,int)),
-                   this,SLOT(slotInit(QDataStream & ,int )));
-  connect(&proc,SIGNAL(signalTurn(QDataStream &,bool )),
-                   this,SLOT(slotTurn(QDataStream & ,bool )));
+  connect(&proc,SIGNAL(signalCommand(QDataStream&,int,int,int)),
+                   this,SLOT(slotCommand(QDataStream&,int,int,int)));
+  connect(&proc,SIGNAL(signalInit(QDataStream&,int)),
+                   this,SLOT(slotInit(QDataStream&,int)));
+  connect(&proc,SIGNAL(signalTurn(QDataStream&,bool)),
+                   this,SLOT(slotTurn(QDataStream&,bool)));
 }
 
 

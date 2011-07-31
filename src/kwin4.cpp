@@ -329,11 +329,11 @@ void KWin4App::initGUI()
   
   action = actionCollection()->addAction( QLatin1String( "network_conf" ));
   action->setText(i18n("&Network Configuration..."));
-  connect(action, SIGNAL(triggered(bool) ), SLOT(configureNetwork()));
+  connect(action, SIGNAL(triggered(bool)), SLOT(configureNetwork()));
 
   action = actionCollection()->addAction( QLatin1String( "network_chat" ));
   action->setText(i18n("Network Chat..."));
-  connect(action, SIGNAL(triggered(bool) ), SLOT(configureChat()));
+  connect(action, SIGNAL(triggered(bool)), SLOT(configureChat()));
 
   action = actionCollection()->addAction( QLatin1String( "statistics" ));
   action->setIcon(KIcon( QLatin1String( "view-statistics" )));
@@ -363,7 +363,7 @@ void KWin4App::initGUI()
   {
     action = actionCollection()->addAction( QLatin1String( "file_debug" ));
     action->setText(i18n("Debug KGame"));
-    connect(action, SIGNAL(triggered(bool) ), SLOT(debugKGame()));
+    connect(action, SIGNAL(triggered(bool)), SLOT(debugKGame()));
   }
 }
 
@@ -397,12 +397,12 @@ void KWin4App::initStatusBar()
 void KWin4App::connectDocument()
 {
   // KGame signals
-  connect(mDoc,SIGNAL(signalGameOver(int, KPlayer*,KGame*)),
-         this,SLOT(slotGameOver(int, KPlayer*,KGame *)));
+  connect(mDoc,SIGNAL(signalGameOver(int,KPlayer*,KGame*)),
+         this,SLOT(slotGameOver(int,KPlayer*,KGame*)));
   connect(mDoc,SIGNAL(signalNextPlayer(int)),
          this,SLOT(moveDone(int)));
-  connect(mDoc,SIGNAL(signalClientLeftGame(int, int,KGame*)),
-         this,SLOT(networkBroken(int, int, KGame*)));
+  connect(mDoc,SIGNAL(signalClientLeftGame(int,int,KGame*)),
+         this,SLOT(networkBroken(int,int,KGame*)));
   connect(mDoc,SIGNAL(signalGameRun()),
          this,SLOT(gameRun()));
 }
@@ -851,8 +851,8 @@ void KWin4App::configureChat()
       mMyChatDlg->setPlayer(mDoc->getPlayer(Yellow));
     else
       mMyChatDlg->setPlayer(mDoc->getPlayer(Red));
-    connect(mDoc,SIGNAL(signalChatChanged(KWin4Player *)),
-            mMyChatDlg,SLOT(setPlayer(KWin4Player *)));
+    connect(mDoc,SIGNAL(signalChatChanged(KWin4Player*)),
+            mMyChatDlg,SLOT(setPlayer(KWin4Player*)));
   }
 
   if (mMyChatDlg->isHidden())
@@ -900,7 +900,7 @@ void KWin4App::configureSettings()
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
   dialog->addPage(frame, i18n("General"), "games-config-options");
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), mDoc, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged(QString)), mDoc, SLOT(loadSettings()));
   dialog->show();
 }
 

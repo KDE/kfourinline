@@ -60,8 +60,8 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
 {
   mStatus = new Score(parent);
 
-  connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KGame *)),
-          this,SLOT(gamePropertyChanged(KGamePropertyBase *,KGame *)));
+  connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase*,KGame*)),
+          this,SLOT(gamePropertyChanged(KGamePropertyBase*,KGame*)));
 
   dataHandler()->Debug();
   //kDebug(12010) << "Property 7 policy=" << dataHandler()->find(7)->policy();
@@ -119,10 +119,10 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
   setGameStatus(Intro);
 
   // Listen to network
-  connect(this,SIGNAL(signalMessageUpdate(int, quint32, quint32)),
-         this,SLOT(networkMessageUpdate(int, quint32, quint32)));
-  connect(this,SIGNAL(signalClientJoinedGame(quint32, KGame*)),
-         this,SLOT(clientConnected(quint32, KGame*)));
+  connect(this,SIGNAL(signalMessageUpdate(int,quint32,quint32)),
+         this,SLOT(networkMessageUpdate(int,quint32,quint32)));
+  connect(this,SIGNAL(signalClientJoinedGame(quint32,KGame*)),
+         this,SLOT(clientConnected(quint32,KGame*)));
 
   // Change global KGame policy
   //dataHandler()->setPolicy(KGamePropertyBase::PolicyDirty,false);
@@ -884,8 +884,8 @@ KPlayer *KWin4Doc::createPlayer(int /*rtti*/, int io, bool isvirtual)
   if (!isvirtual)
     createIO(player,(KGameIO::IOMode)io);
   
-  connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase *, KPlayer *)),
-          this,SLOT(playerPropertyChanged(KGamePropertyBase *, KPlayer *)));
+  connect(player,SIGNAL(signalPropertyChanged(KGamePropertyBase*,KPlayer*)),
+          this,SLOT(playerPropertyChanged(KGamePropertyBase*,KPlayer*)));
   player->setStatus(mStatus);
   return player;
 }
@@ -974,8 +974,8 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     input=new KGameMouseIO(pView->viewport(), true);
     if (global_debug>1) kDebug(12010) << "MOUSE IO added";
     // Connect mouse input to a function to process the actual input
-    connect(input,SIGNAL(signalMouseEvent(KGameIO *,QDataStream &,QMouseEvent *,bool *)),
-            pView,SLOT(mouseInput(KGameIO *,QDataStream &,QMouseEvent *,bool *)));
+    connect(input,SIGNAL(signalMouseEvent(KGameIO*,QDataStream&,QMouseEvent*,bool*)),
+            pView,SLOT(mouseInput(KGameIO*,QDataStream&,QMouseEvent*,bool*)));
     player->addGameIO(input);
   }
   else if (io&KGameIO::ProcessIO)
@@ -987,11 +987,11 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     // We want a computer player
     input=new KGameProcessIO(file);
     // Connect computer player to the setTurn
-    connect(input,SIGNAL(signalPrepareTurn(QDataStream &,bool,KGameIO *,bool *)),
-            this,SLOT(prepareAITurn(QDataStream &,bool,KGameIO *,bool *)));
+    connect(input,SIGNAL(signalPrepareTurn(QDataStream&,bool,KGameIO*,bool*)),
+            this,SLOT(prepareAITurn(QDataStream&,bool,KGameIO*,bool*)));
 
-    connect(input,SIGNAL(signalProcessQuery(QDataStream&, KGameProcessIO*)),
-            this,SLOT(processAICommand(QDataStream&, KGameProcessIO*)));
+    connect(input,SIGNAL(signalProcessQuery(QDataStream&,KGameProcessIO*)),
+            this,SLOT(processAICommand(QDataStream&,KGameProcessIO*)));
 
     connect(input,SIGNAL(signalReceivedStderr(QString)),
             this,SLOT(receivedStderr(QString)));
@@ -1004,8 +1004,8 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     KGameKeyIO  *input;
     input=new KGameKeyIO(pView->parentWidget());
     // Connect keys input to a function to process the actual input
-    connect((KGameKeyIO *)input,SIGNAL(signalKeyEvent(KGameIO *,QDataStream &,QKeyEvent *,bool *)),
-            pView,SLOT(keyInput(KGameIO *,QDataStream &,QKeyEvent *,bool *)));
+    connect((KGameKeyIO *)input,SIGNAL(signalKeyEvent(KGameIO*,QDataStream&,QKeyEvent*,bool*)),
+            pView,SLOT(keyInput(KGameIO*,QDataStream&,QKeyEvent*,bool*)));
     player->addGameIO(input);
   }
 }
@@ -1209,8 +1209,8 @@ void KWin4Doc::calculateHint()
     // We want a computer player
     mHintProcess=new KGameProcessIO(file);
 
-    connect(mHintProcess,SIGNAL(signalProcessQuery(QDataStream&, KGameProcessIO*)),
-            this,SLOT(processAIHintCommand(QDataStream&, KGameProcessIO*)));
+    connect(mHintProcess,SIGNAL(signalProcessQuery(QDataStream&,KGameProcessIO*)),
+            this,SLOT(processAIHintCommand(QDataStream&,KGameProcessIO*)));
   }
 
   // Send game to process

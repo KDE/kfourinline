@@ -45,8 +45,8 @@ KWin4Player::KWin4Player() : KPlayer()
 
   // Clear all stats (they will be loaded from the config file later on)
   resetStats();
-  connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase *,KPlayer *)),
-          this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase *,KPlayer *)));
+  connect(this,SIGNAL(signalPropertyChanged(KGamePropertyBase*,KPlayer*)),
+          this,SLOT(slotPlayerPropertyChanged(KGamePropertyBase*,KPlayer*)));
 
   mWin.setValue(0);
   mLost.setValue(0);
