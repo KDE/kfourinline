@@ -34,7 +34,8 @@
 #include "kwin4global.h"
 
 // KDE includes
-#include <kgameio.h>
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgameio.h>
 
 // Forward declaration
 class QGraphicsView;

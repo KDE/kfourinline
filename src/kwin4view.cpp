@@ -32,7 +32,9 @@
 // KDE includes
 #include <klocale.h>
 #include <kdebug.h>
-#include <kplayer.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kplayer.h>
 
 // Local includes
 #include "kwin4global.h"

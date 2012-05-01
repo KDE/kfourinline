@@ -23,7 +23,9 @@
 
 // KDE includes
 #include <kdebug.h>
-#include <kgameio.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgameio.h>
 
 // Local includes
 #include "scoresprite.h"

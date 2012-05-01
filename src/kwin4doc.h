@@ -25,10 +25,12 @@
 #include <QVector>
 
 // KDE includes
-#include <kgame.h>
-#include <kgameio.h>
-#include <kgamepropertyarray.h>
 #include <kconfig.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgame.h>
+#include <libkdegamesprivate/kgame/kgameio.h>
+#include <libkdegamesprivate/kgame/kgamepropertyarray.h>
 
 // Local includes
 #include "kwin4global.h"

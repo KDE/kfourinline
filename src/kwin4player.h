@@ -22,10 +22,11 @@
 #define KWIN4_PLAYER_H
 
 // KDE includes
-#include <kplayer.h>
-#include <kgameproperty.h>
 #include <kconfiggroup.h>
 
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kplayer.h>
+#include <libkdegamesprivate/kgame/kgameproperty.h>
 
 // Local includes
 #include "score.h"

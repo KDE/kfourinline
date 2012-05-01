@@ -36,8 +36,10 @@
 #include <QFile>
 
 // KDE includes
-#include <kgamemessage.h>
 #include <krandomsequence.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamemessage.h>
 
 // Algorithm defines
 #define MIN_TIME        1000       // min time in milli sec for move

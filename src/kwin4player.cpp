@@ -23,7 +23,9 @@
 
 // KDE includes
 #include <kdebug.h>
-#include <kgamepropertyhandler.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 
 
 // Construct a player object

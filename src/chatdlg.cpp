@@ -28,9 +28,11 @@
 // include files for KDE
 #include <klocale.h>
 #include <kdebug.h>
-#include <kchatdialog.h>
-#include <kgamechat.h>
-#include <dialogs/kgamedialog.h>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kchatdialog.h>
+#include <libkdegamesprivate/kgame/kgamechat.h>
+#include <libkdegamesprivate/kgame/dialogs/kgamedialog.h>
 
 // application specific includes
 #include "kwin4player.h"

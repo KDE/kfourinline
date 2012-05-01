@@ -47,12 +47,13 @@
 #include <kselectaction.h>
 
 // KGame includes
-#include <kgamechat.h>
-#include <dialogs/kgamedialog.h>
-#include <dialogs/kgamedialogconfig.h>
-#include <dialogs/kgameconnectdialog.h>
-#include <dialogs/kgameerrordialog.h>
-#include <dialogs/kgamedebugdialog.h>
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamechat.h>
+#include <libkdegamesprivate/kgame/dialogs/kgamedialog.h>
+#include <libkdegamesprivate/kgame/dialogs/kgamedialogconfig.h>
+#include <libkdegamesprivate/kgame/dialogs/kgameconnectdialog.h>
+#include <libkdegamesprivate/kgame/dialogs/kgameerrordialog.h>
+#include <libkdegamesprivate/kgame/dialogs/kgamedebugdialog.h>
 
 // application specific includes
 #include "chatdlg.h"
