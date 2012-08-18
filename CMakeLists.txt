@@ -13,7 +13,7 @@ endif(NOT COMPILING_KDEGAMES)
 
 add_subdirectory( src ) 
 add_subdirectory( grafix ) 
-
+add_subdirectory( doc )
 
 
 
