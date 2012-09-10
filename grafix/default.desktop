@@ -1,4 +1,6 @@
 [Theme]
 Name=Black and Red
+Name[uk]=Чорний і червоний
+Name[x-test]=xxBlack and Redxx
 File=default.rc
 Default=true

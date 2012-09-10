@@ -1,4 +1,6 @@
 [Theme]
 Name=Yellow and Red Reflection
+Name[uk]=Відбиття Жовтого і Червоного
+Name[x-test]=xxYellow and Red Reflectionxx
 File=yellow_reflection.rc
 

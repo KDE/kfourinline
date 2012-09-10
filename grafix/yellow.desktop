@@ -1,5 +1,7 @@
 [Theme]
 Name=Yellow and Red
+Name[uk]=Жовтий і червоний
+Name[x-test]=xxYellow and Redxx
 File=yellow.rc
 Default=false
 

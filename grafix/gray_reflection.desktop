@@ -1,4 +1,6 @@
 [Theme]
 Name=True Reflection
+Name[uk]=Справжнє відбиття
+Name[x-test]=xxTrue Reflectionxx
 File=gray_reflection.rc
 

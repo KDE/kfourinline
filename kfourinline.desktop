@@ -1,6 +1,10 @@
 [Desktop Entry]
 Name=KFourInLine
+Name[uk]=Чотири-у-рядку
+Name[x-test]=xxKFourInLinexx
 GenericName=Four-in-a-row Board Game
+GenericName[uk]=Настільна гра Чотири-у-рядку
+GenericName[x-test]=xxFour-in-a-row Board Gamexx
 Exec=kfourinline
 Icon=kfourinline
 MimeType=
