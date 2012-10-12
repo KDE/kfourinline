@@ -6,8 +6,8 @@
 <!ENTITY % addindex "IGNORE">
 ]>
 
-<book lang="&language;">
-<bookinfo>
+<book id="kfourinline" lang="&language;">
+<book id="kfourinline"info>
 <title>The KFourInLine Handbook</title>
 
 <authorgroup>
