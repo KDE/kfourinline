@@ -42,8 +42,6 @@ public:
 
 	/**
 	 * Automatically connects the KGame object to all error dependant slots. 
-	 * Create a KGameErrorDialog object, call this function and forget
-	 * everything.
 	 * @param g The KGame which will emit the erorrs (or not ;-) )
 	 **/
 	void setKGame(const KGame* g);
