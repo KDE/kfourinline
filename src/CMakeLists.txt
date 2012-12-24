@@ -23,6 +23,7 @@ set(kwin4_SRCS
    kgamedialog.cpp
    kgamedialogconfig.cpp
    kgameconnectdialog.cpp
+   kchatdialog.cpp
    pixmapsprite.cpp)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)

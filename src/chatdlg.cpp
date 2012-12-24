@@ -30,8 +30,9 @@
 #include <klocale.h>
 #include <kdebug.h>
 
+#include "kchatdialog.h"
+
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kchatdialog.h>
 #include <libkdegamesprivate/kgame/kgamechat.h>
 
 // application specific includes
