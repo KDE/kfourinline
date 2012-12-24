@@ -39,11 +39,7 @@ class KGame;
 class KPlayer;
 
 class KGameDialogConfig;
-class KGameDialogGeneralConfig;
 class KGameDialogNetworkConfig;
-class KGameDialogMsgServerConfig;
-class KGameDialogChatConfig;
-class KGameDialogConnectionConfig;
 
 class KGameDialogPrivate;
 /**
@@ -77,45 +73,14 @@ class KGameDialog : public KPageDialog
 {
 	Q_OBJECT
 public:
-
-	enum ConfigOptions
-	{
-		NoConfig = 0,
-		ChatConfig = 1,
-		GameConfig = 2,
-		NetworkConfig = 4,
-		MsgServerConfig = 8,
-		BanPlayerConfig = 16,
-		AllConfig = 0xffff
-	};
-
-	/**
-	 * Create an empty KGameDialog. You can add widgets using
-	 * addConfigPage.
-	 * @param g The KGame object of this game
-	 * @param owner The KPlayer object who is responsible for this
-	 * dialog, aka "the local player"
-	 * @param title The title of the dialog - see KDialog::setCaption
-	 * @param parent The parent of the dialog
-	 * @param modal Whether the dialog is modal or not
-	 **/
-	KGameDialog(KGame* g, KPlayer* owner, const QString& title, 
-			QWidget* parent, bool modal = false);
-	
 	/**
 	 * Create a KGameDialog with the standard configuration widgets. This
 	 * creates the following widgets:
 	 * <ul>
-	 * <li> KGameDialogGeneralConfig
 	 * <li> KGameDialogNetworkConfig
-	 * <li> KGameDialogMsgServerConfig
-	 * <li> KGameDialogChatConfig
-	 * <li> KGameDialogConnectionConfig
 	 * </ul>
 	 * If you want to use your own implementations (or none) of the widgets
-	 * above you should subclass KGameDialog. Use addGameConfig, 
-	 * addNetworkConfig, addMsgConfig, addChatWidget and 
-	 * addConnectionList in this case.
+	 * above you should subclass KGameDialog.
 	 *
 	 * If you want to add further configuration widget you can simply use
 	 * addConfigPage
@@ -132,8 +97,7 @@ public:
 	 * if initConfigs = false
 	 **/
 	KGameDialog(KGame* g, KPlayer* owner, const QString& title, 
-			QWidget* parent, long initConfigs = AllConfig, 
-			int chatMsgId = 15432, bool modal = false);
+			QWidget* parent);
 
 	virtual ~KGameDialog();
 
@@ -170,30 +134,6 @@ public:
 	virtual void submitToKGame();
 
 	/**
-	 * Adds a KGameChat to the dialog. If no parent is specified the
-	 * game page will be used.
-	 * @param chat The chat widget
-	 * @param parent The parent of the chat widget. This MUST be an
-	 * already added config widget. Note that the game page will be used
-	 * if parent is 0.
-	 **/
-	void addChatWidget(KGameDialogChatConfig* chat, KVBox* parent = 0);
-
-	/**
-	 * Add a connection list to the dialog. The list consists of a
-	 * KLisBox containing all players in the current game (see
-	 * KGame::playerList). The admin can "ban" players, ie kick them out of
-	 * the game.
-	 *
-	 * This is another not-really-config-config-widget. It just displays the
-	 * connections and lets you ban players.
-	 * @param c The KGameDialogConnectionConfig object
-	 * @param parent The parent of the widget. If 0 the networkConfig
-	 * page is used.
-	 **/
-	void addConnectionList(KGameDialogConnectionConfig* c, KVBox* parent = 0);
-
-	/**
 	 * Add a new page to the dialog. The page will contain you new config
 	 * widget and will have your provided title.
 	 *
@@ -209,19 +149,13 @@ public:
 	 * @return The QVBox of the given key, The key is from ConfigOptions
 	 * Note that not all are supported yet
 	 **/
-	KVBox *configPage(ConfigOptions which);
+	KVBox *configPage();
 
 	/**
 	 * @return The default netowrk config. Note that this always returns 0 if
 	 * you did not specify NetworkConfig in the constructor!
 	 **/
 	KGameDialogNetworkConfig* networkConfig() const;
-
-	/**
-	 * @return The default game config. Note that this always returns 0 if
-	 * you did not specify GameConfig in the constructor!
-	 **/
-	KGameDialogGeneralConfig* gameConfig() const;
 
 	/**
 	 * Add a config widget to the specified parent. Usually you call
@@ -236,43 +170,6 @@ public:
 	 * make networkConfig return something useful.
 	 **/
 	void addNetworkConfig(KGameDialogNetworkConfig* netConf);
-
-	/**
-	 * Add the main game config widget in a new page. Use this to make 
-	 * gameConfig return something useful.
-	 **/
-	void addGameConfig(KGameDialogGeneralConfig* conf);
-
-	/**
-	 * Used to add the message server config widget in a new page.
-	 **/
-	void addMsgServerConfig(KGameDialogMsgServerConfig* conf);
-
-protected:
-
-	/**
-	 * This is used to create a dialog containing all the default widgets. 
-	 *
-	 * You may want to use this if you just want to use your own
-	 * configuration widgets which inherit the standard ones.
-	 *
-	 * Note that if one of the widgets is NULL the default implementation
-	 * will be used! (except the chat widget - you need to create it
-	 * yourself as you have to provide a message id)
-	 * @param initConfigs The widgets to be created
-	 * @param chatMsgId The msgid for the chat config (only if specified in
-	 * initConfigs) - see KGameDialogChatConfig
-	 **/
-	void initDefaultDialog(ConfigOptions initConfigs, int chatMsgId = 15432);
-
-	/**
-	 * Go through all config widgets and call their 
-	 * KGameDialogConfig::setKGame and KGameDialogConfig::setOwner implementation
-	 * 
-	 * This function could be private and probably will be very soon.
-	 * Don't use it yourself
-	 **/
-	void configureConfigWidgets();
 
 protected Q_SLOTS:
 	/**

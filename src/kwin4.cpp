@@ -791,11 +791,11 @@ void KWin4App::configureNetwork()
   int port=Prefs::port();
 
   // just for testing - should be non-modal
-  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this, KGameDialog::NetworkConfig, 20000, true);
+  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo("_kfourinline._tcp",Prefs::gamename());
 
-  KVBox *box=dlg.configPage(KGameDialog::NetworkConfig);
+  KVBox *box=dlg.configPage();
   QLayout *l=box->layout();
 
   mColorGroup=new KButtonGroup(box);

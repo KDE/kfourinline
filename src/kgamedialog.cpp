@@ -41,24 +41,16 @@ class KGameDialogPrivate
 public:
 	KGameDialogPrivate()
 	{
-		mGamePage = 0;
 		mNetworkPage = 0;
-		mMsgServerPage = 0;
-		mTopLayout = 0;
 
 		mNetworkConfig = 0;
-		mGameConfig = 0;
 
 		mOwner = 0;
 		mGame = 0;
 	}
 
-	KVBox* mGamePage;
 	KVBox* mNetworkPage;
-	KVBox* mMsgServerPage;// unused here?
-	QVBoxLayout* mTopLayout;
 	KGameDialogNetworkConfig* mNetworkConfig;
-	KGameDialogGeneralConfig* mGameConfig;
 
 // a list of all config widgets added to this dialog
 	QList<KGameDialogConfig*> mConfigWidgets;
@@ -69,24 +61,7 @@ public:
 };
 
 KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
-		QWidget* parent, bool modal)
-    : KPageDialog(parent),
-      d( new KGameDialogPrivate )
-{
-	setCaption(title);
-	setButtons(Ok|Default|Apply|Cancel); 
-	setDefaultButton(Ok);
-	setFaceType(KPageDialog::Tabbed);
-	setModal(modal);
-
-        init(g, owner);
- connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
- connect(this,SIGNAL(defaultClicked()),this,SLOT(slotDefault()));
- connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply()));
-}
-
-KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
-		QWidget* parent, long initConfigs, int chatMsgId, bool modal)
+		QWidget* parent)
     : KPageDialog(parent),
       d( new KGameDialogPrivate )
 {
@@ -94,11 +69,9 @@ KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
     setButtons(Ok|Default|Apply|Cancel);
     setDefaultButton(Ok);
     setFaceType(KPageDialog::Tabbed);
-    setModal(modal);
+    setModal(true);
  init(g, owner);
- if ((ConfigOptions)initConfigs!=NoConfig) {
-	initDefaultDialog((ConfigOptions)initConfigs, chatMsgId);
- }
+ addNetworkConfig(new KGameDialogNetworkConfig(0));
  connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
  connect(this,SIGNAL(defaultClicked()),this,SLOT(slotDefault()));
  connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply()));
@@ -119,53 +92,11 @@ void KGameDialog::init(KGame* g, KPlayer* owner)
  }
 }
 
-void KGameDialog::initDefaultDialog(ConfigOptions initConfigs, int chatMsgId)
-{
- if (initConfigs & GameConfig) {
-	kDebug() << "add gameconf";
-	addGameConfig(new KGameDialogGeneralConfig(0));
- }
- if (initConfigs & NetworkConfig) {
-	addNetworkConfig(new KGameDialogNetworkConfig(0));
- }
- if (initConfigs & (MsgServerConfig) ) {
-	addMsgServerConfig(new KGameDialogMsgServerConfig(0));
- }
- if (initConfigs & ChatConfig) {
-	KGameDialogChatConfig * c = new KGameDialogChatConfig(chatMsgId, 0);
-	if (d->mGamePage) {
-		addChatWidget(c, d->mGamePage);
-	} else {
-		addConfigPage(c, i18n("&Chat"));
-	}
- }
- if (initConfigs & BanPlayerConfig) {
-	// add the connection management system - ie the widget where the ADMIN can
-	// kick players out
-	if (d->mNetworkPage) {
-		// put it on the network page
-		addConnectionList(new KGameDialogConnectionConfig(0), d->mNetworkPage);
-	} else {
-		// if no network page available put it on an own page
-		addConfigPage(new KGameDialogConnectionConfig(0), i18n("C&onnections"));
-	}
- }
-}
-
 KGameDialog::~KGameDialog()
 {
 // kDebug(11001) << "DESTRUCT KGameDialog" << this;
  qDeleteAll(d->mConfigWidgets);
  delete d;
-}
-
-void KGameDialog::addGameConfig(KGameDialogGeneralConfig* conf)
-{
- if (!conf) {
-	return;
- }
- d->mGameConfig = conf;
- d->mGamePage = addConfigPage(d->mGameConfig, i18n("&Game"));
 }
 
 void KGameDialog::addNetworkConfig(KGameDialogNetworkConfig* netConf)
@@ -177,62 +108,9 @@ void KGameDialog::addNetworkConfig(KGameDialogNetworkConfig* netConf)
  d->mNetworkPage = addConfigPage(netConf, i18n("&Network"));
 }
 
-void KGameDialog::addMsgServerConfig(KGameDialogMsgServerConfig* msgConf)
+KVBox *KGameDialog::configPage()
 {
- if (!msgConf) {
-	return;
- }
- d->mMsgServerPage = addConfigPage(msgConf, i18n("&Message Server"));
-}
-
-void KGameDialog::addChatWidget(KGameDialogChatConfig* chat, KVBox* parent)
-{
- if (!chat) {
-	return;
- }
- if (!parent) {
-	parent = d->mGamePage;
- }
- if (!parent) {
-	kError(11001) << "cannot add chat widget without page";
-	return;
- }
- addConfigWidget(chat, parent);
-}
-
-void KGameDialog::addConnectionList(KGameDialogConnectionConfig* c, KVBox* parent)
-{
- if (!c) {
-	return;
- }
- if (!parent) {
-	parent = d->mNetworkPage;
- }
- if (!parent) {
-	kError(11001) << "Cannot add connection list without page";
-	return;
- }
- addConfigWidget(c, parent);
-}
-
-KVBox *KGameDialog::configPage(ConfigOptions which)
-{
- KVBox *box = 0;
- switch(which)
- {
-	case NetworkConfig:
-		box = d->mNetworkPage;
-		break;
-	case GameConfig:
-		box = d->mGamePage;
-		break;
-	case MsgServerConfig:
-		box = d->mMsgServerPage;
-		break;
-	default:
-		kError(11001) << ": Parameter" << which << "not supported";
- }
- return box;
+ return d->mNetworkPage;
 }
 
 KVBox* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& title)
@@ -276,8 +154,6 @@ void KGameDialog::addConfigWidget(KGameDialogConfig* widget, QWidget* parent)
  widget->show();
 }
 
-KGameDialogGeneralConfig* KGameDialog::gameConfig() const
-{ return d->mGameConfig; }
 KGameDialogNetworkConfig* KGameDialog::networkConfig() const
 { return d->mNetworkConfig; }
 
@@ -310,7 +186,6 @@ void KGameDialog::setOwner(KPlayer* owner)
  for (int i = 0; i < d->mConfigWidgets.count(); i++) {
 	if (d->mConfigWidgets.at(i)) {
 		d->mConfigWidgets.at(i)->setOwner(d->mOwner);
-		//TODO: hide playerName in KGameDialogGeneralConfig
 	} else {
 		kError(11001) << "NULL widget??";
 	}
