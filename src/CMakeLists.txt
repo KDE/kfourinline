@@ -1,8 +1,4 @@
 
-include_directories( ${CMAKE_SOURCE_DIR}/libkdegames/kgame  )
-
-
-
 ########### next target ###############
 
 set(kwin4_SRCS 
