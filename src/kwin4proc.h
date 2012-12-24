@@ -27,8 +27,7 @@
 #include <QHash>
 
 // KDE includes
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgameprocess.h>
+#include "kgameprocess.h"
 
 // Local includes
 #include "kwin4global.h"

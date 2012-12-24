@@ -49,9 +49,9 @@
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
-#include <libkdegamesprivate/kgame/dialogs/kgamedialog.h>
-#include <libkdegamesprivate/kgame/dialogs/kgamedialogconfig.h>
-#include <libkdegamesprivate/kgame/dialogs/kgamedebugdialog.h>
+#include "kgamedialog.h"
+#include "kgamedialogconfig.h"
+#include "kgamedebugdialog.h"
 
 // application specific includes
 #include "chatdlg.h"

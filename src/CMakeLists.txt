@@ -20,6 +20,9 @@ set(kwin4_SRCS
    aiboard.cpp
    reflectiongraphicsscene.cpp
    kgamedebugdialog.cpp
+   kgamedialog.cpp
+   kgamedialogconfig.cpp
+   kgameconnectdialog.cpp
    pixmapsprite.cpp)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
@@ -31,7 +34,7 @@ kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
 kde4_add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} kdegames kdegamesprivate)
+target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KDNSSD_LIBS} kdegames kdegamesprivate)
 
 install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
