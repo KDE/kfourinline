@@ -27,10 +27,11 @@
 // KDE includes
 #include <kconfig.h>
 
+#include "kgamepropertyarray.h"
+
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgame.h>
 #include <libkdegamesprivate/kgame/kgameio.h>
-#include <libkdegamesprivate/kgame/kgamepropertyarray.h>
 
 // Local includes
 #include "kwin4global.h"
