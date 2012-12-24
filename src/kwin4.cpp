@@ -52,7 +52,6 @@
 #include <libkdegamesprivate/kgame/dialogs/kgamedialog.h>
 #include <libkdegamesprivate/kgame/dialogs/kgamedialogconfig.h>
 #include <libkdegamesprivate/kgame/dialogs/kgameconnectdialog.h>
-#include <libkdegamesprivate/kgame/dialogs/kgameerrordialog.h>
 #include <libkdegamesprivate/kgame/dialogs/kgamedebugdialog.h>
 
 // application specific includes
