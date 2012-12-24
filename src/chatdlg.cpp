@@ -24,6 +24,7 @@
 // include files for QT
 #include <QPushButton>
 #include <QGroupBox>
+#include <QGridLayout>
 
 // include files for KDE
 #include <klocale.h>
@@ -32,7 +33,6 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatdialog.h>
 #include <libkdegamesprivate/kgame/kgamechat.h>
-#include <libkdegamesprivate/kgame/dialogs/kgamedialog.h>
 
 // application specific includes
 #include "kwin4player.h"
