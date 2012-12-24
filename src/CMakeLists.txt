@@ -43,6 +43,7 @@ install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 set(kwin4proc_SRCS 
     aiboard.cpp
+    kgameprocess.cpp
     kwin4proc.cpp )
 
 kde4_add_executable(kfourinlineproc ${kwin4proc_SRCS})
