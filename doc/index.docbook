@@ -169,7 +169,7 @@ you find a chat dialog box which allows you to speak with your friend.
 </para>
 
 <para>
-When a network connection is build you are asked to enter a remote host
+When a network connection is built you wiil be asked to enter a remote host
 and a port. The port can usually just be left untouched, but if you know
 what you are doing replace it by another number, which has to be the
 same in both player games of course. The hostname should be the name of
