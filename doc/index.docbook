@@ -51,7 +51,7 @@
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2007-11-14</date>
+<date>2013-05-05</date>
 <releaseinfo>1.4.0</releaseinfo>
 
 <abstract>
@@ -182,61 +182,11 @@ incoming connections.
 </sect1>
 </chapter>
 
-<chapter id="faq">
-<title>Frequently asked questions</title>
-<qandaset>
+<chapter id="interface-overview">
+<title>Interface Overview</title>
 
-
-<qandaentry>
-<question>
-<para>
-Can I change the look of the game?
-</para>
-</question>
-<answer>
-<para>
-You can change the color of the pieces by opening the <guimenu>Settings</guimenu> menu and select <guisubmenu>Theme</guisubmenu>.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-Can I use the keyboard to play the game?
-</para>
-</question>
-<answer>
-<para>
-You cannot use the keyboard to control the pieces.
-</para>
-</answer>
-</qandaentry>
-
-<qandaentry>
-<question>
-<para>
-I have lost control of who is in the lead, can I find it out?
-</para>
-</question>
-<answer>
-<para>
-Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and 
-selecting <guimenuitem>Show Statistics</guimenuitem>.
-</para>
-</answer>
-</qandaentry>
-
-</qandaset>
-
-</chapter>
-
-
-<chapter id="menus">
-<title>Menus</title>
-
-<sect1 id="game-menu">
-<title><guimenu>Game</guimenu> Menu</title>
+<sect1 id="menu">
+<title>Menu Items</title>
 
 <variablelist>
 <varlistentry>
@@ -340,13 +290,7 @@ Quits the program.
 </para>
 </listitem>
 </varlistentry>
-</variablelist>
 
-</sect1>
-
-<sect1 id="move-menu">
-<title><guimenu>Move</guimenu> Menu</title>
-<variablelist>
 <varlistentry>
 <term><menuchoice>
 <shortcut>
@@ -396,41 +340,6 @@ the computer.
 </listitem>
 </varlistentry>
 
-</variablelist>
-
-</sect1>
-
-
-<sect1 id="option-menu">
-<title><guimenu>Settings</guimenu> Menu</title>
-
-<variablelist>
-
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Toolbar</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Toggle on and off the display of the toolbar.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Toggle on and off the display of the statusbar.
-</para>
-</listitem>
-</varlistentry>
-
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
@@ -455,43 +364,14 @@ also disconnect it in this menu.
 </listitem>
 </varlistentry>
 
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
-</menuchoice></term>
-<listitem><para>
-<action>Opens a dialog which lets you redefine all the keyboard shortcuts.</action>
-</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure Toolbars...</guimenuitem>
-</menuchoice></term>
-<listitem><para>Displays a &kde; standard dialog where you can configure the toolbar icons.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Configure &kfourinline;...</guimenuitem>
-</menuchoice></term>
-
-<listitem><para><action>Displays</action> the &kfourinline;
-configuration dialog.</para>
-
-</listitem>
-</varlistentry>
-
 </variablelist>
-</sect1>
 
-<sect1 id="help">
-<title><guimenu>Help</guimenu> Menu</title>
-
-&help.menu.documentation;
+<para>
+Additionally &kappname; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
@@ -513,6 +393,53 @@ plays for this player.</para>
 <para><guilabel>Computer Difficulty</guilabel>: Select the level of the computer player.</para>
 <para><guilabel>Use AI learning</guilabel>: The computer AI can learn from mistakes made in one game.</para>
 
+</chapter>
+
+<chapter id="faq">
+<title>Frequently asked questions</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para>
+Can I change the look of the game?
+</para>
+</question>
+<answer>
+<para>
+You can change the color of the pieces by opening the <guimenu>Settings</guimenu> menu and select <guisubmenu>Theme</guisubmenu>.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+Can I use the keyboard to play the game?
+</para>
+</question>
+<answer>
+<para>
+You cannot use the keyboard to control the pieces.
+</para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para>
+I have lost control of who is in the lead, can I find it out?
+</para>
+</question>
+<answer>
+<para>
+Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and 
+selecting <guimenuitem>Show Statistics</guimenuitem>.
+</para>
+</answer>
+</qandaentry>
+
+</qandaset>
 
 </chapter>
 
