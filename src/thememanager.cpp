@@ -34,6 +34,7 @@
 #include <kdebug.h>
 #include <kstandarddirs.h>
 #include <kconfiggroup.h>
+#include <klocale.h>
 
 // Local includes
 #include "kwin4global.h"
@@ -112,8 +113,11 @@ void ThemeManager::updateTheme(const QString &themefile)
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
   kDebug() << "Reading SVG master file  =" << svgfile;
   mAspectRatio     =  config("general").readEntry("aspect-ratio", 1.0);
-  kDebug() << "Aspect ration =" << mAspectRatio;
-
+  kDebug() << "Aspect ratio =" << mAspectRatio;
+  mColorNamePlayer[0] = i18nc("Player 0 color", config("general").readEntry("colorNamePlayer0").toUtf8());
+  kDebug() << "Player 0 color name =" << mColorNamePlayer[0];
+  mColorNamePlayer[1] = i18nc("Player 1 color", config("general").readEntry("colorNamePlayer1").toUtf8());
+  kDebug() << "Player 1 color name =" << mColorNamePlayer[1];
 
   delete mRenderer;
   mRenderer = new QSvgRenderer(this);

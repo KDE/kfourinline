@@ -196,6 +196,13 @@ class ThemeManager : public QObject
       * @return The aspect ratio (x/y).
       */
     double aspectRatio() {return mAspectRatio;}
+    
+    /** Retrieve the translated theme's color for specified player. Colors are stored
+      * as 'colorNamePlayer0' and 'colorNamePlayer1' key in the 'general'
+      * group of the theme.
+      * @return The color name for player.
+      */
+    QString colorNamePlayer(int player) {return mColorNamePlayer[player];}
 
     /** Check whether the theme is properly initialized.
       * @return 0 if everything is alright
@@ -229,6 +236,9 @@ class ThemeManager : public QObject
 
      // The aspect ration
      double mAspectRatio;
+     
+     // Color names for players.
+     QString mColorNamePlayer[2];
 
      // Type of theme change
      bool mThemeFileChanged;

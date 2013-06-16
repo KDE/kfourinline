@@ -4,6 +4,10 @@
 svgfile=yellow.svg
 # Game aspect ratio
 aspect-ratio=1.60
+# Color name for player 0.
+colorNamePlayer0=Yellow
+# Color name for player 1.
+colorNamePlayer1=Red
 
 # The 'intro display' (display for intro screen)
 [introdisplay]
@@ -235,8 +239,8 @@ posName1=0.62,0.78
 fontHeight=0.067
 fontWidth=0.375
 # Font color for name of player 0 and 1. The current player's name is colored with 'active'
-fontColorActive=255,255,0
-fontColorPlayer0=255,255,255
+fontColorActive=255,255,255
+fontColorPlayer0=255,255,0
 fontColorPlayer1=255,0,0
 
 

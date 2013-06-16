@@ -117,7 +117,7 @@ KWin4App::KWin4App(QWidget *parent)
     if (mThemeDefault.isNull()) mThemeDefault = name;
     if (isDefault) mThemeDefault = name;
     mThemeFiles[name] = file;
-    kDebug() <<  "Found theme("<<i<<"): " <<themeList.at(i) <<" Name(i18n)="<<name<<" File="<<file << " default="<<isDefault;   
+    kDebug() <<  "Found theme("<<i<<"): " <<themeList.at(i) <<" Name(i18n)="<<name<<" File="<<file << " default="<<isDefault;
   }
   mThemeIndexNo = themeIdxFromName(mThemeDefault);
 
@@ -374,6 +374,7 @@ void KWin4App::changeTheme(int idx)
   QString themeFile = themefileFromIdx(idx);
   kDebug() << "Select theme" << themeFile;
   mTheme->updateTheme(themeFile);
+  updateStatusNames();
 }
 
 
@@ -706,9 +707,9 @@ void KWin4App::updateStatusNames()
   if (!(mDoc->gameStatus()==KGame::Run))
     msg=i18n("No game  ");
   else if (mDoc->getCurrentPlayer()==Yellow)
-    msg=i18n(" %1 - Yellow ", mDoc->getName(Yellow));
+    msg=i18n(" %1 - %2 ", mDoc->getName(Yellow), mTheme->colorNamePlayer(0));
   else if (mDoc->getCurrentPlayer())
-    msg=i18n(" %1 - Red ", mDoc->getName(Red));
+    msg=i18n(" %1 - %2 ", mDoc->getName(Red), mTheme->colorNamePlayer(1));
   else
     msg=i18n("Nobody  ");
   displayStatusbarMover(msg);
@@ -878,8 +879,12 @@ void KWin4App::configureSettings()
     // The dialog need to refresh the buttons as they are not conectable via a signal-slot 
     // in KConfigDialog
     ui.kcfg_startcolourred->setChecked(Prefs::startcolourred());
+    ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));
     ui.kcfg_startcolouryellow->setChecked(Prefs::startcolouryellow());
+    ui.kcfg_startcolouryellow->setText(mTheme->colorNamePlayer(1));
     ui.kcfg_level->setValue(Prefs::level());
+    ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
+    ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
     ui.kcfg_input0mouse->setChecked(Prefs::input0mouse());
     ui.kcfg_input0key->setChecked(Prefs::input0key());
     ui.kcfg_input0ai->setChecked(Prefs::input0ai());
@@ -898,6 +903,10 @@ void KWin4App::configureSettings()
   dialog->setHelp(QString(),"kfourinline");
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
+  ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));
+  ui.kcfg_startcolouryellow->setText(mTheme->colorNamePlayer(1));
+  ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
+  ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
   dialog->addPage(frame, i18n("General"), "games-config-options");
   connect(dialog, SIGNAL(settingsChanged(QString)), mDoc, SLOT(loadSettings()));
   dialog->show();
