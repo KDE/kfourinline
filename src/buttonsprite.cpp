@@ -20,6 +20,7 @@
 
 // Header includes
 #include "buttonsprite.h"
+#include "kfontutils.h"
 
 // General includes
 #include <math.h>
@@ -85,8 +86,10 @@ void ButtonSprite::changeTheme()
     // Calculate proper font size
     double fontHeight = config.readEntry("fontHeight", 1.0);
     fontHeight *= height;
-    double fontWidth = config.readEntry("fontWidth", 1.0);
-    fontWidth *= width;
+    double textWidth = config.readEntry("textWidth", 1.0);
+    textWidth *= width;
+    double textHeight = config.readEntry("textHeight", 1.0);
+    textHeight *= height;
     
     // Retrieve font color
     QColor fontColor;
@@ -94,17 +97,18 @@ void ButtonSprite::changeTheme()
 
     // Create and set current font
     QFont font;
-    font.setPixelSize(int(fontHeight));
+    fontHeight = KFontUtils::adaptFontSize(mText, textWidth, textHeight, fontHeight, 8.0);
+    font.setPointSizeF(fontHeight);
 
     // Set font and color for all text items
     mText->setFont(font);   
-    mText->setDefaultTextColor(fontColor);   
-    mText->setTextWidth(fontWidth);   
+    mText->setDefaultTextColor(fontColor);
+    mText->setTextWidth(textWidth);
 
     // Set position of sub sprites
-    double textWidth  = mText->boundingRect().width();
-    double textHeight = mText->boundingRect().height();
-    mText->setPos((width-textWidth)/2.0, (height-textHeight)/2.0);
+    QRectF bounding = mText->boundingRect();
+    mText->setPos((width - bounding.width()) / 2.0,
+                  (height - bounding.height()) / 2.0);
   }
 }
 
