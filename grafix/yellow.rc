@@ -303,17 +303,19 @@ zValue=150.0
 svgid=quicklaunch
 
 # Position of text
-posQuickstart=0.04,0.005
-posStartplayer=0.08,0.14
-posColor=0.08,0.31
+posQuickstart=0.025,0.02
+posStartplayer=0.10,0.16
+posColor=0.10,0.33
 # Font for text quickstart
 fontHeightHeader=0.070
-fontWidthHeader=0.95
+textHeightHeader=0.080
+textWidthHeader=0.95
 fontColorHeader=0,0,0
-# Font for other text 
+# Font and available space for other text 
 fontHeight=0.050
-fontWidth=0.50
 fontColor=0,0,0
+textWidth=0.50
+textHeight=0.10
 
 
 # The 'black' start button
@@ -415,8 +417,9 @@ frame0=button_off
 frame1=button_off_hover
 frame2=button_on
 # Font color, width and height relativ to button size!!!
-fontHeight=0.400
-fontWidth=0.80
+fontHeight=0.30
+textWidth=0.90
+textHeight=0.90
 fontColor=0,0,0
 
 # The 'start_ai_normal' button
@@ -438,8 +441,9 @@ frame0=button_off
 frame1=button_off_hover
 frame2=button_on
 # Font color, width and height relativ to button size!!!
-fontHeight=0.400
-fontWidth=0.80
+fontHeight=0.30
+textWidth=0.90
+textHeight=0.90
 fontColor=0,0,0
 
 # The 'start_ai_hard' button
@@ -461,8 +465,9 @@ frame0=button_off
 frame1=button_off_hover
 frame2=button_on
 # Font color, width and height relativ to button size!!!
-fontHeight=0.400
-fontWidth=0.80
+fontHeight=0.30
+textWidth=0.90
+textHeight=0.90
 fontColor=0,0,0
 
 # The 'start_player' button
@@ -484,7 +489,7 @@ frame0=button_off
 frame1=button_off_hover
 frame2=button_on
 # Font color, width and height relativ to button size!!!
-fontHeight=0.400
-fontWidth=0.80
+fontHeight=0.30
+textWidth=0.90
+textHeight=0.90
 fontColor=0,0,0
-

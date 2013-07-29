@@ -26,6 +26,7 @@
 #include "pixmapsprite.h"
 #include "buttonsprite.h"
 #include "prefs.h"
+#include "kfontutils.h"
 
 // Standard includes
 #include <math.h>
@@ -40,6 +41,8 @@
 #include <QEvent>
 #include <QTimer>
 #include <QMouseEvent>
+#include <QTextDocument>
+
 
 // KDE includes
 #include <klocale.h>
@@ -79,20 +82,22 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
   mSprites.append(pixmap);
   pixmap->show();
 
-  // Create quicklaunch
+  // Create quicklaunch. We align text horizontally using QTextDocument
   mQuickLaunch = new PixmapSprite("quicklaunch", mTheme, 0, mScene);
   mSprites.append(mQuickLaunch);
   mQuickLaunch->show();
-  mTextQuicklaunch  = new QGraphicsTextItem(mQuickLaunch, scene);
+  mTextQuicklaunch = new QGraphicsTextItem(mQuickLaunch, scene);
   mTextQuicklaunch->setPlainText(i18nc("Name of quicklaunch field", "Quick Launch"));
+  QTextDocument* text_document = mTextQuicklaunch->document();
+  text_document->setDefaultTextOption(QTextOption(Qt::AlignHCenter));
+  mTextQuicklaunch->setDocument(text_document);
   mTextQuicklaunch->show();
-  mTextStartplayer  = new QGraphicsTextItem(mQuickLaunch, scene);
+  mTextStartplayer = new QGraphicsTextItem(mQuickLaunch, scene);
   mTextStartplayer->setPlainText(i18nc("Ask player who should start game", "Who starts?"));
   mTextStartplayer->show();
-  mTextColor        = new QGraphicsTextItem(mQuickLaunch, scene);
+  mTextColor = new QGraphicsTextItem(mQuickLaunch, scene);
   mTextColor->setPlainText(i18nc("Ask player which color he wants to play", "Your color?"));
   mTextColor->show();
-
 
 
   // Static decoration
@@ -278,8 +283,10 @@ void DisplayIntro::changeTheme()
   // Calculate proper font size
   double fontHeight = config.readEntry("fontHeightHeader", 1.0);
   fontHeight *= height;
-  double fontWidth = config.readEntry("fontWidthHeader", 1.0);
-  fontWidth *= width;
+  double textHeight = config.readEntry("textHeightHeader", 1.0);
+  textHeight *= height;
+  double textWidth = config.readEntry("textWidthHeader", 1.0);
+  textWidth *= width;
   
   // Retrieve font color
   QColor fontColor;
@@ -287,43 +294,56 @@ void DisplayIntro::changeTheme()
 
   // Create and set current font
   QFont font;
-  font.setPixelSize(int(fontHeight));
+  fontHeight = KFontUtils::adaptFontSize(mTextQuicklaunch, textWidth, textHeight, fontHeight, 8.0);
+  font.setPointSizeF(fontHeight);
 
   // Set font and color for all text items
   mTextQuicklaunch->setFont(font);   
-  mTextQuicklaunch->setDefaultTextColor(fontColor);   
-  mTextQuicklaunch->setTextWidth(fontWidth);   
+  mTextQuicklaunch->setDefaultTextColor(fontColor);
+  mTextQuicklaunch->setTextWidth(textWidth);
 
-  // Set position of sub sprites
-  mTextQuicklaunch->setPos(posQuickstart.x()*width, posQuickstart.y()*height);
-
+  // Set position of sub sprites, we centered horizontally at creation time,
+  // now we center it vertically
+  QRectF bounding = mTextQuicklaunch->boundingRect();
+  mTextQuicklaunch->setPos(posQuickstart.x() * width,
+                           posQuickstart.y() * height + (textHeight - bounding.height()) / 2);
 
 
   // TEXT
   // Calculate proper font size
   fontHeight = config.readEntry("fontHeight", 1.0);
   fontHeight *= height;
-  fontWidth = config.readEntry("fontWidth", 1.0);
-  fontWidth *= width;
+  textHeight = config.readEntry("textHeight", 1.0);
+  textHeight *= height;
+  textWidth = config.readEntry("textWidth", 1.0);
+  textWidth *= width;
   
   // Retrieve font color
   fontColor = config.readEntry("fontColor", QColor(Qt::white));
 
   // Create and set current font
-  font.setPixelSize(int(fontHeight));
+  // Calculate proper font point size to not wrap translations.
+  double newFontHeight0 = KFontUtils::adaptFontSize(mTextStartplayer, textWidth, textHeight, fontHeight, 8.0);
+  double newFontHeight1 = KFontUtils::adaptFontSize(mTextColor, textWidth, textHeight, fontHeight, 8.0);
+  font.setPointSizeF(qMin(newFontHeight0, newFontHeight1));
 
   // Set font and color for all text items
-  mTextStartplayer->setFont(font);   
+  mTextStartplayer->setFont(font);
   mTextStartplayer->setDefaultTextColor(fontColor);   
-  mTextStartplayer->setTextWidth(fontWidth);   
+  mTextStartplayer->setTextWidth(textWidth);
 
-  mTextColor->setFont(font);   
-  mTextColor->setDefaultTextColor(fontColor);   
-  mTextColor->setTextWidth(fontWidth);   
+  mTextColor->setFont(font);
+  mTextColor->setDefaultTextColor(fontColor);
+  mTextColor->setTextWidth(textWidth);
 
-  // Set position of sub sprites
-  mTextStartplayer->setPos(posStartplayer.x()*width, posStartplayer.y()*height);
-  mTextColor->setPos(posColor.x()*width, posColor.y()*height);
+  // Set position of sub sprites, we centered horizontally at creation time,
+  // now we center it vertically
+  bounding = mTextStartplayer->boundingRect();
+  mTextStartplayer->setPos(posStartplayer.x() * width,
+                           posStartplayer.y() * height + (textHeight - bounding.height()) / 2);
+  bounding = mTextColor->boundingRect();
+  mTextColor->setPos(posColor.x() * width,
+                     posColor.y() * height + (textHeight - bounding.height()) / 2);
 
   int elapsed = time.elapsed();
   kDebug() << "THEME CHANGE took " << elapsed << " ms";
