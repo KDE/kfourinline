@@ -123,12 +123,9 @@ class KWin4App : public KXmlGuiWindow
     */
     virtual void readProperties(const KConfigGroup& grp);
 
-    /** Called by KMainWindow when the last window of the application is
-     * going to be closed.
-     * @see KMainWindow#queryExit
-     * @see KMainWindow#closeEvent
+    /** Called by Qt when closing the window
      */
-    virtual bool queryExit();
+    void closeEvent(QCloseEvent *event);
 
     /** Retrieve the theme file from the theme index number give.
       * @param idx The theme index number [0..]

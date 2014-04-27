@@ -209,12 +209,12 @@ KWin4App::~KWin4App()
 }
 
 
-// Called by KMainWindow when the last window of the application is
-bool KWin4App::queryExit()
+// Called by Qt when the window is closed
+void KWin4App::closeEvent(QCloseEvent *event)
 {
   endGame();
   saveProperties();
-  return true;
+  KXmlGuiWindow::closeEvent(event);
 }
 
 
