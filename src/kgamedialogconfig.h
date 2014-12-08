@@ -28,7 +28,7 @@
 #ifndef __KGAMEDIALOGCONFIG_H__
 #define __KGAMEDIALOGCONFIG_H__
 
-#include <QtGui/QWidget>
+#include <QWidget>
 
 class QListWidgetItem;
 

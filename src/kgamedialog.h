@@ -29,8 +29,8 @@
 #define __KGAMEDIALOG_H__
 
 #include <kpagedialog.h>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QGridLayout>
+#include <QVBoxLayout>
+#include <QGridLayout>
 class QGridLayout;
 class QVBoxLayout;
 class KVBox;
