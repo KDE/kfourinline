@@ -858,7 +858,7 @@ QString KWin4Doc::findProcessName()
     if (global_debug>1) kDebug() << "Found local process" << filename;
     return filename;
   }
-  QString path=KGlobal::mainComponent().dirs()->findExe("kfourinlineproc");
+  QString path= KStandardDirs::findExe("kfourinlineproc");
   if (!path.isNull())
   {
     if (global_debug>1) kDebug() << "Found system process" << path;

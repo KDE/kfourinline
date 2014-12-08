@@ -26,6 +26,7 @@
 
 // Qt includes
 #include <QFont>
+#include <QGraphicsScene>
 
 // KDE includes
 #include <kdebug.h>
@@ -40,11 +41,16 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphi
 	// Create all sub sprites
   for (int i=0; i<2; i++)
   {
-    mWon[i]   = new QGraphicsTextItem(this, scene);
-    mDraw[i]  = new QGraphicsTextItem(this, scene);
-    mLoss[i]  = new QGraphicsTextItem(this, scene);
-    mBreak[i] = new QGraphicsTextItem(this, scene);
-    mName[i]  = new QGraphicsTextItem(this, scene);
+    mWon[i]   = new QGraphicsTextItem(this);
+    scene->addItem(mWon[i]);
+    mDraw[i]  = new QGraphicsTextItem(this);
+    scene->addItem(mDraw[i]);
+    mLoss[i]  = new QGraphicsTextItem(this);
+    scene->addItem(mLoss[i]);
+    mBreak[i] = new QGraphicsTextItem(this);
+    scene->addItem(mBreak[i]);
+    mName[i]  = new QGraphicsTextItem(this);
+    scene->addItem(mName[i]);
     mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, i, scene);
     if (!mInput[i]) kFatal() << "Cannot load sprite" << "scoreinput"<<i;
     mInput[i]->setParentItem(this);

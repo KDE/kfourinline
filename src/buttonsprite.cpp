@@ -27,7 +27,8 @@
 
 // Qt includes
 #include <QFont>
-#include<QGraphicsSceneMouseEvent>
+#include <QGraphicsSceneMouseEvent>
+#include <QGraphicsScene>
 
 // KDE includes
 #include <kdebug.h>
@@ -50,7 +51,8 @@ ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* the
   setAcceptsHoverEvents(false);
 
   // Create sub sprites
-  mText  = new QGraphicsTextItem(this, scene);
+  mText  = new QGraphicsTextItem(this);
+  scene->addItem(mText);
   mText->hide();
 
   // Redraw us

@@ -29,14 +29,14 @@ set(kwin4_SRCS
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
-kde4_add_ui_files(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
+ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
-kde4_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
+kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
 kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
-kde4_add_executable(kfourinline ${kwin4_SRCS})
+add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kfourinline  ${KDE4_KDEUI_LIBS} ${KDE4_KIO_LIBS} ${KDE4_KDNSSD_LIBS} kdegames kdegamesprivate)
+target_link_libraries(kfourinline   KF5::KIOCore KF5::DNSSD KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
 
 install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
@@ -48,9 +48,9 @@ set(kwin4proc_SRCS
     kgameprocess.cpp
     kwin4proc.cpp )
 
-kde4_add_executable(kfourinlineproc ${kwin4proc_SRCS})
+add_executable(kfourinlineproc ${kwin4proc_SRCS})
 
-target_link_libraries(kfourinlineproc ${KDE4_KDECORE_LIBS} kdegames kdegamesprivate)
+target_link_libraries(kfourinlineproc KF5::KDELibs4Support KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
 
 install(TARGETS kfourinlineproc ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

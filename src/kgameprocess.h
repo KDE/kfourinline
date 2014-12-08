@@ -22,7 +22,7 @@
 #define __KGAMEPROCESS_H_
 
 #include <QtCore/QObject>
-
+#include <QFile>
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kmessageio.h>

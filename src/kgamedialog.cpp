@@ -65,9 +65,9 @@ KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
     : KPageDialog(parent),
       d( new KGameDialogPrivate )
 {
-    setCaption(title);
-    setButtons(Ok|Default|Apply|Cancel);
-    setDefaultButton(Ok);
+    setWindowTitle(title);
+    //QT5 setButtons(Ok|Default|Apply|Cancel);
+    //QT5 setDefaultButton(Ok);
     setFaceType(KPageDialog::Tabbed);
     setModal(true);
  init(g, owner);

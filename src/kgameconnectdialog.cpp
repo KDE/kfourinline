@@ -52,7 +52,7 @@ class KGameConnectWidgetPrivate
 	QButtonGroup* mButtonGroup;
 	QComboBox *mClientName;
 	QLabel *mClientNameLabel;
-	DNSSD::ServiceBrowser *mBrowser;
+	KDNSSD::ServiceBrowser *mBrowser;
 	QLabel *mServerNameLabel;
 	KLineEdit *mServerName;
 	QString mType;
@@ -131,7 +131,7 @@ void KGameConnectWidget::setType(const QString& type)
 {
  d->mType = type;
  delete d->mBrowser;
- d->mBrowser = new DNSSD::ServiceBrowser(type);
+ d->mBrowser = new KDNSSD::ServiceBrowser(type);
  connect(d->mBrowser,SIGNAL(finished()),SLOT(slotGamesFound()));
  d->mBrowser->startBrowse();
  showDnssdControls();
@@ -144,7 +144,7 @@ void KGameConnectWidget::slotGamesFound()
  d->mClientName->clear();
  QStringList names;
  
- QListIterator<DNSSD::RemoteService::Ptr> it(d->mBrowser->services());
+ QListIterator<KDNSSD::RemoteService::Ptr> it(d->mBrowser->services());
  while (it.hasNext())
   names << it.next()->serviceName();
  d->mClientName->addItems(names);
@@ -170,7 +170,7 @@ void KGameConnectWidget::slotGameSelected(int nr)
 {
  if (nr>=(d->mBrowser->services().count()) || nr<0) return;
  if (!d->mHost->isEnabled()) return; // this is server mode, do not overwrite host and port controls
- DNSSD::RemoteService::Ptr srv = d->mBrowser->services()[nr];
+ KDNSSD::RemoteService::Ptr srv = d->mBrowser->services()[nr];
  if (!srv->isResolved() && !srv->resolve()) return;
  d->mHost->setText(srv->hostName());
  d->mPort->setValue(srv->port());

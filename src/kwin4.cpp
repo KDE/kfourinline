@@ -382,10 +382,10 @@ void KWin4App::changeTheme(int idx)
 // Create the status bar with the message part, the player part.
 void KWin4App::initStatusBar()
 {
-  statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG,1);
-  statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
-  statusBar()->setItemAlignment(ID_STATUS_MOVER, Qt::AlignLeft | Qt::AlignVCenter);
-  statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft | Qt::AlignVCenter);
+  //QT5 statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG,1);
+  //QT5 statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
+  //QT5 statusBar()->setItemAlignment(ID_STATUS_MOVER, Qt::AlignLeft | Qt::AlignVCenter);
+  //QT5 statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft | Qt::AlignVCenter);
 
 
   displayStatusbarMover("");
@@ -670,8 +670,8 @@ void KWin4App::redoMove()
 // Set the given text into the statusbar change status message permanently
 void KWin4App::displayStatusMessage(const QString &text)
 {
-  statusBar()->clearMessage();
-  statusBar()->changeItem(text, ID_STATUS_MSG);
+  //QT5 statusBar()->clearMessage();
+  //QT5 statusBar()->changeItem(text, ID_STATUS_MSG);
 }
 
 
@@ -679,8 +679,8 @@ void KWin4App::displayStatusMessage(const QString &text)
 // the player currently moving change status mover permanently
 void KWin4App::displayStatusbarMover(const QString& text)
 {
-  statusBar()->clearMessage();
-  statusBar()->changeItem(text, ID_STATUS_MOVER);
+  //QT5 statusBar()->clearMessage();
+  //QT5 statusBar()->changeItem(text, ID_STATUS_MOVER);
 }
 
 
@@ -898,10 +898,10 @@ void KWin4App::configureSettings()
 
   KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self());
   dialog->setFaceType(KPageDialog::Plain);
-  dialog->setButtons(KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help);
-  dialog->setDefaultButton(KDialog::Ok);
+  //QT5 dialog->setButtons(KDialog::Default|KDialog::Ok|KDialog::Apply|KDialog::Cancel|KDialog::Help);
+  //QT5 dialog->setDefaultButton(KDialog::Ok);
   dialog->setModal(true);
-  dialog->setHelp(QString(),"kfourinline");
+  //QT5 dialog->setHelp(QString(),"kfourinline");
   QWidget* frame = new QWidget(dialog);
   ui.setupUi(frame);
   ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));

@@ -128,11 +128,11 @@ KGameDebugDialog::KGameDebugDialog(KGame* g, QWidget* parent, bool modal)
     : KPageDialog(parent),
       d( new KGameDebugDialogPrivate )
 {
- setCaption(i18n("KGame Debug Dialog"));
- setButtons(Close);
- setDefaultButton(Close);
+ setWindowTitle(i18n("KGame Debug Dialog"));
+ //QT5 setButtons(Close);
+ //QT5 setDefaultButton(Close);
  setModal(modal);
- showButtonSeparator(true);
+ //QT5 showButtonSeparator(true);
  setFaceType(KPageDialog::Tabbed);
 
  initGamePage();
@@ -152,8 +152,8 @@ void KGameDebugDialog::initGamePage()
  d->mGamePage = new QFrame();
  addPage(d->mGamePage,i18n("Debug &KGame"));
  QVBoxLayout* topLayout = new QVBoxLayout(d->mGamePage);
- topLayout->setMargin( marginHint() );
- topLayout->setSpacing( spacingHint() );
+ //QT5 topLayout->setMargin( marginHint() );
+ //QT5 topLayout->setSpacing( spacingHint() );
  QHBoxLayout* layout = new QHBoxLayout;
  topLayout->addLayout(layout);
 
@@ -195,8 +195,8 @@ void KGameDebugDialog::initPlayerPage()
  d->mPlayerPage = new QFrame();
  addPage(d->mPlayerPage,i18n("Debug &Players"));
  QVBoxLayout* topLayout = new QVBoxLayout(d->mPlayerPage);
- topLayout->setMargin( marginHint() );
- topLayout->setSpacing( spacingHint() );
+ //QT5 topLayout->setMargin( marginHint() );
+ //QT5 topLayout->setSpacing( spacingHint() );
  QHBoxLayout* layout = new QHBoxLayout;
  topLayout->addLayout(layout);
 
@@ -247,8 +247,8 @@ void KGameDebugDialog::initMessagePage()
  d->mMessagePage = new QFrame();
  addPage(d->mMessagePage,i18n("Debug &Messages"));
  QGridLayout* layout = new QGridLayout(d->mMessagePage);
- layout->setMargin(marginHint());
- layout->setSpacing(spacingHint());
+ //QT5 layout->setMargin(marginHint());
+ //QT5 layout->setSpacing(spacingHint());
  d->mMessageList = new QTreeWidget(d->mMessagePage);
  layout->addWidget(d->mMessageList, 0, 0, 10, 4);
 

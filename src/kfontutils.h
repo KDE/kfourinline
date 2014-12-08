@@ -25,7 +25,6 @@
 
 #include <QGraphicsTextItem>
 
-#include "kdeui_export.h"
 
 class QPainter;
 class QSizeF;
@@ -54,7 +53,7 @@ namespace KFontUtils
                 bigger than maxFontSize. Can return -1 on error.
         @since KDE 4.7
     */
-    qreal KDEUI_EXPORT adaptFontSize(QGraphicsTextItem* text,
+    qreal adaptFontSize(QGraphicsTextItem* text,
                                      qreal width,
                                      qreal height,
                                      qreal maxFontSize = 28.0,
@@ -64,7 +63,7 @@ namespace KFontUtils
     /** Convenience function for adaptFontSize that accepts a QSizeF instead two qreals
         @since KDE 4.7
     */
-    qreal KDEUI_EXPORT adaptFontSize(QGraphicsTextItem* text,
+    qreal adaptFontSize(QGraphicsTextItem* text,
                                      const QSizeF &availableSize,
                                      qreal maxFontSize = 28.0,
                                      qreal minFontSize = 1.0,

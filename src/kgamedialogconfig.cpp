@@ -40,6 +40,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGroupBox>
+#include <KDebug>
 
 #include "kgamedialogconfig.moc"
 

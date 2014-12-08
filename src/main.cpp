@@ -36,7 +36,7 @@
   * 
   */
 
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
 #include <kdebug.h>
@@ -60,10 +60,10 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
-  KAboutData aboutData( "kfourinline", 0, ki18n("KFourInLine"),
+  K4AboutData aboutData( "kfourinline", 0, ki18n("KFourInLine"),
                         KWIN4_VERSION,
                         ki18n("KFourInLine: Two player board game"),
-                        KAboutData::License_GPL,
+                        K4AboutData::License_GPL,
                         ki18n("(c) 1995-2007, Martin Heni"),
                         KLocalizedString(), "http://games.kde.org/kfourinline" );
   aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");

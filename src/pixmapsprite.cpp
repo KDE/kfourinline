@@ -25,7 +25,7 @@
 #include <math.h>
 
 // Qt includes
-
+#include <QGraphicsScene>
 // KDE includes
 #include <kdebug.h>
 #include <kconfig.h>
@@ -33,8 +33,9 @@
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
-    :  Themeable(id, theme), QGraphicsPixmapItem(0, canvas)
+    :  Themeable(id, theme), QGraphicsPixmapItem(0)
 {
+  canvas->addItem(this);
   hide();
   setAcceptsHoverEvents(false);
 
@@ -49,8 +50,9 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGrap
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(int no, QGraphicsScene* canvas)
-    :  Themeable(), QGraphicsPixmapItem(0, canvas)
+    :  Themeable(), QGraphicsPixmapItem(0)
 {
+  canvas->addItem(this);
   hide();
 
   mAnimationState = Idle;
