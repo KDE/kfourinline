@@ -56,9 +56,9 @@ add_subdirectory( doc )
 
 ########### install files ###############
 
-install( PROGRAMS kfourinline.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
+install( PROGRAMS org.kde.kfourinline.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 
-ecm_install_icons( ${ICON_INSTALL_DIR}   )
+ecm_install_icons( ICONS hi128-apps-kfourinline.png  hi16-apps-kfourinline.png  hi22-apps-kfourinline.png  hi32-apps-kfourinline.png  hi48-apps-kfourinline.png  hi64-apps-kfourinline.png DESTINATION ${ICON_INSTALL_DIR}   )
 
 
 
