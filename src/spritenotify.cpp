@@ -40,5 +40,5 @@ void SpriteNotify::emitSignal(int mode)
   emit signalNotify(mParent,mode);
 }
 
-#include "spritenotify.moc"
+
 

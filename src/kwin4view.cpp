@@ -545,5 +545,5 @@ bool KWin4View::viewportEvent ( QEvent * event )
   return QGraphicsView::viewportEvent(event);
 }
 
-#include "kwin4view.moc"
+
 

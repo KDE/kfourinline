@@ -434,4 +434,4 @@ ScoreSprite* DisplayGame::score()
 }
 
 
-#include "displaygame.moc"
+

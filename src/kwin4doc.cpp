@@ -803,7 +803,7 @@ COLOUR KWin4Doc::switchStartPlayer()
     Prefs::setStartcolourred(false);
     kDebug() << "Setting startplayer to YELLOW";
   }
-  Prefs::self()->writeConfig();
+  Prefs::self()->save();
   
   return (COLOUR)mStartPlayer.value();
 }
@@ -1434,4 +1434,4 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     kDebug(12010) << "newPlayersJoin: DONE";
 }
 
-#include "kwin4doc.moc"
+

@@ -177,7 +177,7 @@ KWin4App::KWin4App(QWidget *parent)
   // Connect signals
   connectDocument();
   // Read global config for document (after initPlayers)
-  mDoc->readConfig(KGlobal::config().data());
+  mDoc->readConfig(KSharedConfig::openConfig().data());
 
   // Check menus
   checkMenus();
@@ -471,7 +471,7 @@ void KWin4App::readProperties(const KConfigGroup& grp)
 // Store the current game
 void KWin4App::saveProperties()
 {
-  KConfig *config = KGlobal::config().data();
+  KConfig *config = KSharedConfig::openConfig().data();
 
   // Program data
   KConfigGroup cfg = config->group("ProgramData");
@@ -486,7 +486,7 @@ void KWin4App::saveProperties()
 // Load current game back
 void KWin4App::readProperties()
 {
-  KConfig *config = KGlobal::config().data();
+  KConfig *config = KSharedConfig::openConfig().data();
 
   // Program data
   KConfigGroup cfg = config->group("ProgramData");
@@ -913,4 +913,4 @@ void KWin4App::configureSettings()
   dialog->show();
 }
 
-#include "kwin4.moc"
+

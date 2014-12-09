@@ -575,4 +575,4 @@ bool KGameDebugDialog::showId(int msgid)
 }
 
 
-#include "kgamedebugdialog.moc"
+

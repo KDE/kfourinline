@@ -252,4 +252,4 @@ void KMessageFilePipe::exec()
 
 }
 
-#include "kgameprocess.moc"
+

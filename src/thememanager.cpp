@@ -267,5 +267,5 @@ Themeable::~Themeable()
   if (mThemeManager) mThemeManager->unregisterTheme(this);
 }
 
-#include "thememanager.moc"
+
 

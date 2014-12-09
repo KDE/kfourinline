@@ -619,4 +619,4 @@ void DisplayIntro::viewEvent(QEvent* event)
 
 }
 
-#include "displayintro.moc"
+

@@ -162,7 +162,7 @@ void KWin4Player::resetStats(bool all)
   }
 }
 
-#include "kwin4player.moc"
+
 
 
 

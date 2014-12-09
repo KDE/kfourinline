@@ -226,5 +226,5 @@ void KGameConnectWidget::slotTypeChanged(int t)
  emit signalServerTypeChanged(t);
 }
 
-#include "kgameconnectdialog.moc"
+
 

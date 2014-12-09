@@ -42,7 +42,7 @@
 #include <QGroupBox>
 #include <KDebug>
 
-#include "kgamedialogconfig.moc"
+
 
 class KGameDialogConfigPrivate
 {

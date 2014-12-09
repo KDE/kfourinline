@@ -34,7 +34,7 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgame.h>
 
-#include "kgamedialog.moc"
+
 
 class KGameDialogPrivate
 {

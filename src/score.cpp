@@ -67,4 +67,4 @@ void Score::update()
   }
 }
 
-#include "score.moc"
+
