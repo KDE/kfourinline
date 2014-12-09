@@ -29,7 +29,7 @@
 #include <QGraphicsItem>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <QTime>
 
 // How many time measurements for average

@@ -27,7 +27,7 @@
 #include <QGridLayout>
 
 // include files for KDE
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kdebug.h>
 
 #include "kchatdialog.h"

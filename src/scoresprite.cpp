@@ -32,7 +32,7 @@
 #include <kdebug.h>
 #include <kconfig.h>
 #include <kconfiggroup.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 // Constructor for the score sprite
 ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)

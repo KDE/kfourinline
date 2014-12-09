@@ -21,7 +21,7 @@
 #include "kgameconnectdialog.h"
 
 #include <knuminput.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kdebug.h>
 #include <klineedit.h>
 

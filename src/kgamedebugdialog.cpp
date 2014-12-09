@@ -27,7 +27,7 @@
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 
 #include <klistwidget.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kdebug.h>
 #include <kpushbutton.h>
 #include <KStandardGuiItem>

@@ -30,7 +30,7 @@
 
 
 #include <klistwidget.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <knuminput.h>
 #include <kdialog.h>
 #include <kmessagebox.h>

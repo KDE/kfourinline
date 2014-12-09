@@ -22,7 +22,7 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatbase.h>
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kfontdialog.h>
 #include <kdebug.h>
 #include <klineedit.h>

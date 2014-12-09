@@ -25,7 +25,7 @@
 #include <QVBoxLayout>
 #include <QList>
 
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kvbox.h>
 #include <kdebug.h>
 

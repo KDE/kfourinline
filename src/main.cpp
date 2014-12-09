@@ -41,7 +41,7 @@
 #include <kcmdlineargs.h>
 #include <kdebug.h>
 #include <kglobal.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "kwin4.h"
 

@@ -34,7 +34,7 @@
 #include <kdebug.h>
 #include <kstandarddirs.h>
 #include <kconfiggroup.h>
-#include <klocale.h>
+#include <KLocalizedString>
 
 // Local includes
 #include "kwin4global.h"

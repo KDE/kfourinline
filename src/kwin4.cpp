@@ -31,7 +31,7 @@
 #include <kstandardgameaction.h>
 #include <kmessagebox.h>
 #include <kfiledialog.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <khelpmenu.h>
 #include <kconfig.h>
 #include <kdebug.h>
@@ -41,7 +41,7 @@
 #include <kconfigdialog.h>
 #include <kactioncollection.h>
 #include <kbuttongroup.h>
-#include <kicon.h>
+#include <QIcon>
 #include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kselectaction.h>
@@ -336,7 +336,7 @@ void KWin4App::initGUI()
   connect(action, SIGNAL(triggered(bool)), SLOT(configureChat()));
 
   action = actionCollection()->addAction( QLatin1String( "statistics" ));
-  action->setIcon(KIcon( QLatin1String( "view-statistics" )));
+  action->setIcon(QIcon::fromTheme( QLatin1String( "view-statistics" )));
   action->setText(i18n("&Show Statistics"));
   connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
   action->setToolTip(i18n("Show statistics."));
@@ -352,7 +352,7 @@ void KWin4App::initGUI()
   themes.sort();
 
   action = actionCollection()->addAction( QLatin1String( "theme" ) , new KSelectAction(i18n("Theme" ), this));
-  action->setIcon(KIcon( QLatin1String( "games-config-theme" )));
+  action->setIcon(QIcon::fromTheme( QLatin1String( "games-config-theme" )));
   ((KSelectAction*)action)->setItems(themes);
   connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
   kDebug() << "Setting current theme item to" << mThemeIndexNo;

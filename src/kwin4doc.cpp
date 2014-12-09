@@ -36,7 +36,7 @@
 #include <QMouseEvent>
 
 // include files for KDE
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kstandarddirs.h>
 #include <kdebug.h>
 #include <krandomsequence.h>
