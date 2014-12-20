@@ -89,7 +89,7 @@ KWin4View::KWin4View(int updateTime,
 
 
   mTimer = new QTimer(this);
-  connect(mTimer, SIGNAL(timeout()), this, SLOT(updateAndAdvance()));
+  connect(mTimer, &QTimer::timeout, this, &KWin4View::updateAndAdvance);
   mTimer->start(mDefaultUpdateTime);
 
   // Game status
@@ -135,8 +135,7 @@ KWin4View::KWin4View(int updateTime,
   if (!global_skip_intro)
   {
     mIntroDisplay = new DisplayIntro(scene, mTheme, this);
-    connect(mIntroDisplay, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
-            this, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
+    connect(mIntroDisplay, &DisplayIntro::signalQuickStart, this, &KWin4View::signalQuickStart);
     mIntroDisplay->start();
   }
 }
@@ -513,8 +512,7 @@ void KWin4View::displayMove(int x, int y, int color, int xarrow, int colorarrow,
   {
     QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
                         this,SLOT(moveDone(QGraphicsItem*,int)));
-    connect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
-            this,SLOT(moveDone(QGraphicsItem*,int)));
+    connect(notify, &SpriteNotify::signalNotify, this, &KWin4View::moveDone);
   }
   mGameDisplay->displayHint(0,0,false);
 }

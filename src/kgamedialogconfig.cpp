@@ -138,7 +138,7 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
  hb->addWidget(d->mNetworkLabel);
 
  d->mDisconnectButton=new QPushButton(i18n("Disconnect"),this);
- connect(d->mDisconnectButton, SIGNAL(clicked()), this, SLOT(slotExitConnection()));
+ connect(d->mDisconnectButton, &QPushButton::clicked, this, &KGameDialogNetworkConfig::slotExitConnection);
  hb->addWidget(d->mDisconnectButton);
 
  d->mInitConnection = new QGroupBox(i18n("Network Configuration"), this);
@@ -147,9 +147,8 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
 
  d->mConnect = new KGameConnectWidget(d->mInitConnection);
  gboxLay->addWidget(d->mConnect);
- connect(d->mConnect, SIGNAL(signalNetworkSetup()), this, SLOT(slotInitConnection()));
- connect(d->mConnect, SIGNAL(signalServerTypeChanged(int)),
-         this, SIGNAL(signalServerTypeChanged(int)));
+ connect(d->mConnect, &KGameConnectWidget::signalNetworkSetup, this, &KGameDialogNetworkConfig::slotInitConnection);
+ connect(d->mConnect, &KGameConnectWidget::signalServerTypeChanged, this, &KGameDialogNetworkConfig::signalServerTypeChanged);
 
  // Needs to be AFTER the creation of the dialogs
  setConnected(false);

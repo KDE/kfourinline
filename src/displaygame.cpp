@@ -130,7 +130,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
 
   // Animation timer
   mTimer = new QTimer(this);
-  connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));
+  connect(mTimer, &QTimer::timeout, this, &DisplayGame::advance);
 
   // Redraw
   if (theme) theme->updateTheme(this);

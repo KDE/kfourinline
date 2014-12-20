@@ -178,7 +178,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
 
   // Animation timer
   mTimer = new QTimer(this);
-  connect(mTimer, SIGNAL(timeout()), this, SLOT(advance()));
+  connect(mTimer, &QTimer::timeout, this, &DisplayIntro::advance);
 
   // Redraw
   if (theme) theme->updateTheme(this);

@@ -96,10 +96,10 @@ void KChatDialog::init()
 
 // General fonts
  QPushButton* nameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);
- connect(nameFont, SIGNAL(pressed()), this, SLOT(slotGetNameFont()));
+ connect(nameFont, &QPushButton::pressed, this, &KChatDialog::slotGetNameFont);
  layout->addWidget(nameFont, 0, 0);
  QPushButton* textFont = new QPushButton(i18n("Text Font..."), d->mTextPage);
- connect(textFont, SIGNAL(pressed()), this, SLOT(slotGetTextFont()));
+ connect(textFont, &QPushButton::pressed, this, &KChatDialog::slotGetTextFont);
  layout->addWidget(textFont, 0, 1);
 
  QFrame* messagePreview = new QFrame(d->mTextPage);
@@ -118,10 +118,10 @@ void KChatDialog::init()
  QLabel* systemMessages = new QLabel(i18n("System Messages - Messages directly sent from the game"), d->mTextPage);
  layout->addWidget(systemMessages, 3, 0, 1, 2);
  QPushButton* systemNameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);
- connect(systemNameFont, SIGNAL(pressed()), this, SLOT(slotGetSystemNameFont()));
+ connect(systemNameFont, &QPushButton::pressed, this, &KChatDialog::slotGetSystemNameFont);
  layout->addWidget(systemNameFont, 4, 0);
  QPushButton* systemTextFont = new QPushButton(i18n("Text Font..."), d->mTextPage);
- connect(systemTextFont, SIGNAL(pressed()), this, SLOT(slotGetSystemTextFont()));
+ connect(systemTextFont, &QPushButton::pressed, this, &KChatDialog::slotGetSystemTextFont);
  layout->addWidget(systemTextFont, 4, 1);
 
  QFrame* systemMessagePreview = new QFrame(d->mTextPage);
@@ -140,8 +140,8 @@ void KChatDialog::init()
  d->mMaxMessages = new KLineEdit(d->mTextPage);
  d->mMaxMessages->setText(QString::number(-1));
  layout->addWidget(d->mMaxMessages, 6, 1);
- connect(this, SIGNAL(applyClicked()),this,SLOT(slotApply()));
- connect(this, SIGNAL(okClicked()),this,SLOT(slotOk()));
+ connect(this, &KChatDialog::applyClicked, this, &KChatDialog::slotApply);
+ connect(this, &KChatDialog::okClicked, this, &KChatDialog::slotOk);
 }
 
 void KChatDialog::slotGetNameFont()

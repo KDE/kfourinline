@@ -67,7 +67,7 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
   adjustSize();
   
   mChatDlg                 = new KChatDialog(mChat,frame,true);
-  connect(mButton,SIGNAL(clicked()),mChatDlg,SLOT(show()));
+  connect(mButton, &QPushButton::clicked, mChatDlg, &KChatDialog::show);
 }
 
 // Set the player in who does the chat. This should be the local player.

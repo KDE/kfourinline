@@ -69,7 +69,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  d->mButtonGroup = new QButtonGroup(this);
  d->mButtonGroup->setExclusive(true);
  vb->addWidget(box);
- connect(d->mButtonGroup, SIGNAL(buttonClicked(int)), this, SLOT(slotTypeChanged(int)));
+ connect(d->mButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KGameConnectWidget::slotTypeChanged);
  QRadioButton* buttonCreate = new QRadioButton(i18n("Create a network game"), box);
  boxlay->addWidget(buttonCreate);
  d->mButtonGroup->addButton(buttonCreate,0);
@@ -90,7 +90,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  layout->addWidget(d->mServerName, 0, 1);
  layout->addWidget(d->mClientNameLabel, 1, 0);
  layout->addWidget(d->mClientName, 1, 1);
- connect(d->mClientName,SIGNAL(activated(int)),SLOT(slotGameSelected(int)));
+ connect(d->mClientName, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KGameConnectWidget::slotGameSelected);
  QLabel* label = new QLabel(i18n("Port to connect to:"), g);
  d->mPort = new KIntNumInput(g);
  layout->addWidget(label, 2, 0);
@@ -101,7 +101,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  layout->addWidget(d->mHost, 3, 1);
 
  QPushButton *button=new QPushButton(i18n("&Start Network"), this);
- connect(button, SIGNAL(clicked()), this, SIGNAL(signalNetworkSetup()));
+ connect(button, &QPushButton::clicked, this, &KGameConnectWidget::signalNetworkSetup);
  vb->addWidget(button);
  // Hide until type is set
  d->mClientName->hide();
@@ -132,7 +132,7 @@ void KGameConnectWidget::setType(const QString& type)
  d->mType = type;
  delete d->mBrowser;
  d->mBrowser = new KDNSSD::ServiceBrowser(type);
- connect(d->mBrowser,SIGNAL(finished()),SLOT(slotGamesFound()));
+ connect(d->mBrowser, &KDNSSD::ServiceBrowser::finished, this, &KGameConnectWidget::slotGamesFound);
  d->mBrowser->startBrowse();
  showDnssdControls();
 }

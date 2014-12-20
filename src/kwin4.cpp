@@ -156,8 +156,7 @@ KWin4App::KWin4App(QWidget *parent)
   // View
   mView   = new KWin4View(UPDATE_TIME, QSize(800,600),mScene,mTheme,this);
   mDoc->setView(mView);
-  connect(mView, SIGNAL(signalQuickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)), 
-          this, SLOT(quickStart(COLOUR,KGameIO::IOMode,KGameIO::IOMode,int)));
+  connect(mView, &KWin4View::signalQuickStart, this, &KWin4App::quickStart);
 
            
 
@@ -329,16 +328,16 @@ void KWin4App::initGUI()
   
   action = actionCollection()->addAction( QLatin1String( "network_conf" ));
   action->setText(i18n("&Network Configuration..."));
-  connect(action, SIGNAL(triggered(bool)), SLOT(configureNetwork()));
+  connect(action, &QAction::triggered, this, &KWin4App::configureNetwork);
 
   action = actionCollection()->addAction( QLatin1String( "network_chat" ));
   action->setText(i18n("Network Chat..."));
-  connect(action, SIGNAL(triggered(bool)), SLOT(configureChat()));
+  connect(action, &QAction::triggered, this, &KWin4App::configureChat);
 
   action = actionCollection()->addAction( QLatin1String( "statistics" ));
   action->setIcon(QIcon::fromTheme( QLatin1String( "view-statistics" )));
   action->setText(i18n("&Show Statistics"));
-  connect(action, SIGNAL(triggered(bool)), SLOT(showStatistics()));
+  connect(action, &QAction::triggered, this, &KWin4App::showStatistics);
   action->setToolTip(i18n("Show statistics."));
 
   // Move
@@ -354,7 +353,7 @@ void KWin4App::initGUI()
   action = actionCollection()->addAction( QLatin1String( "theme" ) , new KSelectAction(i18n("Theme" ), this));
   action->setIcon(QIcon::fromTheme( QLatin1String( "games-config-theme" )));
   ((KSelectAction*)action)->setItems(themes);
-  connect( action, SIGNAL(triggered(int)), SLOT(changeTheme(int)) );
+  connect(action, &QAction::triggered, this, &KWin4App::changeTheme);
   kDebug() << "Setting current theme item to" << mThemeIndexNo;
   ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
 
@@ -363,7 +362,7 @@ void KWin4App::initGUI()
   {
     action = actionCollection()->addAction( QLatin1String( "file_debug" ));
     action->setText(i18n("Debug KGame"));
-    connect(action, SIGNAL(triggered(bool)), SLOT(debugKGame()));
+    connect(action, &QAction::triggered, this, &KWin4App::debugKGame);
   }
 }
 
@@ -398,14 +397,10 @@ void KWin4App::initStatusBar()
 void KWin4App::connectDocument()
 {
   // KGame signals
-  connect(mDoc,SIGNAL(signalGameOver(int,KPlayer*,KGame*)),
-         this,SLOT(slotGameOver(int,KPlayer*,KGame*)));
-  connect(mDoc,SIGNAL(signalNextPlayer(int)),
-         this,SLOT(moveDone(int)));
-  connect(mDoc,SIGNAL(signalClientLeftGame(int,int,KGame*)),
-         this,SLOT(networkBroken(int,int,KGame*)));
-  connect(mDoc,SIGNAL(signalGameRun()),
-         this,SLOT(gameRun()));
+  connect(mDoc, &KWin4Doc::signalGameOver, this, &KWin4App::slotGameOver);
+  connect(mDoc, &KWin4Doc::signalNextPlayer, this, &KWin4App::moveDone);
+  connect(mDoc, &KWin4Doc::signalClientLeftGame, this, &KWin4App::networkBroken);
+  connect(mDoc, &KWin4Doc::signalGameRun, this, &KWin4App::gameRun);
 }
 
 
@@ -802,7 +797,7 @@ void KWin4App::configureNetwork()
 
   mColorGroup=new KButtonGroup(box);
   QVBoxLayout *grouplay=new QVBoxLayout(mColorGroup);
-  connect(mColorGroup, SIGNAL(clicked(int)), this, SLOT(remoteChanged(int)));
+  connect(mColorGroup, &KButtonGroup::clicked, this, &KWin4App::remoteChanged);
   connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(serverTypeChanged(int)));
 
   QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote player"), mColorGroup);
@@ -852,8 +847,7 @@ void KWin4App::configureChat()
       mMyChatDlg->setPlayer(mDoc->getPlayer(Yellow));
     else
       mMyChatDlg->setPlayer(mDoc->getPlayer(Red));
-    connect(mDoc,SIGNAL(signalChatChanged(KWin4Player*)),
-            mMyChatDlg,SLOT(setPlayer(KWin4Player*)));
+    connect(mDoc, &KWin4Doc::signalChatChanged, mMyChatDlg, &ChatDlg::setPlayer);
   }
 
   if (mMyChatDlg->isHidden())
@@ -909,7 +903,7 @@ void KWin4App::configureSettings()
   ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
   ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
   dialog->addPage(frame, i18n("General"), "games-config-options");
-  connect(dialog, SIGNAL(settingsChanged(QString)), mDoc, SLOT(loadSettings()));
+  connect(dialog, &KConfigDialog::settingsChanged, mDoc, &KWin4Doc::loadSettings);
   dialog->show();
 }
 

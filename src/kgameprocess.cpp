@@ -56,8 +56,7 @@ KGameProcess::KGameProcess()
 //  mMessageClient->setServer(mMessageIO);
 //  connect (mMessageClient, SIGNAL(broadcastReceived(QByteArray,quint32)),
 //          this, SLOT(receivedMessage(QByteArray,quint32)));
-  connect (mMessageIO, SIGNAL(received(QByteArray)),
-          this, SLOT(receivedMessage(QByteArray)));
+  connect(mMessageIO, &KMessageFilePipe::received, this, &KGameProcess::receivedMessage);
  
   d->mRandom = new KRandomSequence;
   d->mRandom->setSeed(0);
