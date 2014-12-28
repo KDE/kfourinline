@@ -13,25 +13,19 @@ find_package(KF5 REQUIRED COMPONENTS
     ItemModels 
     WidgetsAddons 
     WindowSystem 
-    Codecs 
-    Archive
     Config 
     DBusAddons 
-    DNSSD 
     Declarative
     I18n 
     GuiAddons 
-    Service 
     ConfigWidgets 
     ItemViews 
     IconThemes 
     Completion 
     JobWidgets
     TextWidgets
-    GlobalAccel
     XmlGui
-    Crash
-    Bookmarks
+    DNSSD
     KIO
     NotifyConfig
     NewStuff
