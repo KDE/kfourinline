@@ -24,6 +24,7 @@
 //Added by qt3to4:
 #include <QVBoxLayout>
 #include <QList>
+#include <QPushButton>
 
 #include <KLocalizedString>
 #include <kvbox.h>
@@ -72,9 +73,9 @@ KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
     setModal(true);
  init(g, owner);
  addNetworkConfig(new KGameDialogNetworkConfig(0));
- connect(this,SIGNAL(okClicked()),this,SLOT(slotOk()));
- connect(this,SIGNAL(defaultClicked()),this,SLOT(slotDefault()));
- connect(this,SIGNAL(applyClicked()),this,SLOT(slotApply()));
+ connect(button(QDialogButtonBox::Ok),SIGNAL(clicked()),this,SLOT(slotOk()));
+ connect(button(QDialogButtonBox::RestoreDefaults),SIGNAL(clicked()),this,SLOT(slotDefault()));
+ connect(button(QDialogButtonBox::Apply),SIGNAL(clicked()),this,SLOT(slotApply()));
 }
 
 void KGameDialog::init(KGame* g, KPlayer* owner)
