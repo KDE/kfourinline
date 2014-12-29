@@ -73,9 +73,9 @@ KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
     setModal(true);
  init(g, owner);
  addNetworkConfig(new KGameDialogNetworkConfig(0));
- connect(button(QDialogButtonBox::Ok),SIGNAL(clicked()),this,SLOT(slotOk()));
- connect(button(QDialogButtonBox::RestoreDefaults),SIGNAL(clicked()),this,SLOT(slotDefault()));
- connect(button(QDialogButtonBox::Apply),SIGNAL(clicked()),this,SLOT(slotApply()));
+ connect(button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KGameDialog::slotOk);
+ connect(button(QDialogButtonBox::RestoreDefaults), &QPushButton::clicked, this, &KGameDialog::slotDefault);
+ connect(button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &KGameDialog::slotApply);
 }
 
 void KGameDialog::init(KGame* g, KPlayer* owner)
@@ -204,9 +204,8 @@ void KGameDialog::setKGame(KGame* g)
  }
  if (d->mGame) {
 	setAdmin(d->mGame->isAdmin());
-	connect(d->mGame, SIGNAL(destroyed()), this, SLOT(slotUnsetKGame()));
-	connect(d->mGame, SIGNAL(signalAdminStatusChanged(bool)),
-			this, SLOT(setAdmin(bool)));
+	connect(d->mGame, &KGame::destroyed, this, &KGameDialog::slotUnsetKGame);
+	connect(d->mGame, &KGame::signalAdminStatusChanged, this, &KGameDialog::setAdmin);
  }
 }
 
