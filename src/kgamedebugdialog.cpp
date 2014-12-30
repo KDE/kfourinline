@@ -272,7 +272,8 @@ void KGameDebugDialog::initMessagePage()
  d->mHideIdList = new KListWidget(d->mMessagePage);
  layout->addWidget(d->mHideIdList, 1, 5, 8, 2);
 
- QPushButton* clear = new KPushButton(KStandardGuiItem::clear(), d->mMessagePage);
+ QPushButton* clear = new QPushButton(d->mMessagePage);
+ KGuiItem::assign(clear, KStandardGuiItem::clear());
  connect(clear, SIGNAL(pressed()), this, SLOT(slotClearMessages()));
  layout->addWidget(clear, 10, 0, 1, 7);
  //TODO: "show all but..." and "show nothing but..."
