@@ -58,6 +58,6 @@ install(TARGETS kfourinlineproc ${INSTALL_TARGETS_DEFAULT_ARGS} )
 ########### install files ###############
 
 install( FILES kwin4.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
-install( FILES kfourinlineui.rc  DESTINATION  ${DATA_INSTALL_DIR}/kfourinline )
+install( FILES kfourinlineui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kfourinline )
 
 
