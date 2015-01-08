@@ -24,8 +24,8 @@
 #include <QtCore/QDataStream>
 //Added by qt3to4:
 #include <QtCore/QVector>
-#include <kdebug.h>
-
+#include "kfourinline_debug.h"
+#include <KDebug>
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>

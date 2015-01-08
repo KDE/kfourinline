@@ -22,7 +22,7 @@
 #include "score.h"
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>

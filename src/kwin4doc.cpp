@@ -38,7 +38,7 @@
 // include files for KDE
 #include <KLocalizedString>
 #include <kstandarddirs.h>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <krandomsequence.h>
 #include <kglobal.h>
 #include <kcomponentdata.h>
@@ -130,10 +130,10 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
 // Destructor
 KWin4Doc::~KWin4Doc()
 {
-  kDebug() << "~KWin4Doc()";
+  qCDebug(KFOURINLINE_LOG) << "~KWin4Doc()";
   delete mHintProcess;
   delete mStatus;
-  kDebug() << "~KWin4Doc() done";
+  qCDebug(KFOURINLINE_LOG) << "~KWin4Doc() done";
 }
 
 
@@ -689,20 +689,20 @@ void KWin4Doc::setScore(long value)
 // Load settings from Prefs
 void KWin4Doc::loadSettings()
 {
-  kDebug() << "++++ KWin4Doc::loadSettings() ";
-  kDebug() << "Level:" << Prefs::level();
-  kDebug() << "Name:" << Prefs::name1();
-  kDebug() << "Name2:" << Prefs::name2();
-  kDebug() << "input0mouse:" << Prefs::input0mouse();
-  kDebug() << "input0key:" << Prefs::input0key();
-  kDebug() << "input0ai:" << Prefs::input0ai();
-  kDebug() << "input1mouse:" << Prefs::input1mouse();
-  kDebug() << "input1key:" << Prefs::input1key();
-  kDebug() << "input1ai:" << Prefs::input1ai();
-  kDebug() << "start red:"   << Prefs::startcolourred();
-  kDebug() << "start yellow" << Prefs::startcolouryellow();
-  kDebug() << "Learning     " << Prefs::learning();
-  kDebug() << "Lock         " << Prefs::ailock();
+  qCDebug(KFOURINLINE_LOG) << "++++ KWin4Doc::loadSettings() ";
+  qCDebug(KFOURINLINE_LOG) << "Level:" << Prefs::level();
+  qCDebug(KFOURINLINE_LOG) << "Name:" << Prefs::name1();
+  qCDebug(KFOURINLINE_LOG) << "Name2:" << Prefs::name2();
+  qCDebug(KFOURINLINE_LOG) << "input0mouse:" << Prefs::input0mouse();
+  qCDebug(KFOURINLINE_LOG) << "input0key:" << Prefs::input0key();
+  qCDebug(KFOURINLINE_LOG) << "input0ai:" << Prefs::input0ai();
+  qCDebug(KFOURINLINE_LOG) << "input1mouse:" << Prefs::input1mouse();
+  qCDebug(KFOURINLINE_LOG) << "input1key:" << Prefs::input1key();
+  qCDebug(KFOURINLINE_LOG) << "input1ai:" << Prefs::input1ai();
+  qCDebug(KFOURINLINE_LOG) << "start red:"   << Prefs::startcolourred();
+  qCDebug(KFOURINLINE_LOG) << "start yellow" << Prefs::startcolouryellow();
+  qCDebug(KFOURINLINE_LOG) << "Learning     " << Prefs::learning();
+  qCDebug(KFOURINLINE_LOG) << "Lock         " << Prefs::ailock();
 
 
   // Store level for score sprite display
@@ -717,26 +717,26 @@ void KWin4Doc::loadSettings()
   if(Prefs::input0mouse())      mode = KGameIO::MouseIO;
   else if(Prefs::input0key())   mode = KGameIO::KeyIO;
   else if(Prefs::input0ai())    mode = KGameIO::ProcessIO;
-  else kFatal() << "Unknown input device for player 0";
+  else qCCritical(KFOURINLINE_LOG) << "Unknown input device for player 0";
   if (global_demo_mode)         mode = KGameIO::ProcessIO;
   setPlayedBy(Yellow, mode);
-  kDebug() << "Played by Yellow="<<mode;  
+  qCDebug(KFOURINLINE_LOG) << "Played by Yellow="<<mode;  
   
   if(Prefs::input1mouse())      mode = KGameIO::MouseIO;
   else if(Prefs::input1key())   mode = KGameIO::KeyIO;
   else if(Prefs::input1ai())    mode = KGameIO::ProcessIO;
-  else kFatal() << "Unknown input device for player 1";
+  else qCCritical(KFOURINLINE_LOG) << "Unknown input device for player 1";
   if (global_demo_mode)         mode = KGameIO::ProcessIO;
   setPlayedBy(Red, mode);
-  kDebug() << "Played by Red="<<mode;  
+  qCDebug(KFOURINLINE_LOG) << "Played by Red="<<mode;  
 
   COLOUR col = Red;
   if (Prefs::startcolouryellow()) col = Yellow; 
 
   if (Prefs::startcolourred()) mStartPlayer.setValue(Red);
   else if (Prefs::startcolouryellow()) mStartPlayer.setValue(Yellow);
-  else kFatal() << "Unknown start color";
-  kDebug() << "Setting start player to" << mStartPlayer;
+  else qCCritical(KFOURINLINE_LOG) << "Unknown start color";
+  qCDebug(KFOURINLINE_LOG) << "Setting start player to" << mStartPlayer;
 
 
 }
@@ -745,7 +745,7 @@ void KWin4Doc::loadSettings()
 // Read config file
 void KWin4Doc::readConfig(KConfig *config)
 {
-  kDebug() << "++++++++++++++++++++++++++++++++++++ KWin4Doc::ReadConfig";
+  qCDebug(KFOURINLINE_LOG) << "++++++++++++++++++++++++++++++++++++ KWin4Doc::ReadConfig";
   loadSettings();
   
   KConfigGroup ygrp = config->group("YellowPlayer");
@@ -791,14 +791,14 @@ COLOUR KWin4Doc::switchStartPlayer()
     mStartPlayer.setValue(Red);
     Prefs::setStartcolouryellow(false);
     Prefs::setStartcolourred(true);
-    kDebug() << "Setting startplayer to RED";
+    qCDebug(KFOURINLINE_LOG) << "Setting startplayer to RED";
   }
   else
   {
     mStartPlayer.setValue(Yellow);
     Prefs::setStartcolouryellow(true);
     Prefs::setStartcolourred(false);
-    kDebug() << "Setting startplayer to YELLOW";
+    qCDebug(KFOURINLINE_LOG) << "Setting startplayer to YELLOW";
   }
   Prefs::self()->save();
   
@@ -837,7 +837,7 @@ QString KWin4Doc::findProcessName()
     QFile fsrc(srcname);
     if (fsrc.exists())
     {
-      if (global_debug>1) kDebug() << "Found SRC_DIR process" << srcname;
+      if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found SRC_DIR process" << srcname;
       return srcname;
     }
   #endif
@@ -848,21 +848,21 @@ QString KWin4Doc::findProcessName()
   QDir dir;
   // TODO: This local filename is not found!!
   QString filename=dir.path()+QString("/kwin4/kfourinlineproc");
-  kDebug() << "PROC FILENAME="<<filename;
+  qCDebug(KFOURINLINE_LOG) << "PROC FILENAME="<<filename;
   QFile flocal(filename);
   if (flocal.exists())
   {
-    if (global_debug>1) kDebug() << "Found local process" << filename;
+    if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found local process" << filename;
     return filename;
   }
   QString path= KStandardDirs::findExe("kfourinlineproc");
   if (!path.isNull())
   {
-    if (global_debug>1) kDebug() << "Found system process" << path;
+    if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found system process" << path;
     return path;
   }
   QString empty;
-  kError() <<  "Could not locate the computer player";
+  qCCritical(KFOURINLINE_LOG) <<  "Could not locate the computer player";
   return empty;
 }
 
@@ -893,7 +893,7 @@ bool KWin4Doc::playerInput(QDataStream& msg, KPlayer* /*player*/)
 {
   qint32 move, pl;
   msg >> pl >> move;
-  kDebug() << "KWin4Doc::playerInput: ================ pl="<<pl<<" and move=" << move << "====================";
+  qCDebug(KFOURINLINE_LOG) << "KWin4Doc::playerInput: ================ pl="<<pl<<" and move=" << move << "====================";
 
   // Perform move and check for success
   if (!doMove(move,pl))
@@ -959,12 +959,12 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     return;
   
   if (global_debug>1)
-    kDebug() << "KWin4Doc::createIO(KPlayer *player("<<player->userId()<<"),KGameIO::IOMode "<<io<<") ";
+    qCDebug(KFOURINLINE_LOG) << "KWin4Doc::createIO(KPlayer *player("<<player->userId()<<"),KGameIO::IOMode "<<io<<") ";
 
   if (io&KGameIO::MouseIO)
   {
     KGameMouseIO *input;
-    if (global_debug>1) kDebug() << "Creating MOUSE IO to "<<pView;
+    if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Creating MOUSE IO to "<<pView;
     // We want the player to work over mouse. So please leave the "true" for mouse
     // tracking on !!!
     input=new KGameMouseIO(pView->viewport(), true);
@@ -976,7 +976,7 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
   else if (io&KGameIO::ProcessIO)
   {
     QString file=findProcessName();
-    if (global_debug>1) kDebug() << "Creating PROCESS IO" << file;
+    if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Creating PROCESS IO" << file;
 
     KGameProcessIO *input;
     // We want a computer player
@@ -991,7 +991,7 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
   }
   else if (io&KGameIO::KeyIO)
   {
-    if (global_debug>1) kDebug() << "Creating KEYBOARD IO";
+    if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Creating KEYBOARD IO";
     // We want the player to work over keyboard
     KGameKeyIO  *input;
     input=new KGameKeyIO(pView->parentWidget());
@@ -1005,7 +1005,7 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
 void KWin4Doc::receivedStderr(const QString &s)
 {
   if (global_debug>0)
-    kDebug() << "##### AI:" << s;
+    qCDebug(KFOURINLINE_LOG) << "##### AI:" << s;
 }
 
 
@@ -1115,7 +1115,7 @@ void KWin4Doc::processAICommand(QDataStream& in, KGameProcessIO* io)
     }
     break;
     default:
-      kError() << "KWin4Doc::processAICommand: Unknown id" << cid;
+      qCCritical(KFOURINLINE_LOG) << "KWin4Doc::processAICommand: Unknown id" << cid;
     break;
   }
 }
@@ -1133,7 +1133,7 @@ void KWin4Doc::clientConnected(quint32 cid, KGame* /* me */)
 
   if (playerList()->count()!=2)
   {
-    kError() << "SERIOUS ERROR: We do not have two players...Trying to disconnect!";
+    qCCritical(KFOURINLINE_LOG) << "SERIOUS ERROR: We do not have two players...Trying to disconnect!";
     disconnect();
     return ;
   }
@@ -1184,7 +1184,7 @@ KWin4Player* KWin4Doc::getPlayer(COLOUR col)
    if ((*it)->userId()==col)
      return (KWin4Player *)(*it);
  }
- kError() << "SERIOUS ERROR: Cannot find player with colour" << col << ".  CRASH imminent";
+ qCCritical(KFOURINLINE_LOG) << "SERIOUS ERROR: Cannot find player with colour" << col << ".  CRASH imminent";
  return 0;
 }
 
@@ -1239,7 +1239,7 @@ void KWin4Doc::processAIHintCommand(QDataStream& in,KGameProcessIO* /*io*/)
     }
     break;
     default:
-      kError() << "KWin4Doc::processAIHintCommand: Unknown id" << cid;
+      qCCritical(KFOURINLINE_LOG) << "KWin4Doc::processAIHintCommand: Unknown id" << cid;
     break;
   }
 }
@@ -1332,7 +1332,7 @@ void KWin4Doc::gamePropertyChanged(KGamePropertyBase* prop, KGame* /* me */)
 bool KWin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
   if (global_debug>1)
-    kDebug () << "loadgame() network=" << network << "reset="<< reset;
+    qCDebug(KFOURINLINE_LOG) << "loadgame() network=" << network << "reset="<< reset;
   if (!network) setGameStatus(End);
 
   // Clear out the old game 

@@ -31,7 +31,7 @@
 #include <QGraphicsScene>
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kconfig.h>
 #include <KLocalizedString>
 #include <kconfiggroup.h>
@@ -202,7 +202,7 @@ void ButtonSprite::mousePressEvent(QMouseEvent* /*event*/)
 void ButtonSprite::mouseReleaseEvent(QMouseEvent* event)
 {
   QPointF p = mapFromScene (QPointF(event->pos()) );
-  // kDebug() << "ButtonSprite::mouseReleaseEvent contains?"<< contains(p);
+  // qCDebug(KFOURINLINE_LOG) << "ButtonSprite::mouseReleaseEvent contains?"<< contains(p);
   if (!contains(p)) 
   {
     mHover = false;

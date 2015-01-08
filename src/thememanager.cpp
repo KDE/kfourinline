@@ -31,7 +31,7 @@
 #include <QRectF>
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kstandarddirs.h>
 #include <kconfiggroup.h>
 #include <KLocalizedString>
@@ -104,20 +104,20 @@ void ThemeManager::updateTheme(const QString &themefile)
 
   // Process dirs
   QString rcfile = KStandardDirs::locate("kwin4theme", themefile);
-  kDebug() << "ThemeManager LOAD with theme "<<rcfile;
+  qCDebug(KFOURINLINE_LOG) << "ThemeManager LOAD with theme "<<rcfile;
 
   // Read config and SVG file for theme
   delete mConfig;
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
   QString svgfile = config("general").readEntry("svgfile");
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
-  kDebug() << "Reading SVG master file  =" << svgfile;
+  qCDebug(KFOURINLINE_LOG) << "Reading SVG master file  =" << svgfile;
   mAspectRatio     =  config("general").readEntry("aspect-ratio", 1.0);
-  kDebug() << "Aspect ratio =" << mAspectRatio;
+  qCDebug(KFOURINLINE_LOG) << "Aspect ratio =" << mAspectRatio;
   mColorNamePlayer[0] = i18nc("Player 0 color", config("general").readEntry("colorNamePlayer0").toUtf8());
-  kDebug() << "Player 0 color name =" << mColorNamePlayer[0];
+  qCDebug(KFOURINLINE_LOG) << "Player 0 color name =" << mColorNamePlayer[0];
   mColorNamePlayer[1] = i18nc("Player 1 color", config("general").readEntry("colorNamePlayer1").toUtf8());
-  kDebug() << "Player 1 color name =" << mColorNamePlayer[1];
+  qCDebug(KFOURINLINE_LOG) << "Player 1 color name =" << mColorNamePlayer[1];
 
   delete mRenderer;
   mRenderer = new QSvgRenderer(this);
@@ -126,9 +126,9 @@ void ThemeManager::updateTheme(const QString &themefile)
   {
     delete mRenderer;
     mRenderer = 0;
-    kFatal() << "Cannot open file" << svgfile;
+    qCCritical(KFOURINLINE_LOG) << "Cannot open file" << svgfile;
   }
-  kDebug() << "Renderer" << mRenderer<<" =" << result;
+  qCDebug(KFOURINLINE_LOG) << "Renderer" << mRenderer<<" =" << result;
 
   // Notify all theme objects of a change
   foreach(Themeable *object, mObjects) {
@@ -141,14 +141,14 @@ void ThemeManager::updateTheme(const QString &themefile)
 void ThemeManager::rescale(int scale, QPoint offset)
 {
   if (global_debug > 0)
-     kDebug() << "THEMEMANAGER::Rescaling theme to " << scale<<" offset to " << offset;
+     qCDebug(KFOURINLINE_LOG) << "THEMEMANAGER::Rescaling theme to " << scale<<" offset to " << offset;
 
   mThemeFileChanged = false;
 
   if (global_debug > 1)
   {
     if (scale==mScale)
-      kDebug() <<" No scale change to" << scale << ". If this happends too often it is BAD";
+      qCDebug(KFOURINLINE_LOG) <<" No scale change to" << scale << ". If this happends too often it is BAD";
   }
   //if (scale==mScale) return;
   mScale = scale;
@@ -186,7 +186,7 @@ KConfigGroup ThemeManager::config(const QString &id)
 const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
 {
   if (size.width() < 1 || size.height() < 1)
-    kFatal() << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
+    qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
 
   QPixmap pixmap;
 
@@ -208,7 +208,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid,const QSize &size)
   p.end();
   pixmap = QPixmap::fromImage(image);
   if (pixmap.isNull())
-    kFatal() << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
+    qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
 
   // Cache image
   mPixmapCache[svgid] = pixmap;

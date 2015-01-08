@@ -28,7 +28,7 @@
 
 // include files for KDE
 #include <KLocalizedString>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 #include "kchatdialog.h"
 
@@ -75,12 +75,12 @@ void ChatDlg::setPlayer(KWin4Player* p)
 {
   if (!mChat)
   {
-    kError() << "ChatDlg::setPlayer::Chat not defined can't set player";
+    qCCritical(KFOURINLINE_LOG) << "ChatDlg::setPlayer::Chat not defined can't set player";
     return ;
   }
   if (!p)
   {
-    kError() << "ChatDlg::setPlayer::Player not defined can't set player";
+    qCCritical(KFOURINLINE_LOG) << "ChatDlg::setPlayer::Player not defined can't set player";
     return ;
   }
   mChat->setFromPlayer(p);

@@ -22,7 +22,7 @@
 #include "kwin4player.h"
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
@@ -57,8 +57,8 @@ KWin4Player::KWin4Player() : KPlayer()
 // Destructor
 KWin4Player::~KWin4Player()
 {
-  kDebug() << "~KPlayer()";
-  kDebug() << "~KPlayer() done";
+  qCDebug(KFOURINLINE_LOG) << "~KPlayer()";
+  qCDebug(KFOURINLINE_LOG) << "~KPlayer() done";
 }
 
 

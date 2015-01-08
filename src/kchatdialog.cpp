@@ -24,7 +24,7 @@
 
 #include <KLocalizedString>
 #include <kfontdialog.h>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <klineedit.h>
 
 #include <QLayout>
@@ -217,7 +217,7 @@ void KChatDialog::configureChatWidget(KChatBase* widget)
  
  widget->setMaxItems(maxMessages());
  widget->saveConfig();
- kDebug() << "Saved configuration";
+ qCDebug(KFOURINLINE_LOG) << "Saved configuration";
 }
 
 void KChatDialog::slotOk()

@@ -25,7 +25,7 @@
 #include <stdio.h>
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 // Construct a board object
 AIBoard::AIBoard()

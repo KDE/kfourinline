@@ -32,7 +32,7 @@
 
 // KDE includes
 #include <KLocalizedString>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 // Local includes
 #include "thememanager.h"
@@ -66,7 +66,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   for (int i=0; i<42; i++)
   {
     PieceSprite* sprite = new PieceSprite("piece", mTheme, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite" << "piece";
+    if (!sprite) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "piece";
     mSprites.append(sprite);
     mPieces.append(sprite);
     sprite->hide();
@@ -76,7 +76,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   for (int i=0;i<4;i++)
   {
     PixmapSprite* sprite = new PixmapSprite("star", mTheme, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite" << "star";
+    if (!sprite) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "star";
     mSprites.append(sprite);
     mStars.append(sprite);
     sprite->hide();
@@ -84,25 +84,25 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
 
   // Create board
   mBoard = new PixmapSprite("board", mTheme, 0, mScene);
-  if (!mBoard) kFatal() << "Cannot load sprite" << "board";
+  if (!mBoard) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "board";
   mSprites.append(mBoard);
   mBoard->hide();
 
   // Create hint
   mHint = new PixmapSprite("hint", mTheme, 0, mScene);
-  if (!mHint) kFatal() << "Cannot load sprite" << "hint";
+  if (!mHint) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "hint";
   mSprites.append(mHint);
   mHint->hide();
 
   // Create Game Over
   // mGameOver = new PixmapSprite("gameover", mTheme, 0, mScene);
-  // if (!mGameOver) kFatal() << "Cannot load sprite" << "gameover";
+  // if (!mGameOver) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "gameover";
   // mSprites.append(mGameOver);
   // mGameOver->hide();
 
   // Create score board
   mScoreBoard = new ScoreSprite("scoreboard", mTheme, 0, mScene);
-  if (!mScoreBoard) kFatal() << "Cannot load sprite" << "scoreboard";
+  if (!mScoreBoard) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "scoreboard";
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
 
@@ -111,7 +111,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   for (int i=0; i<7; i++)
   {
     PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, i, mScene);
-    if (!arrow) kFatal() << "Cannot load sprite" << "arrow";
+    if (!arrow) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "arrow";
     mSprites.append(arrow);
     mArrows.append(arrow);
     arrow->hide();
@@ -123,7 +123,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   for (int i = 0; i < deco.size(); i++)
   {
     PixmapSprite* sprite = new PixmapSprite(deco.at(i), mTheme, i, mScene);
-    if (!sprite) kFatal() << "Cannot load sprite" << deco.at(i);
+    if (!sprite) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << deco.at(i);
     mSprites.append(sprite);
     sprite->show();
   }

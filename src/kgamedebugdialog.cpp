@@ -28,9 +28,10 @@
 
 #include <klistwidget.h>
 #include <KLocalizedString>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kpushbutton.h>
 #include <KStandardGuiItem>
+#include <KDebug>
 
 #include <QTreeWidget>
 #include <QLayout>

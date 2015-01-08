@@ -39,10 +39,10 @@
 #include <K4AboutData>
 #include <kapplication.h>
 #include <kcmdlineargs.h>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kglobal.h>
 #include <KLocalizedString>
-
+#include <KDebug>
 #include "kwin4.h"
 
 #define KWIN4_VERSION "v1.40"

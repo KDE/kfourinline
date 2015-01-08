@@ -29,7 +29,7 @@
 #include <QGraphicsScene>
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kconfig.h>
 #include <kconfiggroup.h>
 #include <KLocalizedString>
@@ -52,7 +52,7 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphi
     mName[i]  = new QGraphicsTextItem(this);
     scene->addItem(mName[i]);
     mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, i, scene);
-    if (!mInput[i]) kFatal() << "Cannot load sprite" << "scoreinput"<<i;
+    if (!mInput[i]) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "scoreinput"<<i;
     mInput[i]->setParentItem(this);
     mInput[i]->setOffsetStatus(false);
     mInput[i]->show();

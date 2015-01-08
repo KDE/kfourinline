@@ -27,7 +27,7 @@
 // Qt includes
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
     :  Themeable(id, theme), PixmapSprite(no, canvas)

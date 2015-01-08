@@ -24,7 +24,7 @@
 // Qt includes
 
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 // Construct the object
 SpriteNotify::SpriteNotify(QGraphicsItem* parent)

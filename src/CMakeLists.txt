@@ -1,7 +1,8 @@
 
 ########### next target ###############
 
-set(kwin4_SRCS 
+set(kwin4_SRCS
+   kfourinline_debug.cpp 
    main.cpp 
    chatdlg.cpp
    kwin4.cpp 

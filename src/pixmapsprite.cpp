@@ -27,7 +27,7 @@
 // Qt includes
 #include <QGraphicsScene>
 // KDE includes
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <kconfig.h>
 #include <kconfiggroup.h>
 

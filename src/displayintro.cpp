@@ -46,7 +46,7 @@
 
 // KDE includes
 #include <KLocalizedString>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 
 
@@ -182,7 +182,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
 
   // Redraw
   if (theme) theme->updateTheme(this);
-  kDebug() << "CONSTRUCTOR DONE";
+  qCDebug(KFOURINLINE_LOG) << "CONSTRUCTOR DONE";
 }
 
 
@@ -191,7 +191,7 @@ void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
 {
   int status = id >> 8;
   int no = id & 0xff;
-  //kDebug() << "Button" << no  << "pressed status="<<status;
+  //qCDebug(KFOURINLINE_LOG) << "Button" << no  << "pressed status="<<status;
   ButtonSprite* button = dynamic_cast<ButtonSprite*>(item);
   Q_ASSERT(button);
   if (button == mStartButton[0])
@@ -259,7 +259,7 @@ DisplayIntro::~DisplayIntro()
 // Master theme change function. Redraw the display
 void DisplayIntro::changeTheme()
 {
-  kDebug() << "THEME CHANGE " << thememanager()->themefileChanged();
+  qCDebug(KFOURINLINE_LOG) << "THEME CHANGE " << thememanager()->themefileChanged();
   // Measure time for resize
   QTime time;
   time.restart();
@@ -349,7 +349,7 @@ void DisplayIntro::changeTheme()
                      posColor.y() * height + (textHeight - bounding.height()) / 2);
 
   int elapsed = time.elapsed();
-  kDebug() << "THEME CHANGE took " << elapsed << " ms";
+  qCDebug(KFOURINLINE_LOG) << "THEME CHANGE took " << elapsed << " ms";
 
   // Renew animation on theme change?
   if (thememanager()->themefileChanged())
@@ -366,7 +366,7 @@ void DisplayIntro::changeTheme()
 // Start the animation
 void DisplayIntro::start(int delay)
 {
-  kDebug() << "START TIMER";
+  qCDebug(KFOURINLINE_LOG) << "START TIMER";
   // Do the timer
   mTimer->stop();
   mTimer->setSingleShot(true);
@@ -397,7 +397,7 @@ void DisplayIntro::advance()
   time.restart();
   int duration = createAnimation(true);
 
-  kDebug() << "ADVANCE: Restarting timer in " << (duration+5000) <<" creation time " << time.elapsed();
+  qCDebug(KFOURINLINE_LOG) << "ADVANCE: Restarting timer in " << (duration+5000) <<" creation time " << time.elapsed();
   mTimer->start(duration + 5000);  // [ms]
 }
 

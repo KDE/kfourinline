@@ -31,7 +31,7 @@
 
 // KDE includes
 #include <KLocalizedString>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kplayer.h>
@@ -146,7 +146,7 @@ KWin4View::~KWin4View()
 {
   delete mIntroDisplay;
   delete mGameDisplay;
-  if (global_debug>0) kDebug() << "TRACKING" << hasMouseTracking() << "and" << viewport()->hasMouseTracking();
+  if (global_debug>0) qCDebug(KFOURINLINE_LOG) << "TRACKING" << hasMouseTracking() << "and" << viewport()->hasMouseTracking();
   delete mFrameSprite;
   delete mReflectionSprite;
 }
@@ -154,7 +154,7 @@ KWin4View::~KWin4View()
 // Main themeable function. Called for any theme change. 
 void KWin4View::changeTheme()
 {
-  if (global_debug > 0) kDebug() << "CHANGE THEME IN VIEW ... resetting slow counter";
+  if (global_debug > 0) qCDebug(KFOURINLINE_LOG) << "CHANGE THEME IN VIEW ... resetting slow counter";
   mDrawTimes.clear();
   mSlowDownFactor = 1.0;
   mSlowCnt = 0;
@@ -192,7 +192,7 @@ void KWin4View::updateAndAdvance()
       avg > mDefaultUpdateTime*mSlowDownFactor+MEASUREMENT_ROUNDING_ERROR)
   {
     mSlowCnt++;
-    kDebug() << "Warning " << mSlowCnt << " avg=" << avg;
+    qCDebug(KFOURINLINE_LOG) << "Warning " << mSlowCnt << " avg=" << avg;
     mDrawTimes.clear();
     if (mSlowCnt > WARNING_MAX_COUNT)
     {
@@ -200,7 +200,7 @@ void KWin4View::updateAndAdvance()
       mSlowCnt = 0;
       mTimer->setInterval(int(mDefaultUpdateTime*mSlowDownFactor)); 
 
-      kDebug() << "SLOW COMPUTER WARNING: Decreasing graphics update speed "
+      qCDebug(KFOURINLINE_LOG) << "SLOW COMPUTER WARNING: Decreasing graphics update speed "
                << mDefaultUpdateTime*mSlowDownFactor<<"ms. Maybe switch off reflections.";
     }
   }
@@ -277,7 +277,7 @@ void KWin4View::setReflection(int x, int y, int width, int height)
   mGradient.setColorAt(0, QColor(0, 0, 0, 100));
   mGradient.setColorAt(1, Qt::transparent);
 
-  kDebug() << "Set reflection "<< x << " " << y << " " << width << " " << height ;
+  qCDebug(KFOURINLINE_LOG) << "Set reflection "<< x << " " << y << " " << width << " " << height ;
 
   mGradientImage = QImage(width, height, QImage::Format_ARGB32);
   mGradientImage.fill(Qt::transparent);
@@ -307,7 +307,7 @@ void KWin4View::drawItems(QPainter* painter, int numItems, QGraphicsItem* items[
 // Stop intro display and init game display
 void KWin4View::initGame(Score* scoreData)
 {
-  kDebug() << "KWin4View::initGame";
+  qCDebug(KFOURINLINE_LOG) << "KWin4View::initGame";
 
   // For better performance disable mouse tracking now
   viewport()->setMouseTracking(false);
@@ -339,7 +339,7 @@ void  KWin4View::endGame()
 // Slot called by the framework when the view is resized.
 void KWin4View::resizeEvent (QResizeEvent* e)
 {
- if (global_debug > 2) kDebug() <<"RESIZE EVENT" << e->size() << "oldSize="<< e->oldSize();
+ if (global_debug > 2) qCDebug(KFOURINLINE_LOG) <<"RESIZE EVENT" << e->size() << "oldSize="<< e->oldSize();
 
   // Test to prevent double resizing
   // if (QWidget::testAttribute(Qt::WA_PendingResizeEvent))
@@ -397,7 +397,7 @@ void KWin4View::resizeEvent (QResizeEvent* e)
   
   mThemeQueue.prepend(int(width));
   mThemeOffset.prepend(offset);
-  if (global_debug > 2) kDebug() << "Quequed resize, aspect=" << aspect << "theme aspect="<< mTheme->aspectRatio();
+  if (global_debug > 2) qCDebug(KFOURINLINE_LOG) << "Quequed resize, aspect=" << aspect << "theme aspect="<< mTheme->aspectRatio();
 
   long queueDelay = 0;
   if (delta < 15) queueDelay = 750;
@@ -412,7 +412,7 @@ void KWin4View::rescaleTheme()
 {
   if (mThemeQueue.size() == 0)
   {
-    if (global_debug > 2) kDebug() << "***************** Swallowing rescale event ***********************";
+    if (global_debug > 2) qCDebug(KFOURINLINE_LOG) << "***************** Swallowing rescale event ***********************";
     return;
   }
 
@@ -423,13 +423,13 @@ void KWin4View::rescaleTheme()
   
   int width     = mThemeQueue.first();
   QPoint offset = mThemeOffset.first();
-  if (global_debug > 2) kDebug() << "Theme queue size=" << mThemeQueue.size() << "Rescale width to" << width 
+  if (global_debug > 2) qCDebug(KFOURINLINE_LOG) << "Theme queue size=" << mThemeQueue.size() << "Rescale width to" << width 
                                  << " offset " << offset;
   mThemeQueue.clear();
   mThemeOffset.clear();
   mTheme->rescale(width, offset);
 
-   if (global_debug > 2) kDebug() << "Time elapsed: "<< t.elapsed() << "ms";
+   if (global_debug > 2) qCDebug(KFOURINLINE_LOG) << "Time elapsed: "<< t.elapsed() << "ms";
 }
 
 
@@ -449,7 +449,7 @@ void KWin4View::mouseInput(KGameIO* input, QDataStream& stream, QMouseEvent* mou
   KPlayer* player=input->player();
   if (!player->myTurn())
   {
-    // kDebug() <<" Kwin4View::TODO wrongPlayer";
+    // qCDebug(KFOURINLINE_LOG) <<" Kwin4View::TODO wrongPlayer";
   //  *eatevent=wrongPlayer(player,KGameIO::MouseIO);
     return;
   }
@@ -488,7 +488,7 @@ void KWin4View::keyInput(KGameIO* input, QDataStream& stream, QKeyEvent* key, bo
   KPlayer *player=input->player();
   if (!player->myTurn())
   {
-    //kDebug() <<" Kwin4View::TODO wrongPlayer";
+    //qCDebug(KFOURINLINE_LOG) <<" Kwin4View::TODO wrongPlayer";
    // *eatevent=wrongPlayer(player,KGameIO::KeyIO);
     return;
   }

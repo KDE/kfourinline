@@ -23,7 +23,7 @@
 #include "kfontutils.h"
 
 #include <qpainter.h>
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 #include <limits>
 #include <QGraphicsTextItem>
 

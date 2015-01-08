@@ -22,7 +22,7 @@
 #include "reflectiongraphicsscene.h"
 #include "kwin4global.h"
 
-#include <kdebug.h>
+#include "kfourinline_debug.h"
 
 #include <QPainter>
 #include <QRectF>
@@ -86,7 +86,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
      {
        mUpdateWarning++;
        mDrawTimes.clear();
-       kDebug() << mUpdateWarning << ". slow computer reflection theme warning"; 
+       qCDebug(KFOURINLINE_LOG) << mUpdateWarning << ". slow computer reflection theme warning"; 
      }
      else
      {
@@ -96,7 +96,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
    if (mUpdateWarning >= WARNING_MAX_COUNT )
    {
      update();
-     kDebug() << "DISABLING REFLECTIONS DUE TO POOR COMPUTER PERFORMANCE";
+     qCDebug(KFOURINLINE_LOG) << "DISABLING REFLECTIONS DUE TO POOR COMPUTER PERFORMANCE";
    }
   // ==========================================================================
   */

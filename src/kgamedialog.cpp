@@ -28,7 +28,8 @@
 
 #include <KLocalizedString>
 #include <kvbox.h>
-#include <kdebug.h>
+#include <KDebug>
+#include "kfourinline_debug.h"
 
 #include "kgamedialogconfig.h"
 
