@@ -37,7 +37,13 @@ kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
 add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kfourinline   KF5::KIOCore KF5::DNSSD KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
+target_link_libraries(kfourinline 
+   KF5::KIOCore
+   KF5::DNSSD
+   KF5::KDELibs4Support
+   KF5KDEGames
+   KF5KDEGamesPrivate
+   Qt5::Svg)
 
 install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
