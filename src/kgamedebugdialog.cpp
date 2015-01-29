@@ -174,7 +174,7 @@ void KGameDebugDialog::initGamePage()
  layout->addWidget(d->mGameProperties);
 
  QPushButton* b = new QPushButton(i18n("Update"), d->mGamePage);
- connect(b, SIGNAL(pressed()), this, SLOT(slotUpdateGameData()));
+ connect(b, &QPushButton::pressed, this, &KGameDebugDialog::slotUpdateGameData);
  topLayout->addWidget(b);
 
 // game data
@@ -226,7 +226,7 @@ void KGameDebugDialog::initPlayerPage()
  layout->addWidget(d->mPlayerProperties);
 
  QPushButton* b = new QPushButton(i18n("Update"), d->mPlayerPage);
- connect(b, SIGNAL(pressed()), this, SLOT(slotUpdatePlayerList()));
+ connect(b, &QPushButton::pressed, this, &KGameDebugDialog::slotUpdatePlayerList);
  topLayout->addWidget(b);
 
  d->mPlayerAddress = new QTreeWidgetItem(v, QStringList(i18n("Player Pointer")));
@@ -261,11 +261,11 @@ void KGameDebugDialog::initMessagePage()
  d->mMessageList->setHeaderItem(mMessageListHeader);
 
  QPushButton* hide = new QPushButton(i18n("&>>"), d->mMessagePage);
- connect(hide, SIGNAL(pressed()), this, SLOT(slotHideId()));
+ connect(hide, &QPushButton::pressed, this, &KGameDebugDialog::slotHideId);
  layout->addWidget(hide, 4, 4);
 
  QPushButton* show = new QPushButton(i18n("&<<"), d->mMessagePage);
- connect(show, SIGNAL(pressed()), this, SLOT(slotShowId()));
+ connect(show, &QPushButton::pressed, this, &KGameDebugDialog::slotShowId);
  layout->addWidget(show, 6, 4);
 
  QLabel* l = new QLabel(i18n("Do not show IDs:"), d->mMessagePage);
@@ -275,7 +275,7 @@ void KGameDebugDialog::initMessagePage()
 
  QPushButton* clear = new QPushButton(d->mMessagePage);
  KGuiItem::assign(clear, KStandardGuiItem::clear());
- connect(clear, SIGNAL(pressed()), this, SLOT(slotClearMessages()));
+ connect(clear, &QPushButton::pressed, this, &KGameDebugDialog::slotClearMessages);
  layout->addWidget(clear, 10, 0, 1, 7);
  //TODO: "show all but..." and "show nothing but..."
 }
