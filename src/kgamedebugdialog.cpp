@@ -26,7 +26,7 @@
 #include <libkdegamesprivate/kgame/kplayer.h>
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 
-#include <klistwidget.h>
+#include <QListWidget>
 #include <KLocalizedString>
 #include "kfourinline_debug.h"
 #include <kpushbutton.h>
@@ -105,7 +105,7 @@ public:
 	QTreeWidgetItem* mGamePlayerCount;
 
 	QFrame* mPlayerPage;
-	KListWidget* mPlayerList;
+	QListWidget* mPlayerList;
 	QTreeWidget* mPlayerProperties;
 	QTreeWidgetItem* mPlayerAddress;
 	QTreeWidgetItem* mPlayerId;
@@ -122,7 +122,7 @@ public:
 
 	QFrame* mMessagePage;
 	QTreeWidget* mMessageList;
-	KListWidget* mHideIdList;
+	QListWidget* mHideIdList;
 };
 
 KGameDebugDialog::KGameDebugDialog(KGame* g, QWidget* parent, bool modal)
@@ -206,7 +206,7 @@ void KGameDebugDialog::initPlayerPage()
  layout->addLayout(listLayout);
  QLabel* listLabel = new QLabel(i18n("Available Players"), d->mPlayerPage);
  listLayout->addWidget(listLabel);
- d->mPlayerList = new KListWidget(d->mPlayerPage);
+ d->mPlayerList = new QListWidget(d->mPlayerPage);
  connect(d->mPlayerList, SIGNAL(executed(QListWidgetItem*)), this, SLOT(slotUpdatePlayerData(QListWidgetItem*)));
  listLayout->addWidget(d->mPlayerList);
  d->mPlayerList->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding));
@@ -270,7 +270,7 @@ void KGameDebugDialog::initMessagePage()
 
  QLabel* l = new QLabel(i18n("Do not show IDs:"), d->mMessagePage);
  layout->addWidget(l, 0, 5, 1, 2);
- d->mHideIdList = new KListWidget(d->mMessagePage);
+ d->mHideIdList = new QListWidget(d->mMessagePage);
  layout->addWidget(d->mHideIdList, 1, 5, 8, 2);
 
  QPushButton* clear = new QPushButton(d->mMessagePage);

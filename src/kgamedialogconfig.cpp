@@ -29,7 +29,7 @@
 #include <libkdegamesprivate/kgame/kgameproperty.h>
 
 
-#include <klistwidget.h>
+#include <QListWidget>
 #include <KLocalizedString>
 #include <knuminput.h>
 #include <kdialog.h>

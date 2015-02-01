@@ -23,7 +23,6 @@
 
 // KDE includes
 #include <kxmlguiwindow.h>
-#include <kdemacros.h>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>
