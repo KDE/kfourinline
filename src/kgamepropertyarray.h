@@ -25,7 +25,7 @@
 //Added by qt3to4:
 #include <QtCore/QVector>
 #include "kfourinline_debug.h"
-#include <KDebug>
+
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>
@@ -40,7 +40,7 @@ class KGamePropertyArray : public QVector<type>, public KGamePropertyBase
 public:
   KGamePropertyArray() :QVector<type>(), KGamePropertyBase()
   {
-    //kDebug(11001) << "KGamePropertyArray init";
+    //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray init";
   }
 
   KGamePropertyArray( int size )
@@ -96,7 +96,7 @@ public:
     {
       extractProperty(b);
     }
-    //kDebug(11001) << "KGamePropertyArray setAt send COMMAND for id="<<id() << "type=" << 1 << "at(" << i<<")="<<data;
+    //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray setAt send COMMAND for id="<<id() << "type=" << 1 << "at(" << i<<")="<<data;
   }
 
   const type& at( int i ) const
@@ -211,7 +211,7 @@ public:
 
   void load(QDataStream& s)
   {
-    //kDebug(11001) << "KGamePropertyArray load" << id();
+    //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray load" << id();
     type data;
     for (int i=0; i<QVector<type>::size(); i++)
     {
@@ -225,7 +225,7 @@ public:
   }
   void save(QDataStream &s)
   {
-    //kDebug(11001) << "KGamePropertyArray save "<<id();
+    //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray save "<<id();
     for (int i=0; i<QVector<type>::size(); i++)
     {
       s << at(i);
@@ -236,7 +236,7 @@ public:
   {
     Q_UNUSED(isSender);
     KGamePropertyBase::command(stream, msgid);
-    //kDebug(11001) << "Array id="<<id()<<" got command ("<<msgid<<") !!!";
+    //qCDebug(KFOURINLINE_LOG) << "Array id="<<id()<<" got command ("<<msgid<<") !!!";
     switch(msgid)
     {
       case CmdAt:
@@ -245,7 +245,7 @@ public:
         type data;
         stream >> i >> data;
         QVector<type>::replace( i, data );
-        //kDebug(11001) << "CmdAt:id="<<id()<<" i="<<i<<" data="<<data;
+        //qCDebug(KFOURINLINE_LOG) << "CmdAt:id="<<id()<<" i="<<i<<" data="<<data;
         if (isEmittingSignal())
         {
           emitSignal();
@@ -256,7 +256,7 @@ public:
       {
         uint size;
         stream >> size;
-        //kDebug(11001) << "CmdResize:id="<<id()<<" oldsize="<<QMemArray<type>::size()<<" newsize="<<size;
+        //qCDebug(KFOURINLINE_LOG) << "CmdResize:id="<<id()<<" oldsize="<<QMemArray<type>::size()<<" newsize="<<size;
         if (( uint )QVector<type>::size() != size)
         {
           QVector<type>::resize(size);
@@ -268,7 +268,7 @@ public:
         int size;
         type data;
         stream >> data >> size;
-        //kDebug(11001) << "CmdFill:id="<<id()<<"size="<<size;
+        //qCDebug(KFOURINLINE_LOG) << "CmdFill:id="<<id()<<"size="<<size;
         QVector<type>::fill(data,size);
         if (isEmittingSignal())
         {
@@ -278,12 +278,12 @@ public:
       }
       case CmdSort:
       {
-        //kDebug(11001) << "CmdSort:id="<<id();
+        //qCDebug(KFOURINLINE_LOG) << "CmdSort:id="<<id();
         qSort( *this );
         break;
       }
       default:
-        kError(11001) << "Error in KPropertyArray::command: Unknown command" << msgid;
+        qCCritical(KFOURINLINE_LOG) << "Error in KPropertyArray::command: Unknown command" << msgid;
         break;
     }
   }

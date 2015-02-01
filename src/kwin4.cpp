@@ -45,7 +45,7 @@
 #include <kstandarddirs.h>
 #include <kglobal.h>
 #include <kselectaction.h>
-#include <KDebug>
+
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
@@ -714,7 +714,7 @@ void KWin4App::updateStatusNames()
 // Notification that the network connection is lost.
 void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
 {
-  kDebug(12010) <<  "KWin4App::networkBroken("<<oldstatus<<")";
+  qCDebug(KFOURINLINE_LOG) <<  "KWin4App::networkBroken("<<oldstatus<<")";
 
   // Set all input devices back to default
   if (mDoc->playedBy(Yellow)==0)
@@ -722,8 +722,8 @@ void KWin4App::networkBroken(int /*id*/, int oldstatus ,KGame * /*game */)
   if (mDoc->playedBy(Red)==0)
     mDoc->setPlayedBy(Red,KGameIO::MouseIO);
 
-  kDebug(12010) << "CurrrentPlayer=" << mDoc->getCurrentPlayer();
-  kDebug(12010) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer());
+  qCDebug(KFOURINLINE_LOG) << "CurrrentPlayer=" << mDoc->getCurrentPlayer();
+  qCDebug(KFOURINLINE_LOG) << "   " <<  mDoc->getPlayer(mDoc->getCurrentPlayer());
 
   // Activate input device
   mDoc->getPlayer(mDoc->getCurrentPlayer())->setTurn(true,true);

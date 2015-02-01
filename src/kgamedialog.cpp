@@ -28,7 +28,7 @@
 
 #include <KLocalizedString>
 #include <kvbox.h>
-#include <KDebug>
+
 #include "kfourinline_debug.h"
 
 #include "kgamedialogconfig.h"
@@ -83,7 +83,7 @@ void KGameDialog::init(KGame* g, KPlayer* owner)
 {
 //AB: do we need a "Cancel" Button? currently removed
 
-// kDebug(11001) << ": this=" << this;
+// qCDebug(KFOURINLINE_LOG) << ": this=" << this;
 
  setOwner(owner);
  setKGame(g);
@@ -96,7 +96,7 @@ void KGameDialog::init(KGame* g, KPlayer* owner)
 
 KGameDialog::~KGameDialog()
 {
-// kDebug(11001) << "DESTRUCT KGameDialog" << this;
+// qCDebug(KFOURINLINE_LOG) << "DESTRUCT KGameDialog" << this;
  qDeleteAll(d->mConfigWidgets);
  delete d;
 }
@@ -118,7 +118,7 @@ KVBox *KGameDialog::configPage()
 KVBox* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& title)
 {
  if (!widget) {
-	kError(11001) << "Cannot add NULL config widget";
+	qCCritical(KFOURINLINE_LOG) << "Cannot add NULL config widget";
 	return 0;
  }
  KVBox* page = new KVBox();
@@ -130,26 +130,26 @@ KVBox* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& titl
 void KGameDialog::addConfigWidget(KGameDialogConfig* widget, QWidget* parent)
 {
  if (!widget) {
-	kError(11001) << "Cannot add NULL config widget";
+	qCCritical(KFOURINLINE_LOG) << "Cannot add NULL config widget";
 	return;
  }
  if (!parent) {
-	kError(11001) << "Cannot reparent to NULL widget";
+	qCCritical(KFOURINLINE_LOG) << "Cannot reparent to NULL widget";
 	return;
  }
-// kDebug(11001) << "reparenting widget";
+// qCDebug(KFOURINLINE_LOG) << "reparenting widget";
  widget->setParent(parent);
  widget->move(QPoint(0,0));
  d->mConfigWidgets.append(widget);
  connect(widget, SIGNAL(destroyed(QObject*)), this, SLOT(slotRemoveConfigWidget(QObject*)));
  if (!d->mGame) {
-	kWarning(11001) << "No game has been set!";
+	qCWarning(KFOURINLINE_LOG) << "No game has been set!";
  } else {
 	widget->setKGame(d->mGame);
 	widget->setAdmin(d->mGame->isAdmin());
  }
  if (!d->mOwner) {
-	kWarning(11001) << "No player has been set!";
+	qCWarning(KFOURINLINE_LOG) << "No player has been set!";
  } else {
 	widget->setOwner(d->mOwner);
  }
@@ -189,7 +189,7 @@ void KGameDialog::setOwner(KPlayer* owner)
 	if (d->mConfigWidgets.at(i)) {
 		d->mConfigWidgets.at(i)->setOwner(d->mOwner);
 	} else {
-		kError(11001) << "NULL widget??";
+		qCCritical(KFOURINLINE_LOG) << "NULL widget??";
 	}
  }
 }
@@ -223,18 +223,18 @@ void KGameDialog::slotUnsetKGame() // called when KGame is destroyed
 void KGameDialog::submitToKGame()
 {
  if (!d->mGame) {
-	kError(11001) << ": no game has been set";
+	qCCritical(KFOURINLINE_LOG) << ": no game has been set";
 	return;
  }
  if (!d->mOwner) {
-	kError(11001) << ": no player has been set";
+	qCCritical(KFOURINLINE_LOG) << ": no player has been set";
 	return;
  }
 
  for (int i = 0; i < d->mConfigWidgets.count(); i++) {
-// kDebug(11001) << "submit to kgame" << i;
+// qCDebug(KFOURINLINE_LOG) << "submit to kgame" << i;
 	d->mConfigWidgets.at(i)->submitToKGame(d->mGame, d->mOwner);
-// kDebug(11001) << "done: submit to kgame" << i;
+// qCDebug(KFOURINLINE_LOG) << "done: submit to kgame" << i;
  }
 }
 

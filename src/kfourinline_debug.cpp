@@ -18,6 +18,6 @@
 */
 
 #include "kfourinline_debug.h"
-Q_LOGGING_CATEGORY(KFOURINLINE_LOG, "log_kfourinline")
+Q_LOGGING_CATEGORY(KFOURINLINE_LOG, "log_fourinline")
 
 

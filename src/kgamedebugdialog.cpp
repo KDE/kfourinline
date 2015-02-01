@@ -31,7 +31,7 @@
 #include "kfourinline_debug.h"
 #include <kpushbutton.h>
 #include <KStandardGuiItem>
-#include <KDebug>
+
 
 #include <QTreeWidget>
 #include <QLayout>
@@ -383,7 +383,7 @@ void KGameDebugDialog::slotUpdateGameData()
   QStringList items;
   items << handler->propertyName(it.value()->id()) << handler->propertyValue(it.value()) << policy;
 	new QTreeWidgetItem(d->mGameProperties,items);
-//	kDebug(11001) << ": checking for all game properties: found property name" << name;
+//	qCDebug(KFOURINLINE_LOG) << ": checking for all game properties: found property name" << name;
  }
 }
 
@@ -396,7 +396,7 @@ void KGameDebugDialog::slotUpdatePlayerData(QListWidgetItem* item)
  KPlayer* p = d->mGame->findPlayer(item->text().toInt());
 
  if (!p) {
-	kError(11001) << ": cannot find player";
+	qCCritical(KFOURINLINE_LOG) << ": cannot find player";
 	return;
  }
 
@@ -487,7 +487,7 @@ void KGameDebugDialog::slotUnsetKGame()
 void KGameDebugDialog::addPlayer(KPlayer* p)
 {
  if (!p) {
-	kError(11001) << "trying to add NULL player";
+	qCCritical(KFOURINLINE_LOG) << "trying to add NULL player";
 	return;
  }
 

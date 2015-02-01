@@ -42,7 +42,7 @@
 #include "kfourinline_debug.h"
 #include <kglobal.h>
 #include <KLocalizedString>
-#include <KDebug>
+
 #include "kwin4.h"
 
 #define KWIN4_VERSION "v1.40"
@@ -86,19 +86,19 @@ int main(int argc, char *argv[])
   if (args->isSet("debug"))
   {
     global_debug=QString(args->getOption("debug")).toInt();
-    kDebug(12010) << "Debug level set to" << global_debug;
+    qCDebug(KFOURINLINE_LOG) << "Debug level set to" << global_debug;
   }
   // Check for debug command line option
   if (args->isSet("skipintro"))
   {
     global_skip_intro = true;
-    kDebug(12010) << "Skip intro cmd line chosen" << global_skip_intro;
+    qCDebug(KFOURINLINE_LOG) << "Skip intro cmd line chosen" << global_skip_intro;
   }
   // Check for debug command line option
   if (args->isSet("demo"))
   {
     global_demo_mode = true;
-    kDebug(12010) << "Running in demo mode" << global_demo_mode;
+    qCDebug(KFOURINLINE_LOG) << "Running in demo mode" << global_demo_mode;
   }
  
   args->clear(); 

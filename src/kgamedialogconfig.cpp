@@ -19,7 +19,7 @@
 */
 
 #include "kgamedialogconfig.h"
-
+#include "kfourinline_debug.h"
 #include "kgameconnectdialog.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -40,7 +40,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QGroupBox>
-#include <KDebug>
+
 
 
 
@@ -68,7 +68,7 @@ KGameDialogConfig::KGameDialogConfig(QWidget* parent)
 
 KGameDialogConfig::~KGameDialogConfig()
 {
- kDebug(11001) ;
+ qCDebug(KFOURINLINE_LOG) ;
  delete d;
 }
 
@@ -123,7 +123,7 @@ public:
 KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
 		: KGameDialogConfig(parent)
 {
-// kDebug(11001) << ": this=" << this;
+// qCDebug(KFOURINLINE_LOG) << ": this=" << this;
  d = new KGameDialogNetworkConfigPrivate();
 
  QVBoxLayout* topLayout = new QVBoxLayout(this);
@@ -157,20 +157,20 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
 
 KGameDialogNetworkConfig::~KGameDialogNetworkConfig()
 {
- kDebug(11001) ;
+ qCDebug(KFOURINLINE_LOG) ;
  delete d;
 }
 
 void KGameDialogNetworkConfig::slotExitConnection()
 {
- kDebug(11001) << " !!!!!!!!!!!!!!!!!!!!!!!";
+ qCDebug(KFOURINLINE_LOG) << " !!!!!!!!!!!!!!!!!!!!!!!";
   if (game()) game()->disconnect();
   setConnected(false,false);
 }
 
 void KGameDialogNetworkConfig::slotInitConnection()
 {
- kDebug(11001) ;
+ qCDebug(KFOURINLINE_LOG) ;
  bool connected = false;
  bool master = true;
  unsigned short int port = d->mConnect->port();
@@ -198,7 +198,7 @@ void KGameDialogNetworkConfig::slotInitConnection()
 
 void KGameDialogNetworkConfig::slotConnectionBroken()
 {
-  kDebug(11001) ;
+  qCDebug(KFOURINLINE_LOG) ;
   setConnected(false,false);
   KMessageBox::error(this, i18n("Cannot connect to the network"));
 }

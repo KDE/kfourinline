@@ -19,10 +19,9 @@
 */
 
 #include "kgameconnectdialog.h"
-
+#include "kfourinline_debug.h"
 #include <knuminput.h>
 #include <KLocalizedString>
-#include <kdebug.h>
 #include <klineedit.h>
 
 #include <QComboBox>
@@ -208,7 +207,7 @@ void KGameConnectWidget::setPort(unsigned short int port)
 void KGameConnectWidget::setDefault(int state)
 {
  if (d->mButtonGroup->button(state) == 0) {
-  kError(11001) << "KGameConnectWidget::setDefault" << state;
+  qCCritical(KFOURINLINE_LOG) << "KGameConnectWidget::setDefault" << state;
   return;
  } 
  d->mButtonGroup->button(state)->setChecked(true);
