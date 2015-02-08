@@ -104,9 +104,6 @@ int main(int argc, char *argv[])
   args->clear(); 
   // Start application
   KApplication application(true);
-  //KF5 port: remove this line and define TRANSLATION_DOMAIN in CMakeLists.txt instead
-//KLocale::global()->insertCatalog( QLatin1String( "libkdegames" ));
-
   // Start session
   if (application.isSessionRestored())
   {
