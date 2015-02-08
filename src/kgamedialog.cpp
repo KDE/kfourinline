@@ -20,9 +20,7 @@
 
 #include "kgamedialog.h"
 
-#include <QLayout>
 //Added by qt3to4:
-#include <QVBoxLayout>
 #include <QList>
 #include <QPushButton>
 

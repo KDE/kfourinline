@@ -33,7 +33,6 @@
 #include <QTimer>
 #include <QKeyEvent>
 #include <QList>
-#include <QMouseEvent>
 
 // include files for KDE
 #include <KLocalizedString>

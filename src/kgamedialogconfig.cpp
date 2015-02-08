@@ -29,18 +29,17 @@
 #include <libkdegamesprivate/kgame/kgameproperty.h>
 
 
-#include <QListWidget>
 #include <KLocalizedString>
 #include <knuminput.h>
 #include <kdialog.h>
 #include <kmessagebox.h>
 #include <klineedit.h>
 
-#include <QLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QGroupBox>
-
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 
 

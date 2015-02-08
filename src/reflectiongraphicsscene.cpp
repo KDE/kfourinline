@@ -29,7 +29,6 @@
 #include <QGraphicsItem>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include <KLocalizedString>
 #include <QTime>
 
 // How many time measurements for average

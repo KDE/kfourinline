@@ -31,7 +31,6 @@
 #include <QPoint>
 
 // KDE includes
-#include <KLocalizedString>
 #include "kfourinline_debug.h"
 
 // Local includes

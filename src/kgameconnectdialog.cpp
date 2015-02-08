@@ -25,7 +25,6 @@
 #include <klineedit.h>
 
 #include <QComboBox>
-#include <QLayout>
 #include <qradiobutton.h>
 #include <QLabel>
 #include <QVBoxLayout>

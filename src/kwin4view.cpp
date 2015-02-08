@@ -30,7 +30,6 @@
 #include <QTime>
 
 // KDE includes
-#include <KLocalizedString>
 #include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API

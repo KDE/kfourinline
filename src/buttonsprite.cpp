@@ -33,7 +33,6 @@
 // KDE includes
 #include "kfourinline_debug.h"
 #include <kconfig.h>
-#include <KLocalizedString>
 #include <kconfiggroup.h>
 
 // Constructor for the score sprite

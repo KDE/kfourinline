@@ -34,10 +34,9 @@
 
 
 #include <QTreeWidget>
-#include <QLayout>
-
+#include <QGridLayout>
+#include <QTime>
 #include <QLabel>
-#include <QDateTime>
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QHBoxLayout>
