@@ -36,12 +36,15 @@
   * 
   */
 
-#include <K4AboutData>
-#include <kapplication.h>
-#include <kcmdlineargs.h>
+#include <KAboutData>
+
+
 #include "kfourinline_debug.h"
 #include <kglobal.h>
 #include <KLocalizedString>
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
 
 #include "kwin4.h"
 
@@ -60,52 +63,55 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
-  K4AboutData aboutData( "kfourinline", 0, ki18n("KFourInLine"),
-                        KWIN4_VERSION,
-                        ki18n("KFourInLine: Two player board game"),
-                        K4AboutData::License_GPL,
-                        ki18n("(c) 1995-2007, Martin Heni"),
-                        KLocalizedString(), "http://games.kde.org/kfourinline" );
-  aboutData.addAuthor(ki18n("Martin Heni"),ki18n("Game design and code"), "kde@heni-online.de");
-  aboutData.addAuthor(ki18n("Johann Ollivier Lapeyre"),ki18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
-  aboutData.addAuthor(ki18n("Eugene Trounev"),ki18n("Graphics"), "eugene.trounev@gmail.com");
-  aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Code Improvements"));
-  KCmdLineArgs::init( argc, argv, &aboutData );
+    QApplication app(argc, argv);
 
-  KCmdLineOptions options;
-  options.add("d");
-  options.add("debug <level>", ki18n("Enter debug level"));
-  options.add("skipintro", ki18n("Skip intro animation"));
-  options.add("demo", ki18n("Run game in demo (autoplay) mode"));
-  KCmdLineArgs::addCmdLineOptions( options ); // Add our own options.
+  KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
+                        KWIN4_VERSION,
+                        i18n("KFourInLine: Two player board game"),
+                        KAboutLicense::GPL,
+                        i18n("(c) 1995-2007, Martin Heni"),
+                        "http://games.kde.org/kfourinline" );
+  aboutData.addAuthor(i18n("Martin Heni"),i18n("Game design and code"), "kde@heni-online.de");
+  aboutData.addAuthor(i18n("Johann Ollivier Lapeyre"),i18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
+  aboutData.addAuthor(i18n("Eugene Trounev"),i18n("Graphics"), "eugene.trounev@gmail.com");
+  aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Code Improvements"));
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("debug"), i18n("Enter debug level"), QLatin1String("level")));
+  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("skipintro"), i18n("Skip intro animation")));
+  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("demo"), i18n("Run game in demo (autoplay) mode")));
+
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
   /* command line handling */
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
   // Check for debug command line option
-  if (args->isSet("debug"))
+  if (parser.isSet("debug"))
   {
-    global_debug=QString(args->getOption("debug")).toInt();
+    global_debug=QString(parser.value("debug")).toInt();
     qCDebug(KFOURINLINE_LOG) << "Debug level set to" << global_debug;
   }
   // Check for debug command line option
-  if (args->isSet("skipintro"))
+  if (parser.isSet("skipintro"))
   {
     global_skip_intro = true;
     qCDebug(KFOURINLINE_LOG) << "Skip intro cmd line chosen" << global_skip_intro;
   }
   // Check for debug command line option
-  if (args->isSet("demo"))
+  if (parser.isSet("demo"))
   {
     global_demo_mode = true;
     qCDebug(KFOURINLINE_LOG) << "Running in demo mode" << global_demo_mode;
   }
  
-  args->clear(); 
+   
   // Start application
-  KApplication application(true);
   // Start session
-  if (application.isSessionRestored())
+  if (app.isSessionRestored())
   {
     RESTORE(KWin4App);
   }
@@ -115,6 +121,6 @@ int main(int argc, char *argv[])
     kwin4->show();
   }
 
-  return application.exec();
+  return app.exec();
 }
 
