@@ -36,7 +36,7 @@
 
 // include files for KDE
 #include <KLocalizedString>
-#include <kstandarddirs.h>
+
 #include "kfourinline_debug.h"
 #include <krandomsequence.h>
 #include <kglobal.h>
@@ -49,6 +49,7 @@
 #include "score.h"
 #include "ui_statuswidget.h"
 #include <config-src.h>
+#include <QStandardPaths>
 
 
 #define FIELD_SIZE_X 7
@@ -854,7 +855,7 @@ QString KWin4Doc::findProcessName()
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found local process" << filename;
     return filename;
   }
-  QString path= KStandardDirs::findExe("kfourinlineproc");
+  QString path= QStandardPaths::findExecutable("kfourinlineproc");
   if (!path.isNull())
   {
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found system process" << path;
@@ -1055,7 +1056,8 @@ void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
   stream << (qint32)learning;
 
   // Where to save the learn cache
-  QString learnPath =  KGlobal::dirs()->saveLocation("data","kwin4",true);
+  QString learnPath =  QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1Char('/') + "kwin4";
+
   stream << learnPath;
 
   int i,j;

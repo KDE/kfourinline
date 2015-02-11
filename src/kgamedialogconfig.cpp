@@ -30,7 +30,6 @@
 
 
 #include <KLocalizedString>
-#include <knuminput.h>
 #include <kdialog.h>
 #include <kmessagebox.h>
 #include <klineedit.h>

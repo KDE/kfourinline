@@ -23,7 +23,7 @@
 #include <libkdegamesprivate/kchatbase.h>
 
 #include <KLocalizedString>
-#include <kfontdialog.h>
+#include <qfontdialog.h>
 #include "kfourinline_debug.h"
 #include <klineedit.h>
 
@@ -147,29 +147,37 @@ void KChatDialog::init()
 void KChatDialog::slotGetNameFont()
 {
  QFont font = nameFont();
- KFontDialog::getFont(font);
- setNameFont(font);
+ bool ok;
+ font = QFontDialog::getFont(&ok, font, this);
+ if (ok)
+    setNameFont(font);
 }
 
 void KChatDialog::slotGetTextFont()
 {
  QFont font = textFont();
- KFontDialog::getFont(font);
- setTextFont(font);
+ bool ok;
+ font = QFontDialog::getFont(&ok, font, this);
+ if (ok)
+   setTextFont(font);
 }
 
 void KChatDialog::slotGetSystemNameFont()
 {
  QFont font = systemNameFont();
- KFontDialog::getFont(font);
- setSystemNameFont(font);
+ bool ok;
+ font = QFontDialog::getFont(&ok, font, this);
+ if (ok)
+   setSystemNameFont(font);
 }
 
 void KChatDialog::slotGetSystemTextFont()
 {
  QFont font = systemTextFont();
- KFontDialog::getFont(font);
- setSystemTextFont(font);
+ bool ok;
+ font = QFontDialog::getFont(&ok, font, this);
+ if (ok)
+   setSystemTextFont(font);
 }
 
 QFont KChatDialog::nameFont() const

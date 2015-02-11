@@ -20,7 +20,6 @@
 
 #include "kgameconnectdialog.h"
 #include "kfourinline_debug.h"
-#include <knuminput.h>
 #include <KLocalizedString>
 #include <klineedit.h>
 
@@ -33,6 +32,7 @@
 #include <dnssd/servicebrowser.h>
 #include <QPushButton>
 #include <QGroupBox>
+#include <QSpinBox>
 
 class KGameConnectWidgetPrivate
 {
@@ -45,7 +45,7 @@ class KGameConnectWidgetPrivate
 		mBrowser = 0;
 	}
 
-	KIntNumInput* mPort;
+	QSpinBox* mPort;
 	KLineEdit* mHost;
 	QButtonGroup* mButtonGroup;
 	QComboBox *mClientName;
@@ -90,7 +90,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  layout->addWidget(d->mClientName, 1, 1);
  connect(d->mClientName, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KGameConnectWidget::slotGameSelected);
  QLabel* label = new QLabel(i18n("Port to connect to:"), g);
- d->mPort = new KIntNumInput(g);
+ d->mPort = new QSpinBox(g);
  layout->addWidget(label, 2, 0);
  layout->addWidget(d->mPort, 2, 1);
  label = new QLabel(i18n("Host to connect to:"), g);
