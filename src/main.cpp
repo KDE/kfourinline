@@ -40,7 +40,6 @@
 
 
 #include "kfourinline_debug.h"
-#include <kglobal.h>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>

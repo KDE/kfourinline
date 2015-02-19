@@ -39,8 +39,6 @@
 
 #include "kfourinline_debug.h"
 #include <krandomsequence.h>
-#include <kglobal.h>
-#include <kcomponentdata.h>
 
 // application specific includes
 #include "kwin4view.h"

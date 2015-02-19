@@ -91,8 +91,6 @@ void KChatDialog::init()
  d->mTextPage = new QFrame( this );
  setMainWidget( d->mTextPage );
  QGridLayout* layout = new QGridLayout(d->mTextPage);
- layout->setMargin(KDialog::marginHint());
- layout->setSpacing(KDialog::spacingHint());
 
 // General fonts
  QPushButton* nameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);

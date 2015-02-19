@@ -29,7 +29,7 @@
 #include <QListWidget>
 #include <KLocalizedString>
 #include "kfourinline_debug.h"
-#include <kpushbutton.h>
+#include <qpushbutton.h>
 #include <KStandardGuiItem>
 
 

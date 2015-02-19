@@ -30,7 +30,6 @@
 
 
 #include <KLocalizedString>
-#include <kdialog.h>
 #include <kmessagebox.h>
 #include <klineedit.h>
 
@@ -125,11 +124,8 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
  d = new KGameDialogNetworkConfigPrivate();
 
  QVBoxLayout* topLayout = new QVBoxLayout(this);
- topLayout->setMargin( KDialog::marginHint() );
- topLayout->setSpacing( KDialog::spacingHint() );
 
  QHBoxLayout *hb = new QHBoxLayout;
- hb->setSpacing( KDialog::spacingHint() );
  topLayout->addLayout(hb);
 
  d->mNetworkLabel = new QLabel(this);
