@@ -21,8 +21,7 @@
 #ifndef __KGAMECONNECTDIALOG_H__
 #define __KGAMECONNECTDIALOG_H__
 
-#include <kdialog.h>
-
+#include <QWidget>
 class KGameConnectWidgetPrivate;
 
 /**
