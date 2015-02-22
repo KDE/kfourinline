@@ -34,6 +34,9 @@
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
+#include <KConfigGroup>
+#include <QDialogButtonBox>
+#include <QVBoxLayout>
 
 // application specific includes
 #include "kwin4player.h"
@@ -42,16 +45,23 @@
 // Constructor for the chat widget. This widget
 // is derived from the libkdegames chat widget
 ChatDlg::ChatDlg(KGame *game,QWidget *parent)
-       : KDialog(parent),mChat(0), mChatDlg(0)
+       : QDialog(parent),mChat(0), mChatDlg(0)
 {
-  setCaption(i18n("Chat Dlg"));
-  setButtons(Ok);
-  setDefaultButton(Ok);
-  showButtonSeparator(true);
+  setWindowTitle(i18n("Chat Dlg"));
+  QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);
+  QVBoxLayout *mainLayout = new QVBoxLayout;
+  setLayout(mainLayout);
+  QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+  okButton->setDefault(true);
+  okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+  connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+  connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+  okButton->setDefault(true);
   setModal(false);
   setMinimumSize(QSize(200,200));
   
   QFrame* frame            = new QFrame(this);
+
   QGridLayout* mGridLayout = new QGridLayout(frame);
   QGroupBox* b             = new QGroupBox(i18n("Chat"), frame);
   QVBoxLayout* gboxLay     = new QVBoxLayout(b);
@@ -62,8 +72,8 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
   QPushButton *mButton     = new QPushButton(i18n("Configure..."),frame);
   mGridLayout->addWidget(mButton,1,1);
   
-  setMainWidget(frame);
-  
+  mainLayout->addWidget(frame);
+  mainLayout->addWidget(buttonBox); 
   adjustSize();
   
   mChatDlg                 = new KChatDialog(mChat,frame,true);

@@ -21,7 +21,7 @@
 */
 
 // KDE includes
-#include <kdialog.h>
+#include <QDialog>
 
 class KGame;
 class KGameChat;
@@ -33,7 +33,7 @@ class KWin4Player;
  * It supports a user defined chat and the setting of the
  * owner player
  **/
-class ChatDlg : public KDialog
+class ChatDlg : public QDialog
 {
   Q_OBJECT
 
