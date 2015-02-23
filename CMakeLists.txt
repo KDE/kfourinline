@@ -11,7 +11,6 @@ find_package(KF5 REQUIRED COMPONENTS
     CoreAddons 
     Config 
     ItemModels 
-    Config 
     DBusAddons 
     Declarative
     I18n 
