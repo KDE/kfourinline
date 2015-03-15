@@ -34,7 +34,9 @@ ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
-kde4_add_app_icon(kwin4_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../hi*-app-kfourinline.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../*-apps-k*.png")
+ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
+
 add_executable(kfourinline ${kwin4_SRCS})
 
 target_link_libraries(kfourinline 
@@ -45,7 +47,7 @@ target_link_libraries(kfourinline
    KF5KDEGamesPrivate
    Qt5::Svg)
 
-install(TARGETS kfourinline  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### next target ###############
@@ -59,12 +61,12 @@ add_executable(kfourinlineproc ${kwin4proc_SRCS})
 
 target_link_libraries(kfourinlineproc KF5::KDELibs4Support KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
 
-install(TARGETS kfourinlineproc ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 
 ########### install files ###############
 
-install( FILES kwin4.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
-install( FILES kfourinlineui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/kfourinline )
+install( FILES kwin4.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
+install( FILES kfourinlineui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kfourinline )
 
 

@@ -13,5 +13,5 @@ gray_reflection.rc
 gray_reflection.svg
 yellow_reflection.desktop
 yellow_reflection.rc
-DESTINATION ${DATA_INSTALL_DIR}/kfourinline/grafix)
+DESTINATION ${KDE_INSTALL_DATADIR}/kfourinline/grafix)
 
