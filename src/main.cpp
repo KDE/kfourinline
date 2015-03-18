@@ -44,7 +44,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-
+#include <Kdelibs4ConfigMigrator>
 #include "kwin4.h"
 
 #define KWIN4_VERSION "v1.40"
@@ -62,6 +62,11 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kfourinline"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kfourinlinerc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kfourinlineui.rc"));
+    migrate.migrate();
+
     QApplication app(argc, argv);
 
   KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
