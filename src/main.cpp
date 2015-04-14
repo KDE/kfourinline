@@ -62,12 +62,12 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
+    QApplication app(argc, argv);
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kfourinline"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kfourinlinerc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("kfourinlineui.rc"));
     migrate.migrate();
-
-    QApplication app(argc, argv);
 
   KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
                         KWIN4_VERSION,
