@@ -69,6 +69,11 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("kfourinline"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("kfourinlinerc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("kfourinlineui.rc"));
+    migrate.migrate();
+
   KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
                         KWIN4_VERSION,
                         i18n("KFourInLine: Two player board game"),
