@@ -69,6 +69,7 @@ int main(int argc, char *argv[])
     migrate.setUiFiles(QStringList() << QStringLiteral("kfourinlineui.rc"));
     migrate.migrate();
 
+  KLocalizedString::setApplicationDomain("kfourinline");
   KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
                         KWIN4_VERSION,
                         i18n("KFourInLine: Two player board game"),

@@ -33,7 +33,6 @@ include(KDECompilerSettings)
 include(KDECMakeSettings)
 
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DTRANSLATION_DOMAIN="kfourinline")
 
 add_subdirectory( src ) 
 add_subdirectory( grafix ) 
