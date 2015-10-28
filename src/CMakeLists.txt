@@ -35,7 +35,7 @@ ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../*-apps-k*.png")
-ecm_add_app_icon(kblocks_SRCS ICONS ${ICONS_SRCS})
+ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kfourinline ${kwin4_SRCS})
 
