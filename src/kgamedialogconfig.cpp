@@ -146,7 +146,7 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget* parent)
 
  // Needs to be AFTER the creation of the dialogs
  setConnected(false);
- setDefaultNetworkInfo(QLatin1String( "localhost" ), 7654,true);
+ setDefaultNetworkInfo(QStringLiteral( "localhost" ), 7654,true);
 }
 
 KGameDialogNetworkConfig::~KGameDialogNetworkConfig()
@@ -183,8 +183,8 @@ void KGameDialogNetworkConfig::slotInitConnection()
 	}
   // We need to learn about failed connections
   if (game()) {
-     connect(game(), SIGNAL(signalConnectionBroken()),
-      this, SLOT(slotConnectionBroken()));
+     connect(game(), &KGameNetwork::signalConnectionBroken,
+      this, &KGameDialogNetworkConfig::slotConnectionBroken);
   }
  }
  setConnected(connected, master);

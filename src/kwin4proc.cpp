@@ -144,7 +144,7 @@ void KComputer::sendValue(long value, int moveNo)
 // Load brain position cache
 void KComputer::loadBrain()
 {
-  QFile file(mBrainDir+QString("kwin4.brain"));
+  QFile file(mBrainDir+QStringLiteral("kwin4.brain"));
   if (!file.open(QIODevice::ReadOnly ))
   {
     fprintf(stderr,"  KComputer::Brain file cannot be opened.\n");
@@ -203,7 +203,7 @@ void KComputer::loadBrain()
 // Save brain position cache
 void KComputer::saveBrain()
 {
-  QFile file(mBrainDir+QString("kwin4.brain"));
+  QFile file(mBrainDir+QStringLiteral("kwin4.brain"));
   if (!file.open(QIODevice::WriteOnly ))
   {
     fprintf(stderr,"  KComputer::saving brain failed.\n");

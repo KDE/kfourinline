@@ -70,45 +70,45 @@ int main(int argc, char *argv[])
     migrate.migrate();
 
   KLocalizedString::setApplicationDomain("kfourinline");
-  KAboutData aboutData( "kfourinline", i18n("KFourInLine"),
+  KAboutData aboutData( QStringLiteral("kfourinline"), i18n("KFourInLine"),
                         KWIN4_VERSION,
                         i18n("KFourInLine: Two player board game"),
                         KAboutLicense::GPL,
                         i18n("(c) 1995-2007, Martin Heni"),
-                        "http://games.kde.org/kfourinline" );
-  aboutData.addAuthor(i18n("Martin Heni"),i18n("Game design and code"), "kde@heni-online.de");
-  aboutData.addAuthor(i18n("Johann Ollivier Lapeyre"),i18n("Graphics"), "johann.ollivierlapeyre@gmail.com");
-  aboutData.addAuthor(i18n("Eugene Trounev"),i18n("Graphics"), "eugene.trounev@gmail.com");
+                        QStringLiteral("http://games.kde.org/kfourinline") );
+  aboutData.addAuthor(i18n("Martin Heni"),i18n("Game design and code"), QStringLiteral("kde@heni-online.de"));
+  aboutData.addAuthor(i18n("Johann Ollivier Lapeyre"),i18n("Graphics"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
+  aboutData.addAuthor(i18n("Eugene Trounev"),i18n("Graphics"), QStringLiteral("eugene.trounev@gmail.com"));
   aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Code Improvements"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("d") << QLatin1String("debug"), i18n("Enter debug level"), QLatin1String("level")));
-  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("skipintro"), i18n("Skip intro animation")));
-  parser.addOption(QCommandLineOption(QStringList() << QLatin1String("demo"), i18n("Run game in demo (autoplay) mode")));
+  parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("d") << QStringLiteral("debug"), i18n("Enter debug level"), QStringLiteral("level")));
+  parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("skipintro"), i18n("Skip intro animation")));
+  parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("demo"), i18n("Run game in demo (autoplay) mode")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
-  app.setWindowIcon(QIcon::fromTheme(QLatin1String("kfourinline")));
+  app.setWindowIcon(QIcon::fromTheme(QStringLiteral("kfourinline")));
   /* command line handling */
 
   // Check for debug command line option
-  if (parser.isSet("debug"))
+  if (parser.isSet(QStringLiteral("debug")))
   {
-    global_debug=QString(parser.value("debug")).toInt();
+    global_debug=QString(parser.value(QStringLiteral("debug"))).toInt();
     qCDebug(KFOURINLINE_LOG) << "Debug level set to" << global_debug;
   }
   // Check for debug command line option
-  if (parser.isSet("skipintro"))
+  if (parser.isSet(QStringLiteral("skipintro")))
   {
     global_skip_intro = true;
     qCDebug(KFOURINLINE_LOG) << "Skip intro cmd line chosen" << global_skip_intro;
   }
   // Check for debug command line option
-  if (parser.isSet("demo"))
+  if (parser.isSet(QStringLiteral("demo")))
   {
     global_demo_mode = true;
     qCDebug(KFOURINLINE_LOG) << "Running in demo mode" << global_demo_mode;

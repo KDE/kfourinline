@@ -33,14 +33,14 @@ KWin4Player::KWin4Player() : KPlayer()
 {
   // Register KGameProperties in KGame framework  
   mStatus = 0;
-  mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mWin"));
-  mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mRemis"));
-  mLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mLost"));
-  mBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mBrk"));
-  mAllWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllWin"));
-  mAllRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllRemis"));
-  mAllLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllLost"));
-  mAllBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mAllBrk"));
+  mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mWin"));
+  mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mRemis"));
+  mLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mLost"));
+  mBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mBrk"));
+  mAllWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mAllWin"));
+  mAllRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mAllRemis"));
+  mAllLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mAllLost"));
+  mAllBrk.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mAllBrk"));
 
   dataHandler()->setPolicy(KGamePropertyBase::PolicyDirty,false);
 

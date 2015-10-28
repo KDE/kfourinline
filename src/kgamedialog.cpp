@@ -139,7 +139,7 @@ void KGameDialog::addConfigWidget(KGameDialogConfig* widget, QWidget* parent)
  widget->setParent(parent);
  widget->move(QPoint(0,0));
  d->mConfigWidgets.append(widget);
- connect(widget, SIGNAL(destroyed(QObject*)), this, SLOT(slotRemoveConfigWidget(QObject*)));
+ connect(widget, &QObject::destroyed, this, &KGameDialog::slotRemoveConfigWidget);
  if (!d->mGame) {
 	qCWarning(KFOURINLINE_LOG) << "No game has been set!";
  } else {

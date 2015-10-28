@@ -59,10 +59,10 @@ void Score::update()
     // Call this only after set name
     if (mInputDevice[i] == (int)KGameIO::ProcessIO) mDisplay->setLevel(mLevel[i], i);
     else  mDisplay->setLevel(-1, i);
-    mDisplay->setWon(QString("%1").arg(mWin[i]), i);
-    mDisplay->setDraw(QString("%1").arg(mRemis[i]), i);
-    mDisplay->setLoss(QString("%1").arg(mLoss[i]), i);
-    mDisplay->setBreak(QString("%1").arg(mBrk[i]), i);
+    mDisplay->setWon(QStringLiteral("%1").arg(mWin[i]), i);
+    mDisplay->setDraw(QStringLiteral("%1").arg(mRemis[i]), i);
+    mDisplay->setLoss(QStringLiteral("%1").arg(mLoss[i]), i);
+    mDisplay->setBreak(QStringLiteral("%1").arg(mBrk[i]), i);
     mDisplay->setInput(mInputDevice[i], i);
   }
 }

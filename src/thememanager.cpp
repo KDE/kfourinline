@@ -109,14 +109,14 @@ void ThemeManager::updateTheme(const QString &themefile)
   // Read config and SVG file for theme
   delete mConfig;
   mConfig = new KConfig(rcfile, KConfig::NoGlobals);
-  QString svgfile = config("general").readEntry("svgfile");
+  QString svgfile = config(QStringLiteral("general")).readEntry("svgfile");
   svgfile = KStandardDirs::locate("kwin4theme", svgfile);
   qCDebug(KFOURINLINE_LOG) << "Reading SVG master file  =" << svgfile;
-  mAspectRatio     =  config("general").readEntry("aspect-ratio", 1.0);
+  mAspectRatio     =  config(QStringLiteral("general")).readEntry("aspect-ratio", 1.0);
   qCDebug(KFOURINLINE_LOG) << "Aspect ratio =" << mAspectRatio;
-  mColorNamePlayer[0] = i18nc("Player 0 color", config("general").readEntry("colorNamePlayer0").toUtf8());
+  mColorNamePlayer[0] = i18nc("Player 0 color", config(QStringLiteral("general")).readEntry("colorNamePlayer0").toUtf8());
   qCDebug(KFOURINLINE_LOG) << "Player 0 color name =" << mColorNamePlayer[0];
-  mColorNamePlayer[1] = i18nc("Player 1 color", config("general").readEntry("colorNamePlayer1").toUtf8());
+  mColorNamePlayer[1] = i18nc("Player 1 color", config(QStringLiteral("general")).readEntry("colorNamePlayer1").toUtf8());
   qCDebug(KFOURINLINE_LOG) << "Player 1 color name =" << mColorNamePlayer[1];
 
   delete mRenderer;

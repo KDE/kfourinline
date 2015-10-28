@@ -460,7 +460,7 @@ void KGameDebugDialog::setKGame(const KGame* g)
  d->mGame = g;
  if (g) {
  //TODO: connect to the KGame signals for joined/removed players!!!
-	connect(d->mGame, SIGNAL(destroyed()), this, SLOT(slotUnsetKGame()));
+	connect(d->mGame, &QObject::destroyed, this, &KGameDebugDialog::slotUnsetKGame);
 //	connect();
 
   for ( QList<KPlayer*>::const_iterator it = d->mGame->playerList()->begin(); it!=d->mGame->playerList()->end(); ++it )
@@ -470,7 +470,7 @@ void KGameDebugDialog::setKGame(const KGame* g)
 
 	slotUpdateGameData();
 
-	connect(d->mGame, SIGNAL(signalMessageUpdate(int,quint32,quint32)), this, SLOT(slotMessageUpdate(int,quint32,quint32)));
+	connect(d->mGame, &KGame::signalMessageUpdate, this, &KGameDebugDialog::slotMessageUpdate);
  }
 }
 

@@ -51,7 +51,7 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphi
     scene->addItem(mBreak[i]);
     mName[i]  = new QGraphicsTextItem(this);
     scene->addItem(mName[i]);
-    mInput[i] = new PixmapSprite(QString("scoreinput%1").arg(i), theme, i, scene);
+    mInput[i] = new PixmapSprite(QStringLiteral("scoreinput%1").arg(i), theme, i, scene);
     if (!mInput[i]) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "scoreinput"<<i;
     mInput[i]->setParentItem(this);
     mInput[i]->setOffsetStatus(false);

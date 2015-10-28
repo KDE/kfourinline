@@ -48,7 +48,7 @@
 
 // Constructor for the display
 DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
-           : Themeable("gamedisplay",theme), QObject(parent)
+           : Themeable(QStringLiteral("gamedisplay"),theme), QObject(parent)
 {
   // Store arguments as attributes
   mScene         = scene;
@@ -64,7 +64,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   // Create piece sprites 
   for (int i=0; i<42; i++)
   {
-    PieceSprite* sprite = new PieceSprite("piece", mTheme, i, mScene);
+    PieceSprite* sprite = new PieceSprite(QStringLiteral("piece"), mTheme, i, mScene);
     if (!sprite) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "piece";
     mSprites.append(sprite);
     mPieces.append(sprite);
@@ -74,7 +74,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   // Create stars
   for (int i=0;i<4;i++)
   {
-    PixmapSprite* sprite = new PixmapSprite("star", mTheme, i, mScene);
+    PixmapSprite* sprite = new PixmapSprite(QStringLiteral("star"), mTheme, i, mScene);
     if (!sprite) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "star";
     mSprites.append(sprite);
     mStars.append(sprite);
@@ -82,13 +82,13 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   }
 
   // Create board
-  mBoard = new PixmapSprite("board", mTheme, 0, mScene);
+  mBoard = new PixmapSprite(QStringLiteral("board"), mTheme, 0, mScene);
   if (!mBoard) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "board";
   mSprites.append(mBoard);
   mBoard->hide();
 
   // Create hint
-  mHint = new PixmapSprite("hint", mTheme, 0, mScene);
+  mHint = new PixmapSprite(QStringLiteral("hint"), mTheme, 0, mScene);
   if (!mHint) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "hint";
   mSprites.append(mHint);
   mHint->hide();
@@ -100,7 +100,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   // mGameOver->hide();
 
   // Create score board
-  mScoreBoard = new ScoreSprite("scoreboard", mTheme, 0, mScene);
+  mScoreBoard = new ScoreSprite(QStringLiteral("scoreboard"), mTheme, 0, mScene);
   if (!mScoreBoard) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "scoreboard";
   mSprites.append(mScoreBoard);
   mScoreBoard->hide();
@@ -109,7 +109,7 @@ DisplayGame::DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme, QG
   // Create movement indication arrows
   for (int i=0; i<7; i++)
   {
-    PixmapSprite* arrow = new PixmapSprite("arrow", mTheme, i, mScene);
+    PixmapSprite* arrow = new PixmapSprite(QStringLiteral("arrow"), mTheme, i, mScene);
     if (!arrow) qCCritical(KFOURINLINE_LOG) << "Cannot load sprite" << "arrow";
     mSprites.append(arrow);
     mArrows.append(arrow);

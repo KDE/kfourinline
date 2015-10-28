@@ -57,7 +57,7 @@ KWin4View::KWin4View(int updateTime,
                      ReflectionGraphicsScene* scene,
                      ThemeManager* theme, 
                      QWidget* parent)
-          : Themeable("theview", theme), QGraphicsView(scene, parent)
+          : Themeable(QStringLiteral("theview"), theme), QGraphicsView(scene, parent)
 {
   // Store attributes    
   mScene             = scene;
@@ -181,7 +181,7 @@ void KWin4View::updateAndAdvance()
   // Set debug sprite
   if (global_debug > 0)
   {
-     mFrameSprite->setPlainText(QString("CurrentUpdate: %1 ms  AverageUpdate%2 ms  DefaultUpdate: %3*%4 ms").
+     mFrameSprite->setPlainText(QStringLiteral("CurrentUpdate: %1 ms  AverageUpdate%2 ms  DefaultUpdate: %3*%4 ms").
                   arg(elapsed).arg(int(avg)).arg(mDefaultUpdateTime).arg(mSlowDownFactor));
   }
      
@@ -402,7 +402,7 @@ void KWin4View::resizeEvent (QResizeEvent* e)
   if (delta < 15) queueDelay = 750;
   else if (delta < 35) queueDelay = 500;
 
-  QTimer::singleShot(queueDelay, this, SLOT(rescaleTheme()) );
+  QTimer::singleShot(queueDelay, this, &KWin4View::rescaleTheme );
 }
 
 
@@ -509,8 +509,8 @@ void KWin4View::displayMove(int x, int y, int color, int xarrow, int colorarrow,
   SpriteNotify* notify = mGameDisplay->displayPiece(x, y, color, no, animation);
   if (notify && animation)
   {
-    QObject::disconnect(notify,SIGNAL(signalNotify(QGraphicsItem*,int)),
-                        this,SLOT(moveDone(QGraphicsItem*,int)));
+    QObject::disconnect(notify,&SpriteNotify::signalNotify,
+                        this,&KWin4View::moveDone);
     connect(notify, &SpriteNotify::signalNotify, this, &KWin4View::moveDone);
   }
   mGameDisplay->displayHint(0,0,false);

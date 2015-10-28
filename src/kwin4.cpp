@@ -93,16 +93,16 @@ KWin4App::KWin4App(QWidget *parent)
   #ifndef NDEBUG
   #ifdef SRC_DIR
   qCDebug(KFOURINLINE_LOG) << "Found SRC_DIR =" << SRC_DIR;
-  KGlobal::dirs()->addResourceDir("kwin4theme",QString(SRC_DIR)+QString("/grafix/"));
+  KGlobal::dirs()->addResourceDir("kwin4theme",QStringLiteral(SRC_DIR)+QStringLiteral("/grafix/"));
   #endif
   #endif
 
   // Read theme files
-  QStringList themeList =  KGlobal::dirs()->findAllResources("kwin4theme", "*.desktop", KStandardDirs::NoDuplicates);
+  QStringList themeList =  KGlobal::dirs()->findAllResources("kwin4theme", QStringLiteral("*.desktop"), KStandardDirs::NoDuplicates);
   if (themeList.isEmpty())
   {
     KMessageBox::error(this, i18n("Installation error: No theme list found."));
-    QTimer::singleShot(0, this,SLOT(close()));
+    QTimer::singleShot(0, this,&QWidget::close);
     return;
   }
 
@@ -149,7 +149,7 @@ KWin4App::KWin4App(QWidget *parent)
   if (mTheme->checkTheme() != 0)
   {
     KMessageBox::error(this, i18n("Installation error: Theme file error."));
-    QTimer::singleShot(0, this,SLOT(close()));
+    QTimer::singleShot(0, this,&QWidget::close);
     return;
   }
 
@@ -190,7 +190,7 @@ KWin4App::KWin4App(QWidget *parent)
   // Start game automatically in demo mode
   else if (global_demo_mode)
   {
-    QTimer::singleShot(11500, this,SLOT(menuNewGame()));
+    QTimer::singleShot(11500, this,&KWin4App::menuNewGame);
   }
 }
 
@@ -326,16 +326,16 @@ void KWin4App::initGUI()
   KStandardGameAction::hint(this, SLOT(askForHint()), actionCollection());
   KStandardGameAction::quit(this, SLOT(close()), actionCollection());
   
-  action = actionCollection()->addAction( QLatin1String( "network_conf" ));
+  action = actionCollection()->addAction( QStringLiteral( "network_conf" ));
   action->setText(i18n("&Network Configuration..."));
   connect(action, &QAction::triggered, this, &KWin4App::configureNetwork);
 
-  action = actionCollection()->addAction( QLatin1String( "network_chat" ));
+  action = actionCollection()->addAction( QStringLiteral( "network_chat" ));
   action->setText(i18n("Network Chat..."));
   connect(action, &QAction::triggered, this, &KWin4App::configureChat);
 
-  action = actionCollection()->addAction( QLatin1String( "statistics" ));
-  action->setIcon(QIcon::fromTheme( QLatin1String( "view-statistics" )));
+  action = actionCollection()->addAction( QStringLiteral( "statistics" ));
+  action->setIcon(QIcon::fromTheme( QStringLiteral( "view-statistics" )));
   action->setText(i18n("&Show Statistics"));
   connect(action, &QAction::triggered, this, &KWin4App::showStatistics);
   action->setToolTip(i18n("Show statistics."));
@@ -350,8 +350,8 @@ void KWin4App::initGUI()
   QStringList themes(mThemeFiles.keys());
   themes.sort();
 
-  action = actionCollection()->addAction( QLatin1String( "theme" ) , new KSelectAction(i18n("Theme" ), this));
-  action->setIcon(QIcon::fromTheme( QLatin1String( "games-config-theme" )));
+  action = actionCollection()->addAction( QStringLiteral( "theme" ) , new KSelectAction(i18n("Theme" ), this));
+  action->setIcon(QIcon::fromTheme( QStringLiteral( "games-config-theme" )));
   ((KSelectAction*)action)->setItems(themes);
   connect(action, &QAction::triggered, this, &KWin4App::changeTheme);
   qCDebug(KFOURINLINE_LOG) << "Setting current theme item to" << mThemeIndexNo;
@@ -360,7 +360,7 @@ void KWin4App::initGUI()
   // Debug
   if (global_debug>0)
   {
-    action = actionCollection()->addAction( QLatin1String( "file_debug" ));
+    action = actionCollection()->addAction( QStringLiteral( "file_debug" ));
     action->setText(i18n("Debug KGame"));
     connect(action, &QAction::triggered, this, &KWin4App::debugKGame);
   }
@@ -387,7 +387,7 @@ void KWin4App::initStatusBar()
   //QT5 statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft | Qt::AlignVCenter);
 
 
-  displayStatusbarMover("");
+  displayStatusbarMover(QLatin1String(""));
   displayStatusMessage(i18n("Welcome to Four Wins"));
 }
 
@@ -426,7 +426,7 @@ void KWin4App::saveProperties(KConfigGroup& grp)
   qCDebug(KFOURINLINE_LOG) << "SAVE PROPERTIES for GROUP" << grp.name();
 
   // Save current game?
-  QString name = QString("current_game")+grp.name();
+  QString name = QStringLiteral("current_game")+grp.name();
   QString filename = KStandardDirs::locateLocal("appdata", name);
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (isRunning)
@@ -497,9 +497,9 @@ void KWin4App::readProperties()
 // Load a game menu
 void KWin4App::menuOpenGame()
 {
-  QString dir(":<kwin4>");
-  QString filter("*");
-  QString file("/tmp/kwin.save");
+  QString dir(QStringLiteral(":<kwin4>"));
+  QString filter(QStringLiteral("*"));
+  QString file(QStringLiteral("/tmp/kwin.save"));
   if (global_debug < 1)
     file=KFileDialog::getOpenFileName(dir,filter,this);
   mDoc->load(file,true);
@@ -509,9 +509,9 @@ void KWin4App::menuOpenGame()
 // Save game menu
 void KWin4App::menuSaveGame()
 {
-  QString dir(":<kwin4>");
-  QString filter("*");
-  QString file("/tmp/kwin.save");
+  QString dir(QStringLiteral(":<kwin4>"));
+  QString filter(QStringLiteral("*"));
+  QString file(QStringLiteral("/tmp/kwin.save"));
   if (global_debug < 1)
     file=KFileDialog::getSaveFileName(dir,filter,this);
   mDoc->save(file);
@@ -564,7 +564,7 @@ void KWin4App::quickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::I
   mDoc->loadSettings();
 
   // Start game (direct call will crash as intro object will be deleted)
-  QTimer::singleShot(0, this,SLOT(menuNewGame()));
+  QTimer::singleShot(0, this,&KWin4App::menuNewGame);
 }
 
 
@@ -691,7 +691,7 @@ void KWin4App::EndGame(TABLE mode)
   // Automatically restart game in demo mode
   if (global_demo_mode)
   {
-    QTimer::singleShot(10000, this,SLOT(menuNewGame()));
+    QTimer::singleShot(10000, this,&KWin4App::menuNewGame);
   }
 }
 
@@ -790,7 +790,7 @@ void KWin4App::configureNetwork()
   // just for testing - should be non-modal
   KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
-  dlg.networkConfig()->setDiscoveryInfo("_kfourinline._tcp",Prefs::gamename());
+  dlg.networkConfig()->setDiscoveryInfo(QStringLiteral("_kfourinline._tcp"),Prefs::gamename());
 
   KVBox *box=dlg.configPage();
   QLayout *l=box->layout();
@@ -798,7 +798,7 @@ void KWin4App::configureNetwork()
   mColorGroup=new KButtonGroup(box);
   QVBoxLayout *grouplay=new QVBoxLayout(mColorGroup);
   connect(mColorGroup, &KButtonGroup::clicked, this, &KWin4App::remoteChanged);
-  connect(dlg.networkConfig(), SIGNAL(signalServerTypeChanged(int)), this, SLOT(serverTypeChanged(int)));
+  connect(dlg.networkConfig(), &KGameDialogNetworkConfig::signalServerTypeChanged, this, &KWin4App::serverTypeChanged);
 
   QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote player"), mColorGroup);
   QRadioButton *b2 = new QRadioButton(i18n("Red should be played by remote player"), mColorGroup);
@@ -869,7 +869,7 @@ void KWin4App::debugKGame()
 void KWin4App::configureSettings()
 {
   static Ui::Settings ui; // Dialog is internally static anyway
-  if(KConfigDialog::showDialog("settings"))
+  if(KConfigDialog::showDialog(QStringLiteral("settings")))
   {
     // The dialog need to refresh the buttons as they are not conectable via a signal-slot 
     // in KConfigDialog
@@ -890,7 +890,7 @@ void KWin4App::configureSettings()
     return;
   }
 
-  KConfigDialog* dialog = new KConfigDialog(this, "settings", Prefs::self());
+  KConfigDialog* dialog = new KConfigDialog(this, QStringLiteral("settings"), Prefs::self());
   dialog->setFaceType(KPageDialog::Plain);
   dialog->setStandardButtons(QDialogButtonBox::Ok|QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Help);
   dialog->button(QDialogButtonBox::Ok)->setDefault(true);
@@ -902,7 +902,7 @@ void KWin4App::configureSettings()
   ui.kcfg_startcolouryellow->setText(mTheme->colorNamePlayer(1));
   ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
   ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
-  dialog->addPage(frame, i18n("General"), "games-config-options");
+  dialog->addPage(frame, i18n("General"), QStringLiteral("games-config-options"));
   connect(dialog, &KConfigDialog::settingsChanged, mDoc, &KWin4Doc::loadSettings);
   dialog->show();
 }

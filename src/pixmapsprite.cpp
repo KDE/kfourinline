@@ -113,11 +113,11 @@ void PixmapSprite::changeTheme()
   QString svgid = config.readEntry("svgid");
   // Read sequence of frame pixmaps when auto ID given
   QPixmap pixmap;
-  if (svgid == "auto")
+  if (svgid == QLatin1String("auto"))
   {
     for (int i=mStartFrame;i<=mEndFrame;i++)
     {
-      QString name = QString("frame%1").arg(i);
+      QString name = QStringLiteral("frame%1").arg(i);
       svgid = config.readEntry(name);
       if (!refframe.isNull())
       {

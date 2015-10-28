@@ -52,7 +52,7 @@
 
 // Constructor for the intro display
 DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphicsView* parent)
-          : Themeable("introdisplay",theme), QObject(parent)
+          : Themeable(QStringLiteral("introdisplay"),theme), QObject(parent)
 {
   // Choose a background color
   scene->setBackgroundBrush(QColor(0,0,128));
@@ -69,7 +69,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
   // Create all sprites used for intro
   for (int i=0; i<42; i++)
   {
-    IntroSprite* sprite = new IntroSprite("intro_piece", mTheme, i, mScene);
+    IntroSprite* sprite = new IntroSprite(QStringLiteral("intro_piece"), mTheme, i, mScene);
     mSprites.append(sprite);
     if ((i/1)%2==0) sprite->setFrame(0);
     else  sprite->setFrame(1);
@@ -78,12 +78,12 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
   }
 
   // Create board
-  PixmapSprite* pixmap = new PixmapSprite("introboard", mTheme, 0, mScene);
+  PixmapSprite* pixmap = new PixmapSprite(QStringLiteral("introboard"), mTheme, 0, mScene);
   mSprites.append(pixmap);
   pixmap->show();
 
   // Create quicklaunch. We align text horizontally using QTextDocument
-  mQuickLaunch = new PixmapSprite("quicklaunch", mTheme, 0, mScene);
+  mQuickLaunch = new PixmapSprite(QStringLiteral("quicklaunch"), mTheme, 0, mScene);
   mSprites.append(mQuickLaunch);
   mQuickLaunch->show();
   mTextQuicklaunch = new QGraphicsTextItem(mQuickLaunch);
@@ -115,64 +115,64 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
 
 
   // Color buttons
-  mStartButton[0] = new ButtonSprite(false, "button0_start", mTheme, 0, mScene);
+  mStartButton[0] = new ButtonSprite(false, QStringLiteral("button0_start"), mTheme, 0, mScene);
   mSprites.append(mStartButton[0]);
   mStartButton[0]->show();
-  connect(mStartButton[0]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(mStartButton[0]->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
   if (Prefs::startcolouryellow()) mStartButton[0]->setStatus(true);
 
    
-  mStartButton[1] = new ButtonSprite(false, "button1_start", mTheme, 1, mScene);
+  mStartButton[1] = new ButtonSprite(false, QStringLiteral("button1_start"), mTheme, 1, mScene);
   mSprites.append(mStartButton[1]);
   mStartButton[1]->show();
-  connect(mStartButton[1]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(mStartButton[1]->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
   if (Prefs::startcolourred()) mStartButton[1]->setStatus(true);
 
-  mPlayerButton[0] = new ButtonSprite(false, "button0_color", mTheme,  2, mScene);
+  mPlayerButton[0] = new ButtonSprite(false, QStringLiteral("button0_color"), mTheme,  2, mScene);
   mSprites.append(mPlayerButton[0]);
   mPlayerButton[0]->show();
-  connect(mPlayerButton[0]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(mPlayerButton[0]->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
   if (Prefs::input0mouse()|| Prefs::input0key()) mPlayerButton[0]->setStatus(true); 
 
-  mPlayerButton[1] = new ButtonSprite(false, "button1_color", mTheme, 3, mScene);
+  mPlayerButton[1] = new ButtonSprite(false, QStringLiteral("button1_color"), mTheme, 3, mScene);
   mSprites.append(mPlayerButton[1]);
   mPlayerButton[1]->show();
-  connect(mPlayerButton[1]->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(mPlayerButton[1]->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
   if ((Prefs::input1mouse()|| Prefs::input1key()) &&
        !mPlayerButton[0]->status()) mPlayerButton[0]->setStatus(true); 
 
   // Start game buttons
-  ButtonSprite* button = new ButtonSprite(true, "button_aieasy", mTheme,  10, mScene);
+  ButtonSprite* button = new ButtonSprite(true, QStringLiteral("button_aieasy"), mTheme,  10, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level easy", "Easy Game"));
   button->show();
-  connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(button->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
 
-  button = new ButtonSprite(true, "button_ainormal", mTheme, 11, mScene);
+  button = new ButtonSprite(true, QStringLiteral("button_ainormal"), mTheme, 11, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level normal", "Normal Game"));
   button->show();
-  connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(button->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
 
-  button = new ButtonSprite(true, "button_aihard", mTheme,  12, mScene);
+  button = new ButtonSprite(true, QStringLiteral("button_aihard"), mTheme,  12, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus AI level hard", "Hard Game"));
   button->show();
-  connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(button->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
 
-  button = new ButtonSprite(true, "button_player", mTheme, 13, mScene);
+  button = new ButtonSprite(true, QStringLiteral("button_player"), mTheme, 13, mScene);
   mSprites.append(button);
   button->setText(i18nc("quick start button - player versus player", "Two Player Game"));
   button->show();
-  connect(button->notify(),SIGNAL(signalNotify(QGraphicsItem*,int)),
-          this,SLOT(buttonPressed(QGraphicsItem*,int)));
+  connect(button->notify(),&SpriteNotify::signalNotify,
+          this,&DisplayIntro::buttonPressed);
 
 
 

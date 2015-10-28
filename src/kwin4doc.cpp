@@ -81,25 +81,25 @@ KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess
   // The field array needs not be updated as any move will change it
   // Careful only in new resetGame! Maybe unlocal it there!
   //  mField.setPolicy(KGamePropertyBase::PolicyLocal);  
-  mField.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mField"));
+  mField.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mField"));
 
   mFieldFilled.resize(7);
   mHistory.resize(43);
-  mHistory.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mHistory"));
+  mHistory.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mHistory"));
 
-  mAmzug.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mAmzug"));
-  mCurrentMove.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mCurrentMove"));
-  mMaxMove.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mMaxMove"));
-  mFieldFilled.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mFieldFilled"));
-  mHistoryCnt.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mHistoryCnt"));
-  mLastColumn.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastColumn"));
-  mLastHint.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastHint"));
-  mLastColour.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mLastColour"));
-  mScore.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QString("mScore"));
+  mAmzug.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mAmzug"));
+  mCurrentMove.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mCurrentMove"));
+  mMaxMove.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mMaxMove"));
+  mFieldFilled.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mFieldFilled"));
+  mHistoryCnt.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mHistoryCnt"));
+  mLastColumn.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mLastColumn"));
+  mLastHint.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mLastHint"));
+  mLastColour.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mLastColour"));
+  mScore.registerData(dataHandler(),KGamePropertyBase::PolicyLocal,QStringLiteral("mScore"));
 
   // game startup parameter
   mStartPlayer=Yellow;
-  mStartPlayer.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QString("mStartPlayer"));
+  mStartPlayer.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mStartPlayer"));
   setCurrentPlayer((COLOUR)mStartPlayer.value()); 
   if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "amZug policy=" << mAmzug.policy();
 
@@ -831,7 +831,7 @@ QString KWin4Doc::findProcessName()
   // Try whether we run from a development source dir
   #ifndef NDEBUG
   #ifdef SRC_DIR
-    QString srcname = QString(SRC_DIR)+QString("/src/kfourinlineproc");
+    QString srcname = QStringLiteral(SRC_DIR)+QStringLiteral("/src/kfourinlineproc");
     QFile fsrc(srcname);
     if (fsrc.exists())
     {
@@ -845,7 +845,7 @@ QString KWin4Doc::findProcessName()
   // First try a local dir override
   QDir dir;
   // TODO: This local filename is not found!!
-  QString filename=dir.path()+QString("/kwin4/kfourinlineproc");
+  QString filename=dir.path()+QStringLiteral("/kwin4/kfourinlineproc");
   qCDebug(KFOURINLINE_LOG) << "PROC FILENAME="<<filename;
   QFile flocal(filename);
   if (flocal.exists())
@@ -853,7 +853,7 @@ QString KWin4Doc::findProcessName()
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found local process" << filename;
     return filename;
   }
-  QString path= QStandardPaths::findExecutable("kfourinlineproc");
+  QString path= QStandardPaths::findExecutable(QStringLiteral("kfourinlineproc"));
   if (!path.isNull())
   {
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Found system process" << path;
@@ -897,7 +897,7 @@ bool KWin4Doc::playerInput(QDataStream& msg, KPlayer* /*player*/)
   if (!doMove(move,pl))
   {
     // Repeat the same input
-    QTimer::singleShot(0, this,SLOT(repeatMove()));
+    QTimer::singleShot(0, this,&KWin4Doc::repeatMove);
   }
 
   return false;
@@ -994,8 +994,8 @@ void KWin4Doc::createIO(KPlayer* player, KGameIO::IOMode io)
     KGameKeyIO  *input;
     input=new KGameKeyIO(pView->parentWidget());
     // Connect keys input to a function to process the actual input
-    connect((KGameKeyIO *)input,SIGNAL(signalKeyEvent(KGameIO*,QDataStream&,QKeyEvent*,bool*)),
-            pView,SLOT(keyInput(KGameIO*,QDataStream&,QKeyEvent*,bool*)));
+    connect((KGameKeyIO *)input,&KGameKeyIO::signalKeyEvent,
+            pView,&KWin4View::keyInput);
     player->addGameIO(input);
   }
 }
