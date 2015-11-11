@@ -74,12 +74,12 @@ int main(int argc, char *argv[])
                         KWIN4_VERSION,
                         i18n("KFourInLine: Two player board game"),
                         KAboutLicense::GPL,
-                        i18n("(c) 1995-2007, Martin Heni"),
-                        QStringLiteral("http://games.kde.org/kfourinline") );
+                        i18n("(c) 1995-2007, Martin Heni"));
   aboutData.addAuthor(i18n("Martin Heni"),i18n("Game design and code"), QStringLiteral("kde@heni-online.de"));
   aboutData.addAuthor(i18n("Johann Ollivier Lapeyre"),i18n("Graphics"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
   aboutData.addAuthor(i18n("Eugene Trounev"),i18n("Graphics"), QStringLiteral("eugene.trounev@gmail.com"));
   aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Code Improvements"));
+  aboutData.setHomepage(QStringLiteral("http://games.kde.org/kfourinline"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
