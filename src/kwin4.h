@@ -51,7 +51,7 @@ class KWin4App : public KXmlGuiWindow
     /** Construct the application.
       * @param parent The parent
       */
-    KWin4App(QWidget *parent=0);
+    explicit KWin4App(QWidget *parent=0);
 
     /** Destruct the application.
       */

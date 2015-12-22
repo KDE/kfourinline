@@ -37,7 +37,7 @@ class SpriteNotify : public QObject
     /** Create the object.
       * @param parent The parent graphics item.
       */
-    SpriteNotify(QGraphicsItem* parent);
+    explicit SpriteNotify(QGraphicsItem* parent);
     
     /** Emit the notification signal.
       * @param mode A user defined parameter.

@@ -53,7 +53,7 @@ class KWin4Doc : public KGame
     /** Constructor.
       * @param parent The parent widget
       */
-    KWin4Doc(QWidget *parent);
+    explicit KWin4Doc(QWidget *parent);
 
     /** The dstructor.
       */

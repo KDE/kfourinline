@@ -51,7 +51,7 @@ class KGameDialogConfig : public QWidget
 {
 	Q_OBJECT
 public:
-	KGameDialogConfig(QWidget* parent = 0);
+	explicit KGameDialogConfig(QWidget* parent = 0);
 	virtual ~KGameDialogConfig();
 
 	/**
