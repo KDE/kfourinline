@@ -75,7 +75,7 @@
 
 // Construct the main application window
 KWin4App::KWin4App(QWidget *parent)
-        : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0)
+        : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0), mStatusMsg(new QLabel()), mStatusMover(new QLabel())
 {
   // default names for players
   (void)I18N_NOOP2("default name of first player", "Player 1");
@@ -381,11 +381,10 @@ void KWin4App::changeTheme(int idx)
 // Create the status bar with the message part, the player part.
 void KWin4App::initStatusBar()
 {
-  //QT5 statusBar()->insertItem(i18n("Ready"), ID_STATUS_MSG,1);
-  //QT5 statusBar()->insertPermanentItem(i18n("This leaves space for the mover"),ID_STATUS_MOVER,0);
-  //QT5 statusBar()->setItemAlignment(ID_STATUS_MOVER, Qt::AlignLeft | Qt::AlignVCenter);
-  //QT5 statusBar()->setItemAlignment(ID_STATUS_MSG, Qt::AlignLeft | Qt::AlignVCenter);
-
+  mStatusMsg->setText(i18n("Ready"));
+  mStatusMover->setText(i18n("This leaves space for the mover"));
+  statusBar()->addWidget(mStatusMsg);
+  statusBar()->addPermanentWidget(mStatusMover);
 
   displayStatusbarMover(QLatin1String(""));
   displayStatusMessage(i18n("Welcome to Four Wins"));
@@ -666,8 +665,7 @@ void KWin4App::redoMove()
 // Set the given text into the statusbar change status message permanently
 void KWin4App::displayStatusMessage(const QString &text)
 {
-  //QT5 statusBar()->clearMessage();
-  //QT5 statusBar()->changeItem(text, ID_STATUS_MSG);
+  mStatusMsg->setText(text);
 }
 
 
@@ -675,8 +673,7 @@ void KWin4App::displayStatusMessage(const QString &text)
 // the player currently moving change status mover permanently
 void KWin4App::displayStatusbarMover(const QString& text)
 {
-  //QT5 statusBar()->clearMessage();
-  //QT5 statusBar()->changeItem(text, ID_STATUS_MOVER);
+  mStatusMover->setText(text);
 }
 
 

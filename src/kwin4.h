@@ -31,6 +31,8 @@
 #include "kwin4global.h"
 #include "thememanager.h"
 
+#include <QLabel>
+
 class KWin4Doc;
 class KWin4View;
 class KButtonGroup;
@@ -276,6 +278,9 @@ class KWin4App : public KXmlGuiWindow
     // The chat dialog
     ChatDlg *mMyChatDlg;
 
+    // Status bar texts.
+    QLabel *mStatusMsg;
+    QLabel *mStatusMover;
 };
 
 #endif // KWIN4_H
