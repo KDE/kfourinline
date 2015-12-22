@@ -383,12 +383,11 @@ void KWin4App::changeTheme(int idx)
 // Create the status bar with the message part, the player part.
 void KWin4App::initStatusBar()
 {
-  mStatusMsg = new QLabel(i18n("Ready"));
-  mStatusMover = new QLabel(i18n("This leaves space for the mover"));
+  mStatusMsg = new QLabel();
+  mStatusMover = new QLabel();
   statusBar()->addWidget(mStatusMsg);
   statusBar()->addPermanentWidget(mStatusMover);
 
-  displayStatusbarMover(QLatin1String(""));
   displayStatusMessage(i18n("Welcome to Four Wins"));
 }
 
