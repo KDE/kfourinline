@@ -113,7 +113,7 @@ class KGameProcess:  public QObject
      * Enters the event loop of the computer process. Does only
      * return on setTerminate(true)!
      */
-    bool exec(int argc, char *argv[]);
+    bool exec();
 
     /**
      * Should the computer process leave its exec function?
@@ -173,13 +173,6 @@ class KGameProcess:  public QObject
      * @return KRandomSequence pointer
      */
     KRandomSequence *random();
-
-  protected:
-    /**
-     * processes the command line argumens to set up the computer player
-     * Pass the argumens exactely as given by main()
-     */
-    void processArgs(int argc, char *argv[]);
 
   protected Q_SLOTS:
     /**

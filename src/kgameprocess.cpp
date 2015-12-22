@@ -75,10 +75,8 @@ KGameProcess::~KGameProcess()
 }
 
 
-bool KGameProcess::exec(int argc, char *argv[])
+bool KGameProcess::exec()
 {
-  // Get id and cookie, ... from command line
-  processArgs(argc,argv);
   do
   {
     mMessageIO->exec();
@@ -110,23 +108,6 @@ void KGameProcess::sendSystemMessage(QDataStream &stream,int msgid,quint32 recei
 void KGameProcess::sendMessage(QDataStream &stream,int msgid,quint32 receiver)
 {
   sendSystemMessage(stream,msgid+KGameMessage::IdUser,receiver);
-}
-
-void KGameProcess::processArgs(int argc, char *argv[])
-{
-  int v=0;
-  if (argc>2)
-  {
-    v=atoi(argv[2]);
-    //qCDebug(KFOURINLINE_LOG) << "cookie (unused) " << v;
-  }
-  if (argc>1)
-  {
-    v=atoi(argv[1]);
-    //qCDebug(KFOURINLINE_LOG) << "id (unused) " << v;
-  }
-  fprintf(stderr,"KGameProcess::processArgs \n");
-  fflush(stderr);
 }
 
 void KGameProcess::receivedMessage(const QByteArray& receiveBuffer)

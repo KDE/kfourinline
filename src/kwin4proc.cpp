@@ -684,7 +684,7 @@ long KComputer::random(long max)
 }
 
 // Main startup
-int main(int argc ,char * argv[])
+int main()
 {
   // This is the computer player...it should do the calculation
   // It doesn't do much here
@@ -692,7 +692,7 @@ int main(int argc ,char * argv[])
   fflush(stderr);
   KComputer comp;
   // And start the event loop
-  comp.proc.exec(argc,argv);
+  comp.proc.exec();
   fprintf(stderr,"AI process exists.\n");
   fflush(stderr);
   return 1;
