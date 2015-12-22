@@ -75,17 +75,19 @@
 
 // Construct the main application window
 KWin4App::KWin4App(QWidget *parent)
-        : KXmlGuiWindow(parent), mView(0), mDoc(0), mMyChatDlg(0), mStatusMsg(new QLabel()), mStatusMover(new QLabel())
+        : KXmlGuiWindow(parent),
+          mTheme(nullptr),
+          mView(nullptr),
+          mDoc(nullptr),
+          mScene(nullptr),
+          mColorGroup(nullptr),
+          mMyChatDlg(nullptr),
+          mStatusMsg(nullptr),
+          mStatusMover(nullptr)
 {
   // default names for players
   (void)I18N_NOOP2("default name of first player", "Player 1");
   (void)I18N_NOOP2("default name of second player", "Player 2");
-
-  mDoc       = 0;
-  mView      = 0;
-  mScene     = 0;
-  mTheme     = 0;
-  mMyChatDlg = 0;
 
   // Add resource type to grafix
   KGlobal::dirs()->addResourceType("kwin4theme", "appdata", "grafix/");
@@ -381,8 +383,8 @@ void KWin4App::changeTheme(int idx)
 // Create the status bar with the message part, the player part.
 void KWin4App::initStatusBar()
 {
-  mStatusMsg->setText(i18n("Ready"));
-  mStatusMover->setText(i18n("This leaves space for the mover"));
+  mStatusMsg = new QLabel(i18n("Ready"));
+  mStatusMover = new QLabel(i18n("This leaves space for the mover"));
   statusBar()->addWidget(mStatusMsg);
   statusBar()->addPermanentWidget(mStatusMover);
 
