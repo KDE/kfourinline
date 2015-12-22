@@ -728,9 +728,6 @@ void KWin4Doc::loadSettings()
   setPlayedBy(Red, mode);
   qCDebug(KFOURINLINE_LOG) << "Played by Red="<<mode;  
 
-  COLOUR col = Red;
-  if (Prefs::startcolouryellow()) col = Yellow; 
-
   if (Prefs::startcolourred()) mStartPlayer.setValue(Red);
   else if (Prefs::startcolouryellow()) mStartPlayer.setValue(Yellow);
   else qCCritical(KFOURINLINE_LOG) << "Unknown start color";
