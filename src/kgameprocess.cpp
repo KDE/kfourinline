@@ -20,11 +20,11 @@
 
 #include "kgameprocess.h"
 
-#include <krandomsequence.h>
+#include <KRandomSequence>
 
-#include <qbuffer.h>
+#include <QBuffer>
 #include <QDataStream>
-#include <QtCore/QFile>
+#include <QFile>
 
 #include <assert.h>
 #include <stdio.h>

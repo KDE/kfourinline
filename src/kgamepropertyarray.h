@@ -21,15 +21,15 @@
 #ifndef __KGAMEPROPERTYARRAY_H_
 #define __KGAMEPROPERTYARRAY_H_
 
-#include <QtCore/QDataStream>
-//Added by qt3to4:
-#include <QtCore/QVector>
 #include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
+
+#include <QDataStream>
+#include <QVector>
 
 /**
  * \class KGamePropertyArray kgamepropertyarray.h <KGamePropertyArray>

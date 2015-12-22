@@ -19,6 +19,7 @@
 */
 
 #include "kgamedebugdialog.h"
+#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
@@ -26,13 +27,11 @@
 #include <libkdegamesprivate/kgame/kplayer.h>
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 
-#include <QListWidget>
 #include <KLocalizedString>
-#include "kfourinline_debug.h"
-#include <qpushbutton.h>
 #include <KStandardGuiItem>
 
-
+#include <QPushButton>
+#include <QListWidget>
 #include <QTreeWidget>
 #include <QGridLayout>
 #include <QTime>
@@ -40,7 +39,6 @@
 #include <QVBoxLayout>
 #include <QFrame>
 #include <QHBoxLayout>
-#include <QGridLayout>
 
 #include <typeinfo>
 
