@@ -47,7 +47,7 @@
 #include <Kdelibs4ConfigMigrator>
 #include "kwin4.h"
 
-#define KWIN4_VERSION "v1.40"
+#define KWIN4_VERSION "v1.41"
 
 
 // Debug level for the program
