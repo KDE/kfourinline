@@ -74,9 +74,9 @@ KComputer::KComputer()
   unsigned int i;
 
   // Init variables
-  for (i=0;i<strlen(s1);i++)
+  for (i=0;i<strlen(s1);++i)
     mRowLengths[i]=s1[i]-'0';
-  for (i=0;i<strlen(s2);i++)
+  for (i=0;i<strlen(s2);++i)
     mStartOfRows[i]=s2[i]-'0';
 
   // Unknown yet how fast AI calculates
@@ -171,7 +171,7 @@ void KComputer::loadBrain()
   bool erase = false;
   if (noOfItems >MAX_LEARNED_POSITIONS) erase = true; 
 
-  for (int cnt=0; cnt<noOfItems; cnt++)
+  for (int cnt=0; cnt<noOfItems; ++cnt)
   {
     AIBoard board;
     AIValue value;
@@ -357,14 +357,14 @@ KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /
   // Amount of pieces on the game board
   char numberMatrix[SIZE_Y_ALL+1];
 
-  for (int y=0;y<=SIZE_Y_ALL;y++)
+  for (int y=0;y<=SIZE_Y_ALL;++y)
   {
     numberMatrix[y]=0;
   }
 
-  for (int y=0;y<=SIZE_Y;y++)
+  for (int y=0;y<=SIZE_Y;++y)
   {
-    for (int x=0;x<=SIZE_X;x++)
+    for (int x=0;x<=SIZE_X;++x)
     {
       fieldMatrix[y][x]      = (FARBE)(y+FIELD_OFFSET);
       fieldMatrix[6+x][y]    = (FARBE)(y+FIELD_OFFSET);
@@ -375,9 +375,9 @@ KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /
 
   // Field comes as 42 qint8's representing moves
   int i,j;
-  for (i=0;i<=SIZE_Y;i++)
+  for (i=0;i<=SIZE_Y;++i)
   {
-    for (j=0;j<=SIZE_X;j++)
+    for (j=0;j<=SIZE_X;++j)
     {
       qint8 col;
       in >> col;
@@ -396,7 +396,7 @@ KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /
 
   // Estimated number of positions to evaluate (MAX)
   int estimated = 0;
-  for (int i=1; i<= mLevel+1; i++)
+  for (int i=1; i<= mLevel+1; ++i)
   {
     estimated += int(pow(7.,i));
   }
@@ -470,7 +470,7 @@ KComputer::MoveResult KComputer::MinMax(COLOUR color, FARBE field[][SIZE_X+1], c
   result.move  = -1; // No move found
   result.value = LOWERT; 
 
-  for (int x=0; x<=SIZE_X; x++)
+  for (int x=0; x<=SIZE_X; ++x)
   {
     long wert;
     if (numbers[6+x]>=MAX_PIECES_COL) continue;
@@ -587,16 +587,16 @@ static long steinWERT[4][5]=
   long yellow_value = random(EVAL_RANDOM);
   long red_value    = random(EVAL_RANDOM);
 
-  for (int y=0; y<=SIZE_Y_ALL; y++)
+  for (int y=0; y<=SIZE_Y_ALL; ++y)
   {
     if (mRowLengths[y]<WIN4) continue;
-    for (int i=0;i<=(mRowLengths[y]-WIN4);i++)
+    for (int i=0;i<=(mRowLengths[y]-WIN4);++i)
     {
       COLOUR color = Nobody;
       long value   = 0;
       int cntcol   = 0;
       int cnt      = 0;
-      for (int j=0; j<WIN4; j++)
+      for (int j=0; j<WIN4; ++j)
       {
         FARBE checkField = field[y][i+j+mStartOfRows[y]];
         if ((COLOUR)checkField==Red)
@@ -632,17 +632,17 @@ static long steinWERT[4][5]=
 // Check for game over 
 COLOUR KComputer::isGameOver(FARBE field[][SIZE_X+1],char numbers[])
 {
-  for (int y=0; y<=SIZE_Y_ALL; y++)
+  for (int y=0; y<=SIZE_Y_ALL; ++y)
   {
      if (numbers[y] < WIN4) continue;
      if (mRowLengths[y] < WIN4) continue;
 
      int cnt   = 0;
      COLOUR thiscolor = Nobody;
-     for (int x=0; x<mRowLengths[y]; x++)
+     for (int x=0; x<mRowLengths[y]; ++x)
      {
        COLOUR checkField = (COLOUR)field[y][x+mStartOfRows[y]];
-       if (checkField == thiscolor) cnt++;
+       if (checkField == thiscolor) ++cnt;
        else {cnt=1; thiscolor=checkField;}
        if ( (cnt>=WIN4) &&( (thiscolor==Yellow)||(thiscolor==Red) ) ) return thiscolor;
      }// next x
@@ -666,7 +666,7 @@ void KComputer::DoMove(int move, COLOUR color, FARBE field[][SIZE_X+1], char num
   numbers[6+x]++;
   numbers[13+x+y]++;
   numbers[30+x-y]++;
-  for (int i=y+1; i<=SIZE_Y; i++)
+  for (int i=y+1; i<=SIZE_Y; ++i)
   {
      field[i][x]--;
      field[6+x][i]--;

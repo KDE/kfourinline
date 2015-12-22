@@ -185,9 +185,9 @@ void KWin4Doc::setColour(int x,int y,COLOUR c)
 void KWin4Doc::resetGame(bool initview)
 {
   // Reset field
-  for (int x=0;x<FIELD_SIZE_X;x++)
+  for (int x=0;x<FIELD_SIZE_X;++x)
   {
-    for (int y=FIELD_SIZE_Y-1;y>=0;y--)
+    for (int y=FIELD_SIZE_Y-1;y>=0;--y)
     {
       setColour(x,y,Nobody);
     }
@@ -489,19 +489,19 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
 
   // Check vertical up
   int flag=0;
-  for (i=0;i<4;i++)
+  for (i=0;i<4;++i)
   {
     y=mFieldFilled.at(x)-1-i;
     if (y>=0)
     {
        c=getColour(x,y);
-       if (c==col) flag++;
+       if (c==col) ++flag;
     }
   }
   if (flag>=4 )
   {
     // Store win fields
-    for (i=0;i<4;i++)
+    for (i=0;i<4;++i)
     {
       y=mFieldFilled.at(x)-1-i;
       pView->displayStar(x,y,star++);
@@ -515,13 +515,13 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
   // Check horizontal to the right
   y=mFieldFilled.at(x)-1;
   flag=0;
-  for (i=-3;i<=3 && flag<4;i++)
+  for (i=-3;i<=3 && flag<4;++i)
   {
      xx=x+i;
      if (xx>=0 && xx<FIELD_SIZE_X)
      {
        c=getColour(xx,y);
-       if (c==col) flag++;
+       if (c==col) ++flag;
        else flag=0;
      }
   }
@@ -531,7 +531,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
     y=mFieldFilled.at(x)-1;
     winc=getColour(x,y);
     int cnt=0;
-    for (i=0;i<4;i++)
+    for (i=0;i<4;++i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -542,7 +542,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
       }
       else break;
     }
-    for (i=-1;i>-4 && cnt<4;i--)
+    for (i=-1;i>-4 && cnt<4;--i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -560,7 +560,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
 
   // Check dy+
   flag=0;
-  for (i=-3;i<=3 && flag<4;i++)
+  for (i=-3;i<=3 && flag<4;++i)
   {
     xx=x+i;
     if (xx>=0 && xx<FIELD_SIZE_X)
@@ -569,7 +569,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
       if (y>=0 && y<FIELD_SIZE_Y)
       {
         c=getColour(xx,y);
-        if (c==col) flag++;
+        if (c==col) ++flag;
         else flag=0;
       }
     }
@@ -580,7 +580,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
     y=mFieldFilled.at(x)-1;
     winc=getColour(x,y);
     int cnt=0;
-    for (i=0;i<4;i++)
+    for (i=0;i<4;++i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -589,11 +589,11 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
         if (y<0) break;
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
-    for (i=-1;i>-4 && cnt<4;i--)
+    for (i=-1;i>-4 && cnt<4;--i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -602,7 +602,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
         if (y>=FIELD_SIZE_Y) break;
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
@@ -613,7 +613,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
 
   // Check dy-
   flag=0;
-  for (i=-3;i<=3 && flag<4;i++)
+  for (i=-3;i<=3 && flag<4;++i)
   {
     xx=x+i;
     if (xx>=0 && xx<FIELD_SIZE_X)
@@ -622,7 +622,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
       if (y>=0 && y<FIELD_SIZE_Y)
       {
         c=getColour(xx,y);
-        if (c==col) flag++;
+        if (c==col) ++flag;
         else flag=0;
       }
     }
@@ -633,7 +633,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
     y=mFieldFilled.at(x)-1;
     winc=getColour(x,y);
     int cnt=0;
-    for (i=0;i<4;i++)
+    for (i=0;i<4;++i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -642,11 +642,11 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
         if (y>=FIELD_SIZE_Y) break;
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
-    for (i=-1;i>-4 && cnt<4;i--)
+    for (i=-1;i>-4 && cnt<4;--i)
     {
       xx=x+i;
       if (xx>=0 && xx<FIELD_SIZE_X)
@@ -655,7 +655,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
         if (y<0) break;
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
@@ -1056,9 +1056,9 @@ void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
   stream << learnPath;
 
   int i,j;
-  for (i=0;i<FIELD_SIZE_Y;i++)
+  for (i=0;i<FIELD_SIZE_Y;++i)
   {
-    for (j=0;j<FIELD_SIZE_X;j++)
+    for (j=0;j<FIELD_SIZE_X;++j)
     {
        qint8 col;
        col=getColour(j,i);
@@ -1346,14 +1346,14 @@ bool KWin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
   int cnt=0;
   while(undoMove())
   {
-    cnt++;
+    ++cnt;
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Undoing move "<<cnt;
   }
   if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "amzug ="<<mAmzug.value();
   while(cnt>0)
   {
     redoMove();
-    cnt--;
+    --cnt;
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "Redoing move "<<cnt;
   }
   if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "amzug ="<<mAmzug.value();
@@ -1390,7 +1390,7 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "ADMIN keeps yellow and kicks red=" << red->id()<<" userId/col="<<red->userId();
     // loop all client players and deactivate the one which have the color
     // yellow
-    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); it++ ) 
+    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); ++it )
     {
       KPlayer *player = *it;
       if (player->userId()==yellow->userId()) 
@@ -1407,7 +1407,7 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "ADMIN keeps red and kicks yellow=" << yellow->id()<<" userId/col="<<yellow->userId();
     // loop all client players and deactivate the one which have the color
     // red
-    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); it++ ) 
+    for ( KGamePlayerList::const_iterator it = newList->constBegin(); it != newList->constEnd(); ++it )
     {
       KPlayer *player = *it;
       if (player->userId()==red->userId()) 
