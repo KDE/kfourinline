@@ -608,9 +608,9 @@ void KWin4App::askForHint()
 // Show statistics dialog
 void KWin4App::showStatistics()
 {
-  QDialog dlg(this);
+  QPointer<QDialog> dlg = new QDialog(this);
   Ui::Statistics ui;
-  ui.setupUi(&dlg);
+  ui.setupUi(dlg);
 
   ui.p1_name->setText(mDoc->getName(Yellow));
   ui.p1_won->display(mDoc->getStatistic(Yellow, TWin));
@@ -626,10 +626,11 @@ void KWin4App::showStatistics()
   ui.p2_aborted->display(mDoc->getStatistic(Red, TBrk));
   ui.p2_sum->display(mDoc->getStatistic(Red, TSum));
 
-  if(dlg.exec() == QDialog::Rejected)
+  if(dlg->exec() == QDialog::Rejected)
   {
     mDoc->resetStatistic();
   }
+  delete dlg;
 }
 
 
