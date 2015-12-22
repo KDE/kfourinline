@@ -167,7 +167,7 @@ void ButtonSprite::changeFrame()
 }
 
 
-// Hover enter event recevied
+// Hover enter event received
 void ButtonSprite::hoverEnterEvent(QMouseEvent* /*event*/)  
 {
   mHover = true;

@@ -62,7 +62,7 @@ void AIBoard::fromField(uchar current, bool mirror, const char field[][7])
   for (int y=0;y<=5;y++)
   {
     ushort tmp = 0;
-    // Loop coloums
+    // Loop columns
     for (int x=0; x<=6; x++)
     {
       tmp = tmp << 2;
@@ -96,7 +96,7 @@ AIBoard AIBoard::mirror() const
   {
     ushort tmp  = mBoard[y];
     ushort ntmp = 0;
-    // Loop coloums
+    // Loop columns
     for (int x=0; x<=6; x++)
     {
       ntmp = ntmp << 2;

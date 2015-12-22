@@ -316,8 +316,7 @@ class KWin4Doc : public KGame
 
   protected slots:  
     /** Initiate a repeate of the move. This happens if somehow the player
-      * input created an invalid move. The the same player has to input
-      * again.
+      * input created an invalid move. The same player has to input again.
       */
     void repeatMove();
 

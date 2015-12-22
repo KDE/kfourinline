@@ -118,16 +118,16 @@ class KWin4View : public QGraphicsView, public virtual Themeable
 
     /** Enable reflections on the given position. If width or height is zero
       * the reflections are disabled.
-      * @param x      The The x position of the reflection  [screen coord]
-      * @param y      The The y position of the reflection  [screen coord]
-      * @param width  The The width of the reflection  [screen coord]
-      * @param height The The height of the reflection  [screen coord]
+      * @param x      The x position of the reflection  [screen coord]
+      * @param y      The y position of the reflection  [screen coord]
+      * @param width  The width of the reflection  [screen coord]
+      * @param height The height of the reflection  [screen coord]
       */
     void setReflection(int x, int y, int width, int height);
 
   signals:
     /** Emit this signal if a sprite animation move is finished.
-      * @param mode  A user defined parameter.
+      * @param mode  A user-defined parameter.
       */
     void signalMoveDone(int mode);
 

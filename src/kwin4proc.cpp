@@ -93,7 +93,7 @@ KComputer::KComputer()
 }
 
 
-// Recevied init command (unused)
+// Received init command (unused)
 void KComputer::slotInit(QDataStream & /*in */,int /*id*/)
 {
   /*
