@@ -538,7 +538,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
       {
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
@@ -549,7 +549,7 @@ int KWin4Doc::checkGameOver(int x, COLOUR col)
       {
         if (getColour(xx,y)!=winc) break;
         pView->displayStar(xx,y,star++);
-        cnt++;
+        ++cnt;
       }
       else break;
     }
@@ -1175,7 +1175,7 @@ void KWin4Doc::clientConnected(quint32 cid, KGame* /* me */)
 // users id's
 KWin4Player* KWin4Doc::getPlayer(COLOUR col)
 {
- for (KGamePlayerList::const_iterator it = playerList()->constBegin(); it!= playerList()->constEnd(); it++ )
+ for (KGamePlayerList::const_iterator it = playerList()->constBegin(); it!= playerList()->constEnd(); ++it )
  {
    if ((*it)->userId()==col)
      return (KWin4Player *)(*it);
