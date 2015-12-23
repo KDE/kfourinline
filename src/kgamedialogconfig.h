@@ -139,7 +139,7 @@ class KGameDialogNetworkConfig : public KGameDialogConfig
 {
 	Q_OBJECT
 public:
-	KGameDialogNetworkConfig(QWidget* parent = 0);
+	explicit KGameDialogNetworkConfig(QWidget* parent = 0);
 	virtual ~KGameDialogNetworkConfig();
 
 
