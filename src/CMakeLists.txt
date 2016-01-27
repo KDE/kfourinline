@@ -26,7 +26,8 @@ set(kwin4_SRCS
    kgameconnectdialog.cpp
    kchatdialog.cpp
    pixmapsprite.cpp
-   kfontutils.cpp)
+   kfontutils.cpp
+)
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
@@ -41,11 +42,13 @@ add_executable(kfourinline ${kwin4_SRCS})
 
 target_link_libraries(kfourinline 
    KF5::KIOCore
+   KF5::Crash
    KF5::DNSSD
    KF5::KDELibs4Support
    KF5KDEGames
    KF5KDEGamesPrivate
-   Qt5::Svg)
+   Qt5::Svg
+)
 
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
@@ -55,7 +58,8 @@ install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 set(kwin4proc_SRCS 
     aiboard.cpp
     kgameprocess.cpp
-    kwin4proc.cpp )
+    kwin4proc.cpp
+)
 
 add_executable(kfourinlineproc ${kwin4proc_SRCS})
 

@@ -37,7 +37,7 @@
   */
 
 #include <KAboutData>
-
+#include <KCrash>
 
 #include "kfourinline_debug.h"
 #include <KLocalizedString>
@@ -82,6 +82,7 @@ int main(int argc, char *argv[])
   aboutData.setHomepage(QStringLiteral("http://games.kde.org/kfourinline"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
     parser.addVersionOption();
     parser.addHelpOption();
   parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("d") << QStringLiteral("debug"), i18n("Enter debug level"), QStringLiteral("level")));
