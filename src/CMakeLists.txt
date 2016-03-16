@@ -40,8 +40,7 @@ ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kfourinline ${kwin4_SRCS})
 
-target_link_libraries(kfourinline 
-   KF5::KIOCore
+target_link_libraries(kfourinline
    KF5::Crash
    KF5::DNSSD
    KF5::KDELibs4Support

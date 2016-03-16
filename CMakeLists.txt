@@ -7,23 +7,16 @@ set (KF5_MIN_VERSION "5.15.0")
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Config
     Crash
-    ItemModels
-    DBusAddons
-    Declarative
     I18n
     ConfigWidgets
-    ItemViews
-    IconThemes
     Completion
     XmlGui
     DNSSD
-    KIO
-    NotifyConfig
     KDELibs4Support
     DocTools
 )
