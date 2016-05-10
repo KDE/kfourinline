@@ -1,14 +1,12 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY kappname "&kfourinline;">
-<!ENTITY package "kdegames">
 <!ENTITY % English "INCLUDE"> 
 <!ENTITY % addindex "IGNORE">
 ]>
 
 <book id="kfourinline" lang="&language;">
 <bookinfo>
-<title>The KFourInLine Handbook</title>
+<title>The &kfourinline; Handbook</title>
 
 <authorgroup>
 <author>
@@ -51,8 +49,8 @@
     
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-05-05</date>
-<releaseinfo>1.4.0 (&kde; 4.11)</releaseinfo>
+<date>2016-05-09</date>
+<releaseinfo>v1.4.1 (Applications 16.041)</releaseinfo>
 
 <abstract>
 <para>
@@ -96,6 +94,18 @@ placed on a board. The game can also be played against a computer.
 
 <chapter id="howtoplay">
 <title>How to Play</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>&kfourinline; Game Board</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
 <para>
 When &kfourinline; loads, you can select the difficulty or start a two player game. If you like,
 you can also pick your color and select which color starts the game.
@@ -380,6 +390,18 @@ of the &kde; Fundamentals.
 <chapter id="config">
 <title>Game Configuration</title>
 <para>&kfourinline; can be configured using the configuration dialog with <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase>Game Configuration</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
 <para><guilabel>Starting Player Color</guilabel>: Determine which  player color (<guilabel>Red</guilabel> or <guilabel>Black</guilabel>) has the first move in the next game.</para>
 <para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
 <para><guilabel>Black Plays With</guilabel>: 
@@ -467,25 +489,6 @@ Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer
 &underGPL;
 
 </chapter>
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-kfourinline">
-<title>How to obtain &kfourinline;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-</appendix>
-
 
 &documentation.index; 
 </book>
