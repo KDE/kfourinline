@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY % English "INCLUDE"> 
+<!ENTITY % English "INCLUDE">
 <!ENTITY % addindex "IGNORE">
 ]>
 
@@ -46,7 +46,7 @@
 <year>1995</year><year>2007</year>
 <holder>&Martin.Heni;</holder>
 </copyright>
-    
+
 <legalnotice>&FDLNotice;</legalnotice>
 
 <date>2016-05-09</date>
@@ -112,9 +112,9 @@ you can also pick your color and select which color starts the game.
 </para>
 
 <para>
-Each player is represented by a color (for example yellow or white for player one and red for player two).  
+Each player is represented by a color (for example yellow or white for player one and red for player two).
 The goal of the game is to get four connected pieces of your color into any row, column or
-diagonal.  
+diagonal.
 The players move in turns. Each turn the player can place one of his or her pieces
 into any of the seven columns where each piece will fall to the lowest possible free place &ie; it
 will fall down until it reaches the ground level or another piece.
@@ -149,7 +149,7 @@ colored arrow shows were the last piece had been put.
 </para>
 
 <para>
-The <firstterm>status display</firstterm> shows which player 
+The <firstterm>status display</firstterm> shows which player
 is controlled by which input device. A local player can input moves using
 keyboard or mouse, a remote player is shown as network input and finally
 the computer can control the input for a player.
@@ -168,10 +168,10 @@ which player is next to play.
 
 <para>
 It is possible to play the game over a network connection with another
-computer. 
+computer.
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
-in the menu 
+in the menu
 <menuchoice><guimenu>Settings</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
 In the menu
 <menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat...</guimenuitem></menuchoice>.
@@ -211,7 +211,7 @@ incoming connections.
 <para>
 Starts a new game. In a network game this option is only available for
 the network server. The network client will be automatically started by
-the server.  
+the server.
 </para>
 </listitem>
 </varlistentry>
@@ -368,7 +368,7 @@ the computer.
 <para>
 Pops up a dialog for the network configuration. You can choose to be
 server or client. If you are server you can also choose what color the
-remote player should take over. If a network game is running you can 
+remote player should take over. If a network game is running you can
 also disconnect it in this menu.
 </para>
 </listitem>
@@ -377,7 +377,7 @@ also disconnect it in this menu.
 </variablelist>
 
 <para>
-Additionally &kappname; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+Additionally &kfourinline; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
 menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings"
 >Settings Menu</ulink> and <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
 of the &kde; Fundamentals.
@@ -404,7 +404,7 @@ of the &kde; Fundamentals.
 
 <para><guilabel>Starting Player Color</guilabel>: Determine which  player color (<guilabel>Red</guilabel> or <guilabel>Black</guilabel>) has the first move in the next game.</para>
 <para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
-<para><guilabel>Black Plays With</guilabel>: 
+<para><guilabel>Black Plays With</guilabel>:
 Choose who should play for player 1. It can be either
 <guilabel>Mouse</guilabel> or <guilabel>Keyboard</guilabel>,
 &ie; a local player using the mouse or keyboard
@@ -455,7 +455,7 @@ I have lost control of who is in the lead, can I find it out?
 </question>
 <answer>
 <para>
-Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and 
+Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and
 selecting <guimenuitem>Show Statistics</guimenuitem>.
 </para>
 </answer>
@@ -490,7 +490,7 @@ Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer
 
 </chapter>
 
-&documentation.index; 
+&documentation.index;
 </book>
 <!--
 Local Variables:
