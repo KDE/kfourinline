@@ -91,6 +91,8 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  connect(d->mClientName, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KGameConnectWidget::slotGameSelected);
  QLabel* label = new QLabel(i18n("Port to connect to:"), g);
  d->mPort = new QSpinBox(g);
+ d->mPort->setMinimum(1024);
+ d->mPort->setMaximum(65535);
  layout->addWidget(label, 2, 0);
  layout->addWidget(d->mPort, 2, 1);
  label = new QLabel(i18n("Host to connect to:"), g);
