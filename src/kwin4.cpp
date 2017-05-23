@@ -352,12 +352,13 @@ void KWin4App::initGUI()
   QStringList themes(mThemeFiles.keys());
   themes.sort();
 
-  action = actionCollection()->addAction( QStringLiteral( "theme" ) , new KSelectAction(i18n("Theme" ), this));
-  action->setIcon(QIcon::fromTheme( QStringLiteral( "games-config-theme" )));
-  ((KSelectAction*)action)->setItems(themes);
-  connect(action, &QAction::triggered, this, &KWin4App::changeTheme);
+  KSelectAction *themeAction = new KSelectAction(i18n("Theme" ), this);
+  actionCollection()->addAction( QStringLiteral( "theme" ) , themeAction );
+  themeAction->setIcon(QIcon::fromTheme( QStringLiteral( "games-config-theme" )));
+  themeAction->setItems(themes);
+  connect(themeAction, static_cast<void (KSelectAction::*)(int)>(&KSelectAction::triggered), this, &KWin4App::changeTheme);
   qCDebug(KFOURINLINE_LOG) << "Setting current theme item to" << mThemeIndexNo;
-  ((KSelectAction*)action)->setCurrentItem(mThemeIndexNo);
+  themeAction->setCurrentItem(mThemeIndexNo);
 
   // Debug
   if (global_debug>0)
