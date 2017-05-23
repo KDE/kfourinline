@@ -22,12 +22,11 @@
 
 #include <QList>
 #include <QPushButton>
+#include <QVBoxLayout>
 
 #include <KLocalizedString>
-#include <kvbox.h>
 
 #include "kfourinline_debug.h"
-
 #include "kgamedialogconfig.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -48,7 +47,7 @@ public:
 		mGame = 0;
 	}
 
-	KVBox* mNetworkPage;
+	QWidget* mNetworkPage;
 	KGameDialogNetworkConfig* mNetworkConfig;
 
 // a list of all config widgets added to this dialog
@@ -107,18 +106,20 @@ void KGameDialog::addNetworkConfig(KGameDialogNetworkConfig* netConf)
  d->mNetworkPage = addConfigPage(netConf, i18n("&Network"));
 }
 
-KVBox *KGameDialog::configPage()
+QWidget* KGameDialog::configPage()
 {
  return d->mNetworkPage;
 }
 
-KVBox* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& title)
+QWidget* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& title)
 {
  if (!widget) {
 	qCCritical(KFOURINLINE_LOG) << "Cannot add NULL config widget";
 	return 0;
  }
- KVBox* page = new KVBox();
+ QWidget* page = new QWidget();
+ QVBoxLayout *pageVBoxLayout = new QVBoxLayout(page);
+ pageVBoxLayout->setMargin(0);
  addPage(page,title);
  addConfigWidget(widget, page);
  return page;

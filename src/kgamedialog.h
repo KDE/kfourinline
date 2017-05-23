@@ -35,7 +35,7 @@
 
 class QGridLayout;
 class QVBoxLayout;
-class KVBox;
+
 
 class KGame;
 class KPlayer;
@@ -145,13 +145,13 @@ public:
 	 * @param title The title of the newly added page.
 	 * @return The newly added page which contains your config widget.
 	 **/
-	KVBox* addConfigPage(KGameDialogConfig* widget, const QString& title);
+	QWidget * addConfigPage(KGameDialogConfig* widget, const QString& title);
 
 	/**
 	 * @return The QVBox of the given key, The key is from ConfigOptions
 	 * Note that not all are supported yet
 	 **/
-	KVBox *configPage();
+	QWidget *configPage();
 
 	/**
 	 * @return The default netowrk config. Note that this always returns 0 if

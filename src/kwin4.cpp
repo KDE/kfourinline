@@ -27,6 +27,7 @@
 #include <QRadioButton>
 #include <QStatusBar>
 #include <QTimer>
+#include <QVBoxLayout>
 
 // KDE includes
 #include <KActionCollection>
@@ -38,7 +39,6 @@
 #include <KSelectAction>
 #include <KStandardAction>
 #include <KStandardGameAction>
-#include <kvbox.h>
 #include <kfiledialog.h>
 #include <kbuttongroup.h>
 #include <kstandarddirs.h>
@@ -791,7 +791,7 @@ void KWin4App::configureNetwork()
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo(QStringLiteral("_kfourinline._tcp"),Prefs::gamename());
 
-  KVBox *box=dlg.configPage();
+  QWidget *box=dlg.configPage();
   QLayout *l=box->layout();
 
   mColorGroup=new KButtonGroup(box);
