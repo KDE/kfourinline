@@ -21,10 +21,10 @@
 */
 
 // Qt includes
-#include <QPointF>
-#include <QTime>
-#include <QList>
 #include <QGraphicsPixmapItem>
+#include <QPointF>
+#include <QList>
+#include <QTime>
 
 // Local includes
 #include "thememanager.h"

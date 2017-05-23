@@ -21,13 +21,12 @@
 // Header includes
 #include "score.h"
 
-// KDE includes
-#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>
 
 // Local includes
+#include "kfourinline_debug.h"
 #include "scoresprite.h"
 
 // Construct a score object

@@ -30,13 +30,12 @@
 
 
 #include <KLocalizedString>
-#include <kmessagebox.h>
-#include <klineedit.h>
+#include <KMessageBox>
 
-#include <QLabel>
-#include <QPushButton>
 #include <QGroupBox>
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
 #include <QVBoxLayout>
 
 

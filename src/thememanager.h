@@ -21,13 +21,13 @@
 */
 
 // Qt includes
-#include <QObject>
-#include <QSvgRenderer>
 #include <QHash>
+#include <QObject>
 #include <QPoint>
+#include <QSvgRenderer>
 
 // KDE includes
-#include <kconfig.h>
+#include <KConfig>
 
 
 class ThemeManager;

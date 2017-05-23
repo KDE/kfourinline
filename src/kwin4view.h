@@ -22,19 +22,18 @@
 #define KWIN4_KWIN4VIEW_H
 
 // Qt includes
-#include <QWidget>
-#include <QGraphicsView>
-#include <QRect>
-#include <QSize>
-#include <QPoint>
-#include <QResizeEvent>
 #include <QDataStream>
-#include <QMouseEvent>
 #include <QGraphicsPixmapItem>
-#include <QLinearGradient>
+#include <QGraphicsView>
 #include <QImage>
+#include <QLinearGradient>
+#include <QMouseEvent>
+#include <QPoint>
+#include <QRect>
+#include <QResizeEvent>
+#include <QSize>
 #include <QTimer>
-
+#include <QWidget>
 
 // KDE includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API

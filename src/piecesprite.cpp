@@ -20,14 +20,10 @@
 
 // Header includes
 #include "piecesprite.h"
+#include "kfourinline_debug.h"
 
 // General includes
-#include <math.h>
-
-// Qt includes
-
-// KDE includes
-#include "kfourinline_debug.h"
+#include <cmath>
 
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)
     :  Themeable(id, theme), PixmapSprite(no, canvas)

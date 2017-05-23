@@ -25,8 +25,8 @@
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kmessageio.h>
 
-#include <QObject>
 #include <QFile>
+#include <QObject>
 
 class KRandomSequence;
 

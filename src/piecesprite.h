@@ -21,8 +21,8 @@
 */
 
 // Qt includes
-#include <QPointF>
 #include <QGraphicsPixmapItem>
+#include <QPointF>
 
 // Local includes
 #include "thememanager.h"

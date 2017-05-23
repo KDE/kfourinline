@@ -38,14 +38,15 @@
 
 #include <KAboutData>
 #include <KCrash>
-
-#include "kfourinline_debug.h"
+#include <Kdelibs4ConfigMigrator>
 #include <KLocalizedString>
+
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-#include <Kdelibs4ConfigMigrator>
+
 #include "kwin4.h"
+#include "kfourinline_debug.h"
 
 #define KWIN4_VERSION "v1.41"
 

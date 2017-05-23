@@ -20,15 +20,14 @@
 
 // Header includes
 #include "introsprite.h"
+#include "kfourinline_debug.h"
 
 // General includes
-#include <math.h>
+#include <cmath>
 
-// Qt includes
 
 // KDE includes
-#include "kfourinline_debug.h"
-#include <kconfig.h>
+#include <KConfig>
 
 #define sign(x) ( (x)>0?1:((x)<0?-1:0) )
 

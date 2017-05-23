@@ -21,7 +21,7 @@
 #ifndef __KGAMEDEBUGDIALOG_H__
 #define __KGAMEDEBUGDIALOG_H__
 
-#include <kpagedialog.h>
+#include <KPageDialog>
 
 class QListWidgetItem;
 

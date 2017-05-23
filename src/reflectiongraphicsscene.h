@@ -21,11 +21,11 @@
 */
 
 // Qt includes
-#include <QWidget>
-#include <QGraphicsScene>
-#include <QStyleOptionGraphicsItem>
-#include <QGraphicsTextItem>
 #include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QGraphicsTextItem>
+#include <QStyleOptionGraphicsItem>
+#include <QWidget>
 
 
 class QPainter;

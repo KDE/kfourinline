@@ -22,19 +22,18 @@
 #include "thememanager.h"
 
 // General includes
-// #include <typeinfo>
+#include "kfourinline_debug.h"
 
 // Qt includes
 #include <QImage>
-#include <QPixmap>
 #include <QPainter>
+#include <QPixmap>
 #include <QRectF>
 
 // KDE includes
-#include "kfourinline_debug.h"
-#include <kstandarddirs.h>
-#include <kconfiggroup.h>
+#include <KConfigGroup>
 #include <KLocalizedString>
+#include <kstandarddirs.h>
 
 // Local includes
 #include "kwin4global.h"

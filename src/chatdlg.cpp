@@ -22,23 +22,22 @@
 #include "chatdlg.h"
 
 // include files for QT
-#include <QPushButton>
-#include <QGroupBox>
+#include <QDialogButtonBox>
 #include <QGridLayout>
+#include <QGroupBox>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 // include files for KDE
+#include <KConfigGroup>
 #include <KLocalizedString>
-#include "kfourinline_debug.h"
-
-#include "kchatdialog.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
-#include <KConfigGroup>
-#include <QDialogButtonBox>
-#include <QVBoxLayout>
 
 // application specific includes
+#include "kfourinline_debug.h"
+#include "kchatdialog.h"
 #include "kwin4player.h"
 
 

@@ -22,29 +22,27 @@
 #include "kwin4.h"
 
 // Qt includes
-#include <QRadioButton>
+#include <QIcon>
 #include <QLayout>
+#include <QRadioButton>
+#include <QStatusBar>
 #include <QTimer>
 
 // KDE includes
-#include <kvbox.h>
-#include <kstandardgameaction.h>
-#include <kmessagebox.h>
-#include <kfiledialog.h>
+#include <KActionCollection>
+#include <KConfig>
+#include <KConfigDialog>
+#include <KHelpMenu>
 #include <KLocalizedString>
-#include <khelpmenu.h>
-#include <kconfig.h>
-#include "kfourinline_debug.h"
-#include <kstandardaction.h>
-#include <kaction.h>
-#include <kstatusbar.h>
-#include <kconfigdialog.h>
-#include <kactioncollection.h>
+#include <KMessageBox>
+#include <KSelectAction>
+#include <KStandardAction>
+#include <KStandardGameAction>
+#include <kvbox.h>
+#include <kfiledialog.h>
 #include <kbuttongroup.h>
-#include <QIcon>
 #include <kstandarddirs.h>
 #include <kglobal.h>
-#include <kselectaction.h>
 
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -61,6 +59,7 @@
 #include "prefs.h"
 #include "ui_settings.h"
 #include "ui_statistics.h"
+#include "kfourinline_debug.h"
 
 // Abbreviations
 #define ACTION(x)   (actionCollection()->action(x))
@@ -71,7 +70,7 @@
 #define UPDATE_TIME  25   /* [ms] */
 
 // Configuration file
-#include <config-src.h>
+#include "config-src.h"
 
 // Construct the main application window
 KWin4App::KWin4App(QWidget *parent)

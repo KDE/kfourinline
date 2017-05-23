@@ -16,6 +16,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     ConfigWidgets
     Completion
     XmlGui
+    WidgetsAddons
     DNSSD
     KDELibs4Support
     DocTools

@@ -20,18 +20,18 @@
 
 // Header includes
 #include "scoresprite.h"
+#include "kfourinline_debug.h"
 
 // General includes
-#include <math.h>
+#include <cmath>
 
 // Qt includes
 #include <QFont>
 #include <QGraphicsScene>
 
 // KDE includes
-#include "kfourinline_debug.h"
-#include <kconfig.h>
-#include <kconfiggroup.h>
+#include <KConfig>
+#include <KConfigGroup>
 #include <KLocalizedString>
 
 // Constructor for the score sprite

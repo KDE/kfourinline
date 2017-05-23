@@ -20,10 +20,6 @@
 
 // Header includes
 #include "spritenotify.h"
-
-// Qt includes
-
-// KDE includes
 #include "kfourinline_debug.h"
 
 // Construct the object

@@ -21,11 +21,12 @@
  *********************************************************************************/
 
 #include "kfontutils.h"
-
-#include <qpainter.h>
 #include "kfourinline_debug.h"
+
 #include <limits>
+
 #include <QGraphicsTextItem>
+#include <QPainter>
 
 qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal height, qreal maxFontSize, qreal minFontSize, qreal precision)
 {

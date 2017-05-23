@@ -22,7 +22,7 @@
 #define KWIN4_PLAYER_H
 
 // KDE includes
-#include <kconfiggroup.h>
+#include <KConfigGroup>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kplayer.h>

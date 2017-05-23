@@ -30,15 +30,15 @@
 #include <KLocalizedString>
 #include <KStandardGuiItem>
 
-#include <QPushButton>
-#include <QListWidget>
-#include <QTreeWidget>
-#include <QGridLayout>
-#include <QTime>
-#include <QLabel>
-#include <QVBoxLayout>
 #include <QFrame>
+#include <QGridLayout>
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QListWidget>
+#include <QPushButton>
+#include <QTime>
+#include <QTreeWidget>
+#include <QVBoxLayout>
 
 #include <typeinfo>
 

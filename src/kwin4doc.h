@@ -25,7 +25,7 @@
 #include <QVector>
 
 // KDE includes
-#include <kconfig.h>
+#include <KConfig>
 
 #include "kgamepropertyarray.h"
 

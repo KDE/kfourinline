@@ -22,7 +22,7 @@
 #define KWIN4_H
 
 // KDE includes
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>

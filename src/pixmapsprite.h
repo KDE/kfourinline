@@ -21,8 +21,8 @@
 */
 
 // Qt includes
-#include <QPointF>
 #include <QGraphicsPixmapItem>
+#include <QPointF>
 #include <QTime>
 
 // Local includes

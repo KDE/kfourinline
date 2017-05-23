@@ -22,7 +22,7 @@
 #include "kwin4view.h"
 
 // Standard includes
-#include <math.h>
+#include <cmath>
 
 // Qt includes
 #include <QColor>

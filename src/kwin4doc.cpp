@@ -30,24 +30,23 @@
 
 // include files for Qt
 #include <QDir>
-#include <QTimer>
 #include <QKeyEvent>
 #include <QList>
+#include <QStandardPaths>
+#include <QTimer>
 
 // include files for KDE
 #include <KLocalizedString>
-
-#include "kfourinline_debug.h"
-#include <krandomsequence.h>
+#include <KRandomSequence>
 
 // application specific includes
+#include "kfourinline_debug.h"
 #include "kwin4view.h"
 #include "scoresprite.h"
 #include "prefs.h"
 #include "score.h"
 #include "ui_statuswidget.h"
-#include <config-src.h>
-#include <QStandardPaths>
+#include "config-src.h"
 
 
 #define FIELD_SIZE_X 7

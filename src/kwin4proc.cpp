@@ -22,21 +22,21 @@
 #include "kwin4proc.h"
 
 // Standard includes
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cmath>
+#include <cstdio>
+#include <cstdlib>
+#include <string>
 
 // Qt includes
-#include <QDataStream>
 #include <QByteArray>
-#include <QTime>
-#include <QMutex>
-#include <QWaitCondition>
+#include <QDataStream>
 #include <QFile>
+#include <QMutex>
+#include <QTime>
+#include <QWaitCondition>
 
 // KDE includes
-#include <krandomsequence.h>
+#include <KRandomSequence>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>

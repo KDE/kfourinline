@@ -26,11 +26,11 @@
 #include <QDataStream>
 #include <QFile>
 
-#include <assert.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cassert>
+#include <cstdio>
+#include <cstdlib>
+#include <string>
 #include <unistd.h>
-#include <string.h>
 
 #define READ_BUFFER_SIZE  1024
 

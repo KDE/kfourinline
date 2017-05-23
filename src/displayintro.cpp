@@ -27,27 +27,25 @@
 #include "buttonsprite.h"
 #include "prefs.h"
 #include "kfontutils.h"
+#include "kfourinline_debug.h"
 
 // Standard includes
-#include <math.h>
+#include <cmath>
 
 // Qt includes
-#include <QFont>
 #include <QColor>
+#include <QEvent>
+#include <QFont>
+#include <QGraphicsView>
+#include <QMouseEvent>
 #include <QPixmap>
 #include <QPoint>
-#include <QGraphicsView>
 #include <QStringList>
-#include <QEvent>
-#include <QTimer>
-#include <QMouseEvent>
 #include <QTextDocument>
-
+#include <QTimer>
 
 // KDE includes
 #include <KLocalizedString>
-#include "kfourinline_debug.h"
-
 
 
 // Constructor for the intro display

@@ -18,19 +18,19 @@
 */
 
 #include "kchatdialog.h"
+#include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatbase.h>
 
 #include <KLocalizedString>
-#include <qfontdialog.h>
-#include "kfourinline_debug.h"
-#include <klineedit.h>
 
-#include <QLayout>
-#include <QLabel>
-#include <QPushButton>
+#include <QFontDialog>
 #include <QFrame>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
 
 class KChatDialogPrivate
 {
@@ -54,7 +54,7 @@ class KChatDialogPrivate
 	QLabel* mSystemNamePreview;
 	QLabel* mSystemTextPreview;
 
-	KLineEdit* mMaxMessages;
+	QLineEdit* mMaxMessages;
 
 	KChatBase* mChat;
 };
@@ -135,7 +135,7 @@ void KChatDialog::init()
 // message count
  QLabel* maxMessages = new QLabel(i18n("Maximum number of messages (-1 = unlimited):"), d->mTextPage);
  layout->addWidget(maxMessages, 6, 0);
- d->mMaxMessages = new KLineEdit(d->mTextPage);
+ d->mMaxMessages = new QLineEdit(d->mTextPage);
  d->mMaxMessages->setText(QString::number(-1));
  layout->addWidget(d->mMaxMessages, 6, 1);
  connect(this, &KChatDialog::applyClicked, this, &KChatDialog::slotApply);

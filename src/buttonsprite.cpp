@@ -21,9 +21,10 @@
 // Header includes
 #include "buttonsprite.h"
 #include "kfontutils.h"
+#include "kfourinline_debug.h"
 
 // General includes
-#include <math.h>
+#include <cmath>
 
 // Qt includes
 #include <QFont>
@@ -31,9 +32,8 @@
 #include <QGraphicsScene>
 
 // KDE includes
-#include "kfourinline_debug.h"
-#include <kconfig.h>
-#include <kconfiggroup.h>
+#include <KConfig>
+#include <KConfigGroup>
 
 // Constructor for the score sprite
 ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)

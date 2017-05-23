@@ -21,15 +21,13 @@
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
-#include <math.h>
+#include <cmath>
 
 // Qt includes
 #include <QHash>
 
-// KDE includes
-#include "kgameprocess.h"
-
 // Local includes
+#include "kgameprocess.h"
 #include "kwin4global.h"
 #include "aiboard.h"
 

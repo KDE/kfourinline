@@ -22,8 +22,8 @@
 #include "displaygame.h"
 
 // Standard includes
-#include <math.h>
-#include <assert.h>
+#include <cmath>
+#include <cassert>
 
 // Qt includes
 #include <QColor>

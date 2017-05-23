@@ -22,7 +22,7 @@
 #include "aiboard.h"
 
 // Standard includes
-#include <stdio.h>
+#include <cstdio>
 
 // KDE includes
 #include "kfourinline_debug.h"

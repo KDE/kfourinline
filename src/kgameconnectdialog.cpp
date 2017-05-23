@@ -20,19 +20,20 @@
 
 #include "kgameconnectdialog.h"
 #include "kfourinline_debug.h"
-#include <KLocalizedString>
-#include <klineedit.h>
 
-#include <QComboBox>
-#include <qradiobutton.h>
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QList>
+#include <DNSSD/ServiceBrowser>
+#include <KLocalizedString>
+
 #include <QButtonGroup>
-#include <dnssd/servicebrowser.h>
-#include <QPushButton>
+#include <QComboBox>
 #include <QGroupBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QList>
+#include <QPushButton>
 #include <QSpinBox>
+#include <QRadioButton>
+#include <QVBoxLayout>
 
 class KGameConnectWidgetPrivate
 {
@@ -46,13 +47,13 @@ class KGameConnectWidgetPrivate
 	}
 
 	QSpinBox* mPort;
-	KLineEdit* mHost;
+	QLineEdit* mHost;
 	QButtonGroup* mButtonGroup;
 	QComboBox *mClientName;
 	QLabel *mClientNameLabel;
 	KDNSSD::ServiceBrowser *mBrowser;
 	QLabel *mServerNameLabel;
-	KLineEdit *mServerName;
+	QLineEdit *mServerName;
 	QString mType;
 };
 
@@ -78,7 +79,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  QWidget *g = new QWidget(this);
  vb->addWidget(g);
  d->mServerNameLabel = new QLabel(i18n("Game name:"), g);
- d->mServerName = new KLineEdit(g);
+ d->mServerName = new QLineEdit(g);
  d->mClientNameLabel = new QLabel(i18n("Network games:"), g);
  d->mClientName = new QComboBox(g);
 
@@ -96,7 +97,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  layout->addWidget(label, 2, 0);
  layout->addWidget(d->mPort, 2, 1);
  label = new QLabel(i18n("Host to connect to:"), g);
- d->mHost = new KLineEdit(g);
+ d->mHost = new QLineEdit(g);
  layout->addWidget(label, 3, 0);
  layout->addWidget(d->mHost, 3, 1);
 

@@ -20,8 +20,6 @@
 
 // Header includes
 #include "kwin4player.h"
-
-// KDE includes
 #include "kfourinline_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API

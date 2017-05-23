@@ -41,8 +41,11 @@ ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
 add_executable(kfourinline ${kwin4_SRCS})
 
 target_link_libraries(kfourinline
+   KF5::CoreAddons
    KF5::Crash
    KF5::DNSSD
+   KF5::XmlGui
+   KF5::WidgetsAddons
    KF5::KDELibs4Support
    KF5KDEGames
    KF5KDEGamesPrivate

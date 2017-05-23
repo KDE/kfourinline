@@ -24,7 +24,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>
 
-
 // Local includes
 #include "thememanager.h"
 #include "pixmapsprite.h"

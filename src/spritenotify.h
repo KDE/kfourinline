@@ -21,8 +21,8 @@
 */
 
 // Qt includes
-#include <QObject>
 #include <QGraphicsItem>
+#include <QObject>
 
 
 /** SpriteNotify provides a QObject to a sprite that allows to emit

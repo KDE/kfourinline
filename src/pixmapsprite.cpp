@@ -20,16 +20,17 @@
 
 // Header includes
 #include "pixmapsprite.h"
+#include "kfourinline_debug.h"
 
 // General includes
-#include <math.h>
+#include <cmath>
 
 // Qt includes
 #include <QGraphicsScene>
+
 // KDE includes
-#include "kfourinline_debug.h"
-#include <kconfig.h>
-#include <kconfiggroup.h>
+#include <KConfig>
+#include <KConfigGroup>
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)

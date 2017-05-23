@@ -21,7 +21,6 @@
 // Header includes
 #include "reflectiongraphicsscene.h"
 #include "kwin4global.h"
-
 #include "kfourinline_debug.h"
 
 #include <QPainter>
