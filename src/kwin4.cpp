@@ -41,8 +41,6 @@
 #include <KStandardGameAction>
 #include <kfiledialog.h>
 #include <kbuttongroup.h>
-#include <kstandarddirs.h>
-#include <kglobal.h>
 
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -88,18 +86,13 @@ KWin4App::KWin4App(QWidget *parent)
   (void)I18N_NOOP2("default name of first player", "Player 1");
   (void)I18N_NOOP2("default name of second player", "Player 2");
 
-  // Add resource type to grafix
-  KGlobal::dirs()->addResourceType("kwin4theme", "appdata", "grafix/");
-
-  #ifndef NDEBUG
-  #ifdef SRC_DIR
-  qCDebug(KFOURINLINE_LOG) << "Found SRC_DIR =" << SRC_DIR;
-  KGlobal::dirs()->addResourceDir("kwin4theme",QStringLiteral(SRC_DIR)+QStringLiteral("/grafix/"));
-  #endif
-  #endif
-
   // Read theme files
-  QStringList themeList =  KGlobal::dirs()->findAllResources("kwin4theme", QStringLiteral("*.desktop"), KStandardDirs::NoDuplicates);
+  QStringList themeList;
+  const QString dir = QStandardPaths::locate(QStandardPaths::DataLocation, "grafix", QStandardPaths::LocateDirectory);
+  const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.desktop"));
+  for (const QString& file : fileNames)
+    themeList.append(dir + '/' + file);
+
   if (themeList.isEmpty())
   {
     KMessageBox::error(this, i18n("Installation error: No theme list found."));
@@ -427,7 +420,7 @@ void KWin4App::saveProperties(KConfigGroup& grp)
 
   // Save current game?
   QString name = QStringLiteral("current_game")+grp.name();
-  QString filename = KStandardDirs::locateLocal("appdata", name);
+  QString filename = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + '/' + name;
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (isRunning)
   {
