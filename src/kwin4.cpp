@@ -23,6 +23,7 @@
 
 // Qt includes
 #include <QButtonGroup>
+#include <QFileDialog>
 #include <QGroupBox>
 #include <QIcon>
 #include <QLayout>
@@ -41,7 +42,6 @@
 #include <KSelectAction>
 #include <KStandardAction>
 #include <KStandardGameAction>
-#include <kfiledialog.h>
 
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -495,7 +495,7 @@ void KWin4App::menuOpenGame()
   QString filter(QStringLiteral("*"));
   QString file(QStringLiteral("/tmp/kwin.save"));
   if (global_debug < 1)
-    file=KFileDialog::getOpenFileName(QUrl(dir),filter,this);
+    file = QFileDialog::getOpenFileName(this, QString(), dir, filter);
   mDoc->load(file,true);
   checkMenus();
 }
@@ -507,7 +507,7 @@ void KWin4App::menuSaveGame()
   QString filter(QStringLiteral("*"));
   QString file(QStringLiteral("/tmp/kwin.save"));
   if (global_debug < 1)
-    file=KFileDialog::getSaveFileName(QUrl(dir),filter,this);
+    file = QFileDialog::getSaveFileName(this, QString(), dir, filter);
   mDoc->save(file);
 }
 
