@@ -20,16 +20,18 @@
 #ifndef __KCHATDIALOG_H__
 #define __KCHATDIALOG_H__
 
-#include <kdialog.h>
+#include <QDialog>
+
+class QDialogButtonBox;
+class QVBoxLayout;
 
 class KChatBase;
-
 class KChatDialogPrivate;
 
 /**
  * \class KChatDialog kchatdialog.h <KChatDialog>
  * */
-class KChatDialog : public KDialog
+class KChatDialog : public QDialog
 {
 	Q_OBJECT
 public:
@@ -116,6 +118,8 @@ private:
 
 private:
 	KChatDialogPrivate* const d;
+	QVBoxLayout* mainLayout;
+	QDialogButtonBox* buttonBox;
 };
 
 #endif

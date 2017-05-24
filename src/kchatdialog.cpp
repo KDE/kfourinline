@@ -23,10 +23,13 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatbase.h>
 
+#include <KConfigGroup>
 #include <KLocalizedString>
 
+#include <QDialogButtonBox>
 #include <QFontDialog>
 #include <QFrame>
+#include <QGridLayout>
 #include <QLabel>
 #include <QLayout>
 #include <QLineEdit>
@@ -60,25 +63,20 @@ class KChatDialogPrivate
 };
 
 KChatDialog::KChatDialog(KChatBase* chat, QWidget* parent, bool modal) 
-    : KDialog(parent),
+    : QDialog(parent),
       d( new KChatDialogPrivate )
 {
- setCaption(i18n("Configure Chat"));
- setButtons(Ok|Default|Apply|Cancel);
  setModal(modal);
  init();
  plugChatWidget(chat);
 }
 
 KChatDialog::KChatDialog(QWidget* parent, bool modal) 
-    : KDialog(parent),
+    : QDialog(parent),
       d( new KChatDialogPrivate )
 {
- setCaption(i18n("Configure Chat"));
- setButtons(Ok|Default|Apply|Cancel);
  setModal(modal);
  init();
-//  init();
 }
 
 KChatDialog::~KChatDialog()
@@ -89,8 +87,18 @@ KChatDialog::~KChatDialog()
 void KChatDialog::init()
 {
  d->mTextPage = new QFrame( this );
- setMainWidget( d->mTextPage );
  QGridLayout* layout = new QGridLayout(d->mTextPage);
+
+ setWindowTitle(i18n("Configure Chat"));
+ buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Apply);
+ QWidget *mainWidget = new QWidget(this);
+ setLayout(layout);
+ layout->addWidget(mainWidget);
+ QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+ okButton->setDefault(true);
+ okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
+ connect(buttonBox, &QDialogButtonBox::accepted, this, &KChatDialog::accept);
+ connect(buttonBox, &QDialogButtonBox::rejected, this, &KChatDialog::reject);
 
 // General fonts
  QPushButton* nameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);
@@ -138,8 +146,10 @@ void KChatDialog::init()
  d->mMaxMessages = new QLineEdit(d->mTextPage);
  d->mMaxMessages->setText(QString::number(-1));
  layout->addWidget(d->mMaxMessages, 6, 1);
- connect(this, &KChatDialog::applyClicked, this, &KChatDialog::slotApply);
- connect(this, &KChatDialog::okClicked, this, &KChatDialog::slotOk);
+
+ layout->addWidget(buttonBox, 7, 0, 1, 2);
+ connect(buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &KChatDialog::slotApply);
+ connect(okButton, &QPushButton::clicked, this, &KChatDialog::slotOk);
 }
 
 void KChatDialog::slotGetNameFont()
@@ -229,7 +239,7 @@ void KChatDialog::configureChatWidget(KChatBase* widget)
 void KChatDialog::slotOk()
 {
  slotApply();
- KDialog::accept();
+ QDialog::accept();
 }
 
 void KChatDialog::slotApply()

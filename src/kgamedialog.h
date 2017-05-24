@@ -89,7 +89,7 @@ public:
 	 * @param g The KGame object of this game
 	 * @param owner The KPlayer object who is responsible for this
 	 * dialog, aka "the local player"
-	 * @param title The title of the dialog - see KDialog::setCaption
+	 * @param title The title of the dialog - see QDialog::setWindowTitle
 	 * @param parent The parent of the dialog
 	 * @param modal Whether the dialog is modal or not
 	 * @param initConfigs whether the default KGameDialogConfig widgets
