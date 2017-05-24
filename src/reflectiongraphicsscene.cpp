@@ -40,6 +40,7 @@
 ReflectionGraphicsScene::ReflectionGraphicsScene(int updateTime, QObject * parent) 
                        : QGraphicsScene(parent)
 {
+  Q_UNUSED(updateTime)
   // Initialize
   mBackground = true;
 }
@@ -60,7 +61,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
   QTime time;
   time.start();
   
-  // No relfections call parent function
+  // No reflections call parent function
   QGraphicsScene::drawItems(painter, numItems, items, options, widget);
 
   /*

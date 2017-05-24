@@ -106,7 +106,7 @@ void ScoreSprite::changeTheme()
   QPointF posBreak1   = config.readEntry("posBreak1", QPointF(1.0,1.0));
   QPointF posName0    = config.readEntry("posName0", QPointF(1.0,1.0));
   QPointF posName1    = config.readEntry("posName1", QPointF(1.0,1.0));
-  QPointF posAI       = config.readEntry("posAI", QPointF(1.0,1.0));
+  //QPointF posAI       = config.readEntry("posAI", QPointF(1.0,1.0));
 
   // Calculate proper font size
   double fontHeight = config.readEntry("fontHeight", 1.0);
