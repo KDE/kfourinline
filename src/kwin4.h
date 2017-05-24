@@ -35,7 +35,8 @@
 
 class KWin4Doc;
 class KWin4View;
-class KButtonGroup;
+class QGroupBox;
+
 class KPlayer;
 class KGame;
 class ChatDlg;
@@ -273,7 +274,7 @@ class KWin4App : public KXmlGuiWindow
     ReflectionGraphicsScene* mScene;
 
     // Buttons of the network dialog
-    KButtonGroup *mColorGroup;
+    QGroupBox *mColorGroup;
 
     // The chat dialog
     ChatDlg *mMyChatDlg;

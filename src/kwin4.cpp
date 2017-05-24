@@ -22,6 +22,8 @@
 #include "kwin4.h"
 
 // Qt includes
+#include <QButtonGroup>
+#include <QGroupBox>
 #include <QIcon>
 #include <QLayout>
 #include <QRadioButton>
@@ -40,7 +42,6 @@
 #include <KStandardAction>
 #include <KStandardGameAction>
 #include <kfiledialog.h>
-#include <kbuttongroup.h>
 
 // KGame includes
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -787,9 +788,10 @@ void KWin4App::configureNetwork()
   QWidget *box=dlg.configPage();
   QLayout *l=box->layout();
 
-  mColorGroup=new KButtonGroup(box);
+  mColorGroup=new QGroupBox(box);
+  QButtonGroup *mColorGroupButtonGroup = new QButtonGroup(mColorGroup);
   QVBoxLayout *grouplay=new QVBoxLayout(mColorGroup);
-  connect(mColorGroup, &KButtonGroup::clicked, this, &KWin4App::remoteChanged);
+  connect(mColorGroup, &QGroupBox::clicked, this, &KWin4App::remoteChanged);
   connect(dlg.networkConfig(), &KGameDialogNetworkConfig::signalServerTypeChanged, this, &KWin4App::serverTypeChanged);
 
   QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote player"), mColorGroup);
@@ -797,7 +799,7 @@ void KWin4App::configureNetwork()
   grouplay->addWidget(b1);
   grouplay->addWidget(b2);
   l->addWidget(mColorGroup);
-  mColorGroup->setSelected(0);
+  mColorGroupButtonGroup->button(0)->setChecked(true);
   remoteChanged(0);
 
   dlg.adjustSize();
