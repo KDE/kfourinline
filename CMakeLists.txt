@@ -9,17 +9,16 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_D
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
-    CoreAddons
     Config
-    Crash
-    I18n
     ConfigWidgets
     Completion
+    CoreAddons
+    Crash
+    DNSSD
+    DocTools
+    I18n
     XmlGui
     WidgetsAddons
-    DNSSD
-    KDELibs4Support
-    DocTools
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)

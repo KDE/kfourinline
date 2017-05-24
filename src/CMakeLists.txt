@@ -46,7 +46,6 @@ target_link_libraries(kfourinline
    KF5::DNSSD
    KF5::XmlGui
    KF5::WidgetsAddons
-   KF5::KDELibs4Support
    KF5KDEGames
    KF5KDEGamesPrivate
    Qt5::Svg
@@ -65,7 +64,7 @@ set(kwin4proc_SRCS
 
 add_executable(kfourinlineproc ${kwin4proc_SRCS})
 
-target_link_libraries(kfourinlineproc KF5::KDELibs4Support KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
+target_link_libraries(kfourinlineproc KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
 
 install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 

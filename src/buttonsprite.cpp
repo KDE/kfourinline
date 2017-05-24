@@ -47,7 +47,7 @@ ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* the
   mSignal = new SpriteNotify(this);
 
   setAcceptedMouseButtons(Qt::NoButton);
-  setAcceptsHoverEvents(false);
+  setAcceptHoverEvents(false);
 
   // Create sub sprites
   mText  = new QGraphicsTextItem(this);

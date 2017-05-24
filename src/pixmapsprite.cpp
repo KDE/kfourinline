@@ -38,7 +38,7 @@ PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGrap
 {
   canvas->addItem(this);
   hide();
-  setAcceptsHoverEvents(false);
+  setAcceptHoverEvents(false);
 
   mAnimationState = Idle;
   mNo             = no;
@@ -156,7 +156,7 @@ void PixmapSprite::changeTheme()
   // Set theme offset (probably not really necesary here)
   QPoint offset = thememanager()->getOffset();
   resetTransform();
-  if (mOffsetStatus) translate(offset.x(), offset.y());
+  if (mOffsetStatus) setTransform(QTransform::fromTranslate(offset.x(), offset.y()), true);
 
   // Set pixmap to sprite
   setFrame(mCurrentFrame, true);
@@ -236,11 +236,11 @@ void PixmapSprite::setFrame(int no, bool force)
   resetTransform();
   if (mOffsetStatus)
   {
-    translate(-mHotspots.at(no).x()+offset.x(), -mHotspots.at(no).y()+offset.y());
+    setTransform(QTransform::fromTranslate(-mHotspots.at(no).x()+offset.x(), -mHotspots.at(no).y()+offset.y()), true);
   }
   else 
   {
-    translate(-mHotspots.at(no).x(), -mHotspots.at(no).y());
+    setTransform(QTransform::fromTranslate(-mHotspots.at(no).x(), -mHotspots.at(no).y()), true);
   }
   mCurrentFrame = no;
   update();
