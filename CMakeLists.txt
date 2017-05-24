@@ -11,14 +11,13 @@ find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Config
     ConfigWidgets
-    Completion
     CoreAddons
     Crash
     DNSSD
     DocTools
     I18n
-    XmlGui
     WidgetsAddons
+    XmlGui
 )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
