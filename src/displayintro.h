@@ -70,7 +70,7 @@ class DisplayIntro : public QObject, public virtual Themeable
 
     /** Theme change method. The object has to completely redraw
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /* Called from the view event viewportEvent() to handle mouse events.
      * NOTE: An own event handler is implemeted  because the Qt4.3 QGraphicsView event

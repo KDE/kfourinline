@@ -78,7 +78,7 @@ class KWin4View : public QGraphicsView, public virtual Themeable
       * a new theme or a theme size change occurs. This object needs to
       * resiez and redraw then.
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /** Initial setup of the game view.
       */
@@ -177,16 +177,16 @@ class KWin4View : public QGraphicsView, public virtual Themeable
      * are resized. Resized and rescale game.
      * @param e The resize event
      */
-    void resizeEvent(QResizeEvent* e);
+    void resizeEvent(QResizeEvent* e) Q_DECL_OVERRIDE;
 
     /** Widget viewport event.
       * @parma event The event.
       */
-    virtual bool viewportEvent ( QEvent * event )  ;
+    bool viewportEvent ( QEvent * event )   Q_DECL_OVERRIDE;
 
    /** Overwritten Qt function.
     */
-    virtual void drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[]);
+    void drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[]) Q_DECL_OVERRIDE;
 
 
   private:

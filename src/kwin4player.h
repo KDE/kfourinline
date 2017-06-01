@@ -51,7 +51,7 @@ class KWin4Player : public KPlayer
       * _type_ for kwin4.
       * @return The player type = 1.
       */
-    int rtti() const {return 1;}
+    int rtti() const Q_DECL_OVERRIDE {return 1;}
     
     /** Assign the score object which allows to display player properties in 
       * the GUI.

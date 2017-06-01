@@ -114,7 +114,7 @@ class KWin4App : public KXmlGuiWindow
      * to save its state.
      * @param grp The config group
      */
-    virtual void saveProperties(KConfigGroup& grp);
+    void saveProperties(KConfigGroup& grp) Q_DECL_OVERRIDE;
 
     /** Read the properties of the application.
       */
@@ -123,11 +123,11 @@ class KWin4App : public KXmlGuiWindow
    /** Read instance-specific properties.
      * @param grp The config group
     */
-    virtual void readProperties(const KConfigGroup& grp);
+    void readProperties(const KConfigGroup& grp) Q_DECL_OVERRIDE;
 
     /** Called by Qt when closing the window
      */
-    void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
     /** Retrieve the theme file from the theme index number give.
       * @param idx The theme index number [0..]

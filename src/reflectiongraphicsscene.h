@@ -58,11 +58,11 @@ class ReflectionGraphicsScene : public QGraphicsScene
       * @param options    The draw options
       * @param  widget    The widget
       */
-    virtual void drawItems(QPainter *painter, 
+    void drawItems(QPainter *painter, 
                            int numItems,
 		           QGraphicsItem *items[],
 		           const QStyleOptionGraphicsItem options[],
-			   QWidget *widget=0);
+			   QWidget *widget=0) Q_DECL_OVERRIDE;
 
     /** Should the background be drawn or not.
       * @ param status True to draw the background.
@@ -75,7 +75,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
       * @param painter The painter
       * @param rect    The clipping rect
       */
-    void drawBackground ( QPainter * painter, const QRectF & rect );
+    void drawBackground ( QPainter * painter, const QRectF & rect ) Q_DECL_OVERRIDE;
 
   private:
     // Draw background?

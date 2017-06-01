@@ -52,17 +52,17 @@ class PieceSprite : public PixmapSprite
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    virtual void advance(int phase);
+    void advance(int phase) Q_DECL_OVERRIDE;
 
     /** Retrieve the type of QGI. This item is UserType+2
      *  @return The type of item.
      */
-    virtual int type() const {return QGraphicsItem::UserType+2;}
+    int type() const Q_DECL_OVERRIDE {return QGraphicsItem::UserType+2;}
 
     /** Standard Themeable function. It is called when the theme item
       * needs to completely refresh itself.
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /** Retrieve the sprite notification object. This object indicates the
       * end of a movement.

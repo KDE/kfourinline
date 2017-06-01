@@ -57,12 +57,12 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    virtual void advance(int phase);
+    void advance(int phase) Q_DECL_OVERRIDE;
 
     /** Retrieve the type of QGI. This item is UserType+3
      *  @return The type of item.
      */
-    virtual int type() const {return QGraphicsItem::UserType+3;}
+    int type() const Q_DECL_OVERRIDE {return QGraphicsItem::UserType+3;}
 
     /** Retrieve the user defined sprite number (i.e. which PixmapSprite)
      *  @return The sprite numbers.
@@ -73,7 +73,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
       * a new theme or a theme size change occurs. This object needs to
       * resiez and redraw then.
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /** Choose a pixmap frame of this sprite. If the setting is forced a
       * redraw is even performed when the frame number stays the same. This

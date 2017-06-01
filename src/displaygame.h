@@ -63,7 +63,7 @@ class DisplayGame : public QObject, public virtual Themeable
     /** Main theme function. Called by the theme manager. Redraw and resize 
       * display.
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /** Set a game piece to a certain position on the game board. If an animation
       * is requested the piece 'falls' to this position.

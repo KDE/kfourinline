@@ -41,19 +41,19 @@ class KMessageFilePipe : public KMessageIO
   public:
     KMessageFilePipe(QObject *parent,QFile *readFile,QFile *writeFile);
     ~KMessageFilePipe();
-    bool isConnected() const;
-    void send (const QByteArray &msg);
+    bool isConnected() const Q_DECL_OVERRIDE;
+    void send (const QByteArray &msg) Q_DECL_OVERRIDE;
     void exec();
 
     /**
       @return FALSE as this is no network IO.
     */
-    bool isNetwork() const { return false; }
+    bool isNetwork() const Q_DECL_OVERRIDE { return false; }
 
   /**
   * The runtime idendifcation
   */
-  virtual int rtti() const {return 4;}
+  int rtti() const Q_DECL_OVERRIDE {return 4;}
 
 
 

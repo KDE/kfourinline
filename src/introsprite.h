@@ -128,12 +128,12 @@ class IntroSprite : public PixmapSprite
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    virtual void advance(int phase);
+    void advance(int phase) Q_DECL_OVERRIDE;
 
     /** Retrieve the type of QGI. This item is UserType+1
      *  @return The type of item.
      */
-    virtual int type() const {return QGraphicsItem::UserType+1;}
+    int type() const Q_DECL_OVERRIDE {return QGraphicsItem::UserType+1;}
 
     /** Retrieve the sprite numbers (which introsprite e.g. 0-42)
      *  @return The sprite numbers.
@@ -143,7 +143,7 @@ class IntroSprite : public PixmapSprite
     /** Main theme notification method. Is called for any theme changes. It must be
       * implemented so that the item redraws correctly when the theme changed.
       */
-    virtual void changeTheme();
+    void changeTheme() Q_DECL_OVERRIDE;
 
     /** Retrieve the duration of an animation.
       * @return The duration [ms]

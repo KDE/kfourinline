@@ -150,9 +150,9 @@ public:
 	 * @param g A pointer to your KGame.
 	 * @param p A pointer to the player owning this dialog
 	 **/
-	virtual void submitToKGame(KGame* g, KPlayer* p);
+	void submitToKGame(KGame* g, KPlayer* p) Q_DECL_OVERRIDE;
 
-	virtual void setKGame(KGame* g);
+	void setKGame(KGame* g) Q_DECL_OVERRIDE;
 
 	/**
 	 * This sets the default port and host used in @ref KGameConnectDialog.
