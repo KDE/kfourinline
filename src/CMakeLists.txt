@@ -28,6 +28,7 @@ set(kwin4_SRCS
    pixmapsprite.cpp
    kfontutils.cpp
 )
+qt5_add_resources(kwin4_SRCS kfourinline.qrc) 
 
 configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
@@ -72,6 +73,5 @@ install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 ########### install files ###############
 
 install( FILES kwin4.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
-install( FILES kfourinlineui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/kfourinline )
 
 
