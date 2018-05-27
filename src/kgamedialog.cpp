@@ -120,6 +120,7 @@ QWidget* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& ti
  QWidget* page = new QWidget();
  QVBoxLayout *pageVBoxLayout = new QVBoxLayout(page);
  pageVBoxLayout->setMargin(0);
+ pageVBoxLayout->addWidget(widget);
  addPage(page,title);
  addConfigWidget(widget, page);
  return page;
@@ -136,8 +137,6 @@ void KGameDialog::addConfigWidget(KGameDialogConfig* widget, QWidget* parent)
 	return;
  }
 // qCDebug(KFOURINLINE_LOG) << "reparenting widget";
- widget->setParent(parent);
- widget->move(QPoint(0,0));
  d->mConfigWidgets.append(widget);
  connect(widget, &QObject::destroyed, this, &KGameDialog::slotRemoveConfigWidget);
  if (!d->mGame) {
