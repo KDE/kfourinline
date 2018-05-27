@@ -789,9 +789,7 @@ void KWin4App::configureNetwork()
   QLayout *l=box->layout();
 
   mColorGroup=new QGroupBox(box);
-  QButtonGroup *mColorGroupButtonGroup = new QButtonGroup(mColorGroup);
   QVBoxLayout *grouplay=new QVBoxLayout(mColorGroup);
-  connect(mColorGroup, &QGroupBox::clicked, this, &KWin4App::remoteChanged);
   connect(dlg.networkConfig(), &KGameDialogNetworkConfig::signalServerTypeChanged, this, &KWin4App::serverTypeChanged);
 
   QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote player"), mColorGroup);
@@ -799,8 +797,11 @@ void KWin4App::configureNetwork()
   grouplay->addWidget(b1);
   grouplay->addWidget(b2);
   l->addWidget(mColorGroup);
-  mColorGroupButtonGroup->button(0)->setChecked(true);
+  b1->setChecked(true);
   remoteChanged(0);
+
+  connect(b1, &QAbstractButton::toggled, this, [this](bool toggled) { if (toggled) remoteChanged(0); });
+  connect(b2, &QAbstractButton::toggled, this, [this](bool toggled) { if (toggled) remoteChanged(1); });
 
   dlg.adjustSize();
   dlg.exec();// note: we don't have to check for the result - maybe a bug
