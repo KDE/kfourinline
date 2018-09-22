@@ -128,6 +128,7 @@ Comment[sv]=Klassiskt turbaserat spel
 Comment[tr]=Klasik sıra tabanlı oyun
 Comment[uk]=Класична покрокова гра
 Comment[x-test]=xxClassic turn based gamexx
+Comment[zh_CN]=经典的回合制游戏
 Comment[zh_TW]=傳統輪流基礎遊戲
 Exec=kfourinline
 Icon=kfourinline
