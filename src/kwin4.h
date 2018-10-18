@@ -54,11 +54,11 @@ class KWin4App : public KXmlGuiWindow
     /** Construct the application.
       * @param parent The parent
       */
-    explicit KWin4App(QWidget *parent=0);
+    explicit KWin4App(QWidget *parent=nullptr);
 
     /** Destruct the application.
       */
-    ~KWin4App();
+    ~KWin4App() override;
 
   protected:
     /** The game is ended. Either because it is finised or because it is
@@ -114,7 +114,7 @@ class KWin4App : public KXmlGuiWindow
      * to save its state.
      * @param grp The config group
      */
-    void saveProperties(KConfigGroup& grp) Q_DECL_OVERRIDE;
+    void saveProperties(KConfigGroup& grp) override;
 
     /** Read the properties of the application.
       */
@@ -123,11 +123,11 @@ class KWin4App : public KXmlGuiWindow
    /** Read instance-specific properties.
      * @param grp The config group
     */
-    void readProperties(const KConfigGroup& grp) Q_DECL_OVERRIDE;
+    void readProperties(const KConfigGroup& grp) override;
 
     /** Called by Qt when closing the window
      */
-    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+    void closeEvent(QCloseEvent *event) override;
 
     /** Retrieve the theme file from the theme index number give.
       * @param idx The theme index number [0..]
@@ -141,7 +141,7 @@ class KWin4App : public KXmlGuiWindow
       */
     int themeIdxFromName(QString name);
 
-  public slots:
+  public Q_SLOTS:
     /** The server type was changed (KGame)
       * @param t The server type
       */

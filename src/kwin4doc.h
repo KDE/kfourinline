@@ -57,7 +57,7 @@ class KWin4Doc : public KGame
 
     /** The dstructor.
       */
-    ~KWin4Doc();
+    ~KWin4Doc() override;
 
     /** Adds a view to the document which displays the document contents.
       * @param view The view to add
@@ -74,7 +74,7 @@ class KWin4Doc : public KGame
       * @param reset   Reset parameter forward to KGame
       * @return True on success, false otherwise.
       */	
-    bool loadgame(QDataStream &stream, bool network, bool reset) Q_DECL_OVERRIDE;
+    bool loadgame(QDataStream &stream, bool network, bool reset) override;
 
     /** Read the game config from the config file.
       * @param config The config 
@@ -199,13 +199,13 @@ class KWin4Doc : public KGame
       * @param io    The IO mode 
       * @param isvirtual True for network players (without physical IO)
       */
-    KPlayer* createPlayer(int rtti, int io, bool isvirtual) Q_DECL_OVERRIDE;
+    KPlayer* createPlayer(int rtti, int io, bool isvirtual) override;
 
     /** KGame function to determine the next player. In KWin4 players alternate.
       * @param last      The last player to move
       * @param exclusive unused
       */
-    KPlayer* nextPlayer(KPlayer* last, bool exclusive=true) Q_DECL_OVERRIDE;
+    KPlayer* nextPlayer(KPlayer* last, bool exclusive=true) override;
 
     /** This is also an overwritten function of KGame. It is
       * called in the game negotiation upon connect. Here
@@ -215,7 +215,7 @@ class KWin4Doc : public KGame
       * @param newList  List of new players
       * @param inactive List of inactive players
       */
-    void newPlayersJoin(KGamePlayerList* list, KGamePlayerList* newList, QList<int>& inactive) Q_DECL_OVERRIDE;
+    void newPlayersJoin(KGamePlayerList* list, KGamePlayerList* newList, QList<int>& inactive) override;
 
     /** Reset the whole game to the beginning (clear board, ...)
       * @param initview  If true also reset the view
@@ -242,7 +242,7 @@ class KWin4Doc : public KGame
       * @param player The current player
       * @return -1: remis, 1: won, 0: continue game
       */
-    int checkGameOver(KPlayer *player) Q_DECL_OVERRIDE;
+    int checkGameOver(KPlayer *player) override;
 
     /** Check whether the field has a game over situation. Called by
       * above standard KGame function but with more suitable parameters.
@@ -265,7 +265,7 @@ class KWin4Doc : public KGame
       * @param msg    The game move messasge 
       * @param player The sender player
       */
-    bool playerInput(QDataStream& msg, KPlayer* player) Q_DECL_OVERRIDE;
+    bool playerInput(QDataStream& msg, KPlayer* player) override;
 
     /** Set the IO devices new.
       */
@@ -302,7 +302,7 @@ class KWin4Doc : public KGame
       */
     COLOUR getPlayerColour(int player);
 
-  public slots:
+  public Q_SLOTS:
     /** Indication from the view that a move has been displayed. Now
       * The next player can be switched.
       * @param mode A user defined (unused) mode
@@ -314,7 +314,7 @@ class KWin4Doc : public KGame
       */
     void loadSettings();
 
-  protected slots:  
+  protected Q_SLOTS:  
     /** Initiate a repeate of the move. This happens if somehow the player
       * input created an invalid move. The same player has to input again.
       */
@@ -377,7 +377,7 @@ class KWin4Doc : public KGame
       */
     void receivedStderr(const QString &s);
 
-  signals:
+  Q_SIGNALS:
     /** Emmitted if the game status changes to run.
       */
     void signalGameRun();

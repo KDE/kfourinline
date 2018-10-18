@@ -51,7 +51,7 @@ class KGameDialogConfig : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit KGameDialogConfig(QWidget* parent = 0);
+    explicit KGameDialogConfig(QWidget* parent = nullptr);
 	virtual ~KGameDialogConfig();
 
 	/**
@@ -139,7 +139,7 @@ class KGameDialogNetworkConfig : public KGameDialogConfig
 {
 	Q_OBJECT
 public:
-	explicit KGameDialogNetworkConfig(QWidget* parent = 0);
+    explicit KGameDialogNetworkConfig(QWidget* parent = nullptr);
 	virtual ~KGameDialogNetworkConfig();
 
 
@@ -150,9 +150,9 @@ public:
 	 * @param g A pointer to your KGame.
 	 * @param p A pointer to the player owning this dialog
 	 **/
-	void submitToKGame(KGame* g, KPlayer* p) Q_DECL_OVERRIDE;
+	void submitToKGame(KGame* g, KPlayer* p) override;
 
-	void setKGame(KGame* g) Q_DECL_OVERRIDE;
+	void setKGame(KGame* g) override;
 
 	/**
 	 * This sets the default port and host used in @ref KGameConnectDialog.

@@ -50,11 +50,11 @@ class DisplayGame : public QObject, public virtual Themeable
      *  @param theme         The theme manager
      *  @param parent        The parent window
      */
-    DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent = 0);
+    DisplayGame(ReflectionGraphicsScene* scene, ThemeManager* theme,  QGraphicsView* parent = nullptr);
     
     /** Destructor
       */
-    ~DisplayGame();
+    ~DisplayGame() override;
 
     /** Start the display (setup and initialzation)
       */
@@ -63,7 +63,7 @@ class DisplayGame : public QObject, public virtual Themeable
     /** Main theme function. Called by the theme manager. Redraw and resize 
       * display.
       */
-    void changeTheme() Q_DECL_OVERRIDE;
+    void changeTheme() override;
 
     /** Set a game piece to a certain position on the game board. If an animation
       * is requested the piece 'falls' to this position.
@@ -114,7 +114,7 @@ class DisplayGame : public QObject, public virtual Themeable
       */
     ScoreSprite* score();
 
-   protected slots:  
+   protected Q_SLOTS:  
     /** Run the main game animation (if existent). This is done via a periodic timer.
       */
     void advance();

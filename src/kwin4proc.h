@@ -56,7 +56,7 @@ class KComputer : public QObject
       */
     KGameProcess proc;
 
-  public slots:
+  public Q_SLOTS:
     /** KGameIO slot to reveice a command from the main program.
       * @param in       The data stream
       * @param msgid    The message id

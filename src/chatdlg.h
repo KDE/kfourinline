@@ -38,9 +38,9 @@ class ChatDlg : public QDialog
   Q_OBJECT
 
   public:
-    explicit ChatDlg(KGame *game,QWidget* parent=0);
+    explicit ChatDlg(KGame *game,QWidget* parent=nullptr);
 
-  public slots:  
+  public Q_SLOTS:  
     void setPlayer(KWin4Player *p);
   
   private:  

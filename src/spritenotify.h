@@ -44,7 +44,7 @@ class SpriteNotify : public QObject
       */
      void emitSignal(int mode);
      
-  signals:
+  Q_SIGNALS:
      /** Signal the event for the graphics item and the mode parameter.
        *  @param item The sprite
        *  @param mode The user defined mode

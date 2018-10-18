@@ -45,11 +45,11 @@ class ReflectionGraphicsScene : public QGraphicsScene
       * @param updateTime The update interval of the canvas (kind of debug parameter)
       * @param parent     The parent window.
       */
-    explicit ReflectionGraphicsScene(int updateTime, QObject * parent = 0);
+    explicit ReflectionGraphicsScene(int updateTime, QObject * parent = nullptr);
     
     /** Destruct the scene.
       */
-    virtual ~ReflectionGraphicsScene();
+    ~ReflectionGraphicsScene() override;
 
     /** Standard QGV command to draw all items of a scene.
       * @param painter    The painter
@@ -62,7 +62,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
                            int numItems,
 		           QGraphicsItem *items[],
 		           const QStyleOptionGraphicsItem options[],
-			   QWidget *widget=0) Q_DECL_OVERRIDE;
+               QWidget *widget=0) override;
 
     /** Should the background be drawn or not.
       * @ param status True to draw the background.
@@ -75,7 +75,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
       * @param painter The painter
       * @param rect    The clipping rect
       */
-    void drawBackground ( QPainter * painter, const QRectF & rect ) Q_DECL_OVERRIDE;
+    void drawBackground ( QPainter * painter, const QRectF & rect ) override;
 
   private:
     // Draw background?

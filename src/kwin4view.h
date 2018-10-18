@@ -68,17 +68,17 @@ class KWin4View : public QGraphicsView, public virtual Themeable
               const QSize &size, 
               ReflectionGraphicsScene* scene, 
               ThemeManager* theme, 
-              QWidget* parent = 0);
+              QWidget* parent = nullptr);
 
     /** Destructor
       */
-    ~KWin4View();
+    ~KWin4View() override;
 
     /** Main theme manager function. Called when any theme change like
       * a new theme or a theme size change occurs. This object needs to
       * resiez and redraw then.
       */
-    void changeTheme() Q_DECL_OVERRIDE;
+    void changeTheme() override;
 
     /** Initial setup of the game view.
       */
@@ -124,7 +124,7 @@ class KWin4View : public QGraphicsView, public virtual Themeable
       */
     void setReflection(int x, int y, int width, int height);
 
-  signals:
+  Q_SIGNALS:
     /** Emit this signal if a sprite animation move is finished.
       * @param mode  A user-defined parameter.
       */
@@ -138,7 +138,7 @@ class KWin4View : public QGraphicsView, public virtual Themeable
       */
     void signalQuickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::IOMode input1, int aiLevel);
 
-  public slots:  
+  public Q_SLOTS:  
     /** The update and advance for the canvas. 
      *  This is called by a timer at regular intervals.
      */
@@ -177,16 +177,16 @@ class KWin4View : public QGraphicsView, public virtual Themeable
      * are resized. Resized and rescale game.
      * @param e The resize event
      */
-    void resizeEvent(QResizeEvent* e) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent* e) override;
 
     /** Widget viewport event.
       * @parma event The event.
       */
-    bool viewportEvent ( QEvent * event )   Q_DECL_OVERRIDE;
+    bool viewportEvent ( QEvent * event )   override;
 
    /** Overwritten Qt function.
     */
-    void drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[]) Q_DECL_OVERRIDE;
+    void drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[]) override;
 
 
   private:

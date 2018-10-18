@@ -39,7 +39,7 @@ public:
     /** Construct a score object.
       * @param parent The parent object
       */
-    explicit Score(QObject* parent = 0);
+    explicit Score(QObject* parent = nullptr);
     
     /** Set and update the level of the AI.
       * @param level  The new level

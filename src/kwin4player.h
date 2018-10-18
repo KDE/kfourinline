@@ -45,13 +45,13 @@ class KWin4Player : public KPlayer
     /** Construct a player object,.
       */
     KWin4Player();
-    ~KWin4Player();
+    ~KWin4Player() override;
     
     /** Runtime identification for the player type (KGame). Only one player
       * _type_ for kwin4.
       * @return The player type = 1.
       */
-    int rtti() const Q_DECL_OVERRIDE {return 1;}
+    int rtti() const override {return 1;}
     
     /** Assign the score object which allows to display player properties in 
       * the GUI.
@@ -111,7 +111,7 @@ class KWin4Player : public KPlayer
       */
     void resetStats(bool all=true);
 
-  protected slots:
+  protected Q_SLOTS:
     /** KGame method which is called when any KGamePropery changes for this
       * player.
       * @param prop    The property

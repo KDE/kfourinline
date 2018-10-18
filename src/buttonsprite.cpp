@@ -148,7 +148,7 @@ void ButtonSprite::setText(const QString &s)
   {
     //mText->setPlainText(s);
     // Center
-    mText->setHtml("<div align=\"center\">"+s+"</div>");
+    mText->setHtml(QStringLiteral("<div align=\"center\">") +s+ QStringLiteral("</div>"));
     mText->show();
     thememanager()->updateTheme(this);
   }

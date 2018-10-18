@@ -2,7 +2,6 @@
 ########### next target ###############
 
 set(kwin4_SRCS
-   kfourinline_debug.cpp 
    main.cpp 
    chatdlg.cpp
    kwin4.cpp 
@@ -35,6 +34,8 @@ configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
+
+ecm_qt_declare_logging_category(kwin4_SRCS HEADER kfourinline_debug.h IDENTIFIER KFOURINLINE_LOG CATEGORY_NAME log_fourinline)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../*-apps-k*.png")
 ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})

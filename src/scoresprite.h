@@ -50,17 +50,17 @@ class ScoreSprite : public PixmapSprite
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    void advance(int phase) Q_DECL_OVERRIDE;
+    void advance(int phase) override;
 
     /** Retrieve the type of QGI. This item is UserType+10
      *  @return The type of item.
      */
-    int type() const Q_DECL_OVERRIDE {return QGraphicsItem::UserType+10;}
+    int type() const override {return QGraphicsItem::UserType+10;}
 
     /** Main theme change function. On call of this the item needs to redraw and
       * resize.
       */
-    void changeTheme() Q_DECL_OVERRIDE;
+    void changeTheme() override;
 
     /** Store the level of the AI.
       * @param level  The level

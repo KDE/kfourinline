@@ -70,7 +70,7 @@ class DisplayIntro : public QObject, public virtual Themeable
 
     /** Theme change method. The object has to completely redraw
       */
-    void changeTheme() Q_DECL_OVERRIDE;
+    void changeTheme() override;
 
     /* Called from the view event viewportEvent() to handle mouse events.
      * NOTE: An own event handler is implemeted  because the Qt4.3 QGraphicsView event
@@ -92,7 +92,7 @@ class DisplayIntro : public QObject, public virtual Themeable
       */
     void delaySprites(int duration);
 
-  signals:
+  Q_SIGNALS:
     /** Emit this signal if a new game is started from the intro display.
       * @param startPlayer Color of the starting player
       * @param input0      Input device of player 1
@@ -102,7 +102,7 @@ class DisplayIntro : public QObject, public virtual Themeable
     void signalQuickStart(COLOUR startPlayer, KGameIO::IOMode input0, KGameIO::IOMode input1, int aiLevel);
 
 
-  protected slots:  
+  protected Q_SLOTS:  
      /** Animation routine, called by a timer.
        */
      void advance();

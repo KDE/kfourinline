@@ -209,7 +209,7 @@ public:
     return *this;
   }
 
-  void load(QDataStream& s) Q_DECL_OVERRIDE
+  void load(QDataStream& s) override
   {
     //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray load" << id();
     type data;
@@ -223,7 +223,7 @@ public:
       emitSignal();
     }
   }
-  void save(QDataStream &s) Q_DECL_OVERRIDE
+  void save(QDataStream &s) override
   {
     //qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray save "<<id();
     for (int i=0; i<QVector<type>::size(); i++)
@@ -232,7 +232,7 @@ public:
     }
   }
 
-  void command(QDataStream &stream,int msgid, bool isSender) Q_DECL_OVERRIDE
+  void command(QDataStream &stream,int msgid, bool isSender) override
   {
     Q_UNUSED(isSender);
     KGamePropertyBase::command(stream, msgid);

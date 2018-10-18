@@ -54,22 +54,22 @@ class ButtonSprite : public PixmapSprite
     
     /** Destructor 
       */
-    ~ButtonSprite();
+    ~ButtonSprite() override;
 
     /** Standard QGI advance function.
      *  @param phase The advance phase
      */
-    void advance(int phase) Q_DECL_OVERRIDE;
+    void advance(int phase) override;
 
     /** Retrieve the type of QGI. This item is UserType+10
      *  @return The type of item.
      */
-    int type() const Q_DECL_OVERRIDE {return QGraphicsItem::UserType+100;}
+    int type() const override {return QGraphicsItem::UserType+100;}
 
     /** Main theme change function. On call of this the item needs to redraw and
       * resize.
       */
-    void changeTheme() Q_DECL_OVERRIDE;
+    void changeTheme() override;
 
     /** Store the button text.
       * @param s  The text
@@ -94,22 +94,22 @@ class ButtonSprite : public PixmapSprite
     /** A mouse press event is received.
       * @param event The mouse event
       */
-    virtual void mousePressEvent(QMouseEvent* event);
+    void mousePressEvent(QMouseEvent* event);
 
     /** A mouse release event is received.
       * @param event The mouse event
       */
-    virtual void mouseReleaseEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
 
     /** A hover in event is reveived (mouse tracking must be on).
       * @param event The mouse event
       */
-    virtual void hoverEnterEvent(QMouseEvent* event);  
+    void hoverEnterEvent(QMouseEvent* event);
 
     /** A hover out event is reveived (mouse tracking must be on).
       * @param event The mouse event
       */
-    virtual void hoverLeaveEvent(QMouseEvent* event);  
+    void hoverLeaveEvent(QMouseEvent* event);
 
 
   protected:

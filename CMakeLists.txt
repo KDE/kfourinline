@@ -25,13 +25,12 @@ find_package(KF5KDEGames 4.9.0 REQUIRED)
 include(FeatureSummary)
 include(ECMInstallIcons)
 include(KDEInstallDirs)
-include(KDECompilerSettings NO_POLICY_SCOPE)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMAddAppIcon)
+include(ECMQtDeclareLoggingCategory)
 
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 
 add_subdirectory(src)
 add_subdirectory(grafix)
@@ -51,6 +50,8 @@ ecm_install_icons(ICONS
     64-apps-kfourinline.png
     DESTINATION ${KDE_INSTALL_ICONDIR}
 )
+
+install( FILES kfourinline.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
 

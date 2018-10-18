@@ -1050,7 +1050,7 @@ void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
   stream << (qint32)learning;
 
   // Where to save the learn cache
-  QString learnPath =  QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1Char('/') + "kwin4";
+  QString learnPath =  QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QLatin1Char('/') + QStringLiteral("kwin4");
 
   stream << learnPath;
 
