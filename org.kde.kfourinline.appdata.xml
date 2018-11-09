@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>org.kde.kfourinline.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>KFourInLine</name>
+  <summary>Blackbox Logic Game</summary>
+  <description>
+    <p>
+      KFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.
+    </p>
+  </description>
+  <url type="homepage">http://games.kde.org/game.php?game=kfourinline</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kfourinline</url>
+  <url type="help">https://docs.kde.org/?application=kfourinline</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=kfourinline&amp;source=appdata</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Playing KFourInLine</caption>
+      <image>http://kde.org/images/screenshots/kfourinline.png</image>
+    </screenshot>
+  </screenshots>
+  <project_group>KDE</project_group>
+</component>

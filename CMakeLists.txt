@@ -41,6 +41,8 @@ add_subdirectory(doc)
 
 install(PROGRAMS org.kde.kfourinline.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 
+install(FILES org.kde.kfourinline.appdata.xml  DESTINATION  ${KDE_INSTALL_METAINFODIR})
+
 ecm_install_icons(ICONS
     128-apps-kfourinline.png
     16-apps-kfourinline.png
