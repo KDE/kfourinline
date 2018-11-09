@@ -157,7 +157,7 @@ KMessageFilePipe::~KMessageFilePipe()
 
 bool KMessageFilePipe::isConnected () const
 {
-  return (mReadFile!=0)&&(mWriteFile!=0);
+  return (mReadFile!=nullptr)&&(mWriteFile!=nullptr);
 }
 
 // Send to parent

@@ -111,18 +111,18 @@ KWin4View::KWin4View(int updateTime,
   mTheme->rescale(this->width(), QPoint(0,0));
 
   // Start with the intro display
-  mGameDisplay  = 0;
-  mIntroDisplay  = 0;
+  mGameDisplay  = nullptr;
+  mIntroDisplay  = nullptr;
 
 
   // Reflections
-  mReflectionSprite = new QGraphicsPixmapItem(0);
+  mReflectionSprite = new QGraphicsPixmapItem();
   scene->addItem(mReflectionSprite);
   mReflectionSprite->setZValue(1000.0);
   mReflectionSprite->hide();
 
-  // Debug                      
-  mFrameSprite = new QGraphicsTextItem(0);
+  // Debug
+  mFrameSprite = new QGraphicsTextItem();
   scene->addItem(mFrameSprite);
   mFrameSprite->setPos(QPointF(0.0, 0.0));
   mFrameSprite->setZValue(1000.0);
@@ -313,7 +313,7 @@ void KWin4View::initGame(Score* scoreData)
   setMouseTracking(false);
 
   delete mIntroDisplay;
-  mIntroDisplay = 0;
+  mIntroDisplay = nullptr;
   if (!mGameDisplay)
   {
      mGameDisplay = new DisplayGame(mScene, mTheme, this);

@@ -74,14 +74,14 @@
 // Construct the main application window
 KWin4App::KWin4App(QWidget *parent)
         : KXmlGuiWindow(parent),
-          mTheme(nullptr),
-          mView(nullptr),
-          mDoc(nullptr),
-          mScene(nullptr),
-          mColorGroup(nullptr),
-          mMyChatDlg(nullptr),
-          mStatusMsg(nullptr),
-          mStatusMover(nullptr)
+          mTheme(),
+          mView(),
+          mDoc(),
+          mScene(),
+          mColorGroup(),
+          mMyChatDlg(),
+          mStatusMsg(),
+          mStatusMover()
 {
   // default names for players
   (void)I18N_NOOP2("default name of first player", "Player 1");
@@ -781,7 +781,7 @@ void KWin4App::configureNetwork()
   int port=Prefs::port();
 
   // just for testing - should be non-modal
-  KGameDialog dlg(mDoc, 0, i18n("Network Configuration"), this);
+  KGameDialog dlg(mDoc, nullptr, i18n("Network Configuration"), this);
   dlg.networkConfig()->setDefaultNetworkInfo(host, port);
   dlg.networkConfig()->setDiscoveryInfo(QStringLiteral("_kfourinline._tcp"),Prefs::gamename());
 

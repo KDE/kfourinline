@@ -327,13 +327,13 @@ SpriteNotify* DisplayGame::displayPiece(int x, int y, int color, int no, bool an
 
   // Get piece
   PieceSprite *sprite = mPieces.value(no);
-  assert(sprite != 0);
+  assert(sprite != nullptr);
 
   // Check for removal of sprite
   if (color==Nobody)
   {
     sprite->hide();
-    return 0;
+    return nullptr;
   }
 
   // Retrieve theme data
@@ -381,7 +381,7 @@ void DisplayGame::displayStar(int x,int y,int no)
   // Invert height
   y=5-y;
   PixmapSprite* star = mStars.value(no-1);
-  assert(star != 0);
+  assert(star != nullptr);
 
   // Retrieve theme data
   KConfigGroup config  = thememanager()->config(id());

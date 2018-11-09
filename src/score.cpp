@@ -33,7 +33,7 @@
 Score::Score(QObject* parent)
      : QObject(parent)
 {
-  mDisplay = 0;
+  mDisplay = nullptr;
 }
 
 

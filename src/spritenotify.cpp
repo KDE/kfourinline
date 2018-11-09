@@ -24,7 +24,7 @@
 
 // Construct the object
 SpriteNotify::SpriteNotify(QGraphicsItem* parent)
-            : QObject(nullptr)
+            : QObject()
 {
   mParent = parent;
 }

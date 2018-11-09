@@ -48,41 +48,41 @@ class KGameDebugDialogPrivate
 public:
 	KGameDebugDialogPrivate()
 	{
-		mGame = 0;
+		mGame = nullptr;
 
-		mGamePage = 0;
-		mGameProperties = 0;
-		mGameAddress = 0;
-		mGameId = 0;
-		mGameCookie = 0;
-		mGameMaster = 0;
-		mGameAdmin = 0;
-		mGameOffering = 0;
-		mGameStatus = 0;
-		mGameRunning = 0;
-		mGameMaxPlayers = 0;
-		mGameMinPlayers = 0;
-		mGamePlayerCount = 0;
+		mGamePage = nullptr;
+		mGameProperties = nullptr;
+		mGameAddress = nullptr;
+		mGameId = nullptr;
+		mGameCookie = nullptr;
+		mGameMaster = nullptr;
+		mGameAdmin = nullptr;
+		mGameOffering = nullptr;
+		mGameStatus = nullptr;
+		mGameRunning = nullptr;
+		mGameMaxPlayers = nullptr;
+		mGameMinPlayers = nullptr;
+		mGamePlayerCount = nullptr;
 
-		mPlayerPage = 0;
-		mPlayerList = 0;
-		mPlayerProperties = 0;
-		mPlayerAddress = 0;
-		mPlayerId = 0;
-		mPlayerName = 0;
-		mPlayerGroup = 0;
-		mPlayerUserId = 0;
-		mPlayerMyTurn = 0;
-		mPlayerAsyncInput= 0;
-		mPlayerKGameAddress = 0;
-		mPlayerVirtual = 0;
-		mPlayerActive = 0;
-		mPlayerRtti = 0;
-		mPlayerNetworkPriority = 0;
+		mPlayerPage = nullptr;
+		mPlayerList = nullptr;
+		mPlayerProperties = nullptr;
+		mPlayerAddress = nullptr;
+		mPlayerId = nullptr;
+		mPlayerName = nullptr;
+		mPlayerGroup = nullptr;
+		mPlayerUserId = nullptr;
+		mPlayerMyTurn = nullptr;
+		mPlayerAsyncInput= nullptr;
+		mPlayerKGameAddress = nullptr;
+		mPlayerVirtual = nullptr;
+		mPlayerActive = nullptr;
+		mPlayerRtti = nullptr;
+		mPlayerNetworkPriority = nullptr;
 
-		mMessagePage = 0;
-		mMessageList = 0;
-		mHideIdList = 0;
+		mMessagePage = nullptr;
+		mMessageList = nullptr;
+		mHideIdList = nullptr;
 	}
 
 	const KGame* mGame;
@@ -477,7 +477,7 @@ void KGameDebugDialog::slotUnsetKGame()
  if (d->mGame) {
 	disconnect(d->mGame, 0, this, 0);
  }
- d->mGame = 0;
+ d->mGame = nullptr;
  clearPages();
 }
 

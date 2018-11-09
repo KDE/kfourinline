@@ -30,7 +30,7 @@
 KWin4Player::KWin4Player() : KPlayer()
 {
   // Register KGameProperties in KGame framework  
-  mStatus = 0;
+  mStatus = nullptr;
   mWin.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mWin"));
   mRemis.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mRemis"));
   mLost.registerData(dataHandler(),KGamePropertyBase::PolicyDirty,QStringLiteral("mLost"));

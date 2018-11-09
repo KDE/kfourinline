@@ -62,7 +62,7 @@ class ReflectionGraphicsScene : public QGraphicsScene
                            int numItems,
 		           QGraphicsItem *items[],
 		           const QStyleOptionGraphicsItem options[],
-               QWidget *widget=0) override;
+               QWidget *widget=nullptr) override;
 
     /** Should the background be drawn or not.
       * @ param status True to draw the background.

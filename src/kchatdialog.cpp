@@ -40,14 +40,14 @@ class KChatDialogPrivate
  public:
 	KChatDialogPrivate()
 	{
-		mTextPage = 0;
+		mTextPage = nullptr;
 
-		mNamePreview = 0;
-		mTextPreview = 0;
-		mSystemNamePreview = 0;
-		mSystemTextPreview = 0;
+		mNamePreview = nullptr;
+		mTextPreview = nullptr;
+		mSystemNamePreview = nullptr;
+		mSystemTextPreview = nullptr;
 
-		mChat = 0;
+		mChat = nullptr;
 	}
 
 	QFrame* mTextPage;

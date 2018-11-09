@@ -56,7 +56,7 @@ DisplayIntro::DisplayIntro(QGraphicsScene* scene, ThemeManager* theme, QGraphics
   scene->setBackgroundBrush(QColor(0,0,128));
   
   // Store the theme manager and other attributes
-  mLastMoveEvent = 0;
+  mLastMoveEvent = nullptr;
   mTheme         = theme;
   mScene         = scene;
   mView          = parent;
@@ -556,7 +556,7 @@ int DisplayIntro::createAnimation(bool restartTime)
 // Find the sprite on the given position (buttons)
 QGraphicsItem* DisplayIntro::findSprite(QPoint pos)
 {
-   QGraphicsItem* found = 0; 
+   QGraphicsItem* found = nullptr; 
 
    for (int i = 0; i < mSprites.size(); ++i) 
    {
@@ -589,21 +589,21 @@ void DisplayIntro::viewEvent(QEvent* event)
    switch (event->type()) 
    {
      case QEvent::MouseButtonPress:
-         if (item!=0 && item->type() ==  QGraphicsItem::UserType+100)
+         if (item!=nullptr && item->type() ==  QGraphicsItem::UserType+100)
            (dynamic_cast<ButtonSprite*>(item))->mousePressEvent(e);
      break;
      case QEvent::MouseButtonRelease:
-         if (item!=0 && item->type() ==  QGraphicsItem::UserType+100)
+         if (item!=nullptr && item->type() ==  QGraphicsItem::UserType+100)
            (dynamic_cast<ButtonSprite*>(item))->mouseReleaseEvent(e);
      break;
      case QEvent::MouseMove:
        if (item != mLastMoveEvent)
        {
-         if (mLastMoveEvent!=0 && mLastMoveEvent->type() ==  QGraphicsItem::UserType+100)
+         if (mLastMoveEvent!=nullptr && mLastMoveEvent->type() ==  QGraphicsItem::UserType+100)
          {
            (dynamic_cast<ButtonSprite*>(mLastMoveEvent))->hoverLeaveEvent(e);
          }
-         if (item!=0 && item->type() ==  QGraphicsItem::UserType+100)
+         if (item!=nullptr && item->type() ==  QGraphicsItem::UserType+100)
          {
            (dynamic_cast<ButtonSprite*>(item))->hoverEnterEvent(e);
          }

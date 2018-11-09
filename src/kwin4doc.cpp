@@ -53,7 +53,7 @@
 #define FIELD_SIZE_Y 6
 
 // Constructor
-KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(0), mHintProcess(0)
+KWin4Doc::KWin4Doc(QWidget *parent) : KGame(1234,parent), pView(), mHintProcess()
 {
   mStatus = new Score(parent);
 
@@ -930,7 +930,7 @@ void KWin4Doc::setPlayedBy(int col, KGameIO::IOMode io)
     bool myTurn = player->myTurn();
     player->setTurn(false); // turn of move
     mPlayedBy[col]=io;
-    player->removeGameIO(0); // remove all IO's
+    player->removeGameIO(); // remove all IO's
     createIO(player,io);
     player->setTurn(myTurn); // turn on move
   }
@@ -1180,7 +1180,7 @@ KWin4Player* KWin4Doc::getPlayer(COLOUR col)
      return (KWin4Player *)(*it);
  }
  qCCritical(KFOURINLINE_LOG) << "SERIOUS ERROR: Cannot find player with colour" << col << ".  CRASH imminent";
- return 0;
+ return nullptr;
 }
 
 

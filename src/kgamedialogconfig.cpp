@@ -46,7 +46,7 @@ public:
 	KGameDialogConfigPrivate()
 	{
 		mOwner = 0;
-		mGame = 0;
+		mGame = nullptr;
 
 		mAdmin = false;
 	}
@@ -96,10 +96,10 @@ class KGameDialogNetworkConfigPrivate
 public:
 	KGameDialogNetworkConfigPrivate()
 	{
-		mInitConnection = 0;
-		mNetworkLabel = 0;
-		mDisconnectButton = 0;
-		mConnect = 0;
+		mInitConnection = nullptr;
+		mNetworkLabel = nullptr;
+		mDisconnectButton = nullptr;
+		mConnect = nullptr;
 		mDefaultServer=true;
 
 	}

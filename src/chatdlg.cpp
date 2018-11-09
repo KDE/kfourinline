@@ -44,7 +44,7 @@
 // Constructor for the chat widget. This widget
 // is derived from the libkdegames chat widget
 ChatDlg::ChatDlg(KGame *game,QWidget *parent)
-       : QDialog(parent),mChat(0), mChatDlg(0)
+       : QDialog(parent),mChat(), mChatDlg()
 {
   setWindowTitle(i18n("Chat Dlg"));
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);

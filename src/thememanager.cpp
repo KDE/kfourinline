@@ -40,7 +40,7 @@
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)
-    : QObject(parent), mRenderer(0), mConfig( 0 )
+    : QObject(parent), mRenderer(), mConfig()
 {
   mScale            = initialSize;
   mAspectRatio      = 1.0;
@@ -73,7 +73,7 @@ void ThemeManager::unregisterTheme(Themeable* ob)
 int ThemeManager::checkTheme()
 {
   // Check theme
-  if (mRenderer == 0) return 1;
+  if (mRenderer == nullptr) return 1;
   return 0; // Ok
 }
 
@@ -124,7 +124,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   if (!result)
   {
     delete mRenderer;
-    mRenderer = 0;
+    mRenderer = nullptr;
     qCCritical(KFOURINLINE_LOG) << "Cannot open file" << svgfile;
   }
   qCDebug(KFOURINLINE_LOG) << "Renderer" << mRenderer<<" =" << result;
@@ -244,7 +244,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, const QString &svgre
 Themeable::Themeable()
 {
   mScale        = 1.0;
-  mThemeManager = 0;
+  mThemeManager = nullptr;
 }
 
 

@@ -173,7 +173,7 @@ AnimationCommand* IntroSprite::addWait(int duration)
     mAnimList.append(cmd);
     return cmd;
   }
-  return 0;
+  return nullptr;
 }
 
 
@@ -250,7 +250,7 @@ AnimationCommand* IntroSprite::addRelativeManhatten(QPointF end, double velocity
 QPointF IntroSprite::previousStart()
 {
   AnimationCommand* previous = mAnimList.last();
-  if (previous != 0) return previous->start;
+  if (previous != nullptr) return previous->start;
   else return QPointF(x()/getScale(), y()/getScale());
 }
 
@@ -259,7 +259,7 @@ QPointF IntroSprite::previousStart()
 QPointF IntroSprite::previousEnd()
 {
   AnimationCommand* previous = mAnimList.last();
-  if (previous != 0) return previous->end;
+  if (previous != nullptr) return previous->end;
   return QPointF(x()/getScale(), y()/getScale());
 }
 
@@ -322,17 +322,17 @@ void IntroSprite::advance(int phase)
 
   // Execute commands who were passed in the time since the
   // last call
-  while (anim != 0 &&  anim->duration <= elapsed)
+  while (anim != nullptr &&  anim->duration <= elapsed)
   {
       executeCmd(anim, anim->duration);
       mAnimList.removeFirst();
       elapsed -= anim->duration;
       if (!mAnimList.isEmpty()) anim = mAnimList.first();
-      else anim = 0;
+      else anim = nullptr;
   }
 
   // Handle current command
-  if (anim != 0)
+  if (anim != nullptr)
   {
     executeCmd(anim, elapsed);
   }
@@ -352,7 +352,7 @@ void IntroSprite::advance(int phase)
 // since start of the animation sequence.
 void IntroSprite::executeCmd(AnimationCommand* anim, int elapsed)
 {
-  if (anim == 0) return;
+  if (anim == nullptr) return;
 
   // Scale
   double scale = this->getScale();

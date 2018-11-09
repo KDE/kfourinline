@@ -39,12 +39,12 @@ class KGameDialogPrivate
 public:
 	KGameDialogPrivate()
 	{
-		mNetworkPage = 0;
+		mNetworkPage = nullptr;
 
-		mNetworkConfig = 0;
+		mNetworkConfig = nullptr;
 
-		mOwner = 0;
-		mGame = 0;
+		mOwner = nullptr;
+		mGame = nullptr;
 	}
 
 	QWidget* mNetworkPage;
@@ -69,7 +69,7 @@ KGameDialog::KGameDialog(KGame* g, KPlayer* owner, const QString& title,
     setFaceType(KPageDialog::Tabbed);
     setModal(true);
  init(g, owner);
- addNetworkConfig(new KGameDialogNetworkConfig(0));
+ addNetworkConfig(new KGameDialogNetworkConfig());
  connect(button(QDialogButtonBox::Ok), &QPushButton::clicked, this, &KGameDialog::slotOk);
  connect(button(QDialogButtonBox::RestoreDefaults), &QPushButton::clicked, this, &KGameDialog::slotDefault);
  connect(button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &KGameDialog::slotApply);
@@ -115,7 +115,7 @@ QWidget* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& ti
 {
  if (!widget) {
 	qCCritical(KFOURINLINE_LOG) << "Cannot add NULL config widget";
-	return 0;
+	return nullptr;
  }
  QWidget* page = new QWidget();
  QVBoxLayout *pageVBoxLayout = new QVBoxLayout(page);
@@ -215,7 +215,7 @@ void KGameDialog::setAdmin(bool admin)
 }
 
 void KGameDialog::slotUnsetKGame() // called when KGame is destroyed
-{ setKGame(0); }
+{ setKGame(nullptr); }
 
 void KGameDialog::submitToKGame()
 {

@@ -40,10 +40,10 @@ class KGameConnectWidgetPrivate
  public:
 	KGameConnectWidgetPrivate()
 	{
-		mPort = 0;
-		mHost = 0;
-		mButtonGroup = 0;
-		mBrowser = 0;
+		mPort = nullptr;
+		mHost = nullptr;
+		mButtonGroup = nullptr;
+		mBrowser = nullptr;
 	}
 
 	QSpinBox* mPort;
