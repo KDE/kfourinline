@@ -51,7 +51,7 @@ class KMessageFilePipe : public KMessageIO
     bool isNetwork() const override { return false; }
 
   /**
-  * The runtime idendifcation
+  * The runtime identification
   */
   int rtti() const override {return 4;}
 
@@ -143,7 +143,7 @@ class KGameProcess:  public QObject
     void sendMessage(QDataStream &stream,int msgid,quint32 receiver=0);
 
     /**
-     * Sends a system message to the corresonding KGameIO device.
+     * Sends a system message to the corresponding KGameIO device.
      * This will normally be either a performed move or a query
      * (IdProcessQuery). The query option is a way to communicate
      * with the KGameIO at the other side and e.g. retrieve some
@@ -206,7 +206,7 @@ class KGameProcess:  public QObject
      void signalCommand(QDataStream &inputStream,int msgid,int receiver,int sender);
 
      /**
-      * This signal is emmited if the computer player should perform a turn.
+      * This signal is emitted if the computer player should perform a turn.
       * Calculations can be made here and the move can then be send back with
       * sendSystemMessage with the message id KGameMessage::IdPlayerInput.
       * These must provide a move which complies to your other move syntax as
@@ -245,8 +245,8 @@ class KGameProcess:  public QObject
      void signalTurn(QDataStream &stream,bool turn);
 
      /**
-      * This signal is emmited when the process is initialized, i.e. added
-      * to a KPlayer. Initial initialisation can be performed here be reacting
+      * This signal is emitted when the process is initialized, i.e. added
+      * to a KPlayer. Initial initialization can be performed here be reacting
       * to the KProcessIO signal signalIOAdded and retrieving the data here
       * from the stream. 
       * It works just as the signalTurn() but is only send when the player is

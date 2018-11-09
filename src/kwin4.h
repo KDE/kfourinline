@@ -61,7 +61,7 @@ class KWin4App : public KXmlGuiWindow
     ~KWin4App() override;
 
   protected:
-    /** The game is ended. Either because it is finised or because it is
+    /** The game is ended. Either because it is finished or because it is
       * aborted by the player.
       * @param mode Result of the game
       */
@@ -87,7 +87,7 @@ class KWin4App : public KXmlGuiWindow
       */
     void disableAction(const char *action) {changeAction(action, false); }
 
-    /** Checks all menus and depening on the game status enables or disables them.
+    /** Checks all menus and depending on the game status enables or disables them.
       * This is usually done on  program init.
       * @param menu Which menu to check, default all menus
       */

@@ -36,7 +36,7 @@
   * a push button which reacts on mouse press events or a toggle button
   * which is toggled on mouse release.
   *
-  * NOTE: An own event handler is implemeted currently in the DisplayIntro
+  * NOTE: An own event handler is implemented currently in the DisplayIntro
   *       class which uses this buttons because the Qt4.3 QGraphicsView event
   *       handling system is faulty!!!!
  */
@@ -101,12 +101,12 @@ class ButtonSprite : public PixmapSprite
       */
     void mouseReleaseEvent(QMouseEvent* event);
 
-    /** A hover in event is reveived (mouse tracking must be on).
+    /** A hover in event is received (mouse tracking must be on).
       * @param event The mouse event
       */
     void hoverEnterEvent(QMouseEvent* event);
 
-    /** A hover out event is reveived (mouse tracking must be on).
+    /** A hover out event is received (mouse tracking must be on).
       * @param event The mouse event
       */
     void hoverLeaveEvent(QMouseEvent* event);

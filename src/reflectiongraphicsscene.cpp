@@ -78,7 +78,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
   if (global_debug > 0)
      mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
 
-   // Disable relfections on slow computers
+   // Disable reflections on slow computers
    if (mDrawTimes.size() >= MEASUREMENT_LIST_SIZE )
    {
      if (avg > 2*mUpdateTime )

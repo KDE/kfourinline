@@ -55,7 +55,7 @@ class KWin4Doc : public KGame
       */
     explicit KWin4Doc(QWidget *parent);
 
-    /** The dstructor.
+    /** The destructor.
       */
     ~KWin4Doc() override;
 
@@ -237,10 +237,10 @@ class KWin4Doc : public KGame
       */
     bool doMove(int x, int id);
 
-    /** Check whether the field has a game over situation. KGame stanard
+    /** Check whether the field has a game over situation. KGame standard
       * function.
       * @param player The current player
-      * @return -1: remis, 1: won, 0: continue game
+      * @return -1: draw, 1: won, 0: continue game
       */
     int checkGameOver(KPlayer *player) override;
 
@@ -262,7 +262,7 @@ class KWin4Doc : public KGame
       * the central input for all player inputs. Mouse, Keyboard
       * AI or network end here in the same format. A move is
       * initiated here.
-      * @param msg    The game move messasge 
+      * @param msg    The game move message 
       * @param player The sender player
       */
     bool playerInput(QDataStream& msg, KPlayer* player) override;
@@ -315,7 +315,7 @@ class KWin4Doc : public KGame
     void loadSettings();
 
   protected Q_SLOTS:  
-    /** Initiate a repeate of the move. This happens if somehow the player
+    /** Initiate a repeat of the move. This happens if somehow the player
       * input created an invalid move. The same player has to input again.
       */
     void repeatMove();
@@ -372,22 +372,22 @@ class KWin4Doc : public KGame
       */
     void gamePropertyChanged(KGamePropertyBase* prop, KGame* me);
 
-    /** Reveived a debug message from the AI (debug only)
+    /** Received a debug message from the AI (debug only)
       * @param s The message
       */
     void receivedStderr(const QString &s);
 
   Q_SIGNALS:
-    /** Emmitted if the game status changes to run.
+    /** Emitted if the game status changes to run.
       */
     void signalGameRun();
 
-    /** Emmitted if the chat origin changes.
+    /** Emitted if the chat origin changes.
       * @param player The affected player
       */
     void signalChatChanged(KWin4Player* player);
 
-    /** Emmitted when the next players move is due.
+    /** Emitted when the next players move is due.
       * @param playerNumber The number of the player
       */
     void signalNextPlayer(int playerNumber);

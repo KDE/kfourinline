@@ -71,7 +71,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
 
     /** Main theme manager function. Called when any theme change like
       * a new theme or a theme size change occurs. This object needs to
-      * resiez and redraw then.
+      * resize and redraw then.
       */
     void changeTheme() override;
 

@@ -64,7 +64,7 @@ PixmapSprite::PixmapSprite(int no, QGraphicsScene* canvas)
 
 
 // Main themeable function. Called for any theme change. The sprites needs to
-// resiez and redraw here.
+// resize and redraw here.
 void PixmapSprite::changeTheme()
 {
   // Clear data
@@ -153,7 +153,7 @@ void PixmapSprite::changeTheme()
     else mHotspots.append(QPointF(0.0,0.0));
   }
   
-  // Set theme offset (probably not really necesary here)
+  // Set theme offset (probably not really necessary here)
   QPoint offset = thememanager()->getOffset();
   resetTransform();
   if (mOffsetStatus) setTransform(QTransform::fromTranslate(offset.x(), offset.y()), true);

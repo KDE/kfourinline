@@ -229,7 +229,7 @@ void KWin4Doc::endGame(TABLE mode)
   // TODO pView->clearError();
   pView->endGame();
 
-  // Increase game statisics
+  // Increase game statistics
   KWin4Player *yellow=getPlayer(Yellow);
   KWin4Player *red=getPlayer(Red);
   switch(mode)
@@ -1029,7 +1029,7 @@ void KWin4Doc::prepareAITurn(QDataStream& stream, bool b, KGameIO* input, bool* 
 }
 
 // Sends the current game status to the computer player
-// Careful: The data needs to be exatcly the same as the computer
+// Careful: The data needs to be exactly the same as the computer
 // player reading on the other side
 void KWin4Doc::prepareGameMessage(QDataStream& stream, qint32 pl)
 {
@@ -1184,7 +1184,7 @@ KWin4Player* KWin4Doc::getPlayer(COLOUR col)
 }
 
 
-// We create a process which calulcates a computer move which is shown as hint to the player.
+// We create a process which calculates a computer move which is shown as hint to the player.
 void KWin4Doc::calculateHint()
 {
   // We allocate the hint process only if it is needed
@@ -1322,7 +1322,7 @@ void KWin4Doc::gamePropertyChanged(KGamePropertyBase* prop, KGame* /* me */)
 
 
 // This is an overwritten function of KGame which is called
-// when a game is loaded. This can either be via a networ
+// when a game is loaded. This can either be via a network
 // connect or via a real load from file
 bool KWin4Doc::loadgame(QDataStream &stream,bool network,bool reset)
 {
@@ -1380,8 +1380,8 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList* /*oldList*/,KGamePlayerList* newL
   
   KWin4Player *yellow=getPlayer(Yellow);
   KWin4Player *red=getPlayer(Red);
-  // Take the master player with the higher priority. Prioirty is set
-  // be the network dialog
+  // Take the master player with the higher priority. Priority is set
+  // by the network dialog
   if (yellow->networkPriority()>red->networkPriority())
   {
     // Deactivate the lower one 

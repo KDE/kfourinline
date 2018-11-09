@@ -866,7 +866,7 @@ void KWin4App::configureSettings()
   static Ui::Settings ui; // Dialog is internally static anyway
   if(KConfigDialog::showDialog(QStringLiteral("settings")))
   {
-    // The dialog need to refresh the buttons as they are not conectable via a signal-slot 
+    // The dialog need to refresh the buttons as they are not connectable via a signal-slot 
     // in KConfigDialog
     ui.kcfg_startcolourred->setChecked(Prefs::startcolourred());
     ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));

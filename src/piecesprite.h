@@ -98,7 +98,7 @@ class PieceSprite : public PixmapSprite
     /// The end points of the movement [rel]
     QPointF mEnd;
 
-    /// The movment sprite notifier
+    /// The movement sprite notifier
     SpriteNotify* mNotify;
 
 };

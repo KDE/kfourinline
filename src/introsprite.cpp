@@ -159,7 +159,7 @@ AnimationCommand* IntroSprite::addPause(int duration)
 }
 
 
-// Add an absoulte pause...wait until the given time
+// Add an absolute pause...wait until the given time
 AnimationCommand* IntroSprite::addWait(int duration)
 {
   int currentDuration = animationDuration();

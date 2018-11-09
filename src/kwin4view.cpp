@@ -99,7 +99,7 @@ KWin4View::KWin4View(int updateTime,
   mThemeOffset.clear();
   
   // Set size and position of the view and the canvas:
-  // they are reseized once a level is loaded
+  // they are resized once a level is loaded
   resize(size);
   scene->setSceneRect(0, 0, this->width(), this->height()); 
   adjustSize();

@@ -177,7 +177,7 @@ public:
 	
 Q_SIGNALS:
   /**
-  * This signal is emmited if the user changes the server type (client/server)
+  * This signal is emitted if the user changes the server type (client/server)
   * in the network configuration dialog. 
   *
   * @param t type (0/1) of the connection

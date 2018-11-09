@@ -41,8 +41,8 @@ public:
 	~KGameDebugDialog();
 
 	/**
-	 * Automatically connects the KGame object to all error dependant slots. 
-	 * @param g The KGame which will emit the erorrs (or not ;-) )
+	 * Automatically connects the KGame object to all error dependent slots. 
+	 * @param g The KGame which will emit the errors (or not ;-) )
 	 **/
 	void setKGame(const KGame* g);
 
@@ -53,7 +53,7 @@ public Q_SLOTS:
 	 * and you normally don't have to call this yourself.
 	 *
 	 * Note that @ref setKGame also unsets an already existing @ref KGame
-	 * object if exising.
+	 * object if existing.
 	 **/
 	void slotUnsetKGame();
 

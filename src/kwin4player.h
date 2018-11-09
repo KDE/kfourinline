@@ -102,7 +102,7 @@ class KWin4Player : public KPlayer
       */
     int brk() {return mAllBrk.value();}
     
-    /** Retriev the number of drawn games.
+    /** Retrieve the number of drawn games.
       */
     int remis() {return mAllRemis.value();}
     

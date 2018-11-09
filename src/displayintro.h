@@ -73,7 +73,7 @@ class DisplayIntro : public QObject, public virtual Themeable
     void changeTheme() override;
 
     /* Called from the view event viewportEvent() to handle mouse events.
-     * NOTE: An own event handler is implemeted  because the Qt4.3 QGraphicsView event
+     * NOTE: An own event handler is implemented  because the Qt4.3 QGraphicsView event
      *       handling system is faulty!!!! This can be moved to Qt events if they work.
      * @param event The event
      */

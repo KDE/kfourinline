@@ -57,7 +57,7 @@ class KComputer : public QObject
     KGameProcess proc;
 
   public Q_SLOTS:
-    /** KGameIO slot to reveice a command from the main program.
+    /** KGameIO slot to receive a command from the main program.
       * @param in       The data stream
       * @param msgid    The message id
       * @param received The received (we)
@@ -72,7 +72,7 @@ class KComputer : public QObject
     void slotInit(QDataStream& in, int id);
 
     /** KGameIO slot to receive the setTurn() command, that is a turn is
-      * started or aboerted.
+      * started or aborted.
       * @param in    The data stream
       * @parma turn  True if a turn is started
       */

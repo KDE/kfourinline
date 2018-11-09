@@ -45,7 +45,7 @@
 #define MIN_TIME        1000       // min time in milli sec for move
 //#define MIN_TIME        10           // min time in milli sec for move
 
-// Board and game geomertry
+// Board and game geometry
 #define MAX_PIECES_COL     6         // Max 6 pieces per column 
 #define WIN4               4         // 4 in a row won
 #define MAX_MOVE          42         // Maximum so many moves possible
@@ -419,7 +419,7 @@ KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /
     result = MinMax(currentPlayer, fieldMatrix, numberMatrix,  mLevel + extraRecurstion, mCurMoveNo, true);
     result.value = -result.value;
 
-    // Do not recalcuate for (nearly finished) games
+    // Do not recalculate for (nearly finished) games
    // if (result.value >= VICTORY_VALUE*0.95 || result.value <= -VICTORY_VALUE *0.95) gameOver = 1;
     extraRecurstion++;
   }while(PERCENT_FOR_INC_ITERATION/10*mPosEvaluations <= estimated && !gameOver && extraRecurstion < MAX_EXTRA_RECURSION);

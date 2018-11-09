@@ -56,7 +56,7 @@ class DisplayGame : public QObject, public virtual Themeable
       */
     ~DisplayGame() override;
 
-    /** Start the display (setup and initialzation)
+    /** Start the display (setup and initialization)
       */
     void start();
 

@@ -121,7 +121,7 @@ private:
     // The amount of losses
     int mLoss[2];
     
-    // The amount of aboerted games
+    // The amount of aborted games
     int mBrk[2];
     
     // The input device

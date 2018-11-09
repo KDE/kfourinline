@@ -154,7 +154,7 @@ public:
 	QWidget *configPage();
 
 	/**
-	 * @return The default netowrk config. Note that this always returns 0 if
+	 * @return The default network config. Note that this always returns 0 if
 	 * you did not specify NetworkConfig in the constructor!
 	 **/
 	KGameDialogNetworkConfig* networkConfig() const;

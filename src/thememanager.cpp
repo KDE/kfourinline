@@ -147,7 +147,7 @@ void ThemeManager::rescale(int scale, QPoint offset)
   if (global_debug > 1)
   {
     if (scale==mScale)
-      qCDebug(KFOURINLINE_LOG) <<" No scale change to" << scale << ". If this happends too often it is BAD";
+      qCDebug(KFOURINLINE_LOG) <<" No scale change to" << scale << ". If this happens too often it is BAD";
   }
   //if (scale==mScale) return;
   mScale = scale;
@@ -249,7 +249,7 @@ Themeable::Themeable()
 
 
 // Constructs a themeable interface given its id and the master theme manager.
-// This automatically registeres the object with the manager.
+// This automatically registers the object with the manager.
 Themeable::Themeable(const QString &id, ThemeManager* thememanager)
 {
   mScale        = 1.0;

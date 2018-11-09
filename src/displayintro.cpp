@@ -387,7 +387,7 @@ void DisplayIntro::delaySprites(int duration)
 }
 
 
-// Animation main routine to advance the aniamtion. Called
+// Animation main routine to advance the animation. Called
 // by a timer
 void DisplayIntro::advance()
 {
@@ -400,7 +400,7 @@ void DisplayIntro::advance()
 }
 
 
-// Animation main routine to advance the aniamtion. Called
+// Animation main routine to advance the animation. Called
 // by a timer
 int DisplayIntro::createAnimation(bool restartTime)
 {
@@ -553,7 +553,7 @@ int DisplayIntro::createAnimation(bool restartTime)
 }
 
 
-// Find the sprite on the given poition (buttons)
+// Find the sprite on the given position (buttons)
 QGraphicsItem* DisplayIntro::findSprite(QPoint pos)
 {
    QGraphicsItem* found = 0; 

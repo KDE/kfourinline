@@ -47,7 +47,7 @@ class AIValue
   friend QDataStream &operator>>(QDataStream& s, AIValue& v);
 
   public:
-     /** Constructur.
+     /** Constructor.
        */
      AIValue();
 
@@ -97,7 +97,7 @@ QDataStream &operator>>(QDataStream& s, AIValue& value);
 /**
  * Store an AI field in a compressed structure. One row of pieces
  * is stored as bit sequence with two bits for each field. The bits
- * corresond to the colors (Nobody, Yellow, Red, unusued).
+ * correspond to the colors (Nobody, Yellow, Red, unused).
  */
 class AIBoard 
 { 
