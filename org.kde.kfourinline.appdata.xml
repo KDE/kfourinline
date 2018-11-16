@@ -6,6 +6,7 @@
   <name>KFourInLine</name>
   <name xml:lang="ca">KFourInLine</name>
   <name xml:lang="ca-valencia">KFourInLine</name>
+  <name xml:lang="de">Vier gewinnt</name>
   <name xml:lang="es">KFourInLine</name>
   <name xml:lang="nl">KFourInLine</name>
   <name xml:lang="pt">KFourInLine</name>
@@ -17,6 +18,7 @@
   <summary>KFourInLine is a four-in-a-row game by KDE</summary>
   <summary xml:lang="ca">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
   <summary xml:lang="ca-valencia">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
+  <summary xml:lang="de">Vier Gewinnt ist ein Strategiespiel von KDE</summary>
   <summary xml:lang="es">KFourInLine es un juego de cuatro en raya creado por KDE</summary>
   <summary xml:lang="nl">KFourInLine is een Vier-op-een-rij spel door KDE</summary>
   <summary xml:lang="pt">O KFourInLine é um jogo de quatro-em-linha do KDE</summary>
@@ -47,6 +49,7 @@
       <caption>Playing KFourInLine</caption>
       <caption xml:lang="ca">Jugant al KFourInLine</caption>
       <caption xml:lang="ca-valencia">Jugant al KFourInLine</caption>
+      <caption xml:lang="de">Vier gewinnt spielen</caption>
       <caption xml:lang="es">Jugando a KFourInLine</caption>
       <caption xml:lang="nl">KFourInLine spelen</caption>
       <caption xml:lang="pt">Jogar ao KFourInLine</caption>
