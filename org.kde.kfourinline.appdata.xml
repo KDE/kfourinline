@@ -8,6 +8,8 @@
   <name xml:lang="ca-valencia">KFourInLine</name>
   <name xml:lang="de">Vier gewinnt</name>
   <name xml:lang="es">KFourInLine</name>
+  <name xml:lang="fr">KFourInLine</name>
+  <name xml:lang="gl">KFourInLine</name>
   <name xml:lang="nl">KFourInLine</name>
   <name xml:lang="pt">KFourInLine</name>
   <name xml:lang="pt-BR">KFourInLine</name>
@@ -20,6 +22,7 @@
   <summary xml:lang="ca-valencia">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
   <summary xml:lang="de">Vier Gewinnt ist ein Strategiespiel von KDE</summary>
   <summary xml:lang="es">KFourInLine es un juego de cuatro en raya creado por KDE</summary>
+  <summary xml:lang="gl">KFourInLine é un xogo de catro en liña de KDE</summary>
   <summary xml:lang="nl">KFourInLine is een Vier-op-een-rij spel door KDE</summary>
   <summary xml:lang="pt">O KFourInLine é um jogo de quatro-em-linha do KDE</summary>
   <summary xml:lang="pt-BR">O KFourInLine é um jogo quatro em linha do KDE</summary>
@@ -33,6 +36,7 @@
     <p xml:lang="ca">El KFourInLine és un joc de tauler per a dos jugadors basat en el joc Connecta quatre. Els jugadors intenten formar una fila de quatre peces usant estratègies diferents.</p>
     <p xml:lang="ca-valencia">El KFourInLine és un joc de tauler per a dos jugadors basat en el joc Connecta quatre. Els jugadors intenten formar una fila de quatre peces usant estratègies diferents.</p>
     <p xml:lang="es">KFourInLine es un juego de tablero para dos jugadores basado en el juego «Conecta cuatro». Los jugadores deben construir una fila de cuatro piezas usando diferentes estrategias.</p>
+    <p xml:lang="gl">KFourInLine é un xogo de taboleiro para dous xogadores baseado no xogo «Catro en liña». Os xogadores intentan construír unha liña de catro pezas seguindo distintas estratexias.</p>
     <p xml:lang="nl">KFourInLine is een bordspel voor twee spelers gebaseerd op het Vier-op-een-rij spel. De spelers proberen een rij van vier stukken te bouwen met verschillende strategieën.</p>
     <p xml:lang="pt">O KFourInLine é um jogo de tabuleiro para dois jogadores, baseado no jogo Connect-Four (Liga-Quatro). Os jogadores tentam construir uma fila de quatro peças com diferentes estratégias.</p>
     <p xml:lang="pt-BR">O KFourInLine é um jogo lógico para dois jogadores baseado no jogo Lig 4. Os jogadores tentam construir uma linha de quatro peças usando diferentes estratégias.</p>
@@ -51,6 +55,7 @@
       <caption xml:lang="ca-valencia">Jugant al KFourInLine</caption>
       <caption xml:lang="de">Vier gewinnt spielen</caption>
       <caption xml:lang="es">Jugando a KFourInLine</caption>
+      <caption xml:lang="gl">Xogando a KFourInLine</caption>
       <caption xml:lang="nl">KFourInLine spelen</caption>
       <caption xml:lang="pt">Jogar ao KFourInLine</caption>
       <caption xml:lang="pt-BR">Jogando KFourInLine</caption>
