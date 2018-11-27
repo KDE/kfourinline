@@ -61,7 +61,7 @@ class DisplayIntro : public QObject, public virtual Themeable
     
     /** Destructor of the display.
      */
-    ~DisplayIntro();
+    ~DisplayIntro() override;
 
     /** Start the animation.
       * @param delay An optional delay for the animation [ms]
