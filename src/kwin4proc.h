@@ -74,7 +74,7 @@ class KComputer : public QObject
     /** KGameIO slot to receive the setTurn() command, that is a turn is
       * started or aborted.
       * @param in    The data stream
-      * @parma turn  True if a turn is started
+      * @param turn  True if a turn is started
       */
     void slotTurn(QDataStream& in, bool turn);
 

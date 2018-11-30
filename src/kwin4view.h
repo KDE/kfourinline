@@ -180,7 +180,7 @@ class KWin4View : public QGraphicsView, public virtual Themeable
     void resizeEvent(QResizeEvent* e) override;
 
     /** Widget viewport event.
-      * @parma event The event.
+      * @param event The event.
       */
     bool viewportEvent ( QEvent * event )   override;
 
