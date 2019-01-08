@@ -475,7 +475,7 @@ void KGameDebugDialog::setKGame(const KGame* g)
 void KGameDebugDialog::slotUnsetKGame()
 {
  if (d->mGame) {
-	disconnect(d->mGame, 0, this, 0);
+	disconnect(d->mGame, nullptr, this, nullptr);
  }
  d->mGame = nullptr;
  clearPages();
@@ -501,7 +501,7 @@ void KGameDebugDialog::removePlayer(QListWidgetItem* i)
  if (!p) {
 	return;
  }
- disconnect(p, 0, this, 0);
+ disconnect(p, nullptr, this, nullptr);
  if (i->isSelected()) {
 	clearPlayerData();
  }

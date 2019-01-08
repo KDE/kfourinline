@@ -45,7 +45,7 @@ class KGameDialogConfigPrivate
 public:
 	KGameDialogConfigPrivate()
 	{
-		mOwner = 0;
+		mOwner = nullptr;
 		mGame = nullptr;
 
 		mAdmin = false;

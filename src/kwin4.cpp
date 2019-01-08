@@ -223,7 +223,7 @@ QString KWin4App::themefileFromIdx(int idx)
 
 
 // Retrieve a theme idx from a theme name 
-int KWin4App::themeIdxFromName(QString name)
+int KWin4App::themeIdxFromName(const QString &name)
 {
   QStringList list(mThemeFiles.keys());
   list.sort();

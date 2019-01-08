@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 
   KLocalizedString::setApplicationDomain("kfourinline");
   KAboutData aboutData( QStringLiteral("kfourinline"), i18n("KFourInLine"),
-                        QLatin1String(KWIN4_VERSION),
+                        QStringLiteral(KWIN4_VERSION),
                         i18n("KFourInLine: Two player board game"),
                         KAboutLicense::GPL,
                         i18n("(c) 1995-2007, Martin Heni"));

@@ -194,7 +194,7 @@ void KGameDialog::setOwner(KPlayer* owner)
 void KGameDialog::setKGame(KGame* g)
 {
  if (d->mGame) {
-	disconnect(d->mGame, 0, this, 0);
+	disconnect(d->mGame, nullptr, this, nullptr);
  }
  d->mGame = g;
  for (int i = 0; i < d->mConfigWidgets.count(); i++) {

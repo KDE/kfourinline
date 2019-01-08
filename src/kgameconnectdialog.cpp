@@ -208,7 +208,7 @@ void KGameConnectWidget::setPort(unsigned short int port)
 
 void KGameConnectWidget::setDefault(int state)
 {
- if (d->mButtonGroup->button(state) == 0) {
+ if (d->mButtonGroup->button(state) == nullptr) {
   qCCritical(KFOURINLINE_LOG) << "KGameConnectWidget::setDefault" << state;
   return;
  } 

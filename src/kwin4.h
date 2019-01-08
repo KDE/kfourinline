@@ -139,7 +139,7 @@ class KWin4App : public KXmlGuiWindow
       * @param name The theme file name.
       * @return The theme index number [0..]
       */
-    int themeIdxFromName(QString name);
+    int themeIdxFromName(const QString &name);
 
   public Q_SLOTS:
     /** The server type was changed (KGame)
