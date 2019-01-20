@@ -21,6 +21,7 @@
   <name xml:lang="uk">Чотири-у-рядку</name>
   <name xml:lang="x-test">xxKFourInLinexx</name>
   <name xml:lang="zh-CN">KFourInLine</name>
+  <name xml:lang="zh-TW">KFourInLine</name>
   <summary>KFourInLine is a four-in-a-row game by KDE</summary>
   <summary xml:lang="ca">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
   <summary xml:lang="ca-valencia">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
@@ -80,6 +81,7 @@
       <caption xml:lang="sv">Spela Fyra i rad</caption>
       <caption xml:lang="uk">Гра у Чотири-у-рядку</caption>
       <caption xml:lang="x-test">xxPlaying KFourInLinexx</caption>
+      <caption xml:lang="zh-TW">KFourInLine 遊玩畫面</caption>
       <image>http://kde.org/images/screenshots/kfourinline.png</image>
     </screenshot>
   </screenshots>
