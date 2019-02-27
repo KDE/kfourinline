@@ -119,7 +119,7 @@ QWidget* KGameDialog::addConfigPage(KGameDialogConfig* widget, const QString& ti
  }
  QWidget* page = new QWidget();
  QVBoxLayout *pageVBoxLayout = new QVBoxLayout(page);
- pageVBoxLayout->setMargin(0);
+ pageVBoxLayout->setContentsMargins(0, 0, 0, 0);
  pageVBoxLayout->addWidget(widget);
  addPage(page,title);
  addConfigWidget(widget, page);

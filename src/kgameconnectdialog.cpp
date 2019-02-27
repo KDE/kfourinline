@@ -62,7 +62,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  d = new KGameConnectWidgetPrivate;
 
  QVBoxLayout* vb = new QVBoxLayout(this);
- vb->setMargin(0);
+ vb->setContentsMargins(0, 0, 0, 0);
  QGroupBox* box = new QGroupBox(this);
  QVBoxLayout* boxlay = new QVBoxLayout(box);
  d->mButtonGroup = new QButtonGroup(this);
@@ -84,7 +84,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  d->mClientName = new QComboBox(g);
 
  QGridLayout* layout = new QGridLayout(g);
- layout->setMargin(0);
+ layout->setContentsMargins(0, 0, 0, 0);
  layout->addWidget(d->mServerNameLabel, 0, 0);
  layout->addWidget(d->mServerName, 0, 1);
  layout->addWidget(d->mClientNameLabel, 1, 0);
