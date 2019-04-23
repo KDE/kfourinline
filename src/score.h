@@ -51,7 +51,7 @@ public:
       * @param name   The new name
       * @param no     The player number [0,1]
       */ 
-    void setPlayerName(QString name,int no) {mName[no] = name;update();}
+    void setPlayerName(const QString &name,int no) {mName[no] = name;update();}
 
     /** Set and update whose turn it is (which player goes next).
       * @param no     The player number [0,1]

@@ -107,10 +107,10 @@ protected Q_SLOTS:
 	virtual void slotOk();
 
 private:
-	void setNameFont(QFont);
-	void setTextFont(QFont);
-	void setSystemNameFont(QFont);
-	void setSystemTextFont(QFont);
+	void setNameFont(const QFont&);
+	void setTextFont(const QFont&);
+	void setSystemNameFont(const QFont&);
+	void setSystemTextFont(const QFont&);
 	void setMaxMessages(int max);
 
 private:

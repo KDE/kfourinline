@@ -247,22 +247,22 @@ void KChatDialog::slotApply()
  configureChatWidget(d->mChat);
 }
 
-void KChatDialog::setNameFont(QFont f)
+void KChatDialog::setNameFont(const QFont &f)
 {
  d->mNamePreview->setFont(f);
 }
 
-void KChatDialog::setTextFont(QFont f)
+void KChatDialog::setTextFont(const QFont &f)
 {
  d->mTextPreview->setFont(f);
 }
 
-void KChatDialog::setSystemNameFont(QFont f)
+void KChatDialog::setSystemNameFont(const QFont &f)
 {
  d->mSystemNamePreview->setFont(f);
 }
 
-void KChatDialog::setSystemTextFont(QFont f)
+void KChatDialog::setSystemTextFont(const QFont &f)
 {
  d->mSystemTextPreview->setFont(f);
 }
