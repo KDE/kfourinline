@@ -130,7 +130,7 @@ void ThemeManager::updateTheme(const QString &themefile)
   qCDebug(KFOURINLINE_LOG) << "Renderer" << mRenderer<<" =" << result;
 
   // Notify all theme objects of a change
-  foreach(Themeable *object, mObjects) {
+  for (Themeable *object : qAsConst(mObjects)) {
       object->changeTheme();
   }
 }
@@ -153,7 +153,7 @@ void ThemeManager::rescale(int scale, QPoint offset)
   mScale = scale;
   mOffset = offset;
 
-  foreach(Themeable *object, mObjects) {
+  for (Themeable *object : qAsConst(mObjects)) {
       object->changeTheme();
   }
 }
