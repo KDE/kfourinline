@@ -30,11 +30,9 @@
 
 #include <QWidget>
 
-class QListWidgetItem;
 
 class KGame;
 class KPlayer;
-class KGamePropertyBase;
 
 class KGameDialogConfigPrivate;
 /**

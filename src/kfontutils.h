@@ -26,9 +26,7 @@
 #include <QGraphicsTextItem>
 
 
-class QPainter;
 class QSizeF;
-class QString;
 
 namespace KFontUtils
 {
