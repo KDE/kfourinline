@@ -23,7 +23,6 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatbase.h>
 
-#include <KConfigGroup>
 #include <KLocalizedString>
 
 #include <QDialogButtonBox>
@@ -31,7 +30,6 @@
 #include <QFrame>
 #include <QGridLayout>
 #include <QLabel>
-#include <QLayout>
 #include <QLineEdit>
 #include <QPushButton>
 

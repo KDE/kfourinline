@@ -30,14 +30,12 @@
 
 // include files for Qt
 #include <QDir>
-#include <QKeyEvent>
 #include <QList>
 #include <QStandardPaths>
 #include <QTimer>
 
 // include files for KDE
 #include <KLocalizedString>
-#include <KRandomSequence>
 
 // application specific includes
 #include "kfourinline_debug.h"

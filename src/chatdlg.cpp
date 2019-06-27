@@ -29,7 +29,6 @@
 #include <QVBoxLayout>
 
 // include files for KDE
-#include <KConfigGroup>
 #include <KLocalizedString>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API

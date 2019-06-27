@@ -22,7 +22,6 @@
 #include "kwin4.h"
 
 // Qt includes
-#include <QButtonGroup>
 #include <QFileDialog>
 #include <QGroupBox>
 #include <QIcon>
@@ -36,7 +35,6 @@
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
-#include <KHelpMenu>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KSelectAction>
