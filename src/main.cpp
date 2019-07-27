@@ -47,9 +47,7 @@
 
 #include "kwin4.h"
 #include "kfourinline_debug.h"
-
-#define KWIN4_VERSION "v1.41"
-
+#include "kfourinline_version.h"
 
 // Debug level for the program
 int global_debug = 0;
@@ -72,7 +70,7 @@ int main(int argc, char *argv[])
 
   KLocalizedString::setApplicationDomain("kfourinline");
   KAboutData aboutData( QStringLiteral("kfourinline"), i18n("KFourInLine"),
-                        QStringLiteral(KWIN4_VERSION),
+                        QStringLiteral(KFOURINLINE_VERSION_STRING),
                         i18n("KFourInLine: Two player board game"),
                         KAboutLicense::GPL,
                         i18n("(c) 1995-2007, Martin Heni"));
