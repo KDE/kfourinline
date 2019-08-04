@@ -41,6 +41,7 @@
   <summary xml:lang="pl">KCzteryWLinii jest grą cztery-w-rzędzie dla KDE</summary>
   <summary xml:lang="pt">O KFourInLine é um jogo de quatro-em-linha do KDE</summary>
   <summary xml:lang="pt-BR">O KFourInLine é um jogo quatro em linha do KDE</summary>
+  <summary xml:lang="sk">KFourInLine je hra KDE o štyroch v rade</summary>
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
   <summary xml:lang="uk">Чотири-у-рядку — це гра у чотири-у-рядок від KDE</summary>
   <summary xml:lang="x-test">xxKFourInLine is a four-in-a-row game by KDExx</summary>
@@ -62,6 +63,7 @@
     <p xml:lang="pl">KCzteryWLinii jest grą planszową dla dwóch graczy opartą na grze połącz-cztery. Gracze próbują przy użyciu różnych strategii stworzyć rząd zbudowany z czterech kawałków.</p>
     <p xml:lang="pt">O KFourInLine é um jogo de tabuleiro para dois jogadores, baseado no jogo Connect-Four (Liga-Quatro). Os jogadores tentam construir uma fila de quatro peças com diferentes estratégias.</p>
     <p xml:lang="pt-BR">O KFourInLine é um jogo lógico para dois jogadores baseado no jogo Lig 4. Os jogadores tentam construir uma linha de quatro peças usando diferentes estratégias.</p>
+    <p xml:lang="sk">KFourInLine je stolová hra pre dvoch hráčov založená na hre Connect-Four.Hráči sa snažia zostaviť rad štyroch kúskov pomocou rôznych stratégií.</p>
     <p xml:lang="sv">Fyra i rad är ett brädspel för två spelare baserat på spelet Connect-Four. Spelarna försöker bygga en rad av fyra pjäser med användning av olika strategier.</p>
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
     <p xml:lang="x-test">xxKFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.xx</p>
