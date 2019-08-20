@@ -279,7 +279,7 @@ public:
       case CmdSort:
       {
         //qCDebug(KFOURINLINE_LOG) << "CmdSort:id="<<id();
-        qSort( *this );
+        std::sort( this->begin(), this->end() );
         break;
       }
       default:

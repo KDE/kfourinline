@@ -228,7 +228,7 @@ void KWin4View::updateAndAdvance()
                                   QPainter::TextAntialiasing |
                                   QPainter::SmoothPixmapTransform, false);
       imagePainter.setClipping(true);
-      imagePainter.setWorldMatrix(QMatrix(1.0,0.0,0.0,-1.0,0.0,mReflectImage.height()));
+      imagePainter.setWorldTransform(QTransform(1.0,0.0,0.0,-1.0,0.0,mReflectImage.height()));
       QRect source = QRect(mReflectionRect.x(),mReflectionRect.y()-mReflectImage.height(), 
                            mReflectImage.width(), mReflectImage.height());
 

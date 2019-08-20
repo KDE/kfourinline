@@ -218,7 +218,7 @@ void KMessageFilePipe::exec()
        QByteArray msg;
        msg.resize(len);
        //msg.setRawData(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
-       qCopy(mReceiveBuffer.begin()+2*sizeof(long),mReceiveBuffer.begin()+len, msg.begin());
+       std::copy(mReceiveBuffer.begin()+2*sizeof(long),mReceiveBuffer.begin()+len, msg.begin());
 //  msg.duplicate(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
        emit received(msg);
        //msg.resetRawData(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
