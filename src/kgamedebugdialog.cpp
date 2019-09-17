@@ -341,8 +341,7 @@ void KGameDebugDialog::slotUpdateGameData()
 
  clearGameData();
 
- QString buf;
- buf.sprintf("%p", (void*)d->mGame);
+ QString buf = QString::asprintf("%p", (void*)d->mGame);
  d->mGameAddress->setText(1, buf);
  d->mGameId->setText(1, QString::number(d->mGame->gameId()));
  d->mGameCookie->setText(1, QString::number(d->mGame->cookie()));
@@ -399,8 +398,7 @@ void KGameDebugDialog::slotUpdatePlayerData(QListWidgetItem* item)
 
  clearPlayerData();
 
- QString buf;
- buf.sprintf("%p", (void*)p);
+ QString buf = QString::asprintf("%p", (void*)p);
  d->mPlayerAddress->setText(1, buf);
  d->mPlayerId->setText(1, QString::number(p->id()));
  d->mPlayerName->setText(1, p->name());
@@ -408,7 +406,7 @@ void KGameDebugDialog::slotUpdatePlayerData(QListWidgetItem* item)
  d->mPlayerUserId->setText(1, QString::number(p->userId()));
  d->mPlayerMyTurn->setText(1, p->myTurn() ? i18n("True") : i18n("False"));
  d->mPlayerAsyncInput->setText(1, p->asyncInput() ? i18n("True") : i18n("False"));
- buf.sprintf("%p", (void*)p->game());
+ buf = QString::asprintf("%p", (void*)p->game());
  d->mPlayerKGameAddress->setText(1, buf);
  d->mPlayerVirtual->setText(1, p->isVirtual() ? i18n("True") : i18n("False"));
  d->mPlayerActive->setText(1, p->isActive() ? i18n("True") : i18n("False"));

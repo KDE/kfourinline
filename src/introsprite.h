@@ -24,7 +24,7 @@
 #include <QGraphicsPixmapItem>
 #include <QPointF>
 #include <QList>
-#include <QTime>
+#include <QElapsedTimer>
 
 // Local includes
 #include "thememanager.h"
@@ -176,7 +176,7 @@ class IntroSprite : public PixmapSprite
 
   private:
     /// The current running time for the animation.
-    QTime mTime;
+    QElapsedTimer mTime;
 
     // List of animation commands
     QList<AnimationCommand*> mAnimList;
@@ -191,7 +191,7 @@ class IntroSprite : public PixmapSprite
     bool mStartAnimation;
 
     // Debug timer
-    QTime mDebugTime;
+    QElapsedTimer mDebugTime;
 };
 
 #endif

@@ -32,7 +32,7 @@
 #include <QDataStream>
 #include <QFile>
 #include <QMutex>
-#include <QTime>
+#include <QElapsedTimer>
 #include <QWaitCondition>
 
 // KDE includes
@@ -402,7 +402,7 @@ KComputer::MoveResult KComputer::think(QDataStream& in, QDataStream& out, bool /
   }
 
   // Measure time of move and positions evaluated
-  QTime timer;
+  QElapsedTimer timer;
   timer.start();
   mPosEvaluations = 0;
 

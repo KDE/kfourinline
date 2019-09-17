@@ -27,7 +27,7 @@
 // Qt includes
 #include <QColor>
 #include <QEvent>
-#include <QTime>
+#include <QElapsedTimer>
 
 // KDE includes
 #include "kfourinline_debug.h"
@@ -166,7 +166,7 @@ void KWin4View::updateAndAdvance()
 {
   // Time measurement (maybe remove static at some point)  
   static bool first = true;
-  static QTime time;
+  static QElapsedTimer time;
   int elapsed = time.elapsed();
   if (first) {elapsed = 0;first=false;}
   time.restart();
@@ -415,7 +415,7 @@ void KWin4View::rescaleTheme()
     return;
   }
 
-  QTime t;
+  QElapsedTimer t;
   t.start();
 
   resetTransform();

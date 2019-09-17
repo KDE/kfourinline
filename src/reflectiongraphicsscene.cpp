@@ -28,7 +28,7 @@
 #include <QGraphicsItem>
 #include <QStyleOptionGraphicsItem>
 #include <QWidget>
-#include <QTime>
+#include <QElapsedTimer>
 
 // How many time measurements for average
 #define MEASUREMENT_LIST_SIZE  50
@@ -58,7 +58,7 @@ void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
                                         const QStyleOptionGraphicsItem options[],
                                         QWidget *widget)
 {
-  QTime time;
+  QElapsedTimer time;
   time.start();
   
   // No reflections call parent function

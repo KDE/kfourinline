@@ -43,6 +43,7 @@
 #include <QStringList>
 #include <QTextDocument>
 #include <QTimer>
+#include <QElapsedTimer>
 
 // KDE includes
 #include <KLocalizedString>
@@ -259,7 +260,7 @@ void DisplayIntro::changeTheme()
 {
   qCDebug(KFOURINLINE_LOG) << "THEME CHANGE " << thememanager()->themefileChanged();
   // Measure time for resize
-  QTime time;
+  QElapsedTimer time;
   time.restart();
 
   // Retrieve theme data
@@ -391,7 +392,7 @@ void DisplayIntro::delaySprites(int duration)
 // by a timer
 void DisplayIntro::advance()
 {
-  QTime time;
+  QElapsedTimer time;
   time.restart();
   int duration = createAnimation(true);
 

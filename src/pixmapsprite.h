@@ -23,7 +23,7 @@
 // Qt includes
 #include <QGraphicsPixmapItem>
 #include <QPointF>
-#include <QTime>
+#include <QElapsedTimer>
 
 // Local includes
 #include "thememanager.h"
@@ -158,7 +158,7 @@ class PixmapSprite : public QGraphicsPixmapItem, public virtual Themeable
     
     /** The current running time for the animation.
      */
-    QTime mTime;
+    QElapsedTimer mTime;
 
     /** The current running frame number for the animation.
      */
