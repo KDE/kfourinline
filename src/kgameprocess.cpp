@@ -30,7 +30,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string>
-#include <unistd.h>
 
 #define READ_BUFFER_SIZE  1024
 
