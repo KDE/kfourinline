@@ -111,6 +111,11 @@ class ButtonSprite : public PixmapSprite
       */
     void hoverLeaveEvent(QMouseEvent* event);
 
+    // Silence gcc warnings
+    using QGraphicsPixmapItem::mousePressEvent;
+    using QGraphicsPixmapItem::mouseReleaseEvent;
+    using QGraphicsPixmapItem::hoverEnterEvent;
+    using QGraphicsPixmapItem::hoverLeaveEvent;
 
   protected:
     /** Change the frame of the sprite to match the button state.
