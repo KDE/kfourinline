@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
   // Start session
   if (app.isSessionRestored())
   {
-    RESTORE(KWin4App);
+    kRestoreMainWindows<KWin4App>();
   }
   else
   {

@@ -82,8 +82,8 @@ KWin4App::KWin4App(QWidget *parent)
           mStatusMover()
 {
   // default names for players
-  (void)I18N_NOOP2("default name of first player", "Player 1");
-  (void)I18N_NOOP2("default name of second player", "Player 2");
+  (void)I18NC_NOOP("default name of first player", "Player 1");
+  (void)I18NC_NOOP("default name of second player", "Player 2");
 
   // Read theme files
   QStringList themeList;
