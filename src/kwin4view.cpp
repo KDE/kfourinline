@@ -76,7 +76,7 @@ KWin4View::KWin4View(int updateTime,
 
   //setViewportUpdateMode(QGraphicsView::FullViewportUpdate);
   setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
-  setOptimizationFlags(QGraphicsView::DontClipPainter |
+  setOptimizationFlags(
                        QGraphicsView::DontSavePainterState |
                        QGraphicsView::DontAdjustForAntialiasing );
 
