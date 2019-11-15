@@ -22,7 +22,7 @@
   *       Connect-4(tm) engine but tries to play more human as playing against
   *       a perfect engine is only frustrating. Connect four is proven to
   *       always win for the first player with perfect play.
-  *       see e.g. the Valena AI Engine http://www.ce.unipr.it/~gbe/velena.html
+  *       see e.g. the Velena AI Engine http://web.archive.org/web/20180219021151/http://www.ce.unipr.it/~gbe/velena.html
   */
 
 // Header includes
