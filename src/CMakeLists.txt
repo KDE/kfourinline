@@ -35,7 +35,7 @@ ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
 kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
-ecm_setup_version(${KDE_APPLICATIONS_VERSION} VARIABLE_PREFIX KFOURINLINE VERSION_HEADER kfourinline_version.h)
+ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KFOURINLINE VERSION_HEADER kfourinline_version.h)
 
 ecm_qt_declare_logging_category(kwin4_SRCS HEADER kfourinline_debug.h IDENTIFIER KFOURINLINE_LOG CATEGORY_NAME log_fourinline)
 
