@@ -50,11 +50,10 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
   QVBoxLayout *mainLayout = new QVBoxLayout;
   setLayout(mainLayout);
   QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
-  okButton->setDefault(true);
   okButton->setShortcut(Qt::CTRL | Qt::Key_Return);
   connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
   connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
-  okButton->setDefault(true);
+  okButton->setAutoDefault(false);
   setModal(false);
   setMinimumSize(QSize(200,200));
   
@@ -68,11 +67,13 @@ ChatDlg::ChatDlg(KGame *game,QWidget *parent)
   mGridLayout->addWidget(b,0,0);
   
   QPushButton *mButton     = new QPushButton(i18n("Configure..."),frame);
+  mButton->setAutoDefault(false);
   mGridLayout->addWidget(mButton,1,1);
   
   mainLayout->addWidget(frame);
   mainLayout->addWidget(buttonBox); 
   adjustSize();
+  mChat->setFocus();
   
   mChatDlg                 = new KChatDialog(mChat,frame,true);
   connect(mButton, &QPushButton::clicked, mChatDlg, &KChatDialog::show);
