@@ -23,7 +23,7 @@
 
 #include <QWidget>
 class KGameConnectWidgetPrivate;
-
+class QAbstractButton;
 /**
  * \class KGameConnectWidget kgameconnectdialog.h <KGameConnectWidget>
  */
@@ -90,7 +90,7 @@ protected Q_SLOTS:
 	 * The type has changed, ie the user switched between creating or
 	 * joining.
 	 **/
-	void slotTypeChanged(int);
+        void slotTypeChanged(QAbstractButton *button);
 	void slotGamesFound();
 	void slotGameSelected(int);
 

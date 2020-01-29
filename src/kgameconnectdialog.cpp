@@ -68,7 +68,7 @@ KGameConnectWidget::KGameConnectWidget(QWidget* parent) : QWidget(parent)
  d->mButtonGroup = new QButtonGroup(this);
  d->mButtonGroup->setExclusive(true);
  vb->addWidget(box);
- connect(d->mButtonGroup, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::buttonClicked), this, &KGameConnectWidget::slotTypeChanged);
+ connect(d->mButtonGroup, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &KGameConnectWidget::slotTypeChanged);
  QRadioButton* buttonCreate = new QRadioButton(i18n("Create a network game"), box);
  boxlay->addWidget(buttonCreate);
  d->mButtonGroup->addButton(buttonCreate,0);
@@ -208,16 +208,19 @@ void KGameConnectWidget::setPort(unsigned short int port)
 
 void KGameConnectWidget::setDefault(int state)
 {
- if (d->mButtonGroup->button(state) == nullptr) {
+ QAbstractButton *button = d->mButtonGroup->button(state);
+ if (button == nullptr) {
   qCCritical(KFOURINLINE_LOG) << "KGameConnectWidget::setDefault" << state;
   return;
  } 
- d->mButtonGroup->button(state)->setChecked(true);
- slotTypeChanged(state); 
+ button->setChecked(true);
+ slotTypeChanged(button);
 }
 
-void KGameConnectWidget::slotTypeChanged(int t)
+void KGameConnectWidget::slotTypeChanged(QAbstractButton *button)
 {
+ if (button) {
+ const int t = d->mButtonGroup->id(button);
  if (t == 0) {
 	d->mHost->setEnabled(false);
  } else if (t == 1) {
@@ -225,6 +228,7 @@ void KGameConnectWidget::slotTypeChanged(int t)
  }
  showDnssdControls();
  emit signalServerTypeChanged(t);
+ }
 }
 
 
