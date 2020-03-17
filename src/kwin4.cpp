@@ -81,10 +81,6 @@ KWin4App::KWin4App(QWidget *parent)
           mStatusMsg(),
           mStatusMover()
 {
-  // default names for players
-  (void)I18NC_NOOP("default name of first player", "Player 1");
-  (void)I18NC_NOOP("default name of second player", "Player 2");
-
   // Read theme files
   QStringList themeList;
   const QString dir = QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("grafix"), QStandardPaths::LocateDirectory);
