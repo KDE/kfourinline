@@ -61,7 +61,10 @@ bool global_demo_mode  = false;
 int main(int argc, char *argv[])
 {
   global_debug = 0;
-    QApplication app(argc, argv);
+    
+  // Fixes blurry icons with fractional scaling
+  QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+  QApplication app(argc, argv);
 
     Kdelibs4ConfigMigrator migrate(QStringLiteral("kfourinline"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("kfourinlinerc"));
