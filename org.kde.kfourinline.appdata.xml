@@ -17,6 +17,7 @@
   <name xml:lang="it">KFourInLine</name>
   <name xml:lang="ko">KFourInLine</name>
   <name xml:lang="nl">KFourInLine</name>
+  <name xml:lang="nn">KFourInLine</name>
   <name xml:lang="pl">KCzteryWLinii</name>
   <name xml:lang="pt">KFourInLine</name>
   <name xml:lang="pt-BR">KFourInLine</name>
@@ -90,6 +91,7 @@
       <caption xml:lang="it">Giocare a KFourInLine</caption>
       <caption xml:lang="ko">KFourInLine 플레이</caption>
       <caption xml:lang="nl">KFourInLine spelen</caption>
+      <caption xml:lang="nn">Spelar KFourInLine</caption>
       <caption xml:lang="pl">Granie w KCzteryWLinii</caption>
       <caption xml:lang="pt">Jogar ao KFourInLine</caption>
       <caption xml:lang="pt-BR">Jogando KFourInLine</caption>
