@@ -122,7 +122,7 @@ class ThemeManager : public QObject
       * @param size   The size of the resulting pixmap
       * @return The new pixmap.
       */
-    const QPixmap getPixmap(const QString &svgid, const QSize &size);
+    const QPixmap getPixmap(const QString &svgid, QSize size);
 
     /** Load a pixmap from the SVG theme file. Its filename is given in the
       * "general" section of the theme file as "svgfile". The pixmap is scaled
