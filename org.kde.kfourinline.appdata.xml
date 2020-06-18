@@ -25,6 +25,7 @@
   <name xml:lang="sk">KFourInLine</name>
   <name xml:lang="sv">Fyra i rad</name>
   <name xml:lang="uk">Чотири-у-рядку</name>
+  <name xml:lang="x-test">xxKFourInLinexx</name>
   <name xml:lang="zh-CN">KFourInLine</name>
   <name xml:lang="zh-TW">KFourInLine</name>
   <summary>KFourInLine is a four-in-a-row game by KDE</summary>
@@ -47,6 +48,7 @@
   <summary xml:lang="sk">KFourInLine je hra KDE o štyroch v rade</summary>
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
   <summary xml:lang="uk">Чотири-у-рядку — це гра у чотири-у-рядок від KDE</summary>
+  <summary xml:lang="x-test">xxKFourInLine is a four-in-a-row game by KDExx</summary>
   <description>
     <p>
       KFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.
@@ -70,6 +72,7 @@
     <p xml:lang="sk">KFourInLine je stolová hra pre dvoch hráčov založená na hre Connect-Four.Hráči sa snažia zostaviť rad štyroch kúskov pomocou rôznych stratégií.</p>
     <p xml:lang="sv">Fyra i rad är ett brädspel för två spelare baserat på spelet Connect-Four. Spelarna försöker bygga en rad av fyra pjäser med användning av olika strategier.</p>
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
+    <p xml:lang="x-test">xxKFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.xx</p>
   </description>
   <url type="homepage">https://games.kde.org/game.php?game=kfourinline</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kfourinline</url>
@@ -97,6 +100,7 @@
       <caption xml:lang="sk">Hranie KFourInLine</caption>
       <caption xml:lang="sv">Spela Fyra i rad</caption>
       <caption xml:lang="uk">Гра у Чотири-у-рядку</caption>
+      <caption xml:lang="x-test">xxPlaying KFourInLinexx</caption>
       <caption xml:lang="zh-TW">KFourInLine 遊玩畫面</caption>
       <image>https://cdn.kde.org/screenshots/kfourinline/kfourinline.png</image>
     </screenshot>
