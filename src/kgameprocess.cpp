@@ -20,8 +20,7 @@
 
 #include "kgameprocess.h"
 
-#include <KRandomSequence>
-
+#include <QRandomGenerator>
 #include <QBuffer>
 #include <QDataStream>
 #include <QFile>
@@ -38,7 +37,7 @@ class KGameProcessPrivate
 public:
     QFile rFile;
     QFile wFile;
-    KRandomSequence* mRandom;
+    QRandomGenerator* mRandom;
 };
 
 // ----------------------- Process Child ---------------------------
@@ -57,8 +56,7 @@ KGameProcess::KGameProcess()
 //          this, SLOT(receivedMessage(QByteArray,quint32)));
   connect(mMessageIO, &KMessageFilePipe::received, this, &KGameProcess::receivedMessage);
  
-  d->mRandom = new KRandomSequence;
-  d->mRandom->setSeed(0);
+  d->mRandom = new QRandomGenerator(QRandomGenerator::global()->generate());
 }
 KGameProcess::~KGameProcess() 
 {
@@ -136,7 +134,7 @@ void KGameProcess::receivedMessage(const QByteArray& receiveBuffer)
  }
 }
 
-KRandomSequence* KGameProcess::random()
+QRandomGenerator* KGameProcess::random()
 {
   return d->mRandom;
 }

@@ -34,9 +34,7 @@
 #include <QMutex>
 #include <QElapsedTimer>
 #include <QWaitCondition>
-
-// KDE includes
-#include <KRandomSequence>
+#include <QRandomGenerator>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
@@ -677,10 +675,10 @@ void KComputer::DoMove(int move, COLOUR color, FARBE field[][SIZE_X+1], char num
 
 
 // Retrieve random number 0..max
-long KComputer::random(long max)
+int KComputer::random(int max)
 {
   //return 0; 
-  return proc.random()->getLong(max);
+  return proc.random()->bounded(max);
 }
 
 // Main startup

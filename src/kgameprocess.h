@@ -28,7 +28,7 @@
 #include <QFile>
 #include <QObject>
 
-class KRandomSequence;
+class QRandomGenerator;
 
 class KPlayer;
 class KMessageFilePipe;
@@ -164,15 +164,15 @@ class KGameProcess:  public QObject
     void sendSystemMessage(QDataStream &stream,int msgid,quint32 receiver=0);
 
     /**
-     * Returns a pointer to a KRandomSequence. You can generate
+     * Returns a pointer to a QRandomGenerator. You can generate
      * random numbers via e.g.
      * \code
-     *   random()->getLong(100);
+     *   random()->bounded(100);
      * \endcode
      * 
-     * @return KRandomSequence pointer
+     * @return QRandomGenerator pointer
      */
-    KRandomSequence *random();
+    QRandomGenerator *random();
 
   protected Q_SLOTS:
     /**
@@ -228,8 +228,8 @@ class KGameProcess:  public QObject
       *     // It arrives exactly as this in the kgame inputMove function!!
       *     qint8 x1,y1,pl;
       *     pl=-1;
-      *     x1=proc.random()->getLong(8);
-      *     y1=proc.random()->getLong(8);
+      *     x1=proc.random()->bounded(8);
+      *     y1=proc.random()->bounded(8);
       *     // Stream it
       *     out << pl << x1 << y1;
       *     id=KGameMessage::IdPlayerInput;

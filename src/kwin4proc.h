@@ -98,7 +98,7 @@ class KComputer : public QObject
     /** Generate a random number from 0..max
       * @param max The range [0..max[
       */
-    long random(long max);
+    int random(int max);
 
     /** Start thinking about a new move. Will read the input stream and
       * then start the MinMax AI algorithm.
