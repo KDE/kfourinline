@@ -281,7 +281,7 @@ KPlayer* KWin4Doc::nextPlayer(KPlayer* last, bool /*exclusive*/)
     qCDebug(KFOURINLINE_LOG) <<" Current set to "<<getCurrentPlayer();
   if (isAdmin())
     getPlayer(getCurrentPlayer())->setTurn(true,true);
-  emit signalNextPlayer(int(getCurrentPlayer()));
+  Q_EMIT signalNextPlayer(int(getCurrentPlayer()));
   return getPlayer(getCurrentPlayer());
 }
 
@@ -1136,12 +1136,12 @@ void KWin4Doc::clientConnected(quint32 cid, KGame* /* me */)
   KWin4Player* p2=(KWin4Player *)playerList()->at(1);
   if (!p1->isVirtual())
   {
-    emit signalChatChanged(p1);  
+    Q_EMIT signalChatChanged(p1);
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "CHAT to player 0";
   }
   else
   {
-    emit signalChatChanged(p2);  
+    Q_EMIT signalChatChanged(p2);
     if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "CHAT to player 1";
   }
 
@@ -1289,7 +1289,7 @@ void KWin4Doc::gamePropertyChanged(KGamePropertyBase* prop, KGame* /* me */)
      if (gameStatus()==Abort)
      {
        if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "PropertyChanged::status signal game abort +++";
-       emit signalGameOver(2,getPlayer(getCurrentPlayer()),this); // 2 indicates Abort
+       Q_EMIT signalGameOver(2,getPlayer(getCurrentPlayer()),this); // 2 indicates Abort
      }
      else if (gameStatus()==Run)
      {
@@ -1297,7 +1297,7 @@ void KWin4Doc::gamePropertyChanged(KGamePropertyBase* prop, KGame* /* me */)
        if (playerList()->count()==2)
        {
          activateCurrentPlayer(); // Set the current player to play
-         emit signalGameRun();
+         Q_EMIT signalGameRun();
        }
        if (global_debug>1) qCDebug(KFOURINLINE_LOG) << "PropertyChanged::status signal game run done +++";
      }

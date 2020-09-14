@@ -123,15 +123,15 @@ void KGameProcess::receivedMessage(const QByteArray& receiveBuffer)
    case KGameMessage::IdTurn:
      qint8 b;
      stream >> b;
-     emit signalTurn(stream,(bool)b);
+     Q_EMIT signalTurn(stream,(bool)b);
    break;
    case KGameMessage::IdIOAdded:
      qint16 id;
      stream >> id;
-     emit signalInit(stream,(int)id);
+     Q_EMIT signalInit(stream,(int)id);
    break;
    default:
-      emit signalCommand(stream,msgid-KGameMessage::IdUser,receiver,sender);
+      Q_EMIT signalCommand(stream,msgid-KGameMessage::IdUser,receiver,sender);
    break;
  }
 }
@@ -219,7 +219,7 @@ void KMessageFilePipe::exec()
        //msg.setRawData(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
        std::copy(mReceiveBuffer.begin()+2*sizeof(long),mReceiveBuffer.begin()+len, msg.begin());
 //  msg.duplicate(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
-       emit received(msg);
+       Q_EMIT received(msg);
        //msg.resetRawData(mReceiveBuffer.data()+2*sizeof(long),len-2*sizeof(long));
        mReceiveCount=0;
      }

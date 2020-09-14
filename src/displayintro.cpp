@@ -242,7 +242,7 @@ void DisplayIntro::buttonPressed(QGraphicsItem* item, int id)
     if (no == 13) {input0=KGameIO::MouseIO;input1=KGameIO::MouseIO;}
 
     // Emit signal
-    emit signalQuickStart(startPlayer, input0, input1, level);
+    Q_EMIT signalQuickStart(startPlayer, input0, input1, level);
   }
 }
 

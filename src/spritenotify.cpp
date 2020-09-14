@@ -33,7 +33,7 @@ SpriteNotify::SpriteNotify(QGraphicsItem* parent)
 // Emit the signal igven the user defined mode parameter
 void SpriteNotify::emitSignal(int mode)
 {
-  emit signalNotify(mParent,mode);
+  Q_EMIT signalNotify(mParent,mode);
 }
 
 

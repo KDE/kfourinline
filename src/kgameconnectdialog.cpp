@@ -227,7 +227,7 @@ void KGameConnectWidget::slotTypeChanged(QAbstractButton *button)
 	d->mHost->setEnabled(true);
  }
  showDnssdControls();
- emit signalServerTypeChanged(t);
+ Q_EMIT signalServerTypeChanged(t);
  }
 }
 
