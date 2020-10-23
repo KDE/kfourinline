@@ -23,7 +23,6 @@
 #include <QRandomGenerator>
 #include <QBuffer>
 #include <QDataStream>
-#include <QFile>
 
 #include <cassert>
 #include <cstdio>

@@ -36,7 +36,6 @@
 #include <libkdegamesprivate/kgame/kplayer.h>
 
 // Local includes
-#include "kwin4global.h"
 #include "displayintro.h"
 #include "displaygame.h"
 #include "spritenotify.h"

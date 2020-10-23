@@ -22,7 +22,6 @@
 
 #include <QList>
 #include <QPushButton>
-#include <QVBoxLayout>
 
 #include <KLocalizedString>
 

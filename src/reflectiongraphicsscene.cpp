@@ -26,8 +26,6 @@
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsItem>
-#include <QStyleOptionGraphicsItem>
-#include <QWidget>
 #include <QElapsedTimer>
 
 // How many time measurements for average

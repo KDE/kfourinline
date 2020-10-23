@@ -34,7 +34,6 @@
 #include "kfourinline_debug.h"
 
 // Local includes
-#include "thememanager.h"
 #include "piecesprite.h"
 #include "pixmapsprite.h"
 #include "scoresprite.h"

@@ -34,7 +34,6 @@
 
 // Qt includes
 #include <QColor>
-#include <QEvent>
 #include <QFont>
 #include <QGraphicsView>
 #include <QMouseEvent>
@@ -42,7 +41,6 @@
 #include <QPoint>
 #include <QStringList>
 #include <QTextDocument>
-#include <QTimer>
 #include <QElapsedTimer>
 
 // KDE includes

@@ -30,7 +30,6 @@
 
 // include files for Qt
 #include <QDir>
-#include <QList>
 #include <QStandardPaths>
 #include <QTimer>
 

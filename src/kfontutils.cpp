@@ -25,7 +25,6 @@
 
 #include <limits>
 
-#include <QGraphicsTextItem>
 #include <QFont>
 
 qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal height, qreal maxFontSize, qreal minFontSize, qreal precision)

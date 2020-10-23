@@ -22,7 +22,6 @@
 #include "kwin4proc.h"
 
 // Standard includes
-#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <string>
