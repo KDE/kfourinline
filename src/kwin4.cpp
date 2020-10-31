@@ -83,7 +83,7 @@ KWin4App::KWin4App(QWidget *parent)
 {
   // Read theme files
   QStringList themeList;
-  const QString dir = QStandardPaths::locate(QStandardPaths::DataLocation, QStringLiteral("grafix"), QStandardPaths::LocateDirectory);
+  const QString dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("grafix"), QStandardPaths::LocateDirectory);
   const QStringList fileNames = QDir(dir).entryList(QStringList() << QStringLiteral("*.desktop"));
   for (const QString& file : fileNames)
     themeList.append(dir + QLatin1Char('/') + file);
@@ -415,7 +415,7 @@ void KWin4App::saveProperties(KConfigGroup& grp)
 
   // Save current game?
   QString name = QStringLiteral("current_game")+grp.name();
-  QString filename = QStandardPaths::writableLocation(QStandardPaths::DataLocation) + QLatin1Char('/') + name;
+  QString filename = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QLatin1Char('/') + name;
   bool isRunning = (mDoc->gameStatus()==KGame::Run);
   if (isRunning)
   {
