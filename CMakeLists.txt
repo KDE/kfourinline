@@ -44,27 +44,10 @@ add_definitions(
     -DQT_NO_KEYWORDS
 )
 
-
 add_subdirectory(src)
 add_subdirectory(grafix)
+add_subdirectory(icons)
 add_subdirectory(doc)
-
-
-########### install files ###############
-
-install(PROGRAMS org.kde.kfourinline.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-
-install(FILES org.kde.kfourinline.appdata.xml  DESTINATION  ${KDE_INSTALL_METAINFODIR})
-
-ecm_install_icons(ICONS
-    128-apps-kfourinline.png
-    16-apps-kfourinline.png
-    22-apps-kfourinline.png
-    32-apps-kfourinline.png
-    48-apps-kfourinline.png
-    64-apps-kfourinline.png
-    DESTINATION ${KDE_INSTALL_ICONDIR}
-)
 
 ki18n_install(po)
 kdoctools_install(po)

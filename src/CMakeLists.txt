@@ -1,6 +1,3 @@
-
-########### next target ###############
-
 set(kwin4_SRCS
    main.cpp 
    chatdlg.cpp
@@ -45,7 +42,7 @@ ecm_qt_declare_logging_category(kwin4_SRCS
     EXPORT KFOURINLINE
 )
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../*-apps-k*.png")
+file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-kfourinline.png")
 ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(kfourinline ${kwin4_SRCS})
@@ -62,6 +59,9 @@ target_link_libraries(kfourinline
 )
 
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
+
+install(PROGRAMS org.kde.kfourinline.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES org.kde.kfourinline.appdata.xml  DESTINATION  ${KDE_INSTALL_METAINFODIR})
 
 set(kwin4proc_SRCS 
     aiboard.cpp
