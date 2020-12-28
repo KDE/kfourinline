@@ -292,13 +292,13 @@ void KWin4App::initGUI()
   QAction* action;
 
   // Game
-  KStandardGameAction::gameNew(this, SLOT(menuNewGame()), actionCollection());
-  KStandardGameAction::load(this, SLOT(menuOpenGame()), actionCollection());
-  KStandardGameAction::save(this, SLOT(menuSaveGame()), actionCollection());
-  action = KStandardGameAction::end(this, SLOT(endGame()), actionCollection());
+  KStandardGameAction::gameNew(this, &KWin4App::menuNewGame, actionCollection());
+  KStandardGameAction::load(this, &KWin4App::menuOpenGame, actionCollection());
+  KStandardGameAction::save(this, &KWin4App::menuSaveGame, actionCollection());
+  action = KStandardGameAction::end(this, &KWin4App::endGame, actionCollection());
   action->setWhatsThis(i18n("Ends a currently played game. No winner will be declared."));
-  KStandardGameAction::hint(this, SLOT(askForHint()), actionCollection());
-  KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+  KStandardGameAction::hint(this, &KWin4App::askForHint, actionCollection());
+  KStandardGameAction::quit(this, &KWin4App::close, actionCollection());
   
   action = actionCollection()->addAction( QStringLiteral( "network_conf" ));
   action->setText(i18n("&Network Configuration..."));
@@ -315,8 +315,8 @@ void KWin4App::initGUI()
   action->setToolTip(i18n("Show statistics."));
 
   // Move
-  KStandardGameAction::undo(this, SLOT(undoMove()), actionCollection());
-  KStandardGameAction::redo(this, SLOT(redoMove()), actionCollection());
+  KStandardGameAction::undo(this, &KWin4App::undoMove, actionCollection());
+  KStandardGameAction::redo(this, &KWin4App::redoMove, actionCollection());
 
   actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(configureSettings()));
 
