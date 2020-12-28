@@ -1,0 +1,6 @@
+#ifndef CONFIG_KWIN4_H
+#define CONFIG_KWIN4_H
+
+#define SRC_DIR "@PROJECT_SOURCE_DIR@"
+
+#endif

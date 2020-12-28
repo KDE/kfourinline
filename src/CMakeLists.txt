@@ -26,7 +26,7 @@ set(kwin4_SRCS
 )
 qt5_add_resources(kwin4_SRCS kfourinline.qrc) 
 
-configure_file(config-src.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
+configure_file(config-src.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
 ki18n_wrap_ui(kwin4_SRCS settings.ui statuswidget.ui statistics.ui )
 
