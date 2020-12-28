@@ -194,7 +194,8 @@ void KGameDebugDialog::initPlayerPage()
  QLabel* listLabel = new QLabel(i18n("Available Players"), d->mPlayerPage);
  listLayout->addWidget(listLabel);
  d->mPlayerList = new QListWidget(d->mPlayerPage);
- connect(d->mPlayerList, SIGNAL(executed(QListWidgetItem*)), this, SLOT(slotUpdatePlayerData(QListWidgetItem*)));
+ connect(d->mPlayerList, &QListWidget::itemActivated,
+         this, QOverload<QListWidgetItem*>::of(&KGameDebugDialog::slotUpdatePlayerData));
  listLayout->addWidget(d->mPlayerList);
  d->mPlayerList->setSizePolicy(QSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding));
 

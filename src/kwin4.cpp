@@ -318,7 +318,7 @@ void KWin4App::initGUI()
   KStandardGameAction::undo(this, &KWin4App::undoMove, actionCollection());
   KStandardGameAction::redo(this, &KWin4App::redoMove, actionCollection());
 
-  actionCollection()->addAction(KStandardAction::Preferences, this, SLOT(configureSettings()));
+  KStandardAction::preferences(this, &KWin4App::configureSettings, actionCollection());
 
   // Add all theme files to the menu
   QStringList themes(mThemeFiles.keys());
