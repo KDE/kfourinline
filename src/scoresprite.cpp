@@ -5,21 +5,19 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "scoresprite.h"
+
+// own
 #include "kfourinline_debug.h"
-
-// General includes
-#include <cmath>
-
-// Qt includes
-#include <QFont>
-#include <QGraphicsScene>
-
-// KDE includes
+// KF
 #include <KConfig>
 #include <KConfigGroup>
 #include <KLocalizedString>
+// Qt
+#include <QFont>
+#include <QGraphicsScene>
+// Std
+#include <cmath>
 
 // Constructor for the score sprite
 ScoreSprite::ScoreSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)

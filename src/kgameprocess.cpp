@@ -8,10 +8,11 @@
 
 #include "kgameprocess.h"
 
+// Qt
 #include <QRandomGenerator>
 #include <QBuffer>
 #include <QDataStream>
-
+// Std
 #include <cassert>
 #include <cstdio>
 #include <cstdlib>

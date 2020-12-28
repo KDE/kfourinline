@@ -8,6 +8,7 @@
 #ifndef __KCHATDIALOG_H__
 #define __KCHATDIALOG_H__
 
+// Qt
 #include <QDialog>
 
 class QDialogButtonBox;

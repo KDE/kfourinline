@@ -12,18 +12,9 @@
   *       see e.g. the Velena AI Engine http://web.archive.org/web/20180219021151/http://www.ce.unipr.it/~gbe/velena.html
   */
 
-// Header includes
 #include "kwin4doc.h"
 
-// include files for Qt
-#include <QDir>
-#include <QStandardPaths>
-#include <QTimer>
-
-// include files for KDE
-#include <KLocalizedString>
-
-// application specific includes
+// own
 #include "kfourinline_debug.h"
 #include "kwin4view.h"
 #include "scoresprite.h"
@@ -31,6 +22,12 @@
 #include "score.h"
 #include "ui_statuswidget.h"
 #include "config-src.h"
+// KF
+#include <KLocalizedString>
+// Qt
+#include <QDir>
+#include <QStandardPaths>
+#include <QTimer>
 
 
 #define FIELD_SIZE_X 7

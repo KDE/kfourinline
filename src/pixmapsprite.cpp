@@ -5,19 +5,18 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "pixmapsprite.h"
+
+// own
 #include "kfourinline_debug.h"
-
-// General includes
-#include <cmath>
-
-// Qt includes
-#include <QGraphicsScene>
-
-// KDE includes
+// KF
 #include <KConfig>
 #include <KConfigGroup>
+// Qt
+#include <QGraphicsScene>
+// Std
+#include <cmath>
+
 
 // Constructor for the sprite
 PixmapSprite::PixmapSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)

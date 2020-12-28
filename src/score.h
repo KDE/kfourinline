@@ -8,7 +8,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 
-// Qt includes
+// Qt
 #include <QObject>
 
 class ScoreSprite;

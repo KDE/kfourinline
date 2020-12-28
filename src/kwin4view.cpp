@@ -5,29 +5,25 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "kwin4view.h"
 
-// Standard includes
-#include <cmath>
-
-// Qt includes
-#include <QColor>
-#include <QEvent>
-#include <QElapsedTimer>
-
-// KDE includes
-#include "kfourinline_debug.h"
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kplayer.h>
-
-// Local includes
+// own
 #include "displayintro.h"
 #include "displaygame.h"
 #include "spritenotify.h"
 #include "score.h"
 #include "reflectiongraphicsscene.h"
+#include "kfourinline_debug.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kplayer.h>
+// Qt
+#include <QColor>
+#include <QEvent>
+#include <QElapsedTimer>
+// Std
+#include <cmath>
+
 
 // How many time measurements for average
 #define MEASUREMENT_LIST_SIZE  50

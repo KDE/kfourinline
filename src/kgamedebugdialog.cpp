@@ -7,17 +7,19 @@
 */
 
 #include "kgamedebugdialog.h"
-#include "kfourinline_debug.h"
 
+// own
+#include "kfourinline_debug.h"
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kgame.h>
 #include <libkdegamesprivate/kgame/kplayer.h>
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
-
+// KF
 #include <KLocalizedString>
 #include <KStandardGuiItem>
-
+// Qt
 #include <QFrame>
 #include <QGridLayout>
 #include <QHBoxLayout>
@@ -27,7 +29,7 @@
 #include <QTime>
 #include <QTreeWidget>
 #include <QVBoxLayout>
-
+// Std
 #include <typeinfo>
 
 

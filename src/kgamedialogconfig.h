@@ -16,8 +16,8 @@
 #ifndef __KGAMEDIALOGCONFIG_H__
 #define __KGAMEDIALOGCONFIG_H__
 
+// Qt
 #include <QWidget>
-
 
 class KGame;
 class KPlayer;

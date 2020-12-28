@@ -8,14 +8,13 @@
 #ifndef DISPLAY_GAME_H
 #define DISPLAY_GAME_H
 
-// Qt includes
+// own
+#include "thememanager.h"
+// Qt
 #include <QGraphicsView>
 #include <QHash>
 #include <QList>
 #include <QTimer>
-
-// Local includes
-#include "thememanager.h"
 
 // Forward declaration
 class ThemeManager;

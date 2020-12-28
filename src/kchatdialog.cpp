@@ -6,13 +6,15 @@
 */
 
 #include "kchatdialog.h"
-#include "kfourinline_debug.h"
 
+// own
+#include "kfourinline_debug.h"
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kchatbase.h>
-
+// KF
 #include <KLocalizedString>
-
+// Qt
 #include <QDialogButtonBox>
 #include <QFontDialog>
 #include <QFrame>

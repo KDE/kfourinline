@@ -9,10 +9,11 @@
 #ifndef __KGAMEPROCESS_H_
 #define __KGAMEPROCESS_H_
 
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kmessageio.h>
-
+// Qt
 #include <QFile>
 #include <QObject>
 

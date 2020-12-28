@@ -8,11 +8,11 @@
 #ifndef AIBOARD_H
 #define AIBOARD_H
 
-// Qt includes
+// own
+#include "kwin4global.h"
+// Qt
 #include <QDataStream>
 #include <QHash>
-
-#include "kwin4global.h"
 
 
 /** Store the values of the cached positions for s set of levels.

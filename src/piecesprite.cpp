@@ -5,11 +5,11 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "piecesprite.h"
-#include "kfourinline_debug.h"
 
-// General includes
+// own
+#include "kfourinline_debug.h"
+// Std
 #include <cmath>
 
 PieceSprite::PieceSprite(const QString &id, ThemeManager* theme, int no, QGraphicsScene* canvas)

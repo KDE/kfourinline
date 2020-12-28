@@ -5,10 +5,11 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "kwin4player.h"
-#include "kfourinline_debug.h"
 
+// own
+#include "kfourinline_debug.h"
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 

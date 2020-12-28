@@ -9,13 +9,14 @@
 #ifndef __KGAMEPROPERTYARRAY_H_
 #define __KGAMEPROPERTYARRAY_H_
 
+// own
 #include "kfourinline_debug.h"
-
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamemessage.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
-
+// Qt
 #include <QDataStream>
 #include <QVector>
 

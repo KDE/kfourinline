@@ -5,14 +5,12 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "aiboard.h"
 
-// Standard includes
-#include <cstdio>
-
-// KDE includes
+// own
 #include "kfourinline_debug.h"
+// Std
+#include <cstdio>
 
 // Construct a board object
 AIBoard::AIBoard()

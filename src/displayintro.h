@@ -8,7 +8,13 @@
 #ifndef DISPLAY_INTRO_H
 #define DISPLAY_INTRO_H
 
-// Qt includes
+// own
+#include "thememanager.h"
+#include "kwin4global.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgameio.h>
+// Qt
 #include <QGraphicsScene>
 #include <QHash>
 #include <QList>
@@ -16,14 +22,6 @@
 #include <QEvent>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>
-
-// Local includes
-#include "thememanager.h"
-#include "kwin4global.h"
-
-// KDE includes
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgameio.h>
 
 // Forward declaration
 class QGraphicsView;

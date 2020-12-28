@@ -5,15 +5,13 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "introsprite.h"
-#include "kfourinline_debug.h"
 
-// General includes
+// own
+#include "kfourinline_debug.h"
+// Std
 #include <cmath>
 
-
-// KDE includes
 
 #define sign(x) ( (x)>0?1:((x)<0?-1:0) )
 

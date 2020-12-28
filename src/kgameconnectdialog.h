@@ -9,7 +9,9 @@
 #ifndef __KGAMECONNECTDIALOG_H__
 #define __KGAMECONNECTDIALOG_H__
 
+// Qt
 #include <QWidget>
+
 class KGameConnectWidgetPrivate;
 class QAbstractButton;
 /**

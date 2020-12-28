@@ -8,13 +8,12 @@
 #ifndef SCORE_SPRITE_H
 #define SCORE_SPRITE_H
 
-// Qt includes
-#include <QGraphicsPixmapItem>
-#include <QGraphicsTextItem>
-
-// Local includes
+// own
 #include "thememanager.h"
 #include "pixmapsprite.h"
+// Qt
+#include <QGraphicsPixmapItem>
+#include <QGraphicsTextItem>
 
 
 /** The sprite for a score board on the canvas.

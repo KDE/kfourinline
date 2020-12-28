@@ -5,8 +5,9 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "spritenotify.h"
+
+// own
 #include "kfourinline_debug.h"
 
 // Construct the object

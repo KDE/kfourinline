@@ -23,18 +23,19 @@
   * 
   */
 
+// own
+#include "kwin4.h"
+#include "kfourinline_debug.h"
+#include "kfourinline_version.h"
+// KF
 #include <KAboutData>
 #include <KCrash>
 #include <Kdelibs4ConfigMigrator>
 #include <KLocalizedString>
-
+// Qt
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
-
-#include "kwin4.h"
-#include "kfourinline_debug.h"
-#include "kfourinline_version.h"
 
 // Debug level for the program
 int global_debug = 0;

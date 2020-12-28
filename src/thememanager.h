@@ -8,14 +8,13 @@
 #ifndef THEME_MANAGER_H
 #define THEME_MANAGER_H
 
-// Qt includes
+// KF
+#include <KConfig>
+// Qt
 #include <QHash>
 #include <QObject>
 #include <QPoint>
 #include <QSvgRenderer>
-
-// KDE includes
-#include <KConfig>
 
 
 class ThemeManager;

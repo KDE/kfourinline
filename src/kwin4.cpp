@@ -5,20 +5,24 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "kwin4.h"
 
-// Qt includes
-#include <QFileDialog>
-#include <QGroupBox>
-#include <QIcon>
-#include <QLayout>
-#include <QRadioButton>
-#include <QStatusBar>
-#include <QTimer>
-#include <QVBoxLayout>
-
-// KDE includes
+// own
+#include "chatdlg.h"
+#include "kwin4doc.h"
+#include "kwin4view.h"
+#include "reflectiongraphicsscene.h"
+#include "prefs.h"
+#include "ui_settings.h"
+#include "ui_statistics.h"
+#include "kfourinline_debug.h"
+#include "kgamedialog.h"
+#include "kgamedialogconfig.h"
+#include "kgamedebugdialog.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamechat.h>
+// KF
 #include <kwidgetsaddons_version.h>
 #include <KActionCollection>
 #include <KConfig>
@@ -28,23 +32,16 @@
 #include <KSelectAction>
 #include <KStandardAction>
 #include <KStandardGameAction>
+// Qt
+#include <QFileDialog>
+#include <QGroupBox>
+#include <QIcon>
+#include <QLayout>
+#include <QRadioButton>
+#include <QStatusBar>
+#include <QTimer>
+#include <QVBoxLayout>
 
-// KGame includes
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgamechat.h>
-#include "kgamedialog.h"
-#include "kgamedialogconfig.h"
-#include "kgamedebugdialog.h"
-
-// application specific includes
-#include "chatdlg.h"
-#include "kwin4doc.h"
-#include "kwin4view.h"
-#include "reflectiongraphicsscene.h"
-#include "prefs.h"
-#include "ui_settings.h"
-#include "ui_statistics.h"
-#include "kfourinline_debug.h"
 
 // Abbreviations
 #define ACTION(x)   (actionCollection()->action(x))

@@ -8,23 +8,20 @@
 #ifndef KWIN4DOC_H
 #define KWIN4DOC_H
 
-// Qt Includes
-#include <QList>
-#include <QVector>
-
-// KDE includes
-#include <KConfig>
-
-#include "kgamepropertyarray.h"
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgame.h>
-#include <libkdegamesprivate/kgame/kgameio.h>
-
-// Local includes
+// own
 #include "kwin4global.h"
 #include "kwin4player.h"
 #include "aiboard.h"
+#include "kgamepropertyarray.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgame.h>
+#include <libkdegamesprivate/kgame/kgameio.h>
+// KF
+#include <KConfig>
+// Qt
+#include <QList>
+#include <QVector>
 
 class KWin4View;
 class Score;

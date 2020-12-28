@@ -8,14 +8,13 @@
 #ifndef PIECE_SPRITE_H
 #define PIECE_SPRITE_H
 
-// Qt includes
-#include <QGraphicsPixmapItem>
-#include <QPointF>
-
-// Local includes
+// own
 #include "thememanager.h"
 #include "pixmapsprite.h"
 #include "spritenotify.h"
+// Qt
+#include <QGraphicsPixmapItem>
+#include <QPointF>
 
 
 /** The sprite for a pixmap piece on the canvas. The pixmap can be

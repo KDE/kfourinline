@@ -5,16 +5,15 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "score.h"
 
-
+// own
+#include "kfourinline_debug.h"
+#include "scoresprite.h"
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>
 
-// Local includes
-#include "kfourinline_debug.h"
-#include "scoresprite.h"
 
 // Construct a score object
 Score::Score(QObject* parent)

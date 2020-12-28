@@ -8,7 +8,7 @@
 #ifndef SPRITE_NOTIFY_H
 #define SPRITE_NOTIFY_H
 
-// Qt includes
+// Qt
 #include <QGraphicsItem>
 #include <QObject>
 

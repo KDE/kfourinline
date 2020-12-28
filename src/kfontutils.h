@@ -7,8 +7,8 @@
 #ifndef KFONTUTILS_H
 #define KFONTUTILS_H
 
+// Qt
 #include <QGraphicsTextItem>
-
 
 class QSizeF;
 

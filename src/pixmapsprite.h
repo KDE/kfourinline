@@ -8,13 +8,12 @@
 #ifndef PIXMAP_SPRITE_H
 #define PIXMAP_SPRITE_H
 
-// Qt includes
+// own
+#include "thememanager.h"
+// Qt
 #include <QGraphicsPixmapItem>
 #include <QPointF>
 #include <QElapsedTimer>
-
-// Local includes
-#include "thememanager.h"
 
 
 /** This sprite is used to display a pixmap on the canvas.

@@ -9,6 +9,7 @@
 #ifndef __KGAMEDEBUGDIALOG_H__
 #define __KGAMEDEBUGDIALOG_H__
 
+// KF
 #include <KPageDialog>
 
 class QListWidgetItem;

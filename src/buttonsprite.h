@@ -8,16 +8,14 @@
 #ifndef BUTTON_SPRITE_H
 #define BUTTON_SPRITE_H
 
-// Qt includes
-#include <QMouseEvent>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsTextItem>
-
-
-// Local includes
+// own
 #include "thememanager.h"
 #include "pixmapsprite.h"
 #include "spritenotify.h"
+// Qt
+#include <QMouseEvent>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsTextItem>
 
 
 /** The sprite for a interactive buttons. The button can either be

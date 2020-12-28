@@ -7,25 +7,25 @@
 */
 
 #include "kgamedialogconfig.h"
+
+// own
 #include "kfourinline_debug.h"
 #include "kgameconnectdialog.h"
-
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgame.h>
 #include <libkdegamesprivate/kgame/kgamechat.h>
 #include <libkdegamesprivate/kgame/kplayer.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>
-
-
+// KF
 #include <KLocalizedString>
 #include <KMessageBox>
-
+// Qt
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
-
 
 
 class KGameDialogConfigPrivate

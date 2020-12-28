@@ -8,15 +8,14 @@
 #ifndef INTRO_SPRITE_H
 #define INTRO_SPRITE_H
 
-// Qt includes
+// own
+#include "thememanager.h"
+#include "pixmapsprite.h"
+// Qt
 #include <QGraphicsPixmapItem>
 #include <QPointF>
 #include <QList>
 #include <QElapsedTimer>
-
-// Local includes
-#include "thememanager.h"
-#include "pixmapsprite.h"
 
 class AnimationCommand;
 

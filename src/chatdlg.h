@@ -8,7 +8,7 @@
 #ifndef CHATDLG_H
 #define CHATDLG_H
 
-// Qt includes
+// Qt
 #include <QDialog>
 
 class KGame;

@@ -5,25 +5,20 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "thememanager.h"
 
-// General includes
+// own
+#include "kwin4global.h"
 #include "kfourinline_debug.h"
-
-// Qt includes
+// KF
+#include <KConfigGroup>
+#include <KLocalizedString>
+// Qt
 #include <QImage>
 #include <QPainter>
 #include <QPixmap>
 #include <QRectF>
 #include <QStandardPaths>
-
-// KDE includes
-#include <KConfigGroup>
-#include <KLocalizedString>
-
-// Local includes
-#include "kwin4global.h"
 
 // Constructor for the theme manager
 ThemeManager::ThemeManager(const QString &themefile, QObject* parent, int initialSize)

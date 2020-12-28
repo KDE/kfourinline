@@ -5,22 +5,20 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "buttonsprite.h"
+
+// own
 #include "kfontutils.h"
 #include "kfourinline_debug.h"
-
-// General includes
-#include <cmath>
-
-// Qt includes
+// KF
+#include <KConfig>
+#include <KConfigGroup>
+// Qt
 #include <QFont>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsScene>
-
-// KDE includes
-#include <KConfig>
-#include <KConfigGroup>
+// Std
+#include <cmath>
 
 // Constructor for the score sprite
 ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager* theme, int no, QGraphicsScene* scene)

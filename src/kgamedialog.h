@@ -16,8 +16,9 @@
 #ifndef __KGAMEDIALOG_H__
 #define __KGAMEDIALOG_H__
 
+// KF
 #include <KPageDialog>
-
+// Qt
 #include <QGridLayout>
 #include <QVBoxLayout>
 

@@ -7,11 +7,13 @@
 */
 
 #include "kgameconnectdialog.h"
-#include "kfourinline_debug.h"
 
+// own
+#include "kfourinline_debug.h"
+// KF
 #include <DNSSD/ServiceBrowser>
 #include <KLocalizedString>
-
+// Qt
 #include <QButtonGroup>
 #include <QComboBox>
 #include <QGroupBox>

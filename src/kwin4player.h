@@ -8,15 +8,14 @@
 #ifndef KWIN4_PLAYER_H
 #define KWIN4_PLAYER_H
 
-// KDE includes
+// own
+#include "score.h"
+// KF
 #include <KConfigGroup>
-
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kplayer.h>
 #include <libkdegamesprivate/kgame/kgameproperty.h>
-
-// Local includes
-#include "score.h"
 
 
 /** A player for the KWin4 game. A player holds all important player data,

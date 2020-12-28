@@ -8,16 +8,17 @@
 
 #include "kgamedialog.h"
 
-#include <QList>
-#include <QPushButton>
-
-#include <KLocalizedString>
-
+// own
 #include "kfourinline_debug.h"
 #include "kgamedialogconfig.h"
-
+// KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgame.h>
+// KF
+#include <KLocalizedString>
+// Qt
+#include <QList>
+#include <QPushButton>
 
 
 

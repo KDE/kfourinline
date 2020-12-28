@@ -8,7 +8,7 @@
 #ifndef REFLECTION_GRAPHICS_SCENE_H
 #define REFLECTION_GRAPHICS_SCENE_H
 
-// Qt includes
+// Qt
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>

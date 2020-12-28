@@ -8,7 +8,13 @@
 #ifndef KWIN4_KWIN4VIEW_H
 #define KWIN4_KWIN4VIEW_H
 
-// Qt includes
+// own
+#include "thememanager.h"
+#include "kwin4global.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgameio.h>
+// Qt
 #include <QDataStream>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
@@ -21,14 +27,6 @@
 #include <QSize>
 #include <QTimer>
 #include <QWidget>
-
-// KDE includes
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgameio.h>
-
-// Local includes
-#include "thememanager.h"
-#include "kwin4global.h"
 
 // Forward declaration
 class DisplayIntro;

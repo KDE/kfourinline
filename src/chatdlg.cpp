@@ -5,26 +5,23 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "chatdlg.h"
 
-// include files for QT
+// own
+#include "kfourinline_debug.h"
+#include "kchatdialog.h"
+#include "kwin4player.h"
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamechat.h>
+// KF
+#include <KLocalizedString>
+// Qt
 #include <QDialogButtonBox>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QPushButton>
 #include <QVBoxLayout>
-
-// include files for KDE
-#include <KLocalizedString>
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgamechat.h>
-
-// application specific includes
-#include "kfourinline_debug.h"
-#include "kchatdialog.h"
-#include "kwin4player.h"
 
 
 // Constructor for the chat widget. This widget

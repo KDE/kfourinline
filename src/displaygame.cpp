@@ -5,31 +5,25 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "displaygame.h"
 
-// Standard includes
-#include <cmath>
-#include <cassert>
-
-// Qt includes
-#include <QColor>
-#include <QPixmap>
-#include <QPoint>
-
-// KDE includes
-#include "kfourinline_debug.h"
-
-// Local includes
+// own
 #include "piecesprite.h"
 #include "pixmapsprite.h"
 #include "scoresprite.h"
 #include "spritenotify.h"
 #include "kwin4doc.h"
 #include "kwin4view.h"
-
 #include "reflectiongraphicsscene.h"
-
+// KF
+#include "kfourinline_debug.h"
+// Qt
+#include <QColor>
+#include <QPixmap>
+#include <QPoint>
+// Std
+#include <cmath>
+#include <cassert>
 
 
 // Constructor for the display

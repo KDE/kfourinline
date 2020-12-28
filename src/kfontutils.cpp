@@ -5,11 +5,13 @@
 */
 
 #include "kfontutils.h"
+
+// own
 #include "kfourinline_debug.h"
-
-#include <limits>
-
+// Qt
 #include <QFont>
+// Std
+#include <limits>
 
 qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal height, qreal maxFontSize, qreal minFontSize, qreal precision)
 {

@@ -8,15 +8,14 @@
 #ifndef _KWIN4PROC_H_
 #define _KWIN4PROC_H_
 
-#include <cmath>
-
-// Qt includes
-#include <QHash>
-
-// Local includes
-#include "kgameprocess.h"
+// own
 #include "kwin4global.h"
 #include "aiboard.h"
+#include "kgameprocess.h"
+// Qt
+#include <QHash>
+// St
+#include <cmath>
 
 // Save storage for color arrays
 typedef char FARBE;

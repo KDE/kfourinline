@@ -8,16 +8,15 @@
 #ifndef KWIN4_H
 #define KWIN4_H
 
-// KDE includes
-#include <KXmlGuiWindow>
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgameio.h>
-
-// local includes
+// own
 #include "kwin4global.h"
 #include "thememanager.h"
-
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgameio.h>
+// KF
+#include <KXmlGuiWindow>
+// Qt
 #include <QLabel>
 
 class KWin4Doc;

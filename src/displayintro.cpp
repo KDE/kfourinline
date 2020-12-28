@@ -5,21 +5,18 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "displayintro.h"
 
-// Local includes
+// own
 #include "introsprite.h"
 #include "pixmapsprite.h"
 #include "buttonsprite.h"
 #include "prefs.h"
 #include "kfontutils.h"
 #include "kfourinline_debug.h"
-
-// Standard includes
-#include <cmath>
-
-// Qt includes
+// KF
+#include <KLocalizedString>
+// Qt
 #include <QColor>
 #include <QFont>
 #include <QGraphicsView>
@@ -29,9 +26,8 @@
 #include <QStringList>
 #include <QTextDocument>
 #include <QElapsedTimer>
-
-// KDE includes
-#include <KLocalizedString>
+// Std
+#include <cmath>
 
 
 // Constructor for the intro display

@@ -5,15 +5,12 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "kwin4proc.h"
 
-// Standard includes
-#include <cstdio>
-#include <cstdlib>
-#include <string>
-
-// Qt includes
+// KDEGames
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgame/kgamemessage.h>
+// Qt
 #include <QByteArray>
 #include <QDataStream>
 #include <QFile>
@@ -21,9 +18,10 @@
 #include <QElapsedTimer>
 #include <QWaitCondition>
 #include <QRandomGenerator>
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgame/kgamemessage.h>
+// Std
+#include <cstdio>
+#include <cstdlib>
+#include <string>
 
 // Algorithm defines
 #define MIN_TIME        1000       // min time in milli sec for move

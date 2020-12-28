@@ -5,11 +5,12 @@
     SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
-// Header includes
 #include "reflectiongraphicsscene.h"
+
+// own
 #include "kwin4global.h"
 #include "kfourinline_debug.h"
-
+// Qt
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsItem>
