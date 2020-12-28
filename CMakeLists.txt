@@ -8,8 +8,8 @@ set(RELEASE_SERVICE_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_
 
 project(kfourinline VERSION ${RELEASE_SERVICE_VERSION})
 
-set (QT_MIN_VERSION "5.10.0")
-set (KF5_MIN_VERSION "5.55.0")
+set (QT_MIN_VERSION "5.12.0")
+set (KF5_MIN_VERSION "5.68.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -29,20 +29,20 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
-include(FeatureSummary)
-include(ECMInstallIcons)
 include(KDEInstallDirs)
-include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
+
+include(ECMInstallIcons)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
+include(FeatureSummary)
 
-if (${KF5Config_VERSION} STRGREATER "5.56.0")
-        add_definitions(-DQT_NO_FOREACH)
-        MESSAGE(STATUS "compile without foreach")
-endif()
-add_definitions(-DQT_NO_KEYWORDS)
+add_definitions(
+    -DQT_NO_FOREACH
+    -DQT_NO_KEYWORDS
+)
 
 
 add_subdirectory(src)
@@ -65,12 +65,6 @@ ecm_install_icons(ICONS
     64-apps-kfourinline.png
     DESTINATION ${KDE_INSTALL_ICONDIR}
 )
-
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES kfourinline.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES kfourinline.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
 
 ki18n_install(po)
 kdoctools_install(po)

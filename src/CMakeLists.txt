@@ -37,7 +37,13 @@ kconfig_add_kcfg_files(kwin4_SRCS prefs.kcfgc )
 
 ecm_setup_version(${RELEASE_SERVICE_VERSION} VARIABLE_PREFIX KFOURINLINE VERSION_HEADER kfourinline_version.h)
 
-ecm_qt_declare_logging_category(kwin4_SRCS HEADER kfourinline_debug.h IDENTIFIER KFOURINLINE_LOG CATEGORY_NAME log_fourinline)
+ecm_qt_declare_logging_category(kwin4_SRCS
+    HEADER kfourinline_debug.h
+    IDENTIFIER KFOURINLINE_LOG
+    CATEGORY_NAME log_fourinline
+    DESCRIPTION "KFourInLine"
+    EXPORT KFOURINLINE
+)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/../*-apps-k*.png")
 ecm_add_app_icon(kwin4_SRCS ICONS ${ICONS_SRCS})
@@ -57,9 +63,6 @@ target_link_libraries(kfourinline
 
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
-
-########### next target ###############
-
 set(kwin4proc_SRCS 
     aiboard.cpp
     kgameprocess.cpp
@@ -72,9 +75,10 @@ target_link_libraries(kfourinlineproc KF5KDEGames KF5KDEGamesPrivate Qt5::Svg)
 
 install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
-
-########### install files ###############
-
 install( FILES kwin4.kcfg  DESTINATION  ${KDE_INSTALL_KCFGDIR} )
 
-
+ecm_qt_install_logging_categories(
+    EXPORT KFOURINLINE
+    FILE kfourinline.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
