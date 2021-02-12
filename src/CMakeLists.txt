@@ -23,8 +23,8 @@ set(kwin4_SRCS
    kchatdialog.cpp
    pixmapsprite.cpp
    kfontutils.cpp
+   kfourinline.qrc
 )
-qt5_add_resources(kwin4_SRCS kfourinline.qrc) 
 
 configure_file(config-src.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 
