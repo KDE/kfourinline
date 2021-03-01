@@ -84,7 +84,7 @@
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
     <p xml:lang="x-test">xxKFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.xx</p>
   </description>
-  <url type="homepage">https://games.kde.org/game.php?game=kfourinline</url>
+  <url type="homepage">https://games.kde.org/games/kfourinline</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kfourinline</url>
   <url type="help">https://docs.kde.org/?application=kfourinline</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kfourinline&amp;source=appdata</url>
