@@ -18,7 +18,6 @@
 
 class QPainter;
 class QGraphicsItem;
-class QWidget;
 
 
 /**

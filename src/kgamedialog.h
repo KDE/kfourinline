@@ -22,8 +22,6 @@
 #include <QGridLayout>
 #include <QVBoxLayout>
 
-class QGridLayout;
-class QVBoxLayout;
 
 
 class KGame;
