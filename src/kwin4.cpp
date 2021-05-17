@@ -328,11 +328,7 @@ void KWin4App::initGUI()
   actionCollection()->addAction( QStringLiteral( "theme" ) , themeAction );
   themeAction->setIcon(QIcon::fromTheme( QStringLiteral( "games-config-theme" )));
   themeAction->setItems(themes);
-#if KWIDGETSADDONS_VERSION >= QT_VERSION_CHECK(5, 78, 0)
   connect(themeAction, &KSelectAction::indexTriggered, this, &KWin4App::changeTheme);
-#else
-  connect(themeAction, static_cast<void (KSelectAction::*)(int)>(&KSelectAction::triggered), this, &KWin4App::changeTheme);
-#endif
   qCDebug(KFOURINLINE_LOG) << "Setting current theme item to" << mThemeIndexNo;
   themeAction->setCurrentItem(mThemeIndexNo);
 
