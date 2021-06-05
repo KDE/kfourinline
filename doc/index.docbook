@@ -49,8 +49,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2016-05-09</date>
-<releaseinfo>v1.4.1 (Applications 16.04)</releaseinfo>
+<date>2021-06-05</date>
+<releaseinfo>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 <para>
@@ -82,12 +82,12 @@ Game type: Strategy, Board
 
 <para>
 &kfourinline; is a board game for two players based on the
-<trademark>Connect-Four</trademark> game.
+&nbsp;<trademark>Connect-Four</trademark> game.
 </para>
 
 <para>
 The players try to build up a row of four pieces using different strategies. Pieces are
-placed on a board. The game can also be played against a computer.
+placed on a board. The game can also be played against a computer, as well on network.
 </para>
 
 </chapter>
@@ -249,7 +249,7 @@ Saves the current game.
 <varlistentry>
 <term><menuchoice>
 <shortcut>
-<keycombo action="simul">&Ctrl;<keycap>End</keycap></keycombo>
+<keycombo action="simul">&Ctrl;&End;</keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
 <guimenuitem>End Game</guimenuitem></menuchoice></term>
@@ -389,7 +389,7 @@ of the &kde; Fundamentals.
 
 <chapter id="config">
 <title>Game Configuration</title>
-<para>&kfourinline; can be configured using the configuration dialog with <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> </para>
+<para>&kfourinline; can be configured using the configuration dialog with the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> menu item.</para>
 
 <screenshot>
 <mediaobject>
@@ -429,7 +429,7 @@ Can I change the look of the game?
 </question>
 <answer>
 <para>
-You can change the color of the pieces by opening the <guimenu>Settings</guimenu> menu and select <guisubmenu>Theme</guisubmenu>.
+You can change the color of the pieces by opening the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu item.
 </para>
 </answer>
 </qandaentry>
@@ -455,8 +455,7 @@ I have lost control of who is in the lead, can I find it out?
 </question>
 <answer>
 <para>
-Yes, you can see statistics by opening the <guimenu>Game</guimenu> menu and
-selecting <guimenuitem>Show Statistics</guimenuitem>.
+Yes, you can see statistics by opening the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Show Statistics</guimenuitem></menuchoice> menu item.
 </para>
 </answer>
 </qandaentry>
