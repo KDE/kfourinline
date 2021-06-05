@@ -29,7 +29,7 @@
 ChatDlg::ChatDlg(KGame *game,QWidget *parent)
        : QDialog(parent),mChat(), mChatDlg()
 {
-  setWindowTitle(i18n("Chat Dlg"));
+  setWindowTitle(i18nc("@title:window", "Chat Dlg"));
   QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);
   QVBoxLayout *mainLayout = new QVBoxLayout;
   setLayout(mainLayout);

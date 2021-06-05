@@ -77,7 +77,7 @@ void KChatDialog::init()
  d->mTextPage = new QFrame( this );
  QGridLayout* layout = new QGridLayout(d->mTextPage);
 
- setWindowTitle(i18n("Configure Chat"));
+ setWindowTitle(i18nc("@title:window", "Configure Chat"));
  buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel|QDialogButtonBox::Apply);
  QWidget *mainWidget = new QWidget(this);
  setLayout(layout);

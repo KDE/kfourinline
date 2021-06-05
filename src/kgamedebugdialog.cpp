@@ -116,7 +116,7 @@ KGameDebugDialog::KGameDebugDialog(KGame* g, QWidget* parent, bool modal)
     : KPageDialog(parent),
       d( new KGameDebugDialogPrivate )
 {
- setWindowTitle(i18n("KGame Debug Dialog"));
+ setWindowTitle(i18nc("@title:window", "KGame Debug Dialog"));
  //QT5 setButtons(Close);
  //QT5 setDefaultButton(Close);
  setModal(modal);
