@@ -23,7 +23,6 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
 // KF
-#include <kwidgetsaddons_version.h>
 #include <KActionCollection>
 #include <KConfig>
 #include <KConfigDialog>
