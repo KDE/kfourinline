@@ -11,12 +11,7 @@
 // own
 #include "kfourinline_debug.h"
 // KF
-#include <kdnssd_version.h>
-#if KDNSSD_VERSION >= QT_VERSION_CHECK(5, 84, 0)
 #include <KDNSSD/ServiceBrowser>
-#else
-#include <DNSSD/ServiceBrowser>
-#endif
 #include <KLocalizedString>
 // Qt
 #include <QButtonGroup>
