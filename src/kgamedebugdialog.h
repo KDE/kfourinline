@@ -27,7 +27,7 @@ class KGameDebugDialog : public KPageDialog
 	Q_OBJECT
 public:
 	KGameDebugDialog(KGame* g, QWidget* parent, bool modal = false);
-	~KGameDebugDialog();
+	~KGameDebugDialog() override;
 
 	/**
 	 * Automatically connects the KGame object to all error dependent slots. 

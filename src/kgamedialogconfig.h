@@ -38,7 +38,7 @@ class KGameDialogConfig : public QWidget
 	Q_OBJECT
 public:
     explicit KGameDialogConfig(QWidget* parent = nullptr);
-	virtual ~KGameDialogConfig();
+	~KGameDialogConfig() override;
 
 	/**
 	 * Called by @ref KGameDialog to submit all settings to the KGame
@@ -126,7 +126,7 @@ class KGameDialogNetworkConfig : public KGameDialogConfig
 	Q_OBJECT
 public:
     explicit KGameDialogNetworkConfig(QWidget* parent = nullptr);
-	virtual ~KGameDialogNetworkConfig();
+	~KGameDialogNetworkConfig() override;
 
 
 	/**

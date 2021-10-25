@@ -96,7 +96,7 @@ class KGameProcess:  public QObject
     /**
      * Destruct the process
      */
-    ~KGameProcess();
+    ~KGameProcess() override;
 
     /**
      * Enters the event loop of the computer process. Does only

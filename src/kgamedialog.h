@@ -88,7 +88,7 @@ public:
 	KGameDialog(KGame* g, KPlayer* owner, const QString& title, 
 			QWidget* parent);
 
-	virtual ~KGameDialog();
+	~KGameDialog() override;
 
 
 	/**

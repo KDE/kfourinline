@@ -39,7 +39,7 @@ public:
 	/**
 	 * Destruct the dialog
 	 **/
-	~KChatDialog();
+	~KChatDialog() override;
 
 	/**
 	 * @return The font that shall be used as the "name: " part of a normal

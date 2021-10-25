@@ -22,7 +22,7 @@ class KGameConnectWidget : public QWidget
 	Q_OBJECT
 public:
 	explicit KGameConnectWidget(QWidget* parent);
-	virtual ~KGameConnectWidget();
+	~KGameConnectWidget() override;
 
 	/**
 	 * @param host The host to connect to by default

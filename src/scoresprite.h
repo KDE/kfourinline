@@ -32,7 +32,7 @@ class ScoreSprite : public PixmapSprite
     
     /** Destructor 
       */
-    ~ScoreSprite();
+    ~ScoreSprite() override;
 
     /** Standard QGI advance function.
      *  @param phase The advance phase
