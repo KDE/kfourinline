@@ -8,30 +8,56 @@ configure_file(config-src.h.in ${CMAKE_CURRENT_BINARY_DIR}/config-src.h)
 add_executable(kfourinline)
 
 target_sources(kfourinline PRIVATE
-    main.cpp
-    chatdlg.cpp
-    kwin4.cpp
-    spritenotify.cpp
-    thememanager.cpp
-    displayintro.cpp
-    displaygame.cpp
-    kwin4view.cpp
-    kwin4doc.cpp
-    kwin4player.cpp
-    buttonsprite.cpp
-    introsprite.cpp
-    piecesprite.cpp
-    scoresprite.cpp
-    score.cpp
     aiboard.cpp
-    reflectiongraphicsscene.cpp
-    kgamedebugdialog.cpp
-    kgamedialog.cpp
-    kgamedialogconfig.cpp
-    kgameconnectdialog.cpp
+    aiboard.h
+    buttonsprite.cpp
+    buttonsprite.h
+    chatdlg.cpp
+    chatdlg.h
+    displaygame.cpp
+    displaygame.h
+    displayintro.cpp
+    displayintro.h
+    introsprite.cpp
+    introsprite.h
     kchatdialog.cpp
-    pixmapsprite.cpp
+    kchatdialog.h
     kfontutils.cpp
+    kfontutils.h
+    kgameconnectdialog.cpp
+    kgameconnectdialog.h
+    kgamedebugdialog.cpp
+    kgamedebugdialog.h
+    kgamedialogconfig.cpp
+    kgamedialogconfig.h
+    kgamedialog.cpp
+    kgamedialog.h
+    kgamepropertyarray.h
+    kwin4.cpp
+    kwin4doc.cpp
+    kwin4doc.h
+    kwin4global.h
+    kwin4.h
+    kwin4player.cpp
+    kwin4player.h
+    kwin4view.cpp
+    kwin4view.h
+    main.cpp
+    piecesprite.cpp
+    piecesprite.h
+    pixmapsprite.cpp
+    pixmapsprite.h
+    reflectiongraphicsscene.cpp
+    reflectiongraphicsscene.h
+    score.cpp
+    score.h
+    scoresprite.cpp
+    scoresprite.h
+    spritenotify.cpp
+    spritenotify.h
+    thememanager.cpp
+    thememanager.h
+
 
     kfourinline.qrc
 )
@@ -71,8 +97,11 @@ add_executable(kfourinlineproc)
 
 target_sources(kfourinlineproc PRIVATE
     aiboard.cpp
+    aiboard.h
     kgameprocess.cpp
+    kgameprocess.h
     kwin4proc.cpp
+    kwin4proc.h
 )
 
 target_link_libraries(kfourinlineproc
