@@ -85,7 +85,7 @@ target_link_libraries(kfourinline
     KF5::DNSSD
     KF5::XmlGui
     KF5::WidgetsAddons
-    Qt::Svg
+    Qt${QT_MAJOR_VERSION}::Svg
 )
 
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
@@ -107,7 +107,7 @@ target_sources(kfourinlineproc PRIVATE
 target_link_libraries(kfourinlineproc
     KF5KDEGames
     KF5KDEGamesPrivate
-    Qt::Svg
+    Qt${QT_MAJOR_VERSION}::Svg
 )
 
 install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
