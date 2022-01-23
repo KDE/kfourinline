@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KFourInLine
+Name[ar]=الأربع
 Name[bs]=KFourInLine
 Name[ca]=KFourInLine
 Name[ca@valencia]=KFourInLine
@@ -53,6 +54,7 @@ Name[x-test]=xxKFourInLinexx
 Name[zh_CN]=KFourInLine
 Name[zh_TW]=KFourInLine
 GenericName=Four-in-a-row Board Game
+GenericName[ar]=لعبة لوحية الأربعة تربح
 GenericName[bs]=Četiri-u-nizu igra na ploči
 GenericName[ca]=Joc de quatre en fila
 GenericName[ca@valencia]=Joc de quatre en fila
@@ -105,6 +107,7 @@ GenericName[x-test]=xxFour-in-a-row Board Gamexx
 GenericName[zh_CN]=四子连珠游戏
 GenericName[zh_TW]=四子棋棋盤遊戲
 Comment=Classic turn based game
+Comment[ar]=لعبة تقليدية بدور
 Comment[ca]=Joc clàssic basat en torns
 Comment[ca@valencia]=Joc clàssic basat en torns
 Comment[cs]=Klasická tahová hra
