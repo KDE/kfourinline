@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KFourInLine</name>
+  <name xml:lang="ar">الأربع</name>
   <name xml:lang="ca">KFourInLine</name>
   <name xml:lang="ca-valencia">KFourInLine</name>
   <name xml:lang="cs">KFourInLine</name>
@@ -33,6 +34,7 @@
   <name xml:lang="zh-CN">KFourInLine</name>
   <name xml:lang="zh-TW">KFourInLine</name>
   <summary>KFourInLine is a four-in-a-row game by KDE</summary>
+  <summary xml:lang="ar">الأربع هي لعبة الأربعة تربح من كدي</summary>
   <summary xml:lang="ca">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
   <summary xml:lang="ca-valencia">El KFourInLine és un joc de quatre en línia fet per la comunitat KDE</summary>
   <summary xml:lang="de">Vier Gewinnt ist ein Strategiespiel von KDE</summary>
@@ -60,6 +62,7 @@
     <p>
       KFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.
     </p>
+    <p xml:lang="ar">الأربع هي لعبة لوحية للاعبين تعتمد على لعبة الأربعة تربح. يحاول اللاعبون بناء صف من أربع قطع باستخدام استراتيجيات مختلفة.</p>
     <p xml:lang="ca">El KFourInLine és un joc de tauler per a dos jugadors basat en el joc Connecta quatre. Els jugadors intenten formar una fila de quatre peces usant estratègies diferents.</p>
     <p xml:lang="ca-valencia">El KFourInLine és un joc de tauler per a dos jugadors basat en el joc Connecta quatre. Els jugadors intenten formar una fila de quatre peces usant estratègies diferents.</p>
     <p xml:lang="de">KFourInLine ist ein auf „Vier gewinnt“ basierendes Brettspiel für zwei Spieler. Die Spieler versuchen mithilfe verschiedener Strategien auf einem Brett eine Reihe von vier Spielsteinen zu legen.</p>
@@ -91,6 +94,7 @@
   <screenshots>
     <screenshot type="default">
       <caption>Playing KFourInLine</caption>
+      <caption xml:lang="ar">الأربع تلعب</caption>
       <caption xml:lang="ca">Jugant al KFourInLine</caption>
       <caption xml:lang="ca-valencia">Jugant al KFourInLine</caption>
       <caption xml:lang="de">Vier gewinnt spielen</caption>
