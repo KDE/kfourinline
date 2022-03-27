@@ -612,6 +612,11 @@ void KWin4App::undoMove()
   if (mDoc->playedBy(mDoc->getCurrentPlayer())==KGameIO::ProcessIO)
   {
     mDoc->undoMove();
+  } else {
+    // Make sure the current player has the turn
+    // without this it can happen that the AI still think has the turn and plays
+    // instead of the human player
+    mDoc->getPlayer(mDoc->getCurrentPlayer())->setTurn(true);
   }
 
   // Refresh menus
