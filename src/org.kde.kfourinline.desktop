@@ -144,7 +144,6 @@ Comment[zh_CN]=经典的回合制游戏
 Comment[zh_TW]=傳統輪流基礎遊戲
 Exec=kfourinline
 Icon=kfourinline
-Terminal=false
 Type=Application
 X-DocPath=kfourinline/index.html
 Categories=Qt;KDE;Game;BoardGame;
