@@ -54,6 +54,7 @@
   <summary xml:lang="pl">KCzteryWLinii jest grą cztery-w-rzędzie dla KDE</summary>
   <summary xml:lang="pt">O KFourInLine é um jogo de quatro-em-linha do KDE</summary>
   <summary xml:lang="pt-BR">O KFourInLine é um jogo quatro em linha do KDE</summary>
+  <summary xml:lang="ru">KFourInLine — игра «четыре в ряд» от KDE</summary>
   <summary xml:lang="sk">KFourInLine je hra KDE o štyroch v rade</summary>
   <summary xml:lang="sl">KFourInLine je igra 'štiri v vrsto' v KDE</summary>
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
@@ -83,6 +84,7 @@
     <p xml:lang="pl">KCzteryWLinii jest grą planszową dla dwóch graczy opartą na grze połącz-cztery. Gracze próbują przy użyciu różnych strategii stworzyć rząd zbudowany z czterech kawałków.</p>
     <p xml:lang="pt">O KFourInLine é um jogo de tabuleiro para dois jogadores, baseado no jogo Connect-Four (Liga-Quatro). Os jogadores tentam construir uma fila de quatro peças com diferentes estratégias.</p>
     <p xml:lang="pt-BR">O KFourInLine é um jogo lógico para dois jogadores baseado no jogo Lig 4. Os jogadores tentam construir uma linha de quatro peças usando diferentes estratégias.</p>
+    <p xml:lang="ru">KFourInLine — настольная игра для двоих игроков. Она основана на игре Connect-Four. Игроки с помощью различных стратегий пытаются выстроить четыре фигуры в ряд.</p>
     <p xml:lang="sk">KFourInLine je stolová hra pre dvoch hráčov založená na hre Connect-Four.Hráči sa snažia zostaviť rad štyroch kúskov pomocou rôznych stratégií.</p>
     <p xml:lang="sl">KFourInLine je namizna igra za dva igralca po zgledu igre Štiri v vrsto. Igralca poskušata z različnimi strategijami zložiti štiri kose v vrsto.</p>
     <p xml:lang="sv">Fyra i rad är ett brädspel för två spelare baserat på spelet Connect-Four. Spelarna försöker bygga en rad av fyra pjäser med användning av olika strategier.</p>
@@ -116,6 +118,7 @@
       <caption xml:lang="pl">Granie w KCzteryWLinii</caption>
       <caption xml:lang="pt">Jogar ao KFourInLine</caption>
       <caption xml:lang="pt-BR">Jogando KFourInLine</caption>
+      <caption xml:lang="ru">Игра в KFourInLine</caption>
       <caption xml:lang="sk">Hranie KFourInLine</caption>
       <caption xml:lang="sl">Igra KFourInLine</caption>
       <caption xml:lang="sv">Spela Fyra i rad</caption>
