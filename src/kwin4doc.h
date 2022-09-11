@@ -33,6 +33,8 @@ class KWin4Doc : public KGame
 {
     Q_OBJECT
 
+    friend class KWin4GameSequence;
+
 public:
     /**
      * Constructor.
@@ -215,7 +217,7 @@ protected:
      * @param last      The last player to move
      * @param exclusive unused
      */
-    KPlayer *nextPlayer(KPlayer *last, bool exclusive = true) override;
+    KPlayer *doNextPlayer(KPlayer *last, bool exclusive = true);
 
     /**
      * This is also an overwritten function of KGame. It is
@@ -257,7 +259,7 @@ protected:
      * @param player The current player
      * @return -1: draw, 1: won, 0: continue game
      */
-    int checkGameOver(KPlayer *player) override;
+    int doCheckGameOver(KPlayer *player);
 
     /**
      * Check whether the field has a game over situation. Called by

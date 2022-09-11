@@ -17,6 +17,7 @@
 // own
 #include "config-src.h"
 #include "kfourinline_debug.h"
+#include "kwin4gamesequence.h"
 #include "kwin4view.h"
 #include "prefs.h"
 #include "score.h"
@@ -38,6 +39,7 @@ KWin4Doc::KWin4Doc(QWidget *parent)
     , pView()
     , mHintProcess()
 {
+    setGameSequence(new KWin4GameSequence(this));
     mStatus = new Score(parent);
 
     connect(this, &KWin4Doc::signalPropertyChanged, this, &KWin4Doc::gamePropertyChanged);
@@ -237,10 +239,10 @@ void KWin4Doc::moveDone(int /*mode*/)
 }
 
 // Calculate the next players to turn. Here the players just swap.
-KPlayer *KWin4Doc::nextPlayer(KPlayer *last, bool /*exclusive*/)
+KPlayer *KWin4Doc::doNextPlayer(KPlayer *last, bool /*exclusive*/)
 {
     if (global_debug > 1)
-        qCDebug(KFOURINLINE_LOG) << "nextPlayer last=" << last->id() << "admin=" << isAdmin();
+        qCDebug(KFOURINLINE_LOG) << "doNextPlayer last=" << last->id() << "admin=" << isAdmin();
 
     // Should be enough if the admin sets the turn
     if (last->userId() == Yellow)
@@ -430,10 +432,10 @@ COLOUR KWin4Doc::getPlayerColour(int player)
 
 // Check whether the current game has a game over situation
 // return -1: remis, 1:won, 0: continue
-int KWin4Doc::checkGameOver(KPlayer *p)
+int KWin4Doc::doCheckGameOver(KPlayer *p)
 {
     if (global_debug > 1)
-        qCDebug(KFOURINLINE_LOG) << "KWin4Doc::checkGameOver::" << p->userId();
+        qCDebug(KFOURINLINE_LOG) << "KWin4Doc::doCheckGameOver::" << p->userId();
     return checkGameOver(mLastColumn, (COLOUR)(mLastColour.value()));
 }
 

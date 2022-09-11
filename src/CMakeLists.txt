@@ -38,6 +38,8 @@ target_sources(kfourinline PRIVATE
     kwin4doc.h
     kwin4global.h
     kwin4.h
+    kwin4gamesequence.cpp
+    kwin4gamesequence.h
     kwin4player.cpp
     kwin4player.h
     kwin4view.cpp
