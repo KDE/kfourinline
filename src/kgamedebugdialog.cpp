@@ -347,11 +347,9 @@ void KGameDebugDialog::slotUpdateGameData()
     // TODO ios
 
     KGamePropertyHandler *handler = d->mGame->dataHandler();
-    QHashIterator<int, KGamePropertyBase *> it(handler->dict());
-    while (it.hasNext()) {
-        it.next();
+    for (KGamePropertyBase *property : std::as_const(handler->dict())) {
         QString policy;
-        switch (it.value()->policy()) {
+        switch (property->policy()) {
         case KGamePropertyBase::PolicyClean:
             policy = i18n("Clean");
             break;
@@ -367,7 +365,7 @@ void KGameDebugDialog::slotUpdateGameData()
             break;
         }
         QStringList items;
-        items << handler->propertyName(it.value()->id()) << handler->propertyValue(it.value()) << policy;
+        items << handler->propertyName(property->id()) << handler->propertyValue(property) << policy;
         new QTreeWidgetItem(d->mGameProperties, items);
         //	qCDebug(KFOURINLINE_LOG) << ": checking for all game properties: found property name" << name;
     }
@@ -407,11 +405,9 @@ void KGameDebugDialog::slotUpdatePlayerData(QListWidgetItem *item)
 
     // Properties
     KGamePropertyHandler *handler = p->dataHandler();
-    QHashIterator<int, KGamePropertyBase *> it((handler->dict()));
-    while (it.hasNext()) {
-        it.next();
+    for (KGamePropertyBase *property : std::as_const(handler->dict())) {
         QString policy;
-        switch (it.value()->policy()) {
+        switch (property->policy()) {
         case KGamePropertyBase::PolicyClean:
             policy = i18n("Clean");
             break;
@@ -427,7 +423,7 @@ void KGameDebugDialog::slotUpdatePlayerData(QListWidgetItem *item)
             break;
         }
         QStringList items;
-        items << handler->propertyName(it.value()->id()) << handler->propertyValue(it.value()) << policy;
+        items << handler->propertyName(property->id()) << handler->propertyValue(property) << policy;
         new QTreeWidgetItem(d->mPlayerProperties, items);
     }
 }
