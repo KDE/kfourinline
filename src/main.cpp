@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(i18n("Johann Ollivier Lapeyre"), i18n("Graphics"), QStringLiteral("johann.ollivierlapeyre@gmail.com"));
     aboutData.addAuthor(i18n("Eugene Trounev"), i18n("Graphics"), QStringLiteral("eugene.trounev@gmail.com"));
     aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Code Improvements"));
-    aboutData.setHomepage(QStringLiteral("https://kde.org/applications/games/org.kde.kfourinline"));
+    aboutData.setHomepage(QStringLiteral("https://apps.kde.org/kfourinline"));
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     KCrash::initialize();
