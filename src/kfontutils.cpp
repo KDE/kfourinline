@@ -13,7 +13,7 @@
 // Std
 #include <limits>
 
-qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal height, qreal maxFontSize, qreal minFontSize, qreal precision)
+qreal KFontUtils::adaptFontSize(QGraphicsTextItem *string, qreal width, qreal height, qreal maxFontSize, qreal minFontSize, qreal precision)
 {
     qreal size = maxFontSize;
     QRectF boundingRect;
@@ -36,20 +36,18 @@ qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal he
         }
         // Text doesn't fit in rectangle or has too much unused space, adjust size
         else if (boundingRect.height() > height || boundingRect.height() < height - precision) {
-
             if (boundingRect.width() > width || boundingRect.height() > height)
-              higherBound = qMin(higherBound, size);
+                higherBound = qMin(higherBound, size);
             else
-              lowerBound = qMax(lowerBound, size);
+                lowerBound = qMax(lowerBound, size);
 
             if (lowerBound > 0 && higherBound < std::numeric_limits<double>::max()) {
-              size = (lowerBound + higherBound) / 2;
-            }
-            else {
-              size = (height / boundingRect.height()) * size;
+                size = (lowerBound + higherBound) / 2;
+            } else {
+                size = (height / boundingRect.height()) * size;
             }
 
-            count ++;
+            count++;
         }
         // Text fits correctly
         else {
@@ -59,14 +57,14 @@ qreal KFontUtils::adaptFontSize(QGraphicsTextItem* string, qreal width, qreal he
 
     // Assure to return a value between minimum and maximum values.
     if (size < minFontSize)
-      return minFontSize;
+        return minFontSize;
     else if (size > maxFontSize)
-      return maxFontSize;
+        return maxFontSize;
     else
-      return size;
+        return size;
 }
 
-qreal KFontUtils::adaptFontSize(QGraphicsTextItem* text, const QSizeF &availableSize, qreal maxFontSize, qreal minFontSize, qreal precision)
+qreal KFontUtils::adaptFontSize(QGraphicsTextItem *text, const QSizeF &availableSize, qreal maxFontSize, qreal minFontSize, qreal precision)
 {
     return adaptFontSize(text, availableSize.width(), availableSize.height(), maxFontSize, minFontSize, precision);
 }

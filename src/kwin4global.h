@@ -15,12 +15,11 @@ extern bool global_skip_intro;
 /** Demo or autoplay mode */
 extern bool global_demo_mode;
 
-// The user or color */
-typedef enum {Nobody=-1,Yellow=0,Red=1,Tip=3} COLOUR;
+/** The user or color */
+typedef enum { Nobody = -1, Yellow = 0, Red = 1, Tip = 3 } COLOUR;
 /** Type of statistics */
-typedef enum  {TSum,TWin,TRemis,TLost,TBrk} TABLE;
+typedef enum { TSum, TWin, TRemis, TLost, TBrk } TABLE;
 /** Movement status */
-typedef enum  {GIllMove=-2,GNotAllowed=-1,GNormal=0,GYellowWin=1,GRedWin=2,GRemis=3,GTip=4} MOVESTATUS;
+typedef enum { GIllMove = -2, GNotAllowed = -1, GNormal = 0, GYellowWin = 1, GRedWin = 2, GRemis = 3, GTip = 4 } MOVESTATUS;
 
 #endif // KWIN4GLOBAL_H
-

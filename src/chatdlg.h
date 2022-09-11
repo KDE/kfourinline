@@ -20,21 +20,20 @@ class KWin4Player;
  * Subclass of the chat dialog provided by the KGame lib.
  * It supports a user defined chat and the setting of the
  * owner player
- **/
+ */
 class ChatDlg : public QDialog
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
-    explicit ChatDlg(KGame *game,QWidget* parent=nullptr);
+public:
+    explicit ChatDlg(KGame *game, QWidget *parent = nullptr);
 
-  public Q_SLOTS:  
+public Q_SLOTS:
     void setPlayer(KWin4Player *p);
-  
-  private:  
-    KGameChat*   mChat;
-    KChatDialog* mChatDlg;
+
+private:
+    KGameChat *mChat;
+    KChatDialog *mChatDlg;
 };
 
 #endif // CHATDLG_H
-

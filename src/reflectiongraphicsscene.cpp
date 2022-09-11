@@ -8,89 +8,81 @@
 #include "reflectiongraphicsscene.h"
 
 // own
-#include "kwin4global.h"
 #include "kfourinline_debug.h"
+#include "kwin4global.h"
 // Qt
+#include <QElapsedTimer>
+#include <QGraphicsItem>
 #include <QPainter>
 #include <QRectF>
-#include <QGraphicsItem>
-#include <QElapsedTimer>
 
 // How many time measurements for average
-#define MEASUREMENT_LIST_SIZE  50
+#define MEASUREMENT_LIST_SIZE 50
 // How many warnings until reflections are switched off
-#define WARNING_MAX_COUNT      10
-
+#define WARNING_MAX_COUNT 10
 
 // Construct a new scene
-ReflectionGraphicsScene::ReflectionGraphicsScene(int updateTime, QObject * parent) 
-                       : QGraphicsScene(parent)
+ReflectionGraphicsScene::ReflectionGraphicsScene(int updateTime, QObject *parent)
+    : QGraphicsScene(parent)
 {
-  Q_UNUSED(updateTime)
-  // Initialize
-  mBackground = true;
+    Q_UNUSED(updateTime)
+    // Initialize
+    mBackground = true;
 }
-
 
 // Destruct scene
 ReflectionGraphicsScene::~ReflectionGraphicsScene()
 {
 }
 
-
 // QGV basic function to draw all items of a scene
-void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems,
-                                        QGraphicsItem *items[],
-                                        const QStyleOptionGraphicsItem options[],
-                                        QWidget *widget)
+void ReflectionGraphicsScene::drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[], QWidget *widget)
 {
-  QElapsedTimer time;
-  time.start();
-  
-  // No reflections call parent function
-  QGraphicsScene::drawItems(painter, numItems, items, options, widget);
+    QElapsedTimer time;
+    time.start();
 
-  /*
-  // ==========================================================================
-  // Update time measurement and display
-  int elapsed = time.elapsed();
-  mDrawTimes.append(elapsed);
-  if (mDrawTimes.size() > MEASUREMENT_LIST_SIZE) mDrawTimes.removeFirst();
-  double avg = 0.0;
-  for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
-  avg /= mDrawTimes.size();
+    // No reflections call parent function
+    QGraphicsScene::drawItems(painter, numItems, items, options, widget);
+
+    /*
+    // ==========================================================================
+    // Update time measurement and display
+    int elapsed = time.elapsed();
+    mDrawTimes.append(elapsed);
+    if (mDrawTimes.size() > MEASUREMENT_LIST_SIZE) mDrawTimes.removeFirst();
+    double avg = 0.0;
+    for (int i=0; i<mDrawTimes.size(); i++) avg += mDrawTimes[i];
+    avg /= mDrawTimes.size();
 
 
-  if (global_debug > 0)
-     mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
+    if (global_debug > 0)
+       mFrameSprite->setPlainText(QString("Draw: %1 ms  Average %2 ms  Update: %3 ms").arg(elapsed).arg(int(avg)).arg(mDisplayUpdateTime));
 
-   // Disable reflections on slow computers
-   if (mDrawTimes.size() >= MEASUREMENT_LIST_SIZE )
-   {
-     if (avg > 2*mUpdateTime )
+     // Disable reflections on slow computers
+     if (mDrawTimes.size() >= MEASUREMENT_LIST_SIZE )
      {
-       mUpdateWarning++;
-       mDrawTimes.clear();
-       qCDebug(KFOURINLINE_LOG) << mUpdateWarning << ". slow computer reflection theme warning"; 
+       if (avg > 2*mUpdateTime )
+       {
+         mUpdateWarning++;
+         mDrawTimes.clear();
+         qCDebug(KFOURINLINE_LOG) << mUpdateWarning << ". slow computer reflection theme warning";
+       }
+       else
+       {
+         mUpdateWarning = 0;
+       }
      }
-     else
+     if (mUpdateWarning >= WARNING_MAX_COUNT )
      {
-       mUpdateWarning = 0;
+       update();
+       qCDebug(KFOURINLINE_LOG) << "DISABLING REFLECTIONS DUE TO POOR COMPUTER PERFORMANCE";
      }
-   }
-   if (mUpdateWarning >= WARNING_MAX_COUNT )
-   {
-     update();
-     qCDebug(KFOURINLINE_LOG) << "DISABLING REFLECTIONS DUE TO POOR COMPUTER PERFORMANCE";
-   }
-  // ==========================================================================
-  */
+    // ==========================================================================
+    */
 }
 
-void ReflectionGraphicsScene::drawBackground ( QPainter * painter, const QRectF & rect )
+void ReflectionGraphicsScene::drawBackground(QPainter *painter, const QRectF &rect)
 {
-  if (mBackground) QGraphicsScene::drawBackground(painter, rect);
+    if (mBackground)
+        QGraphicsScene::drawBackground(painter, rect);
 }
-
-
-

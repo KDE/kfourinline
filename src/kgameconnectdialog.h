@@ -19,79 +19,78 @@ class QAbstractButton;
  */
 class KGameConnectWidget : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit KGameConnectWidget(QWidget* parent);
-	~KGameConnectWidget() override;
+    explicit KGameConnectWidget(QWidget *parent);
+    ~KGameConnectWidget() override;
 
-	/**
-	 * @param host The host to connect to by default
-	 **/
-	void setHost(const QString& host);
+    /**
+     * @param host The host to connect to by default
+     */
+    void setHost(const QString &host);
 
-	/**
-	 * @return The host to connect to or QString() if the user wants to
-	 * be the MASTER
-	 **/ 
-	QString host() const;
+    /**
+     * @return The host to connect to or QString() if the user wants to
+     * be the MASTER
+     */
+    QString host() const;
 
-	/**
-	 * @param port The port that will be shown by default
-	 **/
-	void setPort(unsigned short int port);
+    /**
+     * @param port The port that will be shown by default
+     */
+    void setPort(unsigned short int port);
 
-	/**
-	 * @return The port to connect to / to listen
-	 **/
-	unsigned short int port() const;
+    /**
+     * @return The port to connect to / to listen
+     */
+    unsigned short int port() const;
 
-	/**
-	 * Specifies which state is the default (0 = server game; 1 = join game)
-	 * @param state The default state. 0 For a server game, 1 to join a game
-	 **/
-	void setDefault(int state);
-	
-	/**
-	 * Sets DNS-SD service type, both for publishing and browsing
-	 * @param type Service type (something like _kwin4._tcp). 
-	 * It should be unique for application.
-	 **/
-	void setType(const QString& type);
-	
-	/**
-	 * @return service type
-	 */
-	QString type() const;
-	
-	/** 
-	 * Set game name for publishing. 
-	 * @param name Game name. Important only for server mode. If not
-	 * set hostname will be used. In case of name conflict -2, -3 and so on will be added to name.
-	 */
-	void setName(const QString& name);
-	
-	/**
-	 * @return game name. 
-	 */
-	QString gameName() const;
+    /**
+     * Specifies which state is the default (0 = server game; 1 = join game)
+     * @param state The default state. 0 For a server game, 1 to join a game
+     */
+    void setDefault(int state);
+
+    /**
+     * Sets DNS-SD service type, both for publishing and browsing
+     * @param type Service type (something like _kwin4._tcp).
+     * It should be unique for application.
+     */
+    void setType(const QString &type);
+
+    /**
+     * @return service type
+     */
+    QString type() const;
+
+    /**
+     * Set game name for publishing.
+     * @param name Game name. Important only for server mode. If not
+     * set hostname will be used. In case of name conflict -2, -3 and so on will be added to name.
+     */
+    void setName(const QString &name);
+
+    /**
+     * @return game name.
+     */
+    QString gameName() const;
 
 protected Q_SLOTS:
-	/**
-	 * The type has changed, ie the user switched between creating or
-	 * joining.
-	 **/
-        void slotTypeChanged(QAbstractButton *button);
-	void slotGamesFound();
-	void slotGameSelected(int);
+    /**
+     * The type has changed, ie the user switched between creating or
+     * joining.
+     */
+    void slotTypeChanged(QAbstractButton *button);
+    void slotGamesFound();
+    void slotGameSelected(int);
 
 Q_SIGNALS:
-	void signalNetworkSetup();
-  void signalServerTypeChanged(int);
+    void signalNetworkSetup();
+    void signalServerTypeChanged(int);
 
 private:
-	void showDnssdControls();
-	KGameConnectWidgetPrivate* d;
-
+    void showDnssdControls();
+    KGameConnectWidgetPrivate *d;
 };
 
 #endif

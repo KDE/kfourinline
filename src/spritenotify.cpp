@@ -11,18 +11,14 @@
 #include "kfourinline_debug.h"
 
 // Construct the object
-SpriteNotify::SpriteNotify(QGraphicsItem* parent)
-            : QObject()
+SpriteNotify::SpriteNotify(QGraphicsItem *parent)
+    : QObject()
 {
-  mParent = parent;
+    mParent = parent;
 }
-
 
 // Emit the signal igven the user defined mode parameter
 void SpriteNotify::emitSignal(int mode)
 {
-  Q_EMIT signalNotify(mParent,mode);
+    Q_EMIT signalNotify(mParent, mode);
 }
-
-
-

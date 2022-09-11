@@ -25,28 +25,32 @@ class KGameProcessPrivate;
 
 class KMessageFilePipe : public KMessageIO
 {
-  Q_OBJECT 
+    Q_OBJECT
 
-  public:
-    explicit KMessageFilePipe(QObject *parent,QFile *readFile,QFile *writeFile);
+public:
+    explicit KMessageFilePipe(QObject *parent, QFile *readFile, QFile *writeFile);
     ~KMessageFilePipe() override;
     bool isConnected() const override;
-    void send (const QByteArray &msg) override;
+    void send(const QByteArray &msg) override;
     void exec();
 
     /**
       @return FALSE as this is no network IO.
     */
-    bool isNetwork() const override { return false; }
+    bool isNetwork() const override
+    {
+        return false;
+    }
 
-  /**
-  * The runtime identification
-  */
-  int rtti() const override {return 4;}
+    /**
+     * The runtime identification
+     */
+    int rtti() const override
+    {
+        return 4;
+    }
 
-
-
-  private:
+private:
     QFile *mReadFile;
     QFile *mWriteFile;
     QByteArray mReceiveBuffer;
@@ -55,17 +59,17 @@ class KMessageFilePipe : public KMessageIO
 
 /**
  * \class KGameProcess kgameprocess.h <KGame/KGameProcess>
- * 
+ *
  * This is the process class used on the computer player
  * side to communicate with its counterpart KProcessIO class.
  * Using these two classes will give fully transparent communication
  * via QDataStreams.
  */
-class KGameProcess:  public QObject
+class KGameProcess : public QObject
 {
-  Q_OBJECT
+    Q_OBJECT
 
-  public:
+public:
     /**
      * Creates a KGameProcess class. Done only in the computer
      * player. To activate the communication you have to call
@@ -110,7 +114,10 @@ class KGameProcess:  public QObject
      *
      * @return true/false
      */
-    bool terminate() const {return mTerminate;}
+    bool terminate() const
+    {
+        return mTerminate;
+    }
 
     /**
      * Set this to true if the computer process should end, ie
@@ -118,7 +125,10 @@ class KGameProcess:  public QObject
      *
      * @param b true for exit the exec function
      */
-    void setTerminate(bool b) {mTerminate=b;}
+    void setTerminate(bool b)
+    {
+        mTerminate = b;
+    }
 
     /**
      * Sends a message to the corresponding KGameIO
@@ -129,7 +139,7 @@ class KGameProcess:  public QObject
      * @param msgid the message id for the message
      * @param receiver unused
      */
-    void sendMessage(QDataStream &stream,int msgid,quint32 receiver=0);
+    void sendMessage(QDataStream &stream, int msgid, quint32 receiver = 0);
 
     /**
      * Sends a system message to the corresponding KGameIO device.
@@ -150,7 +160,7 @@ class KGameProcess:  public QObject
      * @param msgid the message id for the message
      * @param receiver unused
      */
-    void sendSystemMessage(QDataStream &stream,int msgid,quint32 receiver=0);
+    void sendSystemMessage(QDataStream &stream, int msgid, quint32 receiver = 0);
 
     /**
      * Returns a pointer to a QRandomGenerator. You can generate
@@ -158,19 +168,19 @@ class KGameProcess:  public QObject
      * \code
      *   random()->bounded(100);
      * \endcode
-     * 
+     *
      * @return QRandomGenerator pointer
      */
     QRandomGenerator *random();
 
-  protected Q_SLOTS:
+protected Q_SLOTS:
     /**
      * A message is received via the interprocess connection. The
      * appropriate signals are called.
      */
-      void receivedMessage(const QByteArray& receiveBuffer);
+    void receivedMessage(const QByteArray &receiveBuffer);
 
-  Q_SIGNALS:
+Q_SIGNALS:
     /**
      * The generic communication signal. You have to connect to this
      * signal to generate a valid computer response onto arbitrary messages.
@@ -192,64 +202,65 @@ class KGameProcess:  public QObject
      * @param receiver the id of the receiver
      * @param sender the id of the sender
      */
-     void signalCommand(QDataStream &inputStream,int msgid,int receiver,int sender);
+    void signalCommand(QDataStream &inputStream, int msgid, int receiver, int sender);
 
-     /**
-      * This signal is emitted if the computer player should perform a turn.
-      * Calculations can be made here and the move can then be send back with
-      * sendSystemMessage with the message id KGameMessage::IdPlayerInput.
-      * These must provide a move which complies to your other move syntax as
-      * e.g. produces by keyboard or mouse input.
-      * Additional data which have been written into the stream from the
-      * ProcessIO's signal signalPrepareTurn can be retrieved from the
-      * stream here.
-      * Example:
-      * \code
-      * void slotTurn(QDataStream &in,bool turn)
-      * {
-      *   int id;
-      *   int recv;
-      *   QByteArray buffer;
-      *   QDataStream out(buffer,QIODevice::WriteOnly);
-      *   if (turn)
-      *   {
-      *     // Create a move - the format is yours to decide
-      *     // It arrives exactly as this in the kgame inputMove function!!
-      *     qint8 x1,y1,pl;
-      *     pl=-1;
-      *     x1=proc.random()->bounded(8);
-      *     y1=proc.random()->bounded(8);
-      *     // Stream it
-      *     out << pl << x1 << y1;
-      *     id=KGameMessage::IdPlayerInput;
-      *     proc.sendSystemMessage(out,id,0);
-      *   }
-      * }
-      * \endcode
-      *
-      * @param stream The datastream which contains user data
-      * @param turn True or false whether the turn is activated or deactivated
-      *
-      */
-     void signalTurn(QDataStream &stream,bool turn);
+    /**
+     * This signal is emitted if the computer player should perform a turn.
+     * Calculations can be made here and the move can then be send back with
+     * sendSystemMessage with the message id KGameMessage::IdPlayerInput.
+     * These must provide a move which complies to your other move syntax as
+     * e.g. produces by keyboard or mouse input.
+     * Additional data which have been written into the stream from the
+     * ProcessIO's signal signalPrepareTurn can be retrieved from the
+     * stream here.
+     * Example:
+     * \code
+     * void slotTurn(QDataStream &in,bool turn)
+     * {
+     *   int id;
+     *   int recv;
+     *   QByteArray buffer;
+     *   QDataStream out(buffer,QIODevice::WriteOnly);
+     *   if (turn)
+     *   {
+     *     // Create a move - the format is yours to decide
+     *     // It arrives exactly as this in the kgame inputMove function!!
+     *     qint8 x1,y1,pl;
+     *     pl=-1;
+     *     x1=proc.random()->bounded(8);
+     *     y1=proc.random()->bounded(8);
+     *     // Stream it
+     *     out << pl << x1 << y1;
+     *     id=KGameMessage::IdPlayerInput;
+     *     proc.sendSystemMessage(out,id,0);
+     *   }
+     * }
+     * \endcode
+     *
+     * @param stream The datastream which contains user data
+     * @param turn True or false whether the turn is activated or deactivated
+     *
+     */
+    void signalTurn(QDataStream &stream, bool turn);
 
-     /**
-      * This signal is emitted when the process is initialized, i.e. added
-      * to a KPlayer. Initial initialization can be performed here be reacting
-      * to the KProcessIO signal signalIOAdded and retrieving the data here
-      * from the stream. 
-      * It works just as the signalTurn() but is only send when the player is
-      * added to the game, i.e. it needs some initialization data
-      *
-      * @param stream The datastream which contains user data 
-      * @param userid The userId of the player. (Careful to rely on it yet)
-      */
-     void signalInit(QDataStream &stream,int userid);
+    /**
+     * This signal is emitted when the process is initialized, i.e. added
+     * to a KPlayer. Initial initialization can be performed here be reacting
+     * to the KProcessIO signal signalIOAdded and retrieving the data here
+     * from the stream.
+     * It works just as the signalTurn() but is only send when the player is
+     * added to the game, i.e. it needs some initialization data
+     *
+     * @param stream The datastream which contains user data
+     * @param userid The userId of the player. (Careful to rely on it yet)
+     */
+    void signalInit(QDataStream &stream, int userid);
 
-  protected:
+protected:
     bool mTerminate;
     KMessageFilePipe *mMessageIO;
-  private:
+
+private:
     friend class KGameProcessPrivate;
     KGameProcessPrivate *const d;
 

@@ -14,42 +14,39 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgameio.h>
 
-
 // Construct a score object
-Score::Score(QObject* parent)
-     : QObject(parent)
+Score::Score(QObject *parent)
+    : QObject(parent)
 {
-  mDisplay = nullptr;
+    mDisplay = nullptr;
 }
-
 
 // Activate the score display sprite
-void Score::setDisplay(ScoreSprite* s)
+void Score::setDisplay(ScoreSprite *s)
 {
-  mDisplay = s;
-  update();
+    mDisplay = s;
+    update();
 }
-
 
 // Update the values in the sprite
 void Score::update()
 {
-  if (!mDisplay) return;
+    if (!mDisplay)
+        return;
 
-  mDisplay->setTurn(mTurn);
+    mDisplay->setTurn(mTurn);
 
-  for (int i=0; i<2; i++)
-  {
-    mDisplay->setPlayerName(mName[i], i);
-    // Call this only after set name
-    if (mInputDevice[i] == (int)KGameIO::ProcessIO) mDisplay->setLevel(mLevel[i], i);
-    else  mDisplay->setLevel(-1, i);
-    mDisplay->setWon(QStringLiteral("%1").arg(mWin[i]), i);
-    mDisplay->setDraw(QStringLiteral("%1").arg(mRemis[i]), i);
-    mDisplay->setLoss(QStringLiteral("%1").arg(mLoss[i]), i);
-    mDisplay->setBreak(QStringLiteral("%1").arg(mBrk[i]), i);
-    mDisplay->setInput(mInputDevice[i], i);
-  }
+    for (int i = 0; i < 2; i++) {
+        mDisplay->setPlayerName(mName[i], i);
+        // Call this only after set name
+        if (mInputDevice[i] == (int)KGameIO::ProcessIO)
+            mDisplay->setLevel(mLevel[i], i);
+        else
+            mDisplay->setLevel(-1, i);
+        mDisplay->setWon(QStringLiteral("%1").arg(mWin[i]), i);
+        mDisplay->setDraw(QStringLiteral("%1").arg(mRemis[i]), i);
+        mDisplay->setLoss(QStringLiteral("%1").arg(mLoss[i]), i);
+        mDisplay->setBreak(QStringLiteral("%1").arg(mBrk[i]), i);
+        mDisplay->setInput(mInputDevice[i], i);
+    }
 }
-
-
