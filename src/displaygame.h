@@ -12,7 +12,6 @@
 #include "thememanager.h"
 // Qt
 #include <QGraphicsView>
-#include <QHash>
 #include <QList>
 #include <QTimer>
 

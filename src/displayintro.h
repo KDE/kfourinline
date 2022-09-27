@@ -19,7 +19,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
-#include <QHash>
 #include <QList>
 #include <QTimer>
 

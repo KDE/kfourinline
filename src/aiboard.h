@@ -12,7 +12,6 @@
 #include "kwin4global.h"
 // Qt
 #include <QDataStream>
-#include <QHash>
 
 /**
  * Store the values of the cached positions for s set of levels.

@@ -19,8 +19,6 @@
 // KF
 #include <KPageDialog>
 // Qt
-#include <QGridLayout>
-#include <QVBoxLayout>
 
 class KGame;
 class KPlayer;

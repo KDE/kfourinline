@@ -19,6 +19,7 @@
 // Qt
 #include <QList>
 #include <QPushButton>
+#include <QVBoxLayout>
 
 class KGameDialogPrivate
 {
