@@ -1,0 +1,606 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Dutch "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Het handboek van &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+&Niels.Reedijk;&Sander.Koning; 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-05</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; is een Vier-op-een-rij spel door &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>bord</keyword>
+<keyword
+>bordspel</keyword>
+<keyword
+>vier op een rij</keyword>
+<keyword
+>vier</keyword>
+<keyword
+>vier op een rij</keyword>
+<keyword
+>vier op een rij</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>vier verbinden</keyword>
+<keyword
+>4 verbinden</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Inleiding</title>
+
+<para
+>Speltype: strategie, bord </para>
+
+<para
+>&kfourinline; is een bordspel voor twee spelers gebaseerd op Vier-op-een-rij spel &nbsp;<trademark
+>Connect-Four</trademark
+>. </para>
+
+<para
+>De spelers proberen een rij met vier stenen op te bouwen met gebruik van verschillende strategieën. Stenen worden op een bord geplaatst. Het spel kan ook tegen een computer worden gespeeld, evenals op het netwerk. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Hoe te spelen</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Het spelbord van &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Wanneer &kfourinline; wordt geladen, kun je de moeilijkheidsgraad selecteren of een spel met twee spelers starten. Als je dat wilt kun je ook jouw kleur kiezen en welke kleur als eerste het spel begint. </para>
+
+<para
+>Elke speler wordt weergegeven door een kleur (geel en rood). Het doel van het spel is om vier verbonden stenen van jouw kleur op een rij te krijgen, kolom of willekeurige diagonaal. De spelers doen om de beurt een zet. Bij elke beurt plaats de speler één van zijn of haar stenen in één van de zeven kolommen, waar elke steen naar de laagste vrije positie valt, &ie; het valt totdat het de bodem raakt of een andere steen. </para>
+
+<para
+>Na een zet van de ene speler mag de andere speler zijn of haar steen zetten. Dit wordt herhaald totdat het spel voorbij is, wat is wanneer een van de spelers vier stenen in een rij, kolom of diagonaal heeft of er geen zetten meer mogelijk zijn omdat het bord gevuld is. </para>
+
+<para
+>Een speler die als eerste vier stenen op een rij heeft, in een kolom, diagonaal of horizontaal wint het spel. Als er geen zetten meer gedaan kunnen worden en geen van de spelers heeft het spel gewonnen dan is het gelijk-spel. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Spelregels, strategieën en tips</title>
+
+<para
+>Het bord is verdeeld in verschillende delen. </para>
+
+<para
+>Het <firstterm
+>speelbord</firstterm
+> is opgebouwd uit 7x6 velden die van onder naar boven opgevuld worden. De velden zijn gemarkeerd met stenen in de kleur van de speler die de zet heeft gedaan. Bovenaan elke kolom toont een gekleurde pijl waar de laatste steen geplaatst is. </para>
+
+<para
+>Het <firstterm
+>statusveld</firstterm
+> toont welke speler wordt bestuurd door welk invoerapparaat. Een lokale speler kan zetten doen met het toetsenbord of de muis, een speler op afstand wordt getoond als netwerkinvoer en als laatste kan de computer de invoer van een speler doen. Het statusveld toont verder de namen van de spelers en het niveau van de computer als tegenspeler. Verder wordt het aantal gewonnen, gelijk gespeelde en verloren en beëindigde spellen getoond voor beide spelers. Welke speler aan de beurt is wordt aangegeven door een van de namen van de spelers te accentueren. </para>
+
+<para
+>De <firstterm
+>statusbalk</firstterm
+> onderaan het scherm toont de status van het spel en welke speler aan de beurt is om te zetten. </para>
+
+<sect1 id="remote-connections">
+<title
+>Externe verbindingen</title>
+
+<para
+>Het is mogelijk om het spel over een netwerkverbinding met een andere computer te spelen. Een van de computers fungeert als spelserver. Deze kan bepalen wie met welke kleur speelt. Je kunt de netwerkopties instellen in het menu <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Netwerkinstellingen...</guimenuitem
+></menuchoice
+>. In het menu <menuchoice
+><guimenu
+>Spel</guimenu
+><guimenuitem
+>Netwerk-chat...</guimenuitem
+></menuchoice
+> vindt je ook een chatvenster waarin je met jouw vriend kunt praten. </para>
+
+<para
+>Als een netwerkverbinding wordt opgebouwd, wordt u gevraagd om een externe host en een poort in te vullen. De poort kan normaal gesproken ongewijzigd blijven, maar als u weet wat u doet, kunt u het door een ander getal vervangen, dat uiteraard in de spellen van beide spelers hetzelfde moet zijn. De hostnaam moet de naam van de externe host zijn. Alleen de cliënt in de verbinding moet een hostnaam invoeren. Het is vaak verstandig dat de speler achter een firewall ervoor kiest om cliënt te zijn omdat de firewall inkomende verbindingen misschien niet toestaat. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Overzicht van het interface</title>
+
+<sect1 id="menu">
+<title
+>Menu-items</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Start een nieuw spel. In een netwerkspel is deze optie alleen beschikbaar voor de netwerkserver. De netwerkcliënt wordt automatisch gestart door de server. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Laden...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Laadt een opgeslagen spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Opslaan</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Slaat het huidige spel op. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spel beëindigen</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Beëindigt een lopend spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Netwerk-chat...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Opent een chatvenster waarin u berichten naar de andere partij kunt sturen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Statistieken tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Toont een dialoog met informatie over de algemene spelstatistieken, dwz. gewonnen, verloren en gelijk-spel spellen van beide spelers. De dialoog biedt ook de mogelijkheid al deze algemene statistieken te wissen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sluit het programma. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Zet</guimenu
+><guimenuitem
+>Ongedaan maken</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Maakt de laatste zet ongedaan. Als de vorige speler de computer is worden twee zetten teruggedaan zodat het weer de beurt van de speler is. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Opnieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Herhaal de zet die ongedaan is gemaakt. Als een van de spelers de computer is worden er twee zetten opnieuw gedaan zodat het weer de beurt van de echte speler is. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Zet</guimenu
+> <guimenuitem
+>Hint</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>De computer berekent de best mogelijke zet voor jou en geeft deze aan met een teken op het spelbord. Hoe goed de zet echt is hangt af van het niveau van de computer. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Thema</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Een grafisch thema voor het spel selecteren. Welke thema's beschikbaar zijn hangt af van de huidige installatie.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Netwerkinstellingen...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Opent een dialoogvenster voor de netwerkconfiguratie. U kunt kiezen of u server of cliënt bent. Als u server bent, kunt u hier ook kiezen welke kleur de externe speler moet nemen. Als er een netwerkspel loopt, kunt u dat ook in dit menu verbreken. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Bovendien heeft &kfourinline; de gezamenlijke menu-items van &kde; <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, voor meer informatie lees de secties over de <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van &kde;-fundamentals. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Spelconfiguratie</title>
+<para
+>&kfourinline; kan worden ingesteld met de instellingendialoog via het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>&kfourinline; configureren...</guimenuitem
+></menuchoice
+></para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelconfiguratie</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Startkleur speler</guilabel
+>: Bepaal welke spelkleur (<guilabel
+>Rood</guilabel
+> of <guilabel
+>Zwart</guilabel
+>) de eerste zet in het volgende spel mag doen.</para>
+<para
+><guilabel
+>Namen van spelers</guilabel
+>: Wijzig de namen van de spelers.</para>
+<para
+><guilabel
+>Zwart speelt met</guilabel
+>: Kies wie als speler 1 speelt. Het kan ofwel de <guilabel
+>Muis</guilabel
+> of het <guilabel
+>Toetsenbord</guilabel
+> zijn, &ie; een lokale speler die de muis of het toetsenbord als invoerapparaat gebruikt of de <guilabel
+>Computer</guilabel
+>, &ie; de computer speelt voor deze speler.</para>
+<para
+><guilabel
+>Rood speelt met</guilabel
+>: Hetzelfde als <guilabel
+>Zwart speelt met</guilabel
+> echter voor speler 2 (rood).</para>
+<para
+><guilabel
+>Moeilijkheidsgraad/sterkte van de computer</guilabel
+>: het niveau van de computerspeler selecteren.</para>
+<para
+><guilabel
+>AI (kunstmatige intelligentie) leren</guilabel
+>: De AI van de computer kan leren van fouten gemaakt in een spel.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Veel voorkomende vragen</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kan ik het uiterlijk van het spel wijzigen? </para>
+</question>
+<answer>
+<para
+>Je kunt de kleur van de stenen wijzigen door het openen van het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Thema</guisubmenu
+> </menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kan ik het toetsenbord gebruiken om het spel te spelen? </para>
+</question>
+<answer>
+<para
+>Je kunt het toetsenbord niet gebruiken om iets met de stenen te doen. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Ik ben kwijt wie aan het winnen is, kan ik dat te weten komen? </para>
+</question>
+<answer>
+<para
+>Ja, je kunt statistieken zien door het openen van het menu-item <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Statistieken tonen</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Dankbetuigingen en licentie</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Programma copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail; en Benjamin Meyer. </para>
+<para
+>Illustraties copyright 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> en Johann Ollivier Lapeyre. </para>
+<para
+>Documentatie copyright 2007 &Martin.Heni; &Martin.Heni.mail; en Benjamin Meyer. </para>
+
+&meld.fouten;&vertaling.niels;&vertaling.sander; &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

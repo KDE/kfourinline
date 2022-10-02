@@ -1,0 +1,880 @@
+# translation of kfourinline.po to Español
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Jaime Robles <jaime@kde.org>, 2007.
+# Santi <santi@kde-es.org>, 2008.
+# Eloy Cuadra <ecuadra@eloihr.net>, 2009, 2021.
+# Huever, 2009.
+# Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
+# Rocio Gallego <traducciones@rociogallego.com>, 2013.
+# Javier Viñal <fjvinal@gmail.com>, 2013.
+# Sofia Priego <spriego@darksylvania.net>, %Y.
+msgid ""
+msgstr ""
+"Project-Id-Version: kfourinline\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2021-06-06 12:32+0100\n"
+"Last-Translator: Sofia Priego <spriego@darksylvania.net>\n"
+"Language-Team: Spanish <kde-l10n-es@kde.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 21.04.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Sofía Priego,Rocío Gallego,Eloy Cuadra,Kira J. Fernández"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"spriego@darksylvania.net,traducciones@rociogallego.com,ecuadra@eloihr.net,"
+"kirajfdez@gmail.com"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "Negro"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr "Amarillo "
+
+#, kde-format
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "Rojo"
+
+#: chatdlg.cpp:33
+#, kde-format
+msgctxt "@title:window"
+msgid "Chat Dlg"
+msgstr "Diálogo de conversación"
+
+#: chatdlg.cpp:48
+#, kde-format
+msgid "Chat"
+msgstr "Conversar"
+
+#: chatdlg.cpp:54
+#, kde-format
+msgid "Configure..."
+msgstr "Configurar..."
+
+#: displayintro.cpp:72
+#, kde-format
+msgctxt "Name of quicklaunch field"
+msgid "Quick Launch"
+msgstr "Inicio rápido"
+
+#: displayintro.cpp:79
+#, kde-format
+msgctxt "Ask player who should start game"
+msgid "Who starts?"
+msgstr "¿Quién empieza?"
+
+#: displayintro.cpp:83
+#, kde-format
+msgctxt "Ask player which color he wants to play"
+msgid "Your color?"
+msgstr "¿Su color?"
+
+#: displayintro.cpp:127
+#, kde-format
+msgctxt "quick start button - player versus AI level easy"
+msgid "Easy Game"
+msgstr "Partida fácil"
+
+#: displayintro.cpp:133
+#, kde-format
+msgctxt "quick start button - player versus AI level normal"
+msgid "Normal Game"
+msgstr "Partida normal"
+
+#: displayintro.cpp:139
+#, kde-format
+msgctxt "quick start button - player versus AI level hard"
+msgid "Hard Game"
+msgstr "Partida difícil"
+
+#: displayintro.cpp:145
+#, kde-format
+msgctxt "quick start button - player versus player"
+msgid "Two Player Game"
+msgstr "Partida de dos jugadores"
+
+#: kchatdialog.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Chat"
+msgstr "Configurar la conversación"
+
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
+#, kde-format
+msgid "Name Font..."
+msgstr "Tipo de letra del nombre..."
+
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
+#, kde-format
+msgid "Text Font..."
+msgstr "Tipo de letra del texto..."
+
+#: kchatdialog.cpp:104
+#, kde-format
+msgid "Player: "
+msgstr "Jugador: "
+
+#: kchatdialog.cpp:106
+#, kde-format
+msgid "This is a player message"
+msgstr "Este es un mensaje de jugador"
+
+#: kchatdialog.cpp:112
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr "Mensajes del sistema: mensajes enviados directamente desde el juego"
+
+#: kchatdialog.cpp:126
+#, kde-format
+msgid "--- Game: "
+msgstr "--- Juego: "
+
+#: kchatdialog.cpp:128
+#, kde-format
+msgid "This is a system message"
+msgstr "Este es un mensaje del sistema"
+
+#: kchatdialog.cpp:132
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr "Número máximo de mensajes (-1 = ilimitado):"
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&Partida"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, kde-format
+msgid "&Settings"
+msgstr "Preferencia&s"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Barra de herramientas principal"
+
+#: kgameconnectdialog.cpp:63
+#, kde-format
+msgid "Create a network game"
+msgstr "Crear una partida en red"
+
+#: kgameconnectdialog.cpp:66
+#, kde-format
+msgid "Join a network game"
+msgstr "Unirse a una partida en red"
+
+#: kgameconnectdialog.cpp:72
+#, kde-format
+msgid "Game name:"
+msgstr "Nombre de la partida:"
+
+#: kgameconnectdialog.cpp:74
+#, kde-format
+msgid "Network games:"
+msgstr "Partidas en red:"
+
+#: kgameconnectdialog.cpp:84
+#, kde-format
+msgid "Port to connect to:"
+msgstr "Puerto al que conectarse:"
+
+#: kgameconnectdialog.cpp:90
+#, kde-format
+msgid "Host to connect to:"
+msgstr "Servidor al que conectarse:"
+
+#: kgameconnectdialog.cpp:95
+#, kde-format
+msgid "&Start Network"
+msgstr "&Iniciar red"
+
+#: kgamedebugdialog.cpp:118
+#, kde-format
+msgctxt "@title:window"
+msgid "KGame Debug Dialog"
+msgstr "Diálogo de depuración de KGame"
+
+#: kgamedebugdialog.cpp:140
+#, kde-format
+msgid "Debug &KGame"
+msgstr "Depurar &KGame"
+
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
+#, kde-format
+msgid "Update"
+msgstr "Actualizar"
+
+#: kgamedebugdialog.cpp:167
+#, kde-format
+msgid "KGame Pointer"
+msgstr "Puntero de KGame"
+
+#: kgamedebugdialog.cpp:168
+#, kde-format
+msgid "Game ID"
+msgstr "Identificador de la partida"
+
+#: kgamedebugdialog.cpp:169
+#, kde-format
+msgid "Game Cookie"
+msgstr "Cookie de la partida"
+
+#: kgamedebugdialog.cpp:170
+#, kde-format
+msgid "Is Master"
+msgstr "Es maestro"
+
+#: kgamedebugdialog.cpp:171
+#, kde-format
+msgid "Is Admin"
+msgstr "Es administrador"
+
+#: kgamedebugdialog.cpp:172
+#, kde-format
+msgid "Is Offering Connections"
+msgstr "Está ofreciendo conexiones"
+
+#: kgamedebugdialog.cpp:173
+#, kde-format
+msgid "Game Status"
+msgstr "Estado de la partida"
+
+#: kgamedebugdialog.cpp:174
+#, kde-format
+msgid "Game is Running"
+msgstr "Partida en ejecución"
+
+#: kgamedebugdialog.cpp:175
+#, kde-format
+msgid "Maximal Players"
+msgstr "Número máximo de jugadores"
+
+#: kgamedebugdialog.cpp:176
+#, kde-format
+msgid "Minimal Players"
+msgstr "Número máximo de jugadores"
+
+#: kgamedebugdialog.cpp:177
+#, kde-format
+msgid "Players"
+msgstr "Jugadores"
+
+#: kgamedebugdialog.cpp:183
+#, kde-format
+msgid "Debug &Players"
+msgstr "Depurar &jugadores"
+
+#: kgamedebugdialog.cpp:193
+#, kde-format
+msgid "Available Players"
+msgstr "Jugadores disponibles"
+
+#: kgamedebugdialog.cpp:219
+#, kde-format
+msgid "Player Pointer"
+msgstr "Puntero del jugador"
+
+#: kgamedebugdialog.cpp:220
+#, kde-format
+msgid "Player ID"
+msgstr "Identificador del jugador"
+
+#: kgamedebugdialog.cpp:221
+#, kde-format
+msgid "Player Name"
+msgstr "Nombre del jugador"
+
+#: kgamedebugdialog.cpp:222
+#, kde-format
+msgid "Player Group"
+msgstr "Grupo de jugadores"
+
+#: kgamedebugdialog.cpp:223
+#, kde-format
+msgid "Player User ID"
+msgstr "Identificador de usuario del jugador"
+
+#: kgamedebugdialog.cpp:224
+#, kde-format
+msgid "My Turn"
+msgstr "Mi turno"
+
+#: kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Async Input"
+msgstr "Entrada asíncrona"
+
+#: kgamedebugdialog.cpp:226
+#, kde-format
+msgid "KGame Address"
+msgstr "Dirección de KGame"
+
+#: kgamedebugdialog.cpp:227
+#, kde-format
+msgid "Player is Virtual"
+msgstr "El jugador es virtual"
+
+#: kgamedebugdialog.cpp:228
+#, kde-format
+msgid "Player is Active"
+msgstr "El jugador está activo"
+
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "RTTI"
+msgstr "RTTI"
+
+#: kgamedebugdialog.cpp:230
+#, kde-format
+msgid "Network Priority"
+msgstr "Prioridad de red"
+
+#: kgamedebugdialog.cpp:236
+#, kde-format
+msgid "Debug &Messages"
+msgstr "Depurar &mensajes"
+
+#: kgamedebugdialog.cpp:251
+#, kde-format
+msgid "&>>"
+msgstr "&>>"
+
+#: kgamedebugdialog.cpp:255
+#, kde-format
+msgid "&<<"
+msgstr "&<<"
+
+#: kgamedebugdialog.cpp:259
+#, kde-format
+msgid "Do not show IDs:"
+msgstr "No mostrar identificadores:"
+
+#: kgamedebugdialog.cpp:328
+#, kde-format
+msgid "NULL pointer"
+msgstr "Puntero nulo"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "True"
+msgstr "Verdadero"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "False"
+msgstr "Falso"
+
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "Clean"
+msgstr "Limpio"
+
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
+#, kde-format
+msgid "Dirty"
+msgstr "Sucio"
+
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
+#, kde-format
+msgid "Local"
+msgstr "Local"
+
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
+#, kde-format
+msgid "Undefined"
+msgstr "Indefinido"
+
+#: kgamedebugdialog.cpp:507
+#, kde-format
+msgid "Unknown"
+msgstr "Desconocido"
+
+#: kgamedialog.cpp:92
+#, kde-format
+msgid "&Network"
+msgstr "&Red"
+
+#: kgamedialogconfig.cpp:124
+#, kde-format
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#, kde-format
+msgid "Network Configuration"
+msgstr "Configuración de red"
+
+#: kgamedialogconfig.cpp:187
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr "No se puede conectar a la red"
+
+#: kgamedialogconfig.cpp:193
+#, kde-format
+msgid "Network status: No Network"
+msgstr "Estado de la red: no hay red"
+
+#: kgamedialogconfig.cpp:199
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr "Estado de la red: usted es MESTRO"
+
+#: kgamedialogconfig.cpp:201
+#, kde-format
+msgid "Network status: You are connected"
+msgstr "Estado de la red: está conectado"
+
+#: kwin4.cpp:74
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr "Error de instalación: No se encontró la lista de los temas."
+
+#: kwin4.cpp:101
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr "Error de instalación: No se encontró motor de IA. Continuar sin IA."
+
+#: kwin4.cpp:116
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr "Error de instalación: Error en el archivo de tema."
+
+#: kwin4.cpp:264
+#, kde-format
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "Abandona la partida actual. Nadie será declarado ganador."
+
+#: kwin4.cpp:269
+#, kde-format
+msgid "&Network Configuration..."
+msgstr "Co&nfiguración de red..."
+
+#: kwin4.cpp:273
+#, kde-format
+msgid "Network Chat..."
+msgstr "Ventana de conversación..."
+
+#: kwin4.cpp:278
+#, kde-format
+msgid "&Show Statistics"
+msgstr "Mo&strar estadísticas"
+
+#: kwin4.cpp:280
+#, kde-format
+msgid "Show statistics."
+msgstr "Mostrar estadísticas."
+
+#: kwin4.cpp:292
+#, kde-format
+msgid "Theme"
+msgstr "Tema"
+
+#: kwin4.cpp:303
+#, kde-format
+msgid "Debug KGame"
+msgstr "Depurar KGame"
+
+#: kwin4.cpp:326
+#, kde-format
+msgid "Welcome to Four Wins"
+msgstr "Bienvenido a Cuatro Gana"
+
+#: kwin4.cpp:486 kwin4.cpp:639
+#, kde-format
+msgid "Game running..."
+msgstr "Partida en ejecución..."
+
+#: kwin4.cpp:600
+#, kde-format
+msgid "No game  "
+msgstr "Sin partida "
+
+#: kwin4.cpp:602 kwin4.cpp:604
+#, kde-format
+msgid " %1 - %2 "
+msgstr " %1 - %2 "
+
+#: kwin4.cpp:606
+#, kde-format
+msgid "Nobody  "
+msgstr "Nadie   "
+
+#: kwin4.cpp:628
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "¡La partida en red ha finalizado!\n"
+
+#: kwin4.cpp:649
+#, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "La partida ha terminado en empate. Reinicie la próxima ronda."
+
+#: kwin4.cpp:656
+#, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "%1 ganó la partida. Reinicie la próxima ronda."
+
+#: kwin4.cpp:661
+#, kde-format
+msgid " Game ended. Please restart next round."
+msgstr " Partida finalizada. Por favor, reinicie la próxima ronda."
+
+#: kwin4.cpp:691
+#, kde-format
+msgid "Black should be played by remote player"
+msgstr "El negro debería ser jugado por el jugador remoto"
+
+#: kwin4.cpp:692
+#, kde-format
+msgid "Red should be played by remote player"
+msgstr "El rojo debería ser jugado por el jugador remoto"
+
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#, kde-format
+msgid "%1 Plays With"
+msgstr "%1 jugado por"
+
+#: kwin4.cpp:793
+#, kde-format
+msgid "General"
+msgstr "General"
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, kde-format
+msgid "Network connection port"
+msgstr "Puerto de conexión de red"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "Nombre del juego"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, kde-format
+msgid "Network connection host"
+msgstr "Servidor de conexión de red"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:50
+#, kde-format
+msgid "Change the strength of the computer player."
+msgstr "Cambia la fuerza del jugador de la máquina."
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, kde-format
+msgid "Player 1 name"
+msgstr "Nombre del jugador 1"
+
+#: kwin4.kcfg:32
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Jugador 1"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, kde-format
+msgid "Player 2 name"
+msgstr "Nombre del jugador 2"
+
+#: kwin4.kcfg:39
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Jugador 2"
+
+#: main.cpp:67
+#, kde-format
+msgid "KFourInLine"
+msgstr "KFourInLine"
+
+#: main.cpp:69
+#, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "KFourInLine: Juego de tablero para dos jugadores"
+
+#: main.cpp:71
+#, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "(c) 1995-2007, Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Martin Heni"
+msgstr "Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Game design and code"
+msgstr "Diseño y código del juego"
+
+#: main.cpp:73
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:73 main.cpp:74
+#, kde-format
+msgid "Graphics"
+msgstr "Gráficos"
+
+#: main.cpp:74
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:75
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:75
+#, kde-format
+msgid "Code Improvements"
+msgstr "Mejoras del código"
+
+#: main.cpp:80
+#, kde-format
+msgid "Enter debug level"
+msgstr "Introducir nivel de depuración"
+
+#: main.cpp:81
+#, kde-format
+msgid "Skip intro animation"
+msgstr "Saltar animación de introducción"
+
+#: main.cpp:82
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr "Ejecutar juego en modo demostración (juego automático)"
+
+#: scoresprite.cpp:163
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr "Nivel %1"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: settings.ui:38
+#, kde-format
+msgid "Computer Difficulty"
+msgstr "Dificultad de la máquina"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:83
+#, kde-format
+msgid "Easy"
+msgstr "Fácil"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:90
+#, kde-format
+msgid "Hard"
+msgstr "Difícil"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:102
+#, kde-format
+msgid "Use AI learning"
+msgstr "Utilizar aprendizaje de IA"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input1)
+#: settings.ui:112
+#, kde-format
+msgid "Red Plays With"
+msgstr "Rojo jugado por"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#: settings.ui:132 settings.ui:181
+#, kde-format
+msgid "Mouse"
+msgstr "Ratón"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#: settings.ui:142 settings.ui:191
+#, kde-format
+msgid "Keyboard"
+msgstr "Teclado"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#: settings.ui:149 settings.ui:198
+#, kde-format
+msgid "Computer"
+msgstr "Máquina"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input0)
+#: settings.ui:161
+#, kde-format
+msgid "Black Plays With"
+msgstr "Negro jugado por"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: settings.ui:216
+#, kde-format
+msgid "Player Names"
+msgstr "Nombres de los jugadores"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: settings.ui:242
+#, kde-format
+msgid "Player 1:"
+msgstr "Jugador 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: settings.ui:249
+#, kde-format
+msgid "Player 2:"
+msgstr "Jugador 2:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
+#: settings.ui:267
+#, kde-format
+msgid "Starting Player Color"
+msgstr "Color del jugador inicial"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
+#: settings.ui:287
+#, kde-format
+msgid "Red"
+msgstr "Rojo"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
+#: settings.ui:297
+#, kde-format
+msgid "Black"
+msgstr "Negro"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:57 statuswidget.ui:113
+#, kde-format
+msgid "Player 1"
+msgstr "Jugador 1"
+
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:64
+#, kde-format
+msgid "Name"
+msgstr "Nombre"
+
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:74
+#, kde-format
+msgid "Won"
+msgstr "Ganó"
+
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:87
+#, kde-format
+msgid "Lost"
+msgstr "Perdió"
+
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:103
+#, kde-format
+msgid "Sum"
+msgstr "Suma"
+
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:113
+#, kde-format
+msgid "Aborted"
+msgstr "Cancelado"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:131
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "Borrar todas las estadísticas"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:154
+#, kde-format
+msgid "&Close"
+msgstr "&Cerrar"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:166 statuswidget.ui:220
+#, kde-format
+msgid "Player 2"
+msgstr "Jugador 2"
+
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:176
+#, kde-format
+msgid "Drawn"
+msgstr "Empató"
+
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:63
+#, kde-format
+msgid "W"
+msgstr "O"
+
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:73
+#, kde-format
+msgid "D"
+msgstr "D"
+
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:83
+#, kde-format
+msgid "L"
+msgstr "L"
+
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:93
+#, kde-format
+msgid "No"
+msgstr "No"
+
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:103
+#, kde-format
+msgid "Bk"
+msgstr "Ab"
+
+#~ msgid "Ready"
+#~ msgstr "Preparado"
+
+#~ msgid "This leaves space for the mover"
+#~ msgstr "Esto deja espacio para el que mueve"

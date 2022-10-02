@@ -1,0 +1,672 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Spanish "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Manual de &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+> <firstname
+>Rocío</firstname
+> <surname
+>Gallego</surname
+> <affiliation
+><address
+><email
+>traducciones@rociogallego.com</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+><othercredit role="translator"
+> <firstname
+>Rafael</firstname
+> <surname
+>Osuna</surname
+> <affiliation
+><address
+><email
+>rosuna@wol.es</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Miguel</firstname
+> <surname
+>Revilla Rodríguez</surname
+> <affiliation
+><address
+><email
+>yo@miguelrevilla.com</email
+></address
+></affiliation
+> <contrib
+>Traductor</contrib
+> </othercredit
+> <othercredit role="translator"
+> <firstname
+>Kira</firstname
+> <surname
+>J. Fernández</surname
+> <affiliation
+><address
+><email
+>kirajfdez@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductora</contrib
+> </othercredit
+>  
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-05</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; es un juego de cuatro en línea creado por &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>juego</keyword>
+<keyword
+>tablero</keyword>
+<keyword
+>juego de tablero</keyword>
+<keyword
+>cuatro en raya</keyword>
+<keyword
+>cuatro</keyword>
+<keyword
+>cuatro en raya</keyword>
+<keyword
+>cuatro en línea</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>conecta cuatro</keyword>
+<keyword
+>conecta 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Introducción</title>
+
+<para
+>Tipo de juego: Estrategia, Tablero </para>
+
+<para
+>&kfourinline; es un juego de tablero para dos jugadores siguiendo las reglas del juego &nbsp;<trademark
+>Conecta cuatro</trademark
+>. </para>
+
+<para
+>Los jugadores intentan crear una fila de cuatro piezas usando diferentes estrategias. Las piezas se sitúan en un tablero. La partida también se puede jugar contra una máquina y en red. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Cómo jugar</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>El tablero de juego de &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Cuando carga &kfourinline;, puede seleccionar la dificultad o iniciar un juego para dos jugadores. Si lo desea, también puede elegir su color y seleccionar qué color inicia el juego. </para>
+
+<para
+>Cada jugador está representado por un color (por ejemplo, amarillo o blanco para el jugador uno y rojo para el jugador dos). El objetivo del juego es lograr colocar cuatro fichas del mismo color formando una línea, una columna o una diagonal. Los jugadores juegan por turnos. Cada turno el jugador puede situar una de sus piezas en una de las siete columnas, cayendo lo más abajo posible, &ie;, caerá hasta que se alcance el nivel del suelo o cualquier otra pieza. </para>
+
+<para
+>Después de que un jugador haya realizado su movimiento, el segundo jugador hará el suyo. Este proceso se repite hasta que finaliza la partida, que es cuando uno de los jugadores consigue colocar cuatro de sus fichas en una línea, una columna o una diagonal, o cuando el tablero está completamente lleno de fichas. </para>
+
+<para
+>El jugador que primero sitúa cuatro fichas en una fila, columna o diagonal gana el juego. Si no es posible realizar más movimientos pero no hay ningún jugador que haya ganado, el juego finaliza en tablas. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Reglas del juego, estrategias y consejos</title>
+
+<para
+>El tablero está dividido en varias zonas. </para>
+
+<para
+>El <firstterm
+>tablero de juego</firstterm
+> consta de 7x6 campos que deben ser rellenados desde abajo hacia arriba. Los campos quedan marcados por el color del jugador que ha realizado el movimiento. En lo alto de cada columna una flecha de color indica dónde se ha realizado el último movimiento. </para>
+
+<para
+><firstterm
+>Mostrar estado</firstterm
+> muestra qué dispositivo de entrada controla a un jugador. Un jugador local puede introducir movimientos usando el teclado o el ratón, un jugador remoto muestra una entrada de red, y finalmente, también la máquina también puede controlar a un jugador. Mostrar estado presenta los nombres de los jugadores y el nivel en el caso de que se juegue con una máquina. Además, muestra el número de juegos ganados, empatados, perdidos y abandonados para ambos jugadores. Se muestra qué jugador es el siguiente en mover resaltando su nombre. </para>
+
+<para
+>La <firstterm
+>barra de estado</firstterm
+> en la parte inferior de la pantalla muestra el estado del juego y qué jugador es el próximo que debe jugar. </para>
+
+<sect1 id="remote-connections">
+<title
+>Conexiones remotas</title>
+
+<para
+>Es posible jugar a través de una conexión de red con otra máquina. Una de las máquinas actúa como servidor. Este es el que determina qué color corresponde a cada jugador. Puede configurar las opciones de red en el menú  <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Configuración de red...</guimenuitem
+></menuchoice
+>. En el menú <menuchoice
+><guimenu
+>Juego</guimenu
+><guimenuitem
+>Ventana de conversación...</guimenuitem
+></menuchoice
+> puede encontrar un diálogo de conversación que le permitirá hablar con un amigo. </para>
+
+<para
+>Al establecerse una conexión, se le pide que introduzca un servidor remoto y un puerto. El puerto normalmente no es necesario cambiarlo, pero si sabe lo que está haciendo puede cambiarlo por otro número, que obviamente, tiene que ser el mismo en los equipos de ambos jugadores. El nombre del servidor debe ser el nombre del servidor remoto al que se está conectando. El nombre del servidor únicamente tiene que proporcionarlo el cliente de la conexión. Lo normal suele ser que los jugadores que se encuentran detrás de un cortafuegos actúen como clientes, ya que el cortafuegos puede que no permita conexiones entrantes. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Visión general de la interfaz</title>
+
+<sect1 id="menu">
+<title
+>Opciones de menú</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Nuevo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia un nuevo juego. En las partidas en red esta opción está disponible únicamente en el servidor. El cliente comenzará automáticamente al mismo tiempo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Cargar...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Cargar una partida guardada. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Guardar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Guarda la partida actual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Terminar el juego</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Abandona la partida actual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Charla en red...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Abre una ventana de conversación que le permite enviar mensajes a la otra parte. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Mostrar estadísticas</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Muestra un diálogo conteniendo información sobre las estadísticas globales del juego, y los juegos que se han ganado o perdido por parte de ambos jugadores. El diálogo también permite borrar todas las estadísticas. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Salir</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sale del programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Deshacer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Deshace el último movimiento. Si el otro jugador es el ordenador se retroceden dos movimientos para que vuelva a ser el turno del jugador. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Rehacer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Vuelve a hacer un movimiento que se había deshecho. Si uno de los jugadores es una máquina, se volverán a hacer dos movimientos volviendo a pasar el turno al mismo jugador. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Pista</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>El ordenador calculará el mejor movimiento posible y lo marcará con un pequeño símbolo en el tablero. La calidad del movimiento depende del nivel de la máquina. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Tema</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Elige un tema gráfico para el juego. Los temas disponibles dependerán de la instalación actual.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configuración de red...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Abre un diálogo para la configuración de la red. Usted puede elegir actuar como servidor o como cliente. Si es usted el servidor también podrá elegir con qué color jugará el equipo cliente. Si hay una partida de red en ejecución, desde este menú es posible desconectarla. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Además &kfourinline; tiene las opciones de menú <guimenu
+>Preferencias</guimenu
+> y <guimenu
+>Ayuda</guimenu
+> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menú «Preferencias»</ulink
+> y <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menú «Ayuda» </ulink
+> de «Aspectos básicos de &kde;». </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Configuración del juego</title>
+<para
+>Puede configurar &kfourinline; con el diálogo de configuración que se muestra usando la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+><guimenuitem
+>Configurar &kfourinline;...</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Configuración del juego</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Color del jugador inicial</guilabel
+>: Determina el color del jugador (<guilabel
+>rojo</guilabel
+> o <guilabel
+>negro</guilabel
+>) que mueve primero en la siguiente partida.</para>
+<para
+><guilabel
+>Nombres de los jugadores</guilabel
+>: Cambia los nombres de los jugadores.</para>
+<para
+><guilabel
+>Negro jugado por</guilabel
+>: Elige quién debe ser el jugador 1. Puede ser con el <guimenuitem
+>ratón</guimenuitem
+> o el <guimenuitem
+>teclado</guimenuitem
+>, &ie;, un jugador local usando el ratón o el teclado como dispositivo de entrada o la <guimenuitem
+>máquina</guimenuitem
+>, &ie;, la máquina juega por este jugador.</para>
+<para
+><guilabel
+>Rojo jugado por</guilabel
+>: Lo mismo que <guilabel
+>Amarillo jugado por</guilabel
+> pero para el jugador 2 (rojo).</para>
+<para
+><guilabel
+>Dificultad del ordenador</guilabel
+>: Selecciona el nivel de juego del ordenador.</para>
+<para
+><guilabel
+>Usar aprendizaje de IA</guilabel
+>. La IA de la máquina puede aprender de los errores cometidos en un juego.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Preguntas frecuentes</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>¿Cómo puedo cambiar el aspecto del juego? </para>
+</question>
+<answer>
+<para
+>Puede cambiar el color de las piezas usando la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>¿Puedo usar el teclado para jugar? </para>
+</question>
+<answer>
+<para
+>No puede usar el teclado para controlar las piezas. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>He perdido el control de quién va delante ¿cómo puedo averiguarlo? </para>
+</question>
+<answer>
+<para
+>Sí, puede ver las estadísticas usando la opción del menú <menuchoice
+><guimenu
+>Juego</guimenu
+> <guimenuitem
+>Mostrar estadísticas</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos y licencia</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Derechos de autor del programa 1995-2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
+<para
+>Derechos de autor de los gráficos 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> y Johann Ollivier Lapeyre. </para>
+<para
+>Derechos de autor de la documentación 2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
+
+<para
+>Traducido por Rocío Gallego <email
+>traducciones@rociogallego.com</email
+>, Rafael Osuna <email
+>rosuna@rosuna@wol.es</email
+>, Miguel Revilla Rodríguez <email
+>yo@miguelrevilla.com</email
+> y Kira J. Fernández <email
+>kirajfdez@gmail.com</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

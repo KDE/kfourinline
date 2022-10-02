@@ -1,0 +1,973 @@
+# Copyright (C) 2010 Free Software Foundation, Inc.
+#
+# Thanomsub Noppaburana <donga.nb@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kwin4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2010-03-21 23:39+0700\n"
+"Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "ถนอมทรัพย์ นพบูรณ์"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "donga.nb@gmail.com"
+
+#, fuzzy, kde-format
+#| msgid "Black"
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "หมากสีดำ"
+
+#, fuzzy, kde-format
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr "หมากสีเหลือง"
+
+#, fuzzy, kde-format
+#| msgid "Red"
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "หมากสีแดง"
+
+#: chatdlg.cpp:33
+#, fuzzy, kde-format
+#| msgid "Chat Dlg"
+msgctxt "@title:window"
+msgid "Chat Dlg"
+msgstr "กล่องคุยโต้ตอบ"
+
+#: chatdlg.cpp:48
+#, kde-format
+msgid "Chat"
+msgstr "พูดคุย"
+
+#: chatdlg.cpp:54
+#, kde-format
+msgid "Configure..."
+msgstr "ปรับแต่ง..."
+
+#: displayintro.cpp:72
+#, kde-format
+msgctxt "Name of quicklaunch field"
+msgid "Quick Launch"
+msgstr "เริ่มเกมด่วน"
+
+#: displayintro.cpp:79
+#, kde-format
+msgctxt "Ask player who should start game"
+msgid "Who starts?"
+msgstr "ใครเริ่ม ?"
+
+#: displayintro.cpp:83
+#, kde-format
+msgctxt "Ask player which color he wants to play"
+msgid "Your color?"
+msgstr "สีของคุณ ?"
+
+#: displayintro.cpp:127
+#, kde-format
+msgctxt "quick start button - player versus AI level easy"
+msgid "Easy Game"
+msgstr "เกมง่าย"
+
+#: displayintro.cpp:133
+#, kde-format
+msgctxt "quick start button - player versus AI level normal"
+msgid "Normal Game"
+msgstr "เกมปกติ"
+
+#: displayintro.cpp:139
+#, kde-format
+msgctxt "quick start button - player versus AI level hard"
+msgid "Hard Game"
+msgstr "เกมยาก"
+
+#: displayintro.cpp:145
+#, kde-format
+msgctxt "quick start button - player versus player"
+msgid "Two Player Game"
+msgstr "เกมแบบผู้เล่นสองคน"
+
+#: kchatdialog.cpp:80
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@title:window"
+msgid "Configure Chat"
+msgstr "ปรับแต่ง..."
+
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
+#, kde-format
+msgid "Name Font..."
+msgstr ""
+
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
+#, kde-format
+msgid "Text Font..."
+msgstr ""
+
+#: kchatdialog.cpp:104
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player: "
+msgstr "ผู้เล่น 1"
+
+#: kchatdialog.cpp:106
+#, kde-format
+msgid "This is a player message"
+msgstr ""
+
+#: kchatdialog.cpp:112
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr ""
+
+#: kchatdialog.cpp:126
+#, kde-format
+msgid "--- Game: "
+msgstr ""
+
+#: kchatdialog.cpp:128
+#, kde-format
+msgid "This is a system message"
+msgstr ""
+
+#: kchatdialog.cpp:132
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr ""
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "เ&กม"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, kde-format
+msgid "&Settings"
+msgstr "&ตั้งค่า"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "แถบเครื่องมือหลัก"
+
+#: kgameconnectdialog.cpp:63
+#, fuzzy, kde-format
+msgid "Create a network game"
+msgstr "กำลังเริ่มเกมใหม่..."
+
+#: kgameconnectdialog.cpp:66
+#, fuzzy, kde-format
+msgid "Join a network game"
+msgstr "กำลังเริ่มเกมใหม่..."
+
+#: kgameconnectdialog.cpp:72
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game name:"
+msgstr "ชื่อเกม"
+
+#: kgameconnectdialog.cpp:74
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgid "Network games:"
+msgstr "พูดคุยผ่านเครือข่าย"
+
+#: kgameconnectdialog.cpp:84
+#, kde-format
+msgid "Port to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:90
+#, kde-format
+msgid "Host to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:95
+#, kde-format
+msgid "&Start Network"
+msgstr ""
+
+#: kgamedebugdialog.cpp:118
+#, kde-format
+msgctxt "@title:window"
+msgid "KGame Debug Dialog"
+msgstr ""
+
+#: kgamedebugdialog.cpp:140
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &KGame"
+msgstr "ดีบั๊ก KGame"
+
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
+#, kde-format
+msgid "Update"
+msgstr ""
+
+#: kgamedebugdialog.cpp:167
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "KGame Pointer"
+msgstr "ชื่อเกม"
+
+#: kgamedebugdialog.cpp:168
+#, fuzzy, kde-format
+#| msgid "&Game"
+msgid "Game ID"
+msgstr "เ&กม"
+
+#: kgamedebugdialog.cpp:169
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game Cookie"
+msgstr "ชื่อเกม"
+
+#: kgamedebugdialog.cpp:170
+#, kde-format
+msgid "Is Master"
+msgstr ""
+
+#: kgamedebugdialog.cpp:171
+#, kde-format
+msgid "Is Admin"
+msgstr ""
+
+#: kgamedebugdialog.cpp:172
+#, kde-format
+msgid "Is Offering Connections"
+msgstr ""
+
+#: kgamedebugdialog.cpp:173
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game Status"
+msgstr "ชื่อเกม"
+
+#: kgamedebugdialog.cpp:174
+#, fuzzy, kde-format
+#| msgid "Game running..."
+msgid "Game is Running"
+msgstr "เกมกำลังทำงานอยู่..."
+
+#: kgamedebugdialog.cpp:175
+#, kde-format
+msgid "Maximal Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:176
+#, kde-format
+msgid "Minimal Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:177
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Players"
+msgstr "ผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:183
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &Players"
+msgstr "ดีบั๊ก KGame"
+
+#: kgamedebugdialog.cpp:193
+#, kde-format
+msgid "Available Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:219
+#, fuzzy, kde-format
+#| msgid "Player 1 name"
+msgid "Player Pointer"
+msgstr "ชื่อผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:220
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player ID"
+msgstr "ผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:221
+#, fuzzy, kde-format
+#| msgid "Player Names"
+msgid "Player Name"
+msgstr "ชื่อผู้เล่น"
+
+#: kgamedebugdialog.cpp:222
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player Group"
+msgstr "ผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:223
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player User ID"
+msgstr "ผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:224
+#, kde-format
+msgid "My Turn"
+msgstr ""
+
+#: kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Async Input"
+msgstr ""
+
+#: kgamedebugdialog.cpp:226
+#, kde-format
+msgid "KGame Address"
+msgstr ""
+
+#: kgamedebugdialog.cpp:227
+#, fuzzy, kde-format
+#| msgid "Player 1 name"
+msgid "Player is Virtual"
+msgstr "ชื่อผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:228
+#, fuzzy, kde-format
+#| msgid "Player 1 name"
+msgid "Player is Active"
+msgstr "ชื่อผู้เล่น 1"
+
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "RTTI"
+msgstr ""
+
+#: kgamedebugdialog.cpp:230
+#, fuzzy, kde-format
+#| msgid "Network connection port"
+msgid "Network Priority"
+msgstr "พอร์ทของการเชื่อมต่อผ่านเครือข่าย"
+
+#: kgamedebugdialog.cpp:236
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &Messages"
+msgstr "ดีบั๊ก KGame"
+
+#: kgamedebugdialog.cpp:251
+#, kde-format
+msgid "&>>"
+msgstr ""
+
+#: kgamedebugdialog.cpp:255
+#, kde-format
+msgid "&<<"
+msgstr ""
+
+#: kgamedebugdialog.cpp:259
+#, kde-format
+msgid "Do not show IDs:"
+msgstr ""
+
+#: kgamedebugdialog.cpp:328
+#, kde-format
+msgid "NULL pointer"
+msgstr ""
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "True"
+msgstr ""
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "False"
+msgstr ""
+
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "Clean"
+msgstr ""
+
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
+#, kde-format
+msgid "Dirty"
+msgstr ""
+
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
+#, kde-format
+msgid "Local"
+msgstr ""
+
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
+#, kde-format
+msgid "Undefined"
+msgstr ""
+
+#: kgamedebugdialog.cpp:507
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: kgamedialog.cpp:92
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgid "&Network"
+msgstr "พูดคุยผ่านเครือข่าย"
+
+#: kgamedialogconfig.cpp:124
+#, kde-format
+msgid "Disconnect"
+msgstr ""
+
+#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#, kde-format
+msgid "Network Configuration"
+msgstr "ปรับแต่งค่าเครือข่าย"
+
+#: kgamedialogconfig.cpp:187
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr ""
+
+#: kgamedialogconfig.cpp:193
+#, kde-format
+msgid "Network status: No Network"
+msgstr ""
+
+#: kgamedialogconfig.cpp:199
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr ""
+
+#: kgamedialogconfig.cpp:201
+#, kde-format
+msgid "Network status: You are connected"
+msgstr ""
+
+#: kwin4.cpp:74
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr "การติดตั้งผิดพลาด: ไม่พบรายการชุดตกแต่ง"
+
+#: kwin4.cpp:101
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr "การติดตั้งผิดพลาด: ไม่พบกลไก AI ทำต่อไปโดยไม่มี AI"
+
+#: kwin4.cpp:116
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr "การติดตั้งผิดพลาด: แฟ้มชุดตกแต่งผิดพลาด"
+
+#: kwin4.cpp:264
+#, kde-format
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "จบเกมที่เล่นอยู่ในปัจจุบัน และไม่มีผู้ชนะ"
+
+#: kwin4.cpp:269
+#, kde-format
+msgid "&Network Configuration..."
+msgstr "ปรับแต่งเค&รือข่าย..."
+
+#: kwin4.cpp:273
+#, kde-format
+msgid "Network Chat..."
+msgstr "พูดคุยผ่านเครือข่าย"
+
+#: kwin4.cpp:278
+#, kde-format
+msgid "&Show Statistics"
+msgstr "แ&สดงสถิติ"
+
+#: kwin4.cpp:280
+#, kde-format
+msgid "Show statistics."
+msgstr "แสดงสถิติ"
+
+#: kwin4.cpp:292
+#, kde-format
+msgid "Theme"
+msgstr "ชุดตกแต่ง"
+
+#: kwin4.cpp:303
+#, kde-format
+msgid "Debug KGame"
+msgstr "ดีบั๊ก KGame"
+
+#: kwin4.cpp:326
+#, fuzzy, kde-format
+#| msgid "Welcome to Four Wins"
+msgid "Welcome to Four Wins"
+msgstr "ขอต้อนรับสู่%1"
+
+#: kwin4.cpp:486 kwin4.cpp:639
+#, kde-format
+msgid "Game running..."
+msgstr "เกมกำลังทำงานอยู่..."
+
+#: kwin4.cpp:600
+#, kde-format
+msgid "No game  "
+msgstr "ยังไม่มีเกม  "
+
+#: kwin4.cpp:602 kwin4.cpp:604
+#, fuzzy, kde-format
+#| msgid " %1 - Red "
+msgid " %1 - %2 "
+msgstr " %1 - สีแดง "
+
+#: kwin4.cpp:606
+#, kde-format
+msgid "Nobody  "
+msgstr "ไม่มีใคร  "
+
+#: kwin4.cpp:628
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "จบการเล่นผ่านเครือข่ายแล้ว !\n"
+
+#: kwin4.cpp:649
+#, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "มีการยอมแพ้ โปรดเริ่มการเล่นรอบต่อไป"
+
+#: kwin4.cpp:656
+#, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "%1 เป็นผู้ชนะ โปรดเริ่มการเล่นรอบต่อไป"
+
+#: kwin4.cpp:661
+#, kde-format
+msgid " Game ended. Please restart next round."
+msgstr " จบเกมแล้ว โปรดเริ่มการเล่นรอบต่อไป"
+
+#: kwin4.cpp:691
+#, kde-format
+msgid "Black should be played by remote player"
+msgstr "หมากสีดำควรจะถูกเล่นโดยผู้เล่นทางไกล"
+
+#: kwin4.cpp:692
+#, kde-format
+msgid "Red should be played by remote player"
+msgstr "หมากสีแดงควรจะถูกเล่นโดยผู้เล่นทางไกล"
+
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#, fuzzy, kde-format
+#| msgid "Red Plays With"
+msgid "%1 Plays With"
+msgstr "ผู้เล่นหมากสีแดงเล่นโดย"
+
+#: kwin4.cpp:793
+#, kde-format
+msgid "General"
+msgstr "ค่าทั่วไป"
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, kde-format
+msgid "Network connection port"
+msgstr "พอร์ทของการเชื่อมต่อผ่านเครือข่าย"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "ชื่อเกม"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, kde-format
+msgid "Network connection host"
+msgstr "โฮสต์ของการเชื่อมต่อผ่านเครือข่าย"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:50
+#, kde-format
+msgid "Change the strength of the computer player."
+msgstr "เปลี่ยนความแข็งแกร่งของผู้เล่นโดยคอมพิวเตอร์"
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, kde-format
+msgid "Player 1 name"
+msgstr "ชื่อผู้เล่น 1"
+
+#: kwin4.kcfg:32
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "ผู้เล่น 1"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, kde-format
+msgid "Player 2 name"
+msgstr "ชื่อผู้เล่น 2"
+
+#: kwin4.kcfg:39
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "ผู้เล่น 2"
+
+#: main.cpp:67
+#, kde-format
+msgid "KFourInLine"
+msgstr "เรียงหมากสี่-K"
+
+#: main.cpp:69
+#, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "เกมเรียงหมากสี่-K: เกมกระดานสำหรับผู้เล่นสองคน"
+
+#: main.cpp:71
+#, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "สงวนลิขสิทธิ์ (c) 1995-2007, Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Martin Heni"
+msgstr "Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Game design and code"
+msgstr "ออกแบบเกมและเขียนโค้ด"
+
+#: main.cpp:73
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:73 main.cpp:74
+#, kde-format
+msgid "Graphics"
+msgstr "กราฟิก"
+
+#: main.cpp:74
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:75
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:75
+#, kde-format
+msgid "Code Improvements"
+msgstr "ปรับปรุงโค้ด"
+
+#: main.cpp:80
+#, kde-format
+msgid "Enter debug level"
+msgstr "เข้าสู่ระดับการดีบั๊ก"
+
+#: main.cpp:81
+#, kde-format
+msgid "Skip intro animation"
+msgstr "ข้ามการเคลื่อนไหวหน้าแนะนำ"
+
+#: main.cpp:82
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr "เริ่มเกมในโหมดสาธิต (เล่นอัตโนมัติ)"
+
+#: scoresprite.cpp:163
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr "ระดับ %1"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: settings.ui:38
+#, kde-format
+msgid "Computer Difficulty"
+msgstr "ระดับความยากของคอมพิวเตอร์"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:83
+#, kde-format
+msgid "Easy"
+msgstr "ง่าย"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:90
+#, kde-format
+msgid "Hard"
+msgstr "ยาก"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:102
+#, kde-format
+msgid "Use AI learning"
+msgstr "ใช้การเรียนรู้ด้วย AI"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input1)
+#: settings.ui:112
+#, kde-format
+msgid "Red Plays With"
+msgstr "ผู้เล่นหมากสีแดงเล่นโดย"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#: settings.ui:132 settings.ui:181
+#, kde-format
+msgid "Mouse"
+msgstr "เมาส์"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#: settings.ui:142 settings.ui:191
+#, kde-format
+msgid "Keyboard"
+msgstr "แป้นพิมพ์"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#: settings.ui:149 settings.ui:198
+#, kde-format
+msgid "Computer"
+msgstr "คอมพิวเตอร์"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input0)
+#: settings.ui:161
+#, kde-format
+msgid "Black Plays With"
+msgstr "ผู้เล่นหมากสีดำเล่นโดย"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: settings.ui:216
+#, kde-format
+msgid "Player Names"
+msgstr "ชื่อผู้เล่น"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: settings.ui:242
+#, kde-format
+msgid "Player 1:"
+msgstr "ผู้เล่น 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: settings.ui:249
+#, kde-format
+msgid "Player 2:"
+msgstr "ผู้เล่น 2:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
+#: settings.ui:267
+#, kde-format
+msgid "Starting Player Color"
+msgstr "สีหมากของผู้เล่นเริ่มต้น"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
+#: settings.ui:287
+#, kde-format
+msgid "Red"
+msgstr "หมากสีแดง"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
+#: settings.ui:297
+#, kde-format
+msgid "Black"
+msgstr "หมากสีดำ"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "สถิติ"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:57 statuswidget.ui:113
+#, kde-format
+msgid "Player 1"
+msgstr "ผู้เล่น 1"
+
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:64
+#, kde-format
+msgid "Name"
+msgstr "ชื่อ"
+
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:74
+#, kde-format
+msgid "Won"
+msgstr "ชนะ"
+
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:87
+#, kde-format
+msgid "Lost"
+msgstr "แพ้"
+
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:103
+#, kde-format
+msgid "Sum"
+msgstr "รวม"
+
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:113
+#, kde-format
+msgid "Aborted"
+msgstr "ยกเลิก"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:131
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "ล้างสถิติ"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:154
+#, kde-format
+msgid "&Close"
+msgstr "&ปิด"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:166 statuswidget.ui:220
+#, kde-format
+msgid "Player 2"
+msgstr "ผู้เล่น 2"
+
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:176
+#, kde-format
+msgid "Drawn"
+msgstr "ยอมแพ้"
+
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:63
+#, kde-format
+msgid "W"
+msgstr "W"
+
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:73
+#, kde-format
+msgid "D"
+msgstr "D"
+
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:83
+#, kde-format
+msgid "L"
+msgstr "L"
+
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:93
+#, kde-format
+msgid "No"
+msgstr "หมายเลข"
+
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:103
+#, kde-format
+msgid "Bk"
+msgstr "Bk"
+
+#~ msgid "Ready"
+#~ msgstr "พร้อม"
+
+#~ msgid "This leaves space for the mover"
+#~ msgstr "นี่เป็นที่ว่างที่สามารถเรียงหมากได้"
+
+#~ msgid " %1 - Yellow "
+#~ msgstr " %1 - สีเหลือง "
+
+#~ msgid "KWin4"
+#~ msgstr "เกมเรียงหมากสี่"
+
+#~ msgid "Yellow should be played by remote"
+#~ msgstr "หมากสีเหลืองเป็นผู้เล่นระยะไกล"
+
+#, fuzzy
+#~ msgid "Yellow Plays With"
+#~ msgstr "ผู้เล่นสีเหลือง"
+
+#~ msgid "Open a saved game..."
+#~ msgstr "เปิดเกมที่บันทึกไว้..."
+
+#, fuzzy
+#~ msgid "Save a game..."
+#~ msgstr "บันทึกเกม"
+
+#~ msgid "Ending the current game..."
+#~ msgstr "กำลังจบเกมที่เล่นอยู่..."
+
+#~ msgid "Shows a hint on how to move."
+#~ msgstr "แสดงการแนะแนวทาง"
+
+#~ msgid "Quits the program."
+#~ msgstr "ออกจากโปรแกรม"
+
+#~ msgid "Undo last move."
+#~ msgstr "เลิกทำการย้ายล่าสุด"
+
+#~ msgid "Redo last move."
+#~ msgstr "ทำซ้ำการย้ายล่าสุด"
+
+#~ msgctxt "1. intro line, welcome to win4"
+#~ msgid "Welcome"
+#~ msgstr "ยินดีต้อนรับ"
+
+#~ msgctxt "2. intro line, welcome to win4"
+#~ msgid "to"
+#~ msgstr "สู่"
+
+#~ msgctxt "3. intro line, welcome to win4"
+#~ msgid "KWin4"
+#~ msgstr "เกมเรียงหมากสี่"
+
+#, fuzzy
+#~ msgid "Hold on... the other player has not been yet..."
+#~ msgstr "คอยเดี๋ยว..ผู้เล่นอีกฝ่ายยังเดินไม่เสร็จ..."
+
+#~ msgid "Hold your horses..."
+#~ msgstr "รอตาของคุณอยู่..."
+
+#, fuzzy
+#~ msgid "Ah ah ah... only one go at a time..."
+#~ msgstr "อ๊ะอ๊ะอ๊ะ...เดินได้ตาละหนึ่งคนเท่านั้นนะ..."
+
+#~ msgid "Please wait... it is not your turn."
+#~ msgstr "โปรดรอสักครู่... ตอนนี้ยังไม่ใช่ตาของคุณเล่น"
+
+#~ msgid "Form1"
+#~ msgstr "ฟอร์ม1"
+
+#~ msgid "vs"
+#~ msgstr "กับ"
+
+#~ msgid "Chance"
+#~ msgstr "โอกาส"
+
+#~ msgid "Winner"
+#~ msgstr "ผู้ชนะ"
+
+#~ msgid "Loser"
+#~ msgstr "ผู้แพ้"

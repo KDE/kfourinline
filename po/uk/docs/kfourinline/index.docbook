@@ -1,0 +1,622 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Ukrainian "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Підручник з &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>5 червня 2016 року</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; — це гра у чотири-у-рядок у &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>гра</keyword>
+<keyword
+>дошка</keyword>
+<keyword
+>гра на дошці</keyword>
+<keyword
+>чотири виграють</keyword>
+<keyword
+>чотири</keyword>
+<keyword
+>чотири у рядок</keyword>
+<keyword
+>чотири у рядку</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>з’єднати чотири</keyword>
+<keyword
+>з’єднати 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Вступ</title>
+
+<para
+>Тип гри: Стратегія, гра на дошці </para>
+
+<para
+>&kfourinline; — це гра на дошці для двох гравців, заснована на грі <trademark
+>Connect-Four</trademark
+>. </para>
+
+<para
+>Гравці намагаються побудувати рядок з чотирьох елементів за допомогою різних стратегій. Елементи викладаються на дошці. У гру можна також грати проти комп’ютерного гравця, а також мережею. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Як грати</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Ігрова дошка &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Після завантаження &kfourinline;, ви можете обрати рівень складності або почати гру з двома гравцями-людьми. Якщо бажаєте, можете також обрати колір своїх елементів та колір гравця, який ходитиме першим. </para>
+
+<para
+>Кожному з гравців відповідає певний колір (наприклад, жовтий або білий для першого гравця і червоний для другого). Метою гри є побудова лінії з чотирьох елементів вашого кольору у будь-якому рядку, стовпчику або вздовж діагоналі. Гравці ходять по черзі. Під час кожного ходу гравець може покласти свій елемент у один з семи стовпчиків: цей елемент займе найнижчу можливу вільну позицію, тобто він падатиме у стовпчику аж доки не досягне дна або не наштовхнеться на інший елемент. </para>
+
+<para
+>Після того, як перший гравець виконає свій хід, до справи береться другий гравець. Таке чергування повторюється до того часу, доки гру не буде завершено, тобто доти, доки один з гравців не побудує лінію з чотирьох елементів в рядку, стовпчику або по діагоналі, або подальші ходи стануть неможливими через те, що дошку буде заповнено. </para>
+
+<para
+>Гравець, який першим викладе лінію з чотирьох своїх елементів у рядку, стовпчику або вздовж діагоналі, виграє гру. Якщо подальші ходи неможливі, а жодному з гравців не вдалося виграти, гра завершується унічию. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Правила гри, стратегії і підказки</title>
+
+<para
+>Дошку поділено на декілька областей. </para>
+
+<para
+><firstterm
+>Ігрова дошка</firstterm
+> складається з області 7x6 полів, які заповнюють елементами згори донизу. Поля позначаються елементами кольорів гравця, який першим зайняв відповідне поле. Над кожним зі стовпчиків буде показано кольорову стрілку, колір якої позначає того гравця, який останнім вкинув елемент до відповідного стовпчика. </para>
+
+<para
+>У полі <firstterm
+>показу стану</firstterm
+> показано пристрої для введення, які контролює кожен з гравців. Локальний гравець може виконувати ходи за допомогою клавіатури або миші, віддаленого гравця буде показано як введення з мережі, крім того, введенням гравця може керувати і комп’ютер. У полі показу стану також буде показано імена гравців і рівень комп’ютерного супротивника. Для кожного з гравців також буде показано кількість виграшів, нічиїх, програшів та завершених ігор. Ім’я гравця, який повинен ходити наступним буде підсвічено. </para>
+
+<para
+>У <firstterm
+>смужці стану</firstterm
+>, розташованій внизу вікна, буде показано стан гри і те, хто ходитиме наступним. </para>
+
+<sect1 id="remote-connections">
+<title
+>Віддалені з’єднання</title>
+
+<para
+>У гру можна грати за допомогою мережевого з’єднання між двома комп’ютерами. Один з цих комп’ютерів працюватиме як сервер гри. З цього комп’ютера можна визначити колір елементів для кожного з гравців. Параметри мережі можна налаштувати за допомогою меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштування мережі...</guimenuitem
+></menuchoice
+>. За допомогою меню <menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Балачка в мережі...</guimenuitem
+></menuchoice
+> ви можете відкрити діалогове вікно, за допомогою якого ви зможете спілкуватися з партнером. </para>
+
+<para
+>Під час встановлення з’єднання мережею програма запитає вас про адресу віддаленого вузла і порт, який буде використано на ньому для з’єднання. Зазвичай, значення для порту можна не змінювати, але якщо ви точно знаєте, що його слід змінити, ви можете ввести власне значення, яке, звичайно ж, має бути однаковим на обох з’єднаних комп’ютерах. Назву вузла слід вказувати лише для клієнта. Зазвичай, найкраще зробити так, щоб гравець, який знаходиться за брандмауером, керував клієнтом, оскільки брандмауер може блокувати вхідні з’єднання. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Огляд інтерфейсу</title>
+
+<sect1 id="menu">
+<title
+>Пункти меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Починає нову гру. Для гри за допомогою мережі цей пункт буде доступним лише на мережевому сервері. Мережевий клієнт почне гру автоматично за командою з сервера. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Завантажити...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Завантажує збережену гру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Зберегти</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Зберігає поточну гру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Завершити гру</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Завершує поточну гру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Балачка у мережі...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Відкриває віджет балачки, за допомогою якого ви можете надсилати повідомлення своєму партнеру у грі. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати статистику</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Відкриває діалогове вікно з загальними статистичними відомостями гри, зокрема щодо того, скільки ігор було виграно, скільки програно і скільки закінчилися внічию, для обох гравців. За допомогою цього діалогового вікна також можна очистити всі ці статистичні дані. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Завершує роботу програми. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Вернути</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Скасовує останній хід. Якщо попередній хід було здійснено комп’ютером, буде повернено позицію на два ходи раніше, так, щоб повернути хід вашому гравцеві. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Повторити</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Повторює хід, який було раніше скасовано. Якщо за одного з гравців грає комп’ютер, буде повернуто позицію на два ходи раніше, так, щоб хід був за вашим гравцем. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Хід</guimenu
+> <guimenuitem
+>Підказка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Комп’ютер спробує визначити найкращий з можливих ходів для вашого гравця і позначить його на ігровій дошці. Наскільки вдалим буде цей хід залежить від встановленого рівня комп’ютерного гравця. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Тема</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Тут ви можете вибрати графічну тему гри. Список доступних тем залежить від встановлених компонентів.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштування мережі...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Відкриває діалогове вікно налаштування параметрів мережі. Ви можете обрати режим, у якому працюватиме програма: сервер чи клієнт. Якщо ви вкажете значення «сервер», ви зможете обирати колір, яким гратиме віддалений гравець. Якщо запущено гру мережею, за допомогою цього меню ви зможете перервати це мережеве з’єднання. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Крім того, у &kfourinline; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Налаштування гри</title>
+<para
+>&kfourinline; можна налаштувати за допомогою діалогового вікна налаштування, яке відкривається пунктом меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати &kfourinline;...</guimenuitem
+></menuchoice
+></para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Налаштування гри</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Колір гравця, що починає</guilabel
+>: визначає гравець якого кольору (<guilabel
+>Червоний</guilabel
+> чи <guilabel
+>Чорний</guilabel
+>) робитиме перший хід у наступній грі.</para>
+<para
+><guilabel
+>Імена гравців</guilabel
+>: змініть імена гравців.</para>
+<para
+><guilabel
+>Чорними грає</guilabel
+>: оберіть спосіб, за допомогою якого гратиме гравець 1. Значеннями можуть бути <guilabel
+>Миша</guilabel
+> або <guilabel
+>Клавіатури</guilabel
+>, тобто локальний гравець, який використовує мишу або клавіатуру для введення команд, чи <guilabel
+>Комп’ютер</guilabel
+>, тобто діями гравця керуватиме комп’ютер.</para>
+<para
+><guilabel
+>Червоними грає</guilabel
+>: те саме, що і <guilabel
+>Чорними грає</guilabel
+>, але для гравця 2 (червоних).</para>
+<para
+><guilabel
+>Рівень комп'ютерного гравця</guilabel
+>: виберіть рівень комп’ютерного гравця.</para>
+<para
+><guilabel
+>Використовувати навчання комп'ютера</guilabel
+>: штучний інтелект комп’ютерного гравця може навчатися на помилках, зроблених у грі.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Часті запитання</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Чи можу я змінити вигляд гри? </para>
+</question>
+<answer>
+<para
+>Ви можете змінити колір елементів за допомогою меню <guimenu
+>Параметри</guimenu
+>, а саме пункту <guisubmenu
+>Тема</guisubmenu
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Чи можу я користуватися для гри клавіатурою? </para>
+</question>
+<answer>
+<para
+>Ви не зможете користуватися клавіатурою для керування елементами. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Я втратив (втратила) лік своїм перемогам і поразкам, чи можна дізнатися про поточний рахунок? </para>
+</question>
+<answer>
+<para
+>Так, ви можете скористатися пунктом <guimenuitem
+>Показати статистику</guimenuitem
+> з меню <guimenu
+>Гра</guimenu
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Подяки і ліцензія</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Авторські права на програму належать &Martin.Heni; &Martin.Heni.mail; і Benjamin Meyer, ©1995-2007 </para>
+<para
+>Авторські права на графічні елементи гри належать Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> і Johann Ollivier Lapeyre, ©2007 </para>
+<para
+>Авторські права на документацію до гри належать &Martin.Heni; &Martin.Heni.mail; і Benjamin Meyer, ©2007 </para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

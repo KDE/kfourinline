@@ -1,0 +1,621 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Portuguese "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>O Manual do &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2016-05-09</date>
+<releaseinfo
+>v1.4.1 (Aplicações 16.04)</releaseinfo>
+
+<abstract>
+<para
+>O &kfourinline; é um jogo de quatro-em-linha para o &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>jogo</keyword>
+<keyword
+>tabuleiro</keyword>
+<keyword
+>jogo de tabuleiro</keyword>
+<keyword
+>quatro ganha</keyword>
+<keyword
+>quatro</keyword>
+<keyword
+>quatro em fila</keyword>
+<keyword
+>quatro-em-linha</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>ligar quatro</keyword>
+<keyword
+>ligar 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Introdução</title>
+
+<para
+>Tipo de jogo: Tabuleiro, Estratégia </para>
+
+<para
+>O &kfourinline; é um jogo para dois jogadores que segue as regras do jogo <trademark
+>Quatro em Linha</trademark
+>. </para>
+
+<para
+>Os jogadores tentam construir uma fila de quatro peças, usando estratégias diferentes. As peças são colocadas num tabuleiro. O jogo também poderá ser jogado contra o computador. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Como Jogar</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Tabuleiro do Jogo &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Quando o &kfourinline; é carregado, poderá seleccionar a dificuldade ou iniciar um jogo de dois jogadores. Se preferir, poderá também escolher a sua cor e seleccione a cor que inicia o jogo. </para>
+
+<para
+>Cada jogador é representado por uma cor (amarela e vermelha). O objectivo do jogo é conseguir alinhar quatro peças adjacentes da sua cor numa linha, coluna ou numa diagonal. Os jogadores movimentam-se por turnos. Em cada turno, o jogador poderá colocar uma das suas peças numa das sete colunas, onde cada peça irá cair para o local livre mais abaixo &ie; irá cair até que atinja o chão ou outra peça. </para>
+
+<para
+>Depois de um jogador ter efectuado as suas colocações, é a vez do segundo jogador. Isto é repetido até que o jogo termine, o que acontece quando um dos jogadores tiver quatro peças numa linha, coluna ou diagonal ou quando não for possível efectuar mais nenhuma jogada porque o tabuleiro ficou cheio. </para>
+
+<para
+>O jogador que conseguir ter quatro peças numa linha, coluna ou diagonal ganha o jogo. Se não puderem ser feitas  mais jogadas, mas nenhum dos jogadores tiver ganho, o jogo termina empatado. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Regras, estratégias e dicas do jogo</title>
+
+<para
+>O tabuleiro está separado em diversas regiões. </para>
+
+<para
+>O <firstterm
+>tabuleiro do jogo</firstterm
+> é construído com base em campos de 7x6 que serão preenchidos de baixo para cima. Os campos são marcados com a cor do jogador que efectua a jogada actual. No tipo de cada coluna aparece uma seta colorida que mostra onde a última peça foi colocada. </para>
+
+<para
+>A <firstterm
+>área de estado</firstterm
+> mostra qual o jogador que é controlado pelo seu dispositivo respectivo. Um jogador local poderá indicar as jogadas com o teclado ou o rato, um jogador remoto aparece como uma rede e, finalmente, um computador significa que terá um computador a controlar o jogador. A área de estado mostra os nomes dos jogadores e o nível do adversário-computador. Para além disso, aparece o número de jogos ganhos, perdidos, empatados e interrompidos para ambos os jogadores. O jogador que joga a seguir é indicado pelo nome realçado do jogador. </para>
+
+<para
+>A <firstterm
+>barra de estado</firstterm
+>, no fundo do ecrã, mostra o estado do jogo e qual o jogador seguinte a jogar. </para>
+
+<sect1 id="remote-connections">
+<title
+>Ligações Remotas</title>
+
+<para
+>É possível jogar numa ligação em rede com outro computador. Um dos computadores irá actuar como o servidor de jogos. Este poderá determinar quem jogará com que cor. Você pode configurar as opções de rede no menu <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Configuração da Rede...</guimenuitem
+></menuchoice
+>. No menu <menuchoice
+><guimenu
+>Jogo</guimenu
+><guimenuitem
+>Conversa em Rede...</guimenuitem
+></menuchoice
+>, também poderá encontrar uma janela de conversação que lhe permitirá contactar com o seu amigo. </para>
+
+<para
+>Quando é criada uma ligação de rede, é-lhe pedido para introduzir uma máquina remota e um porto. O porto poderá quase sempre ser deixado como está, mas se você souber o que está a fazer, poderá substitui-lo por outro número, que terá de ser igual para o outro jogador, como é óbvio. O nome da máquina representa o nome da máquina-anfitriã à qual você se vai ligar. Só o cliente da ligação é que terá de indicar esse nome. É razoável que o jogador que se encontre por trás de uma 'firewall' opte por ser o cliente, dado que a 'firewall' poderá não aceitar ligações vindas de fora. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Apresentação à Interface</title>
+
+<sect1 id="menu">
+<title
+>Opções do Menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Inicia um novo jogo. No caso de um jogo na rede, esta opção só está disponível para o servidor da rede. O cliente de rede será iniciado automaticamente pelo servidor. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Carregar...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Abrir um jogo gravado. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Gravar</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Gravar o jogo actual. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Termina um jogo em execução. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Conversa na Rede...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Faz aparecer uma janela de conversação que lhe permitirá enviar mensagens para o outro jogador. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar as Estatísticas</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Mostra uma janela que contém informações sobre as estatísticas globais do jogo, ou seja, os jogos ganhos, perdidos ou empatados por ambos os jogadores. A janela também permite limpar estas estatísticas permanentes. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sai do programa. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Anula a última jogada. Se o jogador anterior for o computador, são anulados dois movimentos de modo a que seja a vez do jogador de novo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Repete a última jogada anulada. Se o jogador anterior for o computador, são repetidos dois movimentos anulados de modo a que seja a vez do jogador de novo. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Dica</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>O computador irá calcular a jogada melhor possível e marcá-la-á com um pequeno círculo no tabuleiro. A qualidade da jogada depende do nível do computador. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Escolha um tema gráfico para o jogo. Os temas disponíveis dependem da instalação actual.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configuração da Rede...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Faz aparecer uma janela com a configuração da rede. Você pode optar por ser o servidor ou o cliente. Se você for o servidor, também poderá escolher qual a cor que o cliente poderá obter. Se estiver um jogo de rede em execução, você também o poderá desligar com este menu. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Para além disso, o &kfourinline; tem os menus de <guimenu
+>Configuração</guimenu
+> e <guimenu
+>Ajuda</guimenu
+> normais do &kde;; para mais informações, leia as secções acerca dos menus de <ulink url="help:/fundamentals/ui.html#menus-settings"
+>Configuração</ulink
+> e <ulink url="help:/fundamentals/ui.html#menus-help"
+>Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Configuração do Jogo</title>
+<para
+>O &kfourinline; pode ser configurado com a janela de configuração em <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar o &kfourinline;...</guimenuitem
+></menuchoice
+> </para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Configuração do Jogo</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Cor Inicial do Jogador</guilabel
+>: Determina qual a cor dos jogadores (<guilabel
+>Vermelho</guilabel
+> ou <guilabel
+>Preto</guilabel
+>) que começará primeiro no próximo jogo.</para>
+<para
+><guilabel
+>Nomes dos Jogadores</guilabel
+>: Muda o nome dos jogadores.</para>
+<para
+><guilabel
+>O Preto Joga Com</guilabel
+>: Escolhe quem deverá jogar como sendo o jogador 1. Tanto poderá ser o <guimenuitem
+>Rato</guimenuitem
+> ou o <guimenuitem
+>Teclado</guimenuitem
+>, &ie; um jogador local que utiliza o rato ou o teclado para comandar o jogador ou o <guimenuitem
+>Computador</guimenuitem
+>, &ie; o computador joga com este jogador.</para>
+<para
+><guilabel
+>O Vermelho Joga Com</guilabel
+>: O mesmo que para o <guimenuitem
+>Amarelo Jogado Por</guimenuitem
+>, mas para o jogador 2 (vermelho).</para>
+<para
+><guilabel
+>Dificuldade do Computador</guilabel
+>: Selecciona o nível do jogador do computador.</para>
+<para
+><guilabel
+>Usar a aprendizagem IA</guilabel
+>: A IA do computador poderá aprender com os erros cometidos num jogo.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Perguntas mais frequentes</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Posso alterar a aparência do jogo? </para>
+</question>
+<answer>
+<para
+>Pode alterar a cor das peças, abrindo o menu de <guimenu
+>Configuração</guimenu
+> e seleccionando o <guisubmenu
+>Tema</guisubmenu
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Posso usar o teclado para jogar este jogo? </para>
+</question>
+<answer>
+<para
+>Não pode usar o teclado para controlar as peças. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Perdi o controlo de quem está a ganhar; como é que descubro isso? </para>
+</question>
+<answer>
+<para
+>Sim, poderá ver as estatísticas  se abrir o menu de Jogo e seleccionar a opção <guimenuitem
+>Mostrar as Estatísticas</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Créditos e Licença</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Programa com 'copyright' 1995-2007 de &Martin.Heni; &Martin.Heni.mail; e Benjamin Meyer. </para>
+<para
+>Gráficos com 'copyright' 2007 de Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> e Johann Ollivier Lapeyre. </para>
+<para
+>Documentação com 'copyright' 2007 de &Martin.Heni; &Martin.Heni.mail; e Benjamin Meyer. </para>
+
+<para
+>Tradução de José Nuno Pires <email
+>zepires@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

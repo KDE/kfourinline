@@ -1,0 +1,634 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Italian "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Manuale di &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>Andrea</firstname
+><surname
+> Celli</surname
+><affiliation
+><address
+><email
+>andrea.celli@libero.it</email
+></address
+></affiliation
+><contrib
+>Traduzione italiana</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Luciano</firstname
+><surname
+>Montanaro</surname
+><affiliation
+><address
+><email
+>mikelima@cirulla.net</email
+></address
+></affiliation
+><contrib
+>Aggiornamento e revisione della documentazione per KDE 4</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>5/6/2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; è un gioco di "Forza Quattro" creato da &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>gioco</keyword>
+<keyword
+>tabellone</keyword>
+<keyword
+>gioco da tavolo</keyword>
+<keyword
+>forza quattro</keyword>
+<keyword
+>quattro</keyword>
+<keyword
+>quattro allineati</keyword>
+<keyword
+>quattro in fila</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>quattro vicine</keyword>
+<keyword
+>4vicine</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Introduzione</title>
+
+<para
+>Tipo di gioco: Strategia, Da tavolo </para>
+
+<para
+>&kfourinline; è un gioco da tavolo per due giocatori basato sul gioco <trademark
+>Forza quattro</trademark
+>. </para>
+
+<para
+>I giocatori cercano di costruire una riga di quattro pezzi usando varie strategie. I pezzi sono posizionati sul tabellone. Si può giocare anche contro il computer, anche in rete. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Come si gioca</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Giovo da tavolo &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Dopo il caricamento di &kfourinline;, puoi selezionare la difficoltà o avviare una partita a due giocatori. Se vuoi, puoi anche scegliere il tuo colore e selezionare quale colore inizia la partita. </para>
+
+<para
+>Ogni giocatore è rappresentato da un colore (ad esempio bianco o giallo il giocatore uno e rosso il giocatore due). Lo scopo è di porre quattro pedine vicine, su una stessa riga, colonna o diagonale. I giocatori giocano una mossa a turno. Ad ogni turno il giocatore può inserire uno dei propri pezzi in una delle sette colonne; il pezzo cadrà nello spazio libero disponibile più in basso, &ie; cadrà fino al livello base o finché non avrà incontrato un altro pezzo. </para>
+
+<para
+>Dopo che un giocatore ha fatto la mossa, l'altro può fare la propria. Si continua così finché il gioco termina, ossia quando un giocatore riesce ad allineare quattro pedine o non sono possibili altre mosse perché il tabellone è pieno. </para>
+
+<para
+>Il giocatore che riesce a mettere quattro pezzi in fila per primo, in orizzontale, diagonale o verticale, vince la partita. Se non si possono fare altre mosse ma nessun giocatore ha vinto la partita è patta. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Regole del gioco, strategia e suggerimenti</title>
+
+<para
+>Il piano di gioco è diviso in varie zone. </para>
+
+<para
+>Il <firstterm
+>tabellone</firstterm
+> è costituito da 7x6 caselle che vengono riempite a partire dal fondo. Le caselle vengono riempite con un pezzo del colore di chi sta facendo la mossa. Sulla sommità di ogni colonna una freccia colorata mostra dove è stata messa l'ultima pedina. </para>
+
+<para
+>Il <firstterm
+>visore di stato</firstterm
+> indica quale giocatore è controllato da quale dispositivo di inserimento. Un giocatore locale può inserire le mosse usando la tastiera o il mouse, un giocatore remoto viene indicato come input di rete, e infine il computer può controllare le mosse al posto di un giocatore. Il visore di stato, inoltre, indica i nomi dei giocatori e il livello dell'avversario quando è il computer. Viene anche segnato il numero di partite vinte, pareggiate, perse e terminate per entrambi i giocatori. Il nome del giocatore che deve muovere è evidenziato. </para>
+
+<para
+>La <firstterm
+>barra di stato</firstterm
+> in fondo allo schermo mostra lo stato del gioco e quale giocatore è di turno. </para>
+
+<sect1 id="remote-connections">
+<title
+>Connessioni remote</title>
+
+<para
+>È possibile giocare una partita tramite una connessione in rete con un altro computer. Uno dei computer agirà come server del gioco. Questo può determinare i colori assegnati ai giocatori. Si possono configurare le opzioni di rete nel menu <guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Chat in rete...</guimenuitem
+>. Qui puoi trovare anche una finestra che ti permette di dialogare con il tuo amico. </para>
+
+<para
+>Quando viene stabilita una connessione, viene chiesto di immettere un host remoto e una porta. Normalmente, si lascia il numero di porta predefinito. Ma devi sapere che se lo cambi, anche l'altro giocatore dovrà usare lo stesso numero di porta. Il nome-host deve essere il nome dell'host remoto con cui sei connesso. Solo il client dovrà indicare un nome host per connettersi. È spesso saggio che il giocatore protetto da un firewall scelga di essere il client, visto che il firewall potrebbe bloccare le connessioni in ingresso. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Panoramica dell'interfaccia</title>
+
+<sect1 id="menu">
+<title
+>Voci dei menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Nuova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Avvia una nuova partita. Se si gioca in rete, questa opzione è disponibile solo per il server. Il client verrà avviato automaticamente dal server. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Carica...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Riapre un gioco precedentemente salvato. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Salva</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Salva la partita in corso. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Termina partita</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Termina una partita in corso. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+><guimenuitem
+>Chat...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Fa apparire un widget per le chat, che ti permette di inviare messaggi all'altro giocatore. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+> <guimenuitem
+>Mostra statistiche</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Mostra una finestra contenente informazioni sulle statistiche globali delle partite, cioè partite vinte, perse o pareggiate di entrambi i giocatori. La finestra permette anche di ripulire queste statistiche di tutti i tempi. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Esci</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Esce dal programma. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Annulla</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Annulla l'ultima mossa. Se questa è stata giocata dal computer, ne verranno annullate due, così che toccherà ancora al giocatore umano. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Rifai</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Rifa una mossa che è stata annullata. Se questa è stata giocata dal computer, ne verranno rifatte due, così che toccherà ancora al giocatore umano. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Suggerimento</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Il computer calcolerà per te la migliore mossa possibile e la segnerà con un segno sul tabellone. Quanto è valida questa mossa dipenderà dal livello di abilità assegnato al computer. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Permette di scegliere il tema grafico del gioco. I temi disponibili dipendono dall'installazione.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configurazione rete...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Fa comparire una finestra di dialogo per configurare la rete. Vi si può scegliere se essere server o client. Se sei il server, puoi anche scegliere che colore avrà il giocatore remoto. Se c'è in corso una partita in rete, puoi disconnetterti usando questo menu. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Inoltre, &kfourinline; ha le voci dei menu <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+> comuni di &kde;; per maggiori informazioni, consulta i capitoli <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Impostazioni</ulink
+> e <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei Fondamentali di &kde;. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Configurazione del gioco</title>
+<para
+>&kfourinline; può essere configurato usando la finestra di configurazione richiamabile con la voce di menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guimenuitem
+>Configura &kfourinline;...</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Configurazione del gioco</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Colore del giocatore iniziale</guilabel
+>: Determina il colore del giocatore (<guilabel
+>Rosso</guilabel
+> o <guilabel
+>Nero</guilabel
+>) che avrà la prima mossa nella prossima partita.</para>
+<para
+><guilabel
+>Nomi dei giocatori</guilabel
+>: Modifica i nomi dei giocatori.</para>
+<para
+><guilabel
+>Il Nero gioca con</guilabel
+>: Stabilisce chi giocherà come giocatore n. 1. Può essere <guilabel
+>mouse</guilabel
+> o <guilabel
+>tastiera</guilabel
+>, &ie; un giocatore locale che usa il mouse o la tastiera per immettere i comandi o <guilabel
+>computer</guilabel
+>, &ie; il computer gioca in questo ruolo.</para>
+<para
+><guilabel
+>Il Rosso gioca con</guilabel
+>: Come per <guilabel
+>Il Giallo gioca con</guilabel
+>, ma per il giocatore n.2 (Rosso).</para>
+<para
+><guilabel
+>Abilità del computer</guilabel
+>: Imposta il livello a cui giocherà il computer.</para>
+<para
+><guilabel
+>Permetti all'IA di apprendere</guilabel
+>: L'IA del computer impara dagli sbagli fatti in una partita.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Domande frequenti</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Posso cambiare l'aspetto del gioco? </para>
+</question>
+<answer>
+<para
+>Puoi modificare il colore dei pezzi aprendo la voce di menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Posso usare la tastiera per giocare? </para>
+</question>
+<answer>
+<para
+>No, non puoi usare la tastiera per controllare i pezzi. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Ho perso traccia di chi stia vincendo, come faccio a scoprirlo? </para>
+</question>
+<answer>
+<para
+>Sì, puoi vedere le statistiche aprendo la voce di menu <menuchoice
+><guimenu
+>Partita</guimenu
+> <guimenuitem
+> Mostra le statistiche</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Riconoscimenti e licenza</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Copyright 1995-2007 sul programma: &Martin.Heni; &Martin.Heni.mail; e Benjamin Meyer. </para>
+<para
+>Copyright sulla grafica 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> e Johann Ollivier Lapeyre. </para>
+<para
+>Copyright 2007 sulla documentazione: &Martin.Heni; &Martin.Heni.mail; e Benjamin Meyer. </para>
+
+<para
+>Traduzione italiana Andrea Celli <email
+>andrea.celli@libero.it</email
+></para
+><para
+>Revisione e aggiornamento per &kde; 4 di Luciano Montanaro<email
+>mikelima@cirulla.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

@@ -1,0 +1,918 @@
+# Translation of kfourinline.po into Serbian.
+# Milos Puzovic <m.puzovic@etoncollege.org.uk>, 2001.
+# Bojan Bozovic <bole89@infosky.net>, 2003.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2005, 2009, 2010, 2013, 2017.
+# Slobodan Simic <slsimic@gmail.com>, 2009.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: kfourinline\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-11 03:20+0200\n"
+"PO-Revision-Date: 2017-09-28 17:59+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+"X-Generator: Lokalize 1.0\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Милош Пузовић,Часлав Илић,Слободан Симић"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "црни|/|$[својства ном црни]"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr "жути|/|$[својства ном жути]"
+
+#, kde-format
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "црвени|/|$[својства ном црвени]"
+
+#: chatdlg.cpp:48
+#, kde-format
+msgid "Chat Dlg"
+msgstr "Дијалог ћаскања"
+
+#: chatdlg.cpp:63
+#, kde-format
+msgid "Chat"
+msgstr "Ћаскање"
+
+#: chatdlg.cpp:69
+#, kde-format
+msgid "Configure..."
+msgstr "Подеси..."
+
+#: displayintro.cpp:90
+#, kde-format
+msgctxt "Name of quicklaunch field"
+msgid "Quick Launch"
+msgstr "Брзо покретање"
+
+#: displayintro.cpp:97
+#, kde-format
+msgctxt "Ask player who should start game"
+msgid "Who starts?"
+msgstr "Ко почиње?"
+
+#: displayintro.cpp:101
+#, kde-format
+msgctxt "Ask player which color he wants to play"
+msgid "Your color?"
+msgstr "Ваша боја?"
+
+#: displayintro.cpp:150
+#, kde-format
+msgctxt "quick start button - player versus AI level easy"
+msgid "Easy Game"
+msgstr "Лака игра"
+
+#: displayintro.cpp:157
+#, kde-format
+msgctxt "quick start button - player versus AI level normal"
+msgid "Normal Game"
+msgstr "Нормална игра"
+
+#: displayintro.cpp:164
+#, kde-format
+msgctxt "quick start button - player versus AI level hard"
+msgid "Hard Game"
+msgstr "Тешка игра"
+
+#: displayintro.cpp:171
+#, kde-format
+msgctxt "quick start button - player versus player"
+msgid "Two Player Game"
+msgstr "Игра за два играча"
+
+# >> @title:window
+#: kchatdialog.cpp:90
+#, kde-format
+msgid "Configure Chat"
+msgstr "Подешавање ћаскања"
+
+#: kchatdialog.cpp:102 kchatdialog.cpp:124
+#, kde-format
+msgid "Name Font..."
+msgstr "Фонт имена..."
+
+#: kchatdialog.cpp:105 kchatdialog.cpp:127
+#, kde-format
+msgid "Text Font..."
+msgstr "Фонт текста..."
+
+#: kchatdialog.cpp:114
+#, kde-format
+msgid "Player: "
+msgstr "Играч: "
+
+#: kchatdialog.cpp:116
+#, kde-format
+msgid "This is a player message"
+msgstr "Ово је порука играча."
+
+#: kchatdialog.cpp:122
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr "Системске поруке — поруке послате директно из игре"
+
+#: kchatdialog.cpp:136
+#, kde-format
+msgid "--- Game: "
+msgstr "--- Игра: "
+
+#: kchatdialog.cpp:138
+#, kde-format
+msgid "This is a system message"
+msgstr "Ово је системска порука."
+
+#: kchatdialog.cpp:142
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr "Највећи број порука (-1 за неограничено):"
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "И&гра"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, kde-format
+msgid "&Settings"
+msgstr "&Подешавање"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Главна трака"
+
+#: kgameconnectdialog.cpp:72
+#, kde-format
+msgid "Create a network game"
+msgstr "Покрени мрежну партију"
+
+#: kgameconnectdialog.cpp:75
+#, kde-format
+msgid "Join a network game"
+msgstr "Придружи се мрежној партији"
+
+#: kgameconnectdialog.cpp:81
+#, kde-format
+msgid "Game name:"
+msgstr "Име партије:"
+
+#: kgameconnectdialog.cpp:83
+#, kde-format
+msgid "Network games:"
+msgstr "Мрежне партије:"
+
+#: kgameconnectdialog.cpp:93
+#, kde-format
+msgid "Port to connect to:"
+msgstr "Порт за повезивање:"
+
+#: kgameconnectdialog.cpp:99
+#, kde-format
+msgid "Host to connect to:"
+msgstr "Домаћин за повезивање:"
+
+#: kgameconnectdialog.cpp:104
+#, kde-format
+msgid "&Start Network"
+msgstr "&Покрени мрежу"
+
+#: kgamedebugdialog.cpp:129
+#, kde-format
+msgid "KGame Debug Dialog"
+msgstr "Исправљачки дијалог К‑игре"
+
+# >> @title:group
+#: kgamedebugdialog.cpp:151
+#, kde-format
+msgid "Debug &KGame"
+msgstr "Исправљање К‑игре"
+
+#: kgamedebugdialog.cpp:173 kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Update"
+msgstr "Ажурирај"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:178
+#, kde-format
+msgid "KGame Pointer"
+msgstr "показивач К‑игре"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:179
+#, kde-format
+msgid "Game ID"
+msgstr "ИД партије"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:180
+#, kde-format
+msgid "Game Cookie"
+msgstr "колачић партије"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:181
+#, kde-format
+msgid "Is Master"
+msgstr "главни је"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:182
+#, kde-format
+msgid "Is Admin"
+msgstr "админ. је"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:183
+#, kde-format
+msgid "Is Offering Connections"
+msgstr "нуди повезивања"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:184
+#, kde-format
+msgid "Game Status"
+msgstr "стање партије"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:185
+#, kde-format
+msgid "Game is Running"
+msgstr "партија у току"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:186
+#, kde-format
+msgid "Maximal Players"
+msgstr "највише играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:187
+#, kde-format
+msgid "Minimal Players"
+msgstr "најмање играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:188
+#, kde-format
+msgid "Players"
+msgstr "играча"
+
+# >> @title:window
+#: kgamedebugdialog.cpp:194
+#, kde-format
+msgid "Debug &Players"
+msgstr "Исправљање &играча"
+
+#: kgamedebugdialog.cpp:204
+#, kde-format
+msgid "Available Players"
+msgstr "Доступни играчи"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "Player Pointer"
+msgstr "показивач играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:230
+#, kde-format
+msgid "Player ID"
+msgstr "ИД играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:231
+#, kde-format
+msgid "Player Name"
+msgstr "име играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:232
+#, kde-format
+msgid "Player Group"
+msgstr "група играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:233
+#, kde-format
+msgid "Player User ID"
+msgstr "кориснички ИД играча"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:234
+#, kde-format
+msgid "My Turn"
+msgstr "мој потез"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:235
+#, kde-format
+msgid "Async Input"
+msgstr "асинхрони улаз"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:236
+#, kde-format
+msgid "KGame Address"
+msgstr "адреса К‑игре"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:237
+#, kde-format
+msgid "Player is Virtual"
+msgstr "играч је виртуелан"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:238
+#, kde-format
+msgid "Player is Active"
+msgstr "играч је активан"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:239
+#, kde-format
+msgid "RTTI"
+msgstr "РТТИ"
+
+# >> @title:column
+#: kgamedebugdialog.cpp:240
+#, kde-format
+msgid "Network Priority"
+msgstr "мрежни приоритет"
+
+# >> @title:group
+#: kgamedebugdialog.cpp:246
+#, kde-format
+msgid "Debug &Messages"
+msgstr "Исправљање &порука"
+
+#: kgamedebugdialog.cpp:260
+#, kde-format
+msgid "&>>"
+msgstr "&>>"
+
+#: kgamedebugdialog.cpp:264
+#, kde-format
+msgid "&<<"
+msgstr "&<<"
+
+#: kgamedebugdialog.cpp:268
+#, kde-format
+msgid "Do not show IDs:"
+msgstr "Без приказа ИД‑ова:"
+
+# >> @item game address
+#: kgamedebugdialog.cpp:338
+#, kde-format
+msgid "NULL pointer"
+msgstr "нулти показивач"
+
+#: kgamedebugdialog.cpp:348 kgamedebugdialog.cpp:349 kgamedebugdialog.cpp:350
+#: kgamedebugdialog.cpp:352 kgamedebugdialog.cpp:407 kgamedebugdialog.cpp:408
+#: kgamedebugdialog.cpp:411 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "True"
+msgstr "тачно"
+
+#: kgamedebugdialog.cpp:348 kgamedebugdialog.cpp:349 kgamedebugdialog.cpp:350
+#: kgamedebugdialog.cpp:352 kgamedebugdialog.cpp:407 kgamedebugdialog.cpp:408
+#: kgamedebugdialog.cpp:411 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "False"
+msgstr "нетачно"
+
+# >> @item property value policy
+#: kgamedebugdialog.cpp:366 kgamedebugdialog.cpp:426
+#, kde-format
+msgid "Clean"
+msgstr "чисто"
+
+# >> @item property value policy
+#: kgamedebugdialog.cpp:369 kgamedebugdialog.cpp:429
+#, kde-format
+msgid "Dirty"
+msgstr "прљаво"
+
+# >> @item property value policy
+#: kgamedebugdialog.cpp:372 kgamedebugdialog.cpp:432
+#, kde-format
+msgid "Local"
+msgstr "локално"
+
+# >> @item property value policy
+#: kgamedebugdialog.cpp:376 kgamedebugdialog.cpp:436
+#, kde-format
+msgid "Undefined"
+msgstr "недефинисано"
+
+#: kgamedebugdialog.cpp:522
+#, kde-format
+msgid "Unknown"
+msgstr "непознато"
+
+#: kgamedialog.cpp:106
+#, kde-format
+msgid "&Network"
+msgstr "&Мрежа"
+
+#: kgamedialogconfig.cpp:133
+#, kde-format
+msgid "Disconnect"
+msgstr "Прекини везу"
+
+#: kgamedialogconfig.cpp:137 kwin4.cpp:778
+#, kde-format
+msgid "Network Configuration"
+msgstr "Подешавање мреже"
+
+#: kgamedialogconfig.cpp:196
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr "Не могу да се повежем на мрежу."
+
+#: kgamedialogconfig.cpp:202
+#, kde-format
+msgid "Network status: No Network"
+msgstr "Стање мреже: нема је."
+
+#: kgamedialogconfig.cpp:208
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr "Стање мреже: ГЛАВНИ сте."
+
+#: kgamedialogconfig.cpp:210
+#, kde-format
+msgid "Network status: You are connected"
+msgstr "Стање мреже: повезани сте."
+
+#: kwin4.cpp:93
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr "Грешка инсталације: није нађен списак тема."
+
+#: kwin4.cpp:121
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr "Грешка инсталације: није нађен мотор ВИ. Настављам без ВИ."
+
+#: kwin4.cpp:140
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr "Грешка инсталације: грешка фајла теме."
+
+#: kwin4.cpp:314
+#, kde-format
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "Завршава се текућа партија. Победник неће бити проглашен."
+
+#: kwin4.cpp:319
+#, kde-format
+msgid "&Network Configuration..."
+msgstr "&Подешавање мреже..."
+
+#: kwin4.cpp:323
+#, kde-format
+msgid "Network Chat..."
+msgstr "Мрежно ћаскање..."
+
+#: kwin4.cpp:328
+#, kde-format
+msgid "&Show Statistics"
+msgstr "Прикажи &статистику"
+
+#: kwin4.cpp:330
+#, kde-format
+msgid "Show statistics."
+msgstr "Прикажи статистику."
+
+#: kwin4.cpp:342
+#, kde-format
+msgid "Theme"
+msgstr "Тема"
+
+#: kwin4.cpp:354
+#, kde-format
+msgid "Debug KGame"
+msgstr "Исправљање К‑игре"
+
+#: kwin4.cpp:379
+#, kde-format
+msgid "Welcome to Four Wins"
+msgstr "Добро дошли у Четири побеђују"
+
+#: kwin4.cpp:570 kwin4.cpp:731
+#, kde-format
+msgid "Game running..."
+msgstr "Партија у току..."
+
+#: kwin4.cpp:691
+#, kde-format
+msgid "No game  "
+msgstr "Нема игре  "
+
+# >> %2 is player color
+#: kwin4.cpp:693 kwin4.cpp:695
+#, kde-format
+msgid " %1 - %2 "
+msgstr " %1 — %2 "
+
+#: kwin4.cpp:697
+#, kde-format
+msgid "Nobody  "
+msgstr "Нико  "
+
+#: kwin4.cpp:719
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "Мрежна партија је завршена!\n"
+
+#: kwin4.cpp:741
+#, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "Партија је нерешена. Покрените следећу рунду."
+
+# rewrite-msgid: /won the game/won/
+#: kwin4.cpp:749
+#, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "%1 победи. Покрените следећу рунду."
+
+#: kwin4.cpp:755
+#, kde-format
+msgid " Game ended. Please restart next round."
+msgstr " Партија је завршена. Покрените следећу рунду."
+
+# >> @option:radio
+#: kwin4.cpp:789
+#, kde-format
+msgid "Black should be played by remote player"
+msgstr "Црном треба да игра удаљени играч"
+
+# >> @option:radio
+#: kwin4.cpp:790
+#, kde-format
+msgid "Red should be played by remote player"
+msgstr "Црвеном треба да игра удаљени играч"
+
+# >> %1 is player color
+#: kwin4.cpp:870 kwin4.cpp:871 kwin4.cpp:892 kwin4.cpp:893
+#, kde-format
+msgid "%1 Plays With"
+msgstr "%1 игра са|/|$[Ном %1] игра са"
+
+#: kwin4.cpp:894
+#, kde-format
+msgid "General"
+msgstr "Опште"
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, kde-format
+msgid "Network connection port"
+msgstr "Порт за мрежну везу"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "Име партије"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, kde-format
+msgid "Network connection host"
+msgstr "Домаћин за мрежну везу"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:50
+#, kde-format
+msgid "Change the strength of the computer player."
+msgstr "Промените јачину играча које води рачунар."
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, kde-format
+msgid "Player 1 name"
+msgstr "Име играча 1"
+
+#: kwin4.kcfg:32
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Играч 1"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, kde-format
+msgid "Player 2 name"
+msgstr "Име играча 2"
+
+#: kwin4.kcfg:39
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Играч 2"
+
+#: main.cpp:75
+#, kde-format
+msgid "KFourInLine"
+msgstr "К‑четири‑у‑низу"
+
+#: main.cpp:77
+#, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "К‑четири‑у‑низу: игра за два играча"
+
+#: main.cpp:79
+#, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "© 1995–2007, Мартин Хени"
+
+#: main.cpp:80
+#, kde-format
+msgid "Martin Heni"
+msgstr "Мартин Хени"
+
+#: main.cpp:80
+#, kde-format
+msgid "Game design and code"
+msgstr "дизајн игре и код"
+
+#: main.cpp:81
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Јохан Оливје Лапер"
+
+#: main.cpp:81 main.cpp:82
+#, kde-format
+msgid "Graphics"
+msgstr "графика"
+
+#: main.cpp:82
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Јевгениј Труњов"
+
+#: main.cpp:83
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Бенџамин К. Мејер"
+
+#: main.cpp:83
+#, kde-format
+msgid "Code Improvements"
+msgstr "побољшања у кôду"
+
+#: main.cpp:88
+#, kde-format
+msgid "Enter debug level"
+msgstr "Уђи у исправљачки ниво"
+
+#: main.cpp:89
+#, kde-format
+msgid "Skip intro animation"
+msgstr "Прескочи уводну анимацију"
+
+#: main.cpp:90
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr "Покрени игру у демонстрационом режиму"
+
+#: scoresprite.cpp:182
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr "Ниво %1"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: settings.ui:38
+#, kde-format
+msgid "Computer Difficulty"
+msgstr "Јачина рачунара"
+
+# >> @item:inrange
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:83
+#, kde-format
+msgid "Easy"
+msgstr "лако"
+
+# >> @item:inrange
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:90
+#, kde-format
+msgid "Hard"
+msgstr "тешко"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:102
+#, kde-format
+msgid "Use AI learning"
+msgstr "ВИ се учи"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input1)
+#: settings.ui:112
+#, kde-format
+msgid "Red Plays With"
+msgstr "Црвени је"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#: settings.ui:132 settings.ui:181
+#, kde-format
+msgid "Mouse"
+msgstr "миш"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#: settings.ui:142 settings.ui:191
+#, kde-format
+msgid "Keyboard"
+msgstr "тастатура"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#: settings.ui:149 settings.ui:198
+#, kde-format
+msgid "Computer"
+msgstr "рачунар"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input0)
+#: settings.ui:161
+#, kde-format
+msgid "Black Plays With"
+msgstr "Црни је"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: settings.ui:216
+#, kde-format
+msgid "Player Names"
+msgstr "Имена играча"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: settings.ui:242
+#, kde-format
+msgid "Player 1:"
+msgstr "Играч 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: settings.ui:249
+#, kde-format
+msgid "Player 2:"
+msgstr "Играч 2:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
+#: settings.ui:267
+#, kde-format
+msgid "Starting Player Color"
+msgstr "Боја играча који почиње"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
+#: settings.ui:287
+#, kde-format
+msgid "Red"
+msgstr "црвена"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
+#: settings.ui:297
+#, kde-format
+msgid "Black"
+msgstr "црна"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "Статистика"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:57 statuswidget.ui:113
+#, kde-format
+msgid "Player 1"
+msgstr "Играч 1"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:64
+#, kde-format
+msgid "Name"
+msgstr "име"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:74
+#, kde-format
+msgid "Won"
+msgstr "победе"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:87
+#, kde-format
+msgid "Lost"
+msgstr "порази"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:103
+#, kde-format
+msgid "Sum"
+msgstr "збирно"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:113
+#, kde-format
+msgid "Aborted"
+msgstr "прекинуто"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:131
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "Очисти статистику"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:154
+#, kde-format
+msgid "&Close"
+msgstr "&Затвори"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:166 statuswidget.ui:220
+#, kde-format
+msgid "Player 2"
+msgstr "Играч 2"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:176
+#, kde-format
+msgid "Drawn"
+msgstr "нерешено"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:63
+#, kde-format
+msgid "W"
+msgstr "поб"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:73
+#, kde-format
+msgid "D"
+msgstr "нер"
+
+# >> @title:column
+# well-spelled: изг
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:83
+#, kde-format
+msgid "L"
+msgstr "изг"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:93
+#, kde-format
+msgid "No"
+msgstr "бр"
+
+# >> @title:column
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:103
+#, kde-format
+msgid "Bk"
+msgstr "прек"

@@ -1,0 +1,608 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % French "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Manuel utilisateur de &kfourinline; </title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+&traducteurEricBischoff;&traducteurStanislasZeller;&relecteurLudovicGrossard;&traducteurXavierBesnard; 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>05-06-2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; est un jeu de Puissance 4 pour &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>jeu</keyword>
+<keyword
+>plateau</keyword>
+<keyword
+>jeu de plateau</keyword>
+<keyword
+>puissance 4</keyword>
+<keyword
+>quatre</keyword>
+<keyword
+>quatre alignés</keyword>
+<keyword
+>puissance 4</keyword>
+<keyword
+>puissance 4</keyword>
+<keyword
+>aligner quatre</keyword>
+<keyword
+>puissance 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Introduction</title>
+
+<para
+>Type de jeu, stratégie, plateau </para>
+
+<para
+>&kfourinline; est un jeu de plateau pour deux joueurs, inspiré du jeu <trademark
+>Puissance 4</trademark
+>. </para>
+
+<para
+>Les joueurs essaient de construire une rangée de quatre jetons en utilisant différentes stratégies. Les jetons sont placés sur le plateau. Le jeu peut aussi être joué contre l'ordinateur, y compris sur un réseau. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Comment jouer</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Jeu de plateau &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Quand &kfourinline; se charge, vous pouvez sélectionner la difficulté ou démarrer une partie à deux joueurs. Si vous le souhaitez, vous pouvez aussi choisir votre couleur et choisir laquelle débute la partie. </para>
+
+<para
+>Chaque joueur est représenté par une couleur (par exemple jaune ou blanche pour le joueur 1 et rouge pour le joueur 2). Le but du jeu est d'avoir quatre jetons de votre couleur sur une ligne, une colonne ou une diagonale. Les joueurs placent un jeton à chaque tour. À chaque tour, le joueur peut placer un de ses jetons sur n'importe quelle des sept colonnes où chaque jeton tombera le plus bas possible vers l'emplacement libre. Le jeton tombera jusqu'à ce qu'il atteigne le bas du plateau ou un autre jeton. </para>
+
+<para
+>Quand le premier joueur a placé son jeton, le deuxième joueur peut placer le sien. Cette action se répète jusqu'à la fin de la partie, quand un des joueurs a quatre jetons sur une ligne, une diagonale ou une colonne, ou que plus aucun placement de jetons n'est possible (plateau rempli). </para>
+
+<para
+>Un joueur qui réussit à aligner quatre jetons sur une ligne, colonne ou diagonale gagne la partie. Si aucun coup ne peut être effectué mais qu'aucun joueur n'a gagné la partie, celle-ci est considérée comme nulle. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Règles du jeu, stratégies et astuces</title>
+
+<para
+>Le plateau de jeu est divisé en plusieurs régions. </para>
+
+<para
+>Le <firstterm
+>plateau de jeu</firstterm
+> est constitué d'une grille de 7 cases sur 6 qui sera remplie de jetons de bas en haut. Les cases sont coloriées dans la couleur du joueur dont c'est le tour. Au sommet de chaque rangée verticale, une flèche de couleur indique à quel endroit les derniers jetons ont été joués. </para>
+
+<para
+><firstterm
+>L'affichage d'état</firstterm
+> affiche quel joueur est contrôlé pour une entrée de périphérique. Un joueur local peut utiliser la souris ou le clavier. Un joueur distant est affiché sur le réseau. Finalement l'ordinateur peut contrôler le joueur. L'affichage de l'état affiche de plus, les noms des joueurs et le niveau de l'ordinateur. De plus, le nombre de victoires, nulles, perdues, terminées et abandonnées est noté pour les deux joueurs. Le prochain joueur à placer son jeton est indiqué par le surlignement de son nom. </para>
+
+<para
+>La <firstterm
+>barre d'état</firstterm
+> en bas de l'écran affiche l'état de la partie et quel joueur est le prochain à jouer. </para>
+
+<sect1 id="remote-connections">
+<title
+>Connexions distantes</title>
+
+<para
+>Il est possible de jouer en réseau avec un autre ordinateur. Un des ordinateurs se comportera comme serveur de jeu. C'est lui qui déterminera qui joue avec quelle couleur. Vous pouvez configurer les options de réseau dans la boîte de dialogue de réseau du menu <menuchoice
+> <guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configuration réseau...</guimenuitem
+></menuchoice
+>. Dans le menu <menuchoice
+><guimenu
+>Jeu</guimenu
+><guimenuitem
+>Discussion réseau...</guimenuitem
+></menuchoice
+>, vous trouverez une boîte de dialogue de discussion qui vous permet de parler avec votre ami(e). </para>
+
+<para
+>Quand une connexion en réseau se met en place, il vous est demandé de saisir un nom d'hôte distant et un port. Le port peut en général rester inchangé, mais si vous savez ce que vous faites, remplacez-le par un autre nombre, qui devra bien entendu être le même pour les deux joueurs. Le nom d'hôte doit être le nom de l'hôte distant vers lequel vous vous connectez. Seul le client de cette connexion doit fournir un nom d'hôte. Il est recommandé que le joueur placé derrière un pare-feu choisisse d'être le client car le pare-feu pourrait ne pas autoriser de connexions entrantes. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Vue d'ensemble de l'interface</title>
+
+<sect1 id="menu">
+<title
+>Éléments de menu</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Démarre une nouvelle partie. Dans une partie en réseau, cette option n'est disponible que pour le serveur réseau. Le client réseau sera démarré automatiquement par le serveur. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Ouvrir...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Charge une partie enregistrée. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Enregistre le jeu actuel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Terminer la partie</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Termine une partie en cours. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Discussion réseau...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Fait apparaître un composant graphique de discussion qui vous permet d'envoyer un message au joueur distant. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les statistiques</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Affiche la boîte de dialogue contenant les informations à propos de toutes les statistiques du jeu qui sont les parties gagnées, perdues ou abandonnées par les deux joueurs. La boîte de dialogue permet d'effacer toutes les statistiques. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Quitte le programme. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Annuler</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Annule le dernier coup. Si le joueur précédent est joué par l'ordinateur, on remonte deux coups en arrière de sorte que c'est au tour du joueur humain à nouveau. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Refaire</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Rejoue un coup qui a été annulé. Si un des joueurs est dirigé par l'ordinateur, deux coups sont rejoués. C'est ensuite au tour du joueur de placer son jeton. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Conseils</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>L'ordinateur calculera le meilleur coup possible et l'indiquera au moyen d'un petit cercle sur le terrain de jeu. La qualité de ce coup dépend du niveau choisi pour l'ordinateur. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Thème</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Choisir un thème graphique pour le jeu. Les thèmes disponibles dépendent de votre installation actuelle.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configuration réseau...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Fait apparaître une boîte de dialogue de configuration des options réseau. Vous pouvez choisir d'être client ou serveur. Si vous êtes le serveur vous pouvez choisir quelle couleur le joueur distant doit adopter. Si un jeu réseau est en cours vous pouvez également le déconnecter dans ce menu. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>De plus, &kfourinline; possède des éléments communs de menu &kde; <guimenu
+>Configuration</guimenu
+> et <guimenu
+>Aide</guimenu
+>. Pour plus d'informations, veuillez consulter les sections <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu de configuration</ulink
+> et <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu d'aide</ulink
+> des fondamentaux de &kde;. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Configuration du jeu</title>
+<para
+>&kfourinline; peut être configuré en utilisant la boîte de dialogue de configuration avec l'élément de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kfourinline;...</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Configuration du jeu</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Premier joueur</guilabel
+> : détermine quel joueur (<guilabel
+>rouge</guilabel
+> ou <guilabel
+>noir</guilabel
+>) ouvre le premier coup à la prochaine partie.</para>
+<para
+><guilabel
+>Noms des joueurs</guilabel
+> : modifier les noms des joueurs.</para>
+<para
+><guilabel
+>Les noirs sont joués par</guilabel
+> : choisissez qui est le joueur 1. Cela peut être la <guilabel
+>souris</guilabel
+> ou le <guilabel
+>clavier</guilabel
+>, &cad; un joueur local utilisant la souris ou le clavier comme périphérique d'entrée ou <guilabel
+>ordinateur</guilabel
+>, &cad; l'ordinateur joue pour ce joueur.</para>
+<para
+><guilabel
+>Les rouges sont joués par</guilabel
+> : identique à <guilabel
+>Les noirs sont joués par</guilabel
+> mais pour le joueur 2 (rouge).</para>
+<para
+><guilabel
+>Niveau de l'ordinateur</guilabel
+> : sélectionner le niveau de l'ordinateur.</para>
+<para
+><guilabel
+>Utiliser l'apprentissage de l'IA</guilabel
+> : l'ordinateur peut apprendre de ses erreurs réalisées pendant la partie.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Foire aux questions</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Je veux modifier la façon dont le jeux s'affiche. Est-ce possible ? </para>
+</question>
+<answer>
+<para
+>Vous pouvez modifier la couleur des jetons par l'ouverture de l'élément de menu <menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Thème</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Puis-je utiliser le clavier pour jouer à ce jeu ? </para>
+</question>
+<answer>
+<para
+>Vous ne pouvez pas utiliser le clavier pour contrôler les pièces. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Je ne sais plus qui est en tête. Puis-je le retrouver ? </para>
+</question>
+<answer>
+<para
+>Oui, vous pouvez voir les statistiques par l'ouverture de l'élément de menu <menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les statistiques</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Remerciements et licence</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Copyright du programme 1995-2007 &Martin.Heni; &Martin.Heni.mail; et Benjamin Meyer. </para>
+<para
+>Graphics copyright 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> and Johann Ollivier Lapeyre. </para>
+<para
+>Copyright de la documentation 2007 &Martin.Heni; &Martin.Heni.mail; et Benjamin Meyer. </para>
+
+<para
+>Traduction française par &EricBischoff; &StanislasZeller; et &XavierBesnard;. Relecture par &LudovicGrossard;.</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

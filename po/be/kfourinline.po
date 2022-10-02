@@ -1,0 +1,1008 @@
+# translation of kwin4.po to Belarusian
+#
+# Siarhei Liantsevich <serzh.by@gmail.com>, 2007.
+# Darafei Praliaskouski <komzpa@licei2.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: kwin4\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2007-06-25 11:11+0300\n"
+"Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
+"Language-Team: Belarusian <i18n@mova.org>\n"
+"Language: be\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n"
+"%100>=11 && n%100<=14 ? 2 : 3);\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Дарафей Праляскоўскі"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "komzpa@licei2.com"
+
+#, fuzzy, kde-format
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "Чорны"
+
+#, fuzzy, kde-format
+#| msgid "Yellow"
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr "Жоўты"
+
+#, fuzzy, kde-format
+#| msgid "Red"
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "Чырвоны"
+
+#: chatdlg.cpp:33
+#, fuzzy, kde-format
+#| msgid "Chat Dlg"
+msgctxt "@title:window"
+msgid "Chat Dlg"
+msgstr "Дыялог чата"
+
+#: chatdlg.cpp:48
+#, kde-format
+msgid "Chat"
+msgstr "Гутарка"
+
+#: chatdlg.cpp:54
+#, kde-format
+msgid "Configure..."
+msgstr "Наставіць..."
+
+#: displayintro.cpp:72
+#, kde-format
+msgctxt "Name of quicklaunch field"
+msgid "Quick Launch"
+msgstr ""
+
+#: displayintro.cpp:79
+#, kde-format
+msgctxt "Ask player who should start game"
+msgid "Who starts?"
+msgstr ""
+
+#: displayintro.cpp:83
+#, kde-format
+msgctxt "Ask player which color he wants to play"
+msgid "Your color?"
+msgstr ""
+
+#: displayintro.cpp:127
+#, kde-format
+msgctxt "quick start button - player versus AI level easy"
+msgid "Easy Game"
+msgstr "Лёгкая гульня"
+
+#: displayintro.cpp:133
+#, kde-format
+msgctxt "quick start button - player versus AI level normal"
+msgid "Normal Game"
+msgstr "Нармалёвая гульня"
+
+#: displayintro.cpp:139
+#, kde-format
+msgctxt "quick start button - player versus AI level hard"
+msgid "Hard Game"
+msgstr "Складаная гульня"
+
+#: displayintro.cpp:145
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus player"
+#| msgid "Two player game"
+msgctxt "quick start button - player versus player"
+msgid "Two Player Game"
+msgstr "Гульня ўдваіх"
+
+#: kchatdialog.cpp:80
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@title:window"
+msgid "Configure Chat"
+msgstr "Наставіць..."
+
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
+#, kde-format
+msgid "Name Font..."
+msgstr ""
+
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
+#, kde-format
+msgid "Text Font..."
+msgstr ""
+
+#: kchatdialog.cpp:104
+#, fuzzy, kde-format
+msgid "Player: "
+msgstr "Гулец 1"
+
+#: kchatdialog.cpp:106
+#, kde-format
+msgid "This is a player message"
+msgstr ""
+
+#: kchatdialog.cpp:112
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr ""
+
+#: kchatdialog.cpp:126
+#, kde-format
+msgid "--- Game: "
+msgstr ""
+
+#: kchatdialog.cpp:128
+#, kde-format
+msgid "This is a system message"
+msgstr ""
+
+#: kchatdialog.cpp:132
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr ""
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, fuzzy, kde-format
+msgid "&Game"
+msgstr "&Гульня"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, fuzzy, kde-format
+msgid "&Settings"
+msgstr "&Настаўленні"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, fuzzy, kde-format
+msgid "Main Toolbar"
+msgstr "Галоўная панель начыння"
+
+#: kgameconnectdialog.cpp:63
+#, fuzzy, kde-format
+#| msgid "Start a new game"
+msgid "Create a network game"
+msgstr "Пачаць гульню"
+
+#: kgameconnectdialog.cpp:66
+#, fuzzy, kde-format
+#| msgid "Start a new game"
+msgid "Join a network game"
+msgstr "Пачаць гульню"
+
+#: kgameconnectdialog.cpp:72
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game name:"
+msgstr "Імя гульні"
+
+#: kgameconnectdialog.cpp:74
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgid "Network games:"
+msgstr "Гутарка па сетцы..."
+
+#: kgameconnectdialog.cpp:84
+#, kde-format
+msgid "Port to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:90
+#, kde-format
+msgid "Host to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:95
+#, kde-format
+msgid "&Start Network"
+msgstr ""
+
+#: kgamedebugdialog.cpp:118
+#, kde-format
+msgctxt "@title:window"
+msgid "KGame Debug Dialog"
+msgstr ""
+
+#: kgamedebugdialog.cpp:140
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &KGame"
+msgstr "Адладка KGame"
+
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
+#, kde-format
+msgid "Update"
+msgstr ""
+
+#: kgamedebugdialog.cpp:167
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "KGame Pointer"
+msgstr "Імя гульні"
+
+#: kgamedebugdialog.cpp:168
+#, fuzzy, kde-format
+msgid "Game ID"
+msgstr "&Гульня"
+
+#: kgamedebugdialog.cpp:169
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game Cookie"
+msgstr "Імя гульні"
+
+#: kgamedebugdialog.cpp:170
+#, kde-format
+msgid "Is Master"
+msgstr ""
+
+#: kgamedebugdialog.cpp:171
+#, kde-format
+msgid "Is Admin"
+msgstr ""
+
+#: kgamedebugdialog.cpp:172
+#, kde-format
+msgid "Is Offering Connections"
+msgstr ""
+
+#: kgamedebugdialog.cpp:173
+#, fuzzy, kde-format
+#| msgid "Game name"
+msgid "Game Status"
+msgstr "Імя гульні"
+
+#: kgamedebugdialog.cpp:174
+#, fuzzy, kde-format
+msgid "Game is Running"
+msgstr "Гульня працягваецца..."
+
+#: kgamedebugdialog.cpp:175
+#, kde-format
+msgid "Maximal Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:176
+#, kde-format
+msgid "Minimal Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:177
+#, fuzzy, kde-format
+msgid "Players"
+msgstr "Гулец 1"
+
+#: kgamedebugdialog.cpp:183
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &Players"
+msgstr "Адладка KGame"
+
+#: kgamedebugdialog.cpp:193
+#, kde-format
+msgid "Available Players"
+msgstr ""
+
+#: kgamedebugdialog.cpp:219
+#, fuzzy, kde-format
+msgid "Player Pointer"
+msgstr "Імя гульца 1"
+
+#: kgamedebugdialog.cpp:220
+#, fuzzy, kde-format
+msgid "Player ID"
+msgstr "Гулец 1"
+
+#: kgamedebugdialog.cpp:221
+#, fuzzy, kde-format
+msgid "Player Name"
+msgstr "Імёны гульцоў"
+
+#: kgamedebugdialog.cpp:222
+#, fuzzy, kde-format
+msgid "Player Group"
+msgstr "Гулец 1"
+
+#: kgamedebugdialog.cpp:223
+#, fuzzy, kde-format
+msgid "Player User ID"
+msgstr "Гулец 1"
+
+#: kgamedebugdialog.cpp:224
+#, kde-format
+msgid "My Turn"
+msgstr ""
+
+#: kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Async Input"
+msgstr ""
+
+#: kgamedebugdialog.cpp:226
+#, kde-format
+msgid "KGame Address"
+msgstr ""
+
+#: kgamedebugdialog.cpp:227
+#, fuzzy, kde-format
+msgid "Player is Virtual"
+msgstr "Імя гульца 1"
+
+#: kgamedebugdialog.cpp:228
+#, fuzzy, kde-format
+msgid "Player is Active"
+msgstr "Імя гульца 1"
+
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "RTTI"
+msgstr ""
+
+#: kgamedebugdialog.cpp:230
+#, fuzzy, kde-format
+msgid "Network Priority"
+msgstr "Порт сервера"
+
+#: kgamedebugdialog.cpp:236
+#, fuzzy, kde-format
+#| msgid "Debug KGame"
+msgid "Debug &Messages"
+msgstr "Адладка KGame"
+
+#: kgamedebugdialog.cpp:251
+#, kde-format
+msgid "&>>"
+msgstr ""
+
+#: kgamedebugdialog.cpp:255
+#, kde-format
+msgid "&<<"
+msgstr ""
+
+#: kgamedebugdialog.cpp:259
+#, kde-format
+msgid "Do not show IDs:"
+msgstr ""
+
+#: kgamedebugdialog.cpp:328
+#, kde-format
+msgid "NULL pointer"
+msgstr ""
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "True"
+msgstr ""
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "False"
+msgstr ""
+
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "Clean"
+msgstr ""
+
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
+#, kde-format
+msgid "Dirty"
+msgstr ""
+
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
+#, kde-format
+msgid "Local"
+msgstr ""
+
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
+#, kde-format
+msgid "Undefined"
+msgstr ""
+
+#: kgamedebugdialog.cpp:507
+#, kde-format
+msgid "Unknown"
+msgstr ""
+
+#: kgamedialog.cpp:92
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgid "&Network"
+msgstr "Гутарка па сетцы..."
+
+#: kgamedialogconfig.cpp:124
+#, kde-format
+msgid "Disconnect"
+msgstr ""
+
+#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#, fuzzy, kde-format
+msgid "Network Configuration"
+msgstr "Канфігурацыі сеткі"
+
+#: kgamedialogconfig.cpp:187
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr ""
+
+#: kgamedialogconfig.cpp:193
+#, kde-format
+msgid "Network status: No Network"
+msgstr ""
+
+#: kgamedialogconfig.cpp:199
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr ""
+
+#: kgamedialogconfig.cpp:201
+#, kde-format
+msgid "Network status: You are connected"
+msgstr ""
+
+#: kwin4.cpp:74
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr ""
+
+#: kwin4.cpp:101
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr ""
+
+#: kwin4.cpp:116
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr ""
+
+#: kwin4.cpp:264
+#, fuzzy, kde-format
+#| msgid "Aborts a currently played game. No winner will be declared."
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "Спыняе бягучую гульню. Пераможцаў не будзе."
+
+#: kwin4.cpp:269
+#, kde-format
+msgid "&Network Configuration..."
+msgstr "Сеткавыя настаўленні..."
+
+#: kwin4.cpp:273
+#, kde-format
+msgid "Network Chat..."
+msgstr "Гутарка па сетцы..."
+
+#: kwin4.cpp:278
+#, kde-format
+msgid "&Show Statistics"
+msgstr "Паказаць статыстыку"
+
+#: kwin4.cpp:280
+#, kde-format
+msgid "Show statistics."
+msgstr "Паказаць статыстыку."
+
+#: kwin4.cpp:292
+#, kde-format
+msgid "Theme"
+msgstr "Тэма"
+
+#: kwin4.cpp:303
+#, kde-format
+msgid "Debug KGame"
+msgstr "Адладка KGame"
+
+#: kwin4.cpp:326
+#, fuzzy, kde-format
+msgid "Welcome to Four Wins"
+msgstr "Вітаем у "
+
+#: kwin4.cpp:486 kwin4.cpp:639
+#, fuzzy, kde-format
+msgid "Game running..."
+msgstr "Гульня працягваецца..."
+
+#: kwin4.cpp:600
+#, kde-format
+msgid "No game  "
+msgstr "Няма гульні  "
+
+#: kwin4.cpp:602 kwin4.cpp:604
+#, fuzzy, kde-format
+#| msgid " %1 - Red "
+msgid " %1 - %2 "
+msgstr " %1 - чырвоныя "
+
+#: kwin4.cpp:606
+#, kde-format
+msgid "Nobody  "
+msgstr "Ніхто  "
+
+#: kwin4.cpp:628
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "Сеткавая гульня скончана!\n"
+
+#: kwin4.cpp:649
+#, fuzzy, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "Гульня завяршылася ўнічыю. Паспрабуйце яшчэ раз у наступным раўндзе."
+
+#: kwin4.cpp:656
+#, fuzzy, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "%1 выйгралі. Паспрабуйце яшчэ раз у наступным раўндзе."
+
+#: kwin4.cpp:661
+#, fuzzy, kde-format
+msgid " Game ended. Please restart next round."
+msgstr " Гульня перарваная. Пачніце гульню зноўку."
+
+#: kwin4.cpp:691
+#, fuzzy, kde-format
+msgid "Black should be played by remote player"
+msgstr "Чырвонымі павінен гуляць сеткавы гулец"
+
+#: kwin4.cpp:692
+#, fuzzy, kde-format
+msgid "Red should be played by remote player"
+msgstr "Чырвонымі павінен гуляць сеткавы гулец"
+
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#, fuzzy, kde-format
+msgid "%1 Plays With"
+msgstr "Чырвонымі гуляе"
+
+#: kwin4.cpp:793
+#, fuzzy, kde-format
+msgid "General"
+msgstr "Агульныя"
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, fuzzy, kde-format
+msgid "Network connection port"
+msgstr "Порт сервера"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "Імя гульні"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, fuzzy, kde-format
+msgid "Network connection host"
+msgstr "Гульнявы сервер"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:50
+#, fuzzy, kde-format
+msgid "Change the strength of the computer player."
+msgstr "Змяніць узровень камп'ютэрнага гульца."
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, fuzzy, kde-format
+msgid "Player 1 name"
+msgstr "Імя гульца 1"
+
+#: kwin4.kcfg:32
+#, fuzzy, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Гулец 1"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, fuzzy, kde-format
+msgid "Player 2 name"
+msgstr "Імя гульца 2"
+
+#: kwin4.kcfg:39
+#, fuzzy, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Гулец 2"
+
+#: main.cpp:67
+#, kde-format
+msgid "KFourInLine"
+msgstr ""
+
+#: main.cpp:69
+#, fuzzy, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "KWin4: Гульня па сетцы з двума гульцамі"
+
+#: main.cpp:71
+#, fuzzy, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "(c) Martin Heni   "
+
+#: main.cpp:72
+#, fuzzy, kde-format
+msgid "Martin Heni"
+msgstr "(c) Martin Heni   "
+
+#: main.cpp:72
+#, kde-format
+msgid "Game design and code"
+msgstr ""
+
+#: main.cpp:73
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr ""
+
+#: main.cpp:73 main.cpp:74
+#, kde-format
+msgid "Graphics"
+msgstr "Графіка"
+
+#: main.cpp:74
+#, kde-format
+msgid "Eugene Trounev"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr ""
+
+#: main.cpp:75
+#, kde-format
+msgid "Code Improvements"
+msgstr "Паляпшэнні кода"
+
+#: main.cpp:80
+#, fuzzy, kde-format
+msgid "Enter debug level"
+msgstr "Задайце ўзровень адладкі"
+
+#: main.cpp:81
+#, kde-format
+msgid "Skip intro animation"
+msgstr ""
+
+#: main.cpp:82
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr ""
+
+#: scoresprite.cpp:163
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr "Узровень %1"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: settings.ui:38
+#, fuzzy, kde-format
+msgid "Computer Difficulty"
+msgstr "Узровень камп'ютэрнага гульца"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:83
+#, fuzzy, kde-format
+msgid "Easy"
+msgstr "Лёгкі"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:90
+#, fuzzy, kde-format
+msgid "Hard"
+msgstr "Складана"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:102
+#, kde-format
+msgid "Use AI learning"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input1)
+#: settings.ui:112
+#, fuzzy, kde-format
+msgid "Red Plays With"
+msgstr "Чырвонымі гуляе"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#: settings.ui:132 settings.ui:181
+#, fuzzy, kde-format
+msgid "Mouse"
+msgstr "Мыш"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#: settings.ui:142 settings.ui:191
+#, fuzzy, kde-format
+msgid "Keyboard"
+msgstr "Клавіятура"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#: settings.ui:149 settings.ui:198
+#, fuzzy, kde-format
+msgid "Computer"
+msgstr "Камп'ютэр"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input0)
+#: settings.ui:161
+#, fuzzy, kde-format
+msgid "Black Plays With"
+msgstr "Чырвонымі гуляе"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: settings.ui:216
+#, fuzzy, kde-format
+msgid "Player Names"
+msgstr "Імёны гульцоў"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: settings.ui:242
+#, fuzzy, kde-format
+msgid "Player 1:"
+msgstr "Гулец 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: settings.ui:249
+#, fuzzy, kde-format
+msgid "Player 2:"
+msgstr "Гулец 2:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
+#: settings.ui:267
+#, fuzzy, kde-format
+msgid "Starting Player Color"
+msgstr "Колер захаджалага гульца"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
+#: settings.ui:287
+#, kde-format
+msgid "Red"
+msgstr "Чырвоны"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
+#: settings.ui:297
+#, fuzzy, kde-format
+msgid "Black"
+msgstr "Чорны"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "Статыстыка"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:57 statuswidget.ui:113
+#, fuzzy, kde-format
+msgid "Player 1"
+msgstr "Гулец 1"
+
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:64
+#, fuzzy, kde-format
+msgid "Name"
+msgstr "Назва"
+
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:74
+#, fuzzy, kde-format
+msgid "Won"
+msgstr "выйграў"
+
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:87
+#, fuzzy, kde-format
+msgid "Lost"
+msgstr "прайграў"
+
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:103
+#, kde-format
+msgid "Sum"
+msgstr "Сума"
+
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:113
+#, kde-format
+msgid "Aborted"
+msgstr "Перарвана"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:131
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "Ачысціць усю статыстыку"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:154
+#, fuzzy, kde-format
+msgid "&Close"
+msgstr "За&крыць"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:166 statuswidget.ui:220
+#, fuzzy, kde-format
+msgid "Player 2"
+msgstr "Гулец 2"
+
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:176
+#, fuzzy, kde-format
+msgid "Drawn"
+msgstr "згуляў унічыю"
+
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:63
+#, fuzzy, kde-format
+msgid "W"
+msgstr "W"
+
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:73
+#, fuzzy, kde-format
+msgid "D"
+msgstr "D"
+
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:83
+#, fuzzy, kde-format
+msgid "L"
+msgstr "L"
+
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:93
+#, fuzzy, kde-format
+msgid "No"
+msgstr "Не"
+
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:103
+#, fuzzy, kde-format
+msgid "Bk"
+msgstr "Bk"
+
+#~ msgid "Ready"
+#~ msgstr "Гатовы"
+
+#, fuzzy
+#~ msgid "This leaves space for the mover"
+#~ msgstr "Гэта пакідае прастору для які ходзіць"
+
+#~ msgid " %1 - Yellow "
+#~ msgstr " %1 - жоўтыя "
+
+#~ msgid "KWin4"
+#~ msgstr "KWin4"
+
+#, fuzzy
+#~ msgid "Yellow should be played by remote"
+#~ msgstr "Жоўтымі павінен гуляць сеткавы гулец"
+
+#, fuzzy
+#~ msgid "Yellow Plays With"
+#~ msgstr "Жоўтымі гуляе"
+
+#~ msgid "Open a saved game..."
+#~ msgstr "Адкрыць запісаную гульню..."
+
+#~ msgid "Save a game..."
+#~ msgstr "Запісаць гульню..."
+
+#, fuzzy
+#~ msgid "Ending the current game..."
+#~ msgstr "Сканчаем гульню..."
+
+#, fuzzy
+#~ msgid "Shows a hint on how to move."
+#~ msgstr "Паказаць падказку для ходу."
+
+#, fuzzy
+#~ msgid "Quits the program."
+#~ msgstr "Выхад з праграмы."
+
+#, fuzzy
+#~ msgid "Undo last move."
+#~ msgstr "Адмяніць апошні ход"
+
+#, fuzzy
+#~ msgid "Redo last move."
+#~ msgstr "Паўтарыць апошні ход."
+
+#, fuzzy
+#~ msgid ""
+#~ "_: NAME OF TRANSLATORS\n"
+#~ "Your names"
+#~ msgstr "Сяржук Лянцэвіч"
+
+#, fuzzy
+#~ msgid ""
+#~ "_: EMAIL OF TRANSLATORS\n"
+#~ "Your emails"
+#~ msgstr "serzh.by@gmail.com"
+
+#, fuzzy
+#~ msgid ""
+#~ "_: 1. intro line, welcome to win4\n"
+#~ "Welcome"
+#~ msgstr "Сардэчна запрашаем"
+
+#, fuzzy
+#~ msgid ""
+#~ "_: 2. intro line, welcome to win4\n"
+#~ "to"
+#~ msgstr "у"
+
+#, fuzzy
+#~ msgid ""
+#~ "_: 3. intro line, welcome to win4\n"
+#~ "KWin4"
+#~ msgstr "Чатыры перамагаюць"
+
+#, fuzzy
+#~ msgid "Hold on... the other player has not been yet..."
+#~ msgstr "Пачакайце, ваш партнёр яшчэ не зрабіў ход..."
+
+#, fuzzy
+#~ msgid "Hold your horses..."
+#~ msgstr "Не гоніце канёў..."
+
+#, fuzzy
+#~ msgid "Ah ah ah... only one go at a time..."
+#~ msgstr "Не-не, толькі адзін ход..."
+
+#, fuzzy
+#~ msgid "Please wait... it is not your turn."
+#~ msgstr "Пачакайце, зараз не ваш ход."
+
+#, fuzzy
+#~ msgid "Beta testing"
+#~ msgstr "Бэта-тэставанне"
+
+#, fuzzy
+#~ msgid "Form1"
+#~ msgstr "Form1"
+
+#, fuzzy
+#~ msgid "vs"
+#~ msgstr "супраць"
+
+#, fuzzy
+#~ msgid ""
+#~ "_: number of MOVE in game\n"
+#~ "Move"
+#~ msgstr "Ход"
+
+#, fuzzy
+#~ msgid "Chance"
+#~ msgstr "Шанцы"
+
+#, fuzzy
+#~ msgid "Winner"
+#~ msgstr "Выйграў"
+
+#, fuzzy
+#~ msgid "Loser"
+#~ msgstr "Прайграў"

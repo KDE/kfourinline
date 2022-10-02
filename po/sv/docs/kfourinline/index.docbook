@@ -1,0 +1,624 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Swedish "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Handbok Fyra i rad</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-05</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>Fyra i rad är ett spel med fyra pjäser i rad av &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>bräde</keyword>
+<keyword
+>brädspel</keyword>
+<keyword
+>fyra vinster</keyword>
+<keyword
+>fyra</keyword>
+<keyword
+>fyra i rad</keyword>
+<keyword
+>fyra i rad</keyword>
+<keyword
+>fyra i rad</keyword>
+<keyword
+>förbind fyra</keyword>
+<keyword
+>förbind 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Inledning</title>
+
+<para
+>Speltyp: Strategi, brädspel </para>
+
+<para
+>Fyra i rad är ett brädspel för två spelare som följer reglerna i spelet &nbsp;<trademark
+>Connect-Four</trademark
+>. </para>
+
+<para
+>Spelarna försöker bygga en rad med fyra pjäser genom att använda olika strategier. Pjäserna placeras på ett spelbräde. Spelet kan också spelas mot datorn, samt via nätverket. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Hur man spelar</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelbrädet i Fyra i rad</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>När Fyra i rad startas, kan du välja svårighetsnivå eller starta ett spel med två spelare. Om du vill kan du också välja färg och välja vilken färg som startar spelet. </para>
+
+<para
+>Varje spelare representeras av en färg (till exempel gul eller vit för den första spelaren och röd för den andra spelaren). Målet med spelet är att få fyra förbundna pjäser av din färg i en rad, kolumn eller någon diagonal. Spelet utförs i omgångar. Varje omgång kan en spelare placera en av sina pjäser i någon av de sju kolumnerna, där varje pjäs faller till lägsta möjliga lediga plats, dvs. den faller ner till den når marknivån eller en annan pjäs. </para>
+
+<para
+>När en spelare är klar med sitt drag, kan den andra spelaren göra sitt. Det upprepas till spelet är slut, vilket inträffar när en av spelarna har fyra pjäser i en rad, kolumn eller diagonal, eller inga fler drag är möjliga eftersom brädet är fullt. </para>
+
+<para
+>Den spelare som först lyckas få fyra pjäser i en rad, kolumn eller diagonal vinner spelet. Om inga fler drag kan göras men ingen spelare har vunnit, slutar spelet oavgjort. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Spelets regler, strategier och tips</title>
+
+<para
+>Brädet är uppdelat i flera områden. </para>
+
+<para
+><firstterm
+>Spelbrädet</firstterm
+> är uppbyggt av 7x6 fält som kommer att fyllas nerifrån och upp. Fälten är markerade med pjäser i färgen för spelaren som flyttade till platsen. Ovanför varje kolumn visar en färgad pil vad den senaste pjäsen placerades. </para>
+
+<para
+><firstterm
+>Statusrutan</firstterm
+> visar vilken spelare som styr vilken inmatningsenhet. En lokal spelare kan mata in drag med tangentbordet eller musen, en fjärrspelare visas som nätverksinmatning, och till sist kan datorn styra inmatningen för en spelare. Statusrutan visar också spelarnas namn och datormotståndarens nivå. Dessutom anges antal vunna, oavgjorda och förlorade spel för båda spelarna. Vilken spelare som står på tur anges genom att ett av spelarnamnen är markerat. </para>
+
+<para
+><firstterm
+>Statusraden</firstterm
+> längst ner på skärmen visar spelets status, och vilken spelare som står på tur. </para>
+
+<sect1 id="remote-connections">
+<title
+>Fjärranslutningar</title>
+
+<para
+>Det är möjligt att spela spelet via en nätverksanslutning med en annan dator. En av datorerna fungerar som spelserver. Den kan avgöra vem som ska spela vilken färg. Du kan anpassa nätverksalternativen i menyn <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nätverksanpassning...</guimenuitem
+>. I menyn <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nätverkschatt...</guimenuitem
+></menuchoice
+> hittar du en chattdialogruta som låter dig prata med den andra spelaren. </para>
+
+<para
+>När en nätverksanslutning skapas tillfrågas du om en fjärrdator och en port. Porten kan oftast lämnas orörd, men om du vet vad du gör kan du byta den mot ett annat nummer, som förstås måste vara samma för båda spelarna. Värddatornamnet ska vara namnet på fjärrdatorn som du ansluter till. Bara klienten i anslutningen måste ange ett värddatornamn. Det är ofta lämpligt att en spelare bakom en brandvägg väljer att vara klient, eftersom brandväggen kanske inte tillåter inkommande anslutningar. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Översikt av gränssnittet</title>
+
+<sect1 id="menu">
+<title
+>Menyalternativ</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Starta ett nytt spel. I ett nätverksspel är detta alternativet bara tillgängligt för nätverksservern. Nätverksklienten startas automatiskt av servern. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ladda...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Laddar ett sparat spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Sparar det nuvarande spelet. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Sluta spel</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Slutar ett pågående spel. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nätverkschatt...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Visar en chattkomponent som låter dig skicka meddelanden till den andra spelaren. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa statistik</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Visar en dialogruta som innehåller information om övergripande spelstatistik, dvs. vunna spel, förlorade spel eller oavgjorda spel för båda spelarna. Dialogrutan gör det också möjligt att nollställa den totala statistiken. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Avslutar programmet. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ångra det senaste draget. Om den föregående spelaren är datorn, så ångras två drag så att det är spelarens tur igen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Gör om ett drag som har ångrats. Om en av spelarna är datorn, så görs två drag om så att det är spelarens tur igen. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Tips</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Datorn räknar ut det bästa möjliga draget åt dig och markera det med ett tecken på brädet. Hur bra draget verkligen är beror på datorns nivå. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Teman</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Välj ett grafiskt tema för spelet. Vilka teman som är tillgängliga beror på den aktuella installationen.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Nätverksanpassning...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Visar en dialogruta för nätverksanpassning. Du kan välja att vara server eller klient. Om du är server kan du också välja vilken färg den andra spelaren ska använda. Om ett nätverksspel pågår kan du också koppla ner det i den här menyn. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Dessutom har Fyra i rad de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Spelanpassning</title>
+<para
+>Fyra i rad kan ställas in genom att använda inställningsdialogrutan med menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Fyra i rad...</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Spelanpassning</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Startspelarens färg</guilabel
+>: Avgör vilken spelfärg (<guilabel
+>Röd</guilabel
+> eller <guilabel
+>Svart</guilabel
+>) som får första draget i nästa spel.</para>
+<para
+><guilabel
+>Spelarnamn</guilabel
+>: Ändra namnen på spelarna.</para>
+<para
+><guilabel
+>Svart spelas av</guilabel
+>: Väljer vem som ska spela som den första spelaren. Det kan antingen vara <guilabel
+>Mus</guilabel
+> eller <guilabel
+>Tangentbord</guilabel
+>, dvs en lokal spelare som använder musen eller tangentbordet för inmatning eller <guilabel
+>Dator</guilabel
+>, dvs. datorn spelar som den här spelaren.</para>
+<para
+><guilabel
+>Röd spelas av</guilabel
+>: Samma som <guilabel
+>Svart spelas av</guilabel
+> men för den andra spelaren (röd).</para>
+<para
+><guilabel
+>Datorns svårighetsgrad</guilabel
+>: Väljer nivå för datorspelaren.</para>
+<para
+><guilabel
+>Använd upplärning av AI</guilabel
+>: Datorns AI kan lära sig av misstag som görs i ett spel.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Vanliga frågor</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Kan man ändra spelets utseende? </para>
+</question>
+<answer>
+<para
+>Du kan ändra pjäsernas färger genom att använda menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Kan man använda tangentbordet för att spela? </para>
+</question>
+<answer>
+<para
+>Man kan inte använda tangentbordet för att styra pjäserna. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Jag har inte kontroll över vem som leder. Kan man få reda på det? </para>
+</question>
+<answer>
+<para
+>Ja, du kan se statistik genom att använda menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa statistik</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Program copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail; och Benjamin Meyer. </para>
+<para
+>Grafik copyright 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> och Johann Ollivier Lapeyre. </para>
+<para
+>Dokumentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; och Benjamin Meyer. </para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+

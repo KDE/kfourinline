@@ -1,0 +1,718 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY kappname "&kfourinline;">
+<!ENTITY package "kdegames">
+<!ENTITY % Polish "INCLUDE"
+> 
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book lang="&language;">
+<bookinfo>
+<title
+>Podręcznik gry KFourInLine</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>Łukasz</firstname
+><surname
+>Fidosz</surname
+><affiliation
+><address
+><email
+>virhilo@gmail.com</email
+></address
+></affiliation
+><contrib
+>Polskie tłumaczenie</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+    
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2007-11-14</date>
+<releaseinfo
+>1.4.0</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; to gra typu "ustaw cztery w rzędzie" dla środowiska &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>gra</keyword>
+<keyword
+>plansza</keyword>
+<keyword
+>gra planszowa</keyword>
+<keyword
+>cztery wygrywają</keyword>
+<keyword
+>cztery</keyword>
+<keyword
+>cztery w rzędzie</keyword>
+<keyword
+>cztery w linii</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>połącz cztery</keyword>
+<keyword
+>połącz 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Wprowadzenie</title>
+
+<para
+>Rodzaj gry: strategiczna, planszowa </para>
+
+<para
+>&kfourinline; jest grą planszową przeznaczoną dla dwóch graczy, opartąna grze <trademark
+>Połącz-Cztery</trademark
+>. </para>
+
+<para
+>Gracze starają się ułożyć rząd czterech elementów z pomocą różnych strategii. Elementy umieszczane są na planszy. Grać można także z komputerem. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Jak grać</title>
+<para
+>Po uruchomieniu gry &kfourinline; można wybrać poziom trudności lub uruchomić grę dla dwóch graczy. Jeżeli chcesz, możesz także wybrać swój kolor i ustalić który kolor rozpoczyna grę. </para>
+
+<para
+>Każdy gracz jest reprezentowany przez kolor (na przykład żółty lub biały dla pierwszego gracza i czerwony dla drugiego). Zadaniem w grze jest otrzymanie czterech połączonych ze sobą pionków w Twoim kolorze ustawionych w kolumnie, rzędzie lub po przekątnej. Gracze wykonują ruch w turach. W każdej turze, gracz może umieścić jeden ze swoich pionków w dowolnej z siedmiu kolumn, w których każdy element spadnie na najniższe możliwe wolne miejsce, tzn. będzie spadał aż osiągnie poziom najniższy lub inny pionek. </para>
+
+<para
+>Po wykonaniu ruchu przez pierwszego gracza, drugi może wykonać swój.Jest to powtarzane do końca gry, który następuje, kiedy jeden z graczy ma cztery pionki w rzędzie, kolumnie lub po przekątnej albo żadne ruchy nie są już możliwe, gdyż plansza jest wypełniona. </para>
+
+<para
+>Gracz, który jako pierwszy uzyska cztery elementy w wierszu, kolumnie lub po przekątnej wygrywa grę. Jeżeli dalsze ruchy są niemożliwe, a żaden gracz nie wygrał, gra kończy się remisem. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Reguły, strategia i wskazówki</title>
+
+<para
+>Okno gry podzielone jest na kilka obszarów. </para>
+
+<para
+><firstterm
+>Plansza do gry</firstterm
+> składa się z 7x6 pól, które będą wypełnione od dołu do góry. Pola są oznaczone kolorem gracza który wykonał aktualny ruch. Na górze każdej kolumny kolorowe strzałki pokazują, gdzie został położony ostatni pionek. </para>
+
+<para
+><firstterm
+>Stan gry</firstterm
+> pokazuje informacje z jakich urządzeń sterujących wykorzystują gracze. Gracz lokalny może wykonywać ruchy za pomocą klawiatury lub myszki, zdalny gracz pokazywany jest jako wejście sieciowe, ruchami graczamoże też sterować komputer. Okno stanu pokazuje także nazwy graczy oraz poziom zaawansowania gracza-komputera. Dodatkowo pokazywana jest liczba zwycięstw, remisów i przegranych dla obydwu graczy. Podświetlona nazwa gracza informuje o tym, który z graczy wykonuje aktualnie ruch. </para>
+
+<para
+><firstterm
+>Pasek stanu</firstterm
+> w dolnej części ekranu wskazuje na stan gry oraz informuje, który gracz wykonuje aktualnie ruch. </para>
+
+<sect1 id="remote-connections">
+<title
+>Połączenia zdalne</title>
+
+<para
+>Możliwa jest gra przez sieć. Jeden z komputerów będzie działał jako serwer gry. Serwer decyduje kto będzie grał jakim kolorem. Możesz zmienić ustawienia sieci w menu <menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja sieci...</guimenuitem
+></menuchoice
+>. W menu<menuchoice
+><guimenu
+>Gra</guimenu
+><guimenuitem
+>Rozmowa sieciowa...</guimenuitem
+></menuchoice
+> możliwe jest otworzenie okna pogawędki, które pozwoli Ci rozmawiać z Twoim przeciwnikiem. </para>
+
+<para
+>Podczas tworzenia połączenia pojawi się pytanie o zdalny serwer i port. Port zwykle może po prostu pozostać niezmieniony, ale jeśli wiesz, co robisz, możesz zmienić go na inny, który musi być oczywiście taki sam dla obu graczy. Nazwa serwera powinna być nazwą zdalnego komputera, z którym się łączysz. Tylko klient łączący się z serwerem musi podać nazwę zdalnego komputera. Jeśli Twój komputer znajduje się za zaporą sieciową (firewallem), to Ty musisz być klientem, ponieważ zapora sieciowa może blokować połączenia przychodzące. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="faq">
+<title
+>Najczęściej zadawane pytania</title>
+<qandaset>
+
+
+<qandaentry>
+<question>
+<para
+>Czy mogę zmienić wygląd gry? </para>
+</question>
+<answer>
+<para
+>Możesz zmienić kolor pionków za pomocą menu <guimenu
+>Ustawienia</guimenu
+> <guisubmenu
+>Motyw</guisubmenu
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Czy można grać za pomocą klawiatury? </para>
+</question>
+<answer>
+<para
+>Niestety nie można grać używając klawiatury. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Straciłem orientację kto wygrywa , czy można to sprawdzić? </para>
+</question>
+<answer>
+<para
+>Tak, możesz zobaczyć statystyki wybierając z menu <guimenu
+>Gra</guimenu
+><guimenuitem
+>Pokaż statystyki</guimenuitem
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+
+<chapter id="menus">
+<title
+>Menu</title>
+
+<sect1 id="game-menu">
+<title
+>Menu <guimenu
+>Gra</guimenu
+></title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Nowy</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Rozpoczyna nową grę. W grze sieciowej ta opcja jest dostępna tylko dla serwera. Gra klienta będzie automatycznie rozpoczęta przez serwer. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Wczytaj...</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Wczytuje zapisaną grę. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zapisz</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Zapisuje aktualną grę. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>End</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Koniec gry</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Kończy rozpoczętą grę. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pogawędka w sieci...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Pokazuje okienko pogawędki, w którym możesz rozmawiać z innymi osobami. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Gra</guimenu
+> <guimenuitem
+>Pokaż statystyki</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Wyświetla okno dialogowe zawierające informacje o ogólnej statystyce gry, to znaczy ile gier zwyciężyli, przegrali lub zremisowali poszczególni gracze. Okno dialogowe pozwala także na wyczyszczenie ogólnych statystyk. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Gra</guimenu
+> <guimenuitem
+>Zakończ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Kończy pracę programu. </para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="move-menu">
+<title
+>Menu <guimenu
+>Ruch</guimenu
+></title>
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>Ruch</guimenu
+> <guimenuitem
+>Cofnij</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Cofa ostatni ruch. Jeśli komputer gra jako drugi gracz, cofnięte zostaną dwa ruchy, tak żeby ruch należał do Ciebie. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ruch</guimenu
+> <guimenuitem
+>Przywróć</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ponownie wykonuje ostatnio wycofany ruch. Jeśli komputer gra jako drugi gracz, przywrócone zostaną dwa ruchy, tak żeby kolejny ruch należał do Ciebie. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+><guimenu
+>Ruch</guimenu
+><guimenuitem
+>Podpowiedź</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Komputer obliczy najlepszy możliwy ruch i zaznaczy go na planszy. Jak dobry jest ten ruch zależy od poziomu zaawansowania komputera. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+
+<sect1 id="option-menu">
+<title
+>Menu <guimenu
+>Ustawienia</guimenu
+></title>
+
+<variablelist>
+
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Wyświetl pasek narzędzi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Wyświetla lub ukrywa pasek narzędzi. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Wyświetl pasek stanu</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Włącza/wyłącza wyświetlanie paska stanu. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+><guisubmenu
+>Motyw</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Wybiera graficzny motyw wyglądu gry. Dostępność motywów zależy od bieżącej instalacji gry.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja sieci...</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Wywołuje okno konfiguracji sieci. Możesz wybrać, czy chcesz być serwerem czy klientem. Jeśli jesteś serwerem możesz również wybrać, jaki kolor zdalny gracz powinien przyjąć. Jeśli gra sieciowa jest uruchomiona, możesz się także rozłączyć w tym menu. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja skrótów...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Otwiera okno, które pozwala Ci na zdefiniowanie wszystkich skrótów klawiszowych.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja pasków narzędzi...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+>Wyświetla standardowe okno &kde;, gdzie możesz skonfigurować ikony paska narzędzi.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja:  &kfourinline;...</guimenuitem
+> </menuchoice
+></term>
+
+<listitem
+><para
+><action
+>Pokazuje</action
+> okno konfiguracji programu &kfourinline;.</para>
+
+</listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="help">
+<title
+>Menu <guimenu
+>Pomoc</guimenu
+></title>
+&help.menu.documentation; </sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Konfiguracja gry</title>
+<para
+>Gra &kfourinline; może być skonfigurowana za pomocą okna dialogowego wyświetlanego za pomocą menu: <guimenu
+>Ustawienia</guimenu
+> <guimenuitem
+>Konfiguracja:  &kfourinline;...</guimenuitem
+> </para>
+<para
+><guilabel
+>Kolor gracza rozpoczynającego</guilabel
+>: Decyduje, który kolor gracza (<guilabel
+>Czerwony</guilabel
+> lub <guilabel
+>Czarny</guilabel
+>) rozpocznie następną grę.</para>
+<para
+><guilabel
+>Imiona graczy</guilabel
+>: Zmienia imiona graczy.</para>
+<para
+><guilabel
+>Kontrola czarnego gracza</guilabel
+>: Wybiera kto gra jako pierwszy gracz (czarny).To może być albo <guilabel
+>Mysz</guilabel
+> albo <guilabel
+>Klawiatura</guilabel
+>, czyli lokalny gracz używający myszy lub klawiatury jako urządzenia wejściowego, albo <guilabel
+>Komputer</guilabel
+>, tzn. komputer wykonuje ruchy za tego gracza.</para>
+<para
+><guilabel
+>Kontrola czerwonego gracza</guilabel
+>: To samo co <guilabel
+>Kontrola czarnego gracza</guilabel
+>, ale dla gracza 2(czerwonego).</para>
+<para
+><guilabel
+>Poziom trudności komputera</guilabel
+>: Wybiera poziom umiejętności komputerowego gracza.</para>
+<para
+><guilabel
+>Use AI learning</guilabel
+>: The computer AI can learn from mistakes made in one game.</para>
+
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Zasługi i licencje</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Prawa autorskie do programu: (c) 1995-2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer. </para>
+<para
+>Prawa autorskie do grafiki: (c) 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> and Johann Ollivier Lapeyre. </para>
+<para
+>Prawa autorskie do dokumentacji: copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer. </para>
+
+<para
+>Polskie tłumaczenie: Łukasz Fidosz <email
+>virhilo@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalacja</title>
+
+<sect1 id="getting-kfourinline">
+<title
+>Jak zdobyć &kfourinline;</title>
+&install.intro.documentation; </sect1>
+
+<sect1 id="compilation">
+<title
+>Kompilacja i instalacja</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
