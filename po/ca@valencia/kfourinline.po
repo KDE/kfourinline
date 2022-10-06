@@ -161,7 +161,7 @@ msgstr "&Partida"
 #: kfourinlineui.rc:18
 #, kde-format
 msgid "&Settings"
-msgstr "&Configuració"
+msgstr "Con&figuració"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kfourinlineui.rc:24
