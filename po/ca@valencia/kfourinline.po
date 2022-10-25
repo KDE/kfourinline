@@ -192,12 +192,12 @@ msgstr "Partides en xarxa:"
 #: kgameconnectdialog.cpp:84
 #, kde-format
 msgid "Port to connect to:"
-msgstr "Port amb el que connectar-se:"
+msgstr "Port amb el qual connectar-se:"
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
 msgid "Host to connect to:"
-msgstr "Ordinador amb el que connectar-se:"
+msgstr "Ordinador amb el qual connectar-se:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
