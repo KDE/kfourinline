@@ -1,150 +1,99 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY % German "INCLUDE">
+<!ENTITY % English "INCLUDE">
 <!ENTITY % addindex "IGNORE">
 ]>
 
 <book id="kfourinline" lang="&language;">
 <bookinfo>
-<title
->Das Handbuch zu „Vier gewinnt“</title>
+<title>The &kfourinline; Handbook</title>
 
 <authorgroup>
-<author
-><firstname
->Martin</firstname
-> <surname
->Heni</surname
-> <affiliation
-> <address
->&Martin.Heni.mail;</address>
+<author>
+<firstname>Martin</firstname>
+<surname>Heni</surname>
+<affiliation>
+<address>&Martin.Heni.mail;</address>
 </affiliation>
 </author>
-<author
-><firstname
->Eugene</firstname
-> <surname
->Trounev</surname
-> <affiliation
-> <address
-><email
->eugene.trounev@gmail.com</email
-></address
-></affiliation>
+<author>
+<firstname>Eugene</firstname>
+<surname>Trounev</surname>
+<affiliation>
+<address><email>eugene.trounev@gmail.com</email></address></affiliation>
 </author>
-<author
-><firstname
->Benjamin</firstname
-> <surname
->Meyer</surname
-> </author>
-<author
-><firstname
->Johann Ollivier</firstname
-> <surname
->Lapeyre</surname
-> </author>
-<author
-><firstname
->Anton</firstname
-> <surname
->Brondz</surname
-> <affiliation
-> <address
-><email
->dinolinux@gmail.com</email
-></address>
+<author>
+<firstname>Benjamin</firstname>
+<surname>Meyer</surname>
+</author>
+<author>
+<firstname>Johann Ollivier</firstname>
+<surname>Lapeyre</surname>
+</author>
+<author>
+<firstname>Anton</firstname>
+<surname>Brondz</surname>
+<affiliation>
+<address><email>dinolinux@gmail.com</email></address>
 </affiliation>
 </author>
 
 
-<othercredit role="translator"
-><firstname
->Maren</firstname
-><surname
->Pakura</surname
-><affiliation
-><address
-><email
->maren@kde.org</email
-></address
-></affiliation
-><contrib
->Deutsche Übersetzung</contrib
-></othercredit
-> 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
-<year
->1995</year
-><year
->2007</year>
-<holder
->&Martin.Heni;</holder>
+<year>1995</year><year>2007</year>
+<holder>&Martin.Heni;</holder>
 </copyright>
 
-<legalnotice
->&FDLNotice;</legalnotice>
+<legalnotice>&FDLNotice;</legalnotice>
 
-<date
->2021-06-05</date>
-<releaseinfo
->KDE Gear 21.04</releaseinfo>
+<date>2021-06-05</date>
+<releaseinfo>KDE Gear 21.04</releaseinfo>
 
 <abstract>
-<para
->Vier Gewinnt ist ein Strategiespiel von &kde;.</para>
+<para>
+&kfourinline; is a four-in-a-row game by &kde;.</para>
 </abstract>
 
 <keywordset>
-<keyword
->KDE</keyword>
-<keyword
->kdegames</keyword>
-<keyword
->Spiel</keyword>
-<keyword
->Brettspiel</keyword>
-<keyword
->Brettspiel</keyword>
-<keyword
->Vier gewinnt</keyword>
-<keyword
->vier</keyword>
-<keyword
->Vier in einer Reihe</keyword>
-<keyword
->Vier gewinnt</keyword>
-<keyword
->Vier gewinnt</keyword>
-<keyword
->Vier verbinden</keyword>
-<keyword
->4 verbinden</keyword>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>game</keyword>
+<keyword>board</keyword>
+<keyword>board game</keyword>
+<keyword>four wins</keyword>
+<keyword>four</keyword>
+<keyword>four in a row</keyword>
+<keyword>four in line</keyword>
+<keyword>kfourinline</keyword>
+<keyword>connect four</keyword>
+<keyword>connect 4</keyword>
 </keywordset>
 </bookinfo>
 
 <chapter id="overview">
-<title
->Einführung</title>
+<title>Introduction</title>
 
-<para
->Spieltyp: Strategie, Brettspiel </para>
+<para>
+Game type: Strategy, Board
+</para>
 
-<para
->&kfourinline; ist ein auf &nbsp;<trademark
->Vier gewinnt</trademark
-> basierendes Brettspiel für zwei Spieler. </para>
+<para>
+&kfourinline; is a board game for two players based on the
+&nbsp;<trademark>Connect-Four</trademark> game.
+</para>
 
-<para
->Die Spieler versuchen mithilfe verschiedener Strategien auf einem Brett eine Reihe von vier Spielsteinen zu legen. Das Spiel kann auch gegen den Rechner und auch im Netzwerk gespielt werden. </para>
+<para>
+The players try to build up a row of four pieces using different strategies. Pieces are
+placed on a board. The game can also be played against a computer, as well on network.
+</para>
 
 </chapter>
 
 <chapter id="howtoplay">
-<title
->Spielanleitung</title>
+<title>How to Play</title>
 
 <screenshot>
 <mediaobject>
@@ -152,336 +101,295 @@
 <imagedata fileref="gameboard.png" format="PNG"/>
 </imageobject>
 <textobject>
-<phrase
->"Vier gewinnt"-Spielfeld</phrase>
+<phrase>&kfourinline; Game Board</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
-<para
->Beim Start von &kfourinline; werden der Schwierigkeitsgrad und die Anzahl der Spieler gewählt. Sie können auch Ihre Spielfarbe festlegen und wählen welche Farbe beginnt. </para>
+<para>
+When &kfourinline; loads, you can select the difficulty or start a two player game. If you like,
+you can also pick your color and select which color starts the game.
+</para>
 
-<para
->Jeder Spieler wird durch eine Farbe repräsentiert (zum Beispiel gelb oder weiß für den ersten Spieler und rot für den zweiten). Es wird abwechselnd gespielt. Ziel des Spiels ist, vier Steine in einer Reihe zu haben. Diese Reihe kann senkrecht, waagerecht oder diagonal sein. Sie erreichen dies, indem Sie die Steine nacheinander in die sieben mögliche Spalten stecken. Die Steine fallen auf den tiefstmöglichen freien Platz &ie; entweder bis zum Boden oder auf einen anderen Stein. </para>
+<para>
+Each player is represented by a color (for example yellow or white for player one and red for player two).
+The goal of the game is to get four connected pieces of your color into any row, column or
+diagonal.
+The players move in turns. Each turn the player can place one of his or her pieces
+into any of the seven columns where each piece will fall to the lowest possible free place &ie; it
+will fall down until it reaches the ground level or another piece.
+</para>
 
-<para
->Nachdem ein Spieler seinen Zug getätigt hat, ist der zweite Spieler an der Reihe. Das wird nun wiederholt, bis das Spiel vorüber ist. Das Spiel ist beendet, wenn ein Spieler vier Steine senkrecht, waagerecht oder diagonal in einer Reihe hat oder kein weiterer Zug mehr möglich ist, da das Spielfeld voll ist. </para>
+<para>
+After one player's move is done the second player can make his or her input.
+This is repeated until the game is over, which is when one of the
+players has four pieces in a row, column or diagonal or no more moves
+are possible because the board is filled.
+</para>
 
-<para
->Der Spieler, der es zuerst schafft, vier Spielsteine senkrecht, waagerecht oder diagonal anzuordnen, gewinnt. Wenn keine Züge mehr getätigt werden können, bevor ein Spieler gewonnen hat, endet das Spiel unentschieden. </para>
+<para>
+A player who first manages to get four pieces in a row, column or diagonal wins the
+game. If no more moves can be made but no player has won, the game ends drawn.
+</para>
 
 </chapter>
 
 <chapter id="rules">
-<title
->Spielregeln, Spielstrategien und Tipps</title>
+<title>Game rules, strategies and tips</title>
 
-<para
->Das Spielfeld ist in mehrere Bereiche eingeteilt. </para>
+<para>
+The board is separated into several regions.
+</para>
 
-<para
->Das <firstterm
->Spielfeld</firstterm
-> besteht aus 7x6 Feldern, die von unten her aufgefüllt werden. Die Felder werden mit Steinen in der Farbe des Spielers besetzt, der den Zug auf der jeweiligen Position ausführte. Oben in jeder Spalte erscheint ein farbiger Pfeil, der anzeigt, wo der letzte Spielstein gesetzt wurde. </para>
+<para>
+The <firstterm>game board</firstterm> is constructed out of 7x6 fields
+which will be filled from bottom to top. The fields are marked with pieces in the
+color of the player who made the move to this position.  On top of each column a
+colored arrow shows were the last piece had been put.
+</para>
 
-<para
->Die <firstterm
->Statusanzeige</firstterm
-> gibt an, welcher Spieler von welchem Eingabegerät gesteuert wird. Ein lokaler Spieler kann Züge über Tastatur oder Maus eingeben, ein Netzwerk-Spieler wird als Netzwerk-Eingabe angezeigt, und auch der Rechner kann die Eingabe eines Spielers steuern. Die Statusanzeige informiert zudem über die Spielernamen, den Schwierigkeitsgrad des Computergegners und die gewonnenen, unentschiedenen, verlorenen und beendeten Spiele beider Spieler. Welcher Spieler am Zug ist, wird durch Hervorheben des Namens verdeutlicht. </para>
+<para>
+The <firstterm>status display</firstterm> shows which player
+is controlled by which input device. A local player can input moves using
+keyboard or mouse, a remote player is shown as network input and finally
+the computer can control the input for a player.
+The status display further shows the player's names and the level of the computer opponent.
+Additionally the number of won, drawn, lost and ended games is noted for both players.
+Which player is next to move is indicated by one of the player's names being highlighted.
+</para>
 
-<para
->Die <firstterm
->Statusleiste</firstterm
-> am unteren Ende des Bildschirms zeigt den Status des Spiels und welcher Spieler am Zug ist. </para>
+<para>
+The <firstterm>statusbar</firstterm> at the bottom of the screen displays the status of the game and
+which player is next to play.
+</para>
 
 <sect1 id="remote-connections">
-<title
->Netzwerkspiele</title>
+<title>Remote Connections</title>
 
-<para
->Sie können über eine Netzwerkverbindung mit einem anderen Computer spielen. Einer der Computer agiert dabei als Server. Dieser kann festlegen, wer mit welcher Farbe spielt. Die Netzwerkeinstellungen können Sie im Menü <menuchoice
-><guimenu
->Einstellungen</guimenu
-> <guimenuitem
->Netzwerk einrichten ...</guimenuitem
-> </menuchoice
-> verändern. Mit <menuchoice
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Netzwerk-Chat ...</guimenuitem
-></menuchoice
-> öffnen Sie ein Dialogfenster, in dem Sie sich mit den anderen Spielern unterhalten können. </para>
+<para>
+It is possible to play the game over a network connection with another
+computer.
+One of the computers will act as game server. This one can determine
+who should play which color. You can configure the network options
+in the menu
+<menuchoice><guimenu>Settings</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
+In the menu
+<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat...</guimenuitem></menuchoice>.
+you find a chat dialog box which allows you to speak with your friend.
+</para>
 
-<para
->Wenn eine Netzwerkverbindung aufgebaut wird, werden Sie nach dem entfernten Rechner und der Portnummer gefragt. Die Portnummer brauchen Sie nicht zu ändern - aber wenn Sie wissen was Sie tun, können Sie sie durch eine andere ersetzen, die natürlich in beiden Spielen gleich sein muss. Der Rechnername sollte der Name des anderen Rechners sein, mit dem Sie die Verbindung aufbauen wollen. Nur einer der beiden Spieler muss den Rechnernamen angeben, dem anderen steht es frei. Befindet sich einer der Rechner hinter einer Firewall, sollte dieser möglichst als Klient agieren, da die Firewall eventuell Verbindungsanfragen blockiert. </para>
+<para>
+When a network connection is built you will be asked to enter a remote host
+and a port. The port can usually just be left untouched, but if you know
+what you are doing replace it by another number, which has to be the
+same in both player games of course. The hostname should be the name of
+the remote host to which you are connecting. Only the client in
+the connection has to supply a hostname. It is often wise that the player
+behind a firewall chooses to be client as the firewall might not allow
+incoming connections.
+</para>
 
 </sect1>
 </chapter>
 
 <chapter id="interface-overview">
-<title
->Die Benutzeroberfläche</title>
+<title>Interface Overview</title>
 
 <sect1 id="menu">
-<title
->Menüeinträge</title>
+<title>Menu Items</title>
 
 <variablelist>
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Neu</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Startet ein neues Spiel. In einem Netzwerkspiel kann dies nur der Netzwerk-Server. Der Netzwerk-Klient wird automatisch vom Server gestartet. </para>
+<para>
+Starts a new game. In a network game this option is only available for
+the network server. The network client will be automatically started by
+the server.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->O</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Laden ...</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Load...</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Lädt ein gespeichertes Spiel. </para>
+<para>
+Loads a saved game.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Speichern</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Save</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Speichert das aktuelle Spiel. </para>
+<para>
+Saves the current game.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;&End;</keycombo
-> </shortcut
-> <guimenu
->Ende   Spiel</guimenu
-> <guimenuitem
->Spiel beenden</guimenuitem
-></menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;&End;</keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>End Game</guimenuitem></menuchoice></term>
 <listitem>
-<para
->Beendet ein Spiel. </para>
+<para>
+Ends a running game.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Spiel</guimenu
-> <guimenuitem
->Netzwerk-Chat ...</guimenuitem
-></menuchoice
-></term>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Network Chat...</guimenuitem></menuchoice></term>
 <listitem>
-<para
->In einem Netzwerkspiel können Sie hiermit Nachrichten an den anderen Spieler schicken. </para>
+<para>
+Pops up a chat widget which allows you to send messages to the
+other party.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Spiel</guimenu
-> <guimenuitem
->Statistik anzeigen</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<guimenu>Game</guimenu>
+<guimenuitem>Show Statistics</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Zeigt einen Dialog mit Informationen zu den allgemeinen Spielstatistiken an: die gewonnenen, verlorenen oder unentschiedenen Spiele beider Spieler. Diese Statistiken können gelöscht werden. </para>
+<para>
+Shows a dialog containing information about the overall game statistics, that is
+games won, lost or drawn by both players.
+The dialog also allows to clear this all time statistics.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->Q</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Beenden</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Beendet das Programm. </para>
+<para>
+Quits the program.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;<keycap
->Z</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Zug</guimenu
-> <guimenuitem
->Zurücknehmen</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Undo</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Macht den letzten Zug rückgängig. Wenn der vorherige Zug vom Computer ausgeführt wurde, werden zwei Züge rückgängig gemacht, sodass Sie wieder an der Reihe sind. </para>
+<para>
+Undo the last move. If the previous player is played by the computer two
+moves are taken back so that it is the player's turn again.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;&Shift;<keycap
->Z</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Zug</guimenu
-> <guimenuitem
->Wiederherstellen</guimenuitem
-> </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Redo</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Führt einen zurückgenommenen Zug wieder aus. Wenn Sie gegen den Computer spielen, werden zwei Züge wiederhergestellt, sodass Sie wieder an der Reihe sind. </para>
+<para>
+Replay a move which had been undone. If one of the players is played by
+the computer two moves are redone so that it is the player's turn again.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycap
->H</keycap
-> </shortcut
-> <guimenu
->Zug</guimenu
-> <guimenuitem
->Tipp</guimenuitem
->  </menuchoice
-></term>
+<term><menuchoice>
+<shortcut>
+<keycap>H</keycap>
+</shortcut>
+<guimenu>Move</guimenu>
+<guimenuitem>Hint</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para
->Der Computer wird für Sie den bestmöglichen Zug berechnen und ihn auf dem Spielfeld markieren. Wie gut dieser ist, hängt von der Spielstärke ab, mit der der Computer spielt. </para>
+<para>
+The computer will calculate the best possible move for you and mark it with a
+sign on the game board.  How good the move actually is depends on the level of
+the computer.
+</para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Einstellungen</guimenu
-><guisubmenu
->Design</guisubmenu
-> </menuchoice
-></term>
-<listitem
-><para>
-<action
->Wählen Sie ein Design für das Spiel. Die verfügbaren Designs sind von Ihrer aktuellen Installation abhängig.</action>
-</para
-></listitem>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guisubmenu>Theme</guisubmenu>
+</menuchoice></term>
+<listitem><para>
+<action>Choose a graphical theme for the game. Which themes are available depends on the current installation.</action>
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Einstellungen</guimenu
-> <guimenuitem
->Netzwerk einrichten ...</guimenuitem
-></menuchoice
-></term>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
 <listitem>
-<para
->Zeigt einen Dialog zur Netzwerkeinrichtung an. Sie können als Server oder als Klient agieren. Falls Sie als Server agieren, können Sie festlegen, in welcher Farbe der gegnerische Spieler spielt. Falls ein Netzwerkspiel läuft, können Sie in diesem Menü die Verbindung unterbrechen. </para>
+<para>
+Pops up a dialog for the network configuration. You can choose to be
+server or client. If you are server you can also choose what color the
+remote player should take over. If a network game is running you can
+also disconnect it in this menu.
+</para>
 </listitem>
 </varlistentry>
 
 </variablelist>
 
-<para
->Zusätzlich hat &kfourinline; die bekannten &kde;-Einträge im Menü <guimenu
->Einstellungen</guimenu
-> und <guimenu
->Hilfe</guimenu
->, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
->Einstellungen</ulink
-> und <ulink url="help:/fundamentals/menus.html#menus-help"
->Hilfe</ulink
-> der &kde;-Grundlagen. </para>
+<para>
+Additionally &kfourinline; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Settings Menu</ulink> and <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
+of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
 </chapter>
 
 <chapter id="config">
-<title
->Einstellungen für das Spiel</title>
-<para
->Die Einstellungen für &kfourinline; können Sie im Einrichtungsdialog ändern, den Sie mit <menuchoice
-><guimenu
->Einstellungen</guimenu
-> <guimenuitem
->Vier gewinnt einrichten ...</guimenuitem
-></menuchoice
-> öffnen.</para>
+<title>Game Configuration</title>
+<para>&kfourinline; can be configured using the configuration dialog with the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> menu item.</para>
 
 <screenshot>
 <mediaobject>
@@ -489,98 +397,66 @@
 <imagedata fileref="settings.png" format="PNG"/>
 </imageobject>
 <textobject>
-<phrase
->Einstellungen für das Spiel</phrase>
+<phrase>Game Configuration</phrase>
 </textobject>
 </mediaobject>
 </screenshot>
 
-<para
-><guilabel
->Farbe des Spielers der anfängt</guilabel
->: Bestimmen Sie, welche Farbe (<guilabel
->Rot</guilabel
-> oder <guilabel
->Schwarz</guilabel
->) im nächsten Spiel den ersten Zug ausführt.</para>
-<para
-><guilabel
->Spielernamen</guilabel
->: Bearbeiten Sie die Namen der Spieler.</para>
-<para
-><guilabel
->Schwarz spielt mit</guilabel
->: Wählen Sie, welcher Spieler als Spieler 1 spielt. Das kann entweder <guilabel
->Maus</guilabel
-> oder <guilabel
->Tastatur</guilabel
-> sein, &ie; ein lokaler Spieler, der Maus oder Tastatur als Eingabegerät verwendet, oder der <guilabel
->Computer</guilabel
->, &ie; der Computer spielt für diesen Spieler.</para>
-<para
-><guilabel
->Rot spielt mit</guilabel
->: Das gleiche wie <guilabel
->Schwarz spielt mit</guilabel
->, aber für den zweiten Spieler (rot).</para>
-<para
-><guilabel
->Schwierigkeitsgrad des Computergegners</guilabel
->: Bestimmt das Können des Computergegners.</para>
-<para
-><guilabel
->Dazulernenden Computergegner verwenden</guilabel
->: Die künstliche Intelligenz des Computers kann von den Fehlern lernen, die in einem Spiel gemacht wurden.</para>
+<para><guilabel>Starting Player Color</guilabel>: Determine which  player color (<guilabel>Red</guilabel> or <guilabel>Black</guilabel>) has the first move in the next game.</para>
+<para><guilabel>Player Names</guilabel>: Change the names of the players.</para>
+<para><guilabel>Black Plays With</guilabel>:
+Choose who should play for player 1. It can be either
+<guilabel>Mouse</guilabel> or <guilabel>Keyboard</guilabel>,
+&ie; a local player using the mouse or keyboard
+as input device or <guilabel>Computer</guilabel>, &ie; the computer
+plays for this player.</para>
+<para><guilabel>Red Plays With</guilabel>: Same as <guilabel>Black Plays With</guilabel> but for player 2
+(red).</para>
+<para><guilabel>Computer Difficulty</guilabel>: Select the level of the computer player.</para>
+<para><guilabel>Use AI learning</guilabel>: The computer AI can learn from mistakes made in one game.</para>
 
 </chapter>
 
 <chapter id="faq">
-<title
->Häufig gestellte Fragen</title>
+<title>Frequently asked questions</title>
 <qandaset>
 
 <qandaentry>
 <question>
-<para
->Kann ich das Erscheinungsbild des Spiels ändern? </para>
+<para>
+Can I change the look of the game?
+</para>
 </question>
 <answer>
-<para
->Sie können die Farben der Spielsteine ändern, indem Sie im Menü <menuchoice
-><guimenu
->Einstellungen</guimenu
-><guisubmenu
->Design</guisubmenu
-></menuchoice
-> auswählen. </para>
+<para>
+You can change the color of the pieces by opening the <menuchoice><guimenu>Settings</guimenu> <guisubmenu>Theme</guisubmenu></menuchoice> menu item.
+</para>
 </answer>
 </qandaentry>
 
 <qandaentry>
 <question>
-<para
->Kann ich mit der Tastatur spielen? </para>
+<para>
+Can I use the keyboard to play the game?
+</para>
 </question>
 <answer>
-<para
->Nein, die Spielsteine können nicht mit der Tastatur gesetzt werden. </para>
+<para>
+You cannot use the keyboard to control the pieces.
+</para>
 </answer>
 </qandaentry>
 
 <qandaentry>
 <question>
-<para
->Ich habe die Übersicht darüber verloren, welcher Spieler führt. Wie kann ich es herausfinden? </para>
+<para>
+I have lost control of who is in the lead, can I find it out?
+</para>
 </question>
 <answer>
-<para
->Sie können die Statistik im Menü <menuchoice
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Statistik anzeigen</guimenuitem
-></menuchoice
-> einsehen. </para>
+<para>
+Yes, you can see statistics by opening the <menuchoice><guimenu>Game</guimenu> <guimenuitem>Show Statistics</guimenuitem></menuchoice> menu item.
+</para>
 </answer>
 </qandaentry>
 
@@ -589,25 +465,29 @@
 </chapter>
 
 <chapter id="credits">
-<title
->Danksagungen und Lizenz</title>
+<title>Credits and License</title>
 
-<para
->&kfourinline; </para>
-<para
->Programm Copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
-<para
->Grafik Copyright 2007 Eugene Trounev <email
->eugene.trounev@gmail.com</email
-> und Johann Ollivier Lapeyre. </para>
-<para
->Dokumentation Copyright 2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
+<para>
+&kfourinline;
+</para>
+<para>
+Program copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail;
+and Benjamin Meyer.
+</para>
+<para>
+Graphics copyright 2007 Eugene Trounev <email>eugene.trounev@gmail.com</email>
+and Johann Ollivier Lapeyre.
+</para>
+<para>
+Documentation copyright 2007 &Martin.Heni; &Martin.Heni.mail; and Benjamin Meyer.
+</para>
 
-<para
->Deutsche Übersetzung von Maren Pakura <email
->maren@kde.org</email
-></para
-> &underFDL; &underGPL; </chapter>
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;
+&underGPL;
+
+</chapter>
 
 &documentation.index;
 </book>
