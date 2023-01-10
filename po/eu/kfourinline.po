@@ -1,58 +1,58 @@
-# translation of kfourinline.po to Basque
-# Copyright (C) 2003, 2005, 2009 Free Software Foundation, Inc.
+# Translation for kfourinline.po to Euskara/Basque (eu).
+# Copyright (C) 2003-2023 This file is copyright:
+# This file is distributed under the same license as the kfourinline package.
+# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
 #
+# Translators:
 # Marcos  <marcos@euskalgnu.org>, 2003.
 # Ion Gaztañaga <igaztanaga@gmail.com>, 2005.
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:43+0000\n"
-"PO-Revision-Date: 2009-06-16 16:30+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
-"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
+"PO-Revision-Date: 2023-01-09 22:48+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
+"Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 22.12.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ion Gaztañaga"
+msgstr "Iñigo Salvador Azurmendi,Ion Gaztañaga"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "igaztanaga@gmail.com"
+msgstr "xalba@ni.eus,igaztanaga@gmail.com"
 
-#, fuzzy, kde-format
-#| msgid "Black"
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Black"
 msgstr "Beltza"
 
-#, fuzzy, kde-format
-#| msgid " %1 - Yellow "
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Yellow"
-msgstr " %1 - Horia "
+msgstr "Horia "
 
-#, fuzzy, kde-format
-#| msgid "Red"
+#, kde-format
 msgctxt "Player 1 color"
 msgid "Red"
 msgstr "Gorria"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "Berriketaren elk.-koadroa"
+msgstr "Berriketaren elkarrizketa-koadroa"
 
 #: chatdlg.cpp:48
 #, kde-format
@@ -68,7 +68,7 @@ msgstr "Konfiguratu..."
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
-msgstr "Abiarazle azkarra"
+msgstr "Abiarazte azkarra"
 
 #: displayintro.cpp:79
 #, kde-format
@@ -98,61 +98,59 @@ msgstr "Joko arrunta"
 #, kde-format
 msgctxt "quick start button - player versus AI level hard"
 msgid "Hard Game"
-msgstr "Joko gogorra"
+msgstr "Joko zaila"
 
 #: displayintro.cpp:145
 #, kde-format
 msgctxt "quick start button - player versus player"
 msgid "Two Player Game"
-msgstr "Bi jokolariko jokoa"
+msgstr "Bi jokalariko jokoa"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Konfiguratu..."
+msgstr "Konfiguratu berriketa"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
 msgid "Name Font..."
-msgstr ""
+msgstr "Izenaren letra-tipoa..."
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgid "Text Font..."
-msgstr ""
+msgstr "Testuaren letra-tipoa..."
 
 #: kchatdialog.cpp:104
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player: "
-msgstr "1. jokalaria"
+msgstr "Jokalaria:"
 
 #: kchatdialog.cpp:106
 #, kde-format
 msgid "This is a player message"
-msgstr ""
+msgstr "Hori jokalari baten mezua da"
 
 #: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
-msgstr ""
+msgstr "Sistemaren mezuak - Jokotik zuzenean bidalitako mezuak"
 
 #: kchatdialog.cpp:126
 #, kde-format
 msgid "--- Game: "
-msgstr ""
+msgstr "--- Jokoa: "
 
 #: kchatdialog.cpp:128
 #, kde-format
 msgid "This is a system message"
-msgstr ""
+msgstr "Hau sistemaren mezu bat da"
 
 #: kchatdialog.cpp:132
 #, kde-format
 msgid "Maximum number of messages (-1 = unlimited):"
-msgstr ""
+msgstr "Gehienezko mezu kopurua (-1 = mugagabea):"
 
 #. i18n: ectx: Menu (game)
 #: kfourinlineui.rc:10
@@ -173,337 +171,314 @@ msgid "Main Toolbar"
 msgstr "Tresna-barra nagusia"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "The network game ended!\n"
+#, kde-format
 msgid "Create a network game"
-msgstr "Sareko jokoa amaitu da.\n"
+msgstr "Sortu sareko joko bat"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "The network game ended!\n"
+#, kde-format
 msgid "Join a network game"
-msgstr "Sareko jokoa amaitu da.\n"
+msgstr "Elkartu sareko joko batera"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game name:"
-msgstr "Jokoaren izena"
+msgstr "Jokoaren izena:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgid "Network games:"
-msgstr "Sare-berriketa..."
+msgstr "Sareko jokoak:"
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
 msgid "Port to connect to:"
-msgstr ""
+msgstr "Konektatzeko ataka:"
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
 msgid "Host to connect to:"
-msgstr ""
+msgstr "Konektatzeko ostalaria:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
 msgid "&Start Network"
-msgstr ""
+msgstr "A&biatu sarea"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
-msgstr ""
+msgstr "KGame arazteko elkarrizketa-koadroa"
 
 #: kgamedebugdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &KGame"
-msgstr "Araztu KGame"
+msgstr "Araztu &KGame"
 
 #: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "Eguneratu"
 
 #: kgamedebugdialog.cpp:167
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "KGame Pointer"
-msgstr "Jokoaren izena"
+msgstr "KGame erakuslea"
 
 #: kgamedebugdialog.cpp:168
-#, fuzzy, kde-format
-#| msgid "&Game"
+#, kde-format
 msgid "Game ID"
-msgstr "&Jokoa"
+msgstr "Jokoaren ID"
 
 #: kgamedebugdialog.cpp:169
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game Cookie"
-msgstr "Jokoaren izena"
+msgstr "Jokoaren «cookie»"
 
 #: kgamedebugdialog.cpp:170
 #, kde-format
 msgid "Is Master"
-msgstr ""
+msgstr "Nagusia da"
 
 #: kgamedebugdialog.cpp:171
 #, kde-format
 msgid "Is Admin"
-msgstr ""
+msgstr "Administratzailea da"
 
 #: kgamedebugdialog.cpp:172
 #, kde-format
 msgid "Is Offering Connections"
-msgstr ""
+msgstr "Konexioak eskaintzen ditu"
 
 #: kgamedebugdialog.cpp:173
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game Status"
-msgstr "Jokoaren izena"
+msgstr "Jokoaren egoera"
 
 #: kgamedebugdialog.cpp:174
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgid "Game is Running"
-msgstr "Jokoa exekutatzen..."
+msgstr "Jokoa martxan dago"
 
 #: kgamedebugdialog.cpp:175
 #, kde-format
 msgid "Maximal Players"
-msgstr ""
+msgstr "Gehieneko jokalariak"
 
 #: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
-msgstr ""
+msgstr "Gutxieneko jokalariak"
 
 #: kgamedebugdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Players"
-msgstr "1. jokalaria"
+msgstr "Jokalariak"
 
 #: kgamedebugdialog.cpp:183
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Players"
-msgstr "Araztu KGame"
+msgstr "Araztu &Jokalariak"
 
 #: kgamedebugdialog.cpp:193
 #, kde-format
 msgid "Available Players"
-msgstr ""
+msgstr "Jokalari erabilgarriak"
 
 #: kgamedebugdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player Pointer"
-msgstr "1. jokalariaren izena"
+msgstr "Jokalariaren erakuslea"
 
 #: kgamedebugdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player ID"
-msgstr "1. jokalaria"
+msgstr "Jokalariaren ID"
 
 #: kgamedebugdialog.cpp:221
-#, fuzzy, kde-format
-#| msgid "Player Names"
+#, kde-format
 msgid "Player Name"
-msgstr "Jokalarien izenak"
+msgstr "Jokalariaren izena"
 
 #: kgamedebugdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player Group"
-msgstr "1. jokalaria"
+msgstr "Jokalari taldea"
 
 #: kgamedebugdialog.cpp:223
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player User ID"
-msgstr "1. jokalaria"
+msgstr "Jokalariaren erabiltzaile ID"
 
 #: kgamedebugdialog.cpp:224
 #, kde-format
 msgid "My Turn"
-msgstr ""
+msgstr "Nire txanda"
 
 #: kgamedebugdialog.cpp:225
 #, kde-format
 msgid "Async Input"
-msgstr ""
+msgstr "Sarrera asinkronoa"
 
 #: kgamedebugdialog.cpp:226
 #, kde-format
 msgid "KGame Address"
-msgstr ""
+msgstr "KGame helbidea"
 
 #: kgamedebugdialog.cpp:227
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player is Virtual"
-msgstr "1. jokalariaren izena"
+msgstr "Jokalaria alegiazkoa da"
 
 #: kgamedebugdialog.cpp:228
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player is Active"
-msgstr "1. jokalariaren izena"
+msgstr "Jokalariaren aktibo dago"
 
 #: kgamedebugdialog.cpp:229
 #, kde-format
 msgid "RTTI"
-msgstr ""
+msgstr "RTTI"
 
 #: kgamedebugdialog.cpp:230
-#, fuzzy, kde-format
-#| msgid "Network connection port"
+#, kde-format
 msgid "Network Priority"
-msgstr "Sareko konexio-ataka"
+msgstr "Sareko lehentasuna"
 
 #: kgamedebugdialog.cpp:236
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Messages"
-msgstr "Araztu KGame"
+msgstr "Araztu &mezuak"
 
 #: kgamedebugdialog.cpp:251
 #, kde-format
 msgid "&>>"
-msgstr ""
+msgstr "&>>"
 
 #: kgamedebugdialog.cpp:255
 #, kde-format
 msgid "&<<"
-msgstr ""
+msgstr "&<<"
 
 #: kgamedebugdialog.cpp:259
 #, kde-format
 msgid "Do not show IDs:"
-msgstr ""
+msgstr "Ez erakutsi IDrik:"
 
 #: kgamedebugdialog.cpp:328
 #, kde-format
 msgid "NULL pointer"
-msgstr ""
+msgstr "Erakusle nulua («NULL»)"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "True"
-msgstr ""
+msgstr "Egia"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "False"
-msgstr ""
+msgstr "Gezurra"
 
 #: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
 #, kde-format
 msgid "Clean"
-msgstr ""
+msgstr "Garbi"
 
 #: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
 #, kde-format
 msgid "Dirty"
-msgstr ""
+msgstr "Zikin"
 
 #: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
 #, kde-format
 msgid "Local"
-msgstr ""
+msgstr "Lokala"
 
 #: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
 #, kde-format
 msgid "Undefined"
-msgstr ""
+msgstr "Definitu gabe"
 
 #: kgamedebugdialog.cpp:507
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Ezezaguna"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgid "&Network"
-msgstr "Sare-berriketa..."
+msgstr "&Sarea"
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
 msgid "Disconnect"
-msgstr ""
+msgstr "Deskonektatu"
 
 #: kgamedialogconfig.cpp:128 kwin4.cpp:680
 #, kde-format
 msgid "Network Configuration"
-msgstr "Sarearen konfigurazioa"
+msgstr "Sareko konfigurazioa"
 
 #: kgamedialogconfig.cpp:187
 #, kde-format
 msgid "Cannot connect to the network"
-msgstr ""
+msgstr "Ezin du sarera konektatu"
 
 #: kgamedialogconfig.cpp:193
 #, kde-format
 msgid "Network status: No Network"
-msgstr ""
+msgstr "Sarearen egoera: Sarerik gabe"
 
 #: kgamedialogconfig.cpp:199
 #, kde-format
 msgid "Network status: You are MASTER"
-msgstr ""
+msgstr "Sareko egoera: Zu zara NAGUSIA"
 
 #: kgamedialogconfig.cpp:201
 #, kde-format
 msgid "Network status: You are connected"
-msgstr ""
+msgstr "Sareko egoera: Zu konektatuta zaude"
 
 #: kwin4.cpp:74
 #, kde-format
 msgid "Installation error: No theme list found."
-msgstr "Instalazioko errorea: gaien zerrenda ez da aurkitu."
+msgstr "Instalazio errorea: Ez da gai-zerrendarik aurkitu."
 
 #: kwin4.cpp:101
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
-msgstr "Instalazioko errorea: ez da AA motorra aurkitu. Jarraitu AArik gabe."
+msgstr "Instalazio errorea: Ez da IA motorrik aurkitu. Jarraitu IArik gabe."
 
 #: kwin4.cpp:116
 #, kde-format
 msgid "Installation error: Theme file error."
-msgstr "Instalazioko errorea: errorea gaiaren fitxategian."
+msgstr "Instalazio errorea: Gai-fitxtegiaren errorea."
 
 #: kwin4.cpp:264
-#, fuzzy, kde-format
-#| msgid "Aborts a currently played game. No winner will be declared."
+#, kde-format
 msgid "Ends a currently played game. No winner will be declared."
-msgstr "Uneko jokatutako jokoa amaitzen. Ez da irabazlerik izendatuko."
+msgstr "Jokatzen ari den joko bat amaitzen du. Ez da irabazlerik izendatuko."
 
 #: kwin4.cpp:269
 #, kde-format
 msgid "&Network Configuration..."
-msgstr "&Sarearen konfigurazioa..."
+msgstr "&Sareko konfigurazioa..."
 
 #: kwin4.cpp:273
 #, kde-format
 msgid "Network Chat..."
-msgstr "Sare-berriketa..."
+msgstr "Sareko berriketa..."
 
 #: kwin4.cpp:278
 #, kde-format
 msgid "&Show Statistics"
-msgstr "&Erakutsi estatistikak"
+msgstr "Erakut&si estatistikak"
 
 #: kwin4.cpp:280
 #, kde-format
@@ -523,7 +498,7 @@ msgstr "Araztu KGame"
 #: kwin4.cpp:326
 #, kde-format
 msgid "Welcome to Four Wins"
-msgstr "Ongietorri Lauko artzain-jokora"
+msgstr "Ongietorri Laurekin garailera"
 
 #: kwin4.cpp:486 kwin4.cpp:639
 #, kde-format
@@ -536,10 +511,9 @@ msgid "No game  "
 msgstr "Jokorik ez  "
 
 #: kwin4.cpp:602 kwin4.cpp:604
-#, fuzzy, kde-format
-#| msgid " %1 - Red "
+#, kde-format
 msgid " %1 - %2 "
-msgstr " %1 - Gorria "
+msgstr " %1 - %2 "
 
 #: kwin4.cpp:606
 #, kde-format
@@ -562,10 +536,9 @@ msgid "%1 won the game. Please restart next round."
 msgstr "%1-(e)k jokoa irabazi du. Berrabiarazi hurrengo txanda."
 
 #: kwin4.cpp:661
-#, fuzzy, kde-format
-#| msgid " Game aborted. Please restart next round."
+#, kde-format
 msgid " Game ended. Please restart next round."
-msgstr "Jokoa abortatu da. Berrabiarazi hurrengo txanda."
+msgstr "Jokoa amaitu da. Mesedez, berrekin hurrengo txanda."
 
 #: kwin4.cpp:691
 #, kde-format
@@ -578,10 +551,9 @@ msgid "Red should be played by remote player"
 msgstr "Gorria urrunekoak jokatu beharko luke"
 
 #: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
-#, fuzzy, kde-format
-#| msgid "Red Plays With"
+#, kde-format
 msgid "%1 Plays With"
-msgstr "Gorriak honekin jokatzen du"
+msgstr "%1(e)k honekin jokatzen du"
 
 #: kwin4.cpp:793
 #, kde-format
@@ -611,7 +583,7 @@ msgstr "Sareko konexioaren ostalaria"
 #: kwin4.kcfg:21 settings.ui:50
 #, kde-format
 msgid "Change the strength of the computer player."
-msgstr "Aldatu 'ordenagailua' jokalariaren trebezia."
+msgstr "Aldatu ordenagailu jokalariaren trebetasuna."
 
 #. i18n: ectx: label, entry (Name1), group (Parameter)
 #: kwin4.kcfg:28
@@ -645,7 +617,7 @@ msgstr "KFourInLine"
 #: main.cpp:69
 #, kde-format
 msgid "KFourInLine: Two player board game"
-msgstr "KFourInLine: bi jokolariko mahaigaineko jokoa"
+msgstr "KFourInLine: bi jokalariko mahaigaineko jokoa"
 
 #: main.cpp:71
 #, kde-format
@@ -695,12 +667,12 @@ msgstr "Sartu arazketa mailara"
 #: main.cpp:81
 #, kde-format
 msgid "Skip intro animation"
-msgstr "Saltatu harrerako animazioa"
+msgstr "Saltatu sarrerako animazioa"
 
 #: main.cpp:82
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
-msgstr "Exekutatu jokoa probako moduan (joko automatikoa)"
+msgstr "Exekutatu jokoa erakustaldi moduan (joko automatikoa)"
 
 #: scoresprite.cpp:163
 #, kde-format
@@ -724,13 +696,13 @@ msgstr "Erraza"
 #: settings.ui:90
 #, kde-format
 msgid "Hard"
-msgstr "Gogorra"
+msgstr "Zaila"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
 #: settings.ui:102
 #, kde-format
 msgid "Use AI learning"
-msgstr "Erabili AAren ikasketak"
+msgstr "Erabili IAren ikaskuntza"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Input1)
 #: settings.ui:112
@@ -787,7 +759,7 @@ msgstr "2. jokalaria:"
 #: settings.ui:267
 #, kde-format
 msgid "Starting Player Color"
-msgstr "Lehenengo jokalaria"
+msgstr "Hasten den jokalariaren kolorea"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
 #: settings.ui:287
@@ -841,7 +813,7 @@ msgstr "Guztira"
 #: statistics.ui:113
 #, kde-format
 msgid "Aborted"
-msgstr "Abortatuta"
+msgstr "Bertan behera utzia"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton1)
 #: statistics.ui:131
