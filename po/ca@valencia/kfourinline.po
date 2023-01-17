@@ -109,7 +109,7 @@ msgstr "Partida de dos jugadors"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Configuració del xat"
+msgstr "Configureu el xat"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
