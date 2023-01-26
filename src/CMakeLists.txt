@@ -82,11 +82,11 @@ ecm_add_app_icon(kfourinline ICONS ${ICONS_SRCS})
 target_link_libraries(kfourinline
     KF5KDEGames
     KF5KDEGamesPrivate
-    KF5::CoreAddons
-    KF5::Crash
-    KF5::DNSSD
-    KF5::XmlGui
-    KF5::WidgetsAddons
+    KF${KF_MAJOR_VERSION}::CoreAddons
+    KF${KF_MAJOR_VERSION}::Crash
+    KF${KF_MAJOR_VERSION}::DNSSD
+    KF${KF_MAJOR_VERSION}::XmlGui
+    KF${KF_MAJOR_VERSION}::WidgetsAddons
     Qt${QT_MAJOR_VERSION}::Svg
 )
 
