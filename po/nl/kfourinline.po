@@ -8,20 +8,20 @@
 # Bram Schoenmakers <bramschoenmakers@kde.nl>, 2004.
 # Rinse de Vries <rinsedevries@kde.nl>, 2004, 2007.
 # Kristof Bal <kristof.bal@gmail.com>, 2008.
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2013, 2021.
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2009, 2010, 2013, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:43+0000\n"
-"PO-Revision-Date: 2021-06-06 14:32+0200\n"
+"PO-Revision-Date: 2023-01-26 14:28+0100\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
-"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.04.1\n"
+"X-Generator: Lokalize 22.12.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -65,7 +65,7 @@ msgstr "Gesprek voeren"
 #: chatdlg.cpp:54
 #, kde-format
 msgid "Configure..."
-msgstr "Instellen..."
+msgstr "Configureren..."
 
 #: displayintro.cpp:72
 #, kde-format
