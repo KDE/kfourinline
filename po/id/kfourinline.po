@@ -1,21 +1,21 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the kfourinline package.
-# Wantoyo <wantoyek@gmail.com>, 2019, 2020, 2021, 2022.
+# Wantoyo <wantoyek@gmail.com>, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:43+0000\n"
-"PO-Revision-Date: 2022-08-19 20:36+0700\n"
+"PO-Revision-Date: 2023-01-27 06:39+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
-"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -43,8 +43,7 @@ msgid "Red"
 msgstr "Merah"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Obrolan Dlg"
@@ -63,7 +62,7 @@ msgstr "Konfigurasikan..."
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
-msgstr "Luncuran Lekas"
+msgstr "Luncuran Cepat"
 
 #: displayintro.cpp:79
 #, kde-format
@@ -102,8 +101,7 @@ msgid "Two Player Game"
 msgstr "Permainan Dua Pemain"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
 msgstr "Konfigurasikan Obrolan"
@@ -202,8 +200,7 @@ msgid "&Start Network"
 msgstr "&Mulaikan Jaringan"
 
 #: kgamedebugdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "KGame Debug Dialog"
+#, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
 msgstr "Dialog Debug KGame"
