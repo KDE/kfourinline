@@ -1,0 +1,866 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is copyright:
+# This file is distributed under the same license as the kfourinline package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kfourinline\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"PO-Revision-Date: 2023-02-05 09:33+0100\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Temuri Doghonadze"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Temuri.doghonadze@gmail.com"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "შავი"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr "ყვითელი"
+
+#, kde-format
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "წითელი"
+
+#: chatdlg.cpp:33
+#, kde-format
+msgctxt "@title:window"
+msgid "Chat Dlg"
+msgstr "ჩატის ფანჯარა"
+
+#: chatdlg.cpp:48
+#, kde-format
+msgid "Chat"
+msgstr "ჩატი"
+
+#: chatdlg.cpp:54
+#, kde-format
+msgid "Configure..."
+msgstr "კონფიგურაცია.."
+
+#: displayintro.cpp:72
+#, kde-format
+msgctxt "Name of quicklaunch field"
+msgid "Quick Launch"
+msgstr "სწრაფი გაშვება"
+
+#: displayintro.cpp:79
+#, kde-format
+msgctxt "Ask player who should start game"
+msgid "Who starts?"
+msgstr "ვინ იწყებს?"
+
+#: displayintro.cpp:83
+#, kde-format
+msgctxt "Ask player which color he wants to play"
+msgid "Your color?"
+msgstr "თქვენი ფერი?"
+
+#: displayintro.cpp:127
+#, kde-format
+msgctxt "quick start button - player versus AI level easy"
+msgid "Easy Game"
+msgstr "ადვილი თამაში"
+
+#: displayintro.cpp:133
+#, kde-format
+msgctxt "quick start button - player versus AI level normal"
+msgid "Normal Game"
+msgstr "ნორმალური თამაში"
+
+#: displayintro.cpp:139
+#, kde-format
+msgctxt "quick start button - player versus AI level hard"
+msgid "Hard Game"
+msgstr "რთული თამაში"
+
+#: displayintro.cpp:145
+#, kde-format
+msgctxt "quick start button - player versus player"
+msgid "Two Player Game"
+msgstr "ორი მოთამაშე"
+
+#: kchatdialog.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Chat"
+msgstr "ჩატის მორგება"
+
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
+#, kde-format
+msgid "Name Font..."
+msgstr "ფონტის სახელი..."
+
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
+#, kde-format
+msgid "Text Font..."
+msgstr "ტექსტის ფონტი..."
+
+#: kchatdialog.cpp:104
+#, kde-format
+msgid "Player: "
+msgstr "მოთამაშე: "
+
+#: kchatdialog.cpp:106
+#, kde-format
+msgid "This is a player message"
+msgstr "ეს მოთამაშის შეტყობინებაა"
+
+#: kchatdialog.cpp:112
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr ""
+"სისტემური შეტყობინებები - პირდაპირ თამაშიდან გამოგზავნილი შეტყობინებები"
+
+#: kchatdialog.cpp:126
+#, kde-format
+msgid "--- Game: "
+msgstr "--- თამაში: "
+
+#: kchatdialog.cpp:128
+#, kde-format
+msgid "This is a system message"
+msgstr "ეს სისტემური შეტყობინებაა"
+
+#: kchatdialog.cpp:132
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr "შეტყობინებების მაქსიმალური რაოდენობა (-1 = ულიმიტო):"
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&თამაში"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, kde-format
+msgid "&Settings"
+msgstr "გამართვა"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "ხელსაწყოთა მთავარი ზოლი"
+
+#: kgameconnectdialog.cpp:63
+#, kde-format
+msgid "Create a network game"
+msgstr "ქსელური თამაშის შექმნა"
+
+#: kgameconnectdialog.cpp:66
+#, kde-format
+msgid "Join a network game"
+msgstr "ქსელურ თამაშთან მიერთება"
+
+#: kgameconnectdialog.cpp:72
+#, kde-format
+msgid "Game name:"
+msgstr "თამაშის სახელი:"
+
+#: kgameconnectdialog.cpp:74
+#, kde-format
+msgid "Network games:"
+msgstr "ქსელური თამაშები:"
+
+#: kgameconnectdialog.cpp:84
+#, kde-format
+msgid "Port to connect to:"
+msgstr "მისაერთებელი პორტი:"
+
+#: kgameconnectdialog.cpp:90
+#, kde-format
+msgid "Host to connect to:"
+msgstr "მისაერთებელი ჰოსტი:"
+
+#: kgameconnectdialog.cpp:95
+#, kde-format
+msgid "&Start Network"
+msgstr "ქსელის &გაშვება"
+
+#: kgamedebugdialog.cpp:118
+#, kde-format
+msgctxt "@title:window"
+msgid "KGame Debug Dialog"
+msgstr "KGame-ის გამართვის ფანჯარა"
+
+#: kgamedebugdialog.cpp:140
+#, kde-format
+msgid "Debug &KGame"
+msgstr "KGame-ის გამართვა"
+
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
+#, kde-format
+msgid "Update"
+msgstr "განახლება"
+
+#: kgamedebugdialog.cpp:167
+#, kde-format
+msgid "KGame Pointer"
+msgstr "KGame-ის მაჩვენებელი"
+
+#: kgamedebugdialog.cpp:168
+#, kde-format
+msgid "Game ID"
+msgstr "თამაშის ID"
+
+#: kgamedebugdialog.cpp:169
+#, kde-format
+msgid "Game Cookie"
+msgstr "თამაშის ქუქი"
+
+#: kgamedebugdialog.cpp:170
+#, kde-format
+msgid "Is Master"
+msgstr "მთავარია"
+
+#: kgamedebugdialog.cpp:171
+#, kde-format
+msgid "Is Admin"
+msgstr "ადმინია"
+
+#: kgamedebugdialog.cpp:172
+#, kde-format
+msgid "Is Offering Connections"
+msgstr "გთავაზობთ მიერთებას"
+
+#: kgamedebugdialog.cpp:173
+#, kde-format
+msgid "Game Status"
+msgstr "თამაშის სტატუსი"
+
+#: kgamedebugdialog.cpp:174
+#, kde-format
+msgid "Game is Running"
+msgstr "თამაში გაშვებულია"
+
+#: kgamedebugdialog.cpp:175
+#, kde-format
+msgid "Maximal Players"
+msgstr "მაქსიმალური მოთამაშეები"
+
+#: kgamedebugdialog.cpp:176
+#, kde-format
+msgid "Minimal Players"
+msgstr "მინიმალური მოთამაშეები"
+
+#: kgamedebugdialog.cpp:177
+#, kde-format
+msgid "Players"
+msgstr "მოთამაშეები"
+
+#: kgamedebugdialog.cpp:183
+#, kde-format
+msgid "Debug &Players"
+msgstr "&მოთამაშეების გამართვა"
+
+#: kgamedebugdialog.cpp:193
+#, kde-format
+msgid "Available Players"
+msgstr "ხელმისაწვდომი მოთამაშეები"
+
+#: kgamedebugdialog.cpp:219
+#, kde-format
+msgid "Player Pointer"
+msgstr "მოთამაშის მაჩვენებელი"
+
+#: kgamedebugdialog.cpp:220
+#, kde-format
+msgid "Player ID"
+msgstr "მოთამაშის ID"
+
+#: kgamedebugdialog.cpp:221
+#, kde-format
+msgid "Player Name"
+msgstr "მოთამაშის სახელი"
+
+#: kgamedebugdialog.cpp:222
+#, kde-format
+msgid "Player Group"
+msgstr "მოთამაშის ჯგუფი"
+
+#: kgamedebugdialog.cpp:223
+#, kde-format
+msgid "Player User ID"
+msgstr "მოთამაშის მოხმარებლის ID"
+
+#: kgamedebugdialog.cpp:224
+#, kde-format
+msgid "My Turn"
+msgstr "ჩემი სვლა"
+
+#: kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Async Input"
+msgstr "ასინქრონული შეყვანა"
+
+#: kgamedebugdialog.cpp:226
+#, kde-format
+msgid "KGame Address"
+msgstr "KGame-ის მისამართი"
+
+#: kgamedebugdialog.cpp:227
+#, kde-format
+msgid "Player is Virtual"
+msgstr "მოთამაშე ვირტუალურია"
+
+#: kgamedebugdialog.cpp:228
+#, kde-format
+msgid "Player is Active"
+msgstr "მოთამაშე აქტიურია"
+
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "RTTI"
+msgstr "RTTI"
+
+#: kgamedebugdialog.cpp:230
+#, kde-format
+msgid "Network Priority"
+msgstr "ქსელის პრიორიტეტი"
+
+#: kgamedebugdialog.cpp:236
+#, kde-format
+msgid "Debug &Messages"
+msgstr "გამართვის &შეტყობინებები"
+
+#: kgamedebugdialog.cpp:251
+#, kde-format
+msgid "&>>"
+msgstr "&>>"
+
+#: kgamedebugdialog.cpp:255
+#, kde-format
+msgid "&<<"
+msgstr "&<<"
+
+#: kgamedebugdialog.cpp:259
+#, kde-format
+msgid "Do not show IDs:"
+msgstr "ID-ები ნაჩვენები არ იქნება:"
+
+#: kgamedebugdialog.cpp:328
+#, kde-format
+msgid "NULL pointer"
+msgstr "ნულოვანი მაჩვენებელი"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "True"
+msgstr "სიმართლე"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "False"
+msgstr "ტყუილი"
+
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "Clean"
+msgstr "გასუფთავება"
+
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
+#, kde-format
+msgid "Dirty"
+msgstr "ბინძური"
+
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
+#, kde-format
+msgid "Local"
+msgstr "ლოკალური"
+
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
+#, kde-format
+msgid "Undefined"
+msgstr "გაურკვეველი"
+
+#: kgamedebugdialog.cpp:507
+#, kde-format
+msgid "Unknown"
+msgstr "უცნობი"
+
+#: kgamedialog.cpp:92
+#, kde-format
+msgid "&Network"
+msgstr "&ქსელი"
+
+#: kgamedialogconfig.cpp:124
+#, kde-format
+msgid "Disconnect"
+msgstr "გათიშვა"
+
+#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#, kde-format
+msgid "Network Configuration"
+msgstr "ქსელის მორგება"
+
+#: kgamedialogconfig.cpp:187
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr "ქსელთან მიერთების შეცდომა"
+
+#: kgamedialogconfig.cpp:193
+#, kde-format
+msgid "Network status: No Network"
+msgstr "ქსელის მდგომარეობა: ქსელის გარეშე"
+
+#: kgamedialogconfig.cpp:199
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr "ქსელის მდგომარეობა: მთავარი ბრძანდებით"
+
+#: kgamedialogconfig.cpp:201
+#, kde-format
+msgid "Network status: You are connected"
+msgstr "ქსელის მდგომარეობა: მიერთებული ბრძანდებით"
+
+#: kwin4.cpp:74
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr "დაყენების შეცდომა: თემების სია ვერ ვიპოვე."
+
+#: kwin4.cpp:101
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr "დაყენების შეცდომა: AI ძრავა ვერ ვიპოვე. AI-ის გარეშე გაგრძელება."
+
+#: kwin4.cpp:116
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr "დაყენების შეცდომა: თემის ფაილის შეცდომა."
+
+#: kwin4.cpp:264
+#, kde-format
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "ამჟამად გაშვებული თამაშის დასრულება. გამარჯვებული არ გამოცხადდება."
+
+#: kwin4.cpp:269
+#, kde-format
+msgid "&Network Configuration..."
+msgstr "&ქსელის მორგება..."
+
+#: kwin4.cpp:273
+#, kde-format
+msgid "Network Chat..."
+msgstr "ქსელური ჩატი..."
+
+#: kwin4.cpp:278
+#, kde-format
+msgid "&Show Statistics"
+msgstr "&სტატისტიკის ჩვენება"
+
+#: kwin4.cpp:280
+#, kde-format
+msgid "Show statistics."
+msgstr "სტატისტიკის ჩვენება."
+
+#: kwin4.cpp:292
+#, kde-format
+msgid "Theme"
+msgstr "თემა"
+
+#: kwin4.cpp:303
+#, kde-format
+msgid "Debug KGame"
+msgstr "KGame-ის გამართვა"
+
+#: kwin4.cpp:326
+#, kde-format
+msgid "Welcome to Four Wins"
+msgstr "მოგესალმებათ ოთხი მოგება"
+
+#: kwin4.cpp:486 kwin4.cpp:639
+#, kde-format
+msgid "Game running..."
+msgstr "თამაში გაშვებულია..."
+
+#: kwin4.cpp:600
+#, kde-format
+msgid "No game  "
+msgstr "თამაშის გარეშე  "
+
+#: kwin4.cpp:602 kwin4.cpp:604
+#, kde-format
+msgid " %1 - %2 "
+msgstr " %1 - %2 "
+
+#: kwin4.cpp:606
+#, kde-format
+msgid "Nobody  "
+msgstr "არავინ  "
+
+#: kwin4.cpp:628
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "ქსელური თამაში დასრულდა!\n"
+
+#: kwin4.cpp:649
+#, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "თამაში ფრედ დასრულდა. შემდეგი რაუდი თავიდან გაუშვით."
+
+#: kwin4.cpp:656
+#, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "თამაში %1-მა მოიგო. შემდეგი რაუნდი თავიდან გაუშვით."
+
+#: kwin4.cpp:661
+#, kde-format
+msgid " Game ended. Please restart next round."
+msgstr "  თამაში დასრულდა. შემდეგი რაუნდი თავიდან გაუშვით."
+
+#: kwin4.cpp:691
+#, kde-format
+msgid "Black should be played by remote player"
+msgstr "შავებით დაშორებული მოთამაშე თამაშობს"
+
+#: kwin4.cpp:692
+#, kde-format
+msgid "Red should be played by remote player"
+msgstr "წითლით დაშორებული მოთამაშე თამაშობს"
+
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#, kde-format
+msgid "%1 Plays With"
+msgstr "%1 თამაშობს ფერით"
+
+#: kwin4.cpp:793
+#, kde-format
+msgid "General"
+msgstr "ზოგადი"
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, kde-format
+msgid "Network connection port"
+msgstr "ქსელური მიერთების პორტი"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "თამაშის სახელი"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, kde-format
+msgid "Network connection host"
+msgstr "ქსელური მიერთების ჰოსტი"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:50
+#, kde-format
+msgid "Change the strength of the computer player."
+msgstr "კომპიუტერის მოთამაშის სიძლიერის შეცვლა."
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, kde-format
+msgid "Player 1 name"
+msgstr "პირველი მოთამაშის სახელი"
+
+#: kwin4.kcfg:32
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "მოთამაშე 1"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, kde-format
+msgid "Player 2 name"
+msgstr "მეორე მოთამაშის სახელი"
+
+#: kwin4.kcfg:39
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "მოთამაშე 2"
+
+#: main.cpp:67
+#, kde-format
+msgid "KFourInLine"
+msgstr "KFourInLine"
+
+#: main.cpp:69
+#, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "KFourInLine: ერთი ან ორი მოთამაშის თამაში"
+
+#: main.cpp:71
+#, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "(c) 1995-2007, Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Martin Heni"
+msgstr "Martin Heni"
+
+#: main.cpp:72
+#, kde-format
+msgid "Game design and code"
+msgstr "თამაშის დიზაინი და კოდი"
+
+#: main.cpp:73
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "Johann Ollivier Lapeyre"
+
+#: main.cpp:73 main.cpp:74
+#, kde-format
+msgid "Graphics"
+msgstr "გრაფიკა"
+
+#: main.cpp:74
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "Eugene Trounev"
+
+#: main.cpp:75
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:75
+#, kde-format
+msgid "Code Improvements"
+msgstr "კოდის გაუმჯობესება"
+
+#: main.cpp:80
+#, kde-format
+msgid "Enter debug level"
+msgstr "გამართვის დონეზე გადასვლა"
+
+#: main.cpp:81
+#, kde-format
+msgid "Skip intro animation"
+msgstr "შესავალი ანიმაციის გამოტოვება"
+
+#: main.cpp:82
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr "თამაშის დემო ვერსიის გაშვება"
+
+#: scoresprite.cpp:163
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr "დონე %1"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: settings.ui:38
+#, kde-format
+msgid "Computer Difficulty"
+msgstr "კომპიუტერის სირთულე"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:83
+#, kde-format
+msgid "Easy"
+msgstr "ადვილი"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:90
+#, kde-format
+msgid "Hard"
+msgstr "მაგარი"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:102
+#, kde-format
+msgid "Use AI learning"
+msgstr "AI ძრავის გამოყენება"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input1)
+#: settings.ui:112
+#, kde-format
+msgid "Red Plays With"
+msgstr "წითლით თამაშობს"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#: settings.ui:132 settings.ui:181
+#, kde-format
+msgid "Mouse"
+msgstr "თაგუნა"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#: settings.ui:142 settings.ui:191
+#, kde-format
+msgid "Keyboard"
+msgstr "კლავიატურა"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#: settings.ui:149 settings.ui:198
+#, kde-format
+msgid "Computer"
+msgstr "კომპიუტერი"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Input0)
+#: settings.ui:161
+#, kde-format
+msgid "Black Plays With"
+msgstr "შავით თამაშობს"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
+#: settings.ui:216
+#, kde-format
+msgid "Player Names"
+msgstr "მოთამაშეების სახელები"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel3)
+#: settings.ui:242
+#, kde-format
+msgid "Player 1:"
+msgstr "მოთამაშე 1:"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel4)
+#: settings.ui:249
+#, kde-format
+msgid "Player 2:"
+msgstr "მოთამაშე 2:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
+#: settings.ui:267
+#, kde-format
+msgid "Starting Player Color"
+msgstr "დამწყები მოთამაშის ფერი"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
+#: settings.ui:287
+#, kde-format
+msgid "Red"
+msgstr "წითელი"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
+#: settings.ui:297
+#, kde-format
+msgid "Black"
+msgstr "შავი"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "სტატისტიკა"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:57 statuswidget.ui:113
+#, kde-format
+msgid "Player 1"
+msgstr "მოთამაშე 1"
+
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:64
+#, kde-format
+msgid "Name"
+msgstr "სახელი"
+
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:74
+#, kde-format
+msgid "Won"
+msgstr "ვონი"
+
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:87
+#, kde-format
+msgid "Lost"
+msgstr "წაგება"
+
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:103
+#, kde-format
+msgid "Sum"
+msgstr "ჯამი"
+
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:113
+#, kde-format
+msgid "Aborted"
+msgstr "შეწყვეტილია"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:131
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "სტატისტიკის გასუფავება"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:154
+#, kde-format
+msgid "&Close"
+msgstr "&დახურვა"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:166 statuswidget.ui:220
+#, kde-format
+msgid "Player 2"
+msgstr "მოთამაშე 2"
+
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:176
+#, kde-format
+msgid "Drawn"
+msgstr "ფრე"
+
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:63
+#, kde-format
+msgid "W"
+msgstr "ო"
+
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:73
+#, kde-format
+msgid "D"
+msgstr "D"
+
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:83
+#, kde-format
+msgid "L"
+msgstr "L"
+
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:93
+#, kde-format
+msgid "No"
+msgstr "არა"
+
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:103
+#, kde-format
+msgid "Bk"
+msgstr "Bk"
