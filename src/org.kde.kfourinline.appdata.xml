@@ -20,6 +20,7 @@
   <name xml:lang="gl">KFourInLine</name>
   <name xml:lang="id">KFourInLine</name>
   <name xml:lang="it">KFourInLine</name>
+  <name xml:lang="ka">KFourInLine</name>
   <name xml:lang="ko">KFourInLine</name>
   <name xml:lang="nl">KFourInLine</name>
   <name xml:lang="nn">KFourInLine</name>
@@ -50,6 +51,7 @@
   <summary xml:lang="gl">KFourInLine é un xogo de catro en liña de KDE</summary>
   <summary xml:lang="id">KFourInLine adalah sebuah permainan sederet-empat (four-in-a-row) oleh KDE</summary>
   <summary xml:lang="it">KFourInLine è un gioco di "Forza Quattro" della comunità KDE</summary>
+  <summary xml:lang="ka">KDE ხუთი ზედიზედ სამაგიდო თამაში</summary>
   <summary xml:lang="ko">KFourInLine은 KDE의 한 줄에 네 개 보드 게임입니다</summary>
   <summary xml:lang="nl">KFourInLine is een Vier-op-een-rij spel door KDE</summary>
   <summary xml:lang="nn">KFourInLine er eit fire-på-rad-spel frå KDE.</summary>
@@ -116,6 +118,7 @@
       <caption xml:lang="gl">Xogando a KFourInLine</caption>
       <caption xml:lang="id">Memainkan KFourInLine</caption>
       <caption xml:lang="it">Giocare a KFourInLine</caption>
+      <caption xml:lang="ka">KFourInLine-ის თამაში</caption>
       <caption xml:lang="ko">KFourInLine 플레이</caption>
       <caption xml:lang="nl">KFourInLine spelen</caption>
       <caption xml:lang="nn">Spelar KFourInLine</caption>
