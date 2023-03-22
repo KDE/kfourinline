@@ -1,15 +1,17 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# translation of kfourinline.pot to esperanto
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Heiko Evermann <heiko@evermann.de>, 2003.
+# Wolfram Diestel <wolfram@steloj.de>, 2002.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kwin4\n"
+"Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:43+0000\n"
-"PO-Revision-Date: 2002-03-10 20:51GMT\n"
-"Last-Translator: Wolfram Diestel <wolfram@steloj.de>\n"
-"Language-Team: Esperanto <eo@li.org>\n"
+"PO-Revision-Date: 2023-03-20 22:43+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,8 +45,7 @@ msgid "Red"
 msgstr "Ruĝa"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Babilejo"
@@ -84,11 +85,10 @@ msgid "Easy Game"
 msgstr ""
 
 #: displayintro.cpp:133
-#, fuzzy, kde-format
-#| msgid "No game  "
+#, kde-format
 msgctxt "quick start button - player versus AI level normal"
 msgid "Normal Game"
-msgstr "Neniu ludo..."
+msgstr ""
 
 #: displayintro.cpp:139
 #, kde-format
@@ -97,17 +97,16 @@ msgid "Hard Game"
 msgstr ""
 
 #: displayintro.cpp:145
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "quick start button - player versus player"
 msgid "Two Player Game"
-msgstr "Kvar venkas: Retludo por du ludantoj"
+msgstr ""
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Agordu..."
+msgstr ""
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
@@ -151,9 +150,9 @@ msgstr ""
 
 #. i18n: ectx: Menu (game)
 #: kfourinlineui.rc:10
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Game"
-msgstr "Nomo"
+msgstr ""
 
 #. i18n: ectx: Menu (settings)
 #: kfourinlineui.rc:18
@@ -168,24 +167,24 @@ msgid "Main Toolbar"
 msgstr "Ĉefa ilobreto"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "Create a network game"
-msgstr "Komencante novan ludon..."
+msgstr ""
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
+#, kde-format
 msgid "Join a network game"
-msgstr "Komencante novan ludon..."
+msgstr ""
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game name:"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network games:"
-msgstr "&Retagordo..."
+msgstr ""
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
@@ -209,10 +208,9 @@ msgid "KGame Debug Dialog"
 msgstr ""
 
 #: kgamedebugdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &KGame"
-msgstr "Sencimigu Ludilon"
+msgstr "Sencimigi &KGame"
 
 #: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
@@ -220,19 +218,19 @@ msgid "Update"
 msgstr ""
 
 #: kgamedebugdialog.cpp:167
-#, fuzzy, kde-format
+#, kde-format
 msgid "KGame Pointer"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:168
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game ID"
-msgstr "Nomo"
+msgstr ""
 
 #: kgamedebugdialog.cpp:169
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game Cookie"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:170
 #, kde-format
@@ -250,15 +248,14 @@ msgid "Is Offering Connections"
 msgstr ""
 
 #: kgamedebugdialog.cpp:173
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game Status"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:174
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgid "Game is Running"
-msgstr "Ludo ruliĝanta..."
+msgstr ""
 
 #: kgamedebugdialog.cpp:175
 #, kde-format
@@ -276,10 +273,9 @@ msgid "Players"
 msgstr "Ludantoj"
 
 #: kgamedebugdialog.cpp:183
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Players"
-msgstr "Sencimigu Ludilon"
+msgstr ""
 
 #: kgamedebugdialog.cpp:193
 #, kde-format
@@ -287,32 +283,29 @@ msgid "Available Players"
 msgstr ""
 
 #: kgamedebugdialog.cpp:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Pointer"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player ID"
-msgstr "Ludanto 1"
+msgstr ""
 
 #: kgamedebugdialog.cpp:221
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Name"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player Group"
-msgstr "Ludanto 1"
+msgstr ""
 
 #: kgamedebugdialog.cpp:223
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player User ID"
-msgstr "Ludanto 1"
+msgstr ""
 
 #: kgamedebugdialog.cpp:224
 #, kde-format
@@ -330,14 +323,14 @@ msgid "KGame Address"
 msgstr ""
 
 #: kgamedebugdialog.cpp:227
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player is Virtual"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:228
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player is Active"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kgamedebugdialog.cpp:229
 #, kde-format
@@ -345,15 +338,14 @@ msgid "RTTI"
 msgstr ""
 
 #: kgamedebugdialog.cpp:230
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network Priority"
-msgstr "&Retagordo..."
+msgstr ""
 
 #: kgamedebugdialog.cpp:236
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Messages"
-msgstr "Sencimigu Ludilon"
+msgstr ""
 
 #: kgamedebugdialog.cpp:251
 #, kde-format
@@ -415,9 +407,9 @@ msgid "Unknown"
 msgstr ""
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Network"
-msgstr "&Retagordo..."
+msgstr ""
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
@@ -425,9 +417,9 @@ msgid "Disconnect"
 msgstr ""
 
 #: kgamedialogconfig.cpp:128 kwin4.cpp:680
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network Configuration"
-msgstr "&Retagordo..."
+msgstr ""
 
 #: kgamedialogconfig.cpp:187
 #, kde-format
@@ -465,10 +457,9 @@ msgid "Installation error: Theme file error."
 msgstr ""
 
 #: kwin4.cpp:264
-#, fuzzy, kde-format
-#| msgid "Aborts a currently played game. No winner will be declared."
+#, kde-format
 msgid "Ends a currently played game. No winner will be declared."
-msgstr "Haltigas la nuna ludon. Neniu gajnos."
+msgstr ""
 
 #: kwin4.cpp:269
 #, kde-format
@@ -476,19 +467,19 @@ msgid "&Network Configuration..."
 msgstr "&Retagordo..."
 
 #: kwin4.cpp:273
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network Chat..."
-msgstr "&Retagordo..."
+msgstr ""
 
 #: kwin4.cpp:278
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Show Statistics"
-msgstr "&Montru statistikon..."
+msgstr ""
 
 #: kwin4.cpp:280
-#, fuzzy, kde-format
+#, kde-format
 msgid "Show statistics."
-msgstr "&Montru statistikon..."
+msgstr ""
 
 #: kwin4.cpp:292
 #, kde-format
@@ -501,9 +492,9 @@ msgid "Debug KGame"
 msgstr "Sencimigu Ludilon"
 
 #: kwin4.cpp:326
-#, fuzzy, kde-format
+#, kde-format
 msgid "Welcome to Four Wins"
-msgstr "Bonvenon ĉe %1"
+msgstr ""
 
 #: kwin4.cpp:486 kwin4.cpp:639
 #, kde-format
@@ -541,27 +532,24 @@ msgid "%1 won the game. Please restart next round."
 msgstr "%1 gajnis la ludon. Bonvolu lanĉi la sekvan rondon."
 
 #: kwin4.cpp:661
-#, fuzzy, kde-format
-#| msgid " Game aborted. Please restart next round."
+#, kde-format
 msgid " Game ended. Please restart next round."
-msgstr " Ludo haltigita. Bonvolu rekomenci sekvan rondon."
+msgstr ""
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote"
+#, kde-format
 msgid "Black should be played by remote player"
-msgstr "Ruĝo estu ludata de la forulo"
+msgstr ""
 
 #: kwin4.cpp:692
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote"
+#, kde-format
 msgid "Red should be played by remote player"
-msgstr "Ruĝo estu ludata de la forulo"
+msgstr ""
 
 #: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
-#, fuzzy, kde-format
+#, kde-format
 msgid "%1 Plays With"
-msgstr "Ruĝo ludata de"
+msgstr ""
 
 #: kwin4.cpp:793
 #, kde-format
@@ -570,21 +558,21 @@ msgstr "Ĝeneralo"
 
 #. i18n: ectx: label, entry (port), group (Parameter)
 #: kwin4.kcfg:10
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network connection port"
-msgstr "&Retagordo..."
+msgstr ""
 
 #. i18n: ectx: label, entry (gamename), group (Parameter)
 #: kwin4.kcfg:14
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game name"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #. i18n: ectx: label, entry (host), group (Parameter)
 #: kwin4.kcfg:17
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network connection host"
-msgstr "&Retagordo..."
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
@@ -595,9 +583,9 @@ msgstr "Ŝanĝu la lertecon de la komputila ludanto."
 
 #. i18n: ectx: label, entry (Name1), group (Parameter)
 #: kwin4.kcfg:28
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 1 name"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kwin4.kcfg:32
 #, kde-format
@@ -607,9 +595,9 @@ msgstr "Ludanto 1"
 
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 2 name"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #: kwin4.kcfg:39
 #, kde-format
@@ -623,15 +611,14 @@ msgid "KFourInLine"
 msgstr ""
 
 #: main.cpp:69
-#, fuzzy, kde-format
+#, kde-format
 msgid "KFourInLine: Two player board game"
-msgstr "Kvar venkas: Retludo por du ludantoj"
+msgstr ""
 
 #: main.cpp:71
-#, fuzzy, kde-format
-#| msgid "(c) Martin Heni   "
+#, kde-format
 msgid "(c) 1995-2007, Martin Heni"
-msgstr "(c) Martin Heni   "
+msgstr ""
 
 #: main.cpp:72
 #, kde-format
@@ -684,10 +671,10 @@ msgid "Run game in demo (autoplay) mode"
 msgstr ""
 
 #: scoresprite.cpp:163
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "computer level"
 msgid "Level %1"
-msgstr "Nivelo"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: settings.ui:38
@@ -715,66 +702,66 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, Input1)
 #: settings.ui:112
-#, fuzzy, kde-format
+#, kde-format
 msgid "Red Plays With"
-msgstr "Ruĝo ludata de"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #: settings.ui:132 settings.ui:181
-#, fuzzy, kde-format
+#, kde-format
 msgid "Mouse"
-msgstr "&Muso"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #: settings.ui:142 settings.ui:191
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard"
-msgstr "&Klavaro"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #: settings.ui:149 settings.ui:198
-#, fuzzy, kde-format
+#, kde-format
 msgid "Computer"
-msgstr "&Komputilo"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, Input0)
 #: settings.ui:161
-#, fuzzy, kde-format
+#, kde-format
 msgid "Black Plays With"
-msgstr "Ruĝo ludata de"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: settings.ui:216
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Names"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: settings.ui:242
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 1:"
-msgstr "Ludanto 1"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: settings.ui:249
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player 2:"
-msgstr "Ludanto 2"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, StartColour)
 #: settings.ui:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Starting Player Color"
-msgstr "Komencanta ludanto"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
 #: settings.ui:287
-#, fuzzy, kde-format
+#, kde-format
 msgid "Red"
-msgstr "&Ruĝa"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
 #: settings.ui:297
@@ -784,9 +771,9 @@ msgstr "Negra"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
 #: statistics.ui:13
-#, fuzzy, kde-format
+#, kde-format
 msgid "Statistics"
-msgstr "Statistiko..."
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, p1_name)
 #: statistics.ui:57 statuswidget.ui:113
@@ -876,87 +863,4 @@ msgstr "Ne"
 #: statuswidget.ui:103
 #, kde-format
 msgid "Bk"
-msgstr ""
-
-#~ msgid "Ready"
-#~ msgstr "Preta"
-
-#~ msgid "This leaves space for the mover"
-#~ msgstr "Tio lasas spacon por la movanto"
-
-#, fuzzy
-#~ msgid " %1 - Yellow "
-#~ msgstr " - Flavo "
-
-#~ msgid "KWin4"
-#~ msgstr "Kvar venkas"
-
-#~ msgid "Yellow should be played by remote"
-#~ msgstr "Flavo estu ludata de la forulo"
-
-#, fuzzy
-#~ msgid "Yellow Plays With"
-#~ msgstr "Flavo ludata de"
-
-#~ msgid "Open a saved game..."
-#~ msgstr "Malfermu konservitan ludon..."
-
-#, fuzzy
-#~ msgid "Save a game..."
-#~ msgstr "Konservu ludon."
-
-#~ msgid "Ending the current game..."
-#~ msgstr "Finante la nunan ludon..."
-
-#~ msgid "Shows a hint on how to move."
-#~ msgstr "Montras helpnoton kiel movi."
-
-#~ msgid "Quits the program."
-#~ msgstr "Finas la programon."
-
-#~ msgid "Undo last move."
-#~ msgstr "Malfaru lastan movon."
-
-#~ msgid "Redo last move."
-#~ msgstr "Refaru lastan movon."
-
-#~ msgctxt "1. intro line, welcome to win4"
-#~ msgid "Welcome"
-#~ msgstr "Bonvenon"
-
-#~ msgctxt "2. intro line, welcome to win4"
-#~ msgid "to"
-#~ msgstr "al"
-
-#~ msgctxt "3. intro line, welcome to win4"
-#~ msgid "KWin4"
-#~ msgstr "Kvar venkas"
-
-#, fuzzy
-#~ msgid "Hold on... the other player has not been yet..."
-#~ msgstr "Atendu ... la alia ankoraŭ ne foriris..."
-
-#~ msgid "Hold your horses..."
-#~ msgstr "Atendu..."
-
-#, fuzzy
-#~ msgid "Ah ah ah... only one go at a time..."
-#~ msgstr "He, he ... nur unu iru samtempe..."
-
-#~ msgid "Please wait... it is not your turn."
-#~ msgstr "Bonvolu atendi... ne estas via vico."
-
-#~ msgid "Form1"
-#~ msgstr "Formo 1"
-
-#~ msgid "vs"
-#~ msgstr "kontraŭ"
-
-#~ msgid "Chance"
-#~ msgstr "Ŝanco"
-
-#~ msgid "Winner"
-#~ msgstr "Gajninto"
-
-#~ msgid "Loser"
-#~ msgstr "Malgajninto"
+msgstr "Bk"
