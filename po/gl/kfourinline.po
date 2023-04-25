@@ -1,17 +1,17 @@
 # translation of kfourinline.po to galician
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2017.
 # Marce Villarino <mvillarino@kde-espana.org>, 2013.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2019, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:43+0000\n"
-"PO-Revision-Date: 2019-11-17 09:23+0100\n"
+"PO-Revision-Date: 2023-04-24 07:32+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.03.70\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -48,8 +48,7 @@ msgid "Red"
 msgstr "Vermello"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Diálogo de conversa"
@@ -107,8 +106,7 @@ msgid "Two Player Game"
 msgstr "Dous xogadores"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
 msgstr "Configurar a conversa"
@@ -207,8 +205,7 @@ msgid "&Start Network"
 msgstr "&Iniciar a rede"
 
 #: kgamedebugdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "KGame Debug Dialog"
+#, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
 msgstr "Diálogo de depuración do KGame"
