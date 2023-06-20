@@ -363,7 +363,7 @@ msgstr "&<<"
 #: kgamedebugdialog.cpp:259
 #, kde-format
 msgid "Do not show IDs:"
-msgstr "Non mostrar os identificadores:"
+msgstr "Non amosar os identificadores:"
 
 #: kgamedebugdialog.cpp:328
 #, kde-format
@@ -479,7 +479,7 @@ msgstr "Conversa pola rede…"
 #: kwin4.cpp:278
 #, kde-format
 msgid "&Show Statistics"
-msgstr "Mostrar as &estatísticas"
+msgstr "Amosar as &estatísticas"
 
 #: kwin4.cpp:280
 #, kde-format
