@@ -77,3 +77,5 @@ void ChatDlg::setPlayer(KWin4Player *p)
     }
     mChat->setFromPlayer(p);
 }
+
+#include "moc_chatdlg.cpp"

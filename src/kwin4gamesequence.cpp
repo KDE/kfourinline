@@ -26,3 +26,5 @@ int KWin4GameSequence::checkGameOver(KPlayer *player)
 {
     return m_game->doCheckGameOver(player);
 }
+
+#include "moc_kwin4gamesequence.cpp"

@@ -50,3 +50,5 @@ void Score::update()
         mDisplay->setInput(mInputDevice[i], i);
     }
 }
+
+#include "moc_score.cpp"

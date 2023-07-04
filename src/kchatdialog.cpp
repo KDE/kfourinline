@@ -269,3 +269,5 @@ int KChatDialog::maxMessages() const
     }
     return max;
 }
+
+#include "moc_kchatdialog.cpp"

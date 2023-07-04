@@ -794,3 +794,5 @@ void KWin4App::configureSettings()
     connect(dialog, &KConfigDialog::settingsChanged, mDoc, &KWin4Doc::loadSettings);
     dialog->show();
 }
+
+#include "moc_kwin4.cpp"

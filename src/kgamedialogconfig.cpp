@@ -238,3 +238,5 @@ void KGameDialogNetworkConfig::setDiscoveryInfo(const QString &type, const QStri
     d->mConnect->setType(type);
     d->mConnect->setName(name);
 }
+
+#include "moc_kgamedialogconfig.cpp"

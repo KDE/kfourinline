@@ -22,3 +22,5 @@ void SpriteNotify::emitSignal(int mode)
 {
     Q_EMIT signalNotify(mParent, mode);
 }
+
+#include "moc_spritenotify.cpp"

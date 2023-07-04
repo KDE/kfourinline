@@ -208,3 +208,5 @@ void KMessageFilePipe::exec()
 
     return;
 }
+
+#include "moc_kgameprocess.cpp"

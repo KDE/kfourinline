@@ -659,3 +659,5 @@ int main()
     fflush(stderr);
     return 1;
 }
+
+#include "moc_kwin4proc.cpp"

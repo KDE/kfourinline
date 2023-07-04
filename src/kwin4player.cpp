@@ -130,3 +130,5 @@ void KWin4Player::resetStats(bool all)
         mAllRemis = 0;
     }
 }
+
+#include "moc_kwin4player.cpp"

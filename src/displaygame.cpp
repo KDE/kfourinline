@@ -379,3 +379,5 @@ ScoreSprite *DisplayGame::score()
 {
     return mScoreBoard;
 }
+
+#include "moc_displaygame.cpp"

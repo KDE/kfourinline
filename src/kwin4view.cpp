@@ -492,3 +492,5 @@ bool KWin4View::viewportEvent(QEvent *event)
         mIntroDisplay->viewEvent(event);
     return QGraphicsView::viewportEvent(event);
 }
+
+#include "moc_kwin4view.cpp"

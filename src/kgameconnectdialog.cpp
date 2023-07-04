@@ -227,3 +227,5 @@ void KGameConnectWidget::slotTypeChanged(QAbstractButton *button)
         Q_EMIT signalServerTypeChanged(t);
     }
 }
+
+#include "moc_kgameconnectdialog.cpp"

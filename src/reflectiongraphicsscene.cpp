@@ -86,3 +86,5 @@ void ReflectionGraphicsScene::drawBackground(QPainter *painter, const QRectF &re
     if (mBackground)
         QGraphicsScene::drawBackground(painter, rect);
 }
+
+#include "moc_reflectiongraphicsscene.cpp"

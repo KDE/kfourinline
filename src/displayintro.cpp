@@ -567,3 +567,5 @@ void DisplayIntro::viewEvent(QEvent *event)
     }
     return;
 }
+
+#include "moc_displayintro.cpp"

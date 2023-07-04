@@ -229,3 +229,5 @@ void KGameDialog::slotRemoveConfigWidget(QObject *configWidget)
 {
     d->mConfigWidgets.removeAll((KGameDialogConfig *)configWidget);
 }
+
+#include "moc_kgamedialog.cpp"

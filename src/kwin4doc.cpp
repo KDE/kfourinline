@@ -1332,3 +1332,5 @@ void KWin4Doc::newPlayersJoin(KGamePlayerList * /*oldList*/, KGamePlayerList *ne
     if (global_debug > 1)
         qCDebug(KFOURINLINE_LOG) << "newPlayersJoin: DONE";
 }
+
+#include "moc_kwin4doc.cpp"

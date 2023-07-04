@@ -553,3 +553,5 @@ bool KGameDebugDialog::showId(int msgid)
     }
     return true;
 }
+
+#include "moc_kgamedebugdialog.cpp"
