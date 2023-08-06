@@ -51,12 +51,12 @@ msgstr "Vermello"
 #, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "Diálogo de conversa"
+msgstr "Diálogo de charla"
 
 #: chatdlg.cpp:48
 #, kde-format
 msgid "Chat"
-msgstr "Conversa"
+msgstr "Charla"
 
 #: chatdlg.cpp:54
 #, kde-format
@@ -109,7 +109,7 @@ msgstr "Dous xogadores"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Configurar a conversa"
+msgstr "Configurar a charla"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
@@ -474,7 +474,7 @@ msgstr "Configuración da &rede…"
 #: kwin4.cpp:273
 #, kde-format
 msgid "Network Chat..."
-msgstr "Conversa pola rede…"
+msgstr "Charla pola rede…"
 
 #: kwin4.cpp:278
 #, kde-format
