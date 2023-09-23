@@ -29,9 +29,6 @@
 // KF
 #include <KAboutData>
 #include <KCrash>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
 #include <KLocalizedString>
 // Qt
 #include <QApplication>
@@ -50,18 +47,8 @@ int main(int argc, char *argv[])
 {
     global_debug = 0;
 
-    // Fixes blurry icons with fractional scaling
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("kfourinline"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("kfourinlinerc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("kfourinlineui.rc"));
-    migrate.migrate();
-#endif
     KLocalizedString::setApplicationDomain("kfourinline");
     KAboutData aboutData(QStringLiteral("kfourinline"),
                          i18n("KFourInLine"),

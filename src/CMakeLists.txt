@@ -79,18 +79,15 @@ ecm_qt_declare_logging_category(kfourinline
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-kfourinline.png")
 ecm_add_app_icon(kfourinline ICONS ${ICONS_SRCS})
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kfourinline KDEGames6 KDEGames6Private)
-else()
-    target_link_libraries(kfourinline KF5KDEGames KF5KDEGamesPrivate)
-endif()
 target_link_libraries(kfourinline
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::DNSSD
-    KF${KF_MAJOR_VERSION}::XmlGui
-    KF${KF_MAJOR_VERSION}::WidgetsAddons
-    Qt${QT_MAJOR_VERSION}::Svg
+    KDEGames6
+    KDEGames6Private
+    KF6::CoreAddons
+    KF6::Crash
+    KF6::DNSSD
+    KF6::XmlGui
+    KF6::WidgetsAddons
+    Qt6::Svg
 )
 
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
@@ -109,13 +106,10 @@ target_sources(kfourinlineproc PRIVATE
     kwin4proc.h
 )
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(kfourinlineproc KDEGames6 KDEGames6Private)
-else()
-    target_link_libraries(kfourinlineproc KF5KDEGames KF5KDEGamesPrivate)
-endif()
 target_link_libraries(kfourinlineproc
-    Qt${QT_MAJOR_VERSION}::Svg
+    KDEGames6
+    KDEGames6Private
+    Qt6::Svg
 )
 
 install(TARGETS kfourinlineproc ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
