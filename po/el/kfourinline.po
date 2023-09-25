@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2021-06-20 11:53+0300\n"
 "Last-Translator: Stelios <sstavra@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -613,67 +613,67 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "Παίκτης 2"
 
-#: main.cpp:67
+#: main.cpp:54
 #, kde-format
 msgid "KFourInLine"
 msgstr "KFourInLine"
 
-#: main.cpp:69
+#: main.cpp:56
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "KFourInLine: Παιχνίδι για δύο παίκτες"
 
-#: main.cpp:71
+#: main.cpp:58
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "(c) 1995-2007, Martin Heni"
 
-#: main.cpp:72
+#: main.cpp:59
 #, kde-format
 msgid "Martin Heni"
 msgstr "Martin Heni"
 
-#: main.cpp:72
+#: main.cpp:59
 #, kde-format
 msgid "Game design and code"
 msgstr "Σχεδιασμός παιχνιδιού και κώδικας"
 
-#: main.cpp:73
+#: main.cpp:60
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:73 main.cpp:74
+#: main.cpp:60 main.cpp:61
 #, kde-format
 msgid "Graphics"
 msgstr "Γραφικά"
 
-#: main.cpp:74
+#: main.cpp:61
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:75
+#: main.cpp:62
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:75
+#: main.cpp:62
 #, kde-format
 msgid "Code Improvements"
 msgstr "Βελτιώσεις του κώδικα"
 
-#: main.cpp:80
+#: main.cpp:67
 #, kde-format
 msgid "Enter debug level"
 msgstr "Δώστε επίπεδο αποσφαλμάτωσης"
 
-#: main.cpp:81
+#: main.cpp:68
 #, kde-format
 msgid "Skip intro animation"
 msgstr "Παράλειψη της εισαγωγής"
 
-#: main.cpp:82
+#: main.cpp:69
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "Εκτέλεση του παιχνιδιού σε λειτουργία επίδειξης (autoplay)"

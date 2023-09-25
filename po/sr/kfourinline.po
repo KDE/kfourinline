@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-11 03:20+0200\n"
+"POT-Creation-Date: 2023-09-25 01:39+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -48,105 +48,109 @@ msgctxt "Player 1 color"
 msgid "Red"
 msgstr "црвени|/|$[својства ном црвени]"
 
-#: chatdlg.cpp:48
-#, kde-format
+#: chatdlg.cpp:33
+#, fuzzy, kde-format
+#| msgid "Chat Dlg"
+msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Дијалог ћаскања"
 
-#: chatdlg.cpp:63
+#: chatdlg.cpp:48
 #, kde-format
 msgid "Chat"
 msgstr "Ћаскање"
 
-#: chatdlg.cpp:69
+#: chatdlg.cpp:54
 #, kde-format
 msgid "Configure..."
 msgstr "Подеси..."
 
-#: displayintro.cpp:90
+#: displayintro.cpp:72
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
 msgstr "Брзо покретање"
 
-#: displayintro.cpp:97
+#: displayintro.cpp:79
 #, kde-format
 msgctxt "Ask player who should start game"
 msgid "Who starts?"
 msgstr "Ко почиње?"
 
-#: displayintro.cpp:101
+#: displayintro.cpp:83
 #, kde-format
 msgctxt "Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Ваша боја?"
 
-#: displayintro.cpp:150
+#: displayintro.cpp:127
 #, kde-format
 msgctxt "quick start button - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Лака игра"
 
-#: displayintro.cpp:157
+#: displayintro.cpp:133
 #, kde-format
 msgctxt "quick start button - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Нормална игра"
 
-#: displayintro.cpp:164
+#: displayintro.cpp:139
 #, kde-format
 msgctxt "quick start button - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Тешка игра"
 
-#: displayintro.cpp:171
+#: displayintro.cpp:145
 #, kde-format
 msgctxt "quick start button - player versus player"
 msgid "Two Player Game"
 msgstr "Игра за два играча"
 
 # >> @title:window
-#: kchatdialog.cpp:90
-#, kde-format
+#: kchatdialog.cpp:80
+#, fuzzy, kde-format
+#| msgid "Configure Chat"
+msgctxt "@title:window"
 msgid "Configure Chat"
 msgstr "Подешавање ћаскања"
 
-#: kchatdialog.cpp:102 kchatdialog.cpp:124
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
 msgid "Name Font..."
 msgstr "Фонт имена..."
 
-#: kchatdialog.cpp:105 kchatdialog.cpp:127
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgid "Text Font..."
 msgstr "Фонт текста..."
 
-#: kchatdialog.cpp:114
+#: kchatdialog.cpp:104
 #, kde-format
 msgid "Player: "
 msgstr "Играч: "
 
-#: kchatdialog.cpp:116
+#: kchatdialog.cpp:106
 #, kde-format
 msgid "This is a player message"
 msgstr "Ово је порука играча."
 
-#: kchatdialog.cpp:122
+#: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
 msgstr "Системске поруке — поруке послате директно из игре"
 
-#: kchatdialog.cpp:136
+#: kchatdialog.cpp:126
 #, kde-format
 msgid "--- Game: "
 msgstr "--- Игра: "
 
-#: kchatdialog.cpp:138
+#: kchatdialog.cpp:128
 #, kde-format
 msgid "This is a system message"
 msgstr "Ово је системска порука."
 
-#: kchatdialog.cpp:142
+#: kchatdialog.cpp:132
 #, kde-format
 msgid "Maximum number of messages (-1 = unlimited):"
 msgstr "Највећи број порука (-1 за неограничено):"
@@ -169,427 +173,429 @@ msgstr "&Подешавање"
 msgid "Main Toolbar"
 msgstr "Главна трака"
 
-#: kgameconnectdialog.cpp:72
+#: kgameconnectdialog.cpp:63
 #, kde-format
 msgid "Create a network game"
 msgstr "Покрени мрежну партију"
 
-#: kgameconnectdialog.cpp:75
+#: kgameconnectdialog.cpp:66
 #, kde-format
 msgid "Join a network game"
 msgstr "Придружи се мрежној партији"
 
-#: kgameconnectdialog.cpp:81
+#: kgameconnectdialog.cpp:72
 #, kde-format
 msgid "Game name:"
 msgstr "Име партије:"
 
-#: kgameconnectdialog.cpp:83
+#: kgameconnectdialog.cpp:74
 #, kde-format
 msgid "Network games:"
 msgstr "Мрежне партије:"
 
-#: kgameconnectdialog.cpp:93
+#: kgameconnectdialog.cpp:84
 #, kde-format
 msgid "Port to connect to:"
 msgstr "Порт за повезивање:"
 
-#: kgameconnectdialog.cpp:99
+#: kgameconnectdialog.cpp:90
 #, kde-format
 msgid "Host to connect to:"
 msgstr "Домаћин за повезивање:"
 
-#: kgameconnectdialog.cpp:104
+#: kgameconnectdialog.cpp:95
 #, kde-format
 msgid "&Start Network"
 msgstr "&Покрени мрежу"
 
-#: kgamedebugdialog.cpp:129
-#, kde-format
+#: kgamedebugdialog.cpp:118
+#, fuzzy, kde-format
+#| msgid "KGame Debug Dialog"
+msgctxt "@title:window"
 msgid "KGame Debug Dialog"
 msgstr "Исправљачки дијалог К‑игре"
 
 # >> @title:group
-#: kgamedebugdialog.cpp:151
+#: kgamedebugdialog.cpp:140
 #, kde-format
 msgid "Debug &KGame"
 msgstr "Исправљање К‑игре"
 
-#: kgamedebugdialog.cpp:173 kgamedebugdialog.cpp:225
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
 msgid "Update"
 msgstr "Ажурирај"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:178
+#: kgamedebugdialog.cpp:167
 #, kde-format
 msgid "KGame Pointer"
 msgstr "показивач К‑игре"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:179
+#: kgamedebugdialog.cpp:168
 #, kde-format
 msgid "Game ID"
 msgstr "ИД партије"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:180
+#: kgamedebugdialog.cpp:169
 #, kde-format
 msgid "Game Cookie"
 msgstr "колачић партије"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:181
+#: kgamedebugdialog.cpp:170
 #, kde-format
 msgid "Is Master"
 msgstr "главни је"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:182
+#: kgamedebugdialog.cpp:171
 #, kde-format
 msgid "Is Admin"
 msgstr "админ. је"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:183
+#: kgamedebugdialog.cpp:172
 #, kde-format
 msgid "Is Offering Connections"
 msgstr "нуди повезивања"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:184
+#: kgamedebugdialog.cpp:173
 #, kde-format
 msgid "Game Status"
 msgstr "стање партије"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:185
+#: kgamedebugdialog.cpp:174
 #, kde-format
 msgid "Game is Running"
 msgstr "партија у току"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:186
+#: kgamedebugdialog.cpp:175
 #, kde-format
 msgid "Maximal Players"
 msgstr "највише играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:187
+#: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
 msgstr "најмање играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:188
+#: kgamedebugdialog.cpp:177
 #, kde-format
 msgid "Players"
 msgstr "играча"
 
 # >> @title:window
-#: kgamedebugdialog.cpp:194
+#: kgamedebugdialog.cpp:183
 #, kde-format
 msgid "Debug &Players"
 msgstr "Исправљање &играча"
 
-#: kgamedebugdialog.cpp:204
+#: kgamedebugdialog.cpp:193
 #, kde-format
 msgid "Available Players"
 msgstr "Доступни играчи"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:229
+#: kgamedebugdialog.cpp:219
 #, kde-format
 msgid "Player Pointer"
 msgstr "показивач играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:230
+#: kgamedebugdialog.cpp:220
 #, kde-format
 msgid "Player ID"
 msgstr "ИД играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:231
+#: kgamedebugdialog.cpp:221
 #, kde-format
 msgid "Player Name"
 msgstr "име играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:232
+#: kgamedebugdialog.cpp:222
 #, kde-format
 msgid "Player Group"
 msgstr "група играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:233
+#: kgamedebugdialog.cpp:223
 #, kde-format
 msgid "Player User ID"
 msgstr "кориснички ИД играча"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:234
+#: kgamedebugdialog.cpp:224
 #, kde-format
 msgid "My Turn"
 msgstr "мој потез"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:235
+#: kgamedebugdialog.cpp:225
 #, kde-format
 msgid "Async Input"
 msgstr "асинхрони улаз"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:236
+#: kgamedebugdialog.cpp:226
 #, kde-format
 msgid "KGame Address"
 msgstr "адреса К‑игре"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:237
+#: kgamedebugdialog.cpp:227
 #, kde-format
 msgid "Player is Virtual"
 msgstr "играч је виртуелан"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:238
+#: kgamedebugdialog.cpp:228
 #, kde-format
 msgid "Player is Active"
 msgstr "играч је активан"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:239
+#: kgamedebugdialog.cpp:229
 #, kde-format
 msgid "RTTI"
 msgstr "РТТИ"
 
 # >> @title:column
-#: kgamedebugdialog.cpp:240
+#: kgamedebugdialog.cpp:230
 #, kde-format
 msgid "Network Priority"
 msgstr "мрежни приоритет"
 
 # >> @title:group
-#: kgamedebugdialog.cpp:246
+#: kgamedebugdialog.cpp:236
 #, kde-format
 msgid "Debug &Messages"
 msgstr "Исправљање &порука"
 
-#: kgamedebugdialog.cpp:260
+#: kgamedebugdialog.cpp:251
 #, kde-format
 msgid "&>>"
 msgstr "&>>"
 
-#: kgamedebugdialog.cpp:264
+#: kgamedebugdialog.cpp:255
 #, kde-format
 msgid "&<<"
 msgstr "&<<"
 
-#: kgamedebugdialog.cpp:268
+#: kgamedebugdialog.cpp:259
 #, kde-format
 msgid "Do not show IDs:"
 msgstr "Без приказа ИД‑ова:"
 
 # >> @item game address
-#: kgamedebugdialog.cpp:338
+#: kgamedebugdialog.cpp:328
 #, kde-format
 msgid "NULL pointer"
 msgstr "нулти показивач"
 
-#: kgamedebugdialog.cpp:348 kgamedebugdialog.cpp:349 kgamedebugdialog.cpp:350
-#: kgamedebugdialog.cpp:352 kgamedebugdialog.cpp:407 kgamedebugdialog.cpp:408
-#: kgamedebugdialog.cpp:411 kgamedebugdialog.cpp:412
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "True"
 msgstr "тачно"
 
-#: kgamedebugdialog.cpp:348 kgamedebugdialog.cpp:349 kgamedebugdialog.cpp:350
-#: kgamedebugdialog.cpp:352 kgamedebugdialog.cpp:407 kgamedebugdialog.cpp:408
-#: kgamedebugdialog.cpp:411 kgamedebugdialog.cpp:412
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "False"
 msgstr "нетачно"
 
 # >> @item property value policy
-#: kgamedebugdialog.cpp:366 kgamedebugdialog.cpp:426
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
 #, kde-format
 msgid "Clean"
 msgstr "чисто"
 
 # >> @item property value policy
-#: kgamedebugdialog.cpp:369 kgamedebugdialog.cpp:429
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
 #, kde-format
 msgid "Dirty"
 msgstr "прљаво"
 
 # >> @item property value policy
-#: kgamedebugdialog.cpp:372 kgamedebugdialog.cpp:432
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
 #, kde-format
 msgid "Local"
 msgstr "локално"
 
 # >> @item property value policy
-#: kgamedebugdialog.cpp:376 kgamedebugdialog.cpp:436
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
 #, kde-format
 msgid "Undefined"
 msgstr "недефинисано"
 
-#: kgamedebugdialog.cpp:522
+#: kgamedebugdialog.cpp:507
 #, kde-format
 msgid "Unknown"
 msgstr "непознато"
 
-#: kgamedialog.cpp:106
+#: kgamedialog.cpp:92
 #, kde-format
 msgid "&Network"
 msgstr "&Мрежа"
 
-#: kgamedialogconfig.cpp:133
+#: kgamedialogconfig.cpp:124
 #, kde-format
 msgid "Disconnect"
 msgstr "Прекини везу"
 
-#: kgamedialogconfig.cpp:137 kwin4.cpp:778
+#: kgamedialogconfig.cpp:128 kwin4.cpp:680
 #, kde-format
 msgid "Network Configuration"
 msgstr "Подешавање мреже"
 
-#: kgamedialogconfig.cpp:196
+#: kgamedialogconfig.cpp:187
 #, kde-format
 msgid "Cannot connect to the network"
 msgstr "Не могу да се повежем на мрежу."
 
-#: kgamedialogconfig.cpp:202
+#: kgamedialogconfig.cpp:193
 #, kde-format
 msgid "Network status: No Network"
 msgstr "Стање мреже: нема је."
 
-#: kgamedialogconfig.cpp:208
+#: kgamedialogconfig.cpp:199
 #, kde-format
 msgid "Network status: You are MASTER"
 msgstr "Стање мреже: ГЛАВНИ сте."
 
-#: kgamedialogconfig.cpp:210
+#: kgamedialogconfig.cpp:201
 #, kde-format
 msgid "Network status: You are connected"
 msgstr "Стање мреже: повезани сте."
 
-#: kwin4.cpp:93
+#: kwin4.cpp:74
 #, kde-format
 msgid "Installation error: No theme list found."
 msgstr "Грешка инсталације: није нађен списак тема."
 
-#: kwin4.cpp:121
+#: kwin4.cpp:101
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
 msgstr "Грешка инсталације: није нађен мотор ВИ. Настављам без ВИ."
 
-#: kwin4.cpp:140
+#: kwin4.cpp:116
 #, kde-format
 msgid "Installation error: Theme file error."
 msgstr "Грешка инсталације: грешка фајла теме."
 
-#: kwin4.cpp:314
+#: kwin4.cpp:264
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Завршава се текућа партија. Победник неће бити проглашен."
 
-#: kwin4.cpp:319
+#: kwin4.cpp:269
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Подешавање мреже..."
 
-#: kwin4.cpp:323
+#: kwin4.cpp:273
 #, kde-format
 msgid "Network Chat..."
 msgstr "Мрежно ћаскање..."
 
-#: kwin4.cpp:328
+#: kwin4.cpp:278
 #, kde-format
 msgid "&Show Statistics"
 msgstr "Прикажи &статистику"
 
-#: kwin4.cpp:330
+#: kwin4.cpp:280
 #, kde-format
 msgid "Show statistics."
 msgstr "Прикажи статистику."
 
-#: kwin4.cpp:342
+#: kwin4.cpp:292
 #, kde-format
 msgid "Theme"
 msgstr "Тема"
 
-#: kwin4.cpp:354
+#: kwin4.cpp:303
 #, kde-format
 msgid "Debug KGame"
 msgstr "Исправљање К‑игре"
 
-#: kwin4.cpp:379
+#: kwin4.cpp:326
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Добро дошли у Четири побеђују"
 
-#: kwin4.cpp:570 kwin4.cpp:731
+#: kwin4.cpp:486 kwin4.cpp:639
 #, kde-format
 msgid "Game running..."
 msgstr "Партија у току..."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:600
 #, kde-format
 msgid "No game  "
 msgstr "Нема игре  "
 
 # >> %2 is player color
-#: kwin4.cpp:693 kwin4.cpp:695
+#: kwin4.cpp:602 kwin4.cpp:604
 #, kde-format
 msgid " %1 - %2 "
 msgstr " %1 — %2 "
 
-#: kwin4.cpp:697
+#: kwin4.cpp:606
 #, kde-format
 msgid "Nobody  "
 msgstr "Нико  "
 
-#: kwin4.cpp:719
+#: kwin4.cpp:628
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Мрежна партија је завршена!\n"
 
-#: kwin4.cpp:741
+#: kwin4.cpp:649
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Партија је нерешена. Покрените следећу рунду."
 
 # rewrite-msgid: /won the game/won/
-#: kwin4.cpp:749
+#: kwin4.cpp:656
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 победи. Покрените следећу рунду."
 
-#: kwin4.cpp:755
+#: kwin4.cpp:661
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " Партија је завршена. Покрените следећу рунду."
 
 # >> @option:radio
-#: kwin4.cpp:789
+#: kwin4.cpp:691
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "Црном треба да игра удаљени играч"
 
 # >> @option:radio
-#: kwin4.cpp:790
+#: kwin4.cpp:692
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "Црвеном треба да игра удаљени играч"
 
 # >> %1 is player color
-#: kwin4.cpp:870 kwin4.cpp:871 kwin4.cpp:892 kwin4.cpp:893
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 игра са|/|$[Ном %1] игра са"
 
-#: kwin4.cpp:894
+#: kwin4.cpp:793
 #, kde-format
 msgid "General"
 msgstr "Опште"
@@ -643,72 +649,72 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "Играч 2"
 
-#: main.cpp:75
+#: main.cpp:54
 #, kde-format
 msgid "KFourInLine"
 msgstr "К‑четири‑у‑низу"
 
-#: main.cpp:77
+#: main.cpp:56
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "К‑четири‑у‑низу: игра за два играча"
 
-#: main.cpp:79
+#: main.cpp:58
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "© 1995–2007, Мартин Хени"
 
-#: main.cpp:80
+#: main.cpp:59
 #, kde-format
 msgid "Martin Heni"
 msgstr "Мартин Хени"
 
-#: main.cpp:80
+#: main.cpp:59
 #, kde-format
 msgid "Game design and code"
 msgstr "дизајн игре и код"
 
-#: main.cpp:81
+#: main.cpp:60
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Јохан Оливје Лапер"
 
-#: main.cpp:81 main.cpp:82
+#: main.cpp:60 main.cpp:61
 #, kde-format
 msgid "Graphics"
 msgstr "графика"
 
-#: main.cpp:82
+#: main.cpp:61
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Јевгениј Труњов"
 
-#: main.cpp:83
+#: main.cpp:62
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Бенџамин К. Мејер"
 
-#: main.cpp:83
+#: main.cpp:62
 #, kde-format
 msgid "Code Improvements"
 msgstr "побољшања у кôду"
 
-#: main.cpp:88
+#: main.cpp:67
 #, kde-format
 msgid "Enter debug level"
 msgstr "Уђи у исправљачки ниво"
 
-#: main.cpp:89
+#: main.cpp:68
 #, kde-format
 msgid "Skip intro animation"
 msgstr "Прескочи уводну анимацију"
 
-#: main.cpp:90
+#: main.cpp:69
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "Покрени игру у демонстрационом режиму"
 
-#: scoresprite.cpp:182
+#: scoresprite.cpp:163
 #, kde-format
 msgctxt "computer level"
 msgid "Level %1"
