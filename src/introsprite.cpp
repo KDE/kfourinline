@@ -295,6 +295,7 @@ void IntroSprite::advance(int phase)
         executeCmd(anim, anim->duration);
         mAnimList.removeFirst();
         elapsed -= anim->duration;
+        delete anim;
         if (!mAnimList.isEmpty())
             anim = mAnimList.first();
         else
