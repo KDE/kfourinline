@@ -16,6 +16,8 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>
 #include <QMouseEvent>
+// Std
+#include <memory>
 
 /**
  * The sprite for a interactive buttons. The button can either be
@@ -89,7 +91,7 @@ public:
      */
     SpriteNotify *notify()
     {
-        return mSignal;
+        return mSignal.get();
     }
 
     /**
@@ -139,7 +141,7 @@ private:
     bool mPushButton;
 
     // The notification object
-    SpriteNotify *mSignal;
+    std::unique_ptr<SpriteNotify> const mSignal;
 };
 
 #endif
