@@ -24,12 +24,12 @@
 ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager *theme, int no, QGraphicsScene *scene)
     : Themeable(id, theme)
     , PixmapSprite(no, scene)
+    , mSignal(new SpriteNotify(this))
 {
     mButtonPressed = false;
     mHover = false;
     mPushButton = pushButton;
 
-    mSignal = new SpriteNotify(this);
 
     setAcceptedMouseButtons(Qt::NoButton);
     setAcceptHoverEvents(false);
