@@ -18,17 +18,17 @@
 #include <libkdegamesprivate/kgame/kgamepropertyhandler.h>
 // Qt
 #include <QDataStream>
-#include <QVector>
+#include <QList>
 
 /**
  * \class KGamePropertyArray kgamepropertyarray.h <KGamePropertyArray>
  */
 template<class type>
-class KGamePropertyArray : public QVector<type>, public KGamePropertyBase
+class KGamePropertyArray : public QList<type>, public KGamePropertyBase
 {
 public:
     KGamePropertyArray()
-        : QVector<type>()
+        : QList<type>()
         , KGamePropertyBase()
     {
         // qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray init";
@@ -40,13 +40,13 @@ public:
     }
 
     KGamePropertyArray(const KGamePropertyArray<type> &a)
-        : QVector<type>(a)
+        : QList<type>(a)
     {
     }
 
     bool resize(int size)
     {
-        if (size != QVector<type>::size()) {
+        if (size != QList<type>::size()) {
             bool a = true;
             QByteArray b;
             QDataStream s(&b, QIODevice::WriteOnly);
@@ -86,17 +86,17 @@ public:
 
     const type &at(int i) const
     {
-        return QVector<type>::at(i);
+        return QList<type>::at(i);
     }
 
     const type &operator[](int i) const
     {
-        return QVector<type>::operator[](i);
+        return QList<type>::operator[](i);
     }
 
     type &operator[](int i)
     {
-        return QVector<type>::operator[](i);
+        return QList<type>::operator[](i);
     }
 
     KGamePropertyArray<type> &operator=(const KGamePropertyArray<type> &a)
@@ -136,7 +136,7 @@ public:
             sendProperty();
         }
         if (policy() == PolicyLocal || policy() == PolicyDirty) {
-            QVector<type>::assign(a);
+            QList<type>::assign(a);
         }
         return *this;
     }
@@ -146,7 +146,7 @@ public:
             sendProperty();
         }
         if (policy() == PolicyLocal || policy() == PolicyDirty) {
-            QVector<type>::assign(a, n);
+            QList<type>::assign(a, n);
         }
         return *this;
     }
@@ -156,7 +156,7 @@ public:
             sendProperty();
         }
         if (policy() == PolicyLocal || policy() == PolicyDirty) {
-            QVector<type>::duplicate(a);
+            QList<type>::duplicate(a);
         }
         return *this;
     }
@@ -166,7 +166,7 @@ public:
             sendProperty();
         }
         if (policy() == PolicyLocal || policy() == PolicyDirty) {
-            QVector<type>::duplicate(a, n);
+            QList<type>::duplicate(a, n);
         }
         return *this;
     }
@@ -176,7 +176,7 @@ public:
             sendProperty();
         }
         if (policy() == PolicyLocal || policy() == PolicyDirty) {
-            QVector<type>::setRawData(a, n);
+            QList<type>::setRawData(a, n);
         }
         return *this;
     }
@@ -185,9 +185,9 @@ public:
     {
         // qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray load" << id();
         type data;
-        for (int i = 0; i < QVector<type>::size(); i++) {
+        for (int i = 0; i < QList<type>::size(); i++) {
             s >> data;
-            QVector<type>::replace(i, data);
+            QList<type>::replace(i, data);
         }
         if (isEmittingSignal()) {
             emitSignal();
@@ -196,7 +196,7 @@ public:
     void save(QDataStream &s) override
     {
         // qCDebug(KFOURINLINE_LOG) << "KGamePropertyArray save "<<id();
-        for (int i = 0; i < QVector<type>::size(); i++) {
+        for (int i = 0; i < QList<type>::size(); i++) {
             s << at(i);
         }
     }
@@ -211,7 +211,7 @@ public:
             uint i;
             type data;
             stream >> i >> data;
-            QVector<type>::replace(i, data);
+            QList<type>::replace(i, data);
             // qCDebug(KFOURINLINE_LOG) << "CmdAt:id="<<id()<<" i="<<i<<" data="<<data;
             if (isEmittingSignal()) {
                 emitSignal();
@@ -222,8 +222,8 @@ public:
             uint size;
             stream >> size;
             // qCDebug(KFOURINLINE_LOG) << "CmdResize:id="<<id()<<" oldsize="<<QMemArray<type>::size()<<" newsize="<<size;
-            if ((uint)QVector<type>::size() != size) {
-                QVector<type>::resize(size);
+            if ((uint)QList<type>::size() != size) {
+                QList<type>::resize(size);
             }
             break;
         }
@@ -232,7 +232,7 @@ public:
             type data;
             stream >> data >> size;
             // qCDebug(KFOURINLINE_LOG) << "CmdFill:id="<<id()<<"size="<<size;
-            QVector<type>::fill(data, size);
+            QList<type>::fill(data, size);
             if (isEmittingSignal()) {
                 emitSignal();
             }

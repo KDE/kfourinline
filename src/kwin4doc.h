@@ -21,7 +21,6 @@
 #include <KConfig>
 // Qt
 #include <QList>
-#include <QVector>
 
 class KWin4View;
 class Score;
@@ -482,7 +481,7 @@ private:
     Score *mStatus;
 
     // Keep AI move values
-    QVector<long> mAIValues;
+    QList<long> mAIValues;
 };
 
 #endif // KWIN4DOC_H
