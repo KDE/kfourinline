@@ -427,7 +427,7 @@ msgstr "Configuración da rede"
 #: kgamedialogconfig.cpp:187
 #, kde-format
 msgid "Cannot connect to the network"
-msgstr "Non se pode conectar coa rede"
+msgstr "Non é posíbel conectar coa rede"
 
 #: kgamedialogconfig.cpp:193
 #, kde-format
