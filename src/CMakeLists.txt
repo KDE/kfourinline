@@ -85,6 +85,7 @@ target_link_libraries(kfourinline
     KF6::CoreAddons
     KF6::Crash
     KF6::DNSSD
+    KF6::I18n
     KF6::XmlGui
     KF6::WidgetsAddons
     Qt6::Svg
