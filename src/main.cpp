@@ -61,9 +61,12 @@ int main(int argc, char *argv[])
     aboutData.addAuthor(i18n("Eugene Trounev"), i18n("Graphics"), QStringLiteral("eugene.trounev@gmail.com"));
     aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Code Improvements"));
     aboutData.setHomepage(QStringLiteral("https://apps.kde.org/kfourinline"));
-    QCommandLineParser parser;
+
     KAboutData::setApplicationData(aboutData);
+
     KCrash::initialize();
+
+    QCommandLineParser parser;
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("d") << QStringLiteral("debug"), i18n("Enter debug level"), QStringLiteral("level")));
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("skipintro"), i18n("Skip intro animation")));
     parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("demo"), i18n("Run game in demo (autoplay) mode")));
