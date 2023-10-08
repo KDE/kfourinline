@@ -27,15 +27,10 @@ ScoreSprite::ScoreSprite(const QString &id, ThemeManager *theme, int no, QGraphi
     // Create all sub sprites
     for (int i = 0; i < 2; i++) {
         mWon[i] = new QGraphicsTextItem(this);
-        scene->addItem(mWon[i]);
         mDraw[i] = new QGraphicsTextItem(this);
-        scene->addItem(mDraw[i]);
         mLoss[i] = new QGraphicsTextItem(this);
-        scene->addItem(mLoss[i]);
         mBreak[i] = new QGraphicsTextItem(this);
-        scene->addItem(mBreak[i]);
         mName[i] = new QGraphicsTextItem(this);
-        scene->addItem(mName[i]);
         mInput[i] = new PixmapSprite(QStringLiteral("scoreinput%1").arg(i), theme, i, scene);
         if (!mInput[i])
             qCCritical(KFOURINLINE_LOG) << "Cannot load sprite"

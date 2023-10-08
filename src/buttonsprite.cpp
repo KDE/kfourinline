@@ -36,7 +36,6 @@ ButtonSprite::ButtonSprite(bool pushButton, const QString &id, ThemeManager *the
 
     // Create sub sprites
     mText = new QGraphicsTextItem(this);
-    scene->addItem(mText);
     mText->hide();
 
     // Redraw us

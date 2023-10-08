@@ -68,18 +68,15 @@ DisplayIntro::DisplayIntro(QGraphicsScene *scene, ThemeManager *theme, QGraphics
     mSprites.append(mQuickLaunch);
     mQuickLaunch->show();
     mTextQuicklaunch = new QGraphicsTextItem(mQuickLaunch);
-    scene->addItem(mTextQuicklaunch);
     mTextQuicklaunch->setPlainText(i18nc("Name of quicklaunch field", "Quick Launch"));
     QTextDocument *text_document = mTextQuicklaunch->document();
     text_document->setDefaultTextOption(QTextOption(Qt::AlignHCenter));
     mTextQuicklaunch->setDocument(text_document);
     mTextQuicklaunch->show();
     mTextStartplayer = new QGraphicsTextItem(mQuickLaunch);
-    scene->addItem(mTextStartplayer);
     mTextStartplayer->setPlainText(i18nc("Ask player who should start game", "Who starts?"));
     mTextStartplayer->show();
     mTextColor = new QGraphicsTextItem(mQuickLaunch);
-    scene->addItem(mTextColor);
     mTextColor->setPlainText(i18nc("Ask player which color he wants to play", "Your color?"));
     mTextColor->show();
 
