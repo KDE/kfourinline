@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:39+0000\n"
+"POT-Creation-Date: 2023-10-09 01:44+0000\n"
 "PO-Revision-Date: 2021-06-12 21:40+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -66,43 +66,43 @@ msgstr "Keskustelu"
 msgid "Configure..."
 msgstr "Asetukset…"
 
-#: displayintro.cpp:72
+#: displayintro.cpp:71
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
 msgstr "Pika-aloitus"
 
-#: displayintro.cpp:79
+#: displayintro.cpp:77
 #, kde-format
 msgctxt "Ask player who should start game"
 msgid "Who starts?"
 msgstr "Kumpi aloittaa?"
 
-#: displayintro.cpp:83
+#: displayintro.cpp:80
 #, kde-format
 msgctxt "Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Värisi?"
 
-#: displayintro.cpp:127
+#: displayintro.cpp:124
 #, kde-format
 msgctxt "quick start button - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Helppo peli"
 
-#: displayintro.cpp:133
+#: displayintro.cpp:130
 #, kde-format
 msgctxt "quick start button - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Tavallinen peli"
 
-#: displayintro.cpp:139
+#: displayintro.cpp:136
 #, kde-format
 msgctxt "quick start button - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Vaikea peli"
 
-#: displayintro.cpp:145
+#: displayintro.cpp:142
 #, kde-format
 msgctxt "quick start button - player versus player"
 msgid "Two Player Game"
@@ -582,7 +582,7 @@ msgstr "Verkko-osoite"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
-#: kwin4.kcfg:21 settings.ui:50
+#: kwin4.kcfg:21 settings.ui:38
 #, kde-format
 msgid "Change the strength of the computer player."
 msgstr "Vaihda tietokonepelaajan vahvuutta."
@@ -663,116 +663,116 @@ msgstr "Benjamin Meyer"
 msgid "Code Improvements"
 msgstr "Koodiparannuksia"
 
-#: main.cpp:67
+#: main.cpp:70
 #, kde-format
 msgid "Enter debug level"
 msgstr "Anna virheenpaikannustaso"
 
-#: main.cpp:68
+#: main.cpp:71
 #, kde-format
 msgid "Skip intro animation"
 msgstr "Ohita alkuanimaatio"
 
-#: main.cpp:69
+#: main.cpp:72
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "Pelin demo"
 
-#: scoresprite.cpp:163
+#: scoresprite.cpp:158
 #, kde-format
 msgctxt "computer level"
 msgid "Level %1"
 msgstr "Taso %1"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
-#: settings.ui:38
+#: settings.ui:32
 #, kde-format
 msgid "Computer Difficulty"
 msgstr "Tietokoneen vaikeusaste"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: settings.ui:83
+#: settings.ui:65
 #, kde-format
 msgid "Easy"
 msgstr "Helppo"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: settings.ui:90
+#: settings.ui:72
 #, kde-format
 msgid "Hard"
 msgstr "Vaikea"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
-#: settings.ui:102
+#: settings.ui:84
 #, kde-format
 msgid "Use AI learning"
 msgstr "Käytä oppivaa tekoälyä"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Input1)
-#: settings.ui:112
+#: settings.ui:94
 #, kde-format
 msgid "Red Plays With"
 msgstr "Punaista pelaa"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
-#: settings.ui:132 settings.ui:181
+#: settings.ui:102 settings.ui:139
 #, kde-format
 msgid "Mouse"
 msgstr "pelaa hiirellä"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
-#: settings.ui:142 settings.ui:191
+#: settings.ui:112 settings.ui:149
 #, kde-format
 msgid "Keyboard"
 msgstr "pelaa näppäimistöllä"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
-#: settings.ui:149 settings.ui:198
+#: settings.ui:119 settings.ui:156
 #, kde-format
 msgid "Computer"
 msgstr "on tietokonepelaaja"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Input0)
-#: settings.ui:161
+#: settings.ui:131
 #, kde-format
 msgid "Black Plays With"
 msgstr "Mustaa pelaa"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: settings.ui:216
+#: settings.ui:174
 #, kde-format
 msgid "Player Names"
 msgstr "Pelaajien nimet"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: settings.ui:242
+#: settings.ui:188
 #, kde-format
 msgid "Player 1:"
 msgstr "Pelaaja 1:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: settings.ui:249
+#: settings.ui:195
 #, kde-format
 msgid "Player 2:"
 msgstr "Pelaaja 2:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, StartColour)
-#: settings.ui:267
+#: settings.ui:213
 #, kde-format
 msgid "Starting Player Color"
 msgstr "Aloittavan pelaajan väri"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
-#: settings.ui:287
+#: settings.ui:221
 #, kde-format
 msgid "Red"
 msgstr "Punainen"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
-#: settings.ui:297
+#: settings.ui:231
 #, kde-format
 msgid "Black"
 msgstr "Musta"
@@ -784,91 +784,91 @@ msgid "Statistics"
 msgstr "Tilastot"
 
 #. i18n: ectx: property (text), widget (QLabel, p1_name)
-#: statistics.ui:57 statuswidget.ui:113
+#: statistics.ui:51 statuswidget.ui:107
 #, kde-format
 msgid "Player 1"
 msgstr "Pelaaja 1"
 
 #. i18n: ectx: property (text), widget (QLabel, Name)
-#: statistics.ui:64
+#: statistics.ui:58
 #, kde-format
 msgid "Name"
 msgstr "Nimi"
 
 #. i18n: ectx: property (text), widget (QLabel, won)
-#: statistics.ui:74
+#: statistics.ui:68
 #, kde-format
 msgid "Won"
 msgstr "Voitettu"
 
 #. i18n: ectx: property (text), widget (QLabel, lost)
-#: statistics.ui:87
+#: statistics.ui:81
 #, kde-format
 msgid "Lost"
 msgstr "Hävitty"
 
 #. i18n: ectx: property (text), widget (QLabel, sum)
-#: statistics.ui:103
+#: statistics.ui:97
 #, kde-format
 msgid "Sum"
 msgstr "Yhteensä"
 
 #. i18n: ectx: property (text), widget (QLabel, aborted)
-#: statistics.ui:113
+#: statistics.ui:107
 #, kde-format
 msgid "Aborted"
 msgstr "Keskeytetty"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton1)
-#: statistics.ui:131
+#: statistics.ui:122
 #, kde-format
 msgid "Clear All Statistics"
 msgstr "Tyhjennä tilastot"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
-#: statistics.ui:154
+#: statistics.ui:145
 #, kde-format
 msgid "&Close"
 msgstr "&Sulje"
 
 #. i18n: ectx: property (text), widget (QLabel, p2_name)
-#: statistics.ui:166 statuswidget.ui:220
+#: statistics.ui:157 statuswidget.ui:214
 #, kde-format
 msgid "Player 2"
 msgstr "Pelaaja 2"
 
 #. i18n: ectx: property (text), widget (QLabel, drawn)
-#: statistics.ui:176
+#: statistics.ui:167
 #, kde-format
 msgid "Drawn"
 msgstr "Tasapeli"
 
 #. i18n: ectx: property (text), widget (QLabel, wins)
-#: statuswidget.ui:63
+#: statuswidget.ui:57
 #, kde-format
 msgid "W"
 msgstr "W"
 
 #. i18n: ectx: property (text), widget (QLabel, draws)
-#: statuswidget.ui:73
+#: statuswidget.ui:67
 #, kde-format
 msgid "D"
 msgstr "D"
 
 #. i18n: ectx: property (text), widget (QLabel, loses)
-#: statuswidget.ui:83
+#: statuswidget.ui:77
 #, kde-format
 msgid "L"
 msgstr "L"
 
 #. i18n: ectx: property (text), widget (QLabel, num)
-#: statuswidget.ui:93
+#: statuswidget.ui:87
 #, kde-format
 msgid "No"
 msgstr "No"
 
 #. i18n: ectx: property (text), widget (QLabel, bk)
-#: statuswidget.ui:103
+#: statuswidget.ui:97
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
