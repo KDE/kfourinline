@@ -246,7 +246,7 @@ void KComputer::slotCommand(QDataStream &in, int msgid, int /*receiver*/, int /*
                 fprintf(stderr, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
                 fprintf(stderr, "$        LEARNING                          $\n");
                 fprintf(stderr, "$ Setting board level %d to value = %ld\n", (int)level, (long)value);
-                fprintf(stderr, "$ mBrain size=%d\n", mBrain.size());
+                fprintf(stderr, "$ mBrain size=%" PRIdQSIZETYPE "\n", mBrain.size());
                 fprintf(stderr, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
                 fflush(stderr);
             } else // TODO: Remove else
