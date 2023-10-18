@@ -30,7 +30,7 @@
 #include <KMessageBox>
 #include <KSelectAction>
 #include <KStandardAction>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 // Qt
 #include <QFileDialog>
 #include <QGroupBox>
@@ -257,13 +257,13 @@ void KWin4App::initGUI()
     QAction *action;
 
     // Game
-    KStandardGameAction::gameNew(this, &KWin4App::menuNewGame, actionCollection());
-    KStandardGameAction::load(this, &KWin4App::menuOpenGame, actionCollection());
-    KStandardGameAction::save(this, &KWin4App::menuSaveGame, actionCollection());
-    action = KStandardGameAction::end(this, &KWin4App::endGame, actionCollection());
+    KGameStandardAction::gameNew(this, &KWin4App::menuNewGame, actionCollection());
+    KGameStandardAction::load(this, &KWin4App::menuOpenGame, actionCollection());
+    KGameStandardAction::save(this, &KWin4App::menuSaveGame, actionCollection());
+    action = KGameStandardAction::end(this, &KWin4App::endGame, actionCollection());
     action->setWhatsThis(i18n("Ends a currently played game. No winner will be declared."));
-    KStandardGameAction::hint(this, &KWin4App::askForHint, actionCollection());
-    KStandardGameAction::quit(this, &KWin4App::close, actionCollection());
+    KGameStandardAction::hint(this, &KWin4App::askForHint, actionCollection());
+    KGameStandardAction::quit(this, &KWin4App::close, actionCollection());
 
     action = actionCollection()->addAction(QStringLiteral("network_conf"));
     action->setText(i18n("&Network Configuration..."));
@@ -280,8 +280,8 @@ void KWin4App::initGUI()
     action->setToolTip(i18n("Show statistics."));
 
     // Move
-    KStandardGameAction::undo(this, &KWin4App::undoMove, actionCollection());
-    KStandardGameAction::redo(this, &KWin4App::redoMove, actionCollection());
+    KGameStandardAction::undo(this, &KWin4App::undoMove, actionCollection());
+    KGameStandardAction::redo(this, &KWin4App::redoMove, actionCollection());
 
     KStandardAction::preferences(this, &KWin4App::configureSettings, actionCollection());
 
