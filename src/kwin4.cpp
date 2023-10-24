@@ -237,7 +237,7 @@ void KWin4App::checkMenus(CheckFlags menu)
 
     // Disable some menus in demo mode
     if (global_demo_mode) {
-        disableAction(KStandardAction::name(KStandardAction::Preferences));
+        disableAction(KStandardAction::name(KStandardAction::Preferences).toUtf8().constData());
         disableAction("move_undo");
         disableAction("move_redo");
         disableAction("game_new");
