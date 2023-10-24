@@ -207,47 +207,49 @@ void KWin4App::checkMenus(CheckFlags menu)
 
     // Check file menu
     if (!menu || (menu & CheckFileMenu)) {
-        changeAction("move_hint", !(!isRunning && localgame));
-        changeAction("game_new", !isRunning);
-        changeAction("game_save", isRunning);
-        changeAction("game_end", isRunning);
+        changeAction(KGameStandardAction::name(KGameStandardAction::Hint), !(!isRunning && localgame));
+        changeAction(KGameStandardAction::name(KGameStandardAction::New), !isRunning);
+        changeAction(KGameStandardAction::name(KGameStandardAction::Save), isRunning);
+        changeAction(KGameStandardAction::name(KGameStandardAction::End), isRunning);
     }
 
     // Edit menu
     if (!menu || (menu & CheckEditMenu)) {
+        const QString moveUndoActionId = KGameStandardAction::name(KGameStandardAction::Undo);
         if (!isRunning || !localgame) {
-            disableAction("move_undo");
+            disableAction(moveUndoActionId);
         } else if (mDoc->getHistoryCnt() == 0) {
-            disableAction("move_undo");
+            disableAction(moveUndoActionId);
         } else if (mDoc->getCurrentMove() < 1) {
-            disableAction("move_undo");
+            disableAction(moveUndoActionId);
         } else {
-            enableAction("move_undo");
+            enableAction(moveUndoActionId);
         }
 
         // Show redo
+        const QString moveRedoActionId = KGameStandardAction::name(KGameStandardAction::Redo);
         if (!isRunning || !localgame) {
-            disableAction("move_redo");
+            disableAction(moveRedoActionId);
         } else if (mDoc->getHistoryCnt() == mDoc->getMaxMove()) {
-            disableAction("move_redo");
+            disableAction(moveRedoActionId);
         } else {
-            enableAction("move_redo");
+            enableAction(moveRedoActionId);
         }
     }
 
     // Disable some menus in demo mode
     if (global_demo_mode) {
-        disableAction(KStandardAction::name(KStandardAction::Preferences).toUtf8().constData());
-        disableAction("move_undo");
-        disableAction("move_redo");
-        disableAction("game_new");
-        disableAction("game_end");
-        disableAction("game_save");
-        disableAction("game_open");
-        disableAction("network_conf");
-        disableAction("network_chat");
-        disableAction("statistics");
-        disableAction("move_hint");
+        disableAction(KStandardAction::name(KStandardAction::Preferences));
+        disableAction(KGameStandardAction::name(KGameStandardAction::Undo));
+        disableAction(KGameStandardAction::name(KGameStandardAction::Redo));
+        disableAction(KGameStandardAction::name(KGameStandardAction::New));
+        disableAction(KGameStandardAction::name(KGameStandardAction::End));
+        disableAction(KGameStandardAction::name(KGameStandardAction::Save));
+        disableAction(KGameStandardAction::name(KGameStandardAction::Load));
+        disableAction(QStringLiteral("network_conf"));
+        disableAction(QStringLiteral("network_chat"));
+        disableAction(QStringLiteral("statistics"));
+        disableAction(KGameStandardAction::name(KGameStandardAction::Hint));
     }
 }
 
@@ -338,13 +340,9 @@ void KWin4App::connectDocument()
 }
 
 // Enable or disable an action
-void KWin4App::changeAction(const char *action, bool enable)
+void KWin4App::changeAction(const QString &action, bool enable)
 {
-    if (!action) {
-        return;
-    }
-
-    QAction *act = actionCollection()->action(QLatin1String(action));
+    QAction *act = actionCollection()->action(action);
     if (act) {
         act->setEnabled(enable);
     }

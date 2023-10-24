@@ -65,13 +65,13 @@ protected:
      * @param action The action to affect
      * @param enable True if the action should be enabled, false otherwise.
      */
-    void changeAction(const char *action, bool enable);
+    void changeAction(const QString &action, bool enable);
 
     /**
      * Enable oactions that is menu/toolbar items.
      * @param action The action to affect
      */
-    void enableAction(const char *action)
+    void enableAction(const QString &action)
     {
         changeAction(action, true);
     }
@@ -80,7 +80,7 @@ protected:
      * Disable actions that is menu/toolbar items.
      * @param action The action to affect
      */
-    void disableAction(const char *action)
+    void disableAction(const QString &action)
     {
         changeAction(action, false);
     }
