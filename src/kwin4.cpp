@@ -778,7 +778,6 @@ void KWin4App::configureSettings()
 
     KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), Prefs::self());
     dialog->setFaceType(KPageDialog::Plain);
-    dialog->setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
     dialog->button(QDialogButtonBox::Ok)->setDefault(true);
     dialog->setModal(true);
     // QT5 dialog->setHelp(QString(),"kfourinline");
