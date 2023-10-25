@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2007-06-25 11:11+0300\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -565,12 +565,12 @@ msgstr "Чырвонымі павінен гуляць сеткавы гулец
 msgid "Red should be played by remote player"
 msgstr "Чырвонымі павінен гуляць сеткавы гулец"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, fuzzy, kde-format
 msgid "%1 Plays With"
 msgstr "Чырвонымі гуляе"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, fuzzy, kde-format
 msgid "General"
 msgstr "Агульныя"

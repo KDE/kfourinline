@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2023-10-21 13:57\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -544,12 +544,12 @@ msgstr "黑色应该由远程玩家控制"
 msgid "Red should be played by remote player"
 msgstr "红色应该由远程玩家控制"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 玩家为"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, kde-format
 msgid "General"
 msgstr "常规"

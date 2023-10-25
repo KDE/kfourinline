@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2021-06-06 12:32+0100\n"
 "Last-Translator: Sofia Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -554,12 +554,12 @@ msgstr "El negro debería ser jugado por el jugador remoto"
 msgid "Red should be played by remote player"
 msgstr "El rojo debería ser jugado por el jugador remoto"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 jugado por"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, kde-format
 msgid "General"
 msgstr "General"

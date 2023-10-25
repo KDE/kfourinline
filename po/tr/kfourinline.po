@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2023-08-22 23:06+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -552,12 +552,12 @@ msgstr "Siyah uzaktaki oyuncu tarafından oynanmalı"
 msgid "Red should be played by remote player"
 msgstr "Kırmızı uzaktaki oyuncu tarafından oynanmalı"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 Şununla Oynuyor"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, kde-format
 msgid "General"
 msgstr "Genel"

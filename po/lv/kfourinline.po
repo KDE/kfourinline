@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2010-04-24 14:24+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -577,13 +577,13 @@ msgstr "Attālinātajam vajadzētu spēlēt ar melnajiem"
 msgid "Red should be played by remote player"
 msgstr "Attālinātajam vajadzētu spēlēt ar sarkanajiem"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "Sarkanais spēlē ar"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, kde-format
 msgid "General"
 msgstr "Pamata"

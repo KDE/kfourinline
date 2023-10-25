@@ -2,7 +2,7 @@
 # Bulgarian translation of KDE.
 # This file is licensed under the GPL.
 #
-# $Id: kfourinline.po 1634720 2022-09-28 01:40:58Z scripty $
+# $Id: kfourinline.po 1663198 2023-10-25 03:12:27Z scripty $
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Petar Toushkov <pt.launchpad@gmail.com>, 2010.
@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:43+0000\n"
+"POT-Creation-Date: 2023-10-25 02:40+0000\n"
 "PO-Revision-Date: 2010-05-13 09:28+0200\n"
 "Last-Translator: Petar Toushkov <pt.launchpad@gmail.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -548,12 +548,12 @@ msgstr "Отдалеченият играч трябва да избере че�
 msgid "Red should be played by remote player"
 msgstr "Отдалеченият играч трябва да избере червено"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:790 kwin4.cpp:791
 #, fuzzy, kde-format
 msgid "%1 Plays With"
 msgstr "Червеният играе с"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:792
 #, kde-format
 msgid "General"
 msgstr "Общи"
