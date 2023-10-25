@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2007-08-20 12:16+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -445,7 +445,7 @@ msgstr "सञ्जाल कुराकानी..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "सञ्जाल कन्फिगरेसन"
@@ -485,108 +485,108 @@ msgstr "स्थापना त्रुटि: AI इन्जिन फे�
 msgid "Installation error: Theme file error."
 msgstr "स्थापना त्रुटि: विषयवस्तु फाइल त्रुटि ।"
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "हालै खेलिएको खेल परित्याग गर्छ । विजेता घोसित हुने छैन ।"
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "सञ्जाल कन्फिगरेसन..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "सञ्जाल कुराकानी..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "तथ्याङ्क देखाउनुहोस्"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "तथ्याङ्क देखाउनुहोस् ।"
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr "विषयवस्तु"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "त्रुटि सच्याउने केडीई खेल"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "चार विजेता खेलमा स्वागत छ"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "खेल चलिराखेको छ..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "खेल छैन  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 #| msgid " %1 - Red "
 msgid " %1 - %2 "
 msgstr " %1 - रातो "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "कोही होइन  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "सञ्जाल खेल समाप्त भयो!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "खेल बराबर भएको छ । कृपया पछिल्लो राउन्ड पुन: सुरु गर्नुहोस् ।"
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 विजयी भयो । कृपया पछिल्लो राउन्ड पुन: सुरु गर्नुहोस् ।"
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " खेल परित्याग गरियो । कृपया पछिल्लो राउन्ड पुन: सुरु गर्नुहोस् ।"
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "रातो रिमोटद्वारा खेलिएको हुनुपर्छ"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "रातो रिमोटद्वारा खेलिएको हुनुपर्छ"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "यससँग रातो खेल्दछ"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "साधारण"

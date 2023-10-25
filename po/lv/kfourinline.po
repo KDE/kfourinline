@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2010-04-24 14:24+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -446,7 +446,7 @@ msgstr "Tīkla tērzēšana..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Tīkla konfigurācija"
@@ -486,104 +486,104 @@ msgstr "Instalācijas kļūda: nav atrasts AI dzinējs. Turpina bez AI."
 msgid "Installation error: Theme file error."
 msgstr "Instalācijas kļūda: tēmas faila kļūda."
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Pārtrauc aktīvo spēli. Uzvarētājs netiks noteikts."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Tīkla konfigurācija..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Tīkla tērzēšana..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Rādīt statistiku..."
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Rādīt statistiku."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr "Tēma"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Atkļūdot KGame"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Laipni lūdzam Četrās Uzvarās"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Notiek spēle..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Nav spēles "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 #| msgid " %1 - Red "
 msgid " %1 - %2 "
 msgstr " %1 - Sarkans "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Neviens  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Tīkla spēle galā!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Neizšķirts. Lūdzu, sāc nākamo kārtu."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 uzvarēja. Lūdzu, sāc nākamo kārtu."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " Spēle pārtraukta. Lūdzu, sāc nākamo kārtu."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "Attālinātajam vajadzētu spēlēt ar melnajiem"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "Attālinātajam vajadzētu spēlēt ar sarkanajiem"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "Sarkanais spēlē ar"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Pamata"

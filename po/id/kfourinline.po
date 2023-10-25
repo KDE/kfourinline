@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2023-01-27 06:39+0700\n"
 "Last-Translator: Wantoyèk <wantoyek@gmail.com>\n"
 "Language-Team: Indonesian <kde-i18n-doc@kde.org>\n"
@@ -414,7 +414,7 @@ msgstr "&Jaringan"
 msgid "Disconnect"
 msgstr "Diskoneksikan"
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Konfigurasi Jaringan"
@@ -455,104 +455,104 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr "Error penginstalan: File tema error."
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr ""
 "Akhir sebuah permainan yang dimainkan saat ini. Tidak ada pemenang yang akan "
 "dinyatakan."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "Konfigurasi &Jaringan..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Obrolan Jaringan..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Tampilkan Perangkaan"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Tampilkan perangkaan."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr "Tema"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Debug KGame\""
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Selamat Datang di Four Wins"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Permainan berjalan..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Tidak ada permainan  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, kde-format
 msgid " %1 - %2 "
 msgstr " %1 - %2 "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Tak seorangpun"
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Permainan jaringan diakhiri!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Permainan seri. Silakan mulai ulang ronde selanjutnya."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 memenangkan permainan. Silakan mulai ulang ronde selanjutnya."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " Permainan diakhiri. Silakan mulai ulang ronde selanjutnya."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "Hitam seharusnya dimainkan oleh pemain jarak jauh"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "Merah seharusnya dimainkan oleh pemain jarak jauh"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 Bermain Dengan"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Umum"

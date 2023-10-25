@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2013-08-05 23:05+0200\n"
 "Last-Translator: Claus Christensen <claus_chr@webspeed.dk>\n"
 "Language-Team: Danish <kde-i18n-doc@kde.org>\n"
@@ -420,7 +420,7 @@ msgstr "&Netværk"
 msgid "Disconnect"
 msgstr "Afbryd forbindelse"
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Netværksindstilling"
@@ -460,102 +460,102 @@ msgstr "Installationsfejl: Ingen AI-motor fundet. Fortsæt uden AI."
 msgid "Installation error: Theme file error."
 msgstr "Installationsfejl: Fejl i temafil."
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Afbryder et kørende spil. Ingen vinder bliver erklæret."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Netværksindstilling..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Netværks-chat..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Vis statistik"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Vis statistik."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr "Tema"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Fejlret KGame"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Velkommen til Four Wins"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Spillet kører..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Intet spil"
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, kde-format
 msgid " %1 - %2 "
 msgstr " %1 - %2 "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Ingen "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Netværksspillet endte!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Spillet blev lige. Genstart næste runde."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 vandt spillet. Genstart næste runde."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " Spil afbrudt. Genstart næste runde."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "Sort skal spilles af en ekstern spiller"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "Rød skal spilles af en ekstern spiller"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 spiller med"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Generelt"

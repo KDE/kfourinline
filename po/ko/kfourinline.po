@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kfourinline-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2021-06-09 23:04+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -416,7 +416,7 @@ msgstr "네트워크(&N)"
 msgid "Disconnect"
 msgstr "연결 끊기"
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "네트워크 설정"
@@ -457,102 +457,102 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr "설치 오류: 테마 파일 오류입니다."
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "진행 중인 게임을 중단합니다. 승패가 가려지지 않습니다."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "네트워크 설정(&N)..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "네트워크 대화..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "통계 보기(&S)"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "통계를 확인합니다."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr "테마"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "KGame 디버그"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Four Wins에 오신 것을 환영합니다"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "게임 진행 중입니다..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "게임 없음"
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, kde-format
 msgid " %1 - %2 "
 msgstr " %1 - %2 "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "아무도 없음  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "네트워크 게임이 종료되었습니다!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "무승부입니다. 다음 판을 시작하세요."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1이(가) 승리했습니다. 다음 판을 시작하세요."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " 게임이 끝났습니다. 다음 판을 시작하십시오."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "원격 플레이어가 검은색을 사용해야 합니다"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "원격 플레이어가 빨간색을 사용해야 합니다"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, kde-format
 msgid "%1 Plays With"
 msgstr "%1 플레이어 대전 상대:"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "일반"

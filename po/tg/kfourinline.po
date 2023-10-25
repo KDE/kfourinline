@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2005-10-22 15:26+0500\n"
 "Last-Translator: Victor Ibragimov <youth_opportunities@tajikngo.org>\n"
 "Language-Team: Tajik\n"
@@ -451,7 +451,7 @@ msgstr "Чати Шабакавӣ..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Танзимоти Шабақа"
@@ -491,108 +491,108 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr ""
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Бозии рафта истодаро ба итмом мерасонем. Ғолибон намебошанд."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Танзимоти шабақа..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Чати Шабакавӣ..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Намоиши статистика"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Нишондиҳии омор."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr ""
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Соз кардани хатогиҳои KGame"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, fuzzy, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Марҳамат ба KWin4"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Бозӣ рафта истодааст..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Бозие нест  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 msgid " %1 - %2 "
 msgstr " - Сурх "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Ҳеҷ кас  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Бозии шабақа ба итмом расид!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr ""
 "Бозӣ шабона ба итмом расид. Боз як бори дигар дар бозии оянда кӯшиш кунед."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 бозиро бурид. Боз як бори дигар дар бозии оянда кӯшиш кунед."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " Бозӣ канда шуд. Бозиро аз сари нав сар диҳед."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "Бо сурх бояд бозингари шабақа бозӣ кунад"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "Бо сурх бояд бозингари шабақа бозӣ кунад"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "Сурх Бозӣ мекунад Бо"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Умумӣ"

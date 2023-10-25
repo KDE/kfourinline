@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2006-04-26 01:35+0200\n"
 "Last-Translator: Zaklina Gjalevska <gjalevska@yahoo.com>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -447,7 +447,7 @@ msgstr "Мрежен разговор..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Конфигурација на мрежа"
@@ -487,107 +487,107 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr ""
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Ја прекинува тековната игра. Нема прогласување на победник."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Конфигурација на мрежа..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Мрежен разговор..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Прикажи статистика"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Прикажува статистика."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr ""
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Чистење на KGame од бубачки"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, fuzzy, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Добредојдовте во KWin4"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Играта е во тек..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Нема игра  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 msgid " %1 - %2 "
 msgstr " - Црвен"
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Никој  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Мрежната игра заврши!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Нерешено. Ве молам почнете одново."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 победи. Ве молам почнете одново."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " Играта е прекината. Ве молам почнете одново."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "Црвениот игра преку мрежа"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "Црвениот игра преку мрежа"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "Црвениот игра со"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Општо"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2009-06-13 16:24+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: icelandic <kde-isl@molar.is>\n"
@@ -449,7 +449,7 @@ msgstr "Netspjall..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, kde-format
 msgid "Network Configuration"
 msgstr "Netstillingar"
@@ -489,107 +489,107 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr ""
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Endar núverandi leik. Enginn sigurvegari"
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "&Netstillingar..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, kde-format
 msgid "Network Chat..."
 msgstr "Netspjall..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&Sýna tölfræði."
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, kde-format
 msgid "Show statistics."
 msgstr "Sýna tölfræði."
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, fuzzy, kde-format
 msgid "Theme"
 msgstr "Þema"
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr "Aflúsa KGame"
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, fuzzy, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Velkomin(n) í KWin4"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Leikur í gangi..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Enginn leikur  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 msgid " %1 - %2 "
 msgstr " - Rauður "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Enginn  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Netleikur endar!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Jafntefli. Byrjaðu næstu lotu."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 vann leikinn.  Byrjaðu næstu lotu."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " Leikur stöðvaður. Byrjaðu næstu lotu."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "Rauður ætti að vera leikinn af fjarlægum"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "Rauður ætti að vera leikinn af fjarlægum"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 #| msgid "Red Plays With"
 msgid "%1 Plays With"
 msgstr "Rauður spilar með"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr "Almennt"

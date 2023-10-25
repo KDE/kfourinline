@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4 VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:44+0000\n"
+"POT-Creation-Date: 2023-10-25 01:49+0000\n"
 "PO-Revision-Date: 2002-11-07 11:32+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -423,7 +423,7 @@ msgstr "Netwerk Opstelling..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:680
+#: kgamedialogconfig.cpp:128 kwin4.cpp:678
 #, fuzzy, kde-format
 msgid "Network Configuration"
 msgstr "Netwerk Opstelling..."
@@ -463,106 +463,106 @@ msgstr ""
 msgid "Installation error: Theme file error."
 msgstr ""
 
-#: kwin4.cpp:264
+#: kwin4.cpp:266
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Staak 'n huidiglik gespeel speletjie. Nee wenner sal wees aangekondig."
 
-#: kwin4.cpp:269
+#: kwin4.cpp:271
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "Netwerk Opstelling..."
 
-#: kwin4.cpp:273
+#: kwin4.cpp:275
 #, fuzzy, kde-format
 msgid "Network Chat..."
 msgstr "Netwerk Opstelling..."
 
-#: kwin4.cpp:278
+#: kwin4.cpp:280
 #, fuzzy, kde-format
 msgid "&Show Statistics"
 msgstr "Vertoon Statistieke"
 
-#: kwin4.cpp:280
+#: kwin4.cpp:282
 #, fuzzy, kde-format
 msgid "Show statistics."
 msgstr "Vertoon Statistieke"
 
-#: kwin4.cpp:292
+#: kwin4.cpp:294
 #, kde-format
 msgid "Theme"
 msgstr ""
 
-#: kwin4.cpp:303
+#: kwin4.cpp:305
 #, kde-format
 msgid "Debug KGame"
 msgstr ""
 
-#: kwin4.cpp:326
+#: kwin4.cpp:328
 #, fuzzy, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Welkom na %1"
 
-#: kwin4.cpp:486 kwin4.cpp:639
+#: kwin4.cpp:484 kwin4.cpp:637
 #, kde-format
 msgid "Game running..."
 msgstr "Speletjie wat loop..."
 
-#: kwin4.cpp:600
+#: kwin4.cpp:598
 #, kde-format
 msgid "No game  "
 msgstr "Nee speletjie  "
 
-#: kwin4.cpp:602 kwin4.cpp:604
+#: kwin4.cpp:600 kwin4.cpp:602
 #, fuzzy, kde-format
 msgid " %1 - %2 "
 msgstr " - Rooi "
 
-#: kwin4.cpp:606
+#: kwin4.cpp:604
 #, kde-format
 msgid "Nobody  "
 msgstr "Niemand  "
 
-#: kwin4.cpp:628
+#: kwin4.cpp:626
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Die netwerk speletjie geëindig!\n"
 
-#: kwin4.cpp:649
+#: kwin4.cpp:647
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Die speletjie is geteken. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:656
+#: kwin4.cpp:654
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 wen die speletjie. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:661
+#: kwin4.cpp:659
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " Speletjie gekanselleer. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:691
+#: kwin4.cpp:689
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "Rooi moet wees gespeel deur afgeleë"
 
-#: kwin4.cpp:692
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "Rooi moet wees gespeel deur afgeleë"
 
-#: kwin4.cpp:769 kwin4.cpp:770 kwin4.cpp:791 kwin4.cpp:792
+#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
 #, fuzzy, kde-format
 msgid "%1 Plays With"
 msgstr "Rooi Gespeel Deur"
 
-#: kwin4.cpp:793
+#: kwin4.cpp:790
 #, kde-format
 msgid "General"
 msgstr ""
