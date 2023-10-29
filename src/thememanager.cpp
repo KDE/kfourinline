@@ -14,6 +14,7 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 // Qt
+#include <QApplication>
 #include <QPainter>
 #include <QPixmap>
 #include <QRectF>
@@ -159,6 +160,9 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
     if (size.width() < 1 || size.height() < 1)
         qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
 
+    const qreal dpr = qApp->devicePixelRatio();
+    size *= dpr;
+
     //  Cached pixmap?
     if (mPixmapCache.contains(svgid)) {
         const QPixmap pixmap = mPixmapCache[svgid];
@@ -173,6 +177,7 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
     QPainter p(&pixmap);
     mRenderer->render(&p, svgid);
     p.end();
+    pixmap.setDevicePixelRatio(dpr);
     if (pixmap.isNull())
         qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
 
