@@ -14,7 +14,6 @@
 #include <KConfigGroup>
 #include <KLocalizedString>
 // Qt
-#include <QImage>
 #include <QPainter>
 #include <QPixmap>
 #include <QRectF>
@@ -160,23 +159,20 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
     if (size.width() < 1 || size.height() < 1)
         qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot create svgid ID " << svgid << " with zero size" << size;
 
-    QPixmap pixmap;
-
     //  Cached pixmap?
     if (mPixmapCache.contains(svgid)) {
-        pixmap = mPixmapCache[svgid];
+        const QPixmap pixmap = mPixmapCache[svgid];
         if (pixmap.size() == size) {
             return pixmap;
         }
     }
 
     // Create new image
-    QImage image(size, QImage::Format_ARGB32_Premultiplied);
-    image.fill(0);
-    QPainter p(&image);
+    QPixmap pixmap(size);
+    pixmap.fill(Qt::transparent);
+    QPainter p(&pixmap);
     mRenderer->render(&p, svgid);
     p.end();
-    pixmap = QPixmap::fromImage(image);
     if (pixmap.isNull())
         qCCritical(KFOURINLINE_LOG) << "ThemeManager::getPixmap Cannot load svgid ID " << svgid;
 

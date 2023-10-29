@@ -18,7 +18,6 @@
 #include <QDataStream>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
-#include <QImage>
 #include <QLinearGradient>
 #include <QMouseEvent>
 #include <QPoint>
@@ -212,14 +211,14 @@ private:
 
     // Gradient for the reflection
     QLinearGradient mGradient;
-    // Image for the reflection
-    QImage mGradientImage;
+    // Pixmap for the reflection
+    QPixmap mGradientPixmap;
     // Reflection sprite
     QGraphicsPixmapItem *mReflectionSprite;
     // Refection size
     QRect mReflectionRect;
-    // Paint image of reflection
-    QImage mReflectImage;
+    // Paint pixmap of reflection
+    QPixmap mReflectPixmap;
     // Phase of reflection drawing
     int mReflectPhase;
 
