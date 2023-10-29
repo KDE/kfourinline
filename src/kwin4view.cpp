@@ -190,21 +190,21 @@ void KWin4View::updateAndAdvance()
     if (mReflectionRect.width() > 0 && mReflectionRect.height() > 0) {
         // Draw reflection in steps to save processing power
         if (mReflectPhase == 0) {
-            mReflectImage = QImage(mReflectionRect.width(), mReflectionRect.height(), QImage::Format_ARGB32);
-            mReflectImage.fill(Qt::transparent);
-            QPainter imagePainter(&mReflectImage);
-            // imagePainter.fillRect(image.rect(),QBrush(Qt::red));
+            mReflectPixmap = QPixmap(mReflectionRect.width(), mReflectionRect.height());
+            mReflectPixmap.fill(Qt::transparent);
+            QPainter pixmapPainter(&mReflectPixmap);
+            // pixmapPainter.fillRect(image.rect(),QBrush(Qt::red));
 
             // Turn on all optimizations
-            imagePainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
-            imagePainter.setClipping(true);
-            imagePainter.setWorldTransform(QTransform(1.0, 0.0, 0.0, -1.0, 0.0, mReflectImage.height()));
-            QRect source = QRect(mReflectionRect.x(), mReflectionRect.y() - mReflectImage.height(), mReflectImage.width(), mReflectImage.height());
+            pixmapPainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
+            pixmapPainter.setClipping(true);
+            pixmapPainter.setWorldTransform(QTransform(1.0, 0.0, 0.0, -1.0, 0.0, mReflectPixmap.height()));
+            QRect source = QRect(mReflectionRect.x(), mReflectionRect.y() - mReflectPixmap.height(), mReflectPixmap.width(), mReflectPixmap.height());
 
             bool vis = mReflectionSprite->isVisible();
             mReflectionSprite->hide();
             dynamic_cast<ReflectionGraphicsScene *>(scene())->setBackground(false);
-            scene()->render(&imagePainter, mReflectImage.rect(), source, Qt::IgnoreAspectRatio);
+            scene()->render(&pixmapPainter, mReflectPixmap.rect(), source, Qt::IgnoreAspectRatio);
             dynamic_cast<ReflectionGraphicsScene *>(scene())->setBackground(true);
             if (vis)
                 mReflectionSprite->show();
@@ -213,17 +213,16 @@ void KWin4View::updateAndAdvance()
         // Draw reflection in steps to save processing power
         else if (mReflectPhase == 1) {
             // Semi transparent
-            QPainter imagePainter(&mReflectImage);
-            imagePainter.setTransform(QTransform());
-            imagePainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
-            imagePainter.drawImage(0, 0, mGradientImage);
+            QPainter pixmapPainter(&mReflectPixmap);
+            pixmapPainter.setTransform(QTransform());
+            pixmapPainter.setCompositionMode(QPainter::CompositionMode_DestinationIn);
+            pixmapPainter.drawPixmap(0, 0, mGradientPixmap);
             mReflectPhase = 2;
         }
         // Draw reflection in steps to save processing power
         else if (mReflectPhase == 2) {
             // Set to sprite
-            QPixmap pm = QPixmap::fromImage(mReflectImage);
-            mReflectionSprite->setPixmap(pm);
+            mReflectionSprite->setPixmap(mReflectPixmap);
             mReflectionSprite->update();
             mReflectPhase = 0;
         }
@@ -244,9 +243,9 @@ void KWin4View::setReflection(int x, int y, int width, int height)
 
     qCDebug(KFOURINLINE_LOG) << "Set reflection " << x << " " << y << " " << width << " " << height;
 
-    mGradientImage = QImage(width, height, QImage::Format_ARGB32);
-    mGradientImage.fill(Qt::transparent);
-    QPainter p(&mGradientImage);
+    mGradientPixmap = QPixmap(width, height);
+    mGradientPixmap.fill(Qt::transparent);
+    QPainter p(&mGradientPixmap);
     p.fillRect(0, 0, width, height, mGradient);
     p.end();
 
