@@ -67,9 +67,9 @@ int main(int argc, char *argv[])
     KCrash::initialize();
 
     QCommandLineParser parser;
-    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("d") << QStringLiteral("debug"), i18n("Enter debug level"), QStringLiteral("level")));
-    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("skipintro"), i18n("Skip intro animation")));
-    parser.addOption(QCommandLineOption(QStringList() << QStringLiteral("demo"), i18n("Run game in demo (autoplay) mode")));
+    parser.addOption(QCommandLineOption({QStringLiteral("d"), QStringLiteral("debug")}, i18n("Enter debug level"), QStringLiteral("level")));
+    parser.addOption(QCommandLineOption({QStringLiteral("skipintro")}, i18n("Skip intro animation")));
+    parser.addOption(QCommandLineOption({QStringLiteral("demo")}, i18n("Run game in demo (autoplay) mode")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);

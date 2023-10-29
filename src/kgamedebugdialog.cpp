@@ -507,8 +507,13 @@ void KGameDebugDialog::slotMessageUpdate(int msgid, quint32 receiver, quint32 se
             msgidText = i18n("Unknown");
         }
     }
-    QStringList items;
-    items << QTime::currentTime().toString() << QString::number(msgid) << QString::number(receiver) << QString::number(sender) << msgidText;
+    const QStringList items {
+        QTime::currentTime().toString(),
+        QString::number(msgid),
+        QString::number(receiver),
+        QString::number(sender),
+        msgidText,
+    };
     new QTreeWidgetItem(d->mMessageList, items);
 }
 
