@@ -18,6 +18,7 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kplayer.h>
 // Qt
+#include <QApplication>
 #include <QColor>
 #include <QElapsedTimer>
 #include <QEvent>
@@ -190,7 +191,10 @@ void KWin4View::updateAndAdvance()
     if (mReflectionRect.width() > 0 && mReflectionRect.height() > 0) {
         // Draw reflection in steps to save processing power
         if (mReflectPhase == 0) {
-            mReflectPixmap = QPixmap(mReflectionRect.width(), mReflectionRect.height());
+            const qreal dpr = qApp->devicePixelRatio();
+            const int deviceWidth = mReflectionRect.width() * dpr;
+            const int deviceHeight = mReflectionRect.height() * dpr;
+            mReflectPixmap = QPixmap(deviceWidth, deviceHeight);
             mReflectPixmap.fill(Qt::transparent);
             QPainter pixmapPainter(&mReflectPixmap);
             // pixmapPainter.fillRect(image.rect(),QBrush(Qt::red));
@@ -199,7 +203,8 @@ void KWin4View::updateAndAdvance()
             pixmapPainter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform, false);
             pixmapPainter.setClipping(true);
             pixmapPainter.setWorldTransform(QTransform(1.0, 0.0, 0.0, -1.0, 0.0, mReflectPixmap.height()));
-            QRect source = QRect(mReflectionRect.x(), mReflectionRect.y() - mReflectPixmap.height(), mReflectPixmap.width(), mReflectPixmap.height());
+            const QRect source = QRect(mReflectionRect.x(), mReflectionRect.y() - mReflectionRect.height(), mReflectionRect.width(), mReflectionRect.height());
+            mReflectPixmap.setDevicePixelRatio(dpr);
 
             bool vis = mReflectionSprite->isVisible();
             mReflectionSprite->hide();
@@ -235,19 +240,24 @@ void KWin4View::setReflection(int x, int y, int width, int height)
 {
     mReflectionRect = QRect(x, y, width, height);
 
+    const qreal dpr = qApp->devicePixelRatio();
+    const int deviceWidth = width * dpr;
+    const int deviceHeight = height * dpr;
+
     QPoint p1, p2;
-    p2.setY(height);
+    p2.setY(deviceHeight);
     mGradient = QLinearGradient(p1, p2);
     mGradient.setColorAt(0, QColor(0, 0, 0, 100));
     mGradient.setColorAt(1, Qt::transparent);
 
     qCDebug(KFOURINLINE_LOG) << "Set reflection " << x << " " << y << " " << width << " " << height;
 
-    mGradientPixmap = QPixmap(width, height);
+    mGradientPixmap = QPixmap(deviceWidth, deviceHeight);
     mGradientPixmap.fill(Qt::transparent);
     QPainter p(&mGradientPixmap);
-    p.fillRect(0, 0, width, height, mGradient);
+    p.fillRect(0, 0, deviceWidth, deviceHeight, mGradient);
     p.end();
+    mGradientPixmap.setDevicePixelRatio(dpr);
 
     mReflectionSprite->setPos(x, y);
     if (width > 0 && height > 0) {
