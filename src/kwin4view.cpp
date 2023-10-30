@@ -204,12 +204,13 @@ void KWin4View::updateAndAdvance()
             pixmapPainter.setClipping(true);
             pixmapPainter.setWorldTransform(QTransform(1.0, 0.0, 0.0, -1.0, 0.0, mReflectPixmap.height()));
             const QRect source = QRect(mReflectionRect.x(), mReflectionRect.y() - mReflectionRect.height(), mReflectionRect.width(), mReflectionRect.height());
-            mReflectPixmap.setDevicePixelRatio(dpr);
 
             bool vis = mReflectionSprite->isVisible();
             mReflectionSprite->hide();
             dynamic_cast<ReflectionGraphicsScene *>(scene())->setBackground(false);
             scene()->render(&pixmapPainter, mReflectPixmap.rect(), source, Qt::IgnoreAspectRatio);
+            mReflectPixmap.setDevicePixelRatio(dpr);
+
             dynamic_cast<ReflectionGraphicsScene *>(scene())->setBackground(true);
             if (vis)
                 mReflectionSprite->show();
