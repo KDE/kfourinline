@@ -100,30 +100,34 @@ void PixmapSprite::changeTheme()
         for (int i = mStartFrame; i <= mEndFrame; i++) {
             QString name = QStringLiteral("frame%1").arg(i);
             svgid = config.readEntry(name);
+            QSize size;
             if (!refframe.isNull()) {
-                pixmap = thememanager()->getPixmap(svgid, refframe, width);
+                size = thememanager()->pixmapSize(svgid, refframe, width);
             } else if (config.hasKey("height")) {
-                pixmap = thememanager()->getPixmap(svgid, QSize(int(width), int(height)));
+                size =QSize(int(width), int(height));
             } else {
-                pixmap = thememanager()->getPixmap(svgid, width);
+                size = thememanager()->pixmapSize(svgid, width);
             }
+            pixmap = thememanager()->getPixmap(svgid, size);
             mFrames.append(pixmap);
             if (center)
-                mHotspots.append(QPointF(pixmap.width() / 2, pixmap.height() / 2));
+                mHotspots.append(QPointF(size.width() / 2, size.height() / 2));
             else
                 mHotspots.append(QPointF(0.0, 0.0));
         }
     }
     // Read only one named pixmap
     else {
+        QSize size;
         if (config.hasKey("height")) {
-            pixmap = thememanager()->getPixmap(svgid, QSize(int(width), int(height)));
+            size = QSize(int(width), int(height));
         } else {
-            pixmap = thememanager()->getPixmap(svgid, width);
+            size = thememanager()->pixmapSize(svgid, width);
         }
+        pixmap = thememanager()->getPixmap(svgid, size);
         mFrames.append(pixmap);
         if (center)
-            mHotspots.append(QPointF(pixmap.width() / 2, pixmap.height() / 2));
+            mHotspots.append(QPointF(size.width() / 2, size.height() / 2));
         else
             mHotspots.append(QPointF(0.0, 0.0));
     }
