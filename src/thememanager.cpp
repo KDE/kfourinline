@@ -182,24 +182,22 @@ const QPixmap ThemeManager::getPixmap(const QString &svgid, QSize size)
     return pixmap;
 }
 
-// Get a pixmap when only width is given (this keeps the aspect ratio)
-const QPixmap ThemeManager::getPixmap(const QString &svgid, double width)
+// Get the size when only width is given (this keeps the aspect ratio)
+QSize ThemeManager::pixmapSize(const QString &svgid, double width) const
 {
     QRectF rect = mRenderer->boundsOnElement(svgid);
     double factor = width / rect.width();
-    QSize size = QSize(int(width), int(rect.height() * factor));
-    return getPixmap(svgid, size);
+    return QSize(int(width), int(rect.height() * factor));
 }
 
-// Get a pixmap with original properties and a scale factor given with respect to
+// Get the size with original properties and a scale factor given with respect to
 // another SVG item.
-const QPixmap ThemeManager::getPixmap(const QString &svgid, const QString &svgref, double refwidth)
+QSize ThemeManager::pixmapSize(const QString &svgid, const QString &svgref, double refwidth)
 {
     QRectF refrect = mRenderer->boundsOnElement(svgref);
     QRectF rect = mRenderer->boundsOnElement(svgid);
     double factor = refwidth / refrect.width();
-    QSize size = QSize(int(rect.width() * factor), int(rect.height() * factor));
-    return getPixmap(svgid, size);
+    return QSize(int(rect.width() * factor), int(rect.height() * factor));
 }
 
 // ========================== Themeable interface ===============================

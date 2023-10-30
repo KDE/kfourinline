@@ -132,27 +132,27 @@ public:
     const QPixmap getPixmap(const QString &svgid, QSize size);
 
     /**
-     * Load a pixmap from the SVG theme file. Its filename is given in the
-     * "general" section of the theme file as "svgfile". The pixmap is scaled
+     * Gets the size of  a pixmap from the SVG theme file. Its filename is given in the
+     * "general" section of the theme file as "svgfile". The size is scaled
      * to the given width. The height is relative to the width as given in the SVG
      * file.
      * @param svgid  The ID of the SVG item to be rendered as pixmap
      * @param width  The width of the resulting pixmap
-     * @return The new pixmap.
+     * @return The size.
      */
-    const QPixmap getPixmap(const QString &svgid, double width);
+    QSize pixmapSize(const QString &svgid, double width) const;
 
     /**
-     * Load a pixmap from the SVG theme file. Its filename is given in the
-     * "general" section of the theme file as "svgfile". The pixmap is scaled
+     * Gets the size of a pixmap from the SVG theme file. Its filename is given in the
+     * "general" section of the theme file as "svgfile". The size is scaled
      * with reference to another SVG item. This allows to generate a set of pixmaps
      * with related sizes.
      * @param svgid     The ID of the SVG item to be rendered as pixmap
      * @param svgref    The ID of the SVG item used as width reference
      * @param refwidth  The width of the resulting pixmap in relation to the reference item
-     * @return The new pixmap.
+     * @return The size.
      */
-    const QPixmap getPixmap(const QString &svgid, const QString &svgref, double refwidth);
+    QSize pixmapSize(const QString &svgid, const QString &svgref, double refwidth);
 
     /**
      * Retrieve the current scale of the theme.
