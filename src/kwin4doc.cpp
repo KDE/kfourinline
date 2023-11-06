@@ -699,20 +699,20 @@ void KWin4Doc::readConfig(KConfig *config)
     qCDebug(KFOURINLINE_LOG) << "++++++++++++++++++++++++++++++++++++ KWin4Doc::ReadConfig";
     loadSettings();
 
-    KConfigGroup ygrp = config->group("YellowPlayer");
+    KConfigGroup ygrp = config->group(QStringLiteral("YellowPlayer"));
     getPlayer(Yellow)->readConfig(ygrp);
 
-    KConfigGroup rgrp = config->group("RedPlayer");
+    KConfigGroup rgrp = config->group(QStringLiteral("RedPlayer"));
     getPlayer(Red)->readConfig(rgrp);
 }
 
 // Write config file
 void KWin4Doc::writeConfig(KConfig *config)
 {
-    KConfigGroup ygrp = config->group("YellowPlayer");
+    KConfigGroup ygrp = config->group(QStringLiteral("YellowPlayer"));
     getPlayer(Yellow)->writeConfig(ygrp);
 
-    KConfigGroup rgrp = config->group("RedPlayer");
+    KConfigGroup rgrp = config->group(QStringLiteral("RedPlayer"));
     getPlayer(Red)->writeConfig(rgrp);
 
     config->sync();

@@ -79,7 +79,7 @@ KWin4App::KWin4App(QWidget *parent)
     // Read theme files
     for (int i = 0; i < themeList.size(); i++) {
         KConfig themeInfo(themeList.at(i), KConfig::SimpleConfig);
-        KConfigGroup themeGroup(&themeInfo, "Theme");
+        KConfigGroup themeGroup(&themeInfo, QStringLiteral("Theme"));
         QString name = themeGroup.readEntry("Name", QString());
         QString file = themeGroup.readEntry("File", QString());
         bool isDefault = themeGroup.readEntry("Default", false);
@@ -390,7 +390,7 @@ void KWin4App::saveProperties()
     KConfig *config = KSharedConfig::openConfig().data();
 
     // Program data
-    KConfigGroup cfg = config->group("ProgramData");
+    KConfigGroup cfg = config->group(QStringLiteral("ProgramData"));
     cfg.writeEntry("ThemeIndexNo", mThemeIndexNo);
 
     mDoc->writeConfig(config);
@@ -405,7 +405,7 @@ void KWin4App::readProperties()
     KConfig *config = KSharedConfig::openConfig().data();
 
     // Program data
-    KConfigGroup cfg = config->group("ProgramData");
+    KConfigGroup cfg = config->group(QStringLiteral("ProgramData"));
     mThemeIndexNo = cfg.readEntry("ThemeIndexNo", themeIdxFromName(mThemeDefault));
     if (mThemeIndexNo >= mThemeFiles.size())
         mThemeIndexNo = 0;
