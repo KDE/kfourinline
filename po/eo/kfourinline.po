@@ -761,13 +761,13 @@ msgstr ""
 #: settings.ui:287
 #, kde-format
 msgid "Red"
-msgstr ""
+msgstr "Ruĝa"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
 #: settings.ui:297
 #, kde-format
 msgid "Black"
-msgstr "Negra"
+msgstr "Nigra"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
 #: statistics.ui:13
