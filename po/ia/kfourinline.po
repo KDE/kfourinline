@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-25 01:49+0000\n"
-"PO-Revision-Date: 2023-09-25 16:13+0200\n"
+"PO-Revision-Date: 2023-12-28 19:43+0100\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -74,7 +74,7 @@ msgstr ""
 #, kde-format
 msgctxt "Ask player which color he wants to play"
 msgid "Your color?"
-msgstr ""
+msgstr "Tu color?"
 
 #: displayintro.cpp:124
 #, kde-format
@@ -268,7 +268,7 @@ msgstr ""
 #: kgamedebugdialog.cpp:177
 #, kde-format
 msgid "Players"
-msgstr ""
+msgstr "Jocatores"
 
 #: kgamedebugdialog.cpp:183
 #, kde-format
@@ -606,7 +606,7 @@ msgstr "Jocator 2"
 #: main.cpp:54
 #, kde-format
 msgid "KFourInLine"
-msgstr ""
+msgstr "KFourInLine"
 
 #: main.cpp:56
 #, kde-format
@@ -795,7 +795,7 @@ msgstr "Won"
 #: statistics.ui:81
 #, kde-format
 msgid "Lost"
-msgstr ""
+msgstr "Perdite"
 
 #. i18n: ectx: property (text), widget (QLabel, sum)
 #: statistics.ui:97
