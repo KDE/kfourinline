@@ -1,77 +1,65 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Settings</class>
- <widget class="QWidget" name="Settings" >
-  <property name="geometry" >
+ <widget class="QWidget" name="Settings">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>455</width>
-    <height>446</height>
+    <width>804</width>
+    <height>537</height>
    </rect>
   </property>
-  <layout class="QGridLayout" >
-   <item row="3" column="1" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0" >
-      <size>
-       <width>254</width>
-       <height>21</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0" colspan="2" >
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <layout class="QGridLayout">
+   <item row="3" column="0" colspan="2">
+    <widget class="QGroupBox" name="Difficulty">
+     <property name="title">
       <string>Computer Difficulty</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QVBoxLayout">
       <item>
-       <widget class="QSlider" name="kcfg_level" >
-        <property name="whatsThis" >
+       <widget class="QSlider" name="kcfg_level">
+        <property name="whatsThis">
          <string>Change the strength of the computer player.</string>
         </property>
-        <property name="minimum" >
+        <property name="minimum">
          <number>1</number>
         </property>
-        <property name="maximum" >
+        <property name="maximum">
          <number>10</number>
         </property>
-        <property name="pageStep" >
+        <property name="pageStep">
          <number>1</number>
         </property>
-        <property name="value" >
+        <property name="value">
          <number>3</number>
         </property>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <property name="tickPosition" >
+        <property name="tickPosition">
          <enum>QSlider::TicksBelow</enum>
         </property>
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
+         <widget class="QLabel" name="textLabel1">
+          <property name="text">
            <string>Easy</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="textLabel2" >
-          <property name="text" >
+         <widget class="QLabel" name="textLabel2">
+          <property name="text">
            <string>Hard</string>
           </property>
-          <property name="alignment" >
+          <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
@@ -79,8 +67,8 @@
        </layout>
       </item>
       <item>
-       <widget class="QCheckBox" name="kcfg_learning" >
-        <property name="text" >
+       <widget class="QCheckBox" name="kcfg_learning">
+        <property name="text">
          <string>Use AI learning</string>
         </property>
        </widget>
@@ -88,35 +76,102 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="1" >
-    <widget class="QGroupBox" name="Input1" >
-     <property name="title" >
-      <string>Red Plays With</string>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="Player1">
+     <property name="title">
+      <string>Red</string>
      </property>
-     <layout class="QHBoxLayout" >
+     <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QVBoxLayout" >
-        <item>
-         <widget class="QRadioButton" name="kcfg_input1mouse" >
-          <property name="text" >
-           <string>Mouse</string>
+       <layout class="QGridLayout" name="Name1">
+        <item row="0" column="0">
+         <widget class="QLabel" name="nameLabel1">
+          <property name="text">
+           <string>Name:</string>
           </property>
-          <property name="checked" >
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="kcfg_Name1"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="Input0">
+        <item>
+         <widget class="QLabel" name="playerLabel1">
+          <property name="whatsThis">
+           <string comment="A person that plays"/>
+          </property>
+          <property name="text">
+           <string>Player:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QRadioButton" name="kcfg_input0mouse">
+            <property name="text">
+             <string>Human with Mouse</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="kcfg_input0key">
+            <property name="text">
+             <string>Human with Keyboard</string>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="kcfg_input0ai">
+            <property name="text">
+             <string>Computer</string>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="StartPlayer1">
+        <item>
+         <widget class="QCheckBox" name="kcfg_startcolourred">
+          <property name="text">
+           <string>Starting Player</string>
+          </property>
+          <property name="checked">
            <bool>true</bool>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="kcfg_input1key" >
-          <property name="text" >
-           <string>Keyboard</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="kcfg_input1ai" >
-          <property name="text" >
-           <string>Computer</string>
+          <property name="autoExclusive">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -125,110 +180,95 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0" >
-    <widget class="QGroupBox" name="Input0" >
-     <property name="title" >
-      <string>Black Plays With</string>
+   <item row="2" column="0">
+    <widget class="QGroupBox" name="Player2">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
      </property>
-     <layout class="QVBoxLayout" >
+     <property name="title">
+      <string>Black</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QVBoxLayout" >
-        <item>
-         <widget class="QRadioButton" name="kcfg_input0mouse" >
-          <property name="text" >
-           <string>Mouse</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
+       <layout class="QGridLayout" name="Name2">
+        <item row="1" column="0">
+         <widget class="QLabel" name="nameLabel2">
+          <property name="text">
+           <string>Name:</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QRadioButton" name="kcfg_input0key" >
-          <property name="text" >
-           <string>Keyboard</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="kcfg_input0ai" >
-          <property name="text" >
-           <string>Computer</string>
-          </property>
-         </widget>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="kcfg_Name2"/>
         </item>
        </layout>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="1" >
-    <widget class="QGroupBox" name="groupBox2" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title" >
-      <string>Player Names</string>
-     </property>
-     <layout class="QVBoxLayout" >
       <item>
-       <layout class="QGridLayout" >
-        <item row="1" column="1" >
-         <widget class="QLineEdit" name="kcfg_Name2" />
-        </item>
-        <item row="0" column="1" >
-         <widget class="QLineEdit" name="kcfg_Name1" />
-        </item>
-        <item row="0" column="0" >
-         <widget class="QLabel" name="textLabel3" >
-          <property name="text" >
-           <string>Player 1:</string>
+       <layout class="QHBoxLayout" name="Input1">
+        <item>
+         <widget class="QLabel" name="playerLabel2">
+          <property name="whatsThis">
+           <string/>
+          </property>
+          <property name="text">
+           <string>Player:</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0" >
-         <widget class="QLabel" name="textLabel4" >
-          <property name="text" >
-           <string>Player 2:</string>
-          </property>
-         </widget>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QRadioButton" name="kcfg_input1mouse">
+            <property name="text">
+             <string>Human with Mouse</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="kcfg_input1key">
+            <property name="text">
+             <string>Human with Keyboard</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="kcfg_input1ai">
+            <property name="text">
+             <string>Computer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" >
-    <widget class="QGroupBox" name="StartColour" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Ignored" hsizetype="Minimum" >
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="title" >
-      <string>Starting Player Color</string>
-     </property>
-     <layout class="QVBoxLayout" >
       <item>
-       <layout class="QVBoxLayout" >
+       <layout class="QHBoxLayout" name="StartPlayer2">
         <item>
-         <widget class="QRadioButton" name="kcfg_startcolourred" >
-          <property name="text" >
-           <string>Red</string>
+         <widget class="QCheckBox" name="kcfg_startcolouryellow">
+          <property name="text">
+           <string>Starting Player</string>
           </property>
-          <property name="checked" >
+          <property name="autoExclusive">
            <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="kcfg_startcolouryellow" >
-          <property name="text" >
-           <string>Black</string>
           </property>
          </widget>
         </item>
@@ -239,17 +279,8 @@
    </item>
   </layout>
  </widget>
-  <tabstops>
-  <tabstop>kcfg_startcolourred</tabstop>
-  <tabstop>kcfg_startcolouryellow</tabstop>
-  <tabstop>kcfg_Name1</tabstop>
+ <tabstops>
   <tabstop>kcfg_Name2</tabstop>
-  <tabstop>kcfg_input0mouse</tabstop>
-  <tabstop>kcfg_input0key</tabstop>
-  <tabstop>kcfg_input0ai</tabstop>
-  <tabstop>kcfg_input1mouse</tabstop>
-  <tabstop>kcfg_input1key</tabstop>
-  <tabstop>kcfg_input1ai</tabstop>
   <tabstop>kcfg_level</tabstop>
   <tabstop>kcfg_learning</tabstop>
  </tabstops>

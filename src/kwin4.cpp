@@ -16,6 +16,7 @@
 #include "kwin4doc.h"
 #include "kwin4view.h"
 #include "prefs.h"
+#include "qbuttongroup.h"
 #include "reflectiongraphicsscene.h"
 #include "ui_settings.h"
 #include "ui_statistics.h"
@@ -760,19 +761,14 @@ void KWin4App::configureSettings()
         // The dialog need to refresh the buttons as they are not connectable via a signal-slot
         // in KConfigDialog
         ui.kcfg_startcolourred->setChecked(Prefs::startcolourred());
-        ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));
         ui.kcfg_startcolouryellow->setChecked(Prefs::startcolouryellow());
-        ui.kcfg_startcolouryellow->setText(mTheme->colorNamePlayer(1));
         ui.kcfg_level->setValue(Prefs::level());
-        ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
-        ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
         ui.kcfg_input0mouse->setChecked(Prefs::input0mouse());
         ui.kcfg_input0key->setChecked(Prefs::input0key());
         ui.kcfg_input0ai->setChecked(Prefs::input0ai());
         ui.kcfg_input1mouse->setChecked(Prefs::input1mouse());
         ui.kcfg_input1key->setChecked(Prefs::input1key());
         ui.kcfg_input1ai->setChecked(Prefs::input1ai());
-
         return;
     }
 
@@ -783,10 +779,12 @@ void KWin4App::configureSettings()
     // QT5 dialog->setHelp(QString(),"kfourinline");
     QWidget *frame = new QWidget(dialog);
     ui.setupUi(frame);
-    ui.kcfg_startcolourred->setText(mTheme->colorNamePlayer(0));
-    ui.kcfg_startcolouryellow->setText(mTheme->colorNamePlayer(1));
-    ui.Input0->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(0)));
-    ui.Input1->setTitle(i18n("%1 Plays With", mTheme->colorNamePlayer(1)));
+    QButtonGroup *group = new QButtonGroup(this); //Set up "Starting Player" buttons to be exclusive
+    group->setExclusive(true);
+    group->addButton(ui.kcfg_startcolourred);
+    group->addButton(ui.kcfg_startcolouryellow);
+    ui.Player1->setTitle(mTheme->colorNamePlayer(0));
+    ui.Player2->setTitle(mTheme->colorNamePlayer(1));
     dialog->addPage(frame, i18n("General"), QStringLiteral("games-config-options"));
     connect(dialog, &KConfigDialog::settingsChanged, mDoc, &KWin4Doc::loadSettings);
     dialog->show();
