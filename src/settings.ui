@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>804</width>
-    <height>537</height>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowOpacity">
@@ -73,6 +73,19 @@
         </property>
        </widget>
       </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
      </layout>
     </widget>
    </item>
@@ -83,16 +96,42 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <layout class="QGridLayout" name="Name1">
-        <item row="0" column="0">
+       <layout class="QHBoxLayout" name="Name1">
+        <item>
          <widget class="QLabel" name="nameLabel1">
           <property name="text">
            <string>Name:</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
+        <item>
          <widget class="QLineEdit" name="kcfg_Name1"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="kcfg_startcolourred">
+          <property name="text">
+           <string>Starting Player</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -109,63 +148,9 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QRadioButton" name="kcfg_input0mouse">
-            <property name="text">
-             <string>Human with Mouse</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-            <property name="autoExclusive">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="kcfg_input0key">
-            <property name="text">
-             <string>Human with Keyboard</string>
-            </property>
-            <property name="autoExclusive">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="kcfg_input0ai">
-            <property name="text">
-             <string>Computer</string>
-            </property>
-            <property name="autoExclusive">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="StartPlayer1">
-        <item>
-         <widget class="QCheckBox" name="kcfg_startcolourred">
+         <widget class="QRadioButton" name="kcfg_input0mouse">
           <property name="text">
-           <string>Starting Player</string>
+           <string>Human with Mouse</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -174,6 +159,39 @@
            <bool>true</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="kcfg_input0key">
+          <property name="text">
+           <string>Human with Keyboard</string>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="kcfg_input0ai">
+          <property name="text">
+           <string>Computer</string>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -192,16 +210,39 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QGridLayout" name="Name2">
-        <item row="1" column="0">
+       <layout class="QHBoxLayout" name="Name2">
+        <item>
          <widget class="QLabel" name="nameLabel2">
           <property name="text">
            <string>Name:</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item>
          <widget class="QLineEdit" name="kcfg_Name2"/>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="kcfg_startcolouryellow">
+          <property name="text">
+           <string>Starting Player</string>
+          </property>
+          <property name="autoExclusive">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -218,59 +259,41 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QRadioButton" name="kcfg_input1mouse">
-            <property name="text">
-             <string>Human with Mouse</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="kcfg_input1key">
-            <property name="text">
-             <string>Human with Keyboard</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="kcfg_input1ai">
-            <property name="text">
-             <string>Computer</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="StartPlayer2">
-        <item>
-         <widget class="QCheckBox" name="kcfg_startcolouryellow">
+         <widget class="QRadioButton" name="kcfg_input1mouse">
           <property name="text">
-           <string>Starting Player</string>
+           <string>Human with Mouse</string>
           </property>
-          <property name="autoExclusive">
+          <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="kcfg_input1key">
+          <property name="text">
+           <string>Human with Keyboard</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="kcfg_input1ai">
+          <property name="text">
+           <string>Computer</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
@@ -280,7 +303,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>kcfg_Name2</tabstop>
   <tabstop>kcfg_level</tabstop>
   <tabstop>kcfg_learning</tabstop>
  </tabstops>
