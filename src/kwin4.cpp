@@ -65,7 +65,7 @@ KWin4App::KWin4App(QWidget *parent)
 {
     // Read theme files
     QStringList themeList;
-    const QString dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("grafix"), QStandardPaths::LocateDirectory);
+    const QString dir = QStandardPaths::locate(QStandardPaths::AppDataLocation, QStringLiteral("themes"), QStandardPaths::LocateDirectory);
     const QStringList fileNames = QDir(dir).entryList({QStringLiteral("*.desktop")});
     for (const QString &file : fileNames)
         themeList.append(dir + QLatin1Char('/') + file);
