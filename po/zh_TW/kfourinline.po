@@ -4,20 +4,21 @@
 # Hydonsingore Sie <hydonsingore@mail.educities.edu.tw>, 2003.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2006, 2009.
 # Franklin Weng <franklin at goodhorse dot idv dot tw>, 2007, 2008, 2013.
+# SPDX-FileCopyrightText: 2024 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-25 01:49+0000\n"
-"PO-Revision-Date: 2013-07-01 16:47+0800\n"
-"Last-Translator: Franklin Weng <franklin at goodhorse dot idv dot tw>\n"
-"Language-Team: Chinese Traditional <kde-tw@googlegroups.com>\n"
+"PO-Revision-Date: 2024-01-15 00:09+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "dot tw>\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 24.01.90\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -46,11 +47,10 @@ msgid "Red"
 msgstr "紅色"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "聊天視窗"
+msgstr "聊天對話框"
 
 #: chatdlg.cpp:48
 #, kde-format
@@ -105,8 +105,7 @@ msgid "Two Player Game"
 msgstr "兩個玩家的遊戲"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
 msgstr "設定聊天"
@@ -205,11 +204,10 @@ msgid "&Start Network"
 msgstr "開始網路功能(&S)"
 
 #: kgamedebugdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "KGame Debug Dialog"
+#, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
-msgstr "KGame Debug 視窗"
+msgstr "KGame 除錯對話框"
 
 #: kgamedebugdialog.cpp:140
 #, kde-format
