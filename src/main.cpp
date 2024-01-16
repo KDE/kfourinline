@@ -49,7 +49,8 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("kfourinline");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("kfourinline"));
+
     KAboutData aboutData(QStringLiteral("kfourinline"),
                          i18n("KFourInLine"),
                          QStringLiteral(KFOURINLINE_VERSION_STRING),
