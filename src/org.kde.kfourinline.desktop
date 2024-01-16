@@ -155,4 +155,3 @@ Icon=kfourinline
 Type=Application
 X-DocPath=kfourinline/index.html
 Categories=Qt;KDE;Game;BoardGame;
-X-DBUS-ServiceName=org.kde.kfourinline
