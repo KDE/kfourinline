@@ -84,6 +84,7 @@ target_link_libraries(kfourinline
     KDEGames6Private
     KF6::CoreAddons
     KF6::Crash
+    KF6::DBusAddons
     KF6::DNSSD
     KF6::I18n
     KF6::XmlGui

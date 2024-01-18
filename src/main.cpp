@@ -29,6 +29,7 @@
 // KF
 #include <KAboutData>
 #include <KCrash>
+#include <KDBusService>
 #include <KLocalizedString>
 // Qt
 #include <QApplication>
@@ -94,6 +95,8 @@ int main(int argc, char *argv[])
         global_demo_mode = true;
         qCDebug(KFOURINLINE_LOG) << "Running in demo mode" << global_demo_mode;
     }
+
+    KDBusService service;
 
     // Start application
     // Start session
