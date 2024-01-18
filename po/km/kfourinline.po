@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-18 00:36+0000\n"
 "PO-Revision-Date: 2009-10-28 09:37+0700\n"
 "Last-Translator: Morn Met\n"
 "Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
@@ -634,67 +634,67 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "អ្នក​លេង​ ២​"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "KFourInLine"
 msgstr "KFourInLine"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "KFourInLine ៖ ល្បែង​ក្ដារ​ លេង​ពីរ​នាក់"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "រក្សាសិទ្ធិ​ឆ្នាំ ១​៩​៩​៥-២​០​០​៧ ដោយ Martin Heni"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Martin Heni"
 msgstr "Martin Heni"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Game design and code"
 msgstr "រចនា និង​កូដ​ល្បែង"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:61 main.cpp:62
+#: main.cpp:62 main.cpp:63
 #, kde-format
 msgid "Graphics"
 msgstr "ក្រាហ្វិក"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Code Improvements"
 msgstr "កែ​លម្អ​កូដ​ឲ្យ​ប្រសើរ"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgid "Enter debug level"
 msgstr "បញ្ចូល​កម្រិត​បំបាត់​កំហុស"
 
-#: main.cpp:72
+#: main.cpp:73
 #, kde-format
 msgid "Skip intro animation"
 msgstr "រំលង​ចលនា​ថយ​ក្រោយ​"
 
-#: main.cpp:73
+#: main.cpp:74
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "រត់​ល្បែង​ជា​របៀប​សាកល្បង (លេង​ដោយ​ស្វ័យ​ប្រវត្តិ)"

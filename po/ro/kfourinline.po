@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-18 00:36+0000\n"
 "PO-Revision-Date: 2012-12-22 11:41+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
@@ -630,67 +630,67 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "Jucător 2"
 
-#: main.cpp:55
+#: main.cpp:56
 #, kde-format
 msgid "KFourInLine"
 msgstr "KPatruÎnLinie"
 
-#: main.cpp:57
+#: main.cpp:58
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "KPatruÎnLinie: Joc de table în doi"
 
-#: main.cpp:59
+#: main.cpp:60
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "(c) 1995-2007, Martin Heni"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Martin Heni"
 msgstr "Martin Heni"
 
-#: main.cpp:60
+#: main.cpp:61
 #, kde-format
 msgid "Game design and code"
 msgstr "Proiectare joc și cod"
 
-#: main.cpp:61
+#: main.cpp:62
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:61 main.cpp:62
+#: main.cpp:62 main.cpp:63
 #, kde-format
 msgid "Graphics"
 msgstr "Grafică"
 
-#: main.cpp:62
+#: main.cpp:63
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:63
+#: main.cpp:64
 #, kde-format
 msgid "Code Improvements"
 msgstr "Îmbunătățiri cod"
 
-#: main.cpp:71
+#: main.cpp:72
 #, kde-format
 msgid "Enter debug level"
 msgstr "Introduceți nivelul de depanare"
 
-#: main.cpp:72
+#: main.cpp:73
 #, kde-format
 msgid "Skip intro animation"
 msgstr "Sari peste animația introductivă"
 
-#: main.cpp:73
+#: main.cpp:74
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "Lansează jocul în regim demonstrativ (jucat automat)"
