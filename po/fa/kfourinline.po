@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-01-25 00:36+0000\n"
 "PO-Revision-Date: 2008-04-15 17:41+0330\n"
 "Last-Translator: Emil Sedgh <emilsedgh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
@@ -444,7 +444,7 @@ msgstr "گپ شبکه..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:678
+#: kgamedialogconfig.cpp:128 kwin4.cpp:679
 #, kde-format
 msgid "Network Configuration"
 msgstr "پیکربندی شبکه"
@@ -469,123 +469,117 @@ msgstr ""
 msgid "Network status: You are connected"
 msgstr ""
 
-#: kwin4.cpp:74
+#: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
 msgstr "خطای نصب: فهرست چهره یافت نشد."
 
-#: kwin4.cpp:101
+#: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
 msgstr "خطای نصب: موتور AI یافت نشد. ادامه بدون AI."
 
-#: kwin4.cpp:116
+#: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
 msgstr "خطای نصب: خطای پرونده چهره."
 
-#: kwin4.cpp:266
+#: kwin4.cpp:267
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "بازی که تاکنون اجرا شده ساقط می‌شود. هیچ برنده‌ای اعلام نخواهد شد."
 
-#: kwin4.cpp:271
+#: kwin4.cpp:272
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "پیکربندی &شبکه...‌"
 
-#: kwin4.cpp:275
+#: kwin4.cpp:276
 #, kde-format
 msgid "Network Chat..."
 msgstr "گپ شبکه..."
 
-#: kwin4.cpp:280
+#: kwin4.cpp:281
 #, kde-format
 msgid "&Show Statistics"
 msgstr "&نمایش آمار‌"
 
-#: kwin4.cpp:282
+#: kwin4.cpp:283
 #, kde-format
 msgid "Show statistics."
 msgstr "نمایش آمار."
 
-#: kwin4.cpp:294
+#: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
 msgstr "چهره"
 
-#: kwin4.cpp:305
+#: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
 msgstr "اشکال‌زدایی KGame"
 
-#: kwin4.cpp:328
+#: kwin4.cpp:329
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "به Four Wins خوش آمدید"
 
-#: kwin4.cpp:484 kwin4.cpp:637
+#: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
 msgid "Game running..."
 msgstr "بازی در حال اجرا..."
 
-#: kwin4.cpp:598
+#: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
 msgstr "بدون بازی  "
 
-#: kwin4.cpp:600 kwin4.cpp:602
+#: kwin4.cpp:601 kwin4.cpp:603
 #, fuzzy, kde-format
 #| msgid " %1 - Red "
 msgid " %1 - %2 "
 msgstr " %1 - قرمز "
 
-#: kwin4.cpp:604
+#: kwin4.cpp:605
 #, kde-format
 msgid "Nobody  "
 msgstr "هیچ‌کس  "
 
-#: kwin4.cpp:626
+#: kwin4.cpp:627
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "بازی شبکه پایان یافت!\n"
 
-#: kwin4.cpp:647
+#: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "بازی قرعه‌کشی می‌شود. لطفاً، دور جدید را بازآغازی کنید."
 
-#: kwin4.cpp:654
+#: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 بازی را برد. لطفاً، دور جدید را بازآغازی کنید."
 
-#: kwin4.cpp:659
+#: kwin4.cpp:660
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr "بازی ساقط شد. لطفاً، دور جدید را بازآغازی کنید."
 
-#: kwin4.cpp:689
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Black should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "مشکی باید از دور بازی داده بشود"
 
-#: kwin4.cpp:690
+#: kwin4.cpp:691
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "قرمز باید از دور بازی داده بشود"
 
-#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
-#, fuzzy, kde-format
-#| msgid "Red Plays With"
-msgid "%1 Plays With"
-msgstr "قرمز بازی می‌کند با"
-
-#: kwin4.cpp:790
+#: kwin4.cpp:788
 #, kde-format
 msgid "General"
 msgstr "عمومی"
@@ -610,7 +604,7 @@ msgstr "میزبان اتصال شبکه"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
-#: kwin4.kcfg:21 settings.ui:38
+#: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
 msgstr "تغییر قدرت بازیکن رایانه."
@@ -710,95 +704,83 @@ msgctxt "computer level"
 msgid "Level %1"
 msgstr "سطح %1"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
-#: settings.ui:32
+#. i18n: ectx: property (title), widget (QGroupBox, Difficulty)
+#: settings.ui:20
 #, kde-format
 msgid "Computer Difficulty"
 msgstr "دشواری رایانه"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: settings.ui:65
+#: settings.ui:53
 #, kde-format
 msgid "Easy"
 msgstr "آسان"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: settings.ui:72
+#: settings.ui:60
 #, kde-format
 msgid "Hard"
 msgstr "سخت"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
-#: settings.ui:84
+#: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
 msgstr "استفاده از یادگیری AI"
 
-#. i18n: ectx: property (title), widget (QGroupBox, Input1)
-#: settings.ui:94
-#, kde-format
-msgid "Red Plays With"
-msgstr "قرمز بازی می‌کند با"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
-#: settings.ui:102 settings.ui:139
-#, kde-format
-msgid "Mouse"
-msgstr "موشی"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
-#: settings.ui:112 settings.ui:149
-#, kde-format
-msgid "Keyboard"
-msgstr "صفحه کلید"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
-#: settings.ui:119 settings.ui:156
-#, kde-format
-msgid "Computer"
-msgstr "رایانه"
-
-#. i18n: ectx: property (title), widget (QGroupBox, Input0)
-#: settings.ui:131
-#, kde-format
-msgid "Black Plays With"
-msgstr "سیاه بازی می‌کند با"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: settings.ui:174
-#, kde-format
-msgid "Player Names"
-msgstr "نام بازیکنان"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: settings.ui:188
-#, kde-format
-msgid "Player 1:"
-msgstr "بازیکن ۱:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: settings.ui:195
-#, kde-format
-msgid "Player 2:"
-msgstr "بازیکن ۲:"
-
-#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
-#: settings.ui:213
-#, kde-format
-msgid "Starting Player Color"
-msgstr "رنگ بازیکن آغازکننده"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
-#: settings.ui:221
+#. i18n: ectx: property (title), widget (QGroupBox, Player1)
+#: settings.ui:95
 #, kde-format
 msgid "Red"
 msgstr "قرمز"
 
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
-#: settings.ui:231
+#. i18n: ectx: property (text), widget (QLabel, nameLabel1)
+#. i18n: ectx: property (text), widget (QLabel, nameLabel2)
+#: settings.ui:103 settings.ui:217
+#, fuzzy, kde-format
+#| msgid "Name"
+msgid "Name:"
+msgstr "نام"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
+#: settings.ui:113 settings.ui:227
+#, fuzzy, kde-format
+#| msgid "Starting Player Color"
+msgid "Starting Player"
+msgstr "رنگ بازیکن آغازکننده"
+
+#. i18n: ectx: property (text), widget (QLabel, playerLabel1)
+#. i18n: ectx: property (text), widget (QLabel, playerLabel2)
+#: settings.ui:146 settings.ui:257
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player:"
+msgstr "بازیکن ۱"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#: settings.ui:153 settings.ui:264
+#, kde-format
+msgid "Human with Mouse"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#: settings.ui:166 settings.ui:274
+#, kde-format
+msgid "Human with Keyboard"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#: settings.ui:176 settings.ui:281
+#, kde-format
+msgid "Computer"
+msgstr "رایانه"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Player2)
+#: settings.ui:209
 #, kde-format
 msgid "Black"
 msgstr "مشکی"
@@ -898,6 +880,32 @@ msgstr "خیر"
 #, kde-format
 msgid "Bk"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Red Plays With"
+#~ msgid "%1 Plays With"
+#~ msgstr "قرمز بازی می‌کند با"
+
+#~ msgid "Red Plays With"
+#~ msgstr "قرمز بازی می‌کند با"
+
+#~ msgid "Mouse"
+#~ msgstr "موشی"
+
+#~ msgid "Keyboard"
+#~ msgstr "صفحه کلید"
+
+#~ msgid "Black Plays With"
+#~ msgstr "سیاه بازی می‌کند با"
+
+#~ msgid "Player Names"
+#~ msgstr "نام بازیکنان"
+
+#~ msgid "Player 1:"
+#~ msgstr "بازیکن ۱:"
+
+#~ msgid "Player 2:"
+#~ msgstr "بازیکن ۲:"
 
 #~ msgid "Ready"
 #~ msgstr "آماده"

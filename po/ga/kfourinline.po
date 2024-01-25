@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames/kwin4.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-01-25 00:36+0000\n"
 "PO-Revision-Date: 2004-12-03 14:52-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -419,7 +419,7 @@ msgstr "&Líonra"
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:678
+#: kgamedialogconfig.cpp:128 kwin4.cpp:679
 #, kde-format
 msgid "Network Configuration"
 msgstr "Cumraíocht Líonra"
@@ -444,121 +444,115 @@ msgstr ""
 msgid "Network status: You are connected"
 msgstr ""
 
-#: kwin4.cpp:74
+#: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
 msgstr "Earráid suiteála: Níor aimsíodh liosta téamaí."
 
-#: kwin4.cpp:101
+#: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
 msgstr "Earráid suiteála: Inneall AI gan aimsiú. Lean ar aghaidh gan AI."
 
-#: kwin4.cpp:116
+#: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
 msgstr "Earráid suiteála: Earráid i gcomhad téama."
 
-#: kwin4.cpp:266
+#: kwin4.cpp:267
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
 msgstr ""
 "Cuir deireadh le cluiche atá ar siúl faoi láthair. Ní bheidh aon bhuaiteoir "
 "ann."
 
-#: kwin4.cpp:271
+#: kwin4.cpp:272
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "Cumraíocht Lío&nra..."
 
-#: kwin4.cpp:275
+#: kwin4.cpp:276
 #, kde-format
 msgid "Network Chat..."
 msgstr "Comhrá Líonra..."
 
-#: kwin4.cpp:280
+#: kwin4.cpp:281
 #, kde-format
 msgid "&Show Statistics"
 msgstr "Tai&speáin Staitisticí"
 
-#: kwin4.cpp:282
+#: kwin4.cpp:283
 #, kde-format
 msgid "Show statistics."
 msgstr "Taispeáin staitisticí."
 
-#: kwin4.cpp:294
+#: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
 msgstr "Téama"
 
-#: kwin4.cpp:305
+#: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
 msgstr "Dífhabhtaigh KGame"
 
-#: kwin4.cpp:328
+#: kwin4.cpp:329
 #, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Fáilte go dtí Four Wins"
 
-#: kwin4.cpp:484 kwin4.cpp:637
+#: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
 msgid "Game running..."
 msgstr "Cluiche ag rith..."
 
-#: kwin4.cpp:598
+#: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
 msgstr "Gan chluiche "
 
-#: kwin4.cpp:600 kwin4.cpp:602
+#: kwin4.cpp:601 kwin4.cpp:603
 #, fuzzy, kde-format
 #| msgid " %1 - Red "
 msgid " %1 - %2 "
 msgstr " %1 - Dearg "
 
-#: kwin4.cpp:604
+#: kwin4.cpp:605
 #, kde-format
 msgid "Nobody  "
 msgstr "Duine Ar Bith  "
 
-#: kwin4.cpp:626
+#: kwin4.cpp:627
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Tháinig an cluiche líonra chun deiridh!\n"
 
-#: kwin4.cpp:647
+#: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Cluiche cothrom a bhí ann. Atosaigh an chéad dreas eile."
 
-#: kwin4.cpp:654
+#: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "Bhuaigh %1 an cluiche.  Atosaigh an chéad dreas eile."
 
-#: kwin4.cpp:659
+#: kwin4.cpp:660
 #, kde-format
 msgid " Game ended. Please restart next round."
 msgstr " Cuireadh deireadh leis an gcluiche. Atosaigh an chéad dreas eile."
 
-#: kwin4.cpp:689
+#: kwin4.cpp:690
 #, kde-format
 msgid "Black should be played by remote player"
 msgstr "Ba chóir d'imreoir cianda a bheith dubh"
 
-#: kwin4.cpp:690
+#: kwin4.cpp:691
 #, kde-format
 msgid "Red should be played by remote player"
 msgstr "Ba chóir d'imreoir cianda a bheith dearg"
 
-#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
-#, fuzzy, kde-format
-#| msgid "Red Plays With"
-msgid "%1 Plays With"
-msgstr "Imríonn Dearg Le"
-
-#: kwin4.cpp:790
+#: kwin4.cpp:788
 #, kde-format
 msgid "General"
 msgstr "Ginearálta"
@@ -583,7 +577,7 @@ msgstr "Óstríomhaire an cheangail líonra"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
-#: kwin4.kcfg:21 settings.ui:38
+#: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
 msgstr "Athraigh neart an imreora ríomhaire."
@@ -683,95 +677,83 @@ msgctxt "computer level"
 msgid "Level %1"
 msgstr "Leibhéal %1"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
-#: settings.ui:32
+#. i18n: ectx: property (title), widget (QGroupBox, Difficulty)
+#: settings.ui:20
 #, kde-format
 msgid "Computer Difficulty"
 msgstr "Leibhéal an Ríomhaire"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: settings.ui:65
+#: settings.ui:53
 #, kde-format
 msgid "Easy"
 msgstr "Éasca"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: settings.ui:72
+#: settings.ui:60
 #, kde-format
 msgid "Hard"
 msgstr "Crua"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
-#: settings.ui:84
+#: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
 msgstr "Úsáid foghlaim AI"
 
-#. i18n: ectx: property (title), widget (QGroupBox, Input1)
-#: settings.ui:94
-#, kde-format
-msgid "Red Plays With"
-msgstr "Imríonn Dearg Le"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
-#: settings.ui:102 settings.ui:139
-#, kde-format
-msgid "Mouse"
-msgstr "Luch"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
-#: settings.ui:112 settings.ui:149
-#, kde-format
-msgid "Keyboard"
-msgstr "Méarchlár"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
-#: settings.ui:119 settings.ui:156
-#, kde-format
-msgid "Computer"
-msgstr "Ríomhaire"
-
-#. i18n: ectx: property (title), widget (QGroupBox, Input0)
-#: settings.ui:131
-#, kde-format
-msgid "Black Plays With"
-msgstr "Imríonn Dubh Le"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: settings.ui:174
-#, kde-format
-msgid "Player Names"
-msgstr "Ainmneacha Imreora"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: settings.ui:188
-#, kde-format
-msgid "Player 1:"
-msgstr "Imreoir 1:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: settings.ui:195
-#, kde-format
-msgid "Player 2:"
-msgstr "Imreoir 2:"
-
-#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
-#: settings.ui:213
-#, kde-format
-msgid "Starting Player Color"
-msgstr "Dath an Chéad Imreora"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
-#: settings.ui:221
+#. i18n: ectx: property (title), widget (QGroupBox, Player1)
+#: settings.ui:95
 #, kde-format
 msgid "Red"
 msgstr "Dearg"
 
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
-#: settings.ui:231
+#. i18n: ectx: property (text), widget (QLabel, nameLabel1)
+#. i18n: ectx: property (text), widget (QLabel, nameLabel2)
+#: settings.ui:103 settings.ui:217
+#, fuzzy, kde-format
+#| msgid "Name"
+msgid "Name:"
+msgstr "Ainm"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
+#: settings.ui:113 settings.ui:227
+#, fuzzy, kde-format
+#| msgid "Starting Player Color"
+msgid "Starting Player"
+msgstr "Dath an Chéad Imreora"
+
+#. i18n: ectx: property (text), widget (QLabel, playerLabel1)
+#. i18n: ectx: property (text), widget (QLabel, playerLabel2)
+#: settings.ui:146 settings.ui:257
+#, fuzzy, kde-format
+#| msgid "Player: "
+msgid "Player:"
+msgstr "Imreoir: "
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#: settings.ui:153 settings.ui:264
+#, kde-format
+msgid "Human with Mouse"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#: settings.ui:166 settings.ui:274
+#, kde-format
+msgid "Human with Keyboard"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#: settings.ui:176 settings.ui:281
+#, kde-format
+msgid "Computer"
+msgstr "Ríomhaire"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Player2)
+#: settings.ui:209
 #, kde-format
 msgid "Black"
 msgstr "Dubh"
@@ -871,6 +853,32 @@ msgstr "Níl"
 #, kde-format
 msgid "Bk"
 msgstr "Dbh"
+
+#, fuzzy
+#~| msgid "Red Plays With"
+#~ msgid "%1 Plays With"
+#~ msgstr "Imríonn Dearg Le"
+
+#~ msgid "Red Plays With"
+#~ msgstr "Imríonn Dearg Le"
+
+#~ msgid "Mouse"
+#~ msgstr "Luch"
+
+#~ msgid "Keyboard"
+#~ msgstr "Méarchlár"
+
+#~ msgid "Black Plays With"
+#~ msgstr "Imríonn Dubh Le"
+
+#~ msgid "Player Names"
+#~ msgstr "Ainmneacha Imreora"
+
+#~ msgid "Player 1:"
+#~ msgstr "Imreoir 1:"
+
+#~ msgid "Player 2:"
+#~ msgstr "Imreoir 2:"
 
 #~ msgid "Ready"
 #~ msgstr "Réidh"

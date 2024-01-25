@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4 VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-18 00:36+0000\n"
+"POT-Creation-Date: 2024-01-25 00:36+0000\n"
 "PO-Revision-Date: 2002-11-07 11:32+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -423,7 +423,7 @@ msgstr "Netwerk Opstelling..."
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:678
+#: kgamedialogconfig.cpp:128 kwin4.cpp:679
 #, fuzzy, kde-format
 msgid "Network Configuration"
 msgstr "Netwerk Opstelling..."
@@ -448,121 +448,116 @@ msgstr ""
 msgid "Network status: You are connected"
 msgstr ""
 
-#: kwin4.cpp:74
+#: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
 msgstr ""
 
-#: kwin4.cpp:101
+#: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
 msgstr ""
 
-#: kwin4.cpp:116
+#: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
 msgstr ""
 
-#: kwin4.cpp:266
+#: kwin4.cpp:267
 #, fuzzy, kde-format
 #| msgid "Aborts a currently played game. No winner will be declared."
 msgid "Ends a currently played game. No winner will be declared."
 msgstr "Staak 'n huidiglik gespeel speletjie. Nee wenner sal wees aangekondig."
 
-#: kwin4.cpp:271
+#: kwin4.cpp:272
 #, kde-format
 msgid "&Network Configuration..."
 msgstr "Netwerk Opstelling..."
 
-#: kwin4.cpp:275
+#: kwin4.cpp:276
 #, fuzzy, kde-format
 msgid "Network Chat..."
 msgstr "Netwerk Opstelling..."
 
-#: kwin4.cpp:280
+#: kwin4.cpp:281
 #, fuzzy, kde-format
 msgid "&Show Statistics"
 msgstr "Vertoon Statistieke"
 
-#: kwin4.cpp:282
+#: kwin4.cpp:283
 #, fuzzy, kde-format
 msgid "Show statistics."
 msgstr "Vertoon Statistieke"
 
-#: kwin4.cpp:294
+#: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
 msgstr ""
 
-#: kwin4.cpp:305
+#: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
 msgstr ""
 
-#: kwin4.cpp:328
+#: kwin4.cpp:329
 #, fuzzy, kde-format
 msgid "Welcome to Four Wins"
 msgstr "Welkom na %1"
 
-#: kwin4.cpp:484 kwin4.cpp:637
+#: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
 msgid "Game running..."
 msgstr "Speletjie wat loop..."
 
-#: kwin4.cpp:598
+#: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
 msgstr "Nee speletjie  "
 
-#: kwin4.cpp:600 kwin4.cpp:602
+#: kwin4.cpp:601 kwin4.cpp:603
 #, fuzzy, kde-format
 msgid " %1 - %2 "
 msgstr " - Rooi "
 
-#: kwin4.cpp:604
+#: kwin4.cpp:605
 #, kde-format
 msgid "Nobody  "
 msgstr "Niemand  "
 
-#: kwin4.cpp:626
+#: kwin4.cpp:627
 #, kde-format
 msgid "The network game ended!\n"
 msgstr "Die netwerk speletjie geëindig!\n"
 
-#: kwin4.cpp:647
+#: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
 msgstr "Die speletjie is geteken. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:654
+#: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
 msgstr "%1 wen die speletjie. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:659
+#: kwin4.cpp:660
 #, fuzzy, kde-format
 #| msgid " Game aborted. Please restart next round."
 msgid " Game ended. Please restart next round."
 msgstr " Speletjie gekanselleer. Asseblief herbegin volgende rondte."
 
-#: kwin4.cpp:689
+#: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Black should be played by remote player"
 msgstr "Rooi moet wees gespeel deur afgeleë"
 
-#: kwin4.cpp:690
+#: kwin4.cpp:691
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
 msgid "Red should be played by remote player"
 msgstr "Rooi moet wees gespeel deur afgeleë"
 
-#: kwin4.cpp:767 kwin4.cpp:768 kwin4.cpp:788 kwin4.cpp:789
-#, fuzzy, kde-format
-msgid "%1 Plays With"
-msgstr "Rooi Gespeel Deur"
-
-#: kwin4.cpp:790
+#: kwin4.cpp:788
 #, kde-format
 msgid "General"
 msgstr ""
@@ -587,7 +582,7 @@ msgstr "Netwerk Opstelling..."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
-#: kwin4.kcfg:21 settings.ui:38
+#: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
 msgstr "Verander die sterkte van die rekenaar speler."
@@ -691,95 +686,82 @@ msgctxt "computer level"
 msgid "Level %1"
 msgstr "Vlak"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
-#: settings.ui:32
+#. i18n: ectx: property (title), widget (QGroupBox, Difficulty)
+#: settings.ui:20
 #, kde-format
 msgid "Computer Difficulty"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: settings.ui:65
+#: settings.ui:53
 #, kde-format
 msgid "Easy"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: settings.ui:72
+#: settings.ui:60
 #, kde-format
 msgid "Hard"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
-#: settings.ui:84
+#: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
 msgstr ""
 
-#. i18n: ectx: property (title), widget (QGroupBox, Input1)
-#: settings.ui:94
-#, fuzzy, kde-format
-msgid "Red Plays With"
-msgstr "Rooi Gespeel Deur"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
-#: settings.ui:102 settings.ui:139
-#, fuzzy, kde-format
-msgid "Mouse"
-msgstr "Muis"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
-#: settings.ui:112 settings.ui:149
-#, fuzzy, kde-format
-msgid "Keyboard"
-msgstr "Sleutelbord"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
-#: settings.ui:119 settings.ui:156
-#, fuzzy, kde-format
-msgid "Computer"
-msgstr "Rekenaar"
-
-#. i18n: ectx: property (title), widget (QGroupBox, Input0)
-#: settings.ui:131
-#, fuzzy, kde-format
-msgid "Black Plays With"
-msgstr "Rooi Gespeel Deur"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: settings.ui:174
-#, kde-format
-msgid "Player Names"
-msgstr "Speler Name"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: settings.ui:188
-#, kde-format
-msgid "Player 1:"
-msgstr "Speler 1:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: settings.ui:195
-#, kde-format
-msgid "Player 2:"
-msgstr "Speler 2:"
-
-#. i18n: ectx: property (title), widget (QGroupBox, StartColour)
-#: settings.ui:213
-#, fuzzy, kde-format
-msgid "Starting Player Color"
-msgstr "Beginne Speler"
-
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolourred)
-#: settings.ui:221
+#. i18n: ectx: property (title), widget (QGroupBox, Player1)
+#: settings.ui:95
 #, fuzzy, kde-format
 msgid "Red"
 msgstr "Rooi"
 
-#. i18n: ectx: property (text), widget (QRadioButton, kcfg_startcolouryellow)
-#: settings.ui:231
+#. i18n: ectx: property (text), widget (QLabel, nameLabel1)
+#. i18n: ectx: property (text), widget (QLabel, nameLabel2)
+#: settings.ui:103 settings.ui:217
+#, fuzzy, kde-format
+#| msgid "Name"
+msgid "Name:"
+msgstr "Naam"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
+#: settings.ui:113 settings.ui:227
+#, fuzzy, kde-format
+msgid "Starting Player"
+msgstr "Beginne Speler"
+
+#. i18n: ectx: property (text), widget (QLabel, playerLabel1)
+#. i18n: ectx: property (text), widget (QLabel, playerLabel2)
+#: settings.ui:146 settings.ui:257
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgid "Player:"
+msgstr "Speler 1"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#: settings.ui:153 settings.ui:264
+#, kde-format
+msgid "Human with Mouse"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#: settings.ui:166 settings.ui:274
+#, kde-format
+msgid "Human with Keyboard"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#: settings.ui:176 settings.ui:281
+#, fuzzy, kde-format
+msgid "Computer"
+msgstr "Rekenaar"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Player2)
+#: settings.ui:209
 #, kde-format
 msgid "Black"
 msgstr ""
@@ -879,6 +861,35 @@ msgstr ""
 #, kde-format
 msgid "Bk"
 msgstr ""
+
+#, fuzzy
+#~ msgid "%1 Plays With"
+#~ msgstr "Rooi Gespeel Deur"
+
+#, fuzzy
+#~ msgid "Red Plays With"
+#~ msgstr "Rooi Gespeel Deur"
+
+#, fuzzy
+#~ msgid "Mouse"
+#~ msgstr "Muis"
+
+#, fuzzy
+#~ msgid "Keyboard"
+#~ msgstr "Sleutelbord"
+
+#, fuzzy
+#~ msgid "Black Plays With"
+#~ msgstr "Rooi Gespeel Deur"
+
+#~ msgid "Player Names"
+#~ msgstr "Speler Name"
+
+#~ msgid "Player 1:"
+#~ msgstr "Speler 1:"
+
+#~ msgid "Player 2:"
+#~ msgstr "Speler 2:"
 
 #~ msgid "Ready"
 #~ msgstr "Gereed"
