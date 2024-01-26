@@ -848,27 +848,3 @@ msgstr "Nei"
 #, kde-format
 msgid "Bk"
 msgstr "Svt"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 speler med"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Raud speler med"
-
-#~ msgid "Mouse"
-#~ msgstr "Mus"
-
-#~ msgid "Keyboard"
-#~ msgstr "Tastatur"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Svart spelar med"
-
-#~ msgid "Player Names"
-#~ msgstr "Spelarnamn"
-
-#~ msgid "Player 1:"
-#~ msgstr "Spelar 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Spelar 2:"

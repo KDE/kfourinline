@@ -8,13 +8,13 @@
 # Ömer Fadıl USTA <omer_fad@yahoo.com>, 2004.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
-# SPDX-FileCopyrightText: 2022, 2023 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2023-12-27 14:34+0300\n"
+"PO-Revision-Date: 2024-01-25 16:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,17 +22,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.85\n"
+"X-Generator: Lokalize 24.01.95\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ömer Fadıl USTA, Volkan Gezer"
+msgstr "Ömer Fadıl USTA, Volkan Gezer, Emir SARI"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "omer_fad@hotmail.com, volkangezer@gmail.com"
+msgstr "omer_fad@hotmail.com, volkangezer@gmail.com, emir_sari@icloud.com"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -265,12 +265,12 @@ msgstr "Oyun Çalışıyor"
 #: kgamedebugdialog.cpp:175
 #, kde-format
 msgid "Maximal Players"
-msgstr "Azami Oyuncu"
+msgstr "En Çok Oyuncu"
 
 #: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
-msgstr "Asgari Oyuncu"
+msgstr "En Az Oyuncu"
 
 #: kgamedebugdialog.cpp:177
 #, kde-format
@@ -320,7 +320,7 @@ msgstr "Benim Sıram"
 #: kgamedebugdialog.cpp:225
 #, kde-format
 msgid "Async Input"
-msgstr "Async Girdisi"
+msgstr "Eşzamansız Girdi"
 
 #: kgamedebugdialog.cpp:226
 #, kde-format
@@ -710,40 +710,37 @@ msgstr "Kırmızı"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Ad"
+msgstr "Ad:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Başlayan Oyuncunun Rengi"
+msgstr "Başlayan Oyuncu"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Oyuncu: "
+msgstr "Oyuncu:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "İnsan, fare kullanarak"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "İnsan, klavye kullanarak"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
