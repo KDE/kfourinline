@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-03 14:17+0100\n"
+"PO-Revision-Date: 2024-01-28 11:08+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -704,24 +704,21 @@ msgstr "Ruĝa"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Nomo"
+msgstr "Nomo:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Komenca Ludantkoloro"
+msgstr "Komenca Ludanto"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
 msgstr "Ludanto: "
 
@@ -730,14 +727,14 @@ msgstr "Ludanto: "
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "Homo kun Muso"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "Homo kun Klavaro"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
@@ -847,27 +844,3 @@ msgstr "Ne"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 Ludas Kun"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Ruĝa Ludas Per"
-
-#~ msgid "Mouse"
-#~ msgstr "Muso"
-
-#~ msgid "Keyboard"
-#~ msgstr "Klavaro"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Nigra Ludas Per"
-
-#~ msgid "Player Names"
-#~ msgstr "Ludantaj Nomoj"
-
-#~ msgid "Player 1:"
-#~ msgstr "Ludanto 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Ludanto 2:"
