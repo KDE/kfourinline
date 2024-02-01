@@ -1,7 +1,7 @@
 # Translation of kfourinline.po to Catalan (Valencian)
-# Copyright (C) 2002-2023 This_file_is_part_of_KDE
+# Copyright (C) 2002-2024 This_file_is_part_of_KDE
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2010, 2013, 2015, 2019, 2021, 2022, 2023.
+# Josep M. Ferrer <txemaq@gmail.com>, 2002, 2003, 2010, 2013, 2015, 2019, 2021, 2022, 2023, 2024.
 # Albert Astals Cid <aacid@kde.org>, 2004, 2007, 2008.
 # Aleix Pol <aleixpol@gmail.com>, 2007.
 # Manuel Tortosa <manutortosa@gmail.com>, 2009.
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2023-09-25 10:15+0200\n"
+"PO-Revision-Date: 2024-01-25 12:18+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -710,40 +710,37 @@ msgstr "Roig"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Nom"
+msgstr "Nom:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Color del jugador que comença"
+msgstr "Jugador que comença"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Jugador: "
+msgstr "Jugador:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "Humà amb un ratolí"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "Humà amb un teclat"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
@@ -853,27 +850,3 @@ msgstr "No"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 juga amb"
-
-#~ msgid "Red Plays With"
-#~ msgstr "El roig juga amb"
-
-#~ msgid "Mouse"
-#~ msgstr "Ratolí"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teclat"
-
-#~ msgid "Black Plays With"
-#~ msgstr "El negre juga amb"
-
-#~ msgid "Player Names"
-#~ msgstr "Noms dels jugadors"
-
-#~ msgid "Player 1:"
-#~ msgstr "Jugador 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Jugador 2:"
