@@ -2,7 +2,7 @@
 # Bulgarian translation of KDE.
 # This file is licensed under the GPL.
 #
-# $Id: kfourinline.po 1671010 2024-01-25 01:05:44Z scripty $
+# $Id: kfourinline.po 1672250 2024-02-03 15:16:47Z mkkdr $
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Petar Toushkov <pt.launchpad@gmail.com>, 2010.
@@ -848,28 +848,3 @@ msgstr "No"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#, fuzzy
-#~ msgid "%1 Plays With"
-#~ msgstr "Червеният играе с"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Червеният играе с"
-
-#~ msgid "Mouse"
-#~ msgstr "Мишка"
-
-#~ msgid "Keyboard"
-#~ msgstr "Клавиатура"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Черният играе с"
-
-#~ msgid "Player Names"
-#~ msgstr "Имена на играчите"
-
-#~ msgid "Player 1:"
-#~ msgstr "Играч 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Играч 2:"
