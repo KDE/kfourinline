@@ -879,29 +879,3 @@ msgstr "計"
 #, kde-format
 msgid "Bk"
 msgstr "中止"
-
-#, fuzzy
-#~| msgid "Red Plays With"
-#~ msgid "%1 Plays With"
-#~ msgstr "赤プレイヤー"
-
-#~ msgid "Red Plays With"
-#~ msgstr "赤プレイヤー"
-
-#~ msgid "Mouse"
-#~ msgstr "マウス"
-
-#~ msgid "Keyboard"
-#~ msgstr "キーボード"
-
-#~ msgid "Black Plays With"
-#~ msgstr "黒プレイヤー"
-
-#~ msgid "Player Names"
-#~ msgstr "プレイヤー名"
-
-#~ msgid "Player 1:"
-#~ msgstr "プレイヤー 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "プレイヤー 2:"
