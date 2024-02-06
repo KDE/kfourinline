@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-21 14:11\n"
+"PO-Revision-Date: 2024-02-05 11:37\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -702,26 +702,23 @@ msgstr "红"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "名字"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "开始玩家颜色"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "玩家："
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
@@ -845,27 +842,3 @@ msgstr "否"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 玩家为"
-
-#~ msgid "Red Plays With"
-#~ msgstr "红色玩家为"
-
-#~ msgid "Mouse"
-#~ msgstr "鼠标"
-
-#~ msgid "Keyboard"
-#~ msgstr "键盘"
-
-#~ msgid "Black Plays With"
-#~ msgstr "黑色玩家为"
-
-#~ msgid "Player Names"
-#~ msgstr "玩家名字"
-
-#~ msgid "Player 1:"
-#~ msgstr "玩家甲："
-
-#~ msgid "Player 2:"
-#~ msgstr "玩家乙："
