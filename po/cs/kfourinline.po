@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
 "PO-Revision-Date: 2021-06-14 15:49+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -703,26 +703,23 @@ msgstr "Červená"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Jméno"
+msgstr "Název:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Barva začínajícího hráče"
+msgstr "Začínající hráč"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Hráč: "
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
@@ -846,27 +843,3 @@ msgstr "Ne"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 hraje s"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Červenou hraje"
-
-#~ msgid "Mouse"
-#~ msgstr "Myš"
-
-#~ msgid "Keyboard"
-#~ msgstr "Klávesnice"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Černou hraje"
-
-#~ msgid "Player Names"
-#~ msgstr "Jména hráčů"
-
-#~ msgid "Player 1:"
-#~ msgstr "Hráč 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Hráč 2:"
