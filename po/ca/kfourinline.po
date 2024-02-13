@@ -868,9 +868,3 @@ msgstr "No"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "Ready"
-#~ msgstr "Llest"
-
-#~ msgid "This leaves space for the mover"
-#~ msgstr "Aquí es deixa espai per al que mou"
