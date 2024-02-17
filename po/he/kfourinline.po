@@ -10,19 +10,20 @@
 # license as the program which it accompanies.
 # Diego Iastrubni <elcuco@kde.org>, 2005.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2017-05-16 07:01-0400\n"
-"Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
-"Language-Team: hebrew <kde-l10n-he@kde.org>\n"
+"PO-Revision-Date: 2024-02-16 21:45+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 
@@ -39,24 +40,23 @@ msgstr "kde-l10n-he@kde.org"
 #, kde-format
 msgctxt "Player 0 color"
 msgid "Black"
-msgstr ""
+msgstr "שחור"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Yellow"
 msgstr "צהוב"
 
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "Player 1 color"
 msgid "Red"
 msgstr "אדום"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "חלון שיחה"
+msgstr "חלונית צ׳אט"
 
 #: chatdlg.cpp:48
 #, kde-format
@@ -66,363 +66,363 @@ msgstr "שיחה"
 #: chatdlg.cpp:54
 #, kde-format
 msgid "Configure..."
-msgstr "הגדרות..."
+msgstr "הגדרות…"
 
 #: displayintro.cpp:71
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
-msgstr ""
+msgstr "הפעלה מהירה"
 
 #: displayintro.cpp:77
 #, kde-format
 msgctxt "Ask player who should start game"
 msgid "Who starts?"
-msgstr ""
+msgstr "מי מתחיל?"
 
 #: displayintro.cpp:80
 #, kde-format
 msgctxt "Ask player which color he wants to play"
 msgid "Your color?"
-msgstr ""
+msgstr "הצבע שלך?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "quick start button - player versus AI level easy"
 msgid "Easy Game"
-msgstr "קל"
+msgstr "משחק קל"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "quick start button - player versus AI level normal"
 msgid "Normal Game"
-msgstr "אין משחק  "
+msgstr "משחק רגיל"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "quick start button - player versus AI level hard"
 msgid "Hard Game"
-msgstr "קשה"
+msgstr "משחק קשה"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "quick start button - player versus player"
 msgid "Two Player Game"
-msgstr "משחק רשת בין שני שחקנים"
+msgstr "משחק לשני שחקנים"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "הגדרות..."
+msgstr "הגדרת צ׳אט"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
 msgid "Name Font..."
-msgstr ""
+msgstr "גופן שם…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgid "Text Font..."
-msgstr ""
+msgstr "גופן כתב…"
 
 #: kchatdialog.cpp:104
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player: "
-msgstr "שחקן 1"
+msgstr "שחקן:"
 
 #: kchatdialog.cpp:106
 #, kde-format
 msgid "This is a player message"
-msgstr ""
+msgstr "זאת הודעת שחקן"
 
 #: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
-msgstr ""
+msgstr "הודעות מערכת - הודעות שנשלחו ישירות מהמשחק"
 
 #: kchatdialog.cpp:126
 #, kde-format
 msgid "--- Game: "
-msgstr ""
+msgstr "--- משחק: "
 
 #: kchatdialog.cpp:128
 #, kde-format
 msgid "This is a system message"
-msgstr ""
+msgstr "זאת הודעת מערכת"
 
 #: kchatdialog.cpp:132
 #, kde-format
 msgid "Maximum number of messages (-1 = unlimited):"
-msgstr ""
+msgstr "מספר ההודעות המרבי (‎-1 = ללא הגבלה):"
 
 #. i18n: ectx: Menu (game)
 #: kfourinlineui.rc:10
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Game"
-msgstr "שם"
+msgstr "&שם"
 
 #. i18n: ectx: Menu (settings)
 #: kfourinlineui.rc:18
 #, kde-format
 msgid "&Settings"
-msgstr ""
+msgstr "ה&גדרות"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kfourinlineui.rc:24
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "סרגל כלים ראשי"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
+#, kde-format
 msgid "Create a network game"
-msgstr "התחלת משחק חדש"
+msgstr "יצירת משחק רשת"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
+#, kde-format
 msgid "Join a network game"
-msgstr "התחלת משחק חדש"
+msgstr "הצטרפות למשחק רשת"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game name:"
-msgstr "שם המשחק"
+msgstr "שם המשחק:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network games:"
-msgstr "שיחת רשת..."
+msgstr "משחקי רשת:"
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
 msgid "Port to connect to:"
-msgstr ""
+msgstr "פתחה להתחבר אליה:"
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
 msgid "Host to connect to:"
-msgstr ""
+msgstr "מארח להתחבר אליו:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
 msgid "&Start Network"
-msgstr ""
+msgstr "ה&פעלת הרשת"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
-msgstr ""
+msgstr "חלונית ניפוי שגיאות ב־KGame"
 
 #: kgamedebugdialog.cpp:140
-#, fuzzy, kde-format
+#, kde-format
 msgid "Debug &KGame"
-msgstr "נפה באגים ב־KGame"
+msgstr "&ניפוי שגיאות ב־KGame"
 
 #: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "עדכון"
 
 #: kgamedebugdialog.cpp:167
-#, fuzzy, kde-format
+#, kde-format
 msgid "KGame Pointer"
-msgstr "שם המשחק"
+msgstr "סמן KGame"
 
 #: kgamedebugdialog.cpp:168
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game ID"
-msgstr "שם"
+msgstr "מזהה משחק"
 
 #: kgamedebugdialog.cpp:169
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game Cookie"
-msgstr "שם המשחק"
+msgstr "עוגיית משחק"
 
 #: kgamedebugdialog.cpp:170
 #, kde-format
 msgid "Is Master"
-msgstr ""
+msgstr "שליט"
 
 #: kgamedebugdialog.cpp:171
 #, kde-format
 msgid "Is Admin"
-msgstr ""
+msgstr "מנהל"
 
 #: kgamedebugdialog.cpp:172
 #, kde-format
 msgid "Is Offering Connections"
-msgstr ""
+msgstr "מציע חיבורים"
 
 #: kgamedebugdialog.cpp:173
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game Status"
-msgstr "שם המשחק"
+msgstr "מצב משחק"
 
 #: kgamedebugdialog.cpp:174
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game is Running"
-msgstr "המשחק בעיצומו..."
+msgstr "המשחק בעיצומו"
 
 #: kgamedebugdialog.cpp:175
 #, kde-format
 msgid "Maximal Players"
-msgstr ""
+msgstr "שחקנים מרביים"
 
 #: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
-msgstr ""
+msgstr "שחקנים מזעריים"
 
 #: kgamedebugdialog.cpp:177
-#, fuzzy, kde-format
+#, kde-format
 msgid "Players"
-msgstr "שחקן 1"
+msgstr "שחקנים"
 
 #: kgamedebugdialog.cpp:183
-#, fuzzy, kde-format
+#, kde-format
 msgid "Debug &Players"
-msgstr "נפה באגים ב־KGame"
+msgstr "ניפוי שגיאות &שחקנים"
 
 #: kgamedebugdialog.cpp:193
 #, kde-format
 msgid "Available Players"
-msgstr ""
+msgstr "שחקנים זמינים"
 
 #: kgamedebugdialog.cpp:219
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Pointer"
-msgstr "שם של שחקן 1"
+msgstr "סמן שחקן"
 
 #: kgamedebugdialog.cpp:220
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player ID"
-msgstr "שחקן 1"
+msgstr "מזהה שחקן"
 
 #: kgamedebugdialog.cpp:221
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Name"
-msgstr "שמות השחקנים"
+msgstr "שם שחקן"
 
 #: kgamedebugdialog.cpp:222
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Group"
-msgstr "שחקן 1"
+msgstr "קבוצת שחקן"
 
 #: kgamedebugdialog.cpp:223
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player User ID"
-msgstr "שחקן 1"
+msgstr "מזהה משתמש שחקן"
 
 #: kgamedebugdialog.cpp:224
 #, kde-format
 msgid "My Turn"
-msgstr ""
+msgstr "תורי"
 
 #: kgamedebugdialog.cpp:225
 #, kde-format
 msgid "Async Input"
-msgstr ""
+msgstr "קלט אסינכרוני"
 
 #: kgamedebugdialog.cpp:226
 #, kde-format
 msgid "KGame Address"
-msgstr ""
+msgstr "כתובת KGame"
 
 #: kgamedebugdialog.cpp:227
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player is Virtual"
-msgstr "שם של שחקן 1"
+msgstr "השחקן הוא וירטואלי"
 
 #: kgamedebugdialog.cpp:228
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player is Active"
-msgstr "שם של שחקן 1"
+msgstr "השחקן פעיל"
 
 #: kgamedebugdialog.cpp:229
 #, kde-format
 msgid "RTTI"
-msgstr ""
+msgstr "RTTI (פרטי סוג זמן ריצה)"
 
 #: kgamedebugdialog.cpp:230
-#, fuzzy, kde-format
+#, kde-format
 msgid "Network Priority"
-msgstr "יציאת רשת"
+msgstr "עדיפות רשת"
 
 #: kgamedebugdialog.cpp:236
-#, fuzzy, kde-format
+#, kde-format
 msgid "Debug &Messages"
-msgstr "נפה באגים ב־KGame"
+msgstr "הודעות &ניפוי שגיאות"
 
 #: kgamedebugdialog.cpp:251
 #, kde-format
 msgid "&>>"
-msgstr ""
+msgstr "&>>"
 
 #: kgamedebugdialog.cpp:255
 #, kde-format
 msgid "&<<"
-msgstr ""
+msgstr "&<<"
 
 #: kgamedebugdialog.cpp:259
 #, kde-format
 msgid "Do not show IDs:"
-msgstr ""
+msgstr "לא להציג מזהים:"
 
 #: kgamedebugdialog.cpp:328
 #, kde-format
 msgid "NULL pointer"
-msgstr ""
+msgstr "סמן NULL"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "True"
-msgstr ""
+msgstr "אמת"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "False"
-msgstr ""
+msgstr "שקר"
 
 #: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
 #, kde-format
 msgid "Clean"
-msgstr ""
+msgstr "נקי"
 
 #: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
 #, kde-format
 msgid "Dirty"
-msgstr ""
+msgstr "מלוכלך"
 
 #: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
 #, kde-format
 msgid "Local"
-msgstr ""
+msgstr "מקומי"
 
 #: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
 #, kde-format
 msgid "Undefined"
-msgstr ""
+msgstr "לא מוגדר"
 
 #: kgamedebugdialog.cpp:507
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "לא ידוע"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
+#, kde-format
 msgid "&Network"
-msgstr "שיחת רשת..."
+msgstr "&רשת"
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
 msgid "Disconnect"
-msgstr ""
+msgstr "ניתוק"
 
 #: kgamedialogconfig.cpp:128 kwin4.cpp:679
 #, kde-format
@@ -432,82 +432,82 @@ msgstr "הגדרות רשת"
 #: kgamedialogconfig.cpp:187
 #, kde-format
 msgid "Cannot connect to the network"
-msgstr ""
+msgstr "לא ניתן להתחבר לרשת"
 
 #: kgamedialogconfig.cpp:193
 #, kde-format
 msgid "Network status: No Network"
-msgstr ""
+msgstr "מצב הרשת: אין רשת"
 
 #: kgamedialogconfig.cpp:199
 #, kde-format
 msgid "Network status: You are MASTER"
-msgstr ""
+msgstr "מצב הרשת: השליטה אצלך"
 
 #: kgamedialogconfig.cpp:201
 #, kde-format
 msgid "Network status: You are connected"
-msgstr ""
+msgstr "מצב הרשת: התחברת"
 
 #: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
-msgstr ""
+msgstr "שגיאת התקנה: לא נמצאה רשימת ערכות עיצוב."
 
 #: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
-msgstr ""
+msgstr "שגיאת התקנה: לא נמצא מנוע בינה מלאכותית. ממשיכים בלי."
 
 #: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
-msgstr ""
+msgstr "שגיאת התקנה: שגיאת קובץ ערכת עיצוב."
 
 #: kwin4.cpp:267
-#, fuzzy, kde-format
+#, kde-format
 msgid "Ends a currently played game. No winner will be declared."
-msgstr "ביטול משחק המתנהל כרגע. אף אחד מהשחקנים לא יוכרז כמנצח."
+msgstr "מסיים את המשחק שמתקיים כעת. לא יוכרז מנצח."
 
 #: kwin4.cpp:272
 #, kde-format
 msgid "&Network Configuration..."
-msgstr "&הגדרות רשת..."
+msgstr "ה&גדרות רשת…"
 
 #: kwin4.cpp:276
 #, kde-format
 msgid "Network Chat..."
-msgstr "שיחת רשת..."
+msgstr "שיחת רשת…"
 
 #: kwin4.cpp:281
 #, kde-format
 msgid "&Show Statistics"
-msgstr "הצג סט&טיסטיקה"
+msgstr "הצגת סט&טיסטיקה"
 
 #: kwin4.cpp:283
 #, kde-format
 msgid "Show statistics."
-msgstr "הצג סטטיסטיקה"
+msgstr "הצגת סטטיסטיקה"
 
 #: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
-msgstr ""
+msgstr "ערכת עיצוב"
 
 #: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
-msgstr "נפה באגים ב־KGame"
+msgstr "ניפוי שגיאות ב־KGame"
 
 #: kwin4.cpp:329
-#, fuzzy, kde-format
+#, kde-format
 msgid "Welcome to Four Wins"
-msgstr "ברוכים הבאים אל KWin4"
+msgstr "ברוך בואך לארבעה נצחונות"
 
 #: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
 msgid "Game running..."
-msgstr "המשחק בעיצומו..."
+msgstr "המשחק בעיצומו…"
 
 #: kwin4.cpp:599
 #, kde-format
@@ -515,9 +515,9 @@ msgid "No game  "
 msgstr "אין משחק  "
 
 #: kwin4.cpp:601 kwin4.cpp:603
-#, fuzzy, kde-format
+#, kde-format
 msgid " %1 - %2 "
-msgstr " - אדום "
+msgstr " %1 - %2 "
 
 #: kwin4.cpp:605
 #, kde-format
@@ -527,32 +527,32 @@ msgstr "אף אחד  "
 #: kwin4.cpp:627
 #, kde-format
 msgid "The network game ended!\n"
-msgstr "משחק הרשת הסתיים.\n"
+msgstr "משחק הרשת הסתיים!\n"
 
 #: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
-msgstr "המשחק הסתיים בתיקו. התחל מחדש את הסיבוב הבא."
+msgstr "המשחק הסתיים בתיקו. נא להתחיל את הסיבוב הבא מחדש."
 
 #: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
-msgstr "%1 ניצח במשחק. התחל מחדש את הסיבוב הבא."
+msgstr "%1 ניצח במשחק. נא להתחיל את הסיבוב הבא מחדש."
 
 #: kwin4.cpp:660
-#, fuzzy, kde-format
+#, kde-format
 msgid " Game ended. Please restart next round."
-msgstr " המשחק בוטל. התחל מחדש את הסיבוב הבא."
+msgstr "המשחק הסתיים. נא להתחיל את הסיבוב הבא מחדש."
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
+#, kde-format
 msgid "Black should be played by remote player"
-msgstr "השחקן המרוחק ישחק את האדום"
+msgstr "בשחור אמור לשחק השחקן המרוחק"
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
+#, kde-format
 msgid "Red should be played by remote player"
-msgstr "השחקן המרוחק ישחק את האדום"
+msgstr "באדום אמור לשחק השחקן המרוחק"
 
 #: kwin4.cpp:788
 #, kde-format
@@ -563,7 +563,7 @@ msgstr "כללי"
 #: kwin4.kcfg:10
 #, kde-format
 msgid "Network connection port"
-msgstr "יציאת רשת"
+msgstr "פתחת חיבור רשת"
 
 #. i18n: ectx: label, entry (gamename), group (Parameter)
 #: kwin4.kcfg:14
@@ -575,23 +575,23 @@ msgstr "שם המשחק"
 #: kwin4.kcfg:17
 #, kde-format
 msgid "Network connection host"
-msgstr "כתובת מארח להתחברות"
+msgstr "מארח רשת לחיבור"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
 #: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
-msgstr "שינוי רמתו של שחקן המחשב."
+msgstr "שינוי  דרגת הקושי של שחקן המחשב."
 
 #. i18n: ectx: label, entry (Name1), group (Parameter)
 #: kwin4.kcfg:28
 #, kde-format
 msgid "Player 1 name"
-msgstr "שם של שחקן 1"
+msgstr "שם שחקן 1"
 
 #: kwin4.kcfg:32
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "default name of first player"
 msgid "Player 1"
 msgstr "שחקן 1"
@@ -600,10 +600,10 @@ msgstr "שחקן 1"
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
-msgstr "שם של שחקן 2"
+msgstr "שם שחקן 2"
 
 #: kwin4.kcfg:39
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "שחקן 2"
@@ -611,47 +611,47 @@ msgstr "שחקן 2"
 #: main.cpp:56
 #, kde-format
 msgid "KFourInLine"
-msgstr ""
+msgstr "KFourInLine"
 
 #: main.cpp:58
-#, fuzzy, kde-format
+#, kde-format
 msgid "KFourInLine: Two player board game"
-msgstr "משחק רשת בין שני שחקנים"
+msgstr "KFourInLine: שחקן לוח לשני שחקנים"
 
 #: main.cpp:60
-#, fuzzy, kde-format
+#, kde-format
 msgid "(c) 1995-2007, Martin Heni"
-msgstr "(c) Martin Heni   "
+msgstr "(c) 1995‏-2007, מרטין הני"
 
 #: main.cpp:61
-#, fuzzy, kde-format
+#, kde-format
 msgid "Martin Heni"
-msgstr "(c) Martin Heni   "
+msgstr "מרטין הני"
 
 #: main.cpp:61
 #, kde-format
 msgid "Game design and code"
-msgstr ""
+msgstr "עיצוב משחק ותכנות"
 
 #: main.cpp:62
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
-msgstr ""
+msgstr "יוהאן אוליבייר לאפייר"
 
 #: main.cpp:62 main.cpp:63
 #, kde-format
 msgid "Graphics"
-msgstr ""
+msgstr "גרפיקה"
 
 #: main.cpp:63
 #, kde-format
 msgid "Eugene Trounev"
-msgstr ""
+msgstr "יוג׳ין טרונב"
 
 #: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
-msgstr ""
+msgstr "בנג׳מין מייר"
 
 #: main.cpp:64
 #, kde-format
@@ -661,35 +661,35 @@ msgstr "שיפורי קוד"
 #: main.cpp:72
 #, kde-format
 msgid "Enter debug level"
-msgstr "היכנס לרמת ניפוי באגים"
+msgstr "כניסה לרמת ניפוי שגיאות"
 
 #: main.cpp:73
 #, kde-format
 msgid "Skip intro animation"
-msgstr ""
+msgstr "דילוג על הנפשת הפתיחה"
 
 #: main.cpp:74
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
-msgstr ""
+msgstr "הרצת המשחק במצב הדגמה (משחק אוטומטי)"
 
 #: scoresprite.cpp:158
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "computer level"
 msgid "Level %1"
-msgstr "רמת קושי"
+msgstr "שלב %1"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Difficulty)
 #: settings.ui:20
 #, kde-format
 msgid "Computer Difficulty"
-msgstr "רבת קושי של המחשב"
+msgstr "דרגת הקושי של המחשב"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: settings.ui:53
 #, kde-format
 msgid "Easy"
-msgstr "קל"
+msgstr "קלה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: settings.ui:60
@@ -701,7 +701,7 @@ msgstr "קשה"
 #: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
-msgstr ""
+msgstr "להשתמש בלמידת בינה מלאכותית"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Player1)
 #: settings.ui:95
@@ -712,52 +712,50 @@ msgstr "אדום"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "שם"
+msgstr "שם:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "מתחיל שחקן "
+msgstr "שחקן מתחיל"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player:"
-msgstr "שחקן 1"
+msgstr "שחקן:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "בן אדם עם עכבר"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "בן אדם עם מקלדת"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
 #: settings.ui:176 settings.ui:281
 #, kde-format
 msgid "Computer"
-msgstr "המחשב"
+msgstr "מחשב"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Player2)
 #: settings.ui:209
 #, kde-format
 msgid "Black"
-msgstr ""
+msgstr "שחור"
 
 #. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
 #: statistics.ui:13
@@ -781,7 +779,7 @@ msgstr "שם"
 #: statistics.ui:68
 #, kde-format
 msgid "Won"
-msgstr "ניצחונות"
+msgstr "נצחונות"
 
 #. i18n: ectx: property (text), widget (QLabel, lost)
 #: statistics.ui:81
@@ -793,7 +791,7 @@ msgstr "הפסדים"
 #: statistics.ui:97
 #, kde-format
 msgid "Sum"
-msgstr "סך הכל"
+msgstr "סך הכול"
 
 #. i18n: ectx: property (text), widget (QLabel, aborted)
 #: statistics.ui:107
@@ -805,13 +803,13 @@ msgstr "ביטולים"
 #: statistics.ui:122
 #, kde-format
 msgid "Clear All Statistics"
-msgstr "נקה את כל הסטטיסטיקה"
+msgstr "מחיקת הסטטיסטיקה"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton2)
 #: statistics.ui:145
 #, kde-format
 msgid "&Close"
-msgstr ""
+msgstr "&סגירה"
 
 #. i18n: ectx: property (text), widget (QLabel, p2_name)
 #: statistics.ui:157 statuswidget.ui:214
@@ -829,25 +827,25 @@ msgstr "תיקו"
 #: statuswidget.ui:57
 #, kde-format
 msgid "W"
-msgstr ""
+msgstr "נ"
 
 #. i18n: ectx: property (text), widget (QLabel, draws)
 #: statuswidget.ui:67
 #, kde-format
 msgid "D"
-msgstr ""
+msgstr "ת"
 
 #. i18n: ectx: property (text), widget (QLabel, loses)
 #: statuswidget.ui:77
 #, kde-format
 msgid "L"
-msgstr ""
+msgstr "ה"
 
 #. i18n: ectx: property (text), widget (QLabel, num)
 #: statuswidget.ui:87
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #. i18n: ectx: property (text), widget (QLabel, bk)
 #: statuswidget.ui:97
