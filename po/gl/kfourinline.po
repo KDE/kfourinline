@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-26 09:18+0100\n"
+"PO-Revision-Date: 2024-03-02 17:24+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -529,17 +529,17 @@ msgstr "Rematou a partida en rede!\n"
 #: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
-msgstr "A partida está empatada. Inicia a seguinte ronda."
+msgstr "A partida está empatada. Inicia a seguinte rolda."
 
 #: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
-msgstr "%1 gañou a partida. Inicie a seguinte ronda."
+msgstr "%1 gañou a partida. Inicie a seguinte rolda."
 
 #: kwin4.cpp:660
 #, kde-format
 msgid " Game ended. Please restart next round."
-msgstr " Rematouse a partida. Inicia a seguinte ronda."
+msgstr " Rematouse a partida. Inicia a seguinte rolda."
 
 #: kwin4.cpp:690
 #, kde-format
