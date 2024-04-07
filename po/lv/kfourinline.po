@@ -5,53 +5,50 @@
 # Maris Nartiss <maris.kde@gmail.com>, 2009.
 # Viesturs Zariņš <viesturs.zarins@mii.lu.lv>, 2009.
 # Einars Sprugis <einars8@gmail.com>, 2010.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2010-04-24 14:24+0300\n"
-"Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"PO-Revision-Date: 2024-04-04 21:04+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Viesturs Zariņš"
+msgstr "Viesturs Zariņš, Toms Trasūns"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "viesturs.zarins@mi.lu.lv"
+msgstr "viesturs.zarins@mi.lu.lv, toms.trasuns@posteo.net"
 
-#, fuzzy, kde-format
-#| msgid "Black"
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Black"
 msgstr "Melna"
 
-#, fuzzy, kde-format
-#| msgid " %1 - Yellow "
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Yellow"
-msgstr " %1 - Dzeltens "
+msgstr "Dzeltena"
 
-#, fuzzy, kde-format
-#| msgid "Red"
+#, kde-format
 msgctxt "Player 1 color"
 msgid "Red"
 msgstr "Sarkana"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Tērzēšanas logs"
@@ -109,52 +106,50 @@ msgid "Two Player Game"
 msgstr "Divu spēlētāju spēle"
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Konfigurēt..."
+msgstr "Konfigurēt tērzēšanu"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
 msgid "Name Font..."
-msgstr ""
+msgstr "Vārdu fonts..."
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgid "Text Font..."
-msgstr ""
+msgstr "Teksta fonts..."
 
 #: kchatdialog.cpp:104
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player: "
-msgstr "1. spēlētājs"
+msgstr "Spēlētājs:"
 
 #: kchatdialog.cpp:106
 #, kde-format
 msgid "This is a player message"
-msgstr ""
+msgstr "Šī ir spēlētāja ziņa"
 
 #: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
-msgstr ""
+msgstr "Sistēmas ziņas — ziņas, kas ir tiešā veidā nosūtītas no spēles"
 
 #: kchatdialog.cpp:126
 #, kde-format
 msgid "--- Game: "
-msgstr ""
+msgstr "--- Spēle: "
 
 #: kchatdialog.cpp:128
 #, kde-format
 msgid "This is a system message"
-msgstr ""
+msgstr "Šī ir sistēmas ziņa"
 
 #: kchatdialog.cpp:132
 #, kde-format
 msgid "Maximum number of messages (-1 = unlimited):"
-msgstr ""
+msgstr "Maksimālais ziņu skaits (-1 = neierobežots skaits):"
 
 #. i18n: ectx: Menu (game)
 #: kfourinlineui.rc:10
@@ -166,7 +161,7 @@ msgstr "&Spēle"
 #: kfourinlineui.rc:18
 #, kde-format
 msgid "&Settings"
-msgstr "Ie&statījumi"
+msgstr "&Iestatījumi"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kfourinlineui.rc:24
@@ -175,276 +170,254 @@ msgid "Main Toolbar"
 msgstr "Galvenā rīkjosla"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "The network game ended!\n"
+#, kde-format
 msgid "Create a network game"
-msgstr "Tīkla spēle galā!\n"
+msgstr "Izveidot tīkla spēli"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "The network game ended!\n"
+#, kde-format
 msgid "Join a network game"
-msgstr "Tīkla spēle galā!\n"
+msgstr "Pievienoties tīkla spēlei"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game name:"
-msgstr "Spēles nosaukums"
+msgstr "Spēles nosaukums:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgid "Network games:"
-msgstr "Tīkla tērzēšana..."
+msgstr "Tīkla spēles:"
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
 msgid "Port to connect to:"
-msgstr ""
+msgstr "Ports savienojumam ar:"
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
 msgid "Host to connect to:"
-msgstr ""
+msgstr "Resursdators savienojumam ar:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
 msgid "&Start Network"
-msgstr ""
+msgstr "&Sākt tīklu"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
-msgstr ""
+msgstr "„KGame“ atkļūdošanas logs"
 
 #: kgamedebugdialog.cpp:140
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &KGame"
-msgstr "Atkļūdot KGame"
+msgstr "Atkļūdot „&KGame“"
 
 #: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "Atjaunināt"
 
 #: kgamedebugdialog.cpp:167
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "KGame Pointer"
-msgstr "Spēles nosaukums"
+msgstr "„KGame“ rādītājs"
 
 #: kgamedebugdialog.cpp:168
-#, fuzzy, kde-format
-#| msgid "&Game"
+#, kde-format
 msgid "Game ID"
-msgstr "&Spēle"
+msgstr "Spēles ID"
 
 #: kgamedebugdialog.cpp:169
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game Cookie"
-msgstr "Spēles nosaukums"
+msgstr "Spēles sīkdatne"
 
 #: kgamedebugdialog.cpp:170
 #, kde-format
 msgid "Is Master"
-msgstr ""
+msgstr "Ir pārvaldnieks"
 
 #: kgamedebugdialog.cpp:171
 #, kde-format
 msgid "Is Admin"
-msgstr ""
+msgstr "Ir administrators"
 
 #: kgamedebugdialog.cpp:172
 #, kde-format
 msgid "Is Offering Connections"
-msgstr ""
+msgstr "Piedāvā savienojumus"
 
 #: kgamedebugdialog.cpp:173
-#, fuzzy, kde-format
-#| msgid "Game name"
+#, kde-format
 msgid "Game Status"
-msgstr "Spēles nosaukums"
+msgstr "Spēles statuss"
 
 #: kgamedebugdialog.cpp:174
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgid "Game is Running"
-msgstr "Notiek spēle..."
+msgstr "Spēle ir palaista"
 
 #: kgamedebugdialog.cpp:175
 #, kde-format
 msgid "Maximal Players"
-msgstr ""
+msgstr "Maksimālais spēlētāju skaits"
 
 #: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
-msgstr ""
+msgstr "Minimālais spēlētāju skaits"
 
 #: kgamedebugdialog.cpp:177
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Players"
-msgstr "1. spēlētājs"
+msgstr "Spēlētāji"
 
 #: kgamedebugdialog.cpp:183
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Players"
-msgstr "Atkļūdot KGame"
+msgstr "Atkļūdot &spēlētājus"
 
 #: kgamedebugdialog.cpp:193
 #, kde-format
 msgid "Available Players"
-msgstr ""
+msgstr "Pieejamie spēlētāji"
 
 #: kgamedebugdialog.cpp:219
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player Pointer"
-msgstr "Pirmā spēlētāja vārds"
+msgstr "Spēlētāja rādītājs"
 
 #: kgamedebugdialog.cpp:220
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player ID"
-msgstr "1. spēlētājs"
+msgstr "Spēlētāja ID"
 
 #: kgamedebugdialog.cpp:221
-#, fuzzy, kde-format
-#| msgid "Player Names"
+#, kde-format
 msgid "Player Name"
-msgstr "Spēlētāju vārdi"
+msgstr "Spēlētāja vārds"
 
 #: kgamedebugdialog.cpp:222
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player Group"
-msgstr "1. spēlētājs"
+msgstr "Spēlētāja grupa"
 
 #: kgamedebugdialog.cpp:223
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player User ID"
-msgstr "1. spēlētājs"
+msgstr "Spēlētāja lietotāja ID"
 
 #: kgamedebugdialog.cpp:224
 #, kde-format
 msgid "My Turn"
-msgstr ""
+msgstr "Mans gājiens"
 
 #: kgamedebugdialog.cpp:225
 #, kde-format
 msgid "Async Input"
-msgstr ""
+msgstr "Asinhr. ievade"
 
 #: kgamedebugdialog.cpp:226
 #, kde-format
 msgid "KGame Address"
-msgstr ""
+msgstr "„KGame“ adrese"
 
 #: kgamedebugdialog.cpp:227
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player is Virtual"
-msgstr "Pirmā spēlētāja vārds"
+msgstr "Spēlētājs ir virtuāls"
 
 #: kgamedebugdialog.cpp:228
-#, fuzzy, kde-format
-#| msgid "Player 1 name"
+#, kde-format
 msgid "Player is Active"
-msgstr "Pirmā spēlētāja vārds"
+msgstr "Spēlētājs ir aktīvs"
 
 #: kgamedebugdialog.cpp:229
 #, kde-format
 msgid "RTTI"
-msgstr ""
+msgstr "RTTI"
 
 #: kgamedebugdialog.cpp:230
-#, fuzzy, kde-format
-#| msgid "Network connection port"
+#, kde-format
 msgid "Network Priority"
-msgstr "Tīkla savienojuma ports"
+msgstr "Tīkla prioritāte"
 
 #: kgamedebugdialog.cpp:236
-#, fuzzy, kde-format
-#| msgid "Debug KGame"
+#, kde-format
 msgid "Debug &Messages"
-msgstr "Atkļūdot KGame"
+msgstr "Atkļūdošanas &ziņas"
 
 #: kgamedebugdialog.cpp:251
 #, kde-format
 msgid "&>>"
-msgstr ""
+msgstr "&>>"
 
 #: kgamedebugdialog.cpp:255
 #, kde-format
 msgid "&<<"
-msgstr ""
+msgstr "&<<"
 
 #: kgamedebugdialog.cpp:259
 #, kde-format
 msgid "Do not show IDs:"
-msgstr ""
+msgstr "Nerādīt ID:"
 
 #: kgamedebugdialog.cpp:328
 #, kde-format
 msgid "NULL pointer"
-msgstr ""
+msgstr "NULL rādītājs"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "True"
-msgstr ""
+msgstr "Patiess"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "False"
-msgstr ""
+msgstr "Nepatiess"
 
 #: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
 #, kde-format
 msgid "Clean"
-msgstr ""
+msgstr "Tīrs"
 
 #: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
 #, kde-format
 msgid "Dirty"
-msgstr ""
+msgstr "Netīrs"
 
 #: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
 #, kde-format
 msgid "Local"
-msgstr ""
+msgstr "Lokāls"
 
 #: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
 #, kde-format
 msgid "Undefined"
-msgstr ""
+msgstr "Nedefinēts"
 
 #: kgamedebugdialog.cpp:507
 #, kde-format
 msgid "Unknown"
-msgstr ""
+msgstr "Nezināms"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgid "&Network"
-msgstr "Tīkla tērzēšana..."
+msgstr "&Tīkls"
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
 msgid "Disconnect"
-msgstr ""
+msgstr "Atvienoties"
 
 #: kgamedialogconfig.cpp:128 kwin4.cpp:679
 #, kde-format
@@ -454,37 +427,37 @@ msgstr "Tīkla konfigurācija"
 #: kgamedialogconfig.cpp:187
 #, kde-format
 msgid "Cannot connect to the network"
-msgstr ""
+msgstr "Nevar savienoties ar tīklu"
 
 #: kgamedialogconfig.cpp:193
 #, kde-format
 msgid "Network status: No Network"
-msgstr ""
+msgstr "Tīkla statuss: nav tīkla"
 
 #: kgamedialogconfig.cpp:199
 #, kde-format
 msgid "Network status: You are MASTER"
-msgstr ""
+msgstr "Tīkla statuss: jūs esat PĀRVALDNIEKS"
 
 #: kgamedialogconfig.cpp:201
 #, kde-format
 msgid "Network status: You are connected"
-msgstr ""
+msgstr "Tīkla statuss: jūs esat savienojies"
 
 #: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
-msgstr "Instalācijas kļūda: nav atrasts tēmu saraksts."
+msgstr "Instalācijas kļūda: nav atrasts motīvu saraksts."
 
 #: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
-msgstr "Instalācijas kļūda: nav atrasts AI dzinējs. Turpina bez AI."
+msgstr "Instalācijas kļūda: nav atrasts MI dzinējs. Turpina bez MI."
 
 #: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
-msgstr "Instalācijas kļūda: tēmas faila kļūda."
+msgstr "Instalācijas kļūda: motīva datnes kļūda."
 
 #: kwin4.cpp:267
 #, kde-format
@@ -514,17 +487,17 @@ msgstr "Rādīt statistiku."
 #: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
-msgstr "Tēma"
+msgstr "Motīvs"
 
 #: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
-msgstr "Atkļūdot KGame"
+msgstr "Atkļūdot „KGame“"
 
 #: kwin4.cpp:329
 #, kde-format
 msgid "Welcome to Four Wins"
-msgstr "Laipni lūdzam Četrās Uzvarās"
+msgstr "Laipni lūdzam „Četrās uzvarās“"
 
 #: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
@@ -534,13 +507,12 @@ msgstr "Notiek spēle..."
 #: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
-msgstr "Nav spēles "
+msgstr "Nav spēles  "
 
 #: kwin4.cpp:601 kwin4.cpp:603
-#, fuzzy, kde-format
-#| msgid " %1 - Red "
+#, kde-format
 msgid " %1 - %2 "
-msgstr " %1 - Sarkans "
+msgstr " %1 — %2 "
 
 #: kwin4.cpp:605
 #, kde-format
@@ -555,27 +527,27 @@ msgstr "Tīkla spēle galā!\n"
 #: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
-msgstr "Neizšķirts. Lūdzu, sāc nākamo kārtu."
+msgstr "Neizšķirts. Sāciet nākamo kārtu."
 
 #: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
-msgstr "%1 uzvarēja. Lūdzu, sāc nākamo kārtu."
+msgstr "%1 uzvarēja. Sāciet nākamo kārtu."
 
 #: kwin4.cpp:660
 #, kde-format
 msgid " Game ended. Please restart next round."
-msgstr " Spēle pārtraukta. Lūdzu, sāc nākamo kārtu."
+msgstr " Spēle beidzās. Sāciet nākamo kārtu."
 
 #: kwin4.cpp:690
 #, kde-format
 msgid "Black should be played by remote player"
-msgstr "Attālinātajam vajadzētu spēlēt ar melnajiem"
+msgstr "Ar melnajiem jāspēlē attālinātajam spēlētājam"
 
 #: kwin4.cpp:691
 #, kde-format
 msgid "Red should be played by remote player"
-msgstr "Attālinātajam vajadzētu spēlēt ar sarkanajiem"
+msgstr "Ar sarkanajiem jāspēlē attālinātajam spēlētājam"
 
 #: kwin4.cpp:788
 #, kde-format
@@ -598,14 +570,14 @@ msgstr "Spēles nosaukums"
 #: kwin4.kcfg:17
 #, kde-format
 msgid "Network connection host"
-msgstr "Tīkla savienojuma dators"
+msgstr "Tīkla savienojuma resursdators"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
 #: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
-msgstr "Maina datora spēlētāja spēku."
+msgstr "Maina datora vadīto spēlētāja spēku."
 
 #. i18n: ectx: label, entry (Name1), group (Parameter)
 #: kwin4.kcfg:28
@@ -617,7 +589,7 @@ msgstr "Pirmā spēlētāja vārds"
 #, kde-format
 msgctxt "default name of first player"
 msgid "Player 1"
-msgstr "Spēl. 1"
+msgstr "1. spēlētājs"
 
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
@@ -629,7 +601,7 @@ msgstr "Otrā spēlētāja vārds"
 #, kde-format
 msgctxt "default name of second player"
 msgid "Player 2"
-msgstr "Spēl. 2"
+msgstr "2. spēlētājs"
 
 #: main.cpp:56
 #, kde-format
@@ -639,12 +611,12 @@ msgstr "KFourInLine"
 #: main.cpp:58
 #, kde-format
 msgid "KFourInLine: Two player board game"
-msgstr "KFourInLine: divu spēlētāju galda spēle"
+msgstr "„KFourInLine“ — divu spēlētāju galda spēle"
 
 #: main.cpp:60
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
-msgstr "(c) 1995-2007, Martin Heni"
+msgstr "(c) 1995—2007, Martin Heni"
 
 #: main.cpp:61
 #, kde-format
@@ -694,7 +666,7 @@ msgstr "Izlaist ievada animāciju"
 #: main.cpp:74
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
-msgstr "Palaist spēli demonstrācijas (automātiskā) režīmā"
+msgstr "Palaist spēli demonstrācijas (paraugspēles) režīmā"
 
 #: scoresprite.cpp:158
 #, kde-format
@@ -724,7 +696,7 @@ msgstr "Grūta"
 #: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
-msgstr "Izmantot AI apmācību"
+msgstr "Izmantot MI mācīšanos"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Player1)
 #: settings.ui:95
@@ -735,40 +707,37 @@ msgstr "Sarkana"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Vārds"
+msgstr "Vārds:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Sākošā spēlētāja krāsa"
+msgstr "Sākošais spēlētājs"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player 1"
+#, kde-format
 msgid "Player:"
-msgstr "1. spēlētājs"
+msgstr "Spēlētājs:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "Cilvēks ar peli"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "Cilvēks ar tastatūru"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
@@ -877,7 +846,7 @@ msgstr "Nr."
 #: statuswidget.ui:97
 #, kde-format
 msgid "Bk"
-msgstr ""
+msgstr "Bk"
 
 #, fuzzy
 #~| msgid "Red Plays With"
