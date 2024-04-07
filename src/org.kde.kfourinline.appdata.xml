@@ -30,6 +30,7 @@
   <name xml:lang="it">KFourInLine</name>
   <name xml:lang="ka">KFourInLine</name>
   <name xml:lang="ko">KFourInLine</name>
+  <name xml:lang="lv">KFourInLine</name>
   <name xml:lang="nl">KFourInLine</name>
   <name xml:lang="nn">KFourInLine</name>
   <name xml:lang="pl">KCzteryWLinii</name>
@@ -64,6 +65,7 @@
   <summary xml:lang="it">KFourInLine è un gioco di "Forza Quattro" della comunità KDE</summary>
   <summary xml:lang="ka">KDE ხუთი ზედიზედ სამაგიდო თამაში</summary>
   <summary xml:lang="ko">KFourInLine은 KDE의 한 줄에 네 개 보드 게임입니다</summary>
+  <summary xml:lang="lv">„KFourInLine“ ir KDE „četri rindā“ spēle</summary>
   <summary xml:lang="nl">KFourInLine is een Vier-op-een-rij spel door KDE</summary>
   <summary xml:lang="nn">KFourInLine er eit fire-på-rad-spel frå KDE.</summary>
   <summary xml:lang="pl">KCzteryWLinii jest grą cztery-w-rzędzie dla KDE</summary>
@@ -99,6 +101,7 @@
     <p xml:lang="it">KFourInLine è un gioco da tavolo per due giocatori basato sul gioco Forza Quattro. I giocatori cercano di costruire una riga di quattro pezzi usando varie strategie.</p>
     <p xml:lang="ka">KFourInLine სამაგიდო თამაშია ორი კაცისთვის, რომელიც ოთხის-შეერთების თამაშს წააგავს. მოთამაშეები ცდილობენ, მწკრივი სხვადასხვა გზებით ააგონ.</p>
     <p xml:lang="ko">KFourInLine은 2인용 보드 게임입니다. 플레이어는 다양한 전략을 사용하여 같은 색 돌을 일직선으로 네 개가 나오도록 놓아야 합니다.</p>
+    <p xml:lang="lv">„KFourInLine“ ir galda spēle diviem spēlētājiem, kurai pamatā ir „Četri rindā“ spēle. Spēles mērķis ir izveidot rindu ar četriem vienādiem elementiem, izmantojot dažādas stratēģijas.</p>
     <p xml:lang="nl">KFourInLine is een bordspel voor twee spelers gebaseerd op het Vier-op-een-rij spel. De spelers proberen een rij van vier stukken te bouwen met verschillende strategieën.</p>
     <p xml:lang="nn">KFourInLine er eit fire-på-rad-spel for to spelarar. Kvar spelar skal prøva å byggja opp ei rad med fire brikker av same type.</p>
     <p xml:lang="pl">KCzteryWLinii jest grą planszową dla dwóch graczy opartą na grze połącz-cztery. Gracze próbują przy użyciu różnych strategii stworzyć rząd zbudowany z czterech kawałków.</p>
@@ -138,6 +141,7 @@
       <caption xml:lang="it">Giocare a KFourInLine</caption>
       <caption xml:lang="ka">KFourInLine-ის თამაში</caption>
       <caption xml:lang="ko">KFourInLine 플레이</caption>
+      <caption xml:lang="lv">„KFourInLine“ spēlēšana</caption>
       <caption xml:lang="nl">KFourInLine spelen</caption>
       <caption xml:lang="nn">Spelar KFourInLine</caption>
       <caption xml:lang="pl">Granie w KCzteryWLinii</caption>
