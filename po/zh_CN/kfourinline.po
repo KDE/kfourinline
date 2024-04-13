@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-03-30 19:37\n"
+"PO-Revision-Date: 2024-04-12 19:12\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -704,35 +704,35 @@ msgstr "红"
 #: settings.ui:103 settings.ui:217
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "名称："
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
 #, kde-format
 msgid "Starting Player"
-msgstr ""
+msgstr "开始玩家"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
 #, kde-format
 msgid "Player:"
-msgstr ""
+msgstr "玩家："
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "使用鼠标的玩家"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "使用键盘的玩家"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
