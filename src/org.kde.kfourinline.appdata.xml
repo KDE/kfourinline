@@ -71,6 +71,7 @@
   <summary xml:lang="tr">KFourInLine, KDE tarafından yapılan bir dörtlü sıralama oyunudur</summary>
   <summary xml:lang="uk">Чотири-у-рядку — це гра у чотири-у-рядок від KDE</summary>
   <summary xml:lang="x-test">xxKFourInLine is a four-in-a-row game by KDExx</summary>
+  <summary xml:lang="zh-CN">KFourInLine 是 KDE 的一款四子棋游戏</summary>
   <description>
     <p>
       KFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.
@@ -105,6 +106,7 @@
     <p xml:lang="tr">KFourInLine, iki oyuncu için Connect-Four tabanlı bir masa oyunudur. Oyuncular değişik stratejiler kullanarak dört parçanın aynı doğruda olduğu diziler yapmaya çalışırlar.</p>
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
     <p xml:lang="x-test">xxKFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.xx</p>
+    <p xml:lang="zh-CN">KFourInLine 是一款基于四子棋的棋盘游戏。玩家尝试使用不同策略构建一个四连。</p>
   </description>
   <url type="homepage">https://apps.kde.org/kfourinline</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kfourinline</url>
@@ -143,6 +145,7 @@
       <caption xml:lang="tr">KFourInLine Oynarken</caption>
       <caption xml:lang="uk">Гра у Чотири-у-рядку</caption>
       <caption xml:lang="x-test">xxPlaying KFourInLinexx</caption>
+      <caption xml:lang="zh-CN">玩 KFourInLine</caption>
       <caption xml:lang="zh-TW">KFourInLine 遊玩畫面</caption>
       <image>https://cdn.kde.org/screenshots/kfourinline/kfourinline.png</image>
     </screenshot>
