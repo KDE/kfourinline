@@ -71,8 +71,9 @@ kconfig_add_kcfg_files(kfourinline prefs.kcfgc)
 ecm_qt_declare_logging_category(kfourinline
     HEADER kfourinline_debug.h
     IDENTIFIER KFOURINLINE_LOG
-    CATEGORY_NAME log_fourinline
-    DESCRIPTION "KFourInLine"
+    CATEGORY_NAME kfourinline
+    OLD_CATEGORY_NAMES log_fourinline
+    DESCRIPTION "KFourInLine game"
     EXPORT KFOURINLINE
 )
 
