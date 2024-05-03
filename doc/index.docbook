@@ -172,9 +172,9 @@ computer.
 One of the computers will act as game server. This one can determine
 who should play which color. You can configure the network options
 in the menu
-<menuchoice><guimenu>Settings</guimenu><guimenuitem>Network Configuration...</guimenuitem></menuchoice>.
+<menuchoice><guimenu>Settings</guimenu><guimenuitem>Network Configuration…</guimenuitem></menuchoice>.
 In the menu
-<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat...</guimenuitem></menuchoice>.
+<menuchoice><guimenu>Game</guimenu><guimenuitem>Network Chat…</guimenuitem></menuchoice>.
 you find a chat dialog box which allows you to speak with your friend.
 </para>
 
@@ -222,7 +222,7 @@ the server.
 <keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Load...</guimenuitem>
+<guimenuitem>Load…</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -263,7 +263,7 @@ Ends a running game.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Game</guimenu>
-<guimenuitem>Network Chat...</guimenuitem></menuchoice></term>
+<guimenuitem>Network Chat…</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Pops up a chat widget which allows you to send messages to the
@@ -363,7 +363,7 @@ the computer.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Network Configuration...</guimenuitem></menuchoice></term>
+<guimenuitem>Network Configuration…</guimenuitem></menuchoice></term>
 <listitem>
 <para>
 Pops up a dialog for the network configuration. You can choose to be
@@ -389,7 +389,7 @@ of the &kde; Fundamentals.
 
 <chapter id="config">
 <title>Game Configuration</title>
-<para>&kfourinline; can be configured using the configuration dialog with the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kfourinline;...</guimenuitem></menuchoice> menu item.</para>
+<para>&kfourinline; can be configured using the configuration dialog with the <menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure &kfourinline;…</guimenuitem></menuchoice> menu item.</para>
 
 <screenshot>
 <mediaobject>
