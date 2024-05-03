@@ -60,18 +60,18 @@ KGameConnectWidget::KGameConnectWidget(QWidget *parent)
     d->mButtonGroup->setExclusive(true);
     vb->addWidget(box);
     connect(d->mButtonGroup, static_cast<void (QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked), this, &KGameConnectWidget::slotTypeChanged);
-    QRadioButton *buttonCreate = new QRadioButton(i18n("Create a network game"), box);
+    auto *buttonCreate = new QRadioButton(i18nc("@option:radio", "Create a network game"), box);
     boxlay->addWidget(buttonCreate);
     d->mButtonGroup->addButton(buttonCreate, 0);
-    QRadioButton *buttonJoin = new QRadioButton(i18n("Join a network game"), box);
+    auto *buttonJoin = new QRadioButton(i18nc("@option:radio", "Join a network game"), box);
     boxlay->addWidget(buttonJoin);
     d->mButtonGroup->addButton(buttonJoin, 1);
 
     QWidget *g = new QWidget(this);
     vb->addWidget(g);
-    d->mServerNameLabel = new QLabel(i18n("Game name:"), g);
+    d->mServerNameLabel = new QLabel(i18nc("@label:textbox", "Game name:"), g);
     d->mServerName = new QLineEdit(g);
-    d->mClientNameLabel = new QLabel(i18n("Network games:"), g);
+    d->mClientNameLabel = new QLabel(i18nc("@label:textbox", "Network games:"), g);
     d->mClientName = new QComboBox(g);
 
     QGridLayout *layout = new QGridLayout(g);
@@ -81,18 +81,18 @@ KGameConnectWidget::KGameConnectWidget(QWidget *parent)
     layout->addWidget(d->mClientNameLabel, 1, 0);
     layout->addWidget(d->mClientName, 1, 1);
     connect(d->mClientName, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KGameConnectWidget::slotGameSelected);
-    QLabel *label = new QLabel(i18n("Port to connect to:"), g);
+    auto *label = new QLabel(i18nc("@label:spinbox", "Port to connect to:"), g);
     d->mPort = new QSpinBox(g);
     d->mPort->setMinimum(1024);
     d->mPort->setMaximum(65535);
     layout->addWidget(label, 2, 0);
     layout->addWidget(d->mPort, 2, 1);
-    label = new QLabel(i18n("Host to connect to:"), g);
+    label = new QLabel(i18nc("@label:textbox", "Host to connect to:"), g);
     d->mHost = new QLineEdit(g);
     layout->addWidget(label, 3, 0);
     layout->addWidget(d->mHost, 3, 1);
 
-    QPushButton *button = new QPushButton(i18n("&Start Network"), this);
+    auto *button = new QPushButton(i18nc("@action:button", "&Start Network"), this);
     connect(button, &QPushButton::clicked, this, &KGameConnectWidget::signalNetworkSetup);
     vb->addWidget(button);
     // Hide until type is set

@@ -269,18 +269,18 @@ void KWin4App::initGUI()
     KGameStandardAction::quit(this, &KWin4App::close, actionCollection());
 
     action = actionCollection()->addAction(QStringLiteral("network_conf"));
-    action->setText(i18n("&Network Configuration..."));
+    action->setText(i18nc("@action", "Configure Network…"));
     connect(action, &QAction::triggered, this, &KWin4App::configureNetwork);
 
     action = actionCollection()->addAction(QStringLiteral("network_chat"));
-    action->setText(i18n("Network Chat..."));
+    action->setText(i18nc("@action", "Network Chat"));
     connect(action, &QAction::triggered, this, &KWin4App::configureChat);
 
     action = actionCollection()->addAction(QStringLiteral("statistics"));
     action->setIcon(QIcon::fromTheme(QStringLiteral("view-statistics")));
-    action->setText(i18n("&Show Statistics"));
+    action->setText(i18nc("@action", "Show Statistics"));
     connect(action, &QAction::triggered, this, &KWin4App::showStatistics);
-    action->setToolTip(i18n("Show statistics."));
+    action->setToolTip(i18nc("@info:tooltip", "Show statistics"));
 
     // Move
     KGameStandardAction::undo(this, &KWin4App::undoMove, actionCollection());
@@ -292,7 +292,7 @@ void KWin4App::initGUI()
     QStringList themes(mThemeFiles.keys());
     themes.sort();
 
-    KSelectAction *themeAction = new KSelectAction(i18n("Theme"), this);
+    auto *themeAction = new KSelectAction(i18nc("@title:menu", "Theme"), this);
     actionCollection()->addAction(QStringLiteral("theme"), themeAction);
     themeAction->setIcon(QIcon::fromTheme(QStringLiteral("games-config-theme")));
     themeAction->setItems(themes);
@@ -482,7 +482,7 @@ void KWin4App::menuNewGame()
     // Run it
     mDoc->setGameStatus(KWin4Doc::Run);
     // Display game status
-    displayStatusMessage(i18n("Game running..."));
+    displayStatusMessage(i18nc("@info", "Game running…"));
 }
 
 // Slot: Noticed that a new game started...update menus
@@ -635,7 +635,7 @@ void KWin4App::moveDone(int /*playerNumber*/)
 {
     checkMenus(CheckEditMenu);
     updateStatusNames();
-    displayStatusMessage(i18n("Game running..."));
+    displayStatusMessage(i18nc("@info", "Game running…"));
 }
 
 // The game is over or aborted. Set status and display it.
@@ -676,7 +676,7 @@ void KWin4App::configureNetwork()
     int port = Prefs::port();
 
     // just for testing - should be non-modal
-    KGameDialog dlg(mDoc, nullptr, i18n("Network Configuration"), this);
+    KGameDialog dlg(mDoc, nullptr, i18nc("@title:window", "Network Configuration"), this);
     dlg.networkConfig()->setDefaultNetworkInfo(host, port);
     dlg.networkConfig()->setDiscoveryInfo(QStringLiteral("_kfourinline._tcp"), Prefs::gamename());
 
@@ -687,8 +687,8 @@ void KWin4App::configureNetwork()
     QVBoxLayout *grouplay = new QVBoxLayout(mColorGroup);
     connect(dlg.networkConfig(), &KGameDialogNetworkConfig::signalServerTypeChanged, this, &KWin4App::serverTypeChanged);
 
-    QRadioButton *b1 = new QRadioButton(i18n("Black should be played by remote player"), mColorGroup);
-    QRadioButton *b2 = new QRadioButton(i18n("Red should be played by remote player"), mColorGroup);
+    auto *b1 = new QRadioButton(i18nc("@option:radio", "Black should be played by remote player"), mColorGroup);
+    auto *b2 = new QRadioButton(i18nc("@option:radio", "Red should be played by remote player"), mColorGroup);
     grouplay->addWidget(b1);
     grouplay->addWidget(b2);
     l->addWidget(mColorGroup);
@@ -785,7 +785,7 @@ void KWin4App::configureSettings()
     group->addButton(ui.kcfg_startcolouryellow);
     ui.Player1->setTitle(mTheme->colorNamePlayer(0));
     ui.Player2->setTitle(mTheme->colorNamePlayer(1));
-    dialog->addPage(frame, i18n("General"), QStringLiteral("games-config-options"));
+    dialog->addPage(frame, i18nc("@title:tab", "General"), QStringLiteral("games-config-options"));
     connect(dialog, &KConfigDialog::settingsChanged, mDoc, &KWin4Doc::loadSettings);
     dialog->show();
 }

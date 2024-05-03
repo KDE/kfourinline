@@ -68,16 +68,16 @@ DisplayIntro::DisplayIntro(QGraphicsScene *scene, ThemeManager *theme, QGraphics
     mSprites.append(mQuickLaunch);
     mQuickLaunch->show();
     mTextQuicklaunch = new QGraphicsTextItem(mQuickLaunch);
-    mTextQuicklaunch->setPlainText(i18nc("Name of quicklaunch field", "Quick Launch"));
+    mTextQuicklaunch->setPlainText(i18nc("@title:group", "Quick Launch"));
     QTextDocument *text_document = mTextQuicklaunch->document();
     text_document->setDefaultTextOption(QTextOption(Qt::AlignHCenter));
     mTextQuicklaunch->setDocument(text_document);
     mTextQuicklaunch->show();
     mTextStartplayer = new QGraphicsTextItem(mQuickLaunch);
-    mTextStartplayer->setPlainText(i18nc("Ask player who should start game", "Who starts?"));
+    mTextStartplayer->setPlainText(i18nc("@label Ask player who should start game", "Who starts?"));
     mTextStartplayer->show();
     mTextColor = new QGraphicsTextItem(mQuickLaunch);
-    mTextColor->setPlainText(i18nc("Ask player which color he wants to play", "Your color?"));
+    mTextColor->setPlainText(i18nc("@label Ask player which color he wants to play", "Your color?"));
     mTextColor->show();
 
     // Static decoration
@@ -121,25 +121,25 @@ DisplayIntro::DisplayIntro(QGraphicsScene *scene, ThemeManager *theme, QGraphics
     // Start game buttons
     ButtonSprite *button = new ButtonSprite(true, QStringLiteral("button_aieasy"), mTheme, 10, mScene);
     mSprites.append(button);
-    button->setText(i18nc("quick start button - player versus AI level easy", "Easy Game"));
+    button->setText(i18nc("@action:button quick start - player versus AI level easy", "Easy Game"));
     button->show();
     connect(button->notify(), &SpriteNotify::signalNotify, this, &DisplayIntro::buttonPressed);
 
     button = new ButtonSprite(true, QStringLiteral("button_ainormal"), mTheme, 11, mScene);
     mSprites.append(button);
-    button->setText(i18nc("quick start button - player versus AI level normal", "Normal Game"));
+    button->setText(i18nc("@action:button quick start - player versus AI level normal", "Normal Game"));
     button->show();
     connect(button->notify(), &SpriteNotify::signalNotify, this, &DisplayIntro::buttonPressed);
 
     button = new ButtonSprite(true, QStringLiteral("button_aihard"), mTheme, 12, mScene);
     mSprites.append(button);
-    button->setText(i18nc("quick start button - player versus AI level hard", "Hard Game"));
+    button->setText(i18nc("@action:button quick start - player versus AI level hard", "Hard Game"));
     button->show();
     connect(button->notify(), &SpriteNotify::signalNotify, this, &DisplayIntro::buttonPressed);
 
     button = new ButtonSprite(true, QStringLiteral("button_player"), mTheme, 13, mScene);
     mSprites.append(button);
-    button->setText(i18nc("quick start button - player versus player", "Two Player Game"));
+    button->setText(i18nc("@action:button quick start - player versus player", "Two Player Game"));
     button->show();
     connect(button->notify(), &SpriteNotify::signalNotify, this, &DisplayIntro::buttonPressed);
 

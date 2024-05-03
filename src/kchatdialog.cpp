@@ -89,10 +89,10 @@ void KChatDialog::init()
     connect(buttonBox, &QDialogButtonBox::rejected, this, &KChatDialog::reject);
 
     // General fonts
-    QPushButton *nameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);
+    auto *nameFont = new QPushButton(i18nc("@action:button", "Name Font…"), d->mTextPage);
     connect(nameFont, &QPushButton::pressed, this, &KChatDialog::slotGetNameFont);
     layout->addWidget(nameFont, 0, 0);
-    QPushButton *textFont = new QPushButton(i18n("Text Font..."), d->mTextPage);
+    auto *textFont = new QPushButton(i18nc("@action:button", "Text Font…"), d->mTextPage);
     connect(textFont, &QPushButton::pressed, this, &KChatDialog::slotGetTextFont);
     layout->addWidget(textFont, 0, 1);
 
@@ -111,10 +111,10 @@ void KChatDialog::init()
     // System Message fonts
     QLabel *systemMessages = new QLabel(i18n("System Messages - Messages directly sent from the game"), d->mTextPage);
     layout->addWidget(systemMessages, 3, 0, 1, 2);
-    QPushButton *systemNameFont = new QPushButton(i18n("Name Font..."), d->mTextPage);
+    auto *systemNameFont = new QPushButton(i18nc("@action:button", "Name Font…"), d->mTextPage);
     connect(systemNameFont, &QPushButton::pressed, this, &KChatDialog::slotGetSystemNameFont);
     layout->addWidget(systemNameFont, 4, 0);
-    QPushButton *systemTextFont = new QPushButton(i18n("Text Font..."), d->mTextPage);
+    auto *systemTextFont = new QPushButton(i18nc("@action:button", "Text Font…"), d->mTextPage);
     connect(systemTextFont, &QPushButton::pressed, this, &KChatDialog::slotGetSystemTextFont);
     layout->addWidget(systemTextFont, 4, 1);
 

@@ -45,13 +45,13 @@ ChatDlg::ChatDlg(KGame *game, QWidget *parent)
     QFrame *frame = new QFrame(this);
 
     QGridLayout *mGridLayout = new QGridLayout(frame);
-    QGroupBox *b = new QGroupBox(i18n("Chat"), frame);
+    auto *b = new QGroupBox(i18nc("@title:group", "Chat"), frame);
     QVBoxLayout *gboxLay = new QVBoxLayout(b);
     mChat = new KGameChat(game, 10000, b);
     gboxLay->addWidget(mChat);
     mGridLayout->addWidget(b, 0, 0);
 
-    QPushButton *mButton = new QPushButton(i18n("Configure..."), frame);
+    auto *mButton = new QPushButton(i18nc("@action:button", "Configure…"), frame);
     mButton->setAutoDefault(false);
     mGridLayout->addWidget(mButton, 1, 1);
 

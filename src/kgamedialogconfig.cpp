@@ -121,11 +121,11 @@ KGameDialogNetworkConfig::KGameDialogNetworkConfig(QWidget *parent)
     d->mNetworkLabel = new QLabel(this);
     hb->addWidget(d->mNetworkLabel);
 
-    d->mDisconnectButton = new QPushButton(i18n("Disconnect"), this);
+    d->mDisconnectButton = new QPushButton(i18nc("@action:button", "Disconnect"), this);
     connect(d->mDisconnectButton, &QPushButton::clicked, this, &KGameDialogNetworkConfig::slotExitConnection);
     hb->addWidget(d->mDisconnectButton);
 
-    d->mInitConnection = new QGroupBox(i18n("Network Configuration"), this);
+    d->mInitConnection = new QGroupBox(i18nc("@title:group", "Network Configuration"), this);
     QHBoxLayout *gboxLay = new QHBoxLayout(d->mInitConnection);
     topLayout->addWidget(d->mInitConnection);
 

@@ -89,7 +89,7 @@ void KGameDialog::addNetworkConfig(KGameDialogNetworkConfig *netConf)
         return;
     }
     d->mNetworkConfig = netConf;
-    d->mNetworkPage = addConfigPage(netConf, i18n("&Network"));
+    d->mNetworkPage = addConfigPage(netConf, i18nc("@title:tab", "&Network"));
 }
 
 QWidget *KGameDialog::configPage()
