@@ -189,13 +189,13 @@
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
->Netwerkinstellingen...</guimenuitem
+>Netwerkinstellingen…</guimenuitem
 ></menuchoice
 >. In het menu <menuchoice
 ><guimenu
 >Spel</guimenu
 ><guimenuitem
->Netwerk-chat...</guimenuitem
+>Netwerk-chat…</guimenuitem
 ></menuchoice
 > vindt je ook een chatvenster waarin je met jouw vriend kunt praten. </para>
 
@@ -247,7 +247,7 @@
 > <guimenu
 >Spel</guimenu
 > <guimenuitem
->Laden...</guimenuitem
+>Laden…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -302,7 +302,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Netwerk-chat...</guimenuitem
+>Netwerk-chat…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -431,7 +431,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Netwerkinstellingen...</guimenuitem
+>Netwerkinstellingen…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -465,7 +465,7 @@
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
->&kfourinline; configureren...</guimenuitem
+>&kfourinline; configureren…</guimenuitem
 ></menuchoice
 ></para>
 

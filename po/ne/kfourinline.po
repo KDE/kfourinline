@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2007-08-20 12:16+0545\n"
 "Last-Translator: Nabin Gautam <nabin@mpp.org.np>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -52,50 +52,64 @@ msgid "Chat Dlg"
 msgstr "कुराकानी Dlg"
 
 #: chatdlg.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Chat"
+msgctxt "@title:group"
 msgid "Chat"
 msgstr "कुराकानी"
 
 #: chatdlg.cpp:54
-#, kde-format
-msgid "Configure..."
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@action:button"
+msgid "Configure…"
 msgstr "कन्फिगर गर्नुहोस्..."
 
 #: displayintro.cpp:71
 #, fuzzy, kde-format
 #| msgctxt "Name of quicklaunch field"
 #| msgid "Quick launch"
-msgctxt "Name of quicklaunch field"
+msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "छिटो सुरु"
 
 #: displayintro.cpp:77
-#, kde-format
-msgctxt "Ask player who should start game"
+#, fuzzy, kde-format
+#| msgctxt "Ask player who should start game"
+#| msgid "Who starts?"
+msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "कसले सुरु गर्दछ?"
 
 #: displayintro.cpp:80
-#, kde-format
-msgctxt "Ask player which color he wants to play"
+#, fuzzy, kde-format
+#| msgctxt "Ask player which color he wants to play"
+#| msgid "Your color?"
+msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "तपाईँको कुन रङ हो?"
 
 #: displayintro.cpp:124
-#, kde-format
-msgctxt "quick start button - player versus AI level easy"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level easy"
+#| msgid "Easy Game"
+msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "सजिलो खेल"
 
 #: displayintro.cpp:130
-#, kde-format
-msgctxt "quick start button - player versus AI level normal"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level normal"
+#| msgid "Normal Game"
+msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "सामान्य खेल"
 
 #: displayintro.cpp:136
-#, kde-format
-msgctxt "quick start button - player versus AI level hard"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level hard"
+#| msgid "Hard Game"
+msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "कठिन खेल"
 
@@ -103,7 +117,7 @@ msgstr "कठिन खेल"
 #, fuzzy, kde-format
 #| msgctxt "quick start button - player versus player"
 #| msgid "Two player game"
-msgctxt "quick start button - player versus player"
+msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "दुइ खेलाडीको खेल"
 
@@ -116,12 +130,14 @@ msgstr "कन्फिगर गर्नुहोस्..."
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
-msgid "Name Font..."
+msgctxt "@action:button"
+msgid "Name Font…"
 msgstr ""
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
-msgid "Text Font..."
+msgctxt "@action:button"
+msgid "Text Font…"
 msgstr ""
 
 #: kchatdialog.cpp:104
@@ -176,41 +192,49 @@ msgstr "मुख्य उपकरणपट्टी"
 #: kgameconnectdialog.cpp:63
 #, fuzzy, kde-format
 #| msgid "The network game ended!\n"
+msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "सञ्जाल खेल समाप्त भयो!\n"
 
 #: kgameconnectdialog.cpp:66
 #, fuzzy, kde-format
 #| msgid "The network game ended!\n"
+msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "सञ्जाल खेल समाप्त भयो!\n"
 
 #: kgameconnectdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Game name"
+msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "खेलको नाम"
 
 #: kgameconnectdialog.cpp:74
 #, fuzzy, kde-format
 #| msgid "Network Chat..."
+msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "सञ्जाल कुराकानी..."
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr ""
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
+msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr ""
 
 #: kgameconnectdialog.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgctxt "@action:button"
 msgid "&Start Network"
-msgstr ""
+msgstr "सञ्जाल कुराकानी..."
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
@@ -437,16 +461,20 @@ msgstr ""
 #: kgamedialog.cpp:92
 #, fuzzy, kde-format
 #| msgid "Network Chat..."
+msgctxt "@title:tab"
 msgid "&Network"
 msgstr "सञ्जाल कुराकानी..."
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
+msgctxt "@action:button"
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:679
-#, kde-format
+#: kgamedialogconfig.cpp:128
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "सञ्जाल कन्फिगरेसन"
 
@@ -492,27 +520,37 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "हालै खेलिएको खेल परित्याग गर्छ । विजेता घोसित हुने छैन ।"
 
 #: kwin4.cpp:272
-#, kde-format
-msgid "&Network Configuration..."
-msgstr "सञ्जाल कन्फिगरेसन..."
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@action"
+msgid "Configure Network…"
+msgstr "कन्फिगर गर्नुहोस्..."
 
 #: kwin4.cpp:276
-#, kde-format
-msgid "Network Chat..."
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgctxt "@action"
+msgid "Network Chat"
 msgstr "सञ्जाल कुराकानी..."
 
 #: kwin4.cpp:281
-#, kde-format
-msgid "&Show Statistics"
+#, fuzzy, kde-format
+#| msgid "&Show Statistics"
+msgctxt "@action"
+msgid "Show Statistics"
 msgstr "तथ्याङ्क देखाउनुहोस्"
 
 #: kwin4.cpp:283
-#, kde-format
-msgid "Show statistics."
+#, fuzzy, kde-format
+#| msgid "Show statistics."
+msgctxt "@info:tooltip"
+msgid "Show statistics"
 msgstr "तथ्याङ्क देखाउनुहोस् ।"
 
 #: kwin4.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
 msgid "Theme"
 msgstr "विषयवस्तु"
 
@@ -527,8 +565,10 @@ msgid "Welcome to Four Wins"
 msgstr "चार विजेता खेलमा स्वागत छ"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, kde-format
-msgid "Game running..."
+#, fuzzy, kde-format
+#| msgid "Game running..."
+msgctxt "@info"
+msgid "Game running…"
 msgstr "खेल चलिराखेको छ..."
 
 #: kwin4.cpp:599
@@ -568,20 +608,31 @@ msgstr "%1 विजयी भयो । कृपया पछिल्लो �
 msgid " Game ended. Please restart next round."
 msgstr " खेल परित्याग गरियो । कृपया पछिल्लो राउन्ड पुन: सुरु गर्नुहोस् ।"
 
+#: kwin4.cpp:679
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:window"
+msgid "Network Configuration"
+msgstr "सञ्जाल कन्फिगरेसन"
+
 #: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
+msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "रातो रिमोटद्वारा खेलिएको हुनुपर्छ"
 
 #: kwin4.cpp:691
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
+msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "रातो रिमोटद्वारा खेलिएको हुनुपर्छ"
 
 #: kwin4.cpp:788
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "साधारण"
 
@@ -884,6 +935,9 @@ msgstr "खेल सङ्ख्या"
 #, kde-format
 msgid "Bk"
 msgstr "परित्याग गरिएको"
+
+#~ msgid "&Network Configuration..."
+#~ msgstr "सञ्जाल कन्फिगरेसन..."
 
 #, fuzzy
 #~| msgid "Red Plays With"

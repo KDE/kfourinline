@@ -189,13 +189,13 @@
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
->Configuració de xarxa...</guimenuitem
+>Configuració de xarxa…</guimenuitem
 ></menuchoice
 >. Al menú <menuchoice
 ><guimenu
 >Joc</guimenu
 ><guimenuitem
->Xat de xarxa...</guimenuitem
+>Xat de xarxa…</guimenuitem
 ></menuchoice
 > trobareu un diàleg de xat que permet parlar. </para>
 
@@ -247,7 +247,7 @@
 > <guimenu
 >Joc</guimenu
 > <guimenuitem
->Carrega...</guimenuitem
+>Carrega…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -302,7 +302,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Xat de xarxa...</guimenuitem
+>Xat de xarxa…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -431,7 +431,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configuració de xarxa...</guimenuitem
+>Configuració de xarxa…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -465,7 +465,7 @@
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
->Configura el &kfourinline;...</guimenuitem
+>Configura el &kfourinline;…</guimenuitem
 ></menuchoice
 >.</para>
 

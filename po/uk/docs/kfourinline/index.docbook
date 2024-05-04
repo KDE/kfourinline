@@ -203,13 +203,13 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштування мережі...</guimenuitem
+>Налаштування мережі…</guimenuitem
 ></menuchoice
 >. За допомогою меню <menuchoice
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Балачка в мережі...</guimenuitem
+>Балачка в мережі…</guimenuitem
 ></menuchoice
 > ви можете відкрити діалогове вікно, за допомогою якого ви зможете спілкуватися з партнером. </para>
 
@@ -261,7 +261,7 @@
 > <guimenu
 >Гра</guimenu
 > <guimenuitem
->Завантажити...</guimenuitem
+>Завантажити…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -318,7 +318,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Балачка у мережі...</guimenuitem
+>Балачка у мережі…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -447,7 +447,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштування мережі...</guimenuitem
+>Налаштування мережі…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -481,7 +481,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &kfourinline;...</guimenuitem
+>Налаштувати &kfourinline;…</guimenuitem
 ></menuchoice
 ></para>
 

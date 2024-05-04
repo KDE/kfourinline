@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2024-01-25 16:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -56,54 +56,72 @@ msgid "Chat Dlg"
 msgstr "Sohbet Penceresi"
 
 #: chatdlg.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Chat"
+msgctxt "@title:group"
 msgid "Chat"
 msgstr "Sohbet Et"
 
 #: chatdlg.cpp:54
-#, kde-format
-msgid "Configure..."
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@action:button"
+msgid "Configure…"
 msgstr "Yapılandır..."
 
 #: displayintro.cpp:71
-#, kde-format
-msgctxt "Name of quicklaunch field"
+#, fuzzy, kde-format
+#| msgctxt "Name of quicklaunch field"
+#| msgid "Quick Launch"
+msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Tez Başlat"
 
 #: displayintro.cpp:77
-#, kde-format
-msgctxt "Ask player who should start game"
+#, fuzzy, kde-format
+#| msgctxt "Ask player who should start game"
+#| msgid "Who starts?"
+msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Kim başlasın?"
 
 #: displayintro.cpp:80
-#, kde-format
-msgctxt "Ask player which color he wants to play"
+#, fuzzy, kde-format
+#| msgctxt "Ask player which color he wants to play"
+#| msgid "Your color?"
+msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Sizin renginiz nedir?"
 
 #: displayintro.cpp:124
-#, kde-format
-msgctxt "quick start button - player versus AI level easy"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level easy"
+#| msgid "Easy Game"
+msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Kolay Oyun"
 
 #: displayintro.cpp:130
-#, kde-format
-msgctxt "quick start button - player versus AI level normal"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level normal"
+#| msgid "Normal Game"
+msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Normal Oyun"
 
 #: displayintro.cpp:136
-#, kde-format
-msgctxt "quick start button - player versus AI level hard"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus AI level hard"
+#| msgid "Hard Game"
+msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Zor Oyun"
 
 #: displayintro.cpp:142
-#, kde-format
-msgctxt "quick start button - player versus player"
+#, fuzzy, kde-format
+#| msgctxt "quick start button - player versus player"
+#| msgid "Two Player Game"
+msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "İki Oyunculu Oyun"
 
@@ -114,13 +132,17 @@ msgid "Configure Chat"
 msgstr "Sohbeti Yapılandır"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, kde-format
-msgid "Name Font..."
+#, fuzzy, kde-format
+#| msgid "Name Font..."
+msgctxt "@action:button"
+msgid "Name Font…"
 msgstr "Ad yazıtipi..."
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, kde-format
-msgid "Text Font..."
+#, fuzzy, kde-format
+#| msgid "Text Font..."
+msgctxt "@action:button"
+msgid "Text Font…"
 msgstr "Metin yazıtipi..."
 
 #: kchatdialog.cpp:104
@@ -172,37 +194,51 @@ msgid "Main Toolbar"
 msgstr "Ana Araç Çubuğu"
 
 #: kgameconnectdialog.cpp:63
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Create a network game"
+msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Bir ağ oyunu oluştur"
 
 #: kgameconnectdialog.cpp:66
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Join a network game"
+msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Ağ oyununa katıl"
 
 #: kgameconnectdialog.cpp:72
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Game name:"
+msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Oyun adı:"
 
 #: kgameconnectdialog.cpp:74
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network games:"
+msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Ağ Oyunları:"
 
 #: kgameconnectdialog.cpp:84
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Port to connect to:"
+msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Bağlanılacak kapı:"
 
 #: kgameconnectdialog.cpp:90
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Host to connect to:"
+msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Bağlantı kurulacak makine:"
 
 #: kgameconnectdialog.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Start Network"
+msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Ağ Oyununa Başla"
 
@@ -412,17 +448,23 @@ msgid "Unknown"
 msgstr "Bilinmeyen"
 
 #: kgamedialog.cpp:92
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "&Network"
+msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Ağ"
 
 #: kgamedialogconfig.cpp:124
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Disconnect"
+msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Bağlantıyı Kes"
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:679
-#, kde-format
+#: kgamedialogconfig.cpp:128
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Ağ Yapılandırması"
 
@@ -468,27 +510,38 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Şimdiki oyunu bitirir. Doğal olarak kimse kazanamaz."
 
 #: kwin4.cpp:272
-#, kde-format
-msgid "&Network Configuration..."
-msgstr "&Ağ Yapılandırması..."
+#, fuzzy, kde-format
+#| msgctxt "@title:window"
+#| msgid "Configure Chat"
+msgctxt "@action"
+msgid "Configure Network…"
+msgstr "Sohbeti Yapılandır"
 
 #: kwin4.cpp:276
-#, kde-format
-msgid "Network Chat..."
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgctxt "@action"
+msgid "Network Chat"
 msgstr "Ağda Sohbet..."
 
 #: kwin4.cpp:281
-#, kde-format
-msgid "&Show Statistics"
+#, fuzzy, kde-format
+#| msgid "&Show Statistics"
+msgctxt "@action"
+msgid "Show Statistics"
 msgstr "İstatistikleri &Göster"
 
 #: kwin4.cpp:283
-#, kde-format
-msgid "Show statistics."
+#, fuzzy, kde-format
+#| msgid "Show statistics."
+msgctxt "@info:tooltip"
+msgid "Show statistics"
 msgstr "İstatistikleri Göster."
 
 #: kwin4.cpp:295
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
 
@@ -503,8 +556,10 @@ msgid "Welcome to Four Wins"
 msgstr "Dört Kazanır oyununa hoş geldiniz"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, kde-format
-msgid "Game running..."
+#, fuzzy, kde-format
+#| msgid "Game running..."
+msgctxt "@info"
+msgid "Game running…"
 msgstr "Oyun çalışıyor..."
 
 #: kwin4.cpp:599
@@ -542,18 +597,31 @@ msgstr "%1 oyunu kazandı. Yeni oyuna başlayınız."
 msgid " Game ended. Please restart next round."
 msgstr " Oyun bitti. Yeni oyun için yeniden başlayın."
 
+#: kwin4.cpp:679
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:window"
+msgid "Network Configuration"
+msgstr "Ağ Yapılandırması"
+
 #: kwin4.cpp:690
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Black should be played by remote player"
+msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Siyah uzaktaki oyuncu tarafından oynanmalı"
 
 #: kwin4.cpp:691
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Red should be played by remote player"
+msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Kırmızı uzaktaki oyuncu tarafından oynanmalı"
 
 #: kwin4.cpp:788
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Genel"
 
@@ -850,6 +918,9 @@ msgstr "Hayır"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
+
+#~ msgid "&Network Configuration..."
+#~ msgstr "&Ağ Yapılandırması..."
 
 #~ msgid "%1 Plays With"
 #~ msgstr "%1 Şununla Oynuyor"

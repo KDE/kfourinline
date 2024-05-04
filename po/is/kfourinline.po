@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-25 00:36+0000\n"
+"POT-Creation-Date: 2024-05-04 00:37+0000\n"
 "PO-Revision-Date: 2009-06-13 16:24+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: icelandic <kde-isl@molar.is>\n"
@@ -58,57 +58,61 @@ msgid "Chat Dlg"
 msgstr "Spjallgluggi"
 
 #: chatdlg.cpp:48
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Chat"
+msgctxt "@title:group"
 msgid "Chat"
 msgstr "Spjall"
 
 #: chatdlg.cpp:54
-#, kde-format
-msgid "Configure..."
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@action:button"
+msgid "Configure…"
 msgstr "Stilla..."
 
 #: displayintro.cpp:71
 #, kde-format
-msgctxt "Name of quicklaunch field"
+msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr ""
 
 #: displayintro.cpp:77
 #, kde-format
-msgctxt "Ask player who should start game"
+msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr ""
 
 #: displayintro.cpp:80
 #, kde-format
-msgctxt "Ask player which color he wants to play"
+msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr ""
 
 #: displayintro.cpp:124
 #, fuzzy, kde-format
 #| msgid "Easy"
-msgctxt "quick start button - player versus AI level easy"
+msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Auðvelt"
 
 #: displayintro.cpp:130
 #, fuzzy, kde-format
 #| msgid "No game  "
-msgctxt "quick start button - player versus AI level normal"
+msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Enginn leikur  "
 
 #: displayintro.cpp:136
 #, fuzzy, kde-format
 #| msgid "Hard"
-msgctxt "quick start button - player versus AI level hard"
+msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Erfitt"
 
 #: displayintro.cpp:142
 #, fuzzy, kde-format
-msgctxt "quick start button - player versus player"
+msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "KWin4: Tveggja leikmanna netleikur"
 
@@ -121,12 +125,14 @@ msgstr "Stilla..."
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
-msgid "Name Font..."
+msgctxt "@action:button"
+msgid "Name Font…"
 msgstr ""
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
-msgid "Text Font..."
+msgctxt "@action:button"
+msgid "Text Font…"
 msgstr ""
 
 #: kchatdialog.cpp:104
@@ -181,41 +187,49 @@ msgstr "Aðaltækjaslá"
 #: kgameconnectdialog.cpp:63
 #, fuzzy, kde-format
 #| msgid "The network game ended!\n"
+msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Netleikur endar!\n"
 
 #: kgameconnectdialog.cpp:66
 #, fuzzy, kde-format
 #| msgid "The network game ended!\n"
+msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Netleikur endar!\n"
 
 #: kgameconnectdialog.cpp:72
 #, fuzzy, kde-format
 #| msgid "Game name"
+msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Heiti leiks"
 
 #: kgameconnectdialog.cpp:74
 #, fuzzy, kde-format
 #| msgid "Network Chat..."
+msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Netspjall..."
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
+msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr ""
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
+msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr ""
 
 #: kgameconnectdialog.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgctxt "@action:button"
 msgid "&Start Network"
-msgstr ""
+msgstr "Netspjall..."
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
@@ -441,16 +455,20 @@ msgstr ""
 #: kgamedialog.cpp:92
 #, fuzzy, kde-format
 #| msgid "Network Chat..."
+msgctxt "@title:tab"
 msgid "&Network"
 msgstr "Netspjall..."
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
+msgctxt "@action:button"
 msgid "Disconnect"
 msgstr ""
 
-#: kgamedialogconfig.cpp:128 kwin4.cpp:679
-#, kde-format
+#: kgamedialogconfig.cpp:128
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Netstillingar"
 
@@ -496,27 +514,36 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Endar núverandi leik. Enginn sigurvegari"
 
 #: kwin4.cpp:272
-#, kde-format
-msgid "&Network Configuration..."
-msgstr "&Netstillingar..."
+#, fuzzy, kde-format
+#| msgid "Configure..."
+msgctxt "@action"
+msgid "Configure Network…"
+msgstr "Stilla..."
 
 #: kwin4.cpp:276
-#, kde-format
-msgid "Network Chat..."
+#, fuzzy, kde-format
+#| msgid "Network Chat..."
+msgctxt "@action"
+msgid "Network Chat"
 msgstr "Netspjall..."
 
 #: kwin4.cpp:281
-#, kde-format
-msgid "&Show Statistics"
+#, fuzzy, kde-format
+#| msgid "&Show Statistics"
+msgctxt "@action"
+msgid "Show Statistics"
 msgstr "&Sýna tölfræði."
 
 #: kwin4.cpp:283
-#, kde-format
-msgid "Show statistics."
+#, fuzzy, kde-format
+#| msgid "Show statistics."
+msgctxt "@info:tooltip"
+msgid "Show statistics"
 msgstr "Sýna tölfræði."
 
 #: kwin4.cpp:295
 #, fuzzy, kde-format
+msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Þema"
 
@@ -531,8 +558,10 @@ msgid "Welcome to Four Wins"
 msgstr "Velkomin(n) í KWin4"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, kde-format
-msgid "Game running..."
+#, fuzzy, kde-format
+#| msgid "Game running..."
+msgctxt "@info"
+msgid "Game running…"
 msgstr "Leikur í gangi..."
 
 #: kwin4.cpp:599
@@ -571,20 +600,31 @@ msgstr "%1 vann leikinn.  Byrjaðu næstu lotu."
 msgid " Game ended. Please restart next round."
 msgstr " Leikur stöðvaður. Byrjaðu næstu lotu."
 
+#: kwin4.cpp:679
+#, fuzzy, kde-format
+#| msgid "Network Configuration"
+msgctxt "@title:window"
+msgid "Network Configuration"
+msgstr "Netstillingar"
+
 #: kwin4.cpp:690
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
+msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Rauður ætti að vera leikinn af fjarlægum"
 
 #: kwin4.cpp:691
 #, fuzzy, kde-format
 #| msgid "Red should be played by remote"
+msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Rauður ætti að vera leikinn af fjarlægum"
 
 #: kwin4.cpp:788
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Almennt"
 
@@ -888,6 +928,9 @@ msgstr "Nei"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
+
+#~ msgid "&Network Configuration..."
+#~ msgstr "&Netstillingar..."
 
 #, fuzzy
 #~| msgid "Red Plays With"
