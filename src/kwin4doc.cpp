@@ -795,7 +795,7 @@ QString KWin4Doc::findProcessName()
         return filename;
     }
     QString path = QStandardPaths::findExecutable(QStringLiteral("kfourinlineproc"));
-    if (!path.isNull()) {
+    if (!path.isEmpty()) {
         if (global_debug > 1)
             qCDebug(KFOURINLINE_LOG) << "Found system process" << path;
         return path;

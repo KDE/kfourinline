@@ -161,7 +161,7 @@ void KGameDialogNetworkConfig::slotInitConnection()
     unsigned short int port = d->mConnect->port();
     QString host = d->mConnect->host();
 
-    if (host.isNull()) {
+    if (host.isEmpty()) {
         master = true;
         if (game()) {
             game()->setDiscoveryInfo(d->mConnect->type(), d->mConnect->gameName());

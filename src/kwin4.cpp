@@ -84,7 +84,7 @@ KWin4App::KWin4App(QWidget *parent)
         QString name = themeGroup.readEntry("Name", QString());
         QString file = themeGroup.readEntry("File", QString());
         bool isDefault = themeGroup.readEntry("Default", false);
-        if (mThemeDefault.isNull())
+        if (mThemeDefault.isEmpty())
             mThemeDefault = name;
         if (isDefault)
             mThemeDefault = name;
@@ -378,7 +378,7 @@ void KWin4App::readProperties(const KConfigGroup &grp)
     QString filename = grp.readEntry("CurrentGame", QString());
     qCDebug(KFOURINLINE_LOG) << "Filename is" << filename;
 
-    if (!filename.isNull() && QFile::exists(filename)) {
+    if (!filename.isEmpty() && QFile::exists(filename)) {
         qCDebug(KFOURINLINE_LOG) << "Loading" << filename;
         // TODO: CRASHES mDoc->load(filename);
         qCDebug(KFOURINLINE_LOG) << "Loading" << filename << "done";

@@ -101,7 +101,7 @@ void PixmapSprite::changeTheme()
             QString name = QStringLiteral("frame%1").arg(i);
             svgid = config.readEntry(name);
             QSize size;
-            if (!refframe.isNull()) {
+            if (!refframe.isEmpty()) {
                 size = thememanager()->pixmapSize(svgid, refframe, width);
             } else if (config.hasKey("height")) {
                 size =QSize(int(width), int(height));
