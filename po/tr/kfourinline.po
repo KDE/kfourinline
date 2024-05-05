@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-25 16:57+0300\n"
+"PO-Revision-Date: 2024-05-04 14:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.01.95\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -136,7 +136,7 @@ msgstr "Bu bir oyuncu iletisidir"
 #: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
-msgstr "Sistem İletileri - Oyundan  doğrudan gönderilen iletiler"
+msgstr "Sistem İletileri — Oyundan doğrudan gönderilen iletiler"
 
 #: kchatdialog.cpp:126
 #, kde-format
@@ -515,7 +515,7 @@ msgstr "Oyun yok  "
 #: kwin4.cpp:601 kwin4.cpp:603
 #, kde-format
 msgid " %1 - %2 "
-msgstr " %1 - %2 "
+msgstr " %1 — %2 "
 
 #: kwin4.cpp:605
 #, kde-format
@@ -619,7 +619,7 @@ msgstr "KFourInLine: İki oyunculu tahta oyunu"
 #: main.cpp:60
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
-msgstr "(c) 1995-2007, Martin Heni"
+msgstr "(c) 1995–2007, Martin Heni"
 
 #: main.cpp:61
 #, kde-format

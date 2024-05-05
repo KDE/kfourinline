@@ -16,14 +16,14 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-26 01:52+0100\n"
+"PO-Revision-Date: 2024-05-04 20:02+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -46,7 +46,7 @@ msgstr "Negro"
 #, kde-format
 msgctxt "Player 0 color"
 msgid "Yellow"
-msgstr "Amarillo "
+msgstr "Amarillo"
 
 #, kde-format
 msgctxt "Player 1 color"
@@ -167,7 +167,7 @@ msgstr "&Partida"
 #: kfourinlineui.rc:18
 #, kde-format
 msgid "&Settings"
-msgstr "Preferencia&s"
+msgstr "&Preferencias"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: kfourinlineui.rc:24
@@ -274,7 +274,7 @@ msgstr "Número máximo de jugadores"
 #: kgamedebugdialog.cpp:176
 #, kde-format
 msgid "Minimal Players"
-msgstr "Número máximo de jugadores"
+msgstr "Número mínimo de jugadores"
 
 #: kgamedebugdialog.cpp:177
 #, kde-format
@@ -381,7 +381,7 @@ msgstr "Puntero nulo"
 #: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
 #, kde-format
 msgid "True"
-msgstr "Verdadero"
+msgstr "Cierto"
 
 #: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
 #: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
@@ -443,32 +443,33 @@ msgstr "Estado de la red: no hay red"
 #: kgamedialogconfig.cpp:199
 #, kde-format
 msgid "Network status: You are MASTER"
-msgstr "Estado de la red: usted es MAESTRO"
+msgstr "Estado de la red: eres MAESTRO"
 
 #: kgamedialogconfig.cpp:201
 #, kde-format
 msgid "Network status: You are connected"
-msgstr "Estado de la red: está conectado"
+msgstr "Estado de la red: estás conectado"
 
 #: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
-msgstr "Error de instalación: No se encontró la lista de los temas."
+msgstr "Error de instalación: no se ha encontrado la lista de temas."
 
 #: kwin4.cpp:102
 #, kde-format
 msgid "Installation error: No AI engine found. Continue without AI."
-msgstr "Error de instalación: No se encontró motor de IA. Continuar sin IA."
+msgstr ""
+"Error de instalación: no se ha encontrado un motor de IA. Continuar sin IA."
 
 #: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
-msgstr "Error de instalación: Error en el archivo de tema."
+msgstr "Error de instalación: error en archivo de tema."
 
 #: kwin4.cpp:267
 #, kde-format
 msgid "Ends a currently played game. No winner will be declared."
-msgstr "Abandona la partida actual. Nadie será declarado ganador."
+msgstr "Termina la partida actual. Nadie será declarado ganador."
 
 #: kwin4.cpp:272
 #, kde-format
@@ -513,7 +514,7 @@ msgstr "Partida en ejecución..."
 #: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
-msgstr "Sin partida "
+msgstr "Ninguna partida "
 
 #: kwin4.cpp:601 kwin4.cpp:603
 #, kde-format
@@ -528,22 +529,22 @@ msgstr "Nadie   "
 #: kwin4.cpp:627
 #, kde-format
 msgid "The network game ended!\n"
-msgstr "¡La partida en red ha finalizado!\n"
+msgstr "¡La partida en red ha terminado!\n"
 
 #: kwin4.cpp:648
 #, kde-format
 msgid "The game is drawn. Please restart next round."
-msgstr "La partida ha terminado en empate. Reinicie la próxima ronda."
+msgstr "La partida ha terminado en empate. Reinicia la próxima ronda."
 
 #: kwin4.cpp:655
 #, kde-format
 msgid "%1 won the game. Please restart next round."
-msgstr "%1 ganó la partida. Reinicie la próxima ronda."
+msgstr "%1 ha ganado la partida. Reinicia la próxima ronda."
 
 #: kwin4.cpp:660
 #, kde-format
 msgid " Game ended. Please restart next round."
-msgstr " Partida finalizada. Reinicie la próxima ronda."
+msgstr " Partida terminada. Reinicia la próxima ronda."
 
 #: kwin4.cpp:690
 #, kde-format
@@ -570,7 +571,7 @@ msgstr "Puerto de conexión de red"
 #: kwin4.kcfg:14
 #, kde-format
 msgid "Game name"
-msgstr "Nombre del juego"
+msgstr "Nombre de la partida"
 
 #. i18n: ectx: label, entry (host), group (Parameter)
 #: kwin4.kcfg:17
@@ -583,7 +584,7 @@ msgstr "Servidor de conexión de red"
 #: kwin4.kcfg:21 settings.ui:26
 #, kde-format
 msgid "Change the strength of the computer player."
-msgstr "Cambia la fuerza del jugador de la máquina."
+msgstr "Cambiar la fuerza del jugador de la máquina."
 
 #. i18n: ectx: label, entry (Name1), group (Parameter)
 #: kwin4.kcfg:28
@@ -702,7 +703,7 @@ msgstr "Difícil"
 #: settings.ui:72
 #, kde-format
 msgid "Use AI learning"
-msgstr "Utilizar aprendizaje de IA"
+msgstr "Usar aprendizaje de IA"
 
 #. i18n: ectx: property (title), widget (QGroupBox, Player1)
 #: settings.ui:95
@@ -780,13 +781,13 @@ msgstr "Nombre"
 #: statistics.ui:68
 #, kde-format
 msgid "Won"
-msgstr "Ganó"
+msgstr "Ganadas"
 
 #. i18n: ectx: property (text), widget (QLabel, lost)
 #: statistics.ui:81
 #, kde-format
 msgid "Lost"
-msgstr "Perdió"
+msgstr "Perdidas"
 
 #. i18n: ectx: property (text), widget (QLabel, sum)
 #: statistics.ui:97
@@ -798,7 +799,7 @@ msgstr "Suma"
 #: statistics.ui:107
 #, kde-format
 msgid "Aborted"
-msgstr "Cancelado"
+msgstr "Canceladas"
 
 #. i18n: ectx: property (text), widget (QPushButton, pushButton1)
 #: statistics.ui:122
@@ -822,37 +823,37 @@ msgstr "Jugador 2"
 #: statistics.ui:167
 #, kde-format
 msgid "Drawn"
-msgstr "Empató"
+msgstr "Empatadas"
 
 #. i18n: ectx: property (text), widget (QLabel, wins)
 #: statuswidget.ui:57
 #, kde-format
 msgid "W"
-msgstr "O"
+msgstr "G"
 
 #. i18n: ectx: property (text), widget (QLabel, draws)
 #: statuswidget.ui:67
 #, kde-format
 msgid "D"
-msgstr "D"
+msgstr "E"
 
 #. i18n: ectx: property (text), widget (QLabel, loses)
 #: statuswidget.ui:77
 #, kde-format
 msgid "L"
-msgstr "L"
+msgstr "P"
 
 #. i18n: ectx: property (text), widget (QLabel, num)
 #: statuswidget.ui:87
 #, kde-format
 msgid "No"
-msgstr "No"
+msgstr "Núm"
 
 #. i18n: ectx: property (text), widget (QLabel, bk)
 #: statuswidget.ui:97
 #, kde-format
 msgid "Bk"
-msgstr "Ab"
+msgstr "Int"
 
 #~ msgid "%1 Plays With"
 #~ msgstr "%1 jugado por"
