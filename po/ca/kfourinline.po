@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-01-25 12:18+0100\n"
+"PO-Revision-Date: 2024-05-04 10:20+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -54,71 +54,55 @@ msgid "Chat Dlg"
 msgstr "Diàleg de xat"
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Xat"
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr "Configura..."
+msgstr "Configura…"
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Inici ràpid"
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Qui comença?"
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "El vostre color?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Partida fàcil"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Partida normal"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Partida difícil"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "Partida de dos jugadors"
@@ -130,18 +114,16 @@ msgid "Configure Chat"
 msgstr "Configuració del xat"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Name Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr "Nom de la lletra..."
+msgstr "Nom de la lletra…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, fuzzy, kde-format
-#| msgid "Text Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr "Lletra del text..."
+msgstr "Lletra del text…"
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -192,50 +174,43 @@ msgid "Main Toolbar"
 msgstr "Barra d'eines principal"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Crea una partida nova en xarxa"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Join a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Uneix-te a una partida en xarxa"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Nom de la partida:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Partides en xarxa:"
 
 #: kgameconnectdialog.cpp:84
-#, fuzzy, kde-format
-#| msgid "Port to connect to:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Port a connectar-se:"
 
 #: kgameconnectdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Host to connect to:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Ordinador a connectar-se:"
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Start Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Inicia la xarxa"
@@ -446,22 +421,19 @@ msgid "Unknown"
 msgstr "Desconegut"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Xarxa"
 
 #: kgamedialogconfig.cpp:124
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Desconnecta"
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Configuració de xarxa"
@@ -508,37 +480,31 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Acaba la partida que s'està jugant. No hi haurà guanyador."
 
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Configuració del xat"
+msgstr "Configura la xarxa…"
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr "Xat de xarxa..."
+msgstr "Xat de xarxa"
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr "Mo&stra les estadístiques"
+msgstr "Mostra les estadístiques"
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr "Mostra les estadístiques."
+msgstr "Mostra les estadístiques"
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
@@ -554,11 +520,10 @@ msgid "Welcome to Four Wins"
 msgstr "Us donem la benvinguda al 4 en ratlla"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr "La partida està en marxa..."
+msgstr "La partida està en marxa…"
 
 #: kwin4.cpp:599
 #, kde-format
@@ -596,29 +561,25 @@ msgid " Game ended. Please restart next round."
 msgstr " Partida acabada. Reinicieu la propera tanda."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
 msgstr "Configuració de xarxa"
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "El negre l'ha de jugar el jugador remot"
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "El vermell l'ha de jugar el jugador remot"
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"

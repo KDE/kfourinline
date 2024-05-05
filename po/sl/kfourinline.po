@@ -2,7 +2,7 @@
 # Translation of kwin4.po to Slovenian
 # SLOVENIAN TRANSLATION OF KWIN4.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kfourinline.po 1679202 2024-05-04 01:13:01Z scripty $
+# $Id: kfourinline.po 1679271 2024-05-05 01:10:22Z scripty $
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 2000.
@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-01-25 07:48+0100\n"
+"PO-Revision-Date: 2024-05-04 06:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -60,71 +60,55 @@ msgid "Chat Dlg"
 msgstr "Klepet Dlg"
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Klepet"
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr "Nastavi ..."
+msgstr "Konfiguriraj…"
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
-msgstr "Hitri začetek"
+msgstr "Hitri zagon"
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Kdo začne?"
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Vaša barva?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
-msgstr "Lahka"
+msgstr "Lahka igra"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
-msgstr "Normalna"
+msgstr "Normalna igra"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
-msgstr "Težka"
+msgstr "Težka igra"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "Igra za dva igralca"
@@ -133,21 +117,19 @@ msgstr "Igra za dva igralca"
 #, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Nastavi klepet"
+msgstr "Konfiguriraj klepet"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Name Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr "Pisava imena ..."
+msgstr "Pisava imena…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, fuzzy, kde-format
-#| msgid "Text Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr "Pisava besedila ..."
+msgstr "Pisava besedila…"
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -198,53 +180,46 @@ msgid "Main Toolbar"
 msgstr "Glavna orodna vrstica"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Ustvari omrežno igro"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Join a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Pridruži se omrežni igri"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Ime igre:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Omrežne igre:"
 
 #: kgameconnectdialog.cpp:84
-#, fuzzy, kde-format
-#| msgid "Port to connect to:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Vrata za povezavo:"
 
 #: kgameconnectdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Host to connect to:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Gostitelj za povezavo:"
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Start Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
-msgstr "&Zaženi omrežje"
+msgstr "Zaženi omrežje"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
@@ -452,25 +427,22 @@ msgid "Unknown"
 msgstr "Neznano"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
-msgstr "O&mrežje"
+msgstr "Omrežje"
 
 #: kgamedialogconfig.cpp:124
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
-msgstr "Prekini povezavo"
+msgstr "Prekini"
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
-msgstr "Omrežne nastavitve"
+msgstr "Konfiguracija omrežja"
 
 #: kgamedialogconfig.cpp:187
 #, kde-format
@@ -515,37 +487,31 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Konča trenutno igro. Zmagovalca ne bo."
 
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Nastavi klepet"
+msgstr "Konfiguriraj omrežje…"
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr "Omrežni klepet ..."
+msgstr "Omrežni klepet"
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr "&Prikaži statistiko"
+msgstr "Prikaži statistiko"
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr "Prikaži statistiko."
+msgstr "Prikaži statistiko"
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
@@ -561,11 +527,10 @@ msgid "Welcome to Four Wins"
 msgstr "Dobrodošli v KFourInLine"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr "Igra teče ..."
+msgstr "Igra teče…"
 
 #: kwin4.cpp:599
 #, kde-format
@@ -603,29 +568,25 @@ msgid " Game ended. Please restart next round."
 msgstr " Igra je bila končana. Pričnite naslednji krog."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
-msgstr "Omrežne nastavitve"
+msgstr "Konfiguracija omrežja"
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "S črnim naj igra oddaljeni igralec"
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Z rdečim naj igra oddaljeni igralec"
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Splošno"

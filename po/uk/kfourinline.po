@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-01-25 16:31+0200\n"
+"PO-Revision-Date: 2024-05-04 08:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
@@ -55,71 +55,55 @@ msgid "Chat Dlg"
 msgstr "Вікно балачки"
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Розмова"
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
 msgstr "Налаштувати…"
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Швидкий запуск"
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Хто починає?"
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Ваш колір?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Легка гра"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Звичайна гра"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Важка гра"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "Гра для двох гравців"
@@ -131,15 +115,13 @@ msgid "Configure Chat"
 msgstr "Налаштовування балачки"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Name Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
 msgstr "Шрифт імені…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, fuzzy, kde-format
-#| msgid "Text Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
 msgstr "Шрифт тексту…"
@@ -193,50 +175,43 @@ msgid "Main Toolbar"
 msgstr "Головний пенал"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Створити гру мережею"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Join a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Приєднатися до гри мережею"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Назва гри:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Мережеві ігри:"
 
 #: kgameconnectdialog.cpp:84
-#, fuzzy, kde-format
-#| msgid "Port to connect to:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Порт для з'єднання:"
 
 #: kgameconnectdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Host to connect to:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Вузол для з'єднання:"
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Start Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Запустити мережу"
@@ -447,22 +422,19 @@ msgid "Unknown"
 msgstr "Невідомий"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Мережа"
 
 #: kgamedialogconfig.cpp:124
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Роз'єднати"
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Налаштування мережі"
@@ -510,37 +482,31 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Завершує поточну гру. Переможця не буде визначено."
 
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Налаштовування балачки"
+msgstr "Налаштувати спілкування…"
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr "Балачка в мережі…"
+msgstr "Спілкування у мережі"
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr "Показати &статистику"
+msgstr "Показати статистику"
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr "Показати статистику."
+msgstr "Показати статистику"
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Тема"
@@ -556,8 +522,7 @@ msgid "Welcome to Four Wins"
 msgstr "Ласкаво просимо до «Чотирьох виграшів»"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
 msgstr "Триває гра…"
@@ -598,29 +563,25 @@ msgid " Game ended. Please restart next round."
 msgstr " Гру завершено. Почніть, будь ласка, наступний двобій."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
 msgstr "Налаштування мережі"
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Чорними має грати віддалений гравець"
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Червоними буде грати віддалений гравець"
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Загальне"
