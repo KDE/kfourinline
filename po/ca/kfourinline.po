@@ -848,33 +848,3 @@ msgstr "No"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 juga amb"
-
-#~ msgid "Red Plays With"
-#~ msgstr "El vermell juga amb"
-
-#~ msgid "Mouse"
-#~ msgstr "Ratolí"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teclat"
-
-#~ msgid "Black Plays With"
-#~ msgstr "El negre juga amb"
-
-#~ msgid "Player Names"
-#~ msgstr "Noms dels jugadors"
-
-#~ msgid "Player 1:"
-#~ msgstr "Jugador 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Jugador 2:"
-
-#~ msgid "Ready"
-#~ msgstr "Llest"
-
-#~ msgid "This leaves space for the mover"
-#~ msgstr "Aquí es deixa espai per al que mou"
