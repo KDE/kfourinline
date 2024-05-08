@@ -913,6 +913,3 @@ msgstr "Nei"
 #, kde-format
 msgid "Bk"
 msgstr "Svt"
-
-#~ msgid "&Network Configuration..."
-#~ msgstr "&Nettverksoppsett …"
