@@ -213,11 +213,19 @@
 >Connessioni remote</title>
 
 <para
->È possibile giocare una partita tramite una connessione in rete con un altro computer. Uno dei computer agirà come server del gioco. Questo può determinare i colori assegnati ai giocatori. Si possono configurare le opzioni di rete nel menu <guimenu
+>È possibile giocare una partita tramite una connessione di rete con un altro computer. Uno dei computer agirà come server del gioco. Questo può determinare i colori assegnati ai giocatori. Si possono configurare le opzioni di rete nel menu <menuchoice
+><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Chat in rete...</guimenuitem
->. Qui puoi trovare anche una finestra che ti permette di dialogare con il tuo amico. </para>
+>Configurazione rete...</guimenuitem
+></menuchoice
+>. Nel menu <menuchoice
+><guimenu
+>Game</guimenu
+><guimenuitem
+>Chat di rete…</guimenuitem
+></menuchoice
+>, puoi trovare anche una finestra di chat che ti permette di parlare con il tuo amico. </para>
 
 <para
 >Quando viene stabilita una connessione, viene chiesto di immettere un host remoto e una porta. Normalmente, si lascia il numero di porta predefinito. Ma devi sapere che se lo cambi, anche l'altro giocatore dovrà usare lo stesso numero di porta. Il nome-host deve essere il nome dell'host remoto con cui sei connesso. Solo il client dovrà indicare un nome host per connettersi. È spesso saggio che il giocatore protetto da un firewall scelga di essere il client, visto che il firewall potrebbe bloccare le connessioni in ingresso. </para>
@@ -262,7 +270,7 @@
 > <keycombo action="simul"
 >&Ctrl;<keycap
 >O</keycap
-> </keycombo
+></keycombo
 > </shortcut
 > <guimenu
 >Partita</guimenu
@@ -321,8 +329,8 @@
 ><menuchoice
 ><guimenu
 >Partita</guimenu
-><guimenuitem
->Chat...</guimenuitem
+> <guimenuitem
+>Chat di rete...</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -450,7 +458,7 @@
 ><menuchoice
 ><guimenu
 >Impostazioni</guimenu
-><guimenuitem
+> <guimenuitem
 >Configurazione rete...</guimenuitem
 ></menuchoice
 ></term>
@@ -481,7 +489,7 @@
 <title
 >Configurazione del gioco</title>
 <para
->&kfourinline; può essere configurato usando la finestra di configurazione richiamabile con la voce di menu <menuchoice
+>&kfourinline; può essere configurato utilizzando la finestra di configurazione richiamabile con la voce di menu <menuchoice
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
