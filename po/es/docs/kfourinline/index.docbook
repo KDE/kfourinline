@@ -114,7 +114,21 @@
 > <contrib
 >Traductora</contrib
 > </othercredit
->  
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
+> 
 </authorgroup>
 
 <copyright>
@@ -151,7 +165,7 @@
 <keyword
 >juego de tablero</keyword>
 <keyword
->cuatro en raya</keyword>
+>cuatro ganan</keyword>
 <keyword
 >cuatro</keyword>
 <keyword
@@ -175,12 +189,12 @@
 >Tipo de juego: Estrategia, Tablero </para>
 
 <para
->&kfourinline; es un juego de tablero para dos jugadores siguiendo las reglas del juego &nbsp;<trademark
+>&kfourinline; es un juego de tablero para dos jugadores que sigue las reglas del juego &nbsp;<trademark
 >Conecta cuatro</trademark
 >. </para>
 
 <para
->Los jugadores intentan crear una fila de cuatro piezas usando diferentes estrategias. Las piezas se sitúan en un tablero. La partida también se puede jugar contra una máquina y en red. </para>
+>Los jugadores deben crear una fila de cuatro piezas usando diferentes estrategias. Las piezas se sitúan en un tablero. También se puede jugar contra una máquina y en red. </para>
 
 </chapter>
 
@@ -201,16 +215,16 @@
 </screenshot>
 
 <para
->Cuando carga &kfourinline;, puede seleccionar la dificultad o iniciar un juego para dos jugadores. Si lo desea, también puede elegir su color y seleccionar qué color inicia el juego. </para>
+>Tras cargar &kfourinline;, puedes seleccionar la dificultad o iniciar un juego para dos jugadores. Si lo deseas, también puedes elegir tu color y seleccionar el color que empieza a jugar. </para>
 
 <para
->Cada jugador está representado por un color (por ejemplo, amarillo o blanco para el jugador uno y rojo para el jugador dos). El objetivo del juego es lograr colocar cuatro fichas del mismo color formando una línea, una columna o una diagonal. Los jugadores juegan por turnos. Cada turno el jugador puede situar una de sus piezas en una de las siete columnas, cayendo lo más abajo posible, &ie;, caerá hasta que se alcance el nivel del suelo o cualquier otra pieza. </para>
+>Cada jugador está representado por un color (por ejemplo, amarillo o blanco para el jugador uno y rojo para el jugador dos). El objetivo del juego es lograr colocar cuatro fichas del mismo color formando una línea, una columna o una diagonal. Los jugadores juegan por turnos. En cada turno, el jugador puede situar una de sus fichas en una de las siete columnas, donde caen hasta lo más bajo posible; es decir, caerán hasta que alcancen el fondo o sobre cualquier otra ficha que tengan por debajo. </para>
 
 <para
->Después de que un jugador haya realizado su movimiento, el segundo jugador hará el suyo. Este proceso se repite hasta que finaliza la partida, que es cuando uno de los jugadores consigue colocar cuatro de sus fichas en una línea, una columna o una diagonal, o cuando el tablero está completamente lleno de fichas. </para>
+>Cuando un jugador haya realizado su movimiento, el segundo jugador hará el suyo. Este proceso se repite hasta que finaliza la partida, que es cuando uno de los jugadores consigue colocar cuatro de sus fichas en una línea, una columna o una diagonal, o cuando el tablero está completamente lleno de fichas. </para>
 
 <para
->El jugador que primero sitúa cuatro fichas en una fila, columna o diagonal gana el juego. Si no es posible realizar más movimientos pero no hay ningún jugador que haya ganado, el juego finaliza en tablas. </para>
+>El jugador que primero sitúa cuatro fichas en una fila, columna o diagonal gana el juego. Si no es posible realizar más movimientos y no hay ningún jugador que haya ganado, el juego finaliza en tablas. </para>
 
 </chapter>
 
@@ -224,28 +238,28 @@
 <para
 >El <firstterm
 >tablero de juego</firstterm
-> consta de 7x6 campos que deben ser rellenados desde abajo hacia arriba. Los campos quedan marcados por el color del jugador que ha realizado el movimiento. En lo alto de cada columna una flecha de color indica dónde se ha realizado el último movimiento. </para>
+> consta de 7x6 campos que se deben rellenar desde abajo hacia arriba. Los campos quedan marcados por el color del jugador que ha realizado el movimiento. En la parte superior de cada columna, una flecha de color indica dónde se ha realizado el último movimiento. </para>
 
 <para
 ><firstterm
 >Mostrar estado</firstterm
-> muestra qué dispositivo de entrada controla a un jugador. Un jugador local puede introducir movimientos usando el teclado o el ratón, un jugador remoto muestra una entrada de red, y finalmente, también la máquina también puede controlar a un jugador. Mostrar estado presenta los nombres de los jugadores y el nivel en el caso de que se juegue con una máquina. Además, muestra el número de juegos ganados, empatados, perdidos y abandonados para ambos jugadores. Se muestra qué jugador es el siguiente en mover resaltando su nombre. </para>
+> muestra el dispositivo de entrada controla cada jugador. Un jugador local puede introducir movimientos usando el teclado o el ratón; un jugador remoto muestra una entrada de red; y, finalmente, también la máquina puede ser un jugador. «Mostrar estado» muestra los nombres de los jugadores y el nivel, en el caso de que se juegue con una máquina. Además, muestra el número de partidas ganadas, empatadas, perdidas y abandonadas para ambos jugadores. Se muestra qué jugador es el siguiente en mover resaltando su nombre. </para>
 
 <para
 >La <firstterm
 >barra de estado</firstterm
-> en la parte inferior de la pantalla muestra el estado del juego y qué jugador es el próximo que debe jugar. </para>
+> de la parte inferior de la pantalla muestra el estado del juego y qué jugador es el próximo que debe jugar. </para>
 
 <sect1 id="remote-connections">
 <title
 >Conexiones remotas</title>
 
 <para
->Es posible jugar a través de una conexión de red con otra máquina. Una de las máquinas actúa como servidor. Este es el que determina qué color corresponde a cada jugador. Puede configurar las opciones de red en el menú  <menuchoice
+>Es posible jugar a través de una conexión de red con otra máquina. Una de las máquinas actúa como servidor. Este es el que determina qué color corresponde a cada jugador. Puedes configurar las opciones de red en el menú  <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configuración de red...</guimenuitem
+>Configuración de la red...</guimenuitem
 ></menuchoice
 >. En el menú <menuchoice
 ><guimenu
@@ -253,21 +267,21 @@
 ><guimenuitem
 >Ventana de conversación...</guimenuitem
 ></menuchoice
-> puede encontrar un diálogo de conversación que le permitirá hablar con un amigo. </para>
+> puedes encontrar un diálogo de conversación que te permitirá hablar con un amigo. </para>
 
 <para
->Al establecerse una conexión, se le pide que introduzca un servidor remoto y un puerto. El puerto normalmente no es necesario cambiarlo, pero si sabe lo que está haciendo puede cambiarlo por otro número, que obviamente, tiene que ser el mismo en los equipos de ambos jugadores. El nombre del servidor debe ser el nombre del servidor remoto al que se está conectando. El nombre del servidor únicamente tiene que proporcionarlo el cliente de la conexión. Lo normal suele ser que los jugadores que se encuentran detrás de un cortafuegos actúen como clientes, ya que el cortafuegos puede que no permita conexiones entrantes. </para>
+>Al crear una conexión, se te pide que introduzcas un servidor remoto y un puerto. Normalmente, no es necesario cambiar el puerto; pero, si sabes lo que estás haciendo, puedes cambiarlo por otro número que, obviamente, tiene que ser el mismo en los equipos de ambos jugadores. El nombre del servidor debe ser el nombre del servidor remoto al que te estás conectando. El nombre del servidor solo tiene que proporcionarlo el cliente de la conexión. Lo normal suele ser que los jugadores que se encuentran detrás de un cortafuegos actúen como clientes, ya que es posible que el cortafuegos no permita conexiones entrantes. </para>
 
 </sect1>
 </chapter>
 
 <chapter id="interface-overview">
 <title
->Visión general de la interfaz</title>
+>Vista general de la interfaz</title>
 
 <sect1 id="menu">
 <title
->Opciones de menú</title>
+>Opciones del menú</title>
 
 <variablelist>
 <varlistentry>
@@ -287,7 +301,7 @@
 ></term>
 <listitem>
 <para
->Inicia un nuevo juego. En las partidas en red esta opción está disponible únicamente en el servidor. El cliente comenzará automáticamente al mismo tiempo. </para>
+>Inicia un nuevo juego. En las partidas en red, esta opción solo está disponible en el servidor. El cliente comenzará automáticamente al mismo tiempo. </para>
 </listitem>
 </varlistentry>
 
@@ -363,7 +377,7 @@
 ></term>
 <listitem>
 <para
->Abre una ventana de conversación que le permite enviar mensajes a la otra parte. </para>
+>Abre una ventana de conversación que te permite enviar mensajes a la otra parte. </para>
 </listitem>
 </varlistentry>
 
@@ -378,7 +392,7 @@
 ></term>
 <listitem>
 <para
->Muestra un diálogo conteniendo información sobre las estadísticas globales del juego, y los juegos que se han ganado o perdido por parte de ambos jugadores. El diálogo también permite borrar todas las estadísticas. </para>
+>Muestra un diálogo que contiene información sobre las estadísticas globales del juego y los juegos que se han ganado o perdido por parte de ambos jugadores. El diálogo también permite borrar todas las estadísticas. </para>
 </listitem>
 </varlistentry>
 
@@ -420,7 +434,7 @@
 ></term>
 <listitem>
 <para
->Deshace el último movimiento. Si el otro jugador es el ordenador se retroceden dos movimientos para que vuelva a ser el turno del jugador. </para>
+>Deshace el último movimiento. Si el otro jugador es el ordenador, se retroceden dos movimientos para que vuelva a ser el turno del jugador. </para>
 </listitem>
 </varlistentry>
 
@@ -441,7 +455,7 @@
 ></term>
 <listitem>
 <para
->Vuelve a hacer un movimiento que se había deshecho. Si uno de los jugadores es una máquina, se volverán a hacer dos movimientos volviendo a pasar el turno al mismo jugador. </para>
+>Vuelve a hacer un movimiento que se había deshecho. Si uno de los jugadores es una máquina, se volverán a hacer dos movimientos para que el turno vuelva a pasar al mismo jugador. </para>
 </listitem>
 </varlistentry>
 
@@ -460,7 +474,7 @@
 ></term>
 <listitem>
 <para
->El ordenador calculará el mejor movimiento posible y lo marcará con un pequeño símbolo en el tablero. La calidad del movimiento depende del nivel de la máquina. </para>
+>La máquina calculará el mejor movimiento posible y lo marcará con un pequeño símbolo en el tablero. La calidad del movimiento depende del nivel de la máquina. </para>
 </listitem>
 </varlistentry>
 
@@ -487,12 +501,12 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configuración de red...</guimenuitem
+>Configuración de la red...</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
 <para
->Abre un diálogo para la configuración de la red. Usted puede elegir actuar como servidor o como cliente. Si es usted el servidor también podrá elegir con qué color jugará el equipo cliente. Si hay una partida de red en ejecución, desde este menú es posible desconectarla. </para>
+>Abre un diálogo para la configuración de la red. Puedes elegir actuar como servidor o como cliente. Si eres el servidor, también podrás elegir con qué color jugará el equipo cliente. Si hay una partida de red en curso, desde este menú es posible desconectarla. </para>
 </listitem>
 </varlistentry>
 
@@ -503,7 +517,7 @@
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
 > y <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
@@ -517,7 +531,7 @@
 <title
 >Configuración del juego</title>
 <para
->Puede configurar &kfourinline; con el diálogo de configuración que se muestra usando la opción del menú <menuchoice
+>Puedes configurar &kfourinline; con el diálogo de configuración que se muestra al usar la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
@@ -551,24 +565,24 @@
 >: Cambia los nombres de los jugadores.</para>
 <para
 ><guilabel
->Negro jugado por</guilabel
->: Elige quién debe ser el jugador 1. Puede ser con el <guimenuitem
+>Las negras juegan con</guilabel
+>: elige quién debe ser el jugador 1. Puede ser con el <guimenuitem
 >ratón</guimenuitem
 > o el <guimenuitem
 >teclado</guimenuitem
->, &ie;, un jugador local usando el ratón o el teclado como dispositivo de entrada o la <guimenuitem
+> (es decir, un jugador local usando el ratón o el teclado como dispositivo de entrada), o la <guimenuitem
 >máquina</guimenuitem
->, &ie;, la máquina juega por este jugador.</para>
+> (es decir, la máquina juega por este jugador).</para>
 <para
 ><guilabel
->Rojo jugado por</guilabel
->: Lo mismo que <guilabel
->Amarillo jugado por</guilabel
-> pero para el jugador 2 (rojo).</para>
+>Las rojas juegan con</guilabel
+>: lo mismo que <guilabel
+>Las amarillas juegan con</guilabel
+> pero para el jugador 2 (rojas).</para>
 <para
 ><guilabel
->Dificultad del ordenador</guilabel
->: Selecciona el nivel de juego del ordenador.</para>
+>Dificultad de la máquina</guilabel
+>: selecciona el nivel de juego de la máquina.</para>
 <para
 ><guilabel
 >Usar aprendizaje de IA</guilabel
@@ -588,7 +602,7 @@
 </question>
 <answer>
 <para
->Puede cambiar el color de las piezas usando la opción del menú <menuchoice
+>Puedes cambiar el color de las piezas usando la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guisubmenu
@@ -605,18 +619,18 @@
 </question>
 <answer>
 <para
->No puede usar el teclado para controlar las piezas. </para>
+>No puedes usar el teclado para controlar las piezas. </para>
 </answer>
 </qandaentry>
 
 <qandaentry>
 <question>
 <para
->He perdido el control de quién va delante ¿cómo puedo averiguarlo? </para>
+>He perdido el control de quién va delante. ¿Cómo puedo averiguarlo? </para>
 </question>
 <answer>
 <para
->Sí, puede ver las estadísticas usando la opción del menú <menuchoice
+>Puedes ver las estadísticas usando la opción del menú <menuchoice
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
@@ -637,16 +651,16 @@
 <para
 >&kfourinline; </para>
 <para
->Derechos de autor del programa 1995-2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
+>Copyright del programa 1995-2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
 <para
->Derechos de autor de los gráficos 2007 Eugene Trounev <email
+>Copyright de los gráficos 2007 Eugene Trounev <email
 >eugene.trounev@gmail.com</email
 > y Johann Ollivier Lapeyre. </para>
 <para
->Derechos de autor de la documentación 2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
+>Copyright de la documentación 2007 &Martin.Heni; &Martin.Heni.mail; y Benjamin Meyer. </para>
 
 <para
->Traducido por Rocío Gallego <email
+>Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Rafael Osuna <email
 >rosuna@rosuna@wol.es</email
@@ -654,6 +668,10 @@
 >yo@miguelrevilla.com</email
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
+>.</para
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
 >.</para
 > &underFDL; &underGPL; </chapter>
 
