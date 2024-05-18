@@ -2,15 +2,15 @@
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Heiko Evermann <heiko@evermann.de>, 2003.
 # Wolfram Diestel <wolfram@steloj.de>, 2002.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2007, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2007, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: desktop files\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-28 11:08+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-04 07:47+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -27,12 +27,12 @@ msgstr "Wolfram Diestel,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "wolfram@steloj.de,okellogg@users.sourceforge.net"
+msgstr "wolfram@steloj.de,olivermkellogg@gmail.com"
 
 #, kde-format
 msgctxt "Player 0 color"
 msgid "Black"
-msgstr "Nigra"
+msgstr "Negra"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -53,7 +53,7 @@ msgstr "Babilejo"
 #: chatdlg.cpp:48
 #, kde-format
 msgid "Chat"
-msgstr "Babilu"
+msgstr "Babili"
 
 #: chatdlg.cpp:54
 #, kde-format
@@ -64,7 +64,7 @@ msgstr "Agordu..."
 #, kde-format
 msgctxt "Name of quicklaunch field"
 msgid "Quick Launch"
-msgstr "Rapida lanĉo"
+msgstr "Rapida Lanĉo"
 
 #: displayintro.cpp:77
 #, kde-format
@@ -484,7 +484,7 @@ msgstr "Montri statistikojn."
 #: kwin4.cpp:295
 #, kde-format
 msgid "Theme"
-msgstr "Temo"
+msgstr "Etoso"
 
 #: kwin4.cpp:306
 #, kde-format
@@ -504,7 +504,7 @@ msgstr "Ludo ruliĝanta..."
 #: kwin4.cpp:599
 #, kde-format
 msgid "No game  "
-msgstr "Neniu ludo..."
+msgstr "Neniu ludo   "
 
 #: kwin4.cpp:601 kwin4.cpp:603
 #, kde-format
