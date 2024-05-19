@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-01-19 13:27+0100\n"
+"PO-Revision-Date: 2024-05-18 14:28+0200\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.01.90\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -773,40 +773,37 @@ msgstr "Piros"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Név"
+msgstr "Név:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "A kezdőjátékos színe"
+msgstr "Kezdőjátékos"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Játékos: "
+msgstr "Játékos:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "Ember egérrel"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "Ember billentyűzettel"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
