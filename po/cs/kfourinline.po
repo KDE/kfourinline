@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-04 00:37+0000\n"
-"PO-Revision-Date: 2024-04-17 09:36+0200\n"
+"PO-Revision-Date: 2024-05-30 16:36+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -53,7 +53,7 @@ msgstr "Rozhovor"
 #, kde-format
 msgctxt "@title:group"
 msgid "Chat"
-msgstr ""
+msgstr "Rozhovor"
 
 #: chatdlg.cpp:54
 #, kde-format
@@ -65,43 +65,43 @@ msgstr "Nastavit…"
 #, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
-msgstr ""
+msgstr "Rychlé spuštění"
 
 #: displayintro.cpp:77
 #, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
-msgstr ""
+msgstr "Kdo začíná?"
 
 #: displayintro.cpp:80
 #, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
-msgstr ""
+msgstr "Vaše barva?"
 
 #: displayintro.cpp:124
 #, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
-msgstr ""
+msgstr "Jednoduchá hra"
 
 #: displayintro.cpp:130
 #, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
-msgstr ""
+msgstr "Normální hra"
 
 #: displayintro.cpp:136
 #, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
-msgstr ""
+msgstr "Těžká hra"
 
 #: displayintro.cpp:142
 #, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
-msgstr ""
+msgstr "Hra o dvou hráčích"
 
 #: kchatdialog.cpp:80
 #, kde-format
@@ -113,13 +113,13 @@ msgstr "Nastavit rozhovor"
 #, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr ""
+msgstr "Písmo pro jméno…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr ""
+msgstr "Písmo textu…"
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -173,43 +173,43 @@ msgstr "Hlavní panel nástrojů"
 #, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
-msgstr ""
+msgstr "Vytvořit síťovou hru"
 
 #: kgameconnectdialog.cpp:66
 #, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
-msgstr ""
+msgstr "Připojit se k síťové hře"
 
 #: kgameconnectdialog.cpp:72
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
-msgstr ""
+msgstr "Název hry:"
 
 #: kgameconnectdialog.cpp:74
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
-msgstr ""
+msgstr "Síťové hry:"
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
-msgstr ""
+msgstr "Port k připojení:"
 
 #: kgameconnectdialog.cpp:90
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
-msgstr ""
+msgstr "Hostitel k připojení:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
-msgstr ""
+msgstr "&Spustit síť"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
@@ -420,19 +420,19 @@ msgstr "Neznámý"
 #, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
-msgstr ""
+msgstr "&Síť"
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
-msgstr ""
+msgstr "Odpojit se"
 
 #: kgamedialogconfig.cpp:128
 #, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
-msgstr ""
+msgstr "Nastavení sítě"
 
 #: kgamedialogconfig.cpp:187
 #, kde-format
@@ -478,13 +478,13 @@ msgstr "Ukončí stávající hru. Nebude označen žádný vítěz."
 #, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr ""
+msgstr "Nastavit síť…"
 
 #: kwin4.cpp:276
 #, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr ""
+msgstr "Rozhovor po síti"
 
 #: kwin4.cpp:281
 #, kde-format
@@ -496,13 +496,13 @@ msgstr "Zobrazit statistiku"
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr ""
+msgstr "Zobrazit statistiky"
 
 #: kwin4.cpp:295
 #, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
-msgstr ""
+msgstr "Motiv"
 
 #: kwin4.cpp:306
 #, kde-format
@@ -518,7 +518,7 @@ msgstr "Vítejte do hry Čtyři v řadě"
 #, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr ""
+msgstr "Hra běží..."
 
 #: kwin4.cpp:599
 #, kde-format
@@ -559,19 +559,19 @@ msgstr " Hra byla ukončena. Prosím spusťte znovu následující kolo."
 #, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
-msgstr ""
+msgstr "Nastavení sítě"
 
 #: kwin4.cpp:690
 #, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
-msgstr ""
+msgstr "Černou by měl hrát vzdálený hráč"
 
 #: kwin4.cpp:691
 #, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
-msgstr ""
+msgstr "Červenou by měl hrát vzdálený hráč"
 
 #: kwin4.cpp:788
 #, kde-format

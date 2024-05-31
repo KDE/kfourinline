@@ -2,7 +2,7 @@
 # Bulgarian translation of KDE.
 # This file is licensed under the GPL.
 #
-# $Id: kfourinline.po 1679994 2024-05-14 01:10:29Z scripty $
+# $Id: kfourinline.po 1681222 2024-05-30 19:06:17Z mkkdr $
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Petar Toushkov <pt.launchpad@gmail.com>, 2010.
@@ -904,6 +904,3 @@ msgstr "No"
 #, kde-format
 msgid "Bk"
 msgstr "Bk"
-
-#~ msgid "&Network Configuration..."
-#~ msgstr "&Настройване на мрежата......"
