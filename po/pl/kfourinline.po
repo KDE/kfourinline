@@ -1,5 +1,5 @@
 # translation of kfourinline.po to
-# Version: $Revision: 1681059 $
+# Version: $Revision: 1681346 $
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 # Bartosz Kosiorek  <gang65@poczta.onet.pl>, 2002.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-01-25 00:36+0000\n"
-"PO-Revision-Date: 2024-01-27 10:48+0100\n"
+"PO-Revision-Date: 2024-06-01 08:58+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -22,6 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -610,12 +611,12 @@ msgstr "Gracz 2"
 #: main.cpp:56
 #, kde-format
 msgid "KFourInLine"
-msgstr "KCzteryWLinii"
+msgstr "KFourInLine"
 
 #: main.cpp:58
 #, kde-format
 msgid "KFourInLine: Two player board game"
-msgstr "KCzteryWLinii: gra planszowa dla dwóch graczy"
+msgstr "KFourInLine: gra planszowa dla dwóch graczy"
 
 #: main.cpp:60
 #, kde-format
