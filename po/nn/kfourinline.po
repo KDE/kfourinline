@@ -52,70 +52,54 @@ msgstr "Pratedialog"
 
 #: chatdlg.cpp:48
 #, fuzzy, kde-format
-#| msgid "Chat"
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Prat"
 
 #: chatdlg.cpp:54
 #, fuzzy, kde-format
-#| msgid "Configure..."
 msgctxt "@action:button"
 msgid "Configure…"
 msgstr "Set opp …"
 
 #: displayintro.cpp:71
 #, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
 msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Snøggstart"
 
 #: displayintro.cpp:77
 #, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Kven startar?"
 
 #: displayintro.cpp:80
 #, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Fargen din?"
 
 #: displayintro.cpp:124
 #, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Lett"
 
 #: displayintro.cpp:130
 #, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Middels"
 
 #: displayintro.cpp:136
 #, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Vanskeleg"
 
 #: displayintro.cpp:142
 #, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "To spelarar"
@@ -128,14 +112,12 @@ msgstr "Set opp prat"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, fuzzy, kde-format
-#| msgid "Name Font..."
 msgctxt "@action:button"
 msgid "Name Font…"
 msgstr "Skrifttype for namn …"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, fuzzy, kde-format
-#| msgid "Text Font..."
 msgctxt "@action:button"
 msgid "Text Font…"
 msgstr "Skrifttype for tekst …"
@@ -190,49 +172,42 @@ msgstr "Hovudverktøylinje"
 
 #: kgameconnectdialog.cpp:63
 #, fuzzy, kde-format
-#| msgid "Create a network game"
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Lag eit nettverksspel"
 
 #: kgameconnectdialog.cpp:66
 #, fuzzy, kde-format
-#| msgid "Join a network game"
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Vert med på eit nettverksspel"
 
 #: kgameconnectdialog.cpp:72
 #, fuzzy, kde-format
-#| msgid "Game name:"
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Spelnamn:"
 
 #: kgameconnectdialog.cpp:74
 #, fuzzy, kde-format
-#| msgid "Network games:"
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Nettverksspel:"
 
 #: kgameconnectdialog.cpp:84
 #, fuzzy, kde-format
-#| msgid "Port to connect to:"
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Kopla til port:"
 
 #: kgameconnectdialog.cpp:90
 #, fuzzy, kde-format
-#| msgid "Host to connect to:"
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Kopla til vert:"
 
 #: kgameconnectdialog.cpp:95
 #, fuzzy, kde-format
-#| msgid "&Start Network"
 msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Start nettverk"
@@ -445,21 +420,18 @@ msgstr "Ukjend"
 
 #: kgamedialog.cpp:92
 #, fuzzy, kde-format
-#| msgid "&Network"
 msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Nettverk"
 
 #: kgamedialogconfig.cpp:124
 #, fuzzy, kde-format
-#| msgid "Disconnect"
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Kopla frå"
 
 #: kgamedialogconfig.cpp:128
 #, fuzzy, kde-format
-#| msgid "Network Configuration"
 msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Nettverksoppsett"
@@ -506,36 +478,30 @@ msgstr "Avslutt spelet som er i gang utan å kåra ein vinnar."
 
 #: kwin4.cpp:272
 #, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Chat"
 msgctxt "@action"
 msgid "Configure Network…"
 msgstr "Set opp prat"
 
 #: kwin4.cpp:276
 #, fuzzy, kde-format
-#| msgid "Network Chat..."
 msgctxt "@action"
 msgid "Network Chat"
 msgstr "Nettverksprat …"
 
 #: kwin4.cpp:281
 #, fuzzy, kde-format
-#| msgid "&Show Statistics"
 msgctxt "@action"
 msgid "Show Statistics"
 msgstr "&Vis statistikk"
 
 #: kwin4.cpp:283
 #, fuzzy, kde-format
-#| msgid "Show statistics."
 msgctxt "@info:tooltip"
 msgid "Show statistics"
 msgstr "Vis statistikk."
 
 #: kwin4.cpp:295
 #, fuzzy, kde-format
-#| msgid "Theme"
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
@@ -552,7 +518,6 @@ msgstr "Velkommen til Fire på rad"
 
 #: kwin4.cpp:485 kwin4.cpp:638
 #, fuzzy, kde-format
-#| msgid "Game running..."
 msgctxt "@info"
 msgid "Game running…"
 msgstr "Spelet er i gang …"
@@ -594,28 +559,24 @@ msgstr " Spel avbrote. Start neste runde om att."
 
 #: kwin4.cpp:679
 #, fuzzy, kde-format
-#| msgid "Network Configuration"
 msgctxt "@title:window"
 msgid "Network Configuration"
 msgstr "Nettverksoppsett"
 
 #: kwin4.cpp:690
 #, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Svart skal spelast av nettverksspelaren"
 
 #: kwin4.cpp:691
 #, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Raud skal spelast av nettverksspelaren"
 
 #: kwin4.cpp:788
 #, fuzzy, kde-format
-#| msgid "General"
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelt"
@@ -774,7 +735,6 @@ msgstr "Raud"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
 #, fuzzy, kde-format
-#| msgid "Name"
 msgid "Name:"
 msgstr "Namn"
 
@@ -782,7 +742,6 @@ msgstr "Namn"
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
 #, fuzzy, kde-format
-#| msgid "Starting Player Color"
 msgid "Starting Player"
 msgstr "Farge for spelaren som startar"
 
@@ -790,7 +749,6 @@ msgstr "Farge for spelaren som startar"
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
 #, fuzzy, kde-format
-#| msgid "Player: "
 msgid "Player:"
 msgstr "Spelar: "
 
