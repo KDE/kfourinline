@@ -215,7 +215,7 @@ msgstr "Υπολογιστής για να συνδεθείτε:"
 #, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
-msgstr "&Έναρξη δικτύου"
+msgstr "Έναρ&ξη δικτύου"
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
