@@ -1,0 +1,624 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Slovenian "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>&kfourinline; Priročnik</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>05.06.2021</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; je igra &kde; štiri v vrsti.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>igra</keyword>
+<keyword
+>tabla</keyword>
+<keyword
+>namizna igra</keyword>
+<keyword
+>štiri zmaga</keyword>
+<keyword
+>štiri</keyword>
+<keyword
+>štiri v vrsto</keyword>
+<keyword
+>štiri v vrsti</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>povežite štiri</keyword>
+<keyword
+>poveži 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Uvod</title>
+
+<para
+>Vrsta igre: strategija, namizna </para>
+
+<para
+>&kfourinline; je družabna igra za dva igralca, ki temelji na igri &nbsp;<trademark
+>Connect-Four</trademark
+>. </para>
+
+<para
+>Igralci poskušajo sestaviti vrsto štirih kosov z uporabo različnih strategij. Figure so postavljene na desko. Igro lahko igrate tudi proti računalniku, pa tudi v omrežju. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Kako igrati</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>&kfourinline; Igralna plošča</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>Ko se &kfourinline; naloži, lahko izberete težavnost ali začnete igro za dva igralca. Če želite, lahko izberete tudi svojo barvo in izberete, katera barva začne igro. </para>
+
+<para
+>Vsak igralec je predstavljen z barvo (na primer rumena ali bela za prvega igralca in rdeča za drugega). Cilj igre je spraviti štiri povezane figure svoje barve v poljubno vrstico, stolpec ali diagonalo. Igralci se premikajo izmenično. Vsak igralec lahko postavi eno od svojih figur v katerega koli od sedmih stolpcev, kjer bo vsaka figura padla na najnižje možno prosto mesto, &ie;. padala bo, dokler ne doseže tal ali druge figure. </para>
+
+<para
+>Ko je ena igralčeva poteza opravljena, lahko drugi igralec prispeva svojo. To se ponavlja, dokler se igra ne konča, ko ima eden od igralcev štiri figure v vrsti, stolpcu ali diagonali ali pa ni več možnih nobenih potez, ker je plošča zapolnjena. </para>
+
+<para
+>Igralec, ki prvi uspe dobiti štiri figure v vrsti, stolpcu ali diagonali, zmaga. Če ni več mogoče narediti nobene poteze, vendar noben igralec ni zmagal, se igra konča z remijem. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Pravila igre, strategije in nasveti</title>
+
+<para
+>Plošča je razdeljena na več regij. </para>
+
+<para
+><firstterm
+>Igralna plošča</firstterm
+> je sestavljena iz 7x6 polj, ki bodo izpolnjena od spodaj navzgor. Polja so označena s figurami v barvi igralca, ki je naredil potezo na to mesto. Na vrhu vsakega stolpca barvna puščica kaže, kje je bila vložena zadnja figura. </para>
+
+<para
+><firstterm
+>Prikaz stanja</firstterm
+> prikazuje, kateri igralec je nadzorovan s katero vhodno napravo. Lokalni igralec lahko vnese poteze s tipkovnico ali miško, oddaljeni igralec je prikazan kot omrežni vnos in končno lahko računalnik nadzoruje vnos za igralca. Statusni prikaz nadalje prikazuje imena igralcev in raven računalniškega nasprotnika. Poleg tega je za oba igralca zabeleženo število dobljenih, neodločenih, izgubljenih in končanih iger. Kateri igralec je naslednji na potezi, je prikazano tako, da je eno od imen igralca osvetljeno. </para>
+
+<para
+><firstterm
+>Statusna vrstica</firstterm
+> na dnu zaslona prikazuje stanje igre in kateri igralec bo naslednji igral. </para>
+
+<sect1 id="remote-connections">
+<title
+>Oddaljene povezave</title>
+
+<para
+>Možno je igrati igro prek omrežne povezave z drugim računalnikom. Eden od računalnikov bo deloval kot strežnik za igre. Ta lahko določi, kdo naj igra katero barvo. Omrežne možnosti lahko konfigurirate v meniju <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguracija omrežja ...</guimenuitem
+></menuchoice
+>. V meniju <menuchoice
+><guimenu
+>Igra</guimenu
+><guimenuitem
+>Omrežni klepet…</guimenuitem
+></menuchoice
+>. najdete pogovorno okno za klepet, ki vam omogoča pogovor s prijateljem. </para>
+
+<para
+>Ko je omrežna povezava vzpostavljena, boste morali vnesti oddaljenega gostitelja in vrata. Vrata lahko običajno ostanejo nedotaknjena, a če veste, kaj počnete, jih zamenjajte z drugo številko, ki mora biti seveda enaka v igrah obeh igralcev. Ime gostitelja mora biti ime oddaljenega gostitelja, s katerim se povezujete. Samo odjemalec v povezavi mora podati ime gostitelja. Pogosto je pametno, da se igralec za vdorobranom odloči za odjemalca, saj vdorobran morda ne dovoljuje dohodnih povezav. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Pregled vmesnika</title>
+
+<sect1 id="menu">
+<title
+>Elementi menija</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Začne novo igro. V omrežni igri je ta možnost na voljo samo za omrežni strežnik. Strežnik bo samodejno zagnal omrežnega odjemalca. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Naloži…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Naloži shranjeno igro. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Shrani trenutno igro. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Končaj igro</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Konča tekočo igro. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Omrežni klepet…</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Pojavi se pripomoček za klepet, ki vam omogoča pošiljanje sporočil drugi strani. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Prikaži statistiko</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Prikaže pogovorno okno, ki vsebuje informacije o splošni statistiki igre, to so igre, ki sta jih oba igralca dobila, izgubila ali remizirala. Pogovorno okno omogoča tudi brisanje celotne statistike. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Zapusti</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Zapusti program. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Razveljavi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Razveljavi zadnjo potezo. Če prejšnjega igralca igra računalnik, se dve potezi vrneta nazaj, tako da je igralec znova na vrsti. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Ponovi</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ponovno odigrajte potezo, ki je bila razveljavljena. Če enega od igralcev igra računalnik, se ponovita dve potezi, tako da je ponovno na vrsti igralec. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Namig</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Računalnik bo za vas izračunal najboljšo možno potezo in jo označil z znakom na igralni plošči. Kako dobra je poteza, je odvisno od ravni računalnika. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Izberite grafično temo za igro. Katere teme so na voljo, je odvisno od trenutne namestitve.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguracija omrežja…</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Odpre se pogovorno okno za konfiguracijo omrežja. Izberete lahko, da ste strežnik ali odjemalec. Če ste strežnik, lahko tudi izberete, katero barvo naj prevzame oddaljeni igralec. Če se omrežna igra izvaja, jo lahko tudi prekinete v tem meniju. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Poleg tega ima &kfourinline; skupne &kde; <guimenu
+>Nastavitve</guimenu
+>in <guimenu
+>Pomoč</guimenu
+>, za več informacij preberiterazdelke o <ulink url="help:/fundamentals/menus.html#menus-nastavitve"
+>Meni z nastavitvami</ulink
+> in <ulink url="help:/fundamentals/menus.html#menus-help"
+>Meni Pomoč</ulink
+> v &kde; Osnovah. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Konfiguracija igre</title>
+<para
+>&kfourinline; lahko konfigurirate s konfiguracijskim pogovornim oknom z menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj &kfourinline;…</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Konfiguracija igre</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Začetna barva igralca</guilabel
+>: Določite, katera barva igralca (<guilabel
+>rdeča</guilabel
+> ali <guilabel
+>črna</guilabel
+>) ima prvo potezo v naslednji igri.</para>
+<para
+><guilabel
+>Imena igralcev</guilabel
+>: Spremenite imena igralcev.</para>
+<para
+><guilabel
+>Črni igra z</guilabel
+>: Izberite, kdo naj igra namesto igralca 1. To je lahko <guilabel
+>miška</guilabel
+> ali <guilabel
+>tipkovnica</guilabel
+>, &ie;. lokalni predvajalnik, ki uporablja miško ali tipkovnico kot vhodno napravo ali <guilabel
+>Računalnik</guilabel
+>, &ie;. računalnik igra za tega igralca.</para>
+<para
+><guilabel
+>Rdeči igra z</guilabel
+>: Enako kot <guilabel
+>Črni igra z</guilabel
+>, vendar za igralca 2 (rdeči).</para>
+<para
+><guilabel
+>Težavnost računalnika</guilabel
+>: Izberite raven računalniškega igralca.</para>
+<para
+><guilabel
+>Uporabite učenje z umetno inteligenco</guilabel
+>: Računalniška umetna inteligenca se lahko uči iz napak v eni igri.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Pogosto zastavljena vprašanja</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Ali lahko spremenim videz igre? </para>
+</question>
+<answer>
+<para
+>Barvo kosov lahko spremenite tako, da odprete menijsko postavko <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guisubmenu
+>Tema</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Ali lahko uporabljam tipkovnico za igranje igre? </para>
+</question>
+<answer>
+<para
+>Za nadzor figur ne morete uporabljati tipkovnice. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Izgubil sem nadzor nad tem, kdo vodi, ali lahko to ugotovim? </para>
+</question>
+<answer>
+<para
+>Da, statistiko si lahko ogledate tako, da odprete menijsko postavko <menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Prikaži statistiko</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Zasluge in licenca</title>
+
+<para
+>&kfourinline; </para>
+<para
+>Avtorske pravice za program 1995-2007 &Martin.Heni; &Martin.Heni.mail; in Benjamin Meyer. </para>
+<para
+>Avtorske pravice za grafiko 2007 Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> in Johann Ollivier Lapeyre. </para>
+<para
+>Avtorske pravice za dokumentacijo 2007 &Martin.Heni; &Martin.Heni.mail; in Benjamin Meyer. </para>
+
+<para
+>Prevod: Matjaž Jeran<email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
