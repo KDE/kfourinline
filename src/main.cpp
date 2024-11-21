@@ -31,6 +31,15 @@
 #include <KCrash>
 #include <KDBusService>
 #include <KLocalizedString>
+#define HAVE_KICONTHEME __has_include(<KIconTheme>)
+#if HAVE_KICONTHEME
+#include <KIconTheme>
+#endif
+
+#define HAVE_STYLE_MANAGER __has_include(<KStyleManager>)
+#if HAVE_STYLE_MANAGER
+#include <KStyleManager>
+#endif
 // Qt
 #include <QApplication>
 #include <QCommandLineOption>
@@ -47,9 +56,17 @@ bool global_demo_mode = false;
 int main(int argc, char *argv[])
 {
     global_debug = 0;
-
+#if HAVE_KICONTHEME
+    KIconTheme::initTheme();
+#endif
     QApplication app(argc, argv);
-
+#if HAVE_STYLE_MANAGER
+    KStyleManager::initStyle();
+#else // !HAVE_STYLE_MANAGER
+#if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
+    QApplication::setStyle(QStringLiteral("breeze"));
+#endif // defined(Q_OS_MACOS) || defined(Q_OS_WIN)
+#endif // HAVE_STYLE_MANAGER
     KLocalizedString::setApplicationDomain(QByteArrayLiteral("kfourinline"));
 
     KAboutData aboutData(QStringLiteral("kfourinline"),
