@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-04 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2008-04-15 17:41+0330\n"
 "Last-Translator: Emil Sedgh <emilsedgh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
@@ -688,67 +688,67 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "بازیکن ۲"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "KFourInLine"
 msgstr "چهار در یک خط"
 
-#: main.cpp:58
+#: main.cpp:75
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "چهار در یک خط: بازی دو نفره بر روی تخته"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "حق کپی ۱۹۹۵-۲۰۰۷ مارتین هنی"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Martin Heni"
 msgstr "مارتین هنی"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Game design and code"
 msgstr "طراحی و کد بازی"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "جان الییویر لاپیر"
 
-#: main.cpp:62 main.cpp:63
+#: main.cpp:79 main.cpp:80
 #, kde-format
 msgid "Graphics"
 msgstr "نگاره‌‌ها"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "ایگوئن ترونو"
 
-#: main.cpp:64
+#: main.cpp:81
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "بنیامین مِیر"
 
-#: main.cpp:64
+#: main.cpp:81
 #, kde-format
 msgid "Code Improvements"
 msgstr "بهبودهای کد"
 
-#: main.cpp:72
+#: main.cpp:89
 #, kde-format
 msgid "Enter debug level"
 msgstr "وارد کردن سطح اشکال‌‌زدایی"
 
-#: main.cpp:73
+#: main.cpp:90
 #, kde-format
 msgid "Skip intro animation"
 msgstr "پرش از مقدمه پویانمایی"
 
-#: main.cpp:74
+#: main.cpp:91
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "اجرای بازی در حالت دمو )اجرای خودکار("

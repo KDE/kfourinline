@@ -2,7 +2,7 @@
 # Translation of kwin4.po to Slovenian
 # SLOVENIAN TRANSLATION OF KWIN4.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kfourinline.po 1679271 2024-05-05 01:10:22Z scripty $
+# $Id: kfourinline.po 1695692 2024-11-22 01:16:46Z scripty $
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 2000.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-04 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-04 06:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -640,67 +640,67 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "Igralec 2"
 
-#: main.cpp:56
+#: main.cpp:73
 #, kde-format
 msgid "KFourInLine"
 msgstr "KFourInLine"
 
-#: main.cpp:58
+#: main.cpp:75
 #, kde-format
 msgid "KFourInLine: Two player board game"
 msgstr "KFourInLine: štiri v vrsto, igra za dva igralca"
 
-#: main.cpp:60
+#: main.cpp:77
 #, kde-format
 msgid "(c) 1995-2007, Martin Heni"
 msgstr "© 1995-2007, Martin Heni"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Martin Heni"
 msgstr "Martin Heni"
 
-#: main.cpp:61
+#: main.cpp:78
 #, kde-format
 msgid "Game design and code"
 msgstr "Oblikovanje igre in koda"
 
-#: main.cpp:62
+#: main.cpp:79
 #, kde-format
 msgid "Johann Ollivier Lapeyre"
 msgstr "Johann Ollivier Lapeyre"
 
-#: main.cpp:62 main.cpp:63
+#: main.cpp:79 main.cpp:80
 #, kde-format
 msgid "Graphics"
 msgstr "Grafika"
 
-#: main.cpp:63
+#: main.cpp:80
 #, kde-format
 msgid "Eugene Trounev"
 msgstr "Eugene Trounev"
 
-#: main.cpp:64
+#: main.cpp:81
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:64
+#: main.cpp:81
 #, kde-format
 msgid "Code Improvements"
 msgstr "Izboljšave kode"
 
-#: main.cpp:72
+#: main.cpp:89
 #, kde-format
 msgid "Enter debug level"
 msgstr "Vnesite stopnjo razhroščevanja"
 
-#: main.cpp:73
+#: main.cpp:90
 #, kde-format
 msgid "Skip intro animation"
 msgstr "Preskoči uvodno animacijo"
 
-#: main.cpp:74
+#: main.cpp:91
 #, kde-format
 msgid "Run game in demo (autoplay) mode"
 msgstr "Zaženi igro v predstavitvenem načinu (samopredvajanje)"
