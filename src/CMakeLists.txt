@@ -94,6 +94,17 @@ target_link_libraries(kfourinline
     Qt6::Svg
 )
 
+if(APPLE)
+    set_target_properties(kfourinline PROPERTIES
+	    MACOSX_BUNDLE_DISPLAY_NAME "KFourinline"
+        MACOSX_BUNDLE_BUNDLE_NAME "KFourinline"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "KFourinline ${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.kfourinline"
+        MACOSX_BUNDLE_COPYRIGHT "2024 The KFourinline Developers")
+endif()
+
 install(TARGETS kfourinline  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 install(PROGRAMS org.kde.kfourinline.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
