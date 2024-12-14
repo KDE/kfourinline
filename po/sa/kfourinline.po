@@ -1,0 +1,872 @@
+# Sanskrit translations for kfourinline package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the kfourinline package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kfourinline\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
+"PO-Revision-Date: 2024-12-13 19:10+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Sanskrit\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Black"
+msgstr "कृष्णः"
+
+#, kde-format
+msgctxt "Player 0 color"
+msgid "Yellow"
+msgstr ""
+
+#, kde-format
+msgctxt "Player 1 color"
+msgid "Red"
+msgstr "रक्त"
+
+#: chatdlg.cpp:33
+#, kde-format
+msgctxt "@title:window"
+msgid "Chat Dlg"
+msgstr ""
+
+#: chatdlg.cpp:48
+#, kde-format
+msgctxt "@title:group"
+msgid "Chat"
+msgstr ""
+
+#: chatdlg.cpp:54
+#, kde-format
+msgctxt "@action:button"
+msgid "Configure…"
+msgstr ""
+
+#: displayintro.cpp:71
+#, kde-format
+msgctxt "@title:group"
+msgid "Quick Launch"
+msgstr ""
+
+#: displayintro.cpp:77
+#, kde-format
+msgctxt "@label Ask player who should start game"
+msgid "Who starts?"
+msgstr ""
+
+#: displayintro.cpp:80
+#, kde-format
+msgctxt "@label Ask player which color he wants to play"
+msgid "Your color?"
+msgstr ""
+
+#: displayintro.cpp:124
+#, kde-format
+msgctxt "@action:button quick start - player versus AI level easy"
+msgid "Easy Game"
+msgstr ""
+
+#: displayintro.cpp:130
+#, kde-format
+msgctxt "@action:button quick start - player versus AI level normal"
+msgid "Normal Game"
+msgstr ""
+
+#: displayintro.cpp:136
+#, kde-format
+msgctxt "@action:button quick start - player versus AI level hard"
+msgid "Hard Game"
+msgstr ""
+
+#: displayintro.cpp:142
+#, kde-format
+msgctxt "@action:button quick start - player versus player"
+msgid "Two Player Game"
+msgstr ""
+
+#: kchatdialog.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "Configure Chat"
+msgstr ""
+
+#: kchatdialog.cpp:92 kchatdialog.cpp:114
+#, kde-format
+msgctxt "@action:button"
+msgid "Name Font…"
+msgstr ""
+
+#: kchatdialog.cpp:95 kchatdialog.cpp:117
+#, kde-format
+msgctxt "@action:button"
+msgid "Text Font…"
+msgstr ""
+
+#: kchatdialog.cpp:104
+#, kde-format
+msgid "Player: "
+msgstr "खिलाडी : १. "
+
+#: kchatdialog.cpp:106
+#, kde-format
+msgid "This is a player message"
+msgstr "एषः खिलाडीसन्देशः अस्ति"
+
+#: kchatdialog.cpp:112
+#, kde-format
+msgid "System Messages - Messages directly sent from the game"
+msgstr "प्रणालीसन्देशाः - क्रीडायाः प्रत्यक्षतया प्रेषिताः सन्देशाः"
+
+#: kchatdialog.cpp:126
+#, kde-format
+msgid "--- Game: "
+msgstr "--- क्रीडा: "
+
+#: kchatdialog.cpp:128
+#, kde-format
+msgid "This is a system message"
+msgstr "एषः प्रणालीसन्देशः अस्ति"
+
+#: kchatdialog.cpp:132
+#, kde-format
+msgid "Maximum number of messages (-1 = unlimited):"
+msgstr "सन्देशानां अधिकतमसंख्या (-1 = असीमितम्):"
+
+#. i18n: ectx: Menu (game)
+#: kfourinlineui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&क्रीडा"
+
+#. i18n: ectx: Menu (settings)
+#: kfourinlineui.rc:18
+#, kde-format
+msgid "&Settings"
+msgstr "&सेटिंग्स"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: kfourinlineui.rc:24
+#, kde-format
+msgid "Main Toolbar"
+msgstr "मुख्य साधनपट्टी"
+
+#: kgameconnectdialog.cpp:63
+#, kde-format
+msgctxt "@option:radio"
+msgid "Create a network game"
+msgstr ""
+
+#: kgameconnectdialog.cpp:66
+#, kde-format
+msgctxt "@option:radio"
+msgid "Join a network game"
+msgstr ""
+
+#: kgameconnectdialog.cpp:72
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Game name:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:74
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Network games:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:84
+#, kde-format
+msgctxt "@label:spinbox"
+msgid "Port to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:90
+#, kde-format
+msgctxt "@label:textbox"
+msgid "Host to connect to:"
+msgstr ""
+
+#: kgameconnectdialog.cpp:95
+#, kde-format
+msgctxt "@action:button"
+msgid "&Start Network"
+msgstr ""
+
+#: kgamedebugdialog.cpp:118
+#, kde-format
+msgctxt "@title:window"
+msgid "KGame Debug Dialog"
+msgstr ""
+
+#: kgamedebugdialog.cpp:140
+#, kde-format
+msgid "Debug &KGame"
+msgstr "त्रुटिनिवारणम् & KGame"
+
+#: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
+#, kde-format
+msgid "Update"
+msgstr "अद्यतन"
+
+#: kgamedebugdialog.cpp:167
+#, kde-format
+msgid "KGame Pointer"
+msgstr "KGame सूचक"
+
+#: kgamedebugdialog.cpp:168
+#, kde-format
+msgid "Game ID"
+msgstr "गेम आईडी"
+
+#: kgamedebugdialog.cpp:169
+#, kde-format
+msgid "Game Cookie"
+msgstr "गेम कुकी"
+
+#: kgamedebugdialog.cpp:170
+#, kde-format
+msgid "Is Master"
+msgstr "गुरुः अस्ति"
+
+#: kgamedebugdialog.cpp:171
+#, kde-format
+msgid "Is Admin"
+msgstr "Is Admin"
+
+#: kgamedebugdialog.cpp:172
+#, kde-format
+msgid "Is Offering Connections"
+msgstr "संयोजनानि अर्पयति"
+
+#: kgamedebugdialog.cpp:173
+#, kde-format
+msgid "Game Status"
+msgstr "खेल स्थिति"
+
+#: kgamedebugdialog.cpp:174
+#, kde-format
+msgid "Game is Running"
+msgstr "Game is Running इति"
+
+#: kgamedebugdialog.cpp:175
+#, kde-format
+msgid "Maximal Players"
+msgstr "अधिकतमं खिलाडयः"
+
+#: kgamedebugdialog.cpp:176
+#, kde-format
+msgid "Minimal Players"
+msgstr "न्यूनतम खिलाडयः"
+
+#: kgamedebugdialog.cpp:177
+#, kde-format
+msgid "Players"
+msgstr "क्रीडकाः"
+
+#: kgamedebugdialog.cpp:183
+#, kde-format
+msgid "Debug &Players"
+msgstr "त्रुटिनिवारणं &Players"
+
+#: kgamedebugdialog.cpp:193
+#, kde-format
+msgid "Available Players"
+msgstr "उपलब्धाः खिलाडयः"
+
+#: kgamedebugdialog.cpp:219
+#, kde-format
+msgid "Player Pointer"
+msgstr "खिलाडी सूचकः"
+
+#: kgamedebugdialog.cpp:220
+#, kde-format
+msgid "Player ID"
+msgstr "खिलाडी आईडी"
+
+#: kgamedebugdialog.cpp:221
+#, kde-format
+msgid "Player Name"
+msgstr "खिलाडी नाम"
+
+#: kgamedebugdialog.cpp:222
+#, kde-format
+msgid "Player Group"
+msgstr "खिलाडी समूह"
+
+#: kgamedebugdialog.cpp:223
+#, kde-format
+msgid "Player User ID"
+msgstr "खिलाडी उपयोक्तृपरिचयः"
+
+#: kgamedebugdialog.cpp:224
+#, kde-format
+msgid "My Turn"
+msgstr "मम वारः"
+
+#: kgamedebugdialog.cpp:225
+#, kde-format
+msgid "Async Input"
+msgstr "Async Input इति"
+
+#: kgamedebugdialog.cpp:226
+#, kde-format
+msgid "KGame Address"
+msgstr "केगेम पता"
+
+#: kgamedebugdialog.cpp:227
+#, kde-format
+msgid "Player is Virtual"
+msgstr "खिलाडी वर्चुअल् अस्ति"
+
+#: kgamedebugdialog.cpp:228
+#, kde-format
+msgid "Player is Active"
+msgstr "खिलाडी सक्रियः अस्ति"
+
+#: kgamedebugdialog.cpp:229
+#, kde-format
+msgid "RTTI"
+msgstr "आरटीटीआई"
+
+#: kgamedebugdialog.cpp:230
+#, kde-format
+msgid "Network Priority"
+msgstr "संजाल प्राथमिकता"
+
+#: kgamedebugdialog.cpp:236
+#, kde-format
+msgid "Debug &Messages"
+msgstr "त्रुटिनिवारणं &सन्देशाः"
+
+#: kgamedebugdialog.cpp:251
+#, kde-format
+msgid "&>>"
+msgstr "\">>"
+
+#: kgamedebugdialog.cpp:255
+#, kde-format
+msgid "&<<"
+msgstr "&<<"
+
+#: kgamedebugdialog.cpp:259
+#, kde-format
+msgid "Do not show IDs:"
+msgstr "आईडी न दर्शयन्तु : १."
+
+#: kgamedebugdialog.cpp:328
+#, kde-format
+msgid "NULL pointer"
+msgstr "NULL सूचकः"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "True"
+msgstr "सत्यम्‌"
+
+#: kgamedebugdialog.cpp:338 kgamedebugdialog.cpp:339 kgamedebugdialog.cpp:340
+#: kgamedebugdialog.cpp:342 kgamedebugdialog.cpp:395 kgamedebugdialog.cpp:396
+#: kgamedebugdialog.cpp:399 kgamedebugdialog.cpp:400
+#, kde-format
+msgid "False"
+msgstr "असत्य"
+
+#: kgamedebugdialog.cpp:354 kgamedebugdialog.cpp:412
+#, kde-format
+msgid "Clean"
+msgstr "स्वच्छम्‌"
+
+#: kgamedebugdialog.cpp:357 kgamedebugdialog.cpp:415
+#, kde-format
+msgid "Dirty"
+msgstr "मलिनम्‌"
+
+#: kgamedebugdialog.cpp:360 kgamedebugdialog.cpp:418
+#, kde-format
+msgid "Local"
+msgstr "स्थानिक"
+
+#: kgamedebugdialog.cpp:364 kgamedebugdialog.cpp:422
+#, kde-format
+msgid "Undefined"
+msgstr "अनिर्दिष्टम्"
+
+#: kgamedebugdialog.cpp:507
+#, kde-format
+msgid "Unknown"
+msgstr "अज्ञात"
+
+#: kgamedialog.cpp:92
+#, kde-format
+msgctxt "@title:tab"
+msgid "&Network"
+msgstr ""
+
+#: kgamedialogconfig.cpp:124
+#, kde-format
+msgctxt "@action:button"
+msgid "Disconnect"
+msgstr ""
+
+#: kgamedialogconfig.cpp:128
+#, kde-format
+msgctxt "@title:group"
+msgid "Network Configuration"
+msgstr ""
+
+#: kgamedialogconfig.cpp:187
+#, kde-format
+msgid "Cannot connect to the network"
+msgstr "जालपुटेन सह सम्बद्धं कर्तुं न शक्नोति"
+
+#: kgamedialogconfig.cpp:193
+#, kde-format
+msgid "Network status: No Network"
+msgstr "संजालस्य स्थितिः : संजालः नास्ति"
+
+#: kgamedialogconfig.cpp:199
+#, kde-format
+msgid "Network status: You are MASTER"
+msgstr "संजालस्य स्थितिः : भवान् MASTER अस्ति"
+
+#: kgamedialogconfig.cpp:201
+#, kde-format
+msgid "Network status: You are connected"
+msgstr "संजालस्य स्थितिः : भवान् सम्बद्धः अस्ति"
+
+#: kwin4.cpp:75
+#, kde-format
+msgid "Installation error: No theme list found."
+msgstr "संस्थापनदोषः : विषयसूची न प्राप्ता ।"
+
+#: kwin4.cpp:102
+#, kde-format
+msgid "Installation error: No AI engine found. Continue without AI."
+msgstr "संस्थापनदोषः: एआइ इञ्जिनं न प्राप्तम्। एआइ विना निरन्तरं कुर्वन्तु।"
+
+#: kwin4.cpp:117
+#, kde-format
+msgid "Installation error: Theme file error."
+msgstr "संस्थापनदोषः : विषयसञ्चिकादोषः ।"
+
+#: kwin4.cpp:267
+#, kde-format
+msgid "Ends a currently played game. No winner will be declared."
+msgstr "वर्तमानकाले क्रीडितं क्रीडां समाप्तं करोति। कोऽपि विजेता न घोषितः भविष्यति।"
+
+#: kwin4.cpp:272
+#, kde-format
+msgctxt "@action"
+msgid "Configure Network…"
+msgstr ""
+
+#: kwin4.cpp:276
+#, kde-format
+msgctxt "@action"
+msgid "Network Chat"
+msgstr ""
+
+#: kwin4.cpp:281
+#, kde-format
+msgctxt "@action"
+msgid "Show Statistics"
+msgstr ""
+
+#: kwin4.cpp:283
+#, kde-format
+msgctxt "@info:tooltip"
+msgid "Show statistics"
+msgstr ""
+
+#: kwin4.cpp:295
+#, kde-format
+msgctxt "@title:menu"
+msgid "Theme"
+msgstr ""
+
+#: kwin4.cpp:306
+#, kde-format
+msgid "Debug KGame"
+msgstr "KGame त्रुटिनिवारणं कुर्वन्तु"
+
+#: kwin4.cpp:329
+#, kde-format
+msgid "Welcome to Four Wins"
+msgstr "चतुर्विजयेषु स्वागतम्"
+
+#: kwin4.cpp:485 kwin4.cpp:638
+#, kde-format
+msgctxt "@info"
+msgid "Game running…"
+msgstr ""
+
+#: kwin4.cpp:599
+#, kde-format
+msgid "No game  "
+msgstr "न क्रीडा  "
+
+#: kwin4.cpp:601 kwin4.cpp:603
+#, kde-format
+msgid " %1 - %2 "
+msgstr " %1 - %2 "
+
+#: kwin4.cpp:605
+#, kde-format
+msgid "Nobody  "
+msgstr "अविदितम्  "
+
+#: kwin4.cpp:627
+#, kde-format
+msgid "The network game ended!\n"
+msgstr "जालक्रीडा समाप्तवती!\n"
+
+#: kwin4.cpp:648
+#, kde-format
+msgid "The game is drawn. Please restart next round."
+msgstr "क्रीडा आकृष्टा भवति। कृपया अग्रिमपरिक्रमं पुनः आरभत।"
+
+#: kwin4.cpp:655
+#, kde-format
+msgid "%1 won the game. Please restart next round."
+msgstr "%1 क्रीडां जित्वा । कृपया अग्रिमपरिक्रमं पुनः आरभत।"
+
+#: kwin4.cpp:660
+#, kde-format
+msgid " Game ended. Please restart next round."
+msgstr " क्रीडा समाप्तवती। कृपया अग्रिमपरिक्रमं पुनः आरभत।"
+
+#: kwin4.cpp:679
+#, kde-format
+msgctxt "@title:window"
+msgid "Network Configuration"
+msgstr ""
+
+#: kwin4.cpp:690
+#, kde-format
+msgctxt "@option:radio"
+msgid "Black should be played by remote player"
+msgstr ""
+
+#: kwin4.cpp:691
+#, kde-format
+msgctxt "@option:radio"
+msgid "Red should be played by remote player"
+msgstr ""
+
+#: kwin4.cpp:788
+#, kde-format
+msgctxt "@title:tab"
+msgid "General"
+msgstr ""
+
+#. i18n: ectx: label, entry (port), group (Parameter)
+#: kwin4.kcfg:10
+#, kde-format
+msgid "Network connection port"
+msgstr "संजालसंयोजन पोर्ट्"
+
+#. i18n: ectx: label, entry (gamename), group (Parameter)
+#: kwin4.kcfg:14
+#, kde-format
+msgid "Game name"
+msgstr "खेल नाम"
+
+#. i18n: ectx: label, entry (host), group (Parameter)
+#: kwin4.kcfg:17
+#, kde-format
+msgid "Network connection host"
+msgstr "संजालसंयोजन मेजबान"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
+#. i18n: ectx: label, entry (level), group (Parameter)
+#: kwin4.kcfg:21 settings.ui:26
+#, kde-format
+msgid "Change the strength of the computer player."
+msgstr "सङ्गणकस्य प्लेयरस्य बलं परिवर्तयन्तु।"
+
+#. i18n: ectx: label, entry (Name1), group (Parameter)
+#: kwin4.kcfg:28
+#, kde-format
+msgid "Player 1 name"
+msgstr "खिलाडी १ नाम"
+
+#: kwin4.kcfg:32
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "खिलाडी १"
+
+#. i18n: ectx: label, entry (Name2), group (Parameter)
+#: kwin4.kcfg:35
+#, kde-format
+msgid "Player 2 name"
+msgstr "खिलाडी २ नाम"
+
+#: kwin4.kcfg:39
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "खिलाडी २"
+
+#: main.cpp:73
+#, kde-format
+msgid "KFourInLine"
+msgstr "KFourInLine इति"
+
+#: main.cpp:75
+#, kde-format
+msgid "KFourInLine: Two player board game"
+msgstr "KFourInLine: द्वयोः खिलाडयोः बोर्डक्रीडा"
+
+#: main.cpp:77
+#, kde-format
+msgid "(c) 1995-2007, Martin Heni"
+msgstr "(ग) 1995-2007, मार्टिन हेनी"
+
+#: main.cpp:78
+#, kde-format
+msgid "Martin Heni"
+msgstr "मार्टिन् हेनि"
+
+#: main.cpp:78
+#, kde-format
+msgid "Game design and code"
+msgstr "गेम डिजाइन तथा कोड"
+
+#: main.cpp:79
+#, kde-format
+msgid "Johann Ollivier Lapeyre"
+msgstr "जोहान ओलिवियर लापेयर"
+
+#: main.cpp:79 main.cpp:80
+#, kde-format
+msgid "Graphics"
+msgstr "ग्राफिक्स"
+
+#: main.cpp:80
+#, kde-format
+msgid "Eugene Trounev"
+msgstr "यूजीन ट्रोनेव"
+
+#: main.cpp:81
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "बेन्जामिन मेयर"
+
+#: main.cpp:81
+#, kde-format
+msgid "Code Improvements"
+msgstr "संहिता सुधाराः"
+
+#: main.cpp:89
+#, kde-format
+msgid "Enter debug level"
+msgstr "त्रुटिनिवारणस्तरं प्रविशतु"
+
+#: main.cpp:90
+#, kde-format
+msgid "Skip intro animation"
+msgstr "परिचय एनिमेशनं त्यजन्तु"
+
+#: main.cpp:91
+#, kde-format
+msgid "Run game in demo (autoplay) mode"
+msgstr "डेमो (स्वचालन) मोड् मध्ये क्रीडां चालयन्तु"
+
+#: scoresprite.cpp:158
+#, kde-format
+msgctxt "computer level"
+msgid "Level %1"
+msgstr ""
+
+#. i18n: ectx: property (title), widget (QGroupBox, Difficulty)
+#: settings.ui:20
+#, kde-format
+msgid "Computer Difficulty"
+msgstr "कम्प्यूटर कठिनता"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel1)
+#: settings.ui:53
+#, kde-format
+msgid "Easy"
+msgstr "सरलम्‌"
+
+#. i18n: ectx: property (text), widget (QLabel, textLabel2)
+#: settings.ui:60
+#, kde-format
+msgid "Hard"
+msgstr "रूक्षः"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_learning)
+#: settings.ui:72
+#, kde-format
+msgid "Use AI learning"
+msgstr "एआइ-शिक्षणस्य उपयोगं कुर्वन्तु"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Player1)
+#: settings.ui:95
+#, kde-format
+msgid "Red"
+msgstr "रक्त"
+
+#. i18n: ectx: property (text), widget (QLabel, nameLabel1)
+#. i18n: ectx: property (text), widget (QLabel, nameLabel2)
+#: settings.ui:103 settings.ui:217
+#, kde-format
+msgid "Name:"
+msgstr "नामः:"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
+#: settings.ui:113 settings.ui:227
+#, kde-format
+msgid "Starting Player"
+msgstr "प्रारम्भिक खिलाडी"
+
+#. i18n: ectx: property (text), widget (QLabel, playerLabel1)
+#. i18n: ectx: property (text), widget (QLabel, playerLabel2)
+#: settings.ui:146 settings.ui:257
+#, kde-format
+msgid "Player:"
+msgstr "खिलाडी : १."
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
+#: settings.ui:153 settings.ui:264
+#, kde-format
+msgid "Human with Mouse"
+msgstr "मूषकेण सह मानवः"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
+#: settings.ui:166 settings.ui:274
+#, kde-format
+msgid "Human with Keyboard"
+msgstr "कीबोर्ड सहित मानव"
+
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
+#. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
+#: settings.ui:176 settings.ui:281
+#, kde-format
+msgid "Computer"
+msgstr "संगणक"
+
+#. i18n: ectx: property (title), widget (QGroupBox, Player2)
+#: settings.ui:209
+#, kde-format
+msgid "Black"
+msgstr "कृष्णः"
+
+#. i18n: ectx: property (windowTitle), widget (QDialog, Statistics)
+#: statistics.ui:13
+#, kde-format
+msgid "Statistics"
+msgstr "सांख्यिकी"
+
+#. i18n: ectx: property (text), widget (QLabel, p1_name)
+#: statistics.ui:51 statuswidget.ui:107
+#, kde-format
+msgid "Player 1"
+msgstr "खिलाडी १"
+
+#. i18n: ectx: property (text), widget (QLabel, Name)
+#: statistics.ui:58
+#, kde-format
+msgid "Name"
+msgstr "नामः"
+
+#. i18n: ectx: property (text), widget (QLabel, won)
+#: statistics.ui:68
+#, kde-format
+msgid "Won"
+msgstr "विजित"
+
+#. i18n: ectx: property (text), widget (QLabel, lost)
+#: statistics.ui:81
+#, kde-format
+msgid "Lost"
+msgstr "लुप्तः"
+
+#. i18n: ectx: property (text), widget (QLabel, sum)
+#: statistics.ui:97
+#, kde-format
+msgid "Sum"
+msgstr "योग"
+
+#. i18n: ectx: property (text), widget (QLabel, aborted)
+#: statistics.ui:107
+#, kde-format
+msgid "Aborted"
+msgstr "गर्भपातः कृतः"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton1)
+#: statistics.ui:122
+#, kde-format
+msgid "Clear All Statistics"
+msgstr "सर्वाणि आँकडानि स्वच्छानि कुर्वन्तु"
+
+#. i18n: ectx: property (text), widget (QPushButton, pushButton2)
+#: statistics.ui:145
+#, kde-format
+msgid "&Close"
+msgstr "&पिधानं करोतु"
+
+#. i18n: ectx: property (text), widget (QLabel, p2_name)
+#: statistics.ui:157 statuswidget.ui:214
+#, kde-format
+msgid "Player 2"
+msgstr "खिलाडी २"
+
+#. i18n: ectx: property (text), widget (QLabel, drawn)
+#: statistics.ui:167
+#, kde-format
+msgid "Drawn"
+msgstr "आकृष्टम्"
+
+#. i18n: ectx: property (text), widget (QLabel, wins)
+#: statuswidget.ui:57
+#, kde-format
+msgid "W"
+msgstr "इत्यस्मिन्‌"
+
+#. i18n: ectx: property (text), widget (QLabel, draws)
+#: statuswidget.ui:67
+#, kde-format
+msgid "D"
+msgstr "घ"
+
+#. i18n: ectx: property (text), widget (QLabel, loses)
+#: statuswidget.ui:77
+#, kde-format
+msgid "L"
+msgstr "ल"
+
+#. i18n: ectx: property (text), widget (QLabel, num)
+#: statuswidget.ui:87
+#, kde-format
+msgid "No"
+msgstr "नहि"
+
+#. i18n: ectx: property (text), widget (QLabel, bk)
+#: statuswidget.ui:97
+#, kde-format
+msgid "Bk"
+msgstr "Bk"
