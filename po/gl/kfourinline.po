@@ -4,14 +4,14 @@
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2017.
 # Marce Villarino <mvillarino@kde-espana.org>, 2013.
-# SPDX-FileCopyrightText: 2024 Adrián Chaves (Gallaecio)
+# SPDX-FileCopyrightText: 2024, 2025 Adrián Chaves (Gallaecio)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-05-07 08:24+0200\n"
+"PO-Revision-Date: 2025-01-12 16:36+0100\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
 "Language-Team: Proxecto Trasno (proxecto@trasno.gal)\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -304,7 +304,7 @@ msgstr "Punteiro do xogador"
 #: kgamedebugdialog.cpp:220
 #, kde-format
 msgid "Player ID"
-msgstr "Identificación do xogador"
+msgstr "Identificador de participante"
 
 #: kgamedebugdialog.cpp:221
 #, kde-format
@@ -319,7 +319,7 @@ msgstr "Grupo do xogador"
 #: kgamedebugdialog.cpp:223
 #, kde-format
 msgid "Player User ID"
-msgstr "Identificación de usuario do xogador"
+msgstr "Identificador de usuaria de participante"
 
 #: kgamedebugdialog.cpp:224
 #, kde-format
