@@ -58,7 +58,7 @@ msgstr "聊天"
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr ""
+msgstr "配置..."
 
 #: displayintro.cpp:71
 #, kde-format
@@ -112,13 +112,13 @@ msgstr "聊天配置"
 #, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr ""
+msgstr "名字字体..."
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr ""
+msgstr "文本字体..."
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -477,25 +477,25 @@ msgstr "中止正在玩的游戏。将不会有胜利者。"
 #, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr ""
+msgstr "配置网络..."
 
 #: kwin4.cpp:276
 #, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr ""
+msgstr "网络聊天"
 
 #: kwin4.cpp:281
 #, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr ""
+msgstr "显示统计数据"
 
 #: kwin4.cpp:283
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr ""
+msgstr "显示统计数据"
 
 #: kwin4.cpp:295
 #, kde-format
@@ -517,7 +517,7 @@ msgstr "欢迎来玩 KWin4"
 #, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr ""
+msgstr "游戏进行中..."
 
 #: kwin4.cpp:599
 #, kde-format
