@@ -1,19 +1,20 @@
 # Copyright (C) 2010 Free Software Foundation, Inc.
 #
 # Thanomsub Noppaburana <donga.nb@gmail.com>, 2010.
+# SPDX-FileCopyrightText: 2025 Pongsakorn S. <kde@xerusion.me>
 msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2010-03-21 23:39+0700\n"
-"Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
-"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"PO-Revision-Date: 2025-03-03 20:07+0700\n"
+"Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
+"Language-Team: Thai\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 24.12.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #, kde-format
@@ -498,7 +499,7 @@ msgstr ""
 #: kwin4.cpp:75
 #, kde-format
 msgid "Installation error: No theme list found."
-msgstr "การติดตั้งผิดพลาด: ไม่พบรายการชุดตกแต่ง"
+msgstr "การติดตั้งผิดพลาด: ไม่พบรายการธีม"
 
 #: kwin4.cpp:102
 #, kde-format
@@ -508,7 +509,7 @@ msgstr "การติดตั้งผิดพลาด: ไม่พบก�
 #: kwin4.cpp:117
 #, kde-format
 msgid "Installation error: Theme file error."
-msgstr "การติดตั้งผิดพลาด: แฟ้มชุดตกแต่งผิดพลาด"
+msgstr "การติดตั้งผิดพลาด: แฟ้มธีมผิดพลาด"
 
 #: kwin4.cpp:267
 #, kde-format
@@ -548,7 +549,7 @@ msgstr "แสดงสถิติ"
 #| msgid "Theme"
 msgctxt "@title:menu"
 msgid "Theme"
-msgstr "ชุดตกแต่ง"
+msgstr "ธีม"
 
 #: kwin4.cpp:306
 #, kde-format
