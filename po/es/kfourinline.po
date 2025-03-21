@@ -1,22 +1,20 @@
-# translation of kfourinline.po to Español
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for kfourinline.po package.
+# Copyright (C) 2007-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the kfourinline package.
 #
-# Jaime Robles <jaime@kde.org>, 2007.
-# Santi <santi@kde-es.org>, 2008.
+# SPDX-FileCopyrightText: 2007 Jaime Robles <jaime@kde.org>
+# SPDX-FileCopyrightText: 2008 Santi <santi@kde-es.org>
 # SPDX-FileCopyrightText: 2009, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Huever, 2009.
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
-# Rocio Gallego <traducciones@rociogallego.com>, 2013.
-# Javier Viñal <fjvinal@gmail.com>, 2013.
-# Sofia Priego <spriego@darksylvania.net>, %Y.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2010 Kira J. Fernandez <kirajfdez@gmail.com>
+# SPDX-FileCopyrightText: 2013 Rocio Gallego <traducciones@rociogallego.com>
+# SPDX-FileCopyrightText: 2013 Javier Viñal <fjvinal@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-05-04 20:02+0100\n"
+"PO-Revision-Date: 2025-03-21 01:41+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -69,7 +67,7 @@ msgstr "Conversar"
 #, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr "Configurar..."
+msgstr "Configurar…"
 
 #: displayintro.cpp:71
 #, kde-format
@@ -123,13 +121,13 @@ msgstr "Configurar la conversación"
 #, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr "Tipo de letra para el nombre..."
+msgstr "Tipo de letra para el nombre…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
 #, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr "Tipo de letra para el texto..."
+msgstr "Tipo de letra para el texto…"
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -489,7 +487,7 @@ msgstr "Termina la partida actual. Nadie será declarado ganador."
 #, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Configurar la red..."
+msgstr "Configurar la red…"
 
 #: kwin4.cpp:276
 #, kde-format
@@ -883,36 +881,3 @@ msgstr "Núm"
 #, kde-format
 msgid "Bk"
 msgstr "Int"
-
-#~ msgid "&Network Configuration..."
-#~ msgstr "Co&nfiguración de red..."
-
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 jugado por"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Rojo jugado por"
-
-#~ msgid "Mouse"
-#~ msgstr "Ratón"
-
-#~ msgid "Keyboard"
-#~ msgstr "Teclado"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Negro jugado por"
-
-#~ msgid "Player Names"
-#~ msgstr "Nombres de los jugadores"
-
-#~ msgid "Player 1:"
-#~ msgstr "Jugador 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Jugador 2:"
-
-#~ msgid "Ready"
-#~ msgstr "Preparado"
-
-#~ msgid "This leaves space for the mover"
-#~ msgstr "Esto deja espacio para el que mueve"
