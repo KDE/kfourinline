@@ -16,10 +16,10 @@
 #include "kwin4doc.h"
 #include "kwin4view.h"
 #include "prefs.h"
-#include "qbuttongroup.h"
 #include "reflectiongraphicsscene.h"
 #include "ui_settings.h"
 #include "ui_statistics.h"
+#include <QButtonGroup>
 // KDEGames
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgame/kgamechat.h>
