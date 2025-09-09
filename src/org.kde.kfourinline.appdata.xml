@@ -43,7 +43,6 @@
   <name xml:lang="sv">Fyra i rad</name>
   <name xml:lang="tr">KFourInLine</name>
   <name xml:lang="uk">Чотири-у-рядку</name>
-  <name xml:lang="x-test">xxKFourInLinexx</name>
   <name xml:lang="zh-CN">KFourInLine</name>
   <name xml:lang="zh-TW">KFourInLine</name>
   <summary>KFourInLine is a four-in-a-row game by KDE</summary>
@@ -79,7 +78,6 @@
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
   <summary xml:lang="tr">KFourInLine, KDE tarafından yapılan bir dörtlü sıralama oyunudur</summary>
   <summary xml:lang="uk">Чотири-у-рядку — це гра у чотири-у-рядок від KDE</summary>
-  <summary xml:lang="x-test">xxKFourInLine is a four-in-a-row game by KDExx</summary>
   <summary xml:lang="zh-CN">KFourInLine 是 KDE 的一款四子棋游戏</summary>
   <summary xml:lang="zh-TW">KFourInLine 是來自 KDE 的四子棋遊戲</summary>
   <description>
@@ -118,7 +116,6 @@
     <p xml:lang="sv">Fyra i rad är ett brädspel för två spelare baserat på spelet Connect-Four. Spelarna försöker bygga en rad av fyra pjäser med användning av olika strategier.</p>
     <p xml:lang="tr">KFourInLine, iki oyuncu için Connect-Four tabanlı bir masa oyunudur. Oyuncular değişik stratejiler kullanarak dört parçanın aynı doğruda olduğu diziler yapmaya çalışırlar.</p>
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
-    <p xml:lang="x-test">xxKFourInLine is a board game for two players based on the Connect-Four game. The players try to build up a row of four pieces using different strategies.xx</p>
     <p xml:lang="zh-CN">KFourInLine 是一款基于四子棋的棋盘游戏。玩家尝试使用不同策略构建一个四连。</p>
     <p xml:lang="zh-TW">KFourInLine 是基於四子棋遊戲的雙人棋盤遊戲。玩家的目的是使用不同策略讓四個棋連起來。</p>
   </description>
@@ -161,7 +158,6 @@
       <caption xml:lang="sv">Spela Fyra i rad</caption>
       <caption xml:lang="tr">KFourInLine Oynarken</caption>
       <caption xml:lang="uk">Гра у Чотири-у-рядку</caption>
-      <caption xml:lang="x-test">xxPlaying KFourInLinexx</caption>
       <caption xml:lang="zh-CN">玩 KFourInLine</caption>
       <caption xml:lang="zh-TW">KFourInLine 遊玩畫面</caption>
       <image>https://cdn.kde.org/screenshots/kfourinline/kfourinline.png</image>
