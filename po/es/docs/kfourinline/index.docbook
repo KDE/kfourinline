@@ -259,13 +259,13 @@
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configuración de la red...</guimenuitem
+>Configuración de la red…</guimenuitem
 ></menuchoice
 >. En el menú <menuchoice
 ><guimenu
 >Juego</guimenu
 ><guimenuitem
->Ventana de conversación...</guimenuitem
+>Ventana de conversación…</guimenuitem
 ></menuchoice
 > puedes encontrar un diálogo de conversación que te permitirá hablar con un amigo. </para>
 
@@ -317,7 +317,7 @@
 > <guimenu
 >Juego</guimenu
 > <guimenuitem
->Cargar...</guimenuitem
+>Cargar…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -372,7 +372,7 @@
 ><guimenu
 >Juego</guimenu
 > <guimenuitem
->Charla en red...</guimenuitem
+>Charla en red…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -501,7 +501,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configuración de la red...</guimenuitem
+>Configuración de la red…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -535,7 +535,7 @@
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
->Configurar &kfourinline;...</guimenuitem
+>Configurar &kfourinline;…</guimenuitem
 ></menuchoice
 >.</para>
 
