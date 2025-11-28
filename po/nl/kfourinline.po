@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-04 12:39+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -35,6 +35,16 @@ msgstr ""
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "rinse@kde.nl,bramschoenmakers@kde.nl,freekdekruijf@kde.nl"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Speler 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Speler 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -620,23 +630,11 @@ msgstr "Bepaal de kracht van de computerspeler."
 msgid "Player 1 name"
 msgstr "Naam speler 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Speler 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Naam speler 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Speler 2"
 
 #: main.cpp:73
 #, kde-format

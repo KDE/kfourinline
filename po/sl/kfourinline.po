@@ -2,7 +2,7 @@
 # Translation of kwin4.po to Slovenian
 # SLOVENIAN TRANSLATION OF KWIN4.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kfourinline.po 1723087 2025-11-17 12:44:32Z scripty $
+# $Id: kfourinline.po 1723874 2025-11-28 01:25:13Z scripty $
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 2000.
@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-04 06:15+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
@@ -37,6 +37,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "markos@elite.org,gregor.rakar@kiss.si,mrepinc@gmail.com,andrejm@ubuntu.si"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Igralec 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Igralec 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -622,23 +632,11 @@ msgstr "Spremeni moč računalniškega igralca."
 msgid "Player 1 name"
 msgstr "Ime Igralca 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Igralec 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Ime Igralca 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Igralec 2"
 
 #: main.cpp:73
 #, kde-format

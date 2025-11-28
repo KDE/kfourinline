@@ -1,5 +1,5 @@
 # translation of kfourinline.po to
-# Version: $Revision: 1723076 $
+# Version: $Revision: 1723874 $
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 # Bartosz Kosiorek  <gang65@poczta.onet.pl>, 2002.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-06-01 08:58+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
@@ -33,6 +33,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "mrudolf@kdewebdev.org, gang65@poczta.onet.pl, lukasz.wojnilowicz@gmail.com"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Gracz 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Gracz 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -618,23 +628,11 @@ msgstr "Zmiana poziomu gry komputera."
 msgid "Player 1 name"
 msgstr "Imię gracza 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Gracz 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Imię gracza 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Gracz 2"
 
 #: main.cpp:73
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2007-06-25 11:11+0300\n"
 "Last-Translator: Darafei Praliaskouski <komzpa@licei2.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -28,6 +28,16 @@ msgstr "Дарафей Праляскоўскі"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "komzpa@licei2.com"
+
+#, fuzzy, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Гулец 1"
+
+#, fuzzy, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Гулец 2"
 
 #, fuzzy, kde-format
 msgctxt "Player 0 color"
@@ -644,23 +654,11 @@ msgstr "Змяніць узровень камп'ютэрнага гульца."
 msgid "Player 1 name"
 msgstr "Імя гульца 1"
 
-#: kwin4.kcfg:32
-#, fuzzy, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Гулец 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, fuzzy, kde-format
 msgid "Player 2 name"
 msgstr "Імя гульца 2"
-
-#: kwin4.kcfg:39
-#, fuzzy, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Гулец 2"
 
 #: main.cpp:73
 #, kde-format

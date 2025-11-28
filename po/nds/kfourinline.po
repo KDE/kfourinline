@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2014-06-10 22:37+0200\n"
 "Last-Translator: Sönke Dibbern <s_dibbern@web.de>\n"
 "Language-Team: Low Saxon <kde-i18n-nds@kde.org>\n"
@@ -27,6 +27,18 @@ msgstr "Manfred Wiese, Sönke Dibbern"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "m.j.wiese@web.de, s_dibbern@web.de"
+
+# unreviewed-context
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Speler 1"
+
+# unreviewed-context
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Speler 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -653,25 +665,11 @@ msgstr "Ännert de Speelstärk vun den Reekner."
 msgid "Player 1 name"
 msgstr "Naam vun Speler 1"
 
-# unreviewed-context
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Speler 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Naam vun Speler 2"
-
-# unreviewed-context
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Speler 2"
 
 #: main.cpp:73
 #, kde-format

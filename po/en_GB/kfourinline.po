@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-23 19:57+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -29,6 +29,16 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 "malcolm.hunter@gmx.co.uk,dwayne@translate.org.za, steve.allewell@gmail.com"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Player 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Player 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -612,23 +622,11 @@ msgstr "Change the strength of the computer player."
 msgid "Player 1 name"
 msgstr "Player 1 name"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Player 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Player 2 name"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Player 2"
 
 #: main.cpp:73
 #, kde-format

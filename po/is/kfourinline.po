@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2009-06-13 16:24+0000\n"
 "Last-Translator: Sveinn í Felli <sveinki@nett.is>\n"
 "Language-Team: icelandic <kde-isl@molar.is>\n"
@@ -33,6 +33,18 @@ msgstr "Þórarinn R. Einarsson"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "thori@mindspring.com"
+
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Leikmaður 1"
+
+#, fuzzy, kde-format
+#| msgid "Player 2"
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Leikmaður 2"
 
 #, fuzzy, kde-format
 msgctxt "Player 0 color"
@@ -659,25 +671,11 @@ msgstr "Velur styrkleika vélmennisins"
 msgid "Player 1 name"
 msgstr "Nafn leikmanns 1"
 
-#: kwin4.kcfg:32
-#, fuzzy, kde-format
-#| msgid "Player 1"
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Leikmaður 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Nafn leikmanns 2"
-
-#: kwin4.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Player 2"
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Leikmaður 2"
 
 #: main.cpp:73
 #, kde-format

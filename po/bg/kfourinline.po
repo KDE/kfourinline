@@ -2,7 +2,7 @@
 # Bulgarian translation of KDE.
 # This file is licensed under the GPL.
 #
-# $Id: kfourinline.po 1723009 2025-11-17 12:32:57Z scripty $
+# $Id: kfourinline.po 1723874 2025-11-28 01:25:13Z scripty $
 #
 # Zlatko Popov <zlatkopopov@fsa-bg.org>, 2006, 2007.
 # Petar Toushkov <pt.launchpad@gmail.com>, 2010.
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-13 22:47+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
@@ -31,6 +31,16 @@ msgstr "Petar Toushkov,Zlatko Popov"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "pt.launchpad@gmail.com,zlatkopopov@fsa-bg.org"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Играч 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Играч 2"
 
 #, fuzzy, kde-format
 msgctxt "Player 0 color"
@@ -640,23 +650,11 @@ msgstr "Избор на нивото на компютърния играч."
 msgid "Player 1 name"
 msgstr "Име на играч 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Играч 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Име на играч 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Играч 2"
 
 #: main.cpp:73
 #, kde-format

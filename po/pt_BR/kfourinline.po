@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2025-11-08 21:10-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -39,6 +39,16 @@ msgid "Your emails"
 msgstr ""
 "epx@conectiva.com.br, lisiane@kdemail.net, stephen.killing@kdemail.net, "
 "piacentini@kde.org, alvarenga@kde.org"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Jogador 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Jogador 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -627,23 +637,11 @@ msgstr "Muda o nível do computador."
 msgid "Player 1 name"
 msgstr "Nome do jogador 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Jogador 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Nome do jogador 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Jogador 2"
 
 #: main.cpp:73
 #, kde-format

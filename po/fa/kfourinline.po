@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2008-04-15 17:41+0330\n"
 "Last-Translator: Emil Sedgh <emilsedgh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@lists.kde.org>\n"
@@ -28,6 +28,16 @@ msgstr "نسیم دانیارزاده"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "daniarzadeh@itland.ir"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "بازیکن ۱"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "بازیکن ۲"
 
 #, fuzzy, kde-format
 #| msgid "Black"
@@ -670,23 +680,11 @@ msgstr "تغییر قدرت بازیکن رایانه."
 msgid "Player 1 name"
 msgstr "نام بازیکن ۱"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "بازیکن ۱"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "نام بازیکن ۲"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "بازیکن ۲"
 
 #: main.cpp:73
 #, kde-format

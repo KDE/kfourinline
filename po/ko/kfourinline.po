@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kfourinline-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-08-19 23:13+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -28,6 +28,16 @@ msgstr "김명성"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "xfuncrushx@gmail.com"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "플레이어 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "플레이어 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -612,23 +622,11 @@ msgstr "컴퓨터의 세기를 변경합니다."
 msgid "Player 1 name"
 msgstr "플레이어 1 이름"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "플레이어 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "플레이어 2 이름"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "플레이어 2"
 
 #: main.cpp:73
 #, kde-format

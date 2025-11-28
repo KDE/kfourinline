@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-30 16:36+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -27,6 +27,16 @@ msgstr "Zdeněk Tlustý,Ivo Jánský"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "ztlusty@netscape.net,Ivo.Jansky@seznam.cz"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Hráč 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Hráč 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -610,23 +620,11 @@ msgstr "Změnit úroveň počítačového hráče."
 msgid "Player 1 name"
 msgstr "Jméno hráče 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Hráč 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Jméno hráče 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Hráč 2"
 
 #: main.cpp:73
 #, kde-format

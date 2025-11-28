@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2025-03-21 01:41+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -35,6 +35,16 @@ msgid "Your emails"
 msgstr ""
 "spriego@darksylvania.net,traducciones@rociogallego.com,ecuadra@eloihr.net,"
 "kirajfdez@gmail.com"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Jugador 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Jugador 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -619,23 +629,11 @@ msgstr "Cambiar la fuerza del jugador de la máquina."
 msgid "Player 1 name"
 msgstr "Nombre del jugador 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Jugador 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Nombre del jugador 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Jugador 2"
 
 #: main.cpp:73
 #, kde-format

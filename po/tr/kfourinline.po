@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-09-23 15:20+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -33,6 +33,16 @@ msgstr "Ömer Fadıl USTA, Volkan Gezer, Emir SARI"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "omer_fad@hotmail.com, volkangezer@gmail.com, emir_sari@icloud.com"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "1. Oyuncu"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "2. Oyuncu"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -617,23 +627,11 @@ msgstr "Bilgisayarın oyuncusunun gücünü değiştir."
 msgid "Player 1 name"
 msgstr "1. Oyunucu adı"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "1. Oyuncu"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "2. Oyunucunun adı"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "2. Oyuncu"
 
 #: main.cpp:73
 #, kde-format

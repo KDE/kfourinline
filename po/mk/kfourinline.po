@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2006-04-26 01:35+0200\n"
 "Last-Translator: Zaklina Gjalevska <gjalevska@yahoo.com>\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
@@ -30,6 +30,18 @@ msgstr "Костовски Јован,Ѓалевска Жаклина"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "chombium@freemail.com.mk,gjalevska@yahoo.com"
+
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Играч 1"
+
+#, fuzzy, kde-format
+#| msgid "Player 2"
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Играч 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -657,25 +669,11 @@ msgstr "Ја менува интелигенцијата на компјутер
 msgid "Player 1 name"
 msgstr "Име на играчот 1"
 
-#: kwin4.kcfg:32
-#, fuzzy, kde-format
-#| msgid "Player 1"
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Играч 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Име на играчот 2"
-
-#: kwin4.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Player 2"
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Играч 2"
 
 #: main.cpp:73
 #, kde-format

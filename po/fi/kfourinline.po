@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-10-21 18:51+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -33,6 +33,16 @@ msgid "Your emails"
 msgstr ""
 "kim.enkovaara@iki.fi, mikko.piippo@helsinki.fi, lasse.liehu@gmail.com, "
 "translator@legisign.org"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Pelaaja 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Pelaaja 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -616,23 +626,11 @@ msgstr "Vaihda tietokonepelaajan vahvuutta."
 msgid "Player 1 name"
 msgstr "Pelaajan 1 nimi"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Pelaaja 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "Pelaajan 2 nimi"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Pelaaja 2"
 
 # pmap: =/gen=Neljän suoran/
 # pmap: =/elat=Neljän suorasta/

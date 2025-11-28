@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2004-12-21 01:16-0800\n"
 "Last-Translator: Tamil PC <tamilpc@ambalam.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -25,6 +25,18 @@ msgstr "உங்கள் பெயர்கள்"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "tamilpc@ambalam.com"
+
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "முதல் விளையாட்டாளர்"
+
+#, fuzzy, kde-format
+#| msgid "Player 2"
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "இரண்டாம் விளையாட்டாளர்"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -653,25 +665,11 @@ msgstr "கணினி விளையாட்டாளரின் எண்�
 msgid "Player 1 name"
 msgstr "விளையாடுபவர் 1 ன் பெயர்"
 
-#: kwin4.kcfg:32
-#, fuzzy, kde-format
-#| msgid "Player 1"
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "முதல் விளையாட்டாளர்"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "விளையாடுபவர் 2 ன் பெயர்"
-
-#: kwin4.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Player 2"
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "இரண்டாம் விளையாட்டாளர்"
 
 #: main.cpp:73
 #, kde-format

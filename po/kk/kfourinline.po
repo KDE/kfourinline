@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2013-07-11 02:54+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -26,6 +26,16 @@ msgstr "Сайран Киккарин"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "sairan@computer.org"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "1-ойыншы"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "2-ойыншы"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -650,23 +660,11 @@ msgstr "Ойыншы-компьютердің күшін өзгерту."
 msgid "Player 1 name"
 msgstr "1-ойыншының аты"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "1-ойыншы"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "2-ойыншының аты"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "2-ойыншы"
 
 #: main.cpp:73
 #, kde-format

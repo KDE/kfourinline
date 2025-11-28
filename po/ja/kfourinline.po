@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2010-02-02 22:00+0900\n"
 "Last-Translator: Yukiko Bando <ybando@k6.dion.ne.jp>\n"
 "Language-Team: Japanese <kde-jp@kde.org>\n"
@@ -31,6 +31,16 @@ msgstr "Taiki Komoda,Takuro Ashie,Kurose Shushi"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kom@kde.gr.jp,ashie@homa.ne.jp,md81@bird.email.ne.jp"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "プレイヤー 1"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "プレイヤー 2"
 
 #, fuzzy, kde-format
 #| msgid "Black"
@@ -671,23 +681,11 @@ msgstr "コンピュータプレイヤーの強さを変更"
 msgid "Player 1 name"
 msgstr "プレイヤー名 1"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "プレイヤー 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "プレイヤー名 2"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "プレイヤー 2"
 
 #: main.cpp:73
 #, kde-format

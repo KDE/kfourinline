@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kwin4 VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2002-11-07 11:32+0200\n"
 "Last-Translator: WEB-Translator <http://kde.af.org.za>\n"
 "Language-Team: AFRIKAANS <AF@lia.org.za>\n"
@@ -25,6 +25,18 @@ msgstr "WEB-Vertaler (http://kde.af.org.za)"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "frix@expertron.co.za"
+
+#, fuzzy, kde-format
+#| msgid "Player 1"
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "Speler 1"
+
+#, fuzzy, kde-format
+#| msgid "Player 2"
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "Speler 2"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -626,25 +638,11 @@ msgstr "Verander die sterkte van die rekenaar speler."
 msgid "Player 1 name"
 msgstr "Speler Name"
 
-#: kwin4.kcfg:32
-#, fuzzy, kde-format
-#| msgid "Player 1"
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "Speler 1"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, fuzzy, kde-format
 msgid "Player 2 name"
 msgstr "Speler Name"
-
-#: kwin4.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Player 2"
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "Speler 2"
 
 #: main.cpp:73
 #, kde-format

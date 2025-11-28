@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:49+0000\n"
+"POT-Creation-Date: 2025-11-28 00:39+0000\n"
 "PO-Revision-Date: 2024-05-07 18:53+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -30,6 +30,16 @@ msgstr "Franklin,Hydonsingore Sie"
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "franklin@hyweb.com.tw,hydonsingore@mail.educities.edu.tw"
+
+#, kde-format
+msgctxt "default name of first player"
+msgid "Player 1"
+msgstr "一號玩家"
+
+#, kde-format
+msgctxt "default name of second player"
+msgid "Player 2"
+msgstr "二號玩家"
 
 #, kde-format
 msgctxt "Player 0 color"
@@ -613,23 +623,11 @@ msgstr "變更電腦玩家的等級。"
 msgid "Player 1 name"
 msgstr "玩家 1 名稱"
 
-#: kwin4.kcfg:32
-#, kde-format
-msgctxt "default name of first player"
-msgid "Player 1"
-msgstr "一號玩家"
-
 #. i18n: ectx: label, entry (Name2), group (Parameter)
 #: kwin4.kcfg:35
 #, kde-format
 msgid "Player 2 name"
 msgstr "玩家 2 名稱"
-
-#: kwin4.kcfg:39
-#, kde-format
-msgctxt "default name of second player"
-msgid "Player 2"
-msgstr "二號玩家"
 
 #: main.cpp:73
 #, kde-format
