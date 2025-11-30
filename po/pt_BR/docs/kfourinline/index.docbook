@@ -102,9 +102,9 @@
 >&FDLNotice;</legalnotice>
 
 <date
->09/05/2016</date>
+>05/06/2021</date>
 <releaseinfo
->v1.4.1 (Applications 16.04)</releaseinfo>
+>KDE Gear 21.04</releaseinfo>
 
 <abstract>
 <para
@@ -147,12 +147,12 @@
 >Tipo de jogo: Estratégia, tabuleiro </para>
 
 <para
->O &kfourinline; é um jogo para dois jogadores que segue as regras do jogo <trademark
+>O &kfourinline; é um jogo para dois jogadores que segue as regras do jogo &nbsp; <trademark
 >Conecte-Quatro</trademark
 >. </para>
 
 <para
->Os jogadores tentam construir uma fila de quatro peças, usando estratégias diferentes. As peças são colocadas num tabuleiro. O jogo também poderá ser jogado contra o computador. </para>
+>Os jogadores tentam construir uma fila de quatro peças, usando estratégias diferentes. As peças são colocadas num tabuleiro. O jogo também poderá ser jogado contra o computador, bem como na rede. </para>
 
 </chapter>
 
@@ -217,13 +217,13 @@
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
->Configuração da Rede...</guimenuitem
+>Configuração da Rede…</guimenuitem
 ></menuchoice
 >. No menu <menuchoice
 ><guimenu
 >Jogo</guimenu
 ><guimenuitem
->Conversa em Rede...</guimenuitem
+>Conversa em Rede…</guimenuitem
 ></menuchoice
 >, também poderá encontrar uma janela de conversação que lhe permitirá falar com o seu amigo. </para>
 
@@ -275,7 +275,7 @@
 > <guimenu
 >Jogo</guimenu
 > <guimenuitem
->Carregar...</guimenuitem
+>Carregar…</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -317,7 +317,7 @@
 > <guimenu
 >Jogo</guimenu
 > <guimenuitem
->Finalizar Jogo</guimenuitem
+>Encerrar jogo</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -332,7 +332,7 @@
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Conversa na Rede...</guimenuitem
+>Conversa na Rede…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -461,7 +461,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configuração da Rede...</guimenuitem
+>Configuração da Rede…</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -491,13 +491,13 @@
 <title
 >Configuração do jogo</title>
 <para
->O &kfourinline; pode ser configurado com a janela de configuração em <menuchoice
+>O &kfourinline; pode ser configurado com a janela de configuração na entrada do menu  <menuchoice
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &kfourinline;...</guimenuitem
+>Configurar o &kfourinline;…</guimenuitem
 ></menuchoice
-> </para>
+></para>
 
 <screenshot>
 <mediaobject>
@@ -530,9 +530,9 @@
 >Mouse</guilabel
 > ou o <guilabel
 >Teclado</guilabel
->, &ie; um jogador local que utiliza o mouse ou o teclado para comandar o jogador ou o <guilabel
+>, &ie;, um jogador local que utiliza o mouse ou o teclado para comandar o jogador ou o <guilabel
 >Computador</guilabel
->, &ie; o computador joga com este jogador.</para>
+>, &ie;, o computador joga com este jogador.</para>
 <para
 ><guilabel
 >O Vermelho Joga Com</guilabel
@@ -562,10 +562,12 @@
 </question>
 <answer>
 <para
->Você pode alterar a cor das peças, abrindo o menu de <guimenu
+>Você pode alterar a cor das peças, abrindo o menu <menuchoice
+><guimenu
 >Configurações</guimenu
-> e selecionando o <guisubmenu
+> <guisubmenu
 >Tema</guisubmenu
+></menuchoice
 >. </para>
 </answer>
 </qandaentry>
@@ -588,8 +590,12 @@
 </question>
 <answer>
 <para
->Sim, você poderá ver as estatísticas se abrir o menu de Jogo e selecionar a opção <guimenuitem
->Mostrar as Estatísticas</guimenuitem
+>Sim, você poderá ver as estatísticas abrindo o menu <menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Mostrar estatísticas</guimenuitem
+></menuchoice
 >. </para>
 </answer>
 </qandaentry>
