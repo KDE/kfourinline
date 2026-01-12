@@ -207,7 +207,7 @@ msgstr "Port amb el qual connectar-se:"
 #, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
-msgstr "Ordinador amb el qual connectar-se:"
+msgstr "Amfitrió amb el qual connectar-se:"
 
 #: kgameconnectdialog.cpp:95
 #, kde-format
@@ -602,7 +602,7 @@ msgstr "Nom de la partida"
 #: kwin4.kcfg:17
 #, kde-format
 msgid "Network connection host"
-msgstr "Màquina de connexió de xarxa"
+msgstr "Amfitrió de connexió a la xarxa"
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_level)
 #. i18n: ectx: label, entry (level), group (Parameter)
