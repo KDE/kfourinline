@@ -37,107 +37,86 @@ msgctxt "default name of second player"
 msgid "Player 2"
 msgstr "Imreoir 2"
 
-#, fuzzy, kde-format
-#| msgid "Black"
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Black"
-msgstr "Dubh"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgid "Yellow"
+#, kde-format
 msgctxt "Player 0 color"
 msgid "Yellow"
-msgstr "Buí"
+msgstr ""
 
-#, fuzzy, kde-format
-#| msgid "Red"
+#, kde-format
 msgctxt "Player 1 color"
 msgid "Red"
-msgstr "Dearg"
+msgstr ""
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "Dlg Chomhrá"
+msgstr ""
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
-msgstr "Comhrá"
+msgstr ""
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr "Cumraigh..."
+msgstr ""
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
-msgstr "Tús Tapa"
+msgstr ""
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
-msgstr "Cé a thosóidh?"
+msgstr ""
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
-msgstr "Do dhath?"
+msgstr ""
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
-msgstr "Cluiche Éasca"
+msgstr ""
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
-msgstr "Gnáthchluiche"
+msgstr ""
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
-msgstr "Cluiche Crua"
+msgstr ""
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
-msgstr "Cluiche Beirte"
+msgstr ""
 
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
-msgstr "Cumraigh Comhrá"
+msgstr ""
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
 #, kde-format
@@ -200,32 +179,28 @@ msgid "Main Toolbar"
 msgstr "Príomhbharra Uirlisí"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
-msgstr "Tosaigh cluiche líonra"
+msgstr ""
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
-msgstr "Tosaigh cluiche líonra"
+msgstr ""
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
-msgstr "Ainm an chluiche:"
+msgstr ""
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
-msgstr "Cluichí líonra:"
+msgstr ""
 
 #: kgameconnectdialog.cpp:84
 #, kde-format
@@ -240,11 +215,10 @@ msgid "Host to connect to:"
 msgstr ""
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
-msgstr "&Líonra"
+msgstr ""
 
 #: kgamedebugdialog.cpp:118
 #, kde-format
@@ -452,11 +426,10 @@ msgid "Unknown"
 msgstr ""
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
-msgstr "&Líonra"
+msgstr ""
 
 #: kgamedialogconfig.cpp:124
 #, kde-format
@@ -465,11 +438,10 @@ msgid "Disconnect"
 msgstr ""
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
-msgstr "Cumraíocht Líonra"
+msgstr ""
 
 #: kgamedialogconfig.cpp:187
 #, kde-format
@@ -514,39 +486,34 @@ msgstr ""
 "ann."
 
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Cumraigh Comhrá"
+msgstr ""
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr "Comhrá Líonra..."
+msgstr ""
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr "Tai&speáin Staitisticí"
+msgstr ""
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr "Taispeáin staitisticí."
+msgstr ""
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
-msgstr "Téama"
+msgstr ""
 
 #: kwin4.cpp:306
 #, kde-format
@@ -559,11 +526,10 @@ msgid "Welcome to Four Wins"
 msgstr "Fáilte go dtí Four Wins"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr "Cluiche ag rith..."
+msgstr ""
 
 #: kwin4.cpp:599
 #, kde-format
@@ -571,10 +537,9 @@ msgid "No game  "
 msgstr "Gan chluiche "
 
 #: kwin4.cpp:601 kwin4.cpp:603
-#, fuzzy, kde-format
-#| msgid " %1 - Red "
+#, kde-format
 msgid " %1 - %2 "
-msgstr " %1 - Dearg "
+msgstr ""
 
 #: kwin4.cpp:605
 #, kde-format
@@ -602,32 +567,28 @@ msgid " Game ended. Please restart next round."
 msgstr " Cuireadh deireadh leis an gcluiche. Atosaigh an chéad dreas eile."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
-msgstr "Cumraíocht Líonra"
+msgstr ""
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
-msgstr "Ba chóir d'imreoir cianda a bheith dubh"
+msgstr ""
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
-msgstr "Ba chóir d'imreoir cianda a bheith dearg"
+msgstr ""
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "Ginearálta"
+msgstr ""
 
 #. i18n: ectx: label, entry (port), group (Parameter)
 #: kwin4.kcfg:10
@@ -770,26 +731,23 @@ msgstr "Dearg"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "Ainm"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Dath an Chéad Imreora"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Imreoir: "
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
@@ -913,102 +871,3 @@ msgstr "Níl"
 #, kde-format
 msgid "Bk"
 msgstr "Dbh"
-
-#~ msgid "&Network Configuration..."
-#~ msgstr "Cumraíocht Lío&nra..."
-
-#, fuzzy
-#~| msgid "Red Plays With"
-#~ msgid "%1 Plays With"
-#~ msgstr "Imríonn Dearg Le"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Imríonn Dearg Le"
-
-#~ msgid "Mouse"
-#~ msgstr "Luch"
-
-#~ msgid "Keyboard"
-#~ msgstr "Méarchlár"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Imríonn Dubh Le"
-
-#~ msgid "Player Names"
-#~ msgstr "Ainmneacha Imreora"
-
-#~ msgid "Player 1:"
-#~ msgstr "Imreoir 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Imreoir 2:"
-
-#~ msgid "Ready"
-#~ msgstr "Réidh"
-
-#~ msgid "This leaves space for the mover"
-#~ msgstr "Fágann sé seo spás ag an chéad imreoir eile"
-
-#~ msgid " %1 - Yellow "
-#~ msgstr " %1 - Buí "
-
-#~ msgid "KWin4"
-#~ msgstr "KWin4"
-
-#~ msgid "Installation error: No theme file found."
-#~ msgstr "Earráid suiteála: Níor aimsíodh comhad téama."
-
-#~ msgid "Save a game..."
-#~ msgstr "Sábháil cluiche..."
-
-#~ msgid "Quits the program."
-#~ msgstr "Scoir ón chlár."
-
-#~ msgid "Undo last move."
-#~ msgstr "Cealaigh an beart is déanaí."
-
-#~ msgid "Redo last move."
-#~ msgstr "Athdhéan an beart is déanaí."
-
-#~ msgctxt "1. intro line, welcome to win4"
-#~ msgid "Welcome"
-#~ msgstr "Fáilte"
-
-#~ msgctxt "2. intro line, welcome to win4"
-#~ msgid "to"
-#~ msgstr "go dtí"
-
-#~ msgctxt "3. intro line, welcome to win4"
-#~ msgid "KWin4"
-#~ msgstr "KWin4"
-
-#~ msgid "Hold your horses..."
-#~ msgstr "Fan go fóill..."
-
-#~ msgid "Ah ah ah... only one go at a time..."
-#~ msgstr "Á á á... ceann sa turas le do thoil..."
-
-#~ msgid "Please wait... it is not your turn."
-#~ msgstr "Fan go fóill... ní leatsa an imirt."
-
-#~ msgid "Beta testing"
-#~ msgstr "Béite-thástáil"
-
-#~ msgid "Form1"
-#~ msgstr "Foirm1"
-
-#~ msgid "vs"
-#~ msgstr "vs"
-
-#~ msgctxt "number of MOVE in game"
-#~ msgid "Move"
-#~ msgstr "Beart"
-
-#~ msgid "Chance"
-#~ msgstr "Seans"
-
-#~ msgid "Winner"
-#~ msgstr "Buaiteoir"
-
-#~ msgid "Loser"
-#~ msgstr "Cailliúnaí"
