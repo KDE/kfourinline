@@ -1,0 +1,624 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Arabic "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>دليل لعبة الأربع</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-05</date>
+<releaseinfo
+>ترس كيدي 21.04</releaseinfo>
+
+<abstract>
+<para
+>الأربع هي لعبة الأربعة تربح من كِيدِي</para>
+</abstract>
+
+<keywordset>
+<keyword
+>كيدي</keyword>
+<keyword
+>ألعاب كيدي</keyword>
+<keyword
+>لعبة</keyword>
+<keyword
+>لوحة</keyword>
+<keyword
+>لعبة لوحة</keyword>
+<keyword
+>الفوز بالأربعة</keyword>
+<keyword
+>أربعة</keyword>
+<keyword
+>أربعة في صف</keyword>
+<keyword
+>أربعة على الخط</keyword>
+<keyword
+>الأربع</keyword>
+<keyword
+>وصّل الأربعة</keyword>
+<keyword
+>وصل 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>مقدمة</title>
+
+<para
+>نوع اللعبة: استراتيجية، لوحة </para>
+
+<para
+>الأربع هي لعبة لوحة للاعبين اثنين مبنية على لعبة <trademark
+>وصّل الأربعة</trademark
+>. </para>
+
+<para
+>يحاول اللاعبون بناء صف من أربع قطع باستخدام استراتيجيات مختلفة. تُوضع القطع على لوحة. يمكن أيضًا لعب اللعبة ضد الحاسوب، وكذلك عبر الشبكة. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>كيف تلعب</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>لوحة لعبة الأربع</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>عندما تحمل الأربع يمكنك اختيار الصعوبة أو بدء لعبة لاعبين اثنين. إن أردت، يمكنك أيضًا اختيار لونك واختيار أي لون يبدأ اللعبة. </para>
+
+<para
+>يُمثَّل كل لاعب بلون (على سبيل المثال الأصفر أو الأبيض للاعب الأول والأحمر للاعب الثاني). هدف اللعبة هو الحصول على أربع قطع متصلة من لونك في أي صف أو عمود أو قطر. يتحرك اللاعبون بالأدوار. في كل دور، يمكن للاعب وضع إحدى قطعه في أي من الأعمدة السبعة حيث ستسقط كل قطعة إلى أدنى مكان شاغر ممكن؛ أي أنها ستسقط حتى تصل إلى مستوى الأرض أو قطعة أخرى. </para>
+
+<para
+>بعد انتهاء حركة أحد اللاعبين، يمكن للاعب الثاني القيام بإدخاله. يكرر هذا حتى تنتهي اللعبة، وهو عندما يكون لأحد اللاعبين أربع قطع في صف أو عمود أو قطر أو لا يمكن القيام بحركات أكثر لأن اللوح امتلأ. </para>
+
+<para
+>اللاعب الذي ينجح أولاً في الحصول على أربع قطع في صف أو عمود أو قطر يربح اللعبة. إن لم يمكن القيام بحركات أكثر لكن لا يوجد لاعب قد ربح، فإن اللعبة تنتهي بالتعادل. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title>
+
+<para
+>تُقسّم اللوحة إلى مناطق عدة. </para>
+
+<para
+>تتكون <firstterm
+>لوحة اللعبة</firstterm
+> من 7×6 حقول تُملأ من الأسفل إلى الأعلى. تُميَّز الحقول بقطع بلون اللاعب الذي قام بالنقلة إلى هذا الموقع. يظهر سهم ملون فوق كل عمود يوضح مكان وضع آخر قطعة. </para>
+
+<para
+>يعرض <firstterm
+>عرض الحالة</firstterm
+> أي لاعب يُتحكّم به بواسطة أي جهاز إدخال. يمكن للاعب المحلي إدخال النقلات باستخدام لوحة المفاتيح أو الفأرة، ويُعرض اللاعب البعيد كإدخال شبكة، وأخيرًا يمكن للحاسوب التحكم في إدخال اللاعب. يظهر عرض الحالة أيضًا أسماء اللاعبين ومستوى الخصم الحاسوبي. بالإضافة إلى ذلك، يُسجّل عدد الألعاب التي فاز بها اللاعب، أو تعادل فيها، أو خسرها، أو أنهاها لكلا اللاعبين. يُشار إلى اللاعب الذي عليه الدور للنقل من خلال إبراز أحد أسماء اللاعبين. </para>
+
+<para
+>يعرض <firstterm
+>شريط الحالة</firstterm
+> في أسفل الشاشة حالة اللعبة واللاعب الذي عليه الدور في اللعب. </para>
+
+<sect1 id="remote-connections">
+<title
+>الاتصالات البعيدة</title>
+
+<para
+>يمكن لعب اللعبة عبر اتصال شبكة مع حاسوب آخر. سيعمل أحد الحواسيب كخادم للعبة. يمكن لهذا الخادم تحديد من سيلعب بأي لون. يمكنك ضبط خيارات الشبكة في قائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guimenuitem
+>تهيئة الشبكة…</guimenuitem
+></menuchoice
+>. في قائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+><guimenuitem
+>دردشة الشبكة…</guimenuitem
+></menuchoice
+> ستجد مربع حوار للدردشة يسمح لك بالتحدث مع صديقك. </para>
+
+<para
+>عند بناء اتصال شبكة، سيُطلب منك إدخال مضيف بعيد ومنفذ. عادة ما يمكن ترك المنفذ دون تغيير، ولكن إذا كنت تعرف ما تفعله فاستبدله برقم آخر، والذي يجب أن يكون هو نفسه في كلتا لعبتي اللاعبين بالطبع. يجب أن يكون اسم المضيف هو اسم المضيف البعيد الذي تتصل به. يجب على العميل فقط في الاتصال تقديم اسم مضيف. غالبًا ما يكون من الحكمة أن يختار اللاعب الموجود خلف جدار حماية أن يكون عميلاً لأن جدار الحماية قد لا يسمح بالاتصالات الواردة. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>نظرة عامة على الواجهة</title>
+
+<sect1 id="menu">
+<title
+>عناصر القائمة</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يبدأ لعبة جديدة. في لعبة الشبكة، يتوفر هذا الخيار فقط لخادم الشبكة. سيُبدأ عميل الشبكة آليًا بواسطة الخادم. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>حمّل…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يحمّل لعبة محفوظة. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يحفظ اللعبة الحالية. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ اللعبة</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>ينهي اللعبة الجارية. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>دردشة الشبكة…</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>يُظهر عنصر دردشة يسمح لك بإرسال الرسائل إلى الطرف الآخر. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر الإحصائيات</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يعرض مربع حوار يحتوي على معلومات حول إحصائيات اللعبة الإجمالية، وهي الألعاب التي فاز بها كلا اللاعبين أو خسراها أو تعادلا فيها. يسمح مربع الحوار أيضًا بمسح هذه الإحصائيات التاريخية. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>الخروج من البرنامج. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+> </keycombo
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يتراجع عن النقلة الأخيرة. إذا كان اللاعب السابق هو الحاسوب، فسيُتراجع عن نقلتين حتى يعود الدور للاعب مرة أخرى. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>كرّر</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>يُعيد تكرار نقلة أُلغيت. إذا كان أحد اللاعبين هو الحاسوب، فستُكرر نقلتان حتى يعود الدور للاعب مرة أخرى. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>تلميحة</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>سيحسب الحاسوب أفضل نقلة ممكنة لك ويضع عليها علامة على لوحة اللعبة. تعتمد جودة النقلة فعليًا على مستوى الحاسوب. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+><guisubmenu
+>السمة</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>اختر سمة رسومية للعبة. تعتمد السمات المتاحة على التثبيت الحالي.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>تهيئة الشبكة…</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>يُظهر مربع حوار لتهيئة الشبكة. يمكنك اختيار أن تكون خادمًا أو عميلاً. إذا كنت خادمًا، فيمكنك أيضًا اختيار اللون الذي سيأخذه اللاعب البعيد. إذا كانت لعبة الشبكة جارية، فيمكنك أيضًا فصلها في هذه القائمة. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>بالإضافة إلى ذلك، تحتوي الأربع على عناصر قائمتي <guimenu
+>الإعدادات</guimenu
+> و<guimenu
+>المساعدة</guimenu
+> الشائعة في كيدي، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و<ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات كيدي. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>ضبط اللعبة</title>
+<para
+>يمكن ضبط الأربع باستخدام مربع حوار الضبط عبر عنصر قائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guimenuitem
+>اضبط الأربع…</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>ضبط اللعبة</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>لون اللاعب البادئ</guilabel
+>: يحدد أي لون لاعب (<guilabel
+>الأحمر</guilabel
+> أو <guilabel
+>الأسود</guilabel
+>) له النقلة الأولى في اللعبة التالية.</para>
+<para
+><guilabel
+>أسماء اللاعبين</guilabel
+>: لتغيير أسماء اللاعبين.</para>
+<para
+><guilabel
+>الأسود يلعب بـ</guilabel
+>: اختر من سيلعب للاعب 1. يمكن أن يكون إما <guilabel
+>الفأرة</guilabel
+> أو <guilabel
+>لوحة المفاتيح</guilabel
+>، أي لاعب محلي يستخدم الفأرة أو لوحة المفاتيح كجهاز إدخال أو <guilabel
+>الحاسوب</guilabel
+>، أي أن الحاسوب سيلعب لهذا اللاعب.</para>
+<para
+><guilabel
+>الأحمر يلعب بـ</guilabel
+>: نفس خيار <guilabel
+>الأسود يلعب بـ</guilabel
+> ولكن للاعب 2 (الأحمر).</para>
+<para
+><guilabel
+>صعوبة الحاسوب</guilabel
+>: اختر مستوى اللاعب الحاسوبي.</para>
+<para
+><guilabel
+>استخدم تعلم الذكاء الاصطناعي</guilabel
+>: يمكن للذكاء الاصطناعي للحاسوب التعلم من الأخطاء المرتكبة في اللعبة.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>الأسئلة الشائعة</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>هل يمكنني تغيير مظهر اللعبة؟ </para>
+</question>
+<answer>
+<para
+>يمكنك تغيير لون القطع عن طريق فتح عنصر قائمة <menuchoice
+><guimenu
+>الإعدادات</guimenu
+> <guisubmenu
+>السمة</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>هل يمكنني استخدام لوحة المفاتيح للعب؟ </para>
+</question>
+<answer>
+<para
+>لا يمكنك استخدام لوحة المفاتيح للتحكم في القطع. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>لقد فقدت متابعة من هو المتصدر، هل يمكنني معرفة ذلك؟ </para>
+</question>
+<answer>
+<para
+>نعم، يمكنك رؤية الإحصائيات بفتح عنصر قائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أظهر الإحصائيات</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>الحقوق والترخيص</title>
+
+<para
+>الأربع </para>
+<para
+>حقوق نشر البرنامج 1995-2007 محفوظة لـ &Martin.Heni; &Martin.Heni.mail; و Benjamin Meyer. </para>
+<para
+>حقوق نشر الرسوميات 2007 محفوظة لـ Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> و Johann Ollivier Lapeyre. </para>
+<para
+>حقوق نشر التوثيق 2007 محفوظة لـ &Martin.Heni; &Martin.Heni.mail; و Benjamin Meyer. </para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
