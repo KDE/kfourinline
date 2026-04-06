@@ -525,7 +525,7 @@ msgstr "تصحيح KGame"
 #: kwin4.cpp:329
 #, kde-format
 msgid "Welcome to Four Wins"
-msgstr "مرحبا إلى أربعة الإنتصارات"
+msgstr "مرحبًا إلى أربعة الإنتصارات"
 
 #: kwin4.cpp:485 kwin4.cpp:638
 #, kde-format
