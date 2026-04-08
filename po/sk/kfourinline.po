@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -62,71 +62,55 @@ msgid "Chat Dlg"
 msgstr "Dialóg s rozhovorom"
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Rozhovor"
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
 msgstr "Nastaviť..."
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Rýchly štart"
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Kto začína?"
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Vaša farba?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Jednoduchá hra"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Normálna hra"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Ťažká hra"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "Hra pre dvoch hráčov"
@@ -138,15 +122,13 @@ msgid "Configure Chat"
 msgstr "Nastaviť rozhovor"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Name Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
 msgstr "Písmo pre meno..."
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, fuzzy, kde-format
-#| msgid "Text Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
 msgstr "Písmo textu..."
@@ -200,50 +182,43 @@ msgid "Main Toolbar"
 msgstr "Hlavný panel nástrojov"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Vytvoriť sieťovú hru"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Join a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Pripojiť sa k sieťovej hre"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Názov hry:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Sieťové hry:"
 
 #: kgameconnectdialog.cpp:84
-#, fuzzy, kde-format
-#| msgid "Port to connect to:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Port pre pripojenie:"
 
 #: kgameconnectdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Host to connect to:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Hostiteľ pre pripojenie:"
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Start Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Spustiť sieť"
@@ -454,22 +429,19 @@ msgid "Unknown"
 msgstr "Neznáme"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Sieť"
 
 #: kgamedialogconfig.cpp:124
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Odpojiť"
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Nastavenie siete"
@@ -515,37 +487,31 @@ msgid "Ends a currently played game. No winner will be declared."
 msgstr "Ukončí aktuálne hranú hru. Nebude vyhlásený žiadny víťaz."
 
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgctxt "@title:window"
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
 msgstr "Nastaviť rozhovor"
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
 msgstr "Rozhovor po sieti..."
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
 msgstr "&Zobraziť štatistiky"
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
 msgstr "Zobraziť štatistiky."
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Téma"
@@ -561,8 +527,7 @@ msgid "Welcome to Four Wins"
 msgstr "Vitajte v hre Štyri v rade"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
 msgstr "Hra beží..."
@@ -603,29 +568,25 @@ msgid " Game ended. Please restart next round."
 msgstr " Hra bola ukončená. Prosím, spustite znovu ďalšie kolo."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
 msgstr "Nastavenie siete"
 
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Čiernou by mal hrať vzdialený hráč"
 
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Červenou by mal hrať vzdialený hráč"
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Všeobecné"
@@ -771,24 +732,21 @@ msgstr "Červená"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
 msgstr "Meno"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
 msgstr "Farba začínajúceho hráča"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
 msgstr "Hráč: "
 
@@ -797,14 +755,14 @@ msgstr "Hráč: "
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "Človek s myšou"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "Človek s klávesnicou"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
