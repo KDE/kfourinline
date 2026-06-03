@@ -42,6 +42,7 @@
   <name xml:lang="sl">KFourInLine</name>
   <name xml:lang="sv">Fyra i rad</name>
   <name xml:lang="tr">KFourInLine</name>
+  <name xml:lang="ug">KFourInLine</name>
   <name xml:lang="uk">Чотири-у-рядку</name>
   <name xml:lang="zh-CN">KFourInLine</name>
   <name xml:lang="zh-TW">KFourInLine</name>
@@ -78,6 +79,7 @@
   <summary xml:lang="sl">KFourInLine je igra 'štiri v vrsto' v KDE</summary>
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
   <summary xml:lang="tr">KFourInLine, KDE tarafından yapılan bir dörtlü sıralama oyunudur</summary>
+  <summary xml:lang="ug">KDE دىكى KFourInLine بىر-قۇردا-تۆت ئويۇنى</summary>
   <summary xml:lang="uk">Чотири-у-рядку — це гра у чотири-у-рядок від KDE</summary>
   <summary xml:lang="zh-CN">KFourInLine 是 KDE 的一款四子棋游戏</summary>
   <summary xml:lang="zh-TW">KFourInLine 是來自 KDE 的四子棋遊戲</summary>
