@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-28 00:39+0000\n"
-"PO-Revision-Date: 2026-06-23 18:12+0200\n"
+"PO-Revision-Date: 2026-06-23 22:24+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -225,12 +225,12 @@ msgstr "&Start nettverk"
 #, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
-msgstr "KGame-avlusingsdialog"
+msgstr "KGame-feilsøkingsvindauge"
 
 #: kgamedebugdialog.cpp:140
 #, kde-format
 msgid "Debug &KGame"
-msgstr "Avlus &KGame"
+msgstr "Feilsøk &KGame"
 
 #: kgamedebugdialog.cpp:162 kgamedebugdialog.cpp:215
 #, kde-format
@@ -295,7 +295,7 @@ msgstr "Spelarar"
 #: kgamedebugdialog.cpp:183
 #, kde-format
 msgid "Debug &Players"
-msgstr "Avlus &spelarar"
+msgstr "Feilsøk &spelarar"
 
 #: kgamedebugdialog.cpp:193
 #, kde-format
@@ -366,7 +366,7 @@ msgstr "Nettverksprioritet"
 #: kgamedebugdialog.cpp:236
 #, kde-format
 msgid "Debug &Messages"
-msgstr "Avlus &meldingar"
+msgstr "Feilsøk &meldingar"
 
 #: kgamedebugdialog.cpp:251
 #, kde-format
@@ -518,7 +518,7 @@ msgstr "Tema"
 #: kwin4.cpp:306
 #, kde-format
 msgid "Debug KGame"
-msgstr "Avlus KGame"
+msgstr "Feilsøk KGame"
 
 #: kwin4.cpp:329
 #, kde-format
@@ -680,7 +680,7 @@ msgstr "Kodeforbetringar"
 #: main.cpp:89
 #, kde-format
 msgid "Enter debug level"
-msgstr "Oppgje avlusingsnivå"
+msgstr "Oppgje feilsøkingsnivå"
 
 #: main.cpp:90
 #, kde-format
