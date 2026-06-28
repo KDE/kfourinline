@@ -148,7 +148,7 @@ msgstr "Este és un missatge de jugador"
 #: kchatdialog.cpp:112
 #, kde-format
 msgid "System Messages - Messages directly sent from the game"
-msgstr "Missatges del sistema - Missatges enviats directament des del joc"
+msgstr "Missatges del sistema – Missatges enviats directament des del joc"
 
 #: kchatdialog.cpp:126
 #, kde-format
@@ -545,7 +545,7 @@ msgstr "Sense joc  "
 #: kwin4.cpp:601 kwin4.cpp:603
 #, kde-format
 msgid " %1 - %2 "
-msgstr " %1 - %2 "
+msgstr " %1 – %2 "
 
 #: kwin4.cpp:605
 #, kde-format
