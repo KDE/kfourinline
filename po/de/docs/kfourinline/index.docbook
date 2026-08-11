@@ -202,19 +202,19 @@
 >Sie können über eine Netzwerkverbindung mit einem anderen Computer spielen. Einer der Computer agiert dabei als Server. Dieser kann festlegen, wer mit welcher Farbe spielt. Die Netzwerkeinstellungen können Sie im Menü <menuchoice
 ><guimenu
 >Einstellungen</guimenu
-> <guimenuitem
->Netzwerk einrichten ...</guimenuitem
-> </menuchoice
-> verändern. Mit <menuchoice
+><guimenuitem
+>Netzwerk einrichten …</guimenuitem
+></menuchoice
+> ändern. Mit <menuchoice
 ><guimenu
 >Spiel</guimenu
 ><guimenuitem
->Netzwerk-Chat ...</guimenuitem
+>Netzwerk-Chat …</guimenuitem
 ></menuchoice
 > öffnen Sie ein Dialogfenster, in dem Sie sich mit den anderen Spielern unterhalten können. </para>
 
 <para
->Wenn eine Netzwerkverbindung aufgebaut wird, werden Sie nach dem entfernten Rechner und der Portnummer gefragt. Die Portnummer brauchen Sie nicht zu ändern - aber wenn Sie wissen was Sie tun, können Sie sie durch eine andere ersetzen, die natürlich in beiden Spielen gleich sein muss. Der Rechnername sollte der Name des anderen Rechners sein, mit dem Sie die Verbindung aufbauen wollen. Nur einer der beiden Spieler muss den Rechnernamen angeben, dem anderen steht es frei. Befindet sich einer der Rechner hinter einer Firewall, sollte dieser möglichst als Klient agieren, da die Firewall eventuell Verbindungsanfragen blockiert. </para>
+>Wenn eine Netzwerkverbindung aufgebaut wird, werden Sie nach dem entfernten Rechner und der Portnummer gefragt. Sie können die vorausgewählte Portnummer belassen – aber wenn Sie wissen, was Sie tun, können Sie sie durch eine andere ersetzen. Sie muss natürlich auf beiden Rechnern identisch sein. Der Rechnername sollte der Name des anderen Rechners sein, mit dem Sie die Verbindung aufbauen möchten. Nur einer der beiden Spieler muss den Rechnernamen angeben, dem anderen steht es frei. Befindet sich einer der Rechner hinter einer Firewall, sollte dieser möglichst als Klient agieren, da die Firewall eventuell Verbindungsanfragen blockiert. </para>
 
 </sect1>
 </chapter>
@@ -253,7 +253,7 @@
 <term
 ><menuchoice
 ><shortcut
-><keycombo action="simul"
+> <keycombo action="simul"
 >&Ctrl;<keycap
 >O</keycap
 ></keycombo
@@ -261,7 +261,7 @@
 > <guimenu
 >Spiel</guimenu
 > <guimenuitem
->Laden ...</guimenuitem
+>Laden …</guimenuitem
 > </menuchoice
 ></term>
 <listitem>
@@ -316,7 +316,7 @@
 ><guimenu
 >Spiel</guimenu
 > <guimenuitem
->Netzwerk-Chat ...</guimenuitem
+>Netzwerk-Chat …</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -445,7 +445,7 @@
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->Netzwerk einrichten ...</guimenuitem
+>Netzwerk einrichten …</guimenuitem
 ></menuchoice
 ></term>
 <listitem>
@@ -475,13 +475,13 @@
 <title
 >Einstellungen für das Spiel</title>
 <para
->Die Einstellungen für &kfourinline; können Sie im Einrichtungsdialog ändern, den Sie mit <menuchoice
+>Die Einstellungen für &kfourinline; können Sie im Einrichtungsdialog ändern, den Sie mittels <menuchoice
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->Vier gewinnt einrichten ...</guimenuitem
+>&kfourinline; einrichten …</guimenuitem
 ></menuchoice
-> öffnen.</para>
+> öffnen können.</para>
 
 <screenshot>
 <mediaobject>
@@ -595,13 +595,13 @@
 <para
 >&kfourinline; </para>
 <para
->Programm Copyright 1995-2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
+>Programm-Copyright 1995–2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
 <para
->Grafik Copyright 2007 Eugene Trounev <email
+>Grafik-Copyright 2007 Eugene Trounev <email
 >eugene.trounev@gmail.com</email
 > und Johann Ollivier Lapeyre. </para>
 <para
->Dokumentation Copyright 2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
+>Dokumentation-Copyright 2007 &Martin.Heni; &Martin.Heni.mail; und Benjamin Meyer. </para>
 
 <para
 >Deutsche Übersetzung von Maren Pakura <email
