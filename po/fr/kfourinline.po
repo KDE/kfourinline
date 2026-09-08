@@ -72,7 +72,7 @@ msgstr "Rouge"
 #, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
-msgstr "Boîte de dialogue de discussions"
+msgstr "Boite de dialogue de discussions"
 
 #: chatdlg.cpp:48
 #, kde-format
