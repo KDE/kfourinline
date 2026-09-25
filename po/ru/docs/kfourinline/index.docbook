@@ -1,0 +1,622 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY % Russian "INCLUDE">
+<!ENTITY % addindex "IGNORE">
+]>
+
+<book id="kfourinline" lang="&language;">
+<bookinfo>
+<title
+>Руководство пользователя &kfourinline;</title>
+
+<authorgroup>
+<author
+><firstname
+>Martin</firstname
+> <surname
+>Heni</surname
+> <affiliation
+> <address
+>&Martin.Heni.mail;</address>
+</affiliation>
+</author>
+<author
+><firstname
+>Евгений</firstname
+> <surname
+>Трунев</surname
+> <affiliation
+> <address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+</author>
+<author
+><firstname
+>Benjamin</firstname
+> <surname
+>Meyer</surname
+> </author>
+<author
+><firstname
+>Johann Ollivier</firstname
+> <surname
+>Lapeyre</surname
+> </author>
+<author
+><firstname
+>Anton</firstname
+> <surname
+>Brondz</surname
+> <affiliation
+> <address
+><email
+>dinolinux@gmail.com</email
+></address>
+</affiliation>
+</author>
+
+
+<othercredit role="translator"
+><firstname
+>avatar</firstname
+> <affiliation
+><address
+><email
+>avatar@sendmail.ru</email
+></address
+></affiliation
+> <contrib
+>Перевод на русский</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+<year
+>1995</year
+><year
+>2007</year>
+<holder
+>&Martin.Heni;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-06-05</date>
+<releaseinfo
+>KDE Gear 21.04</releaseinfo>
+
+<abstract>
+<para
+>&kfourinline; — игра «четыре в ряд» от &kde;.</para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>игра</keyword>
+<keyword
+>доска</keyword>
+<keyword
+>игровая доска</keyword>
+<keyword
+>четыре побеждают</keyword>
+<keyword
+>четыре</keyword>
+<keyword
+>четыре в ряд</keyword>
+<keyword
+>четыре в ряд</keyword>
+<keyword
+>kfourinline</keyword>
+<keyword
+>connect four</keyword>
+<keyword
+>connect 4</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="overview">
+<title
+>Введение</title>
+
+<para
+>Тип игры: стратегия, настольная игра </para>
+
+<para
+>&kfourinline; — настольная игра для двух игроков, основанная на игре &nbsp;<trademark
+>Connect-Four</trademark
+>. </para>
+
+<para
+>Игроки стараются выстроить ряд из четырёх фишек, применяя различные стратегии. Фишки размещаются на доске. В игру можно также играть против компьютера или по сети. </para>
+
+</chapter>
+
+<chapter id="howtoplay">
+<title
+>Правила игры</title>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="gameboard.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Игровая доска &kfourinline;</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+>При запуске &kfourinline; можно выбрать уровень сложности или начать игру для двух игроков. Кроме того, можно выбрать свой цвет и указать, какой цвет начинает игру. </para>
+
+<para
+>Каждому игроку соответствует свой цвет (например, жёлтый или белый у первого игрока и красный у второго). Цель игры — выстроить четыре фишки своего цвета в ряд по горизонтали, вертикали или диагонали. Игроки ходят по очереди. За ход игрок бросает одну свою фишку в любой из семи столбцов, и она падает на самое нижнее свободное место, &ie; до дна доски или до другой фишки. </para>
+
+<para
+>Когда один игрок сделал ход, свой ход делает второй. Так продолжается до конца игры — пока у одного из игроков не окажутся четыре фишки в ряд по горизонтали, вертикали или диагонали или пока доска не заполнится и ходить станет некуда. </para>
+
+<para
+>Побеждает игрок, который первым выстроит четыре фишки в ряд по горизонтали, вертикали или диагонали. Если ходить больше некуда, а победителя нет, игра заканчивается вничью. </para>
+
+</chapter>
+
+<chapter id="rules">
+<title
+>Правила игры, стратегии и советы</title>
+
+<para
+>Доска разделена на несколько областей. </para>
+
+<para
+><firstterm
+>Игровая доска</firstterm
+> состоит из 7x6 полей, которые будут заполняться снизу вверх. Поля отмечены фишками в цвете игрока, сделавшего ход на эту позицию. Вверху каждого столбца цветная стрелка показывает, куда была положена последняя фишка. </para>
+
+<para
+><firstterm
+>Индикатор состояния</firstterm
+> показывает, какой игрок управляется каким устройством ввода. Локальный игрок вводит ходы с помощью клавиатуры или мыши, сетевой игрок показывается как сетевой ввод, а компьютер может управлять вводом для игрока. Кроме того, индикатор состояния показывает имена игроков и уровень компьютерного противника. Также для обоих игроков указывается число выигранных, ничейных, проигранных и завершённых партий. Чей ход следующий, показывается выделением имени соответствующего игрока. </para>
+
+<para
+><firstterm
+>Строка состояния</firstterm
+> в нижней части экрана показывает состояние игры и то, чей ход следующий. </para>
+
+<sect1 id="remote-connections">
+<title
+>Удалённые соединения</title>
+
+<para
+>В игру можно играть по сети с другим компьютером. Один из компьютеров выступает игровым сервером и определяет, кто каким цветом играет. Параметры сети настраиваются с помощью пункта меню <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить сеть…</guimenuitem
+></menuchoice
+>. Пункт меню <menuchoice
+><guimenu
+>Игра</guimenu
+><guimenuitem
+>Разговор по сети</guimenuitem
+></menuchoice
+> открывает окно, в котором можно переписываться с партнёром. </para>
+
+<para
+>Когда сетевое соединение установлено, вас попросят ввести значения для удалённого хоста и порта. Номер порта обычно можно оставить без изменений, но если вы знаете, что делаете, замените его другим числом, которое, разумеется, должно быть одинаковым у обоих игроков. Имя хоста должно быть именем удалённого хоста, к которому выполняется подключение. Только клиент соединения должен задавать имя хоста. Часто разумно, чтобы игрок за брандмауэром выбрал роль клиента, так как брандмауэр может не пропускать входящие соединения. </para>
+
+</sect1>
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Обзор интерфейса</title>
+
+<sect1 id="menu">
+<title
+>Пункты меню</title>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Новая</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Начать новую игру. В сетевой игре этот параметр доступен только для сервера. Клиент будет автоматически загружен на сервер. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Загрузить…</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Открыть сохраненную игру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Сохранить текущую игру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&End;</keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Закончить игру</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Завершает текущую игру. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Разговор по сети</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>В сетевой игре позволяет посылать сообщения удаленному игроку. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать статистику</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Показывает диалог со сведениями об общей статистике игры, то есть о выигранных, проигранных и ничейных партиях обоих игроков. Диалог также позволяет очистить эту статистику за всё время. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Выход из программы. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Отменить</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Отменить последний ход. Если предыдущий ход сделал компьютер, то таким образом можно переиграть ваш предыдущий ход снова.  </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Вернуть</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Повторяет отменённый ход. Если за одного из игроков играет компьютер, повторяются два хода, чтобы снова настала очередь игрока. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Подсказка</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Компьютер рассчитает лучший ход и отметит его знаком на игровой доске. Насколько этот ход действительно хорош, зависит от уровня компьютерного игрока. </para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Оформление</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para>
+<action
+>Выбрать графическое оформление игры. Доступные варианты оформления зависят от текущей установки.</action>
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить сеть…</guimenuitem
+></menuchoice
+></term>
+<listitem>
+<para
+>Вызов диалога сетевых настроек. Вы можете выбрать, будет ли ваша машина сервером или клиентом. В качестве сервера вы также можете задать цвет для сетевого игрока. Текущую сетевую игру можно прервать в этом диалоге. </para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para
+>Кроме того, в &kfourinline; есть стандартные для &kde; меню <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>. Подробнее о них — в разделах <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+> документа «Основы &kde;». </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="config">
+<title
+>Настройка игры</title>
+<para
+>Параметры &kfourinline; задаются в диалоге настройки, который открывается пунктом меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &kfourinline;…</guimenuitem
+></menuchoice
+>.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject>
+<imagedata fileref="settings.png" format="PNG"/>
+</imageobject>
+<textobject>
+<phrase
+>Настройка игры</phrase>
+</textobject>
+</mediaobject>
+</screenshot>
+
+<para
+><guilabel
+>Игрок, делающий первый ход</guilabel
+>: задаёт, какой цвет (<guilabel
+>Красный</guilabel
+> или <guilabel
+>Чёрный</guilabel
+>) ходит первым в следующей игре.</para>
+<para
+><guilabel
+>Имена игроков</guilabel
+>: изменение имён игроков.</para>
+<para
+><guilabel
+>Чёрными играет</guilabel
+>: кто играет за игрока 1. Это может быть <guilabel
+>Мышь</guilabel
+> или <guilabel
+>Клавиатура</guilabel
+>, &ie; игрок за этим компьютером, использующий мышь или клавиатуру, либо <guilabel
+>Компьютер</guilabel
+>, &ie; за этого игрока играет компьютер.</para>
+<para
+><guilabel
+>Красными играет</guilabel
+>: то же, что <guilabel
+>Чёрными играет</guilabel
+>, но для игрока 2 (красные).</para>
+<para
+><guilabel
+>Уровень компьютерного игрока</guilabel
+>: выбор уровня игры компьютера.</para>
+<para
+><guilabel
+>Использовать обучение искусственного интеллекта</guilabel
+>: компьютер может учиться на ошибках, допущенных в партии.</para>
+
+</chapter>
+
+<chapter id="faq">
+<title
+>Часто задаваемые вопросы</title>
+<qandaset>
+
+<qandaentry>
+<question>
+<para
+>Возможно ли изменить внешний вид игры? </para>
+</question>
+<answer>
+<para
+>Цвет фишек можно изменить в меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Оформление</guisubmenu
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Можно ли играть с помощью клавиатуры? </para>
+</question>
+<answer>
+<para
+>Управлять фишками с помощью клавиатуры нельзя. </para>
+</answer>
+</qandaentry>
+
+<qandaentry>
+<question>
+<para
+>Я запутался, кто лидирует. Можно ли это узнать? </para>
+</question>
+<answer>
+<para
+>Да, статистику можно посмотреть с помощью пункта меню <menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать статистику</guimenuitem
+></menuchoice
+>. </para>
+</answer>
+</qandaentry>
+
+</qandaset>
+
+</chapter>
+
+<chapter id="credits">
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&kfourinline; </para>
+<para
+>© &Martin.Heni; &Martin.Heni.mail; и Benjamin Meyer, 1995–2007 (программа). </para>
+<para
+>© Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> и Johann Ollivier Lapeyre, 2007 (графика). </para>
+<para
+>© &Martin.Heni; &Martin.Heni.mail; и Benjamin Meyer, 2007 (документация). </para>
+
+<para
+>Перевод на русский - <email
+>avatar@sendmail.ru</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:t
+End:
+-->
+
