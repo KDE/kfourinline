@@ -4,13 +4,14 @@
 # Chusslove Illich <caslav.ilic@gmx.net>, 2003, 2004, 2005, 2009, 2010, 2013, 2017.
 # Slobodan Simic <slsimic@gmail.com>, 2009.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: kfourinline\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-28 00:39+0000\n"
-"PO-Revision-Date: 2017-09-28 17:59+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-05 01:57+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
@@ -26,12 +27,14 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić"
+msgstr "Miloš Puzović,Časlav Ilić,Slobodan Simić,Nemanja Hiršl"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com"
+msgstr ""
+"m.puzovic@etoncollege.org.uk,caslav.ilic@gmx.net,slsimic@gmail.com,"
+"nemhirsl@gmail.com"
 
 #, kde-format
 msgctxt "default name of first player"
@@ -59,103 +62,83 @@ msgid "Red"
 msgstr "crveni|/|$[svojstva nom crveni]"
 
 #: chatdlg.cpp:33
-#, fuzzy, kde-format
-#| msgid "Chat Dlg"
+#, kde-format
 msgctxt "@title:window"
 msgid "Chat Dlg"
 msgstr "Dijalog ćaskanja"
 
 #: chatdlg.cpp:48
-#, fuzzy, kde-format
-#| msgid "Chat"
+#, kde-format
 msgctxt "@title:group"
 msgid "Chat"
 msgstr "Ćaskanje"
 
 #: chatdlg.cpp:54
-#, fuzzy, kde-format
-#| msgid "Configure..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Configure…"
-msgstr "Podesi..."
+msgstr "Podesi…"
 
 #: displayintro.cpp:71
-#, fuzzy, kde-format
-#| msgctxt "Name of quicklaunch field"
-#| msgid "Quick Launch"
+#, kde-format
 msgctxt "@title:group"
 msgid "Quick Launch"
 msgstr "Brzo pokretanje"
 
 #: displayintro.cpp:77
-#, fuzzy, kde-format
-#| msgctxt "Ask player who should start game"
-#| msgid "Who starts?"
+#, kde-format
 msgctxt "@label Ask player who should start game"
 msgid "Who starts?"
 msgstr "Ko počinje?"
 
 #: displayintro.cpp:80
-#, fuzzy, kde-format
-#| msgctxt "Ask player which color he wants to play"
-#| msgid "Your color?"
+#, kde-format
 msgctxt "@label Ask player which color he wants to play"
 msgid "Your color?"
 msgstr "Vaša boja?"
 
 #: displayintro.cpp:124
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level easy"
-#| msgid "Easy Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level easy"
 msgid "Easy Game"
 msgstr "Laka igra"
 
 #: displayintro.cpp:130
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level normal"
-#| msgid "Normal Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level normal"
 msgid "Normal Game"
 msgstr "Normalna igra"
 
 #: displayintro.cpp:136
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus AI level hard"
-#| msgid "Hard Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus AI level hard"
 msgid "Hard Game"
 msgstr "Teška igra"
 
 #: displayintro.cpp:142
-#, fuzzy, kde-format
-#| msgctxt "quick start button - player versus player"
-#| msgid "Two Player Game"
+#, kde-format
 msgctxt "@action:button quick start - player versus player"
 msgid "Two Player Game"
 msgstr "Igra za dva igrača"
 
 # >> @title:window
 #: kchatdialog.cpp:80
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@title:window"
 msgid "Configure Chat"
 msgstr "Podešavanje ćaskanja"
 
 #: kchatdialog.cpp:92 kchatdialog.cpp:114
-#, fuzzy, kde-format
-#| msgid "Name Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Name Font…"
-msgstr "Font imena..."
+msgstr "Font imena…"
 
 #: kchatdialog.cpp:95 kchatdialog.cpp:117
-#, fuzzy, kde-format
-#| msgid "Text Font..."
+#, kde-format
 msgctxt "@action:button"
 msgid "Text Font…"
-msgstr "Font teksta..."
+msgstr "Font teksta…"
 
 #: kchatdialog.cpp:104
 #, kde-format
@@ -206,57 +189,49 @@ msgid "Main Toolbar"
 msgstr "Glavna traka"
 
 #: kgameconnectdialog.cpp:63
-#, fuzzy, kde-format
-#| msgid "Create a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Create a network game"
 msgstr "Pokreni mrežnu partiju"
 
 #: kgameconnectdialog.cpp:66
-#, fuzzy, kde-format
-#| msgid "Join a network game"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Join a network game"
 msgstr "Pridruži se mrežnoj partiji"
 
 #: kgameconnectdialog.cpp:72
-#, fuzzy, kde-format
-#| msgid "Game name:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Game name:"
 msgstr "Ime partije:"
 
 #: kgameconnectdialog.cpp:74
-#, fuzzy, kde-format
-#| msgid "Network games:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Network games:"
 msgstr "Mrežne partije:"
 
 #: kgameconnectdialog.cpp:84
-#, fuzzy, kde-format
-#| msgid "Port to connect to:"
+#, kde-format
 msgctxt "@label:spinbox"
 msgid "Port to connect to:"
 msgstr "Port za povezivanje:"
 
 #: kgameconnectdialog.cpp:90
-#, fuzzy, kde-format
-#| msgid "Host to connect to:"
+#, kde-format
 msgctxt "@label:textbox"
 msgid "Host to connect to:"
 msgstr "Domaćin za povezivanje:"
 
 #: kgameconnectdialog.cpp:95
-#, fuzzy, kde-format
-#| msgid "&Start Network"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Start Network"
 msgstr "&Pokreni mrežu"
 
 #: kgamedebugdialog.cpp:118
-#, fuzzy, kde-format
-#| msgid "KGame Debug Dialog"
+#, kde-format
 msgctxt "@title:window"
 msgid "KGame Debug Dialog"
 msgstr "Ispravljački dijalog K‑igre"
@@ -492,22 +467,19 @@ msgid "Unknown"
 msgstr "nepoznato"
 
 #: kgamedialog.cpp:92
-#, fuzzy, kde-format
-#| msgid "&Network"
+#, kde-format
 msgctxt "@title:tab"
 msgid "&Network"
 msgstr "&Mreža"
 
 #: kgamedialogconfig.cpp:124
-#, fuzzy, kde-format
-#| msgid "Disconnect"
+#, kde-format
 msgctxt "@action:button"
 msgid "Disconnect"
 msgstr "Prekini vezu"
 
 #: kgamedialogconfig.cpp:128
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:group"
 msgid "Network Configuration"
 msgstr "Podešavanje mreže"
@@ -554,36 +526,31 @@ msgstr "Završava se tekuća partija. Pobednik neće biti proglašen."
 
 # >> @title:window
 #: kwin4.cpp:272
-#, fuzzy, kde-format
-#| msgid "Configure Chat"
+#, kde-format
 msgctxt "@action"
 msgid "Configure Network…"
-msgstr "Podešavanje ćaskanja"
+msgstr "Podesi mrežu…"
 
 #: kwin4.cpp:276
-#, fuzzy, kde-format
-#| msgid "Network Chat..."
+#, kde-format
 msgctxt "@action"
 msgid "Network Chat"
-msgstr "Mrežno ćaskanje..."
+msgstr "Mrežno ćaskanje"
 
 #: kwin4.cpp:281
-#, fuzzy, kde-format
-#| msgid "&Show Statistics"
+#, kde-format
 msgctxt "@action"
 msgid "Show Statistics"
-msgstr "Prikaži &statistiku"
+msgstr "Prikaži statistiku"
 
 #: kwin4.cpp:283
-#, fuzzy, kde-format
-#| msgid "Show statistics."
+#, kde-format
 msgctxt "@info:tooltip"
 msgid "Show statistics"
-msgstr "Prikaži statistiku."
+msgstr "Prikaži statistiku"
 
 #: kwin4.cpp:295
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:menu"
 msgid "Theme"
 msgstr "Tema"
@@ -599,11 +566,10 @@ msgid "Welcome to Four Wins"
 msgstr "Dobro došli u Četiri pobeđuju"
 
 #: kwin4.cpp:485 kwin4.cpp:638
-#, fuzzy, kde-format
-#| msgid "Game running..."
+#, kde-format
 msgctxt "@info"
 msgid "Game running…"
-msgstr "Partija u toku..."
+msgstr "Partija u toku…"
 
 #: kwin4.cpp:599
 #, kde-format
@@ -643,31 +609,27 @@ msgid " Game ended. Please restart next round."
 msgstr " Partija je završena. Pokrenite sledeću rundu."
 
 #: kwin4.cpp:679
-#, fuzzy, kde-format
-#| msgid "Network Configuration"
+#, kde-format
 msgctxt "@title:window"
 msgid "Network Configuration"
 msgstr "Podešavanje mreže"
 
 # >> @option:radio
 #: kwin4.cpp:690
-#, fuzzy, kde-format
-#| msgid "Black should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Black should be played by remote player"
 msgstr "Crnom treba da igra udaljeni igrač"
 
 # >> @option:radio
 #: kwin4.cpp:691
-#, fuzzy, kde-format
-#| msgid "Red should be played by remote player"
+#, kde-format
 msgctxt "@option:radio"
 msgid "Red should be played by remote player"
 msgstr "Crvenom treba da igra udaljeni igrač"
 
 #: kwin4.cpp:788
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Opšte"
@@ -816,40 +778,37 @@ msgstr "crvena"
 #. i18n: ectx: property (text), widget (QLabel, nameLabel1)
 #. i18n: ectx: property (text), widget (QLabel, nameLabel2)
 #: settings.ui:103 settings.ui:217
-#, fuzzy, kde-format
-#| msgid "Name"
+#, kde-format
 msgid "Name:"
-msgstr "ime"
+msgstr "Ime:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolourred)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_startcolouryellow)
 #: settings.ui:113 settings.ui:227
-#, fuzzy, kde-format
-#| msgid "Starting Player Color"
+#, kde-format
 msgid "Starting Player"
-msgstr "Boja igrača koji počinje"
+msgstr "Prvi na potezu"
 
 #. i18n: ectx: property (text), widget (QLabel, playerLabel1)
 #. i18n: ectx: property (text), widget (QLabel, playerLabel2)
 #: settings.ui:146 settings.ui:257
-#, fuzzy, kde-format
-#| msgid "Player: "
+#, kde-format
 msgid "Player:"
-msgstr "Igrač: "
+msgstr "Igrač:"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0mouse)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1mouse)
 #: settings.ui:153 settings.ui:264
 #, kde-format
 msgid "Human with Mouse"
-msgstr ""
+msgstr "čovek sa mišem"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0key)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1key)
 #: settings.ui:166 settings.ui:274
 #, kde-format
 msgid "Human with Keyboard"
-msgstr ""
+msgstr "čovek sa tastaturom"
 
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input0ai)
 #. i18n: ectx: property (text), widget (QRadioButton, kcfg_input1ai)
@@ -971,31 +930,3 @@ msgstr "br"
 #, kde-format
 msgid "Bk"
 msgstr "prek"
-
-#~ msgid "&Network Configuration..."
-#~ msgstr "&Podešavanje mreže..."
-
-# >> %1 is player color
-#~ msgid "%1 Plays With"
-#~ msgstr "%1 igra sa|/|$[Nom %1] igra sa"
-
-#~ msgid "Red Plays With"
-#~ msgstr "Crveni je"
-
-#~ msgid "Mouse"
-#~ msgstr "miš"
-
-#~ msgid "Keyboard"
-#~ msgstr "tastatura"
-
-#~ msgid "Black Plays With"
-#~ msgstr "Crni je"
-
-#~ msgid "Player Names"
-#~ msgstr "Imena igrača"
-
-#~ msgid "Player 1:"
-#~ msgstr "Igrač 1:"
-
-#~ msgid "Player 2:"
-#~ msgstr "Igrač 2:"
