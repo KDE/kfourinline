@@ -40,6 +40,10 @@
   <name xml:lang="sa">KFourInLine इति</name>
   <name xml:lang="sk">KFourInLine</name>
   <name xml:lang="sl">KFourInLine</name>
+  <name xml:lang="sr">К‑четири‑у‑низу</name>
+  <name xml:lang="sr-Latn">K‑četiri‑u‑nizu</name>
+  <name xml:lang="sr-ijekavian">К‑четири‑у‑низу</name>
+  <name xml:lang="sr-ijekavianlatin">K‑četiri‑u‑nizu</name>
   <name xml:lang="sv">Fyra i rad</name>
   <name xml:lang="tr">KFourInLine</name>
   <name xml:lang="ug">KFourInLine</name>
@@ -77,6 +81,10 @@
   <summary xml:lang="sa">KFourInLine इति KDE द्वारा चतुर्-पङ्क्ति-क्रीडा अस्ति</summary>
   <summary xml:lang="sk">KFourInLine je hra KDE o štyroch v rade</summary>
   <summary xml:lang="sl">KFourInLine je igra 'štiri v vrsto' v KDE</summary>
+  <summary xml:lang="sr">К‑четири‑у‑низу је игра „четири у низу“ из КДЕ‑а</summary>
+  <summary xml:lang="sr-Latn">K‑četiri‑u‑nizu je igra „četiri u nizu“ iz KDE‑a</summary>
+  <summary xml:lang="sr-ijekavian">К‑четири‑у‑низу је игра „четири у низу“ из КДЕ‑а</summary>
+  <summary xml:lang="sr-ijekavianlatin">K‑četiri‑u‑nizu je igra „četiri u nizu“ iz KDE‑a</summary>
   <summary xml:lang="sv">Fyra i rad är ett fyra-i-rad spel av KDE</summary>
   <summary xml:lang="tr">KFourInLine, KDE tarafından yapılan bir dörtlü sıralama oyunudur</summary>
   <summary xml:lang="ug">KDE دىكى KFourInLine بىر-قۇردا-تۆت ئويۇنى</summary>
@@ -117,6 +125,10 @@
     <p xml:lang="sa">KFourInLine इति द्वयोः खिलाडयोः कृते एकः बोर्डक्रीडा अस्ति यत् Connect-Four इति क्रीडायाः आधारेण निर्मितः अस्ति । क्रीडकाः भिन्न-भिन्न-रणनीतीनां उपयोगेन चतुर्णां खण्डानां पङ्क्तिं निर्मातुं प्रयतन्ते ।</p>
     <p xml:lang="sk">KFourInLine je stolová hra pre dvoch hráčov založená na hre Connect-Four.Hráči sa snažia zostaviť rad štyroch kúskov pomocou rôznych stratégií.</p>
     <p xml:lang="sl">KFourInLine je namizna igra za dva igralca po zgledu igre Štiri v vrsto. Igralca poskušata z različnimi strategijami zložiti štiri kose v vrsto.</p>
+    <p xml:lang="sr">К‑четири‑у‑низу је игра на табли за два играча, заснована на игри Connect Four. Играчи различитим стратегијама покушавају да сложе низ од четири жетона.</p>
+    <p xml:lang="sr-Latn">K‑četiri‑u‑nizu je igra na tabli za dva igrača, zasnovana na igri Connect Four. Igrači različitim strategijama pokušavaju da slože niz od četiri žetona.</p>
+    <p xml:lang="sr-ijekavian">К‑четири‑у‑низу је игра на табли за два играча, заснована на игри Connect Four. Играчи различитим стратегијама покушавају да сложе низ од четири жетона.</p>
+    <p xml:lang="sr-ijekavianlatin">K‑četiri‑u‑nizu je igra na tabli za dva igrača, zasnovana na igri Connect Four. Igrači različitim strategijama pokušavaju da slože niz od četiri žetona.</p>
     <p xml:lang="sv">Fyra i rad är ett brädspel för två spelare baserat på spelet Connect-Four. Spelarna försöker bygga en rad av fyra pjäser med användning av olika strategier.</p>
     <p xml:lang="tr">KFourInLine, iki oyuncu için Connect-Four tabanlı bir masa oyunudur. Oyuncular değişik stratejiler kullanarak dört parçanın aynı doğruda olduğu diziler yapmaya çalışırlar.</p>
     <p xml:lang="uk">Чотири-у-рядку — це гра на дошці для двох гравців, заснована на грі Connect-Four. Гравці мають побудувати рядок із чотирьох значків, використовуючи певну стратегію.</p>
@@ -160,6 +172,10 @@
       <caption xml:lang="sa">KFourInLine इति क्रीडन्</caption>
       <caption xml:lang="sk">Hranie KFourInLine</caption>
       <caption xml:lang="sl">Igra KFourInLine</caption>
+      <caption xml:lang="sr">Играње К‑четири‑у‑низу</caption>
+      <caption xml:lang="sr-Latn">Igranje K‑četiri‑u‑nizu</caption>
+      <caption xml:lang="sr-ijekavian">Играње К‑четири‑у‑низу</caption>
+      <caption xml:lang="sr-ijekavianlatin">Igranje K‑četiri‑u‑nizu</caption>
       <caption xml:lang="sv">Spela Fyra i rad</caption>
       <caption xml:lang="tr">KFourInLine Oynarken</caption>
       <caption xml:lang="uk">Гра у Чотири-у-рядку</caption>
