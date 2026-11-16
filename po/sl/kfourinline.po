@@ -2,7 +2,7 @@
 # Translation of kwin4.po to Slovenian
 # SLOVENIAN TRANSLATION OF KWIN4.
 # Copyright (C) 2001, 2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-# $Id: kfourinline.po 1723874 2025-11-28 01:25:13Z scripty $
+# $Id$
 # $Source$
 #
 # Marko Samastur <markos@elite.org>, 2000.
