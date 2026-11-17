@@ -1,5 +1,5 @@
 # translation of kfourinline.po to
-# Version: $Revision: 1723874 $
+# Version: $Revision$
 # Copyright (C) 2002,2003, 2004, 2005, 2007, 2008 Free Software Foundation, Inc.
 # Bartosz Kosiorek  <gang65@poczta.onet.pl>, 2002.
 # Michał Rudolf <mrudolf@kdewebdev.org>, 2002.
