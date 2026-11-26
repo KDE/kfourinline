@@ -138,9 +138,9 @@ void KGameConnectWidget::slotGamesFound()
     d->mClientName->clear();
     QStringList names;
 
-    QListIterator<KDNSSD::RemoteService::Ptr> it(d->mBrowser->services());
-    while (it.hasNext())
-        names << it.next()->serviceName();
+    const QList<KDNSSD::RemoteService::Ptr> services = d->mBrowser->services();
+    for (const KDNSSD::RemoteService::Ptr &service : services)
+        names << service->serviceName();
     d->mClientName->addItems(names);
     if (autoselect && d->mClientName->count())
         slotGameSelected(0);

@@ -186,9 +186,7 @@ void KComputer::saveBrain()
     out << (qint32)BRAIN_VERSION; // Version
     out << (qint32)mBrain.size();
 
-    QHashIterator<AIBoard, AIValue> it(mBrain);
-    while (it.hasNext()) {
-        it.next();
+    for (auto it = mBrain.cbegin(), end = mBrain.cend(); it != end; ++it) {
         AIBoard board = it.key();
         AIValue value = it.value();
         out << board << value;
